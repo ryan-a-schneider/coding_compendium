@@ -1,0 +1,17 @@
+a-monument-to-my-madness
+introduction-r-basics
+wrangle-data
+joining-or-splitting
+data
+individual-columnsvariables
+selecting-specific-columnsvariables
+if-then-and-case-when
+the-pool-of-tears
+a-caucus-race-and-a-long-tale
+a-caucus-race-and-a-long-tale-1
+a-caucus-race-and-a-long-tale-2
+a-caucus-race-and-a-long-tale-3
+a-caucus-race-and-a-long-tale-4
+a-caucus-race-and-a-long-tale-5
+a-caucus-race-and-a-long-tale-6
+a-caucus-race-and-a-long-tale-7
