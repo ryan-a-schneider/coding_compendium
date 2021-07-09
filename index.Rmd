@@ -9,3 +9,10 @@ site: bookdown::bookdown_site
 
 This book contains all my personal coding notes from the last two years. Why am I doing this? Probably because I'm a glutton for punishment, and I'd rather procrastinate than write my dissertation proposal.
 
+## What this book is, and what it is not
+
+You know those absolutely amazing, comprehensive guides where you can learn everything you need to know about R? Specifically, [this one](https://r4ds.had.co.nz/) by Hadley Wickham? Yeah, this isn't that.
+
+This book is designed as a ***quick reference guide*** for many of the most common things you'll need to do in everyday data analysis and research. Think of it like a coding dictionary, as opposed to a manual, or a full-blown book like Wickham's. If you want (or need) to learn about a subject or command *in-depth*, then you should probably use Wickham's book or [the tidyverse websites](https://www.tidyverse.org/packages/); however, if you're just looking for a quick "what command do I need to accomplish XYZ", you've come to the right place.
+
+Oh and by the way, much of this whole quick reference guide thing is based on the tidyverse, so if you're not already familiar with it and need a quick intro before beginning, check out [these slides](https://oliviergimenez.github.io/intro_tidyverse/#1) and watch a few YouTube videos.
