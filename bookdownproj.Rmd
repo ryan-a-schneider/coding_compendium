@@ -21,6 +21,13 @@ There are lots of things you can do with base R commands, but this notebook focu
 readr for example, replaces the base read.xyz commands and greatly enhances functionality for reading in data.
 The forcats package makes manipulating factors a breeze, and stringr makes searching through and manipulating vectors of strings super easy. Purrr is for semi-advanced uses (e.g. For loops) that you probably won't use early on, but will be essential and invaluable if you have some iterative or repetitive code or task you want to perform. Tidyr is amazing for getting clean datasets upon import.
 
+Let's get stuckin'
+
+```{r}
+library(tidyverse)
+```
+
+
 <!--chapter:end:02-basics.Rmd-->
 
 # Wrangle Data
@@ -44,8 +51,8 @@ df1=data.frame(customer_id=c(1:10),
 
 df2=data.frame(customer_id=c(sample(df1$customer_id, 5)),state=sample(c('New York','California'),5,replace = TRUE))
 
-df1=as.tibble(df1)
-df2=as.tibble(df2)
+df1=tibble::as_tibble(df1)
+df2=tibble::as_tibble(df2)
 
 # df1 =left table
 # df2= right table

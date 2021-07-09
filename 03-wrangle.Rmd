@@ -38,7 +38,7 @@ df1 %>% right_join(df2,by='customer_id')
 
 
     # note: example if the customer id column was named something different in the second df
-    df1 %>% left_join(df2,by=c('customer_id'='name2'))
+    #df1 %>% left_join(df2,by=c('customer_id'='name2'))
 
 
 #full join - retain all rows from both tables, and join matching keys in both right and left
