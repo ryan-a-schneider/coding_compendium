@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "R Coding Compendium"
+author: "Ryan Schneider"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
