@@ -5,5 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
+# A Monument to my Madness
+
+This book contains all my personal coding notes from the last two years. Why am I doing this? Probably because I'm a glutton for punishment, and I'd rather procrastinate than write my dissertation proposal.
 
