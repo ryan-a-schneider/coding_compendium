@@ -9,6 +9,12 @@ Every single plot has the exact same layout that ONLY USES the above three point
 ```{r eval=FALSE}
 ggplot(dataframe, aes(graph dimensions and variables used)) +
   geom_GraphType(specific graph controls)
+
+## OR ##
+ggplot(dataframe) +
+  geom_GraphType(aes(graph dimensions and variables used), specific graph controls)
+
+# mapping= aes() can go in either spot
 ```
 
 Then if you have other stuff you want to add on top of this, like axis labels, annotations, highlights, etc., you keep adding those in separate lines
@@ -25,8 +31,20 @@ Then if you have other stuff you want to add on top of this, like axis labels, a
 | Histogram     | `geom_histogram()` |
 | Density curve | `geom_density()`   |
 
-## Quick notes for Histograms and Density Curves
 
+Note that bar and column graphs look identical at first glance, but they serve two different purposes.
+
+*Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
+
+```{r}
+# heihgt of bars is a frequency count of each level of the X variable cut
+ggplot(diamonds, aes(x=cut)) + 
+  geom_bar()
+
+# height of bars represents relationship between price and cut
+ggplot(diamonds, aes(x=cut, y=price)) + 
+  geom_col()
+```
 
 
 
@@ -72,18 +90,66 @@ geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
 
 ## Plotting multiple graphs at once
 
-## Change the graph/figure colors (bars; columns; dots; etc.)
+## Change the colors (bars; columns; dots; etc.)
 
-### Adding color or fill
+This can be done in at least two different ways, depending on your goal.
 
-Nearly every single geom has color, fill, or both. **To add color**, simply add `color= variable_name` within the `aes()` command
+If you want to *add color and make all of the (bars; dots; lines; etc.) the same color*, than that is a graph-wide control and needs to be put in `geom_point()`. This manually sets the color for the whole graph.
 
 ```{r}
 # add a color scale to the dots
-ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
-  geom_point()
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point(color="blue")
+```
 
-# change the fill of the bars
+If you want to add color that changes according to a variable (e.g., by factor level), then the color needs to be specified **as a variable name**, in the aes mapping with the other variables.
+
+```{r}
+ggplot(mtcars, aes(x= mpg, y=hp, color=cyl))+
+  geom_point()
+```
+
+
+### Fine-tuning colors
+
+You can change the spectrum of colors to specific colors if you want. Useful for example, when making graphs for APLS presentations; you can change the colors to be Montclair State University themed.
+
+The two commands for this are EITHER `scale_fill_manual()` or `scale_color_manual()`: Use *the former for box, bar, violin, etc. plots*; and the latter for *line and plot graphs*
+
+```{r}
+# Set colors manually
+ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
+  geom_bar() +
+  scale_fill_manual(values=c("green", "yellow", "orange", "red", "purple", "blue"))
+
+ggplot(mtcars, aes(x = wt, y = mpg, color=as.factor(cyl)))+
+  geom_point() +
+  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))
+
+# Use color scales from a package
+library(gameofthrones)
+# NOTICE THAT scale_fill AND scale_color STILL APPLY TO THEIR RESPECTIVE GRAPH TYPES
+
+# bar graphs
+ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
+  geom_bar() +
+  scale_fill_got(discrete = TRUE, option = "Tully")
+
+ggplot(mtcars, aes(factor(cyl), fill=factor(vs)))+
+  geom_bar() +
+  scale_fill_got(discrete = TRUE, option = "Daenerys")
+
+
+# plot graph
+ggplot(mtcars, aes(x = mpg, y = disp, colour = hp))+
+  geom_point(size = 2) +
+  scale_colour_got(option = "Lannister")
+```
+
+"Fill" graphs also come with an extra option: Setting the outline color. You can change the outline of the bar/column/etc. by specifying the color inside `geom_()`
+
+```{r}
+# change only the fill of the bars
 ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar()
 
@@ -92,44 +158,37 @@ ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar(color="black")
 ```
 
+### More options
 
-### Changing the colors/fill
+See [this link](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually) for setting color gradients for continuous variables, or using other custom color palattes like the `gameofthrones` package.
+
+
+## Other aesthetic mappings
+
+`shape()` controls the shapes on the graph
+`alpha()` controls transparency
+`size()` controls size
+
+Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
 
 ```{r}
-ggplot(mtcars, aes(x= mpg, y=hp, color=hp))+
+# shape
+ggplot(mtcars, aes(x= mpg, y=hp, shape=as.factor(cyl)))+
   geom_point()
 
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point(shape=23)
 
-ggplot(mtcars, aes(x = mpg, y = disp, colour = hp))+
-  geom_point(size = 2) +
-  scale_colour_got(option = "Lannister")
+# transparency
+ggplot(mtcars, aes(x= mpg, y=hp, alpha=hp))+
+  geom_point()
 
-library(gameofthrones)
-
-ggplot(mtcars, aes(factor(cyl), fill=factor(vs)))+
-  geom_bar() +
-  scale_fill_got(discrete = TRUE, option = "Daenerys")
-
-ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
-  geom_bar() +
-  scale_fill_got(discrete = TRUE, option = "Tully")
-
-ggplot(mtcars, aes(x = mpg, y = disp, colour = hp))+
-  geom_point(size = 2) +
-  scale_colour_got(option = "Lannister")
-
-
+# size
+ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
+  geom_point()
 ```
 
-You can change colors to whatever you want with `scale_fill_manual()`. This command takes either a named color (e.g., "red"), or an RGB specification (\#RRGGBB), where each of the pairs RR,GG,BB consist of two hexadecimal digits giving a value in the range 00 to FF
 
-Transparent is "\#RRGGBBAA"
-
-```{r}
-ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
-  geom_bar() +
-  scale_fill_manual(values=c("green", "yellow", "orange", "red", "purple", "blue"))
-```
 
 ## Adding and Customizing Text
 
@@ -144,6 +203,8 @@ ggplot(mtcars, aes(x=cyl))+
        x="Age Group",
        caption="Note. Younger= ages 11-29; Older= ages 30-86.")
 ```
+
+
 ### Center graph title
 
 Add the line `theme(plot.title = element_text(hjust = 0.5))`
