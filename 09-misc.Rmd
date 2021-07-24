@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Misc. Stuff
 
 ## Scrape web pages for data tables
@@ -79,3 +80,6 @@ Use `cat()` from base R
 cat("The p-value dropped below 0.05 for the first time as sample size", 100)
 ```
 
+=======
+# A caucus-race and a long tale
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4

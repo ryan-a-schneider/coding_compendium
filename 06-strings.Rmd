@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Working with Strings
 
 
@@ -69,3 +70,6 @@ blah$A=str_to_lower(blah$A)
 blah
 ```
 
+=======
+# A caucus-race and a long tale
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4

@@ -2,13 +2,20 @@
 
 This chapter contains useful tips on wrangling (i.e., manipulating) data. If you need to know to do to things like create new variables, split one variable into multiple variables, pivot a data set from wide to long, etc., look no further.
 
+<<<<<<< HEAD
 If you want a pretty good intro tutorial to the `dplyr` package, click [here](https://www-r--bloggers-com.cdn.ampproject.org/v/s/www.r-bloggers.com/2021/01/how-to-analyze-data-with-r-a-complete-beginner-guide-to-dplyr/amp/?amp_js_v=a6&gsa=1&usqp=mq331AQFKAGwASA%3D#csi=0&referrer=https%3A%2F%2Fwww.google.com&tf=From%20%251%24s&ampshare=https%3A%2F%2Fwww.r-bloggers.com%2F2021%2F01%2Fhow-to-analyze-data-with-r-a-complete-beginner-guide-to-dplyr%2F)
 
+=======
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
 ## Joining or Splitting
 
 Joining and splitting data is pretty straightforward....
 
+<<<<<<< HEAD
 ### Whole Data Sets
+=======
+### Data
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
 
 The code below is from [this excellent tutorial](https://www.youtube.com/watch?v=SCdmyyoudb8&t=23s)
 
@@ -21,6 +28,7 @@ df1=data.frame(customer_id=c(1:10),
 
 df2=data.frame(customer_id=c(sample(df1$customer_id, 5)),state=sample(c('New York','California'),5,replace = TRUE))
 
+<<<<<<< HEAD
 df1=tibble::as_tibble(df1)
 df2=tibble::as_tibble(df2)
 
@@ -56,6 +64,36 @@ df1 %>% full_join(df2,by='customer_id')
 Anti join - returns all rows in the left that do not have matching keys in the right
 ```{r}
 df1 %>% anti_join(df2,by='customer_id')
+=======
+df1=as.tibble(df1)
+df2=as.tibble(df2)
+
+# df1 =left table
+# df2= right table
+
+# inner join - retains only rows with values that appear in both tables, and matches by keys
+df1 %>% inner_join(df2,by='customer_id')
+
+# If you're joining two Qualtrics surveys together, this is most likely the one you want to use (e.g. matching by participant name, and only keeping rows in the joined data set for participants that have responses logged in both survey 1 and survey 2
+
+# left join - returns everything in the left, and rows with matching keys in the right
+df1 %>% left_join(df2,by='customer_id')
+
+# right join - returns everything in the right, and rows with matching keys in the left
+df1 %>% right_join(df2,by='customer_id')
+
+
+    # note: example if the customer id column was named something different in the second df
+    df1 %>% left_join(df2,by=c('customer_id'='name2'))
+
+
+#full join - retain all rows from both tables, and join matching keys in both right and left
+df1 %>% full_join(df2,by='customer_id')
+
+# anti join - returns all rows in the left that do not have matching keys in the right
+df1 %>% anti_join(df2,by='customer_id')
+
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
 ```
 
 
@@ -75,7 +113,11 @@ Sometimes when working with a data set, you want to work with a few *specific* v
 `select()` can be thought of as "extract"; it tells R to identify and "extract" a specific variable (or variables)
 
 
+<<<<<<< HEAD
 ```{r eval=FALSE}
+=======
+```{r}
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
 cars=mtcars
 
 # select one column
@@ -84,6 +126,7 @@ cars %>% select(mpg)
 # select multiple columns, if they are all next to one another
 cars %>% select(mpg:hp)
 
+<<<<<<< HEAD
 # select multiple columns by name (when not next to one another) by defining them in a vector
 cars %>% select(c(mpg, hp, wt))
 
@@ -469,4 +512,21 @@ full_data$start_date=lubridate::date(no_slice$start_date)
 ```{r}
 difftime(part_1$end_date[1], part_2$end_date[1], units="days")
 ```
+=======
+# select multiple columns by name (when not next to one another)
+cars %>% select(c(mpg, hp, wt))
+```
+
+
+If you need to do some more complex selection (e.g., select all variables that start or end with a certain pattern; all columns that contain a certain pattern; etc.), see [THIS LINK](https://tidyselect.r-lib.org/reference/language.html) for a simple but detailed guide.
+
+
+
+## If-then and Case-when
+
+```{r}
+"hello"
+```
+
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
 

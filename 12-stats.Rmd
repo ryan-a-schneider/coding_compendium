@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Statistics and Psych-specific Stuff
 
 
@@ -45,3 +46,6 @@ df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
 
 
+=======
+# A caucus-race and a long tale
+>>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
