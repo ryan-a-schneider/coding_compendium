@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Figures and Graphs
 
 There are three parts to a ggplot2 call: 1. data 2. aesthetic mapping 3. Layer
@@ -256,6 +255,3 @@ ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
   geom_smooth(method = "lm", formula = y ~ x)
 ```
 
-=======
-# A caucus-race and a long tale
->>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4

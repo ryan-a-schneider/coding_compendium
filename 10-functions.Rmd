@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Functions, Loops, and Iterative Programming
 
 ## Functions
@@ -253,4 +252,3 @@ lpga_data= tables_list %>%
 head(lpga_data)
 
 ```
-

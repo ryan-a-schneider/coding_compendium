@@ -1,6 +1,5 @@
 # Introduction: R Basics
 
-<<<<<<< HEAD
 For the love of God before you do anything, familiarize yourself with R Projects and the `here` package. These make R so much more user friendly and less of a nightmare. If you need an overview, go here: http://jenrichmond.rbind.io/post/how-to-use-the-here-package/
 
 
@@ -94,11 +93,3 @@ rainbow
 
 
 
-=======
-There are lots of things you can do with base R commands, but this notebook focuses on the tidyverse. These packages (below) improve on almost every single aspect of base R's functioning, and make different tasks far easier, more code efficient, and faster. 
-
-
-
-readr for example, replaces the base read.xyz commands and greatly enhances functionality for reading in data.
-The forcats package makes manipulating factors a breeze, and stringr makes searching through and manipulating vectors of strings super easy. Purrr is for semi-advanced uses (e.g. For loops) that you probably won't use early on, but will be essential and invaluable if you have some iterative or repetitive code or task you want to perform. Tidyr is amazing for getting clean datasets upon import.
->>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4

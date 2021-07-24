@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Statistics and Psych-specific Stuff
 
 
@@ -44,6 +43,5 @@ df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 
 # Recode the whole damn thing. All columns.
 df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
-
 
 
