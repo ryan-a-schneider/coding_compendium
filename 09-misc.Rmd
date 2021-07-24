@@ -4,9 +4,9 @@
 
 See Chapter 10's example `purrr` walk through for a guide on how to scrape multiple web tables simultaneously 
 
-```{r}
+***Simple example***
 
-#### Example 1 ####
+```{r}
 library(rvest)
 library(tidyverse)
 
@@ -28,6 +28,67 @@ html=html %>%  mutate(`Market Price`=as.numeric(`Market Price`)) # convert from 
 
 # view finished table
 head(html)
+```
+
+***Slightly more complicated example***
+
+
+
+```{r}
+pacman::p_load(rvest, tidyverse)
+
+exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx") %>% 
+  html_nodes("table.ms-listviewtable") %>% 
+  html_table(fill=TRUE, header = TRUE)
+```
+
+From here you now need to clean up the table
+
+```{r}
+exonerations_table=as.data.frame(exonerations_table)
+
+table_names=exonerations_table$Last.Name[1:20] # copy the column names into a vector before deleting them
+
+exonerations_table=exonerations_table %>% 
+  select(Last.Name:Tags.1) %>% # get rid of extra columns
+  slice(22:n()) # get rid of extra rows
+
+colnames(exonerations_table)=table_names # over-write the current column names with the vector of names we created
+
+glimpse(exonerations_table) # data is a bit messed up. All columns are chr, and some values not recognized as missing
+
+# wrangle to fix
+exonerations_table=as_tibble(exonerations_table) %>% 
+  janitor::clean_names() %>% 
+  na_if("") %>% 
+  mutate(dna=if_else(dna=="DNA",1,0),
+         mwid=if_else(mwid=="MWID",1,0),
+         fc=if_else(fc=="FC",1,0),
+         p_fa=if_else(p_fa=="P/FA",1,0),
+         f_mfe=if_else(f_mfe=="F/MFE",1,0)) %>% 
+  replace_na(dna:f_mfe, 0) %>% 
+  mutate(across(c(dna:f_mfe),factor))
+
+exonerations_table # done!
+```
+
+
+Check out [this page](https://www.dataquest.io/blog/web-scraping-in-r-rvest/) for a quick overview.
+
+
+
+```{r}
+exonerations_table=as.data.frame(exonerations_table)
+
+table_names=exonerations_table$Last.Name[1:20]
+
+exonerations_table=exonerations_table %>% 
+  select(Last.Name:Tags.1) %>% 
+  slice(22:n())
+
+colnames(exonerations_table)=table_names
+
+exonerations_table=exonerations_table %>% janitor::clean_names()
 ```
 
 
