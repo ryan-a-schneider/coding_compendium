@@ -1,1 +1,47 @@
-# Tables
+# Making Tables with flextable
+
+NOTES:
+- **j** refers to the column
+- **i** refers to the row number
+
+
+## APA Table Components
+
+
+
+## Indent values
+https://davidgohel.github.io/flextable/reference/padding.html
+https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object
+
+Use the `padding` function:
+```{r}
+ft <- padding(ft, i=2, j=1, padding.left=20)
+```
+
+
+## Add a Horizontal border
+
+```{r}
+hline(., i=4, j=1:2, part = "body")
+```
+
+## Change font and font size
+
+```{r}
+  glm_table<-flextable::font(glm_table,part = "all", fontname = "Times") # Font
+  glm_table <-flextable::fontsize(glm_table, size = 11, part = "all") # Font size
+```
+
+## Grouped table
+
+```{r}
+
+cars=rownames_to_column(mtcars, var = "Model")
+test=flextable::as_grouped_data(x=cars, groups = c("cyl"))
+```
+
+
+
+## Complete Example
+
+

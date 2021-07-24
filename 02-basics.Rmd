@@ -1,15 +1,95 @@
 # Introduction: R Basics
 
-There are lots of things you can do with base R commands, but this notebook focuses on the tidyverse. These packages (below) improve on almost every single aspect of base R's functioning, and make different tasks far easier, more code efficient, and faster. 
+For the love of God before you do anything, familiarize yourself with R Projects and the `here` package. These make R so much more user friendly and less of a nightmare. If you need an overview, go here: http://jenrichmond.rbind.io/post/how-to-use-the-here-package/
 
 
+Now lets get stuck in.
 
-readr for example, replaces the base read.xyz commands and greatly enhances functionality for reading in data.
-The forcats package makes manipulating factors a breeze, and stringr makes searching through and manipulating vectors of strings super easy. Purrr is for semi-advanced uses (e.g. For loops) that you probably won't use early on, but will be essential and invaluable if you have some iterative or repetitive code or task you want to perform. Tidyr is amazing for getting clean datasets upon import.
-
-Let's get stuckin'
-
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
+
+
+## Importing Data
+
+### Spreadsheets
+
+See https://nacnudus.github.io/spreadsheet-munging-strategies/index.html for more detailed and in-depth tutorials (if you need that kind of thing)
+
+
+## Exporting (i.e., saving) Data and Output
+
+### Exporting to .CSV
+
+Generally speaking, unless you have a specific reason to, don't. But if you must: `write_csv()`
+
+### Export to .RData (and load the data again later)
+
+```{r eval=FALSE}
+save(obj_name, file=here::here("subfolder", "save_file_name"), compress = FALSE)
+
+load(here::here("folder", "save_name.RData"))
+```
+
+
+### Export to Excel
+
+```{r}
+library(openxlsx)
+
+#Method 1: If you only want to export 1 thing, and/or only need output document
+  #write as object, with no formatting:
+  write.xlsx(objectname,file = "filenamehere.xlsx",colnames=TRUE, borders="columns")
+
+  #write as table:
+  write.xlsx(objectname,"filename.xlsx",asTable = TRUE)
+
+
+#Method 2: If you want to do the above, but add multiple objects or tables to one workbook/file:
+  ## first Create Workbook object
+  wb <- createWorkbook("AuthorName")
+  #then add worksheets (as many as desired)
+  addWorksheet(wb, "worksheetnamehere")
+  
+#then write the object to the worksheet  
+writeData(wb, "test", nameofobjectordataframe, startCol = 2, startRow = 3, rowNames = TRUE)
+
+#save excel file
+saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
+
+
+#Method 3: exact same as method 2, but creating a more fancy tables
+
+wb <- createWorkbook("Ryan")
+addWorksheet(wb, "worksheetnamehere")
+writeDataTable(wb, sheetName, objectName, startCol = 1, startRow = 1, colNames = TRUE, rowNames = FALSE,
+          tableStyle="TableStyleLight2",tableName=NULL, headerStyle = NULL,withFilter=FALSE,keepNA=TRUE,sep=", ",
+          stack = FALSE, firstColumn = FALSE, lastColumn = FALSE,bandedRows = TRUE,bandedCols = FALSE)
+
+saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
+
+```
+
+
+### Access/edit specific cell number values
+
+```{r}
+rainbow=tibble::tribble(~Color,
+                "red",
+                "orange",
+                "black",
+                "green",
+                "blue",
+                "purple")
+
+rainbow$Color[3] # access, but can't overwrite this way
+rainbow[3,"Color"] # access and can overwrite
+
+rainbow[3, "Color"]= "yellow" # save this value to row 3 in column "Color"
+
+rainbow
+```
+
+
+
 

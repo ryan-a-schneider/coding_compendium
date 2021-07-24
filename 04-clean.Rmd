@@ -1,2 +1,84 @@
 # Clean Data
 
+```{r echo=false, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+## Replace a value with NA
+
+Use `dplyr::na_if()` if you have a value coded in your data (e.g., 999) that you want to convert to NA
+
+```{r}
+
+example_data=dplyr::tribble(~name, ~bday_month,
+                            "Ryan", 10,
+                            "Z", 3,
+                            "Jen", 999, 
+                            "Tristin", 999,
+                            "Cassidy", 6)
+
+example_data
+
+example_data$bday_month=na_if(example_data$bday_month, 999) #example doing one column at a time 
+
+example_data
+
+example_data %>% # can also pass the data to mutate and do it the tidyverse way
+  mutate(bday_month=na_if(bday_month, 999)) 
+```
+
+**Note.** `tidyr::replace_na()` does exactly the same thing. You can use either command.
+
+
+## Identify columns or rows with Missing values
+
+`is.na()` is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector
+
+```{r}
+y <- c(1,2,3,NA)
+
+is.na(y) # returns a vector (F F F T)
+```
+
+## Find the percentage of a variable that is missing
+
+Sometimes necessary to check before conducting an analysis. *This requires my package*, `legaldmlab`
+
+```{r}
+?legaldmlab::count_missing
+
+mtcars %>% 
+  select(hp:drat) %>% 
+  legaldmlab::count_missing()
+```
+
+
+
+## Exclude Missing values from analysis
+
+
+
+# Dropping Missing values from the data set
+
+`tidyr::drop_na()`
+
+```{r}
+example_data=dplyr::tribble(~name, ~bday_month, ~car,
+                            "Ryan", 10, "kia",
+                            "Z", NA, "toyota",
+                            "Jen", NA, NA,
+                            "Tristin", 999, NA,
+                            "Cassidy", 6, "honda")
+
+
+example_data
+
+example_data %>% drop_na() # with nothing specified, it drops ALL variables that have >=1 missing value
+
+example_data %>% drop_na(car) # drops only rows with values missing in the specified column
+
+```
+
+
+

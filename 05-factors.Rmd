@@ -1,1 +1,53 @@
 # Working with Factors
+
+```{r echo=false, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+
+## Manually recode/change a factor's levels
+
+Use `forcats::fct_recode()`
+
+```{r}
+diamonds=diamonds %>% as_tibble()
+
+diamonds$cut=fct_recode(diamonds$cut, "meh"="Fair", "Wow"="Premium")
+
+summary(diamonds$cut)
+```
+
+## Collapse factor levels
+
+```{r eval=false}
+fct_collapse(dataset$variable,
+			NewLevelA=c("OldLevel1","Oldlevel2"),
+			NewLevelB=c("OldLevel3"))
+```
+
+
+## Add levels to a factor
+
+use `fct_expand()`
+
+```{r}
+
+```
+
+
+## Drop unused levels
+
+Use `fct_drop()`
+```{r}
+
+```
+
+
+## Change the order of a factor's levels
+
+```{r eval=FALSE}
+conditions_summary$PTS_text=fct_relevel(conditions_summary$PTS_text, c("5 years", "25 years"))
+```
+
+
+

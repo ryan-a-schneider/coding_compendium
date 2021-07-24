@@ -1,1 +1,47 @@
-# Statistics Stuff
+# Statistics and Psych-specific Stuff
+
+
+## Create or sample from a distribution
+
+*Creating a binomial distribution*
+
+When you do this, you are setting the true population parameter; you are in control of the Data Generating Process and the true distribution
+
+In a binomial distribution, the parameter is normally distributed, and can take any value from 0.0 to 1.0
+But the data that this process generates is not normal
+```{r}
+rbinom(n= 1000, size= 1, prob =  0.5)
+
+rnorm(n=2500,mean=500, sd=100)
+```
+
+
+## Find Cohen's Kappa (Interrater reliability)
+
+Useful for interrater agreement on categorical variables
+
+Going to use the `psych` package for this:
+https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa
+
+See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is
+
+
+
+## Reverse-code a variable
+
+To reverse-score a variable, you should use `car::recode()`
+Can be done a few different ways, depending on how many variables you're looking to recode:
+
+```{r eval=FALSE}
+
+# Recode just one variable
+df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
+
+# Recode a select bunch of variables
+df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1"))
+
+# Recode the whole damn thing. All columns.
+df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
+```
+
+

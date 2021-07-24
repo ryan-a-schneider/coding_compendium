@@ -1,0 +1,42 @@
+# Coding Tips and Tricks
+
+
+## Regular R stuff
+
+### Regex expressions and symbols
+
+```{r}
+str_remove(html$`Market Price`, pattern = "$") # doesn't remove the $ sign
+str_remove(html$`Market Price`, pattern = "\\$") # works
+```
+
+
+### The new pipe (Base R)
+
+Good reading material/stuff to know: https://www.r-bloggers.com/2021/05/the-new-r-pipe/?__twitter_impression=true&
+
+
+## Tidyverse stuff
+
+### Sometimes when making a function you need to use the colon-equals operator, rather than just the normal <- or = assignment operators
+
+Specifically, when you have multiple named arguments in your function
+Read my question and someone's answer on this blogpost: https://community.rstudio.com/t/help-creating-simple-function/109011/2
+
+
+## Function-related stuff
+
+### User-supplied expressions or named columns in functions
+
+
+### When a command requires a named column or data set, but you've already supplied it and it's required a second time
+If you're writing a function with a pipe but the command you're using needs the data set defined in it, you specify it as .x
+Here is an example:
+
+
+### Formulas within functions
+
+Generally when you see `.fn` inside a function (e.g., `map(x, .fn)`), that means *function*. You put whatever formula or function you want in there. You may also see the tilde used instead, which does the same thing.
+
+
+

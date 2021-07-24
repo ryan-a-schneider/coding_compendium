@@ -1,3 +1,107 @@
+--- 
+title: "R Coding Compendium"
+author: "Ryan Schneider"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+
+# A Monument to my Madness
+
+This book contains all my personal coding notes from the last two years. Why am I doing this? Probably because I'm a glutton for punishment, and I'd rather procrastinate than write my dissertation proposal.
+
+## What this book is, and what it is not
+
+You know those absolutely amazing, comprehensive guides where you can learn everything you need to know about R? Specifically, [this one](https://r4ds.had.co.nz/) by Hadley Wickham? Yeah, this isn't that.
+
+This book is designed as a ***quick reference guide*** for many of the most common things you'll need to do in everyday data analysis and research. Think of it like a coding dictionary, as opposed to a manual, or a full-blown book like Wickham's. If you want (or need) to learn about a subject or command *in-depth*, then you should probably use Wickham's book or [the tidyverse websites](https://www.tidyverse.org/packages/); however, if you're just looking for a quick "what command do I need to accomplish XYZ", you've come to the right place.
+
+Oh and by the way, much of this whole quick reference guide thing is based on the tidyverse, so if you're not already familiar with it and need a quick intro before beginning, check out [these slides](https://oliviergimenez.github.io/intro_tidyverse/#1) and watch a few YouTube videos.
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction: R Basics
+
+There are lots of things you can do with base R commands, but this notebook focuses on the tidyverse. These packages (below) improve on almost every single aspect of base R's functioning, and make different tasks far easier, more code efficient, and faster. 
+
+
+
+readr for example, replaces the base read.xyz commands and greatly enhances functionality for reading in data.
+The forcats package makes manipulating factors a breeze, and stringr makes searching through and manipulating vectors of strings super easy. Purrr is for semi-advanced uses (e.g. For loops) that you probably won't use early on, but will be essential and invaluable if you have some iterative or repetitive code or task you want to perform. tidyr is amazing for getting clean data sets upon import.
+
+Let's get stuck in.
+
+```{r}
+library(tidyverse)
+```
+
+
+## Importing Data
+
+Can you import via RStudio's GUI? Yes...but often times it's just as easy (or easier) to import via a written command. Several examples below for different file types.
+
+
+### Spreadsheets
+
+
+```{r}
+
+```
+
+
+### Comma-Separated Values (CSV) Files
+
+
+
+## Exporting (i.e., saving) Data and Output
+
+
+### Export to .csv
+
+
+### Export to .RData (or .RDS)
+
+
+
+### Export to Excel
+
+```{r}
+library(openxlsx)
+
+#Method 1: If you only want to export 1 thing, and/or only need output document
+  #write as object, with no formatting:
+  write.xlsx(objectname,file = "filenamehere.xlsx",colnames=TRUE, borders="columns")
+
+  #write as table:
+  write.xlsx(objectname,"filename.xlsx",asTable = TRUE)
+
+
+#Method 2: If you want to do the above, but add multiple objects or tables to one workbook/file:
+  ## first Create Workbook object
+  wb <- createWorkbook("AuthorName")
+  #then add worksheets (as many as desired)
+  addWorksheet(wb, "worksheetnamehere")
+#then write the object to the worksheet  
+writeData(wb, "test", nameofobjectordataframe, startCol = 2, startRow = 3, rowNames = TRUE)
+
+#save excel file
+saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
+
+
+#Method 3: exact same as method 2, but creating a more fancy tables
+
+wb <- createWorkbook("Ryan")
+addWorksheet(wb, "worksheetnamehere")
+writeDataTable(wb, sheetName, objectName, startCol = 1, startRow = 1, colNames = TRUE, rowNames = FALSE,
+          tableStyle="TableStyleLight2",tableName=NULL, headerStyle = NULL,withFilter=FALSE,keepNA=TRUE,sep=", ",
+          stack = FALSE, firstColumn = FALSE, lastColumn = FALSE,bandedRows = TRUE,bandedCols = FALSE)
+
+saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
+
+```
+
+
+<!--chapter:end:02-basics.Rmd-->
+
 # Wrangle Data
 
 This chapter contains useful tips on wrangling (i.e., manipulating) data. If you need to know to do to things like create new variables, split one variable into multiple variables, pivot a data set from wide to long, etc., look no further.
@@ -449,24 +553,159 @@ mtcars %>% relocate(hp:wt, .after= am)
 ```
 
 
-## Working with date and time variables
+<!--chapter:end:03-wrangle.Rmd-->
 
-### Format date-and-time variables appropriate as date objects in R
+# Clean Data
 
-```{r}
-part_1$start_date=format(as.POSIXct(part_1$start_date,format='%Y-%m-%d %H:%M:%S'),format='%m/%d/%Y')
-```
+## Replace a value with NA
 
-Note that the 'format' part has to be **EXACTLY** as the format appears in the data. If you have an extra space in there or / instead of - separating the numbers, it will wipe the column out.
-
-Can also do the tidyverse way:
+Use `dplyr::na_if()` if you have a value coded in your data (e.g., 999) that you want to convert to NA
 
 ```{r}
-full_data$start_date=lubridate::date(no_slice$start_date)
+FullPop$current_age=na_if(FullPop$current_age,999)
+
+jlwop_messy %>% 
+  mutate(rf_removed=na_if(rf_removed, 7))
 ```
 
-### Find the difference between two dates/times
+**Note.** `tidyr::replace_na()` does exactly the same thing. You can use either command.
+
+
+## Identify columns or rows with Missing values
+
+`is.na()` is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector
+
 ```{r}
-difftime(part_1$end_date[1], part_2$end_date[1], units="days")
+y <- c(1,2,3,NA)
+
+is.na(y) # returns a vector (F F F T)
 ```
+
+## Find the percentage of a variable that is missing
+
+Sometimes necessary to check before conducting an analysis. *This requires my package*, `legaldmlab`
+
+```{r}
+?legaldmlab::count_missing
+
+cars %>% 
+  select(hp:drat) %>% 
+  legaldmlab::count_missing()
+```
+
+
+
+## Exclude Missing values from analysis
+
+
+
+# Dropping Missing values from the data set
+
+`tidyr::drop_na()`
+
+
+<!--chapter:end:04-clean.Rmd-->
+
+# Working with Factors
+
+<!--chapter:end:05-factors.Rmd-->
+
+# Working with Strings
+
+<!--chapter:end:06-strings.Rmd-->
+
+# Figures and Graphs
+
+## Use different fonts
+
+See tutorial on [this web page](https://www-r--bloggers-com.cdn.ampproject.org/v/s/www.r-bloggers.com/2021/07/using-different-fonts-with-ggplot2/amp/?amp_gsa=1&amp_js_v=a6&usqp=mq331AQIKAGwASCAAgM%3D#amp_tf=From%20%251%24s&aoh=16259111950507&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fwww.r-bloggers.com%2F2021%2F07%2Fusing-different-fonts-with-ggplot2%2F)
+
+<!--chapter:end:07-ggplot.Rmd-->
+
+# Tables
+
+<!--chapter:end:08-tables.Rmd-->
+
+# Misc. Stuff
+
+## Scrape web pages for data tables
+
+```{r}
+
+#### Example 1 ####
+library(rvest)
+library(tidyverse)
+
+html=read_html('https://shop.tcgplayer.com/price-guide/pokemon/base-set') %>% 
+  html_table(fill = TRUE)
+
+html
+
+html=as_tibble(html[[1]] %>% select('PRODUCT','Rarity','Number','Market Price'))
+
+html
+
+# remove $ symbol in Price column to make it easier to work with
+gsub('\\$','',html$`Market Price`) #(what you're looking for, replace with, from where)
+html$`Market Price`= gsub('\\$','',html$`Market Price`)
+html$`Market Price`=as.numeric(html$`Market Price`)
+
+
+#### Example 2 ####
+html1=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=04") %>% 
+  html_table(fill = TRUE)
+
+html2=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=08") %>% 
+  html_table(fill = TRUE)
+
+html3=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=06") %>% 
+  html_table(fill = TRUE)
+
+html4=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=12") %>% 
+  html_table(fill = TRUE)
+
+lpga_drivingstats=as.tibble(html1[[2]])
+lpga_puttavgs=as.tibble(html2[[2]])
+lpga_greensinreg=as.tibble(html3[[2]])
+lpga_avgscore=as.tibble(html4[[2]])
+
+lpga_avgscore= lpga_avgscore%>%slice(2:nrow(lpga_avgscore))
+fix(lpga_avgscore)
+
+fix(lpga_puttavgs)
+lpga_puttavgs=lpga_puttavgs%>%select(-(X4))%>%slice(2:nrow(lpga_puttavgs))
+
+fix(lpga_drivingstats)
+lpga_drivingstats=lpga_drivingstats%>%slice(2:nrow(lpga_drivingstats))
+
+fix(lpga_greensinreg)
+lpga_greensinreg=lpga_greensinreg%>%slice(2:nrow(lpga_greensinreg))
+
+lpga_drivingstats%>%select(-(Rank))%>%left_join(lpga_greensinreg,by="Name")
+
+lpga_avgscore=lpga_avgscore%>%select(-(Rank))
+lpga_drivingstats=lpga_drivingstats%>%select(-(Rank))
+lpga_puttavgs=lpga_puttavgs%>%select(-(Rank))
+lpga_greensinreg=lpga_greensinreg%>%select(-(Rank))
+
+lpga_avgscore=lpga_avgscore%>%full_join(lpga_drivingstats,by="Name")
+lpga_avgscore=lpga_avgscore%>%left_join(lpga_greensinreg,by="Name")
+lpga_avgscore=lpga_avgscore%>%left_join(lpga_puttavgs,by="Name")
+lpga=as.tibble(lpga_avgscore)
+```
+
+
+<!--chapter:end:09-misc.Rmd-->
+
+# Introduction to Functions and Loops
+
+<!--chapter:end:10-functions.Rmd-->
+
+# Intro to R Markdown
+
+<!--chapter:end:11-markdown.Rmd-->
+
+# Statistics Stuff
+
+<!--chapter:end:12-stats.Rmd-->
 
