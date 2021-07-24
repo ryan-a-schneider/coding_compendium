@@ -253,6 +253,4 @@ lpga_data= tables_list %>%
 head(lpga_data)
 
 ```
-=======
-# A caucus-race and a long tale
->>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
+

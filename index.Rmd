@@ -19,6 +19,4 @@ This book is designed as a ***quick reference guide*** for many of the most comm
 **If you want (or need) to learn R in-depth and/or from the ground up (i.e., you're a novice user)**, then you should go read [Hadley Wickham's book](https://r4ds.had.co.nz/) and [the tidyverse websites](https://www.tidyverse.org/packages/). Also, [these slides](https://oliviergimenez.github.io/intro_tidyverse/#1) might be a good high-level overview if you've never used the tidyverse before. 
 
 That said, if you're already familiar with R and the tidyverse and just need a quick reference for *"what command do I need to accomplish XYZ"*, you've come to the right place.
-=======
->>>>>>> 933a841da5c406bdcbe57cf036913c4dd37694f4
 
