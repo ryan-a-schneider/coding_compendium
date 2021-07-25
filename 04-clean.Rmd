@@ -28,7 +28,29 @@ example_data %>% # can also pass the data to mutate and do it the tidyverse way
   mutate(bday_month=na_if(bday_month, 999)) 
 ```
 
-**Note.** `tidyr::replace_na()` does exactly the same thing. You can use either command.
+
+## Replace NA's with a value
+
+`tidyr::replace_na()` is very useful if you have some NA's in your data and you want to fill them in with some value.
+
+```{r}
+example_data=tibble::tribble(~name, ~fav_color, ~fav_food,
+                             "Ryan", "green", "Mexican",
+                             "Cassidy", "blue", NA,
+                             "Z", NA, NA,
+                             "Tristin", "purple", NA,
+                             "Tarika", NA, NA,
+                             "Jen", NA, "Italian")
+
+example_data
+
+# replace NA's in one col
+tidyr::replace_na(example_data$fav_food, "MISSING")
+
+# replace in multiple columns
+example_data %>% mutate(across(c(fav_color, fav_food), replace_na, "MISSING"))
+```
+
 
 
 ## Identify columns or rows with Missing values

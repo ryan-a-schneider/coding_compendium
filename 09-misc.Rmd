@@ -45,31 +45,38 @@ exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Page
 From here you now need to clean up the table
 
 ```{r}
-exonerations_table=as.data.frame(exonerations_table)
 
-table_names=exonerations_table$Last.Name[1:20] # copy the column names into a vector before deleting them
+exonerations_table=as.data.frame(exonerations_table) # turn into a df
 
+# save the names to a vector
+table_names=exonerations_table$Last.Name[1:20]
+
+# Trim out the garbage rows and columns
 exonerations_table=exonerations_table %>% 
-  select(Last.Name:Tags.1) %>% # get rid of extra columns
-  slice(22:n()) # get rid of extra rows
+  select(Last.Name:Tags.1) %>% 
+  slice(22:n())
 
-colnames(exonerations_table)=table_names # over-write the current column names with the vector of names we created
+# over-write incorrect col names with the vector of correct ones we saved above
+colnames(exonerations_table)=table_names
 
-glimpse(exonerations_table) # data is a bit messed up. All columns are chr, and some values not recognized as missing
+# clean up names
+exonerations_table=exonerations_table %>% janitor::clean_names()
 
-# wrangle to fix
-exonerations_table=as_tibble(exonerations_table) %>% 
-  janitor::clean_names() %>% 
-  na_if("") %>% 
-  mutate(dna=if_else(dna=="DNA",1,0),
-         mwid=if_else(mwid=="MWID",1,0),
-         fc=if_else(fc=="FC",1,0),
-         p_fa=if_else(p_fa=="P/FA",1,0),
-         f_mfe=if_else(f_mfe=="F/MFE",1,0)) %>% 
-  replace_na(dna:f_mfe, 0) %>% 
-  mutate(across(c(dna:f_mfe),factor))
+# check structure of columns
+glimpse(exonerations_table)
 
-exonerations_table # done!
+
+exonerations_table=as_tibble(exonerations_table) %>% # convert to tibble
+  mutate(across(c(dna,mwid:ild), na_if,"")) %>% # turn missing values into NA's
+  mutate(across(c(dna,mwid:ild), replace_na, "derp")) %>% # replace NA's with a some string (needed for the next lines to work)
+  mutate(dna=ifelse(dna=="DNA",1,0), # change these variables from text to numeric to better facilitate analysis
+         mwid=ifelse(mwid=="MWID",1,0),
+         fc=ifelse(fc=="FC",1,0),
+         p_fa=ifelse(p_fa=="P/FA",1,0),
+         f_mfe=ifelse(f_mfe=="F/MFE",1,0)) %>% 
+  mutate(across(c(state, crime, dna:f_mfe),factor)) # correct form by converting to factors
+
+exonerations_table
 ```
 
 
