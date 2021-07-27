@@ -1,15 +1,11 @@
 # Working with Factors
 
-```{r echo=false, message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
 
 ## Manually recode/change a factor's levels
 
 Use `forcats::fct_recode()`
 
-```{r}
+```{r chapter_5}
 diamonds=diamonds %>% as_tibble()
 
 diamonds$cut=fct_recode(diamonds$cut, "meh"="Fair", "Wow"="Premium")
@@ -19,10 +15,12 @@ summary(diamonds$cut)
 
 ## Collapse factor levels
 
-```{r eval=false}
 fct_collapse(dataset$variable,
 			NewLevelA=c("OldLevel1","Oldlevel2"),
 			NewLevelB=c("OldLevel3"))
+			
+```{r}
+print("temp")
 ```
 
 
@@ -31,7 +29,7 @@ fct_collapse(dataset$variable,
 use `fct_expand()`
 
 ```{r}
-
+print("temp")
 ```
 
 
@@ -39,14 +37,27 @@ use `fct_expand()`
 
 Use `fct_drop()`
 ```{r}
-
+print("temp")
 ```
 
 
 ## Change the order of a factor's levels
 
-```{r eval=FALSE}
-conditions_summary$PTS_text=fct_relevel(conditions_summary$PTS_text, c("5 years", "25 years"))
+```{r chapter_5_end}
+
+example_data=tribble(~person, ~condition,
+                     "bob", "25 years",
+                     "jane", "5 years",
+                     "jim", "5 years",
+                     "john", "25 years")
+
+example_data$condition=factor(example_data$condition)
+
+str(example_data$condition)
+
+example_data$condition =fct_relevel(example_data$condition, c("5 years", "25 years"))
+
+str(example_data$condition)
 ```
 
 

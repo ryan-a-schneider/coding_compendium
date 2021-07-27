@@ -5,7 +5,7 @@
 
 Tidyverse command: `str_remove()`
 
-```{r}
+```{r chapter_6}
 library(rvest)
 library(tidyverse)
 
@@ -34,7 +34,7 @@ Tidyverse command: `str_replace()`
 Base R command: `gsub()`
 
 ```{r}
-
+print("hello")
 ```
 
 
@@ -48,16 +48,16 @@ Base R command: `grepl()`
 Note both must be nested inside of `filter()`
 ```{r eval=FALSE}
 
-gradebook %>% filter(str_detect(student,"Rebecca"))
+mtcars=rownames_to_column(mtcars, var = "car")
 
-legaldmlab::pkmn %>% filter(str_detect(name, "Mewtwo"))
+mtcars %>% filter(str_detect(car,"Firebird"))
 ```
 
 ## Force all letters to lower case
 
 Use `str_to_lower()`
 
-```{r}
+```{r chapter_6_end}
 blah=tribble(~A, ~B,
              "A","X",
              "A","X")

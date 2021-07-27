@@ -6,7 +6,7 @@ There is no piping involved in ggplot. You simply invoke ggplot, and tell it wha
 
 Every single plot has the exact same layout that ONLY USES the above three points:
 
-```{r eval=FALSE}
+```{r chapter_7, eval=FALSE}
 ggplot(dataframe, aes(graph dimensions and variables used)) +
   geom_GraphType(specific graph controls)
 
@@ -36,15 +36,20 @@ Note that bar and column graphs look identical at first glance, but they serve t
 
 *Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 # heihgt of bars is a frequency count of each level of the X variable cut
-ggplot(diamonds, aes(x=cut)) + 
-  geom_bar()
+bar_plot=ggplot(diamonds, aes(x=cut)) + 
+  geom_bar()+
+  theme_classic()
 
 # height of bars represents relationship between price and cut
-ggplot(diamonds, aes(x=cut, y=price)) + 
-  geom_col()
+col_plot=ggplot(diamonds, aes(x=cut, y=price)) + 
+  geom_col()+
+  theme_classic()
+
+see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
 ```
+
 
 
 
@@ -52,7 +57,9 @@ ggplot(diamonds, aes(x=cut, y=price)) +
 
 The `gghighlight` package is great for this
 
-```{r}
+```{r warning=FALSE, message=FALSE}
+
+# example 1
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point()+
   theme_classic()+
@@ -74,7 +81,7 @@ ggplot(diamonds_abr, aes(x= cut, y= price, colour=price))+
 
 ## Add labels to data points
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point()+
   theme_classic()+
@@ -90,13 +97,20 @@ geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
 
 ## Plotting multiple graphs at once
 
+`see::plots()` is good for this.
+
+```{r}
+print("temp")
+```
+
+
 ## Change the colors (bars; columns; dots; etc.)
 
 This can be done in at least two different ways, depending on your goal.
 
 If you want to *add color and make all of the (bars; dots; lines; etc.) the same color*, than that is a graph-wide control and needs to be put in `geom_point()`. This manually sets the color for the whole graph.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 # add a color scale to the dots
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point(color="blue")
@@ -104,7 +118,7 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 
 If you want to add color that changes according to a variable (e.g., by factor level), then the color needs to be specified **as a variable name**, in the aes mapping with the other variables.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 ggplot(mtcars, aes(x= mpg, y=hp, color=cyl))+
   geom_point()
 ```
@@ -116,7 +130,7 @@ You can change the spectrum of colors to specific colors if you want. Useful for
 
 The two commands for this are EITHER `scale_fill_manual()` or `scale_color_manual()`: Use *the former for box, bar, violin, etc. plots*; and the latter for *line and plot graphs*
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 # Set colors manually
 ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar() +
@@ -226,7 +240,7 @@ See tutorial on [this web page](https://www-r--bloggers-com.cdn.ampproject.org/v
 
 Or, use the `extrafont` package, and set everything using the `theme()` command.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 # Visualize new groups
 library(extrafont)
 loadfonts(device="win")
@@ -236,7 +250,7 @@ ggplot(mtcars, aes(x=cyl))+
   labs(title = "Ages of Survey Respondants by Group",
        x="Age Group",
        caption="Note. Younger= ages 11-29; Older= ages 30-86.")+
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5))+
   theme(axis.title = element_text(face = "bold", family = "Courier New", size = 12),
         axis.text = element_text(face = "italic"),
         plot.caption = element_text(face = "italic", family = "Calibri", size = 9),
@@ -248,7 +262,7 @@ ggplot(mtcars, aes(x=cyl))+
 
 Add `theme(panel.grid = element_blank())`
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 ggplot(mtcars, aes(x=cyl))+
     geom_bar(colour="gray", fill="lightgreen")+
   labs(title = "Ages of Survey Respondants by Group",
@@ -259,7 +273,7 @@ ggplot(mtcars, aes(x=cyl))+
         axis.text = element_text(face = "italic"),
         plot.caption = element_text(face = "italic", family = "Calibri", size = 9),
         plot.title = element_text(face = "bold",size = 14, family = "Courier New"))+
-    theme(panel.grid = element_blank())+
+    theme(panel.grid = element_blank())
 ```
 
 
@@ -271,11 +285,8 @@ This is dividing one plot into subplots, in order to communicate relationships b
 Again, this is just a single extra command, this time at the end of the code: facet_wrap(~columnhead)
 The tilde sign in R means "by", as in "divide (something) by this"
 
-```{r}
-ggplot(gapminder_1952,aes(x=pop,y=lifeExp))+
-  geom_point()+
-  scale_x_log10()+
-  facet_wrap(~continent)
+```{r eval=FALSE}
+print("temp")
 ```
 
 
@@ -289,10 +300,8 @@ For example, by multiplying all your points by 10x
 
 To create a log transformation of the same scatter plot above, add one extra bit: scale_x_log10()
 
-```{r}
-ggplot(gapminder_2007, aes(x= gdpPerCap, y= lifeExp))+ 
-  geom_point() + 
-  scale_x_log10()
+```{r eval=FALSE}
+print("temp")
 ```
 
 You can also make both axis be logged by adding +scale again for y
@@ -302,7 +311,7 @@ You can also make both axis be logged by adding +scale again for y
 Add `coord_cartesian(xlim = c(lower,upper))`
 
 ```{r}
-
+print("temp")
 ```
 
 
@@ -310,7 +319,7 @@ Add `coord_cartesian(xlim = c(lower,upper))`
 
 Add the line `geom_smooth(method = "lm", formula = y ~ x)`
 
-```{r}
+```{r chapter_7_end}
 ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
   geom_point()+
   geom_smooth(method = "lm", formula = y ~ x)

@@ -5,7 +5,7 @@ For the love of God before you do anything, familiarize yourself with R Projects
 
 Now lets get stuck in.
 
-```{r message=FALSE, warning=FALSE}
+```{r setup, message=FALSE, warning=FALSE, cache=FALSE, include=TRUE}
 library(tidyverse)
 ```
 
@@ -34,7 +34,7 @@ load(here::here("folder", "save_name.RData"))
 
 ### Export to Excel
 
-```{r}
+```{r eval=FALSE}
 library(openxlsx)
 
 #Method 1: If you only want to export 1 thing, and/or only need output document

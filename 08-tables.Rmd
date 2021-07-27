@@ -14,27 +14,27 @@ https://davidgohel.github.io/flextable/reference/padding.html
 https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object
 
 Use the `padding` function:
-```{r}
+```{r chapter_8, eval=FALSE}
 ft <- padding(ft, i=2, j=1, padding.left=20)
 ```
 
 
 ## Add a Horizontal border
 
-```{r}
+```{r eval=FALSE}
 hline(., i=4, j=1:2, part = "body")
 ```
 
 ## Change font and font size
 
-```{r}
+```{r eval=FALSE}
   glm_table<-flextable::font(glm_table,part = "all", fontname = "Times") # Font
   glm_table <-flextable::fontsize(glm_table, size = 11, part = "all") # Font size
 ```
 
 ## Grouped table
 
-```{r}
+```{r chapter_8_end, eval=FALSE}
 
 cars=rownames_to_column(mtcars, var = "Model")
 test=flextable::as_grouped_data(x=cars, groups = c("cyl"))

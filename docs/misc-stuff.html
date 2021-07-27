@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Misc. Stuff | R Coding Compendium</title>
-  <meta name="description" content="Chapter 9 Misc. Stuff | R Coding Compendium" />
+  <title>Chapter 10 Misc. Stuff | R Coding Compendium</title>
+  <meta name="description" content="Chapter 10 Misc. Stuff | R Coding Compendium" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Misc. Stuff | R Coding Compendium" />
+  <meta property="og:title" content="Chapter 10 Misc. Stuff | R Coding Compendium" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Misc. Stuff | R Coding Compendium" />
+  <meta name="twitter:title" content="Chapter 10 Misc. Stuff | R Coding Compendium" />
   
   
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-07-09" />
+<meta name="date" content="2021-07-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tables.html"/>
-<link rel="next" href="introduction-to-functions-and-loops.html"/>
+<link rel="prev" href="making-tables-with-flextable.html"/>
+<link rel="next" href="functions-loops-and-iterative-programming.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,26 +138,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-is-and-what-it-is-not"><i class="fa fa-check"></i><b>1.1</b> What this book is, and what it is not</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html"><i class="fa fa-check"></i><b>2</b> Introduction: R Basics</a></li>
+<li class="chapter" data-level="2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html"><i class="fa fa-check"></i><b>2</b> Introduction: R Basics</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.1</b> Importing Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#spreadsheets"><i class="fa fa-check"></i><b>2.1.1</b> Spreadsheets</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#exporting-i.e.-saving-data-and-output"><i class="fa fa-check"></i><b>2.2</b> Exporting (i.e., saving) Data and Output</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#exporting-to-.csv"><i class="fa fa-check"></i><b>2.2.1</b> Exporting to .CSV</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#export-to-.rdata-and-load-the-data-again-later"><i class="fa fa-check"></i><b>2.2.2</b> Export to .RData (and load the data again later)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#export-to-excel"><i class="fa fa-check"></i><b>2.2.3</b> Export to Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#accessedit-specific-cell-number-values"><i class="fa fa-check"></i><b>2.2.4</b> Access/edit specific cell number values</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i><b>3</b> Wrangle Data</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#joining-or-splitting"><i class="fa fa-check"></i><b>3.1</b> Joining or Splitting</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#data"><i class="fa fa-check"></i><b>3.1.1</b> Data</a></li>
+<li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selecting-specific-columnsvariables"><i class="fa fa-check"></i><b>3.2</b> Selecting specific columns/variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If, If-then, and Case-when</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a></li>
-<li class="chapter" data-level="5" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>5</b> Working with Factors</a></li>
-<li class="chapter" data-level="6" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>6</b> Working with Strings</a></li>
-<li class="chapter" data-level="7" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html"><i class="fa fa-check"></i><b>7</b> Figures and Graphs</a></li>
-<li class="chapter" data-level="8" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>8</b> Tables</a></li>
-<li class="chapter" data-level="9" data-path="misc-stuff.html"><a href="misc-stuff.html"><i class="fa fa-check"></i><b>9</b> Misc. Stuff</a></li>
-<li class="chapter" data-level="10" data-path="introduction-to-functions-and-loops.html"><a href="introduction-to-functions-and-loops.html"><i class="fa fa-check"></i><b>10</b> Introduction to Functions and Loops</a></li>
-<li class="chapter" data-level="11" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Intro to R Markdown</a></li>
-<li class="chapter" data-level="12" data-path="statistics-stuff.html"><a href="statistics-stuff.html"><i class="fa fa-check"></i><b>12</b> Statistics Stuff</a></li>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#merge-or-collapse-variables"><i class="fa fa-check"></i><b>3.4</b> Merge or Collapse variables</a></li>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.5</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.6</b> Pivoting (i.e., transposing) data</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.6.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.7</b> Managing Many Models</a></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Working with date and time variables</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.11.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
+<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.2</b> Find the difference between two dates/times</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="clean-data.html"><a href="clean-data.html#replace-a-value-with-na"><i class="fa fa-check"></i><b>4.1</b> Replace a value with NA</a></li>
+<li class="chapter" data-level="4.2" data-path="clean-data.html"><a href="clean-data.html#replace-nas-with-a-value"><i class="fa fa-check"></i><b>4.2</b> Replace NA’s with a value</a></li>
+<li class="chapter" data-level="4.3" data-path="clean-data.html"><a href="clean-data.html#identify-columns-or-rows-with-missing-values"><i class="fa fa-check"></i><b>4.3</b> Identify columns or rows with Missing values</a></li>
+<li class="chapter" data-level="4.4" data-path="clean-data.html"><a href="clean-data.html#find-the-percentage-of-a-variable-that-is-missing"><i class="fa fa-check"></i><b>4.4</b> Find the percentage of a variable that is missing</a></li>
+<li class="chapter" data-level="4.5" data-path="clean-data.html"><a href="clean-data.html#exclude-missing-values-from-analysis"><i class="fa fa-check"></i><b>4.5</b> Exclude Missing values from analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dropping-missing-values-from-the-data-set.html"><a href="dropping-missing-values-from-the-data-set.html"><i class="fa fa-check"></i><b>5</b> Dropping Missing values from the data set</a></li>
+<li class="chapter" data-level="6" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>6</b> Working with Factors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>6.1</b> Manually recode/change a factor’s levels</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>6.2</b> Collapse factor levels</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>6.3</b> Add levels to a factor</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>6.4</b> Drop unused levels</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>6.5</b> Change the order of a factor’s levels</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>7</b> Working with Strings</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>7.1</b> Remove a pattern from a string</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>7.2</b> Replace one pattern in a string with another</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>7.3</b> Find (i.e., filter for) All instances of a string</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>7.4</b> Force all letters to lower case</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a></li>
+<li class="chapter" data-level="8.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.2</b> Highlight specific points</a></li>
+<li class="chapter" data-level="8.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.3</b> Add labels to data points</a></li>
+<li class="chapter" data-level="8.4" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.4</b> Plotting multiple graphs at once</a></li>
+<li class="chapter" data-level="8.5" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.5</b> Change the colors (bars; columns; dots; etc.)</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.5.1</b> Fine-tuning colors</a></li>
+<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#more-options"><i class="fa fa-check"></i><b>8.5.2</b> More options</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.6</b> Other aesthetic mappings</a></li>
+<li class="chapter" data-level="8.7" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.7</b> Adding and Customizing Text</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>8.7.1</b> Add a title, axis labels, and captions</a></li>
+<li class="chapter" data-level="8.7.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#center-graph-title"><i class="fa fa-check"></i><b>8.7.2</b> Center graph title</a></li>
+<li class="chapter" data-level="8.7.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#use-different-fonts"><i class="fa fa-check"></i><b>8.7.3</b> Use different fonts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#remove-gridlines"><i class="fa fa-check"></i><b>8.8</b> Remove gridlines</a></li>
+<li class="chapter" data-level="8.9" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#faceting"><i class="fa fa-check"></i><b>8.9</b> Faceting</a></li>
+<li class="chapter" data-level="8.10" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#log-transformations"><i class="fa fa-check"></i><b>8.10</b> Log transformations</a></li>
+<li class="chapter" data-level="8.11" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>8.11</b> Changing the scale of the axis</a></li>
+<li class="chapter" data-level="8.12" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-a-regression-line"><i class="fa fa-check"></i><b>8.12</b> Add a regression line</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>9</b> Making Tables with flextable</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>9.1</b> APA Table Components</a></li>
+<li class="chapter" data-level="9.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>9.2</b> Indent values</a></li>
+<li class="chapter" data-level="9.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border"><i class="fa fa-check"></i><b>9.3</b> Add a Horizontal border</a></li>
+<li class="chapter" data-level="9.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>9.4</b> Change font and font size</a></li>
+<li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
+<li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="misc-stuff.html"><a href="misc-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="misc-stuff.html"><a href="misc-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="10.2" data-path="misc-stuff.html"><a href="misc-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="10.3" data-path="misc-stuff.html"><a href="misc-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="10.4" data-path="misc-stuff.html"><a href="misc-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="10.5" data-path="misc-stuff.html"><a href="misc-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="10.6" data-path="misc-stuff.html"><a href="misc-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Functions, Loops, and Iterative Programming</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>11.1</b> Functions</a></li>
+<li class="chapter" data-level="11.2" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>11.2</b> For-loops</a></li>
+<li class="chapter" data-level="11.3" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#purrr-and-iterative-loops"><i class="fa fa-check"></i><b>11.3</b> Purrr and iterative loops</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#useful-ways-to-use-map"><i class="fa fa-check"></i><b>11.3.1</b> Useful ways to use map()</a></li>
+<li class="chapter" data-level="11.3.2" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#walkthrough-case-example"><i class="fa fa-check"></i><b>11.3.2</b> Walkthrough Case Example</a></li>
+<li class="chapter" data-level="11.3.3" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-one"><i class="fa fa-check"></i><b>11.3.3</b> Do for One</a></li>
+<li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
+<li class="chapter" data-level="13.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>13.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
+<li class="chapter" data-level="13.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>13.3</b> Reverse-code a variable</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>14</b> Coding Tips and Tricks</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regular-r-stuff"><i class="fa fa-check"></i><b>14.1</b> Regular R stuff</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>14.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="14.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>14.1.2</b> The new pipe (Base R)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>14.2</b> Tidyverse stuff</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>14.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>14.3</b> Function-related stuff</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>14.3.1</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="14.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>14.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
+<li class="chapter" data-level="14.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>14.3.3</b> Formulas within functions</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -177,17 +303,281 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="misc.-stuff" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Misc. Stuff</h1>
+<div id="misc.-stuff" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Misc. Stuff</h1>
+<div id="scrape-web-pages-for-data-tables" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Scrape web pages for data tables</h2>
+<p>See Chapter 10’s example <code>purrr</code> walk through for a guide on how to scrape multiple web tables simultaneously</p>
+<p><strong><em>Simple example</em></strong></p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="misc-stuff.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb156-2"><a href="misc-stuff.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb156-3"><a href="misc-stuff.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-4"><a href="misc-stuff.html#cb156-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb156-5"><a href="misc-stuff.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb156-6"><a href="misc-stuff.html#cb156-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-7"><a href="misc-stuff.html#cb156-7" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<pre><code>## [[1]]
+##                     PRODUCT    Rarity Number Market Price Listed Median     
+## 1                      Abra    Common     43        $0.59         $0.80 View
+## 2                  Alakazam Holo Rare      1       $31.63             — View
+## 3                  Arcanine  Uncommon     23        $2.61         $2.99 View
+## 4                  Beedrill      Rare     17        $3.49         $3.00 View
+## 5                      Bill    Common     91        $0.27         $0.49 View
+## 6                 Blastoise Holo Rare      2      $115.56             — View
+## 7                 Bulbasaur    Common     44        $1.89         $3.00 View
+## 8                  Caterpie    Common     45        $0.83         $0.92 View
+## 9                   Chansey Holo Rare      3       $20.92             — View
+## 10                Charizard Holo Rare      4      $408.10             — View
+## 11               Charmander    Common     46        $2.03         $2.70 View
+## 12               Charmeleon  Uncommon     24        $1.28         $2.08 View
+## 13                 Clefairy Holo Rare      5       $19.05             — View
+## 14            Clefairy Doll      Rare     70        $3.07         $3.34 View
+## 15          Computer Search      Rare     71        $2.22         $4.38 View
+## 16                 Defender  Uncommon     80        $1.23         $1.44 View
+## 17         Devolution Spray      Rare     72        $2.63         $2.67 View
+## 18                  Dewgong  Uncommon     25        $1.86         $2.26 View
+## 19                  Diglett    Common     47        $0.40         $0.68 View
+## 20                    Doduo    Common     48        $0.87         $1.09 View
+## 21  Double Colorless Energy  Uncommon     96        $4.04         $4.35 View
+## 22                Dragonair      Rare     18        $9.30         $9.21 View
+## 23                  Dratini  Uncommon     26        $1.52         $1.53 View
+## 24                  Drowzee    Common     49        $0.59         $0.75 View
+## 25                  Dugtrio      Rare     19        $4.39         $5.13 View
+## 26               Electabuzz      Rare     20        $5.53         $6.90 View
+## 27                Electrode      Rare     21        $4.90         $4.72 View
+## 28           Energy Removal    Common     92        $0.39         $0.50 View
+## 29         Energy Retrieval  Uncommon     81        $0.53         $0.73 View
+## 30               Farfetch&#39;d  Uncommon     27        $1.19         $1.24 View
+## 31          Fighting Energy    Common     97        $0.28         $0.36 View
+## 32              Fire Energy    Common     98        $0.30         $0.46 View
+## 33                Full Heal  Uncommon     82        $0.93         $1.06 View
+## 34                   Gastly    Common     50        $0.56         $0.85 View
+## 35             Grass Energy    Common     99        $0.26         $0.34 View
+## 36                Growlithe  Uncommon     28        $0.91         $1.05 View
+## 37             Gust of Wind    Common     93        $0.32         $0.47 View
+## 38                 Gyarados Holo Rare      6       $21.54             — View
+## 39                  Haunter  Uncommon     29        $1.46         $1.96 View
+## 40               Hitmonchan Holo Rare      7       $15.43             — View
+## 41   Imposter Professor Oak      Rare     73        $2.95         $3.50 View
+## 42              Item Finder      Rare     74        $9.76         $9.95 View
+## 43                  Ivysaur  Uncommon     30        $2.33         $3.40 View
+## 44                     Jynx  Uncommon     31        $0.71         $0.99 View
+## 45                  Kadabra  Uncommon     32        $2.59         $2.75 View
+## 46                   Kakuna  Uncommon     33        $0.75         $1.02 View
+## 47                  Koffing    Common     51        $0.44         $0.60 View
+## 48                     Lass      Rare     75        $2.41         $2.75 View
+## 49         Lightning Energy    Common    100        $0.29         $0.50 View
+## 50                  Machoke  Uncommon     34        $0.63         $0.91 View
+## 51                   Machop    Common     52        $0.32         $0.49 View
+## 52                 Magikarp  Uncommon     35        $1.45         $1.60 View
+## 53                   Magmar  Uncommon     36        $1.95         $2.03 View
+## 54                Magnemite    Common     53        $0.46         $0.65 View
+## 55                 Magneton Holo Rare      9       $19.72             — View
+## 56              Maintenance  Uncommon     83        $2.17         $1.99 View
+## 57                  Metapod    Common     54        $0.79         $1.00 View
+## 58                   Mewtwo Holo Rare     10       $30.23             — View
+## 59                 Nidoking Holo Rare     11       $21.58             — View
+## 60                Nidoran M    Common     55        $0.47         $0.65 View
+## 61                 Nidorino  Uncommon     37        $2.06         $2.03 View
+## 62                Ninetales Holo Rare     12       $16.91             — View
+## 63                     Onix    Common     56        $0.36         $0.64 View
+## 64                Pidgeotto      Rare     22        $5.20         $5.95 View
+## 65                   Pidgey    Common     57        $0.91         $1.11 View
+## 66                  Pikachu    Common     58        $4.33         $4.42 View
+## 67                PlusPower  Uncommon     84        $0.76         $0.97 View
+## 68                  Pokedex  Uncommon     87        $0.49         $0.59 View
+## 69          Pokemon Breeder      Rare     76        $5.22         $5.22 View
+## 70           Pokemon Center  Uncommon     85        $1.85         $1.85 View
+## 71            Pokemon Flute  Uncommon     86        $1.65         $2.00 View
+## 72           Pokemon Trader      Rare     77        $3.30         $3.99 View
+## 73                  Poliwag    Common     59        $0.43         $0.60 View
+## 74                Poliwhirl  Uncommon     38        $1.03         $1.28 View
+## 75                Poliwrath Holo Rare     13       $13.44             — View
+## 76                   Ponyta    Common     60        $0.48         $0.50 View
+## 77                  Porygon  Uncommon     39        $2.24         $2.89 View
+## 78                   Potion    Common     94        $0.19         $0.26 View
+## 79            Professor Oak  Uncommon     88        $1.65         $2.23 View
+## 80           Psychic Energy    Common    101        $0.28         $0.50 View
+## 81                   Raichu Holo Rare     14       $31.90             — View
+## 82                 Raticate  Uncommon     40        $2.94         $2.75 View
+## 83                  Rattata    Common     61        $0.59         $0.67 View
+## 84                   Revive  Uncommon     89        $2.29         $2.56 View
+## 85                Sandshrew    Common     62        $0.32         $0.75 View
+## 86                 Scoop Up      Rare     78        $6.60         $7.28 View
+## 87                     Seel  Uncommon     41        $0.83         $1.36 View
+## 88                 Squirtle    Common     63        $3.80         $4.91 View
+## 89                  Starmie    Common     64        $0.44         $0.70 View
+## 90                   Staryu    Common     65        $0.40         $0.52 View
+## 91     Super Energy Removal      Rare     79        $3.64         $3.99 View
+## 92             Super Potion  Uncommon     90        $0.28         $0.35 View
+## 93                   Switch    Common     95        $0.33         $0.45 View
+## 94                  Tangela    Common     66        $0.53         $0.64 View
+## 95                 Venusaur Holo Rare     15       $93.62             — View
+## 96                  Voltorb    Common     67        $1.66         $1.69 View
+## 97                   Vulpix    Common     68        $0.70         $0.88 View
+## 98                Wartortle  Uncommon     42        $2.99         $3.00 View
+## 99             Water Energy    Common    102        $0.37         $0.50 View
+## 100                  Weedle    Common     69        $0.40         $0.65 View
+## 101                  Zapdos Holo Rare     16       $24.28             — View</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="misc-stuff.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
+<span id="cb158-2"><a href="misc-stuff.html#cb158-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
+<span id="cb158-3"><a href="misc-stuff.html#cb158-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
+<span id="cb158-4"><a href="misc-stuff.html#cb158-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-5"><a href="misc-stuff.html#cb158-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<pre><code>## # A tibble: 101 x 4
+##    PRODUCT   Rarity    Number `Market Price`
+##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;         
+##  1 Abra      Common        43 $0.59         
+##  2 Alakazam  Holo Rare      1 $31.63        
+##  3 Arcanine  Uncommon      23 $2.61         
+##  4 Beedrill  Rare          17 $3.49         
+##  5 Bill      Common        91 $0.27         
+##  6 Blastoise Holo Rare      2 $115.56       
+##  7 Bulbasaur Common        44 $1.89         
+##  8 Caterpie  Common        45 $0.83         
+##  9 Chansey   Holo Rare      3 $20.92        
+## 10 Charizard Holo Rare      4 $408.10       
+## # ... with 91 more rows</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="misc-stuff.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove $ symbol in Price column to make it easier to work with</span></span>
+<span id="cb160-2"><a href="misc-stuff.html#cb160-2" aria-hidden="true" tabindex="-1"></a>html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span>
+<span id="cb160-3"><a href="misc-stuff.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-4"><a href="misc-stuff.html#cb160-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span>html <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>)) <span class="co"># convert from string to numeric</span></span>
+<span id="cb160-5"><a href="misc-stuff.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-6"><a href="misc-stuff.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co"># view finished table</span></span>
+<span id="cb160-7"><a href="misc-stuff.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   PRODUCT   Rarity    Number `Market Price`
+##   &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;          &lt;dbl&gt;
+## 1 Abra      Common        43           0.59
+## 2 Alakazam  Holo Rare      1          31.6 
+## 3 Arcanine  Uncommon      23           2.61
+## 4 Beedrill  Rare          17           3.49
+## 5 Bill      Common        91           0.27
+## 6 Blastoise Holo Rare      2         116.</code></pre>
+<p><strong><em>Slightly more complicated example</em></strong></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="misc-stuff.html#cb162-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span>
+<span id="cb162-2"><a href="misc-stuff.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="misc-stuff.html#cb162-3" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-4"><a href="misc-stuff.html#cb162-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.ms-listviewtable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-5"><a href="misc-stuff.html#cb162-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>From here you now need to clean up the table</p>
+<p>!(a pic)[/pics/scrape.png]</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="misc-stuff.html#cb163-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;pics/scrape.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="misc-stuff.html#cb164-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as.data.frame</span>(exonerations_table) <span class="co"># turn into a df</span></span>
+<span id="cb164-2"><a href="misc-stuff.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="misc-stuff.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save the names to a vector</span></span>
+<span id="cb164-4"><a href="misc-stuff.html#cb164-4" aria-hidden="true" tabindex="-1"></a>table_names<span class="ot">=</span>exonerations_table<span class="sc">$</span>Last.Name[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb164-5"><a href="misc-stuff.html#cb164-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-6"><a href="misc-stuff.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim out the garbage rows and columns</span></span>
+<span id="cb164-7"><a href="misc-stuff.html#cb164-7" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> </span>
+<span id="cb164-8"><a href="misc-stuff.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Last.Name<span class="sc">:</span>Tags<span class="fl">.1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb164-9"><a href="misc-stuff.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">22</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb164-10"><a href="misc-stuff.html#cb164-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-11"><a href="misc-stuff.html#cb164-11" aria-hidden="true" tabindex="-1"></a><span class="co"># over-write incorrect col names with the vector of correct ones we saved above</span></span>
+<span id="cb164-12"><a href="misc-stuff.html#cb164-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exonerations_table)<span class="ot">=</span>table_names</span>
+<span id="cb164-13"><a href="misc-stuff.html#cb164-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-14"><a href="misc-stuff.html#cb164-14" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up names</span></span>
+<span id="cb164-15"><a href="misc-stuff.html#cb164-15" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb164-16"><a href="misc-stuff.html#cb164-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-17"><a href="misc-stuff.html#cb164-17" aria-hidden="true" tabindex="-1"></a><span class="co"># check structure of columns</span></span>
+<span id="cb164-18"><a href="misc-stuff.html#cb164-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(exonerations_table)</span></code></pre></div>
+<pre><code>## Rows: 2,832
+## Columns: 20
+## $ last_name       &lt;chr&gt; &quot;Abbitt&quot;, &quot;Abdal&quot;, &quot;Abernathy&quot;, &quot;Abney&quot;, &quot;Acero&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Ad...
+## $ first_name      &lt;chr&gt; &quot;Joseph&quot;, &quot;Warith Habib&quot;, &quot;Christopher&quot;, &quot;Quentin&quot;, &quot;Longino&quot;, &quot;Anthony&quot;, &quot;Cheryl&quot;, &quot;Darryl&quot;, &quot;Demetris&quot;, &quot;Don Ray&quot;,...
+## $ age             &lt;int&gt; 31, 43, 17, 32, 35, 26, 26, 25, 22, 32, 17, 12, 52, 21, 19, 28, 26, 29, 21, 20, 18, 19, 28, 28, 24, 31, 22, 17, 20, ...
+## $ race            &lt;chr&gt; &quot;Black&quot;, &quot;Black&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Hispanic&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;White&quot;, &quot;B...
+## $ st              &lt;chr&gt; &quot;NC&quot;, &quot;NY&quot;, &quot;IL&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;MA&quot;, &quot;TX&quot;, &quot;IL&quot;, &quot;PA&quot;, &quot;WI&quot;, &quot;GA&quot;, &quot;TX&quot;, &quot;IL&quot;, &quot;MA&quot;, &quot;TX&quot;, &quot;LA&quot;, &quot;NY&quot;, &quot;CT&quot;, &quot;I...
+## $ county_of_crime &lt;chr&gt; &quot;Forsyth&quot;, &quot;Erie&quot;, &quot;Cook&quot;, &quot;New York&quot;, &quot;Santa Clara&quot;, &quot;Los Angeles&quot;, &quot;Essex&quot;, &quot;Dallas&quot;, &quot;Cook&quot;, &quot;Philadelphia&quot;, &quot;Jef...
+## $ tags            &lt;chr&gt; &quot;CV, IO&quot;, &quot;IO&quot;, &quot;CIU, CV, H, IO&quot;, &quot;CV&quot;, &quot;NC, P&quot;, &quot;H, P&quot;, &quot;F, NC, P&quot;, &quot;CIU, IO, NC, P&quot;, &quot;CIU, IO, NC, P&quot;, &quot;H&quot;, &quot;IO, N...
+## $ om_tags         &lt;chr&gt; &quot;&quot;, &quot;OF, WH, NW, WT&quot;, &quot;OF, WH, NW, INT&quot;, &quot;&quot;, &quot;&quot;, &quot;OF, WH, NW, WT&quot;, &quot;&quot;, &quot;&quot;, &quot;OF, WH, NW&quot;, &quot;OF, WH, NW, WT&quot;, &quot;&quot;, &quot;OF, ...
+## $ crime           &lt;chr&gt; &quot;Child Sex Abuse&quot;, &quot;Sexual Assault&quot;, &quot;Murder&quot;, &quot;Robbery&quot;, &quot;Sex Offender Registration&quot;, &quot;Manslaughter&quot;, &quot;Theft&quot;, &quot;Sex...
+## $ sentence        &lt;chr&gt; &quot;Life&quot;, &quot;20 to Life&quot;, &quot;Life without parole&quot;, &quot;20 to Life&quot;, &quot;2 years and 4 months&quot;, &quot;12 years&quot;, &quot;Probation&quot;, &quot;25 year...
+## $ convicted       &lt;int&gt; 1995, 1983, 1987, 2006, 1994, 1996, 1989, 1992, 2004, 1992, 2000, 2005, 2009, 1978, 1974, 1977, 1983, 1998, 1999, 20...
+## $ exonerated      &lt;int&gt; 2009, 1999, 2015, 2012, 2006, 2001, 1993, 2017, 2020, 2011, 2007, 2006, 2016, 1996, 2004, 1989, 2014, 1999, 2013, 20...
+## $ dna             &lt;chr&gt; &quot;DNA&quot;, &quot;DNA&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;...
+## $ x               &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,...
+## $ mwid            &lt;chr&gt; &quot;MWID&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, ...
+## $ fc              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;...
+## $ p_fa            &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/F...
+## $ f_mfe           &lt;chr&gt; &quot;&quot;, &quot;F/MFE&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;F/MFE&quot;, &quot;F/MFE&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;F/MF...
+## $ om              &lt;chr&gt; &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;&quot;, &quot;&quot;, &quot;OM&quot;, &quot;&quot;, &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;&quot;, &quot;OM&quot;, &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;...
+## $ ild             &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;ILD&quot;...</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="misc-stuff.html#cb166-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as_tibble</span>(exonerations_table) <span class="sc">%&gt;%</span> <span class="co"># convert to tibble</span></span>
+<span id="cb166-2"><a href="misc-stuff.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), na_if,<span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># turn missing values into NA&#39;s</span></span>
+<span id="cb166-3"><a href="misc-stuff.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), replace_na, <span class="st">&quot;derp&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># replace NA&#39;s with a some string (needed for the next lines to work)</span></span>
+<span id="cb166-4"><a href="misc-stuff.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dna=</span><span class="fu">ifelse</span>(dna<span class="sc">==</span><span class="st">&quot;DNA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="co"># change these variables from text to numeric to better facilitate analysis</span></span>
+<span id="cb166-5"><a href="misc-stuff.html#cb166-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mwid=</span><span class="fu">ifelse</span>(mwid<span class="sc">==</span><span class="st">&quot;MWID&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb166-6"><a href="misc-stuff.html#cb166-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">fc=</span><span class="fu">ifelse</span>(fc<span class="sc">==</span><span class="st">&quot;FC&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb166-7"><a href="misc-stuff.html#cb166-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_fa=</span><span class="fu">ifelse</span>(p_fa<span class="sc">==</span><span class="st">&quot;P/FA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb166-8"><a href="misc-stuff.html#cb166-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">f_mfe=</span><span class="fu">ifelse</span>(f_mfe<span class="sc">==</span><span class="st">&quot;F/MFE&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-9"><a href="misc-stuff.html#cb166-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(st, crime, dna<span class="sc">:</span>f_mfe),factor)) <span class="co"># correct form by converting to factors</span></span>
+<span id="cb166-10"><a href="misc-stuff.html#cb166-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-11"><a href="misc-stuff.html#cb166-11" aria-hidden="true" tabindex="-1"></a>exonerations_table</span></code></pre></div>
+<pre><code>## # A tibble: 2,832 x 20
+##    last_name first_name   age race  st    county_of_crime tags  om_tags crime sentence convicted exonerated dna   x     mwid  fc    p_fa  f_mfe
+##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt; &lt;fct&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
+##  1 Abbitt    Joseph        31 Black NC    Forsyth         CV, ~ &quot;&quot;      Chil~ Life          1995       2009 1     &quot;&quot;    1     0     0     0    
+##  2 Abdal     Warith Ha~    43 Black NY    Erie            IO    &quot;OF, W~ Sexu~ 20 to L~      1983       1999 1     &quot;&quot;    1     0     0     1    
+##  3 Abernathy Christoph~    17 White IL    Cook            CIU,~ &quot;OF, W~ Murd~ Life wi~      1987       2015 1     &quot;&quot;    0     1     1     0    
+##  4 Abney     Quentin       32 Black NY    New York        CV    &quot;&quot;      Robb~ 20 to L~      2006       2012 0     &quot;&quot;    1     0     0     0    
+##  5 Acero     Longino       35 Hisp~ CA    Santa Clara     NC, P &quot;&quot;      Sex ~ 2 years~      1994       2006 0     &quot;&quot;    0     0     0     0    
+##  6 Adams     Anthony       26 Hisp~ CA    Los Angeles     H, P  &quot;OF, W~ Mans~ 12 years      1996       2001 0     &quot;&quot;    0     0     1     0    
+##  7 Adams     Cheryl        26 White MA    Essex           F, N~ &quot;&quot;      Theft Probati~      1989       1993 0     &quot;&quot;    0     0     1     0    
+##  8 Adams     Darryl        25 Black TX    Dallas          CIU,~ &quot;&quot;      Sexu~ 25 years      1992       2017 1     &quot;*&quot;   0     0     1     0    
+##  9 Adams     Demetris      22 Black IL    Cook            CIU,~ &quot;OF, W~ Drug~ 1 year        2004       2020 0     &quot;&quot;    0     0     1     0    
+## 10 Adams     Don Ray       32 Black PA    Philadelphia    H     &quot;OF, W~ Murd~ Life          1992       2011 0     &quot;&quot;    0     0     1     0    
+## # ... with 2,822 more rows, and 2 more variables: om &lt;chr&gt;, ild &lt;chr&gt;</code></pre>
+<p>Check out <a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">this page</a> for a quick overview.</p>
+</div>
+<div id="read-spss-files-into-r" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Read SPSS files into R</h2>
+<p>Use <code>foreign::read.spss</code></p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="misc-stuff.html#cb168-1" aria-hidden="true" tabindex="-1"></a>spss_version<span class="ot">=</span>foreign<span class="sc">::</span><span class="fu">read.spss</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>, <span class="st">&quot;JLWOP_RYAN.sav&quot;</span>), <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Might also want to add <code>as_tibble()</code> on the end.</p>
+</div>
+<div id="turn-numbers-into-percentages" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Turn numbers into percentages</h2>
+<p>Use <code>scales::percent()</code>, which converts normal numbers into percentages and includes the percent sign (%) afterwards</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="misc-stuff.html#cb169-1" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>n_people, <span class="sc">~</span>votes_in_favor,</span>
+<span id="cb169-2"><a href="misc-stuff.html#cb169-2" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">25</span>, <span class="dv">14</span>)</span>
+<span id="cb169-3"><a href="misc-stuff.html#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="misc-stuff.html#cb169-4" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span>simple_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">percent_voted_for=</span>scales<span class="sc">::</span><span class="fu">percent</span>(votes_in_favor<span class="sc">/</span>n_people, <span class="at">accuracy =</span> <span class="fl">0.1</span>, <span class="at">scale =</span> <span class="dv">100</span>))</span>
+<span id="cb169-5"><a href="misc-stuff.html#cb169-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-6"><a href="misc-stuff.html#cb169-6" aria-hidden="true" tabindex="-1"></a>simple_table</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   n_people votes_in_favor percent_voted_for
+##      &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            
+## 1       25             14 56.0%</code></pre>
+<p>Scale is what to multiple the original number by (e.g., convert 0.05 to 5% by x100) Accuracy controls how many places out the decimal goes</p>
+</div>
+<div id="find-all-possible-combindations-of-items-in-a-vector" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Find all possible combindations of items in a vector</h2>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="misc-stuff.html#cb171-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span>
+<span id="cb171-2"><a href="misc-stuff.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="misc-stuff.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">combn</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>),<span class="dv">2</span>) <span class="co"># find all possible combinations of these numbers, drawn two at a time</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    2    2    2    4    4    6
+## [2,]    4    6    8    6    8    8</code></pre>
+</div>
+<div id="download-files-from-the-internet" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Download files from the internet</h2>
+</div>
+<div id="print-multiple-things-in-one-statement" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Print multiple things in one statement</h2>
+<p>Use <code>cat()</code> from base R</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="misc-stuff.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;The p-value dropped below 0.05 for the first time as sample size&quot;</span>, <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## The p-value dropped below 0.05 for the first time as sample size 100</code></pre>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction-to-functions-and-loops.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="making-tables-with-flextable.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functions-loops-and-iterative-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

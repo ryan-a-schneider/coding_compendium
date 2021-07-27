@@ -2,11 +2,11 @@
 
 ## Scrape web pages for data tables
 
-See Chapter 10's example `purrr` walk through for a guide on how to scrape multiple web tables simultaneously 
+See Chapter 10's example `purrr` walk through for a guide on how to scrape multiple web tables simultaneously
 
 ***Simple example***
 
-```{r}
+```{r chapter_9}
 library(rvest)
 library(tidyverse)
 
@@ -32,9 +32,7 @@ head(html)
 
 ***Slightly more complicated example***
 
-
-
-```{r}
+```{r complex example}
 pacman::p_load(rvest, tidyverse)
 
 exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx") %>% 
@@ -44,7 +42,14 @@ exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Page
 
 From here you now need to clean up the table
 
-```{r}
+!(a pic)[/pics/scrape.png]
+
+```{r pic, eval=FALSE}
+knitr::include_graphics("pics/scrape.png")
+```
+
+
+```{r exonerations table}
 
 exonerations_table=as.data.frame(exonerations_table) # turn into a df
 
@@ -74,30 +79,12 @@ exonerations_table=as_tibble(exonerations_table) %>% # convert to tibble
          fc=ifelse(fc=="FC",1,0),
          p_fa=ifelse(p_fa=="P/FA",1,0),
          f_mfe=ifelse(f_mfe=="F/MFE",1,0)) %>% 
-  mutate(across(c(state, crime, dna:f_mfe),factor)) # correct form by converting to factors
+  mutate(across(c(st, crime, dna:f_mfe),factor)) # correct form by converting to factors
 
 exonerations_table
 ```
 
-
 Check out [this page](https://www.dataquest.io/blog/web-scraping-in-r-rvest/) for a quick overview.
-
-
-
-```{r}
-exonerations_table=as.data.frame(exonerations_table)
-
-table_names=exonerations_table$Last.Name[1:20]
-
-exonerations_table=exonerations_table %>% 
-  select(Last.Name:Tags.1) %>% 
-  slice(22:n())
-
-colnames(exonerations_table)=table_names
-
-exonerations_table=exonerations_table %>% janitor::clean_names()
-```
-
 
 ## Read SPSS files into R
 
@@ -115,11 +102,15 @@ Use `scales::percent()`, which converts normal numbers into percentages and incl
 
 ```{r}
 
-mutate(Percent_in_ROPE=scales::percent(ROPE_Percentage,accuracy = 0.1, scale = 100))
+simple_table=tribble(~n_people, ~votes_in_favor,
+                     25, 14)
+
+simple_table=simple_table %>% mutate(percent_voted_for=scales::percent(votes_in_favor/n_people, accuracy = 0.1, scale = 100))
+
+simple_table
 ```
 
-Scale is what to multiple the original number by (e.g., convert 0.05 to 5% by x100)
-Accuracy controls how many places out the decimal goes
+Scale is what to multiple the original number by (e.g., convert 0.05 to 5% by x100) Accuracy controls how many places out the decimal goes
 
 ## Find all possible combindations of items in a vector
 
@@ -131,19 +122,14 @@ combn(c(2,4,6,8),2) # find all possible combinations of these numbers, drawn two
 
 ## Download files from the internet
 
-```{r}
-download.file(url, destfile, method, quiet = FALSE, mode = "w",
-              cacheOK = TRUE,
-              extra = getOption("download.file.extra"),
-              headers = NULL, ...)
-```
+```{r eval=FALSE}
 
+```
 
 ## Print multiple things in one statement
 
 Use `cat()` from base R
 
-```{r}
+```{r chapter_9_end}
 cat("The p-value dropped below 0.05 for the first time as sample size", 100)
 ```
-

@@ -1,15 +1,10 @@
 # Clean Data
 
-```{r echo=false, message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
-
 ## Replace a value with NA
 
 Use `dplyr::na_if()` if you have a value coded in your data (e.g., 999) that you want to convert to NA
 
-```{r}
+```{r chapter_4}
 
 example_data=dplyr::tribble(~name, ~bday_month,
                             "Ryan", 10,
@@ -85,7 +80,7 @@ mtcars %>%
 
 `tidyr::drop_na()`
 
-```{r}
+```{r chapter_4_end}
 example_data=dplyr::tribble(~name, ~bday_month, ~car,
                             "Ryan", 10, "kia",
                             "Z", NA, "toyota",

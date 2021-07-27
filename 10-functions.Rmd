@@ -82,14 +82,14 @@ When you have tasks that you want to do repeatedly, you can either copy and past
 #### Apply a single function to every column in a data frame
 
 Pipe the whole data frame to the map command:
-```{r}
+```{r eval=FALSE}
 df %>% map_df()
 ```
 
 
 #### Apply a function to every item in a column/vector
 Pipe the data frame and column/variable, and include the [ ] to index by vector position:
-```{r}
+```{r eval=FALSE}
 BF_output$Evidence= BF_output$BF[] %>% map_chr(effectsize::interpret_bf)
 ```
 
@@ -99,7 +99,7 @@ BF_output$Evidence= BF_output$BF[] %>% map_chr(effectsize::interpret_bf)
 **Note.** This reads many .csv files into a SINGLE, unified data frame.
 If you want to import many files at once but keep them separated, you'll need a different command
 
-```{r}
+```{r eval=FALSE}
 # first run these commands
 data_dir <-"log dump"
 fs::dir_ls(data_dir)
@@ -156,14 +156,14 @@ html=quick_read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&r
 #### 2. Find out which element of the list the desired table is in
 
 ```{r}
-as_tibble(test[[2]])
+as_tibble(html1[[2]])
 ```
 
 #### 3. Extract the table
 
 ```{r}
 #line
-table1=as_tibble(test[[2]])
+table1=as_tibble(html1[[2]])
 
 
 # function version
@@ -198,7 +198,7 @@ test_format=function(table){
   return(table)
 }
 
-test_format(table1)
+# test_format(table1)
 ```
 
 ### DO FOR ALL

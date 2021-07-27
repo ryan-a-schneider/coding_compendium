@@ -12,7 +12,7 @@ Joining and splitting data is pretty straightforward....
 
 The code below is from [this excellent tutorial](https://www.youtube.com/watch?v=SCdmyyoudb8&t=23s)
 
-```{r}
+```{r chapter_3}
 set.seed(2018)
 
 df1=data.frame(customer_id=c(1:10),
@@ -126,7 +126,7 @@ Other examples can be seen on [THIS LINK](https://tidyselect.r-lib.org/reference
 The premise of an if/then or if/else statement is simple: "If condition 1 is satisfied, perform x operation; if not, then do y"
 
 ```{r}
-iris %>% mutate(length_check=ifelse(iris$Sepal.Length<5, "short", "long")) # if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
+mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High")) # if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
 ```
 
 
@@ -229,6 +229,8 @@ gradebook=tibble::tribble(
     "Jane",         17L,         19L,          16,        16.5,         25L,    21.5,     19L,   14.75,     9.5,   39.5,
     "John",         19L,         19L,        14.5,        19.5,         25L,      21,     21L,    18.5,      17,   46.5
   )
+
+head(gradebook)
 
 gradebook=gradebook %>% 
    pivot_longer( # Transpose lengthwise by:
@@ -382,7 +384,9 @@ unnest(models,posterior_info) %>%
 Use the `rownames()` command to turn row names into a variable
 
 ```{r}
-rownames_to_column(mtcars, var = "car")
+cars=rownames_to_column(mtcars, var = "car")
+
+as_tibble(cars)
 ```
 
 ## How to edit/change column names
@@ -393,7 +397,7 @@ TWO WAYS TO DO THIS: Use `colnames()` (for base R) or `rename()` (for tidyverse)
 
 To access and change the names faster via tidyverse, run use `rename()`
 ```{r}
-iris=as_tibble(iris)
+rm(list=ls()) # clear R's memory
 
 iris %>% rename("Sepal.blaahhhhhh"="Sepal.Length")
 
@@ -407,7 +411,7 @@ If you need to do some really fancy conditional renaming (e.g., changing all var
 
 This command has two parts to it: the data set, and the function you wish to apply to it (which you put after the `~`)
 
-```{r}
+```{r }
 rename_with(iris, ~ gsub(pattern = ".", replacement = "_", .x, fixed = TRUE))
 ```
 
@@ -439,7 +443,6 @@ colnames(iris)=str_replace(colnames(iris), pattern = ".", replacement = "_")
 Use `relocate()` to change column positions, using the same syntax as `select()` to make it easy to move blocks of columns at once.
 
 ```{r}
-relocate(diff_in_days, .before=NULL, .after = end_date)
 
 mtcars # notice the column order
 
@@ -453,7 +456,7 @@ mtcars %>% relocate(hp:wt, .after= am)
 
 ### Format date-and-time variables appropriate as date objects in R
 
-```{r}
+```{r eval=FALSE}
 part_1$start_date=format(as.POSIXct(part_1$start_date,format='%Y-%m-%d %H:%M:%S'),format='%m/%d/%Y')
 ```
 
@@ -461,12 +464,12 @@ Note that the 'format' part has to be **EXACTLY** as the format appears in the d
 
 Can also do the tidyverse way:
 
-```{r}
+```{r eval=FALSE}
 full_data$start_date=lubridate::date(no_slice$start_date)
 ```
 
 ### Find the difference between two dates/times
-```{r}
+```{r chapter_3_end, eval=FALSE}
 difftime(part_1$end_date[1], part_2$end_date[1], units="days")
 ```
 

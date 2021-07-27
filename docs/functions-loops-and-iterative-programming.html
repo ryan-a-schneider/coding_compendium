@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Functions, Loops, and Iterative Programming | R Coding Compendium</title>
+  <meta name="description" content="Chapter 11 Functions, Loops, and Iterative Programming | R Coding Compendium" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Functions, Loops, and Iterative Programming | R Coding Compendium" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Functions, Loops, and Iterative Programming | R Coding Compendium" />
+  
+  
+  
+
+<meta name="author" content="Ryan Schneider" />
+
+
+<meta name="date" content="2021-07-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="misc-stuff.html"/>
+<link rel="next" href="intro-to-r-markdown.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Compendium</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> A Monument to my Madness</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-is-and-what-it-is-not"><i class="fa fa-check"></i><b>1.1</b> What this book is, and what it is not</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html"><i class="fa fa-check"></i><b>2</b> Introduction: R Basics</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.1</b> Importing Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#spreadsheets"><i class="fa fa-check"></i><b>2.1.1</b> Spreadsheets</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#exporting-i.e.-saving-data-and-output"><i class="fa fa-check"></i><b>2.2</b> Exporting (i.e., saving) Data and Output</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#exporting-to-.csv"><i class="fa fa-check"></i><b>2.2.1</b> Exporting to .CSV</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#export-to-.rdata-and-load-the-data-again-later"><i class="fa fa-check"></i><b>2.2.2</b> Export to .RData (and load the data again later)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#export-to-excel"><i class="fa fa-check"></i><b>2.2.3</b> Export to Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#accessedit-specific-cell-number-values"><i class="fa fa-check"></i><b>2.2.4</b> Access/edit specific cell number values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i><b>3</b> Wrangle Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#joining-or-splitting"><i class="fa fa-check"></i><b>3.1</b> Joining or Splitting</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
+<li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selecting-specific-columnsvariables"><i class="fa fa-check"></i><b>3.2</b> Selecting specific columns/variables</a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If, If-then, and Case-when</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#merge-or-collapse-variables"><i class="fa fa-check"></i><b>3.4</b> Merge or Collapse variables</a></li>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.5</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.6</b> Pivoting (i.e., transposing) data</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.6.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.7</b> Managing Many Models</a></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Working with date and time variables</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.11.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
+<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.2</b> Find the difference between two dates/times</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="clean-data.html"><a href="clean-data.html#replace-a-value-with-na"><i class="fa fa-check"></i><b>4.1</b> Replace a value with NA</a></li>
+<li class="chapter" data-level="4.2" data-path="clean-data.html"><a href="clean-data.html#replace-nas-with-a-value"><i class="fa fa-check"></i><b>4.2</b> Replace NA’s with a value</a></li>
+<li class="chapter" data-level="4.3" data-path="clean-data.html"><a href="clean-data.html#identify-columns-or-rows-with-missing-values"><i class="fa fa-check"></i><b>4.3</b> Identify columns or rows with Missing values</a></li>
+<li class="chapter" data-level="4.4" data-path="clean-data.html"><a href="clean-data.html#find-the-percentage-of-a-variable-that-is-missing"><i class="fa fa-check"></i><b>4.4</b> Find the percentage of a variable that is missing</a></li>
+<li class="chapter" data-level="4.5" data-path="clean-data.html"><a href="clean-data.html#exclude-missing-values-from-analysis"><i class="fa fa-check"></i><b>4.5</b> Exclude Missing values from analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dropping-missing-values-from-the-data-set.html"><a href="dropping-missing-values-from-the-data-set.html"><i class="fa fa-check"></i><b>5</b> Dropping Missing values from the data set</a></li>
+<li class="chapter" data-level="6" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>6</b> Working with Factors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>6.1</b> Manually recode/change a factor’s levels</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>6.2</b> Collapse factor levels</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>6.3</b> Add levels to a factor</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>6.4</b> Drop unused levels</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>6.5</b> Change the order of a factor’s levels</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>7</b> Working with Strings</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>7.1</b> Remove a pattern from a string</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>7.2</b> Replace one pattern in a string with another</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>7.3</b> Find (i.e., filter for) All instances of a string</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>7.4</b> Force all letters to lower case</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a></li>
+<li class="chapter" data-level="8.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.2</b> Highlight specific points</a></li>
+<li class="chapter" data-level="8.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.3</b> Add labels to data points</a></li>
+<li class="chapter" data-level="8.4" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.4</b> Plotting multiple graphs at once</a></li>
+<li class="chapter" data-level="8.5" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.5</b> Change the colors (bars; columns; dots; etc.)</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.5.1</b> Fine-tuning colors</a></li>
+<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#more-options"><i class="fa fa-check"></i><b>8.5.2</b> More options</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.6</b> Other aesthetic mappings</a></li>
+<li class="chapter" data-level="8.7" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.7</b> Adding and Customizing Text</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>8.7.1</b> Add a title, axis labels, and captions</a></li>
+<li class="chapter" data-level="8.7.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#center-graph-title"><i class="fa fa-check"></i><b>8.7.2</b> Center graph title</a></li>
+<li class="chapter" data-level="8.7.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#use-different-fonts"><i class="fa fa-check"></i><b>8.7.3</b> Use different fonts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#remove-gridlines"><i class="fa fa-check"></i><b>8.8</b> Remove gridlines</a></li>
+<li class="chapter" data-level="8.9" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#faceting"><i class="fa fa-check"></i><b>8.9</b> Faceting</a></li>
+<li class="chapter" data-level="8.10" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#log-transformations"><i class="fa fa-check"></i><b>8.10</b> Log transformations</a></li>
+<li class="chapter" data-level="8.11" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>8.11</b> Changing the scale of the axis</a></li>
+<li class="chapter" data-level="8.12" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-a-regression-line"><i class="fa fa-check"></i><b>8.12</b> Add a regression line</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>9</b> Making Tables with flextable</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>9.1</b> APA Table Components</a></li>
+<li class="chapter" data-level="9.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>9.2</b> Indent values</a></li>
+<li class="chapter" data-level="9.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border"><i class="fa fa-check"></i><b>9.3</b> Add a Horizontal border</a></li>
+<li class="chapter" data-level="9.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>9.4</b> Change font and font size</a></li>
+<li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
+<li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="misc-stuff.html"><a href="misc-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="misc-stuff.html"><a href="misc-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="10.2" data-path="misc-stuff.html"><a href="misc-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="10.3" data-path="misc-stuff.html"><a href="misc-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="10.4" data-path="misc-stuff.html"><a href="misc-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="10.5" data-path="misc-stuff.html"><a href="misc-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="10.6" data-path="misc-stuff.html"><a href="misc-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Functions, Loops, and Iterative Programming</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>11.1</b> Functions</a></li>
+<li class="chapter" data-level="11.2" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>11.2</b> For-loops</a></li>
+<li class="chapter" data-level="11.3" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#purrr-and-iterative-loops"><i class="fa fa-check"></i><b>11.3</b> Purrr and iterative loops</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#useful-ways-to-use-map"><i class="fa fa-check"></i><b>11.3.1</b> Useful ways to use map()</a></li>
+<li class="chapter" data-level="11.3.2" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#walkthrough-case-example"><i class="fa fa-check"></i><b>11.3.2</b> Walkthrough Case Example</a></li>
+<li class="chapter" data-level="11.3.3" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-one"><i class="fa fa-check"></i><b>11.3.3</b> Do for One</a></li>
+<li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
+<li class="chapter" data-level="13.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>13.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
+<li class="chapter" data-level="13.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>13.3</b> Reverse-code a variable</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>14</b> Coding Tips and Tricks</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regular-r-stuff"><i class="fa fa-check"></i><b>14.1</b> Regular R stuff</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>14.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="14.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>14.1.2</b> The new pipe (Base R)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>14.2</b> Tidyverse stuff</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>14.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>14.3</b> Function-related stuff</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>14.3.1</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="14.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>14.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
+<li class="chapter" data-level="14.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>14.3.3</b> Formulas within functions</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Coding Compendium</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions-loops-and-iterative-programming" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Functions, Loops, and Iterative Programming</h1>
+<div id="functions" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Functions</h2>
+<p>A function is a command that performs a specified operation and returns an output in accordance with that operation.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="functions-loops-and-iterative-programming.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example structure</span></span>
+<span id="cb175-2"><a href="functions-loops-and-iterative-programming.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-3"><a href="functions-loops-and-iterative-programming.html#cb175-3" aria-hidden="true" tabindex="-1"></a>Function_name<span class="ot">=</span><span class="cf">function</span>(argument){</span>
+<span id="cb175-4"><a href="functions-loops-and-iterative-programming.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  Expressions</span>
+<span id="cb175-5"><a href="functions-loops-and-iterative-programming.html#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb175-6"><a href="functions-loops-and-iterative-programming.html#cb175-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><em>Argument</em> is your input. It is the thing you want to perform the operation on.</li>
+<li><em>Expressions</em> is the actual operation (or operations) you want to perform on the supplied argument</li>
+<li><em>return</em> tells R to return the result of the Expression to you when done.</li>
+</ul>
+<p><strong>Example.</strong> This function takes an input of numbers in the form of a vector and subtracts two from each.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="functions-loops-and-iterative-programming.html#cb176-1" aria-hidden="true" tabindex="-1"></a>numbers<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">80</span>)</span>
+<span id="cb176-2"><a href="functions-loops-and-iterative-programming.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="functions-loops-and-iterative-programming.html#cb176-3" aria-hidden="true" tabindex="-1"></a>sub_2<span class="ot">=</span><span class="cf">function</span>(vector){</span>
+<span id="cb176-4"><a href="functions-loops-and-iterative-programming.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  result<span class="ot">=</span>vector<span class="dv">-2</span></span>
+<span id="cb176-5"><a href="functions-loops-and-iterative-programming.html#cb176-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb176-6"><a href="functions-loops-and-iterative-programming.html#cb176-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb176-7"><a href="functions-loops-and-iterative-programming.html#cb176-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-8"><a href="functions-loops-and-iterative-programming.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(numbers)</span></code></pre></div>
+<pre><code>## [1]  0  8 10 78</code></pre>
+<p>You can literally make a function to do anything you want!</p>
+<p><strong><em>Limitations to your average, everyday functions</em></strong>
+However, there will be times when you want to perform some kind of function to multiple items, perhaps even simultaneously. For example, finding the mean of every column in a data set. To do this, you will probably find yourself repeating the same lines of code over and over, which violates a cardinal rule of efficient coding: Never paste the same code more than twice. If you have an iterative process or a task that needs to be repeated two or more times, consider how to replace the multiple lines of code with a For Loop or an iterative function.</p>
+</div>
+<div id="for-loops" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> For-loops</h2>
+<p>A for loop is essentially a function that applies a function or given set of operations iteratively on multiple things at once, and returns an output of many items.</p>
+<p>For example, this code finds the means of every vector/column in a dataset by repeatedly applying the same code over and over to element “i” in the given list:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="functions-loops-and-iterative-programming.html#cb178-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb178-2"><a href="functions-loops-and-iterative-programming.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb178-3"><a href="functions-loops-and-iterative-programming.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb178-4"><a href="functions-loops-and-iterative-programming.html#cb178-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb178-5"><a href="functions-loops-and-iterative-programming.html#cb178-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb178-6"><a href="functions-loops-and-iterative-programming.html#cb178-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb178-7"><a href="functions-loops-and-iterative-programming.html#cb178-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-8"><a href="functions-loops-and-iterative-programming.html#cb178-8" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1.Output. Create the object you want the results of the loop stored in.</span></span>
+<span id="cb178-9"><a href="functions-loops-and-iterative-programming.html#cb178-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-10"><a href="functions-loops-and-iterative-programming.html#cb178-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2.Sequence of operations. &quot;For each item &#39;i&#39; along data frame…&quot;</span></span>
+<span id="cb178-11"><a href="functions-loops-and-iterative-programming.html#cb178-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3.Body:&quot;every individual item in &#39;output&#39; = the median of each col in df</span></span>
+<span id="cb178-12"><a href="functions-loops-and-iterative-programming.html#cb178-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb178-13"><a href="functions-loops-and-iterative-programming.html#cb178-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-14"><a href="functions-loops-and-iterative-programming.html#cb178-14" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
+<pre><code>## [1]  0.3771802 -0.5176346  0.4171879  0.5704655</code></pre>
+<p>Check out <a href="https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments">this book chapter</a> for a great and detailed explanation of for-loops and functional coding</p>
+<p>Although for loops are nice, they can be somewhat unwieldy. R programmers typically use iterating functions instead!</p>
+<p>Examples of iterating functions are the lapply, vapply, sapply, etc. family of base R commands. But these can be confusing and the commands are not great.</p>
+<p>The purrr package offers a better way to do iterating functions over base R; it’s the tidyverse way to make efficient and understandable for loops! <strong>If you have a need for a for-loop for something, see the next section instead on how to use purrr to make an iterative function. Important to understand conceptually what a for-loop is, but using them is impractical when you have purrr</strong></p>
+</div>
+<div id="purrr-and-iterative-loops" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Purrr and iterative loops</h2>
+<p>*All notes here come from Charlotte Wickham’s lecture tutorial <a href="https://www.youtube.com/watch?v=7UlWJWfZO9M">on YouTube</a></p>
+<p>Purrr’s map functions offer a way to apply any existing function (even functions you’ve made) to multiple things at once (be it lists; data frame columns, individual items in vector, etc.).</p>
+<p>When you have tasks that you want to do repeatedly, you can either copy and paste your code a bunch of times, or make an iterative function that does each task for you. You could use a for-loop to do these tasks, but {purrr} is a package that lets you build iterating functions, which have advantages over for-loops.</p>
+<div id="useful-ways-to-use-map" class="section level3" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Useful ways to use map()</h3>
+<div id="apply-a-single-function-to-every-column-in-a-data-frame" class="section level4" number="11.3.1.1">
+<h4><span class="header-section-number">11.3.1.1</span> Apply a single function to every column in a data frame</h4>
+<p>Pipe the whole data frame to the map command:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="functions-loops-and-iterative-programming.html#cb180-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">map_df</span>()</span></code></pre></div>
+</div>
+<div id="apply-a-function-to-every-item-in-a-columnvector" class="section level4" number="11.3.1.2">
+<h4><span class="header-section-number">11.3.1.2</span> Apply a function to every item in a column/vector</h4>
+<p>Pipe the data frame and column/variable, and include the [ ] to index by vector position:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="functions-loops-and-iterative-programming.html#cb181-1" aria-hidden="true" tabindex="-1"></a>BF_output<span class="sc">$</span>Evidence<span class="ot">=</span> BF_output<span class="sc">$</span>BF[] <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(effectsize<span class="sc">::</span>interpret_bf)</span></code></pre></div>
+</div>
+<div id="import-several-files-in-a-directory-at-once-batch-importing" class="section level4" number="11.3.1.3">
+<h4><span class="header-section-number">11.3.1.3</span> Import several files in a directory at once (batch importing)</h4>
+<p><strong>Note.</strong> This reads many .csv files into a SINGLE, unified data frame.
+If you want to import many files at once but keep them separated, you’ll need a different command</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="functions-loops-and-iterative-programming.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first run these commands</span></span>
+<span id="cb182-2"><a href="functions-loops-and-iterative-programming.html#cb182-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span><span class="st">&quot;log dump&quot;</span></span>
+<span id="cb182-3"><a href="functions-loops-and-iterative-programming.html#cb182-3" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir)</span>
+<span id="cb182-4"><a href="functions-loops-and-iterative-programming.html#cb182-4" aria-hidden="true" tabindex="-1"></a>csv_files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir, <span class="at">regexp =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv$&quot;</span>)</span>
+<span id="cb182-5"><a href="functions-loops-and-iterative-programming.html#cb182-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-6"><a href="functions-loops-and-iterative-programming.html#cb182-6" aria-hidden="true" tabindex="-1"></a><span class="co"># then run this</span></span>
+<span id="cb182-7"><a href="functions-loops-and-iterative-programming.html#cb182-7" aria-hidden="true" tabindex="-1"></a>File_name_here<span class="ot">=</span>csv_files <span class="sc">%&gt;%</span> </span>
+<span id="cb182-8"><a href="functions-loops-and-iterative-programming.html#cb182-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(read_csv)</span></code></pre></div>
+</div>
+</div>
+<div id="walkthrough-case-example" class="section level3" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Walkthrough Case Example</h3>
+<p>This is an example walk through showing how we can use <code>purrr</code> to speed things up dramatically and/or reduce the use of unwanted, extra code in our scripts. In this guide I’ll be building a table of LPGA Tour statistics from multiple webpages.</p>
+<p>If I tried to do each table individually, I’d be copying and pasting and re-writing the same code up to <strong>four times</strong> to get each table downloaded, extracted, and formatted the way I want before I could unify them with <code>left_join</code>. By using <code>purrr::map()</code>, we can cut our needed code down by 75%.</p>
+<p>Not only does this mean we have a tidier script, but also, things will be less messy, and we have less chances for error (since we are coding less). And of course, we don’t have the annoyances of redoing multiple sections of code.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="functions-loops-and-iterative-programming.html#cb183-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span></code></pre></div>
+<p>The workflow for purrr goes like this:</p>
+<p>First, you want to figure out how to do each step of your process line-by-line, for a single item. The idea is to try and walk through each step of the process and see exactly what will need to be done each each step and what the code will like, <em>before trying to code it all at once at a higher level</em>.</p>
+<p>Once you have each step for the first item figured out, make functions for each step that condense that code down to one command.</p>
+<p>Lastly, apply each function from your individual steps to all items in your list by using <code>purr::map()</code>.</p>
+</div>
+<div id="do-for-one" class="section level3" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Do for One</h3>
+<div id="scrape-data" class="section level4" number="11.3.3.1">
+<h4><span class="header-section-number">11.3.3.1</span> 1. Scrape data</h4>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="functions-loops-and-iterative-programming.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># line</span></span>
+<span id="cb184-2"><a href="functions-loops-and-iterative-programming.html#cb184-2" aria-hidden="true" tabindex="-1"></a>html1<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb184-3"><a href="functions-loops-and-iterative-programming.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb184-4"><a href="functions-loops-and-iterative-programming.html#cb184-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-5"><a href="functions-loops-and-iterative-programming.html#cb184-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-6"><a href="functions-loops-and-iterative-programming.html#cb184-6" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
+<span id="cb184-7"><a href="functions-loops-and-iterative-programming.html#cb184-7" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
+<span id="cb184-8"><a href="functions-loops-and-iterative-programming.html#cb184-8" aria-hidden="true" tabindex="-1"></a>  url<span class="ot">=</span>url <span class="sc">%&gt;%</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb184-9"><a href="functions-loops-and-iterative-programming.html#cb184-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb184-10"><a href="functions-loops-and-iterative-programming.html#cb184-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb184-11"><a href="functions-loops-and-iterative-programming.html#cb184-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-12"><a href="functions-loops-and-iterative-programming.html#cb184-12" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">quick_read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>)</span></code></pre></div>
+</div>
+<div id="find-out-which-element-of-the-list-the-desired-table-is-in" class="section level4" number="11.3.3.2">
+<h4><span class="header-section-number">11.3.3.2</span> 2. Find out which element of the list the desired table is in</h4>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="functions-loops-and-iterative-programming.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(html1[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>## # A tibble: 169 x 3
+##    X1    X2                   X3      
+##    &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;   
+##  1 Rank  Name                 Distance
+##  2 1     Anne van Dam         290.778 
+##  3 2     Bianca Pagdanganan   285.021 
+##  4 3     A Lim Kim            279.122 
+##  5 4     Lexi Thompson        278.832 
+##  6 5     Maria Fassi          278.107 
+##  7 6     Brooke Henderson     275.22  
+##  8 7     Jessica Korda        275.17  
+##  9 8     Nanna Koerstz Madsen 274.807 
+## 10 9     Patty Tavatanakit    274.653 
+## # ... with 159 more rows</code></pre>
+</div>
+<div id="extract-the-table" class="section level4" number="11.3.3.3">
+<h4><span class="header-section-number">11.3.3.3</span> 3. Extract the table</h4>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="functions-loops-and-iterative-programming.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co">#line</span></span>
+<span id="cb187-2"><a href="functions-loops-and-iterative-programming.html#cb187-2" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span><span class="fu">as_tibble</span>(html1[[<span class="dv">2</span>]])</span>
+<span id="cb187-3"><a href="functions-loops-and-iterative-programming.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="functions-loops-and-iterative-programming.html#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-5"><a href="functions-loops-and-iterative-programming.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function version</span></span>
+<span id="cb187-6"><a href="functions-loops-and-iterative-programming.html#cb187-6" aria-hidden="true" tabindex="-1"></a>extract_tibble<span class="ot">=</span><span class="cf">function</span>(html_list){</span>
+<span id="cb187-7"><a href="functions-loops-and-iterative-programming.html#cb187-7" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span><span class="fu">as_tibble</span>(html_list[[<span class="dv">2</span>]])</span>
+<span id="cb187-8"><a href="functions-loops-and-iterative-programming.html#cb187-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb187-9"><a href="functions-loops-and-iterative-programming.html#cb187-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb187-10"><a href="functions-loops-and-iterative-programming.html#cb187-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-11"><a href="functions-loops-and-iterative-programming.html#cb187-11" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span><span class="fu">extract_tibble</span>(html1)</span></code></pre></div>
+</div>
+<div id="format-table" class="section level4" number="11.3.3.4">
+<h4><span class="header-section-number">11.3.3.4</span> 4. Format table</h4>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="functions-loops-and-iterative-programming.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co">#line</span></span>
+<span id="cb188-2"><a href="functions-loops-and-iterative-programming.html#cb188-2" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb188-3"><a href="functions-loops-and-iterative-programming.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-4"><a href="functions-loops-and-iterative-programming.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-5"><a href="functions-loops-and-iterative-programming.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb188-6"><a href="functions-loops-and-iterative-programming.html#cb188-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-7"><a href="functions-loops-and-iterative-programming.html#cb188-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table1)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   Name               X3     
+##   &lt;chr&gt;              &lt;chr&gt;  
+## 1 Anne van Dam       290.778
+## 2 Bianca Pagdanganan 285.021
+## 3 A Lim Kim          279.122
+## 4 Lexi Thompson      278.832
+## 5 Maria Fassi        278.107
+## 6 Brooke Henderson   275.22</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="functions-loops-and-iterative-programming.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
+<span id="cb190-2"><a href="functions-loops-and-iterative-programming.html#cb190-2" aria-hidden="true" tabindex="-1"></a>test_format<span class="ot">=</span><span class="cf">function</span>(table){</span>
+<span id="cb190-3"><a href="functions-loops-and-iterative-programming.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  table<span class="ot">=</span>table <span class="sc">%&gt;%</span> </span>
+<span id="cb190-4"><a href="functions-loops-and-iterative-programming.html#cb190-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb190-5"><a href="functions-loops-and-iterative-programming.html#cb190-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb190-6"><a href="functions-loops-and-iterative-programming.html#cb190-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb190-7"><a href="functions-loops-and-iterative-programming.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb190-8"><a href="functions-loops-and-iterative-programming.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb190-9"><a href="functions-loops-and-iterative-programming.html#cb190-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb190-10"><a href="functions-loops-and-iterative-programming.html#cb190-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-11"><a href="functions-loops-and-iterative-programming.html#cb190-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test_format(table1)</span></span></code></pre></div>
+</div>
+</div>
+<div id="do-for-all" class="section level3" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> DO FOR ALL</h3>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="functions-loops-and-iterative-programming.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FUNCTIONS ####</span></span>
+<span id="cb191-2"><a href="functions-loops-and-iterative-programming.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read</span></span>
+<span id="cb191-3"><a href="functions-loops-and-iterative-programming.html#cb191-3" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
+<span id="cb191-4"><a href="functions-loops-and-iterative-programming.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  url<span class="ot">=</span>url <span class="sc">%&gt;%</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb191-5"><a href="functions-loops-and-iterative-programming.html#cb191-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb191-6"><a href="functions-loops-and-iterative-programming.html#cb191-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb191-7"><a href="functions-loops-and-iterative-programming.html#cb191-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-8"><a href="functions-loops-and-iterative-programming.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract</span></span>
+<span id="cb191-9"><a href="functions-loops-and-iterative-programming.html#cb191-9" aria-hidden="true" tabindex="-1"></a>extract_tibble<span class="ot">=</span><span class="cf">function</span>(html_list){</span>
+<span id="cb191-10"><a href="functions-loops-and-iterative-programming.html#cb191-10" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span><span class="fu">as_tibble</span>(html_list[[<span class="dv">2</span>]])</span>
+<span id="cb191-11"><a href="functions-loops-and-iterative-programming.html#cb191-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb191-12"><a href="functions-loops-and-iterative-programming.html#cb191-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb191-13"><a href="functions-loops-and-iterative-programming.html#cb191-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-14"><a href="functions-loops-and-iterative-programming.html#cb191-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Format</span></span>
+<span id="cb191-15"><a href="functions-loops-and-iterative-programming.html#cb191-15" aria-hidden="true" tabindex="-1"></a>test_format<span class="ot">=</span><span class="cf">function</span>(table){</span>
+<span id="cb191-16"><a href="functions-loops-and-iterative-programming.html#cb191-16" aria-hidden="true" tabindex="-1"></a>  table<span class="ot">=</span>table <span class="sc">%&gt;%</span> </span>
+<span id="cb191-17"><a href="functions-loops-and-iterative-programming.html#cb191-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb191-18"><a href="functions-loops-and-iterative-programming.html#cb191-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb191-19"><a href="functions-loops-and-iterative-programming.html#cb191-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb191-20"><a href="functions-loops-and-iterative-programming.html#cb191-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb191-21"><a href="functions-loops-and-iterative-programming.html#cb191-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb191-22"><a href="functions-loops-and-iterative-programming.html#cb191-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb191-23"><a href="functions-loops-and-iterative-programming.html#cb191-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-24"><a href="functions-loops-and-iterative-programming.html#cb191-24" aria-hidden="true" tabindex="-1"></a><span class="do">#### GO FOR IT ####</span></span>
+<span id="cb191-25"><a href="functions-loops-and-iterative-programming.html#cb191-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-26"><a href="functions-loops-and-iterative-programming.html#cb191-26" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>,</span>
+<span id="cb191-27"><a href="functions-loops-and-iterative-programming.html#cb191-27" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>,</span>
+<span id="cb191-28"><a href="functions-loops-and-iterative-programming.html#cb191-28" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=06&quot;</span>,</span>
+<span id="cb191-29"><a href="functions-loops-and-iterative-programming.html#cb191-29" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=12&quot;</span>)</span>
+<span id="cb191-30"><a href="functions-loops-and-iterative-programming.html#cb191-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-31"><a href="functions-loops-and-iterative-programming.html#cb191-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-32"><a href="functions-loops-and-iterative-programming.html#cb191-32" aria-hidden="true" tabindex="-1"></a>tables_list<span class="ot">=</span>URLs <span class="sc">%&gt;%</span> </span>
+<span id="cb191-33"><a href="functions-loops-and-iterative-programming.html#cb191-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(quick_read_html) <span class="sc">%&gt;%</span> <span class="co">#read and scrape every URL</span></span>
+<span id="cb191-34"><a href="functions-loops-and-iterative-programming.html#cb191-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(extract_tibble) <span class="sc">%&gt;%</span> <span class="co"># Get rid of the extra list levels</span></span>
+<span id="cb191-35"><a href="functions-loops-and-iterative-programming.html#cb191-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(test_format) <span class="co"># Apply any formatting that would be universal to all of them at once</span></span>
+<span id="cb191-36"><a href="functions-loops-and-iterative-programming.html#cb191-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-37"><a href="functions-loops-and-iterative-programming.html#cb191-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-38"><a href="functions-loops-and-iterative-programming.html#cb191-38" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> tables_list <span class="sc">%&gt;%</span> </span>
+<span id="cb191-39"><a href="functions-loops-and-iterative-programming.html#cb191-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;Name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Combine all list levels into a single tibble, matching by the &quot;Name&quot; column</span></span>
+<span id="cb191-40"><a href="functions-loops-and-iterative-programming.html#cb191-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Avg_Drive&quot;</span><span class="ot">=</span><span class="st">&quot;X3.x&quot;</span>, <span class="st">&quot;Avg_Putts&quot;</span><span class="ot">=</span><span class="st">&quot;X3.y&quot;</span>, <span class="co"># final, non-universal formatting</span></span>
+<span id="cb191-41"><a href="functions-loops-and-iterative-programming.html#cb191-41" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Rounds_Played&quot;</span><span class="ot">=</span><span class="st">&quot;X3.y.y&quot;</span> , <span class="st">&quot;Avg_Score&quot;</span><span class="ot">=</span><span class="st">&quot;X4&quot;</span>, </span>
+<span id="cb191-42"><a href="functions-loops-and-iterative-programming.html#cb191-42" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Greens_Hit&quot;</span><span class="ot">=</span><span class="st">&quot;X3.x.x&quot;</span>)</span>
+<span id="cb191-43"><a href="functions-loops-and-iterative-programming.html#cb191-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-44"><a href="functions-loops-and-iterative-programming.html#cb191-44" aria-hidden="true" tabindex="-1"></a><span class="co"># VOILA! </span></span>
+<span id="cb191-45"><a href="functions-loops-and-iterative-programming.html#cb191-45" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   Name               Avg_Drive Avg_Putts Greens_Hit Rounds_Played Avg_Score
+##   &lt;chr&gt;              &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;    
+## 1 Anne van Dam       290.778   1.869     69.3       27            73.333   
+## 2 Bianca Pagdanganan 285.021   1.863     70.3       23            72.130   
+## 3 A Lim Kim          279.122   1.808     71.0       37            71.703   
+## 4 Lexi Thompson      278.832   1.838     77.9       48            70.146   
+## 5 Maria Fassi        278.107   1.853     64.7       28            73.500   
+## 6 Brooke Henderson   275.22    1.813     77.7       50            70.060</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="misc-stuff.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-to-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ryan-a-schneider/coding_compendium/edit/master/10-functions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ryan-a-schneider/coding_compendium/blob/master/10-functions.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
