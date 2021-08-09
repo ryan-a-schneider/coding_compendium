@@ -468,6 +468,14 @@ Can also do the tidyverse way:
 full_data$start_date=lubridate::date(no_slice$start_date)
 ```
 
+Or import the column as a Date object with readr:
+```{r eval=FALSE}
+wellsfargo=read_csv(here::here("Data", "wfdata.csv"), col_names = FALSE, 
+                    col_types = cols(X1 = col_date(format = "%m/%d/%Y"))) #format of the data as it is recorded in the .csv file
+```
+
+
+
 ### Find the difference between two dates/times
 ```{r chapter_3_end, eval=FALSE}
 difftime(part_1$end_date[1], part_2$end_date[1], units="days")
