@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-07-27" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
@@ -1557,14 +1565,68 @@ This is a second way to do the above. It may appear more simple, but it’s also
 <h2><span class="header-section-number">3.11</span> Working with date and time variables</h2>
 <div id="format-date-and-time-variables-appropriate-as-date-objects-in-r" class="section level3" number="3.11.1">
 <h3><span class="header-section-number">3.11.1</span> Format date-and-time variables appropriate as date objects in R</h3>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="wrangle-data.html#cb63-1" aria-hidden="true" tabindex="-1"></a>part_1<span class="sc">$</span>start_date<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(part_1<span class="sc">$</span>start_date,<span class="at">format=</span><span class="st">&#39;%Y-%m-%d %H:%M:%S&#39;</span>),<span class="at">format=</span><span class="st">&#39;%m/%d/%Y&#39;</span>)</span></code></pre></div>
+<p>Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass. It requires things to be done in two stages, and very precisely. Particularly in the first stage.</p>
+<p>First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="wrangle-data.html#cb63-1" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>X1,     <span class="sc">~</span>X2,</span>
+<span id="cb63-2"><a href="wrangle-data.html#cb63-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">49.87</span>,</span>
+<span id="cb63-3"><a href="wrangle-data.html#cb63-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">13.85</span>,</span>
+<span id="cb63-4"><a href="wrangle-data.html#cb63-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>,   <span class="sc">-</span><span class="fl">7.45</span>,</span>
+<span id="cb63-5"><a href="wrangle-data.html#cb63-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>, <span class="sc">-</span><span class="fl">172.71</span>,</span>
+<span id="cb63-6"><a href="wrangle-data.html#cb63-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,   <span class="sc">-</span><span class="fl">6.37</span>,</span>
+<span id="cb63-7"><a href="wrangle-data.html#cb63-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,     <span class="sc">-</span><span class="dv">25</span>,</span>
+<span id="cb63-8"><a href="wrangle-data.html#cb63-8" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>, <span class="sc">-</span><span class="fl">219.68</span>,</span>
+<span id="cb63-9"><a href="wrangle-data.html#cb63-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">53.75</span>,</span>
+<span id="cb63-10"><a href="wrangle-data.html#cb63-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">29.83</span>,</span>
+<span id="cb63-11"><a href="wrangle-data.html#cb63-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">77.06</span>,</span>
+<span id="cb63-12"><a href="wrangle-data.html#cb63-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">16.16</span>,</span>
+<span id="cb63-13"><a href="wrangle-data.html#cb63-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>, <span class="sc">-</span><span class="fl">114.78</span>,</span>
+<span id="cb63-14"><a href="wrangle-data.html#cb63-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,     <span class="sc">-</span><span class="dv">50</span>,</span>
+<span id="cb63-15"><a href="wrangle-data.html#cb63-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>, <span class="sc">-</span><span class="fl">157.64</span>)</span>
+<span id="cb63-16"><a href="wrangle-data.html#cb63-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-17"><a href="wrangle-data.html#cb63-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-18"><a href="wrangle-data.html#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct formatting</span></span>
+<span id="cb63-19"><a href="wrangle-data.html#cb63-19" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(example_date_data<span class="sc">$</span>X1,<span class="at">format=</span><span class="st">&#39;%m/%d/%y&#39;</span>),<span class="at">format=</span><span class="st">&#39;%Y-%m-%d&#39;</span>)</span>
+<span id="cb63-20"><a href="wrangle-data.html#cb63-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-21"><a href="wrangle-data.html#cb63-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   X1              X2
+##   &lt;chr&gt;        &lt;dbl&gt;
+## 1 2020-08-04  -49.9 
+## 2 2020-08-04  -13.8 
+## 3 2020-08-03   -7.45
+## 4 2020-08-03 -173.  
+## 5 2020-08-02   -6.37
+## 6 2020-08-02  -25</code></pre>
+<p>In the code above, note that there are two <code>format</code> commands: The first one tells R how the date data is <strong>currently being stored</strong>, while the second at the end tells it how <strong>you want it to be stored.</strong> In this case, we are changing it from the way we would usually hand write a date (e.g., 10/26/1993) to a format commonly recognized and used in Excel and stats software (1993-10-26). <em>If your column also has times in it, you also need to include that too!</em></p>
+<p>Second, you can now correct the object’s structure. You can do this with base R’s <code>as.Date()</code> or tidyverse’s <code>date()</code> verbs.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="wrangle-data.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct structure</span></span>
+<span id="cb65-2"><a href="wrangle-data.html#cb65-2" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">date</span>(example_date_data<span class="sc">$</span>X1) <span class="co"># tidyverse</span></span>
+<span id="cb65-3"><a href="wrangle-data.html#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="wrangle-data.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R version</span></span>
+<span id="cb65-5"><a href="wrangle-data.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co"># example_date_data$X1=as.Date(example_date_data$X1)</span></span>
+<span id="cb65-6"><a href="wrangle-data.html#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="wrangle-data.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   X1              X2
+##   &lt;date&gt;       &lt;dbl&gt;
+## 1 2020-08-04  -49.9 
+## 2 2020-08-04  -13.8 
+## 3 2020-08-03   -7.45
+## 4 2020-08-03 -173.  
+## 5 2020-08-02   -6.37
+## 6 2020-08-02  -25</code></pre>
+<p>Notice how the object is now stored as the correct type in the table above.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="wrangle-data.html#cb67-1" aria-hidden="true" tabindex="-1"></a>part_1<span class="sc">$</span>start_date<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(part_1<span class="sc">$</span>start_date,<span class="at">format=</span><span class="st">&#39;%Y-%m-%d %H:%M:%S&#39;</span>),<span class="at">format=</span><span class="st">&#39;%m/%d/%Y&#39;</span>)</span></code></pre></div>
 <p>Note that the ‘format’ part has to be <strong>EXACTLY</strong> as the format appears in the data. If you have an extra space in there or / instead of - separating the numbers, it will wipe the column out.</p>
 <p>Can also do the tidyverse way:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="wrangle-data.html#cb64-1" aria-hidden="true" tabindex="-1"></a>full_data<span class="sc">$</span>start_date<span class="ot">=</span>lubridate<span class="sc">::</span><span class="fu">date</span>(no_slice<span class="sc">$</span>start_date)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="wrangle-data.html#cb68-1" aria-hidden="true" tabindex="-1"></a>full_data<span class="sc">$</span>start_date<span class="ot">=</span>lubridate<span class="sc">::</span><span class="fu">date</span>(no_slice<span class="sc">$</span>start_date)</span></code></pre></div>
+<p>Or import the column as a Date object with readr:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="wrangle-data.html#cb69-1" aria-hidden="true" tabindex="-1"></a>wellsfargo<span class="ot">=</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;wfdata.csv&quot;</span>), <span class="at">col_names =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb69-2"><a href="wrangle-data.html#cb69-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">X1 =</span> <span class="fu">col_date</span>(<span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>))) <span class="co">#format of the data as it is recorded in the .csv file</span></span></code></pre></div>
 </div>
 <div id="find-the-difference-between-two-datestimes" class="section level3" number="3.11.2">
 <h3><span class="header-section-number">3.11.2</span> Find the difference between two dates/times</h3>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="wrangle-data.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(part_1<span class="sc">$</span>end_date[<span class="dv">1</span>], part_2<span class="sc">$</span>end_date[<span class="dv">1</span>], <span class="at">units=</span><span class="st">&quot;days&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="wrangle-data.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(part_1<span class="sc">$</span>end_date[<span class="dv">1</span>], part_2<span class="sc">$</span>end_date[<span class="dv">1</span>], <span class="at">units=</span><span class="st">&quot;days&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -1625,6 +1687,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

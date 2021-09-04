@@ -18,12 +18,12 @@ rnorm(n=2500,mean=500, sd=100)
 
 ## Find Cohen's Kappa (Interrater reliability)
 
-Useful for interrater agreement on categorical variables
+Useful for IRR agreement on categorical variables
 
 Going to use the `psych` package for this:
 https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa
 
-See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is
+See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is if you need a recap/intro.
 
 
 
@@ -43,5 +43,10 @@ df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 
 # Recode the whole damn thing. All columns.
 df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
+
+## (Almost) all statistics made easy
+
+https://easystats.github.io/easystats/
+
 
 

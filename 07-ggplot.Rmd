@@ -37,11 +37,14 @@ Note that bar and column graphs look identical at first glance, but they serve t
 *Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
 
 ```{r warning=FALSE, message=FALSE}
-# heihgt of bars is a frequency count of each level of the X variable cut
+
+# BAR GRAPH
+# height of bars is a frequency count of each level of the X variable cut
 bar_plot=ggplot(diamonds, aes(x=cut)) + 
   geom_bar()+
   theme_classic()
 
+# COLUMN GRAPH
 # height of bars represents relationship between price and cut
 col_plot=ggplot(diamonds, aes(x=cut, y=price)) + 
   geom_col()+
@@ -172,9 +175,49 @@ ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar(color="black")
 ```
 
-### More options
+### The see package and more options
 
 See [this link](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually) for setting color gradients for continuous variables, or using other custom color palattes like the `gameofthrones` package.
+
+Check out the [see package](https://easystats.github.io/see/articles/seecolorscales.html#overview-of-palette-colors-1) for some good color scales; the commands for which are [here](https://easystats.github.io/see/reference/index.html#section-geoms). 
+
+Incidentally, see is great not only for regular ggplot graphs, but also Bayesian stats graphs [link](https://easystats.github.io/see/articles/bayestestR.html#introduction-1); effect size graphs [link](https://easystats.github.io/see/articles/effectsize.html); correlation graphs [link](https://easystats.github.io/see/articles/correlation.html); and more.
+
+### See for Bayes and density functions
+
+Quick highlights here of my favorite functions from this package. See (ha) the full package overview at [this link](https://easystats.github.io/see/)
+
+You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
+
+#### Probability of Direction (*Pd*) figure
+```{r eval=FALSE}
+
+plot(pd(Main_EffectsModel))+
+  scale_fill_manual(values=c("#FFC107", "#E91E63"))+ 
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
+
+```
+
+
+#### ROPE figure
+
+```{r eval=FALSE}
+plot(ropetest, rope_color = "grey70")+
+  gameofthrones::scale_fill_got_d(option = "white_walkers") # or scale_fill_manual(values = c("gray75","red")
+```
+
+
+ROPE tests are plots of distributions, and therefore use scale_fill_xyz_d commands. (the 'd' stands for 'discrete'). You can use any scale theme color set from any package, as long as it ends in _d
+
+values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website
+
+#### Bayes factor models comparison figure
+
+```{r eval=FALSE}
+plot(bayesfactor_models(Thesis_Model,discount_model))+
+  scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
+```
 
 
 ## Other aesthetic mappings

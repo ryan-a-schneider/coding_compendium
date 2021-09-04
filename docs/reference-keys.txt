@@ -93,6 +93,10 @@ extract-the-table
 format-table
 do-for-all
 intro-to-r-markdown
+writing-math-equations-and-symbols
+greek-symbols
+math-notation
+statistics-notation
 statistics-and-psych-specific-stuff
 create-or-sample-from-a-distribution
 find-cohens-kappa-interrater-reliability

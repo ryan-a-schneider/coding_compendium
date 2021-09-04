@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-07-27" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
@@ -308,7 +316,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="remove-a-pattern-from-a-string" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Remove a pattern from a string</h2>
 <p>Tidyverse command: <code>str_remove()</code></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="working-with-strings.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="working-with-strings.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
 <pre><code>## Loading required package: xml2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;rvest&#39;</code></pre>
@@ -318,158 +326,158 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following object is masked from &#39;package:readr&#39;:
 ## 
 ##     guess_encoding</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="working-with-strings.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb105-2"><a href="working-with-strings.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-3"><a href="working-with-strings.html#cb105-3" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb105-4"><a href="working-with-strings.html#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb105-5"><a href="working-with-strings.html#cb105-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-6"><a href="working-with-strings.html#cb105-6" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="working-with-strings.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb109-2"><a href="working-with-strings.html#cb109-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="working-with-strings.html#cb109-3" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb109-4"><a href="working-with-strings.html#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-5"><a href="working-with-strings.html#cb109-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-6"><a href="working-with-strings.html#cb109-6" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
 <pre><code>## [[1]]
 ##                     PRODUCT    Rarity Number Market Price Listed Median     
-## 1                      Abra    Common     43        $0.59         $0.80 View
-## 2                  Alakazam Holo Rare      1       $31.63             — View
-## 3                  Arcanine  Uncommon     23        $2.61         $2.99 View
-## 4                  Beedrill      Rare     17        $3.49         $3.00 View
-## 5                      Bill    Common     91        $0.27         $0.49 View
-## 6                 Blastoise Holo Rare      2      $115.56             — View
-## 7                 Bulbasaur    Common     44        $1.89         $3.00 View
-## 8                  Caterpie    Common     45        $0.83         $0.92 View
-## 9                   Chansey Holo Rare      3       $20.92             — View
-## 10                Charizard Holo Rare      4      $408.10             — View
-## 11               Charmander    Common     46        $2.03         $2.70 View
-## 12               Charmeleon  Uncommon     24        $1.28         $2.08 View
-## 13                 Clefairy Holo Rare      5       $19.05             — View
-## 14            Clefairy Doll      Rare     70        $3.07         $3.34 View
-## 15          Computer Search      Rare     71        $2.22         $4.38 View
-## 16                 Defender  Uncommon     80        $1.23         $1.44 View
-## 17         Devolution Spray      Rare     72        $2.63         $2.67 View
-## 18                  Dewgong  Uncommon     25        $1.86         $2.26 View
-## 19                  Diglett    Common     47        $0.40         $0.68 View
-## 20                    Doduo    Common     48        $0.87         $1.09 View
-## 21  Double Colorless Energy  Uncommon     96        $4.04         $4.35 View
-## 22                Dragonair      Rare     18        $9.30         $9.21 View
-## 23                  Dratini  Uncommon     26        $1.52         $1.53 View
-## 24                  Drowzee    Common     49        $0.59         $0.75 View
-## 25                  Dugtrio      Rare     19        $4.39         $5.13 View
-## 26               Electabuzz      Rare     20        $5.53         $6.90 View
-## 27                Electrode      Rare     21        $4.90         $4.72 View
-## 28           Energy Removal    Common     92        $0.39         $0.50 View
-## 29         Energy Retrieval  Uncommon     81        $0.53         $0.73 View
-## 30               Farfetch&#39;d  Uncommon     27        $1.19         $1.24 View
-## 31          Fighting Energy    Common     97        $0.28         $0.36 View
-## 32              Fire Energy    Common     98        $0.30         $0.46 View
-## 33                Full Heal  Uncommon     82        $0.93         $1.06 View
-## 34                   Gastly    Common     50        $0.56         $0.85 View
-## 35             Grass Energy    Common     99        $0.26         $0.34 View
-## 36                Growlithe  Uncommon     28        $0.91         $1.05 View
-## 37             Gust of Wind    Common     93        $0.32         $0.47 View
-## 38                 Gyarados Holo Rare      6       $21.54             — View
-## 39                  Haunter  Uncommon     29        $1.46         $1.96 View
-## 40               Hitmonchan Holo Rare      7       $15.43             — View
-## 41   Imposter Professor Oak      Rare     73        $2.95         $3.50 View
-## 42              Item Finder      Rare     74        $9.76         $9.95 View
-## 43                  Ivysaur  Uncommon     30        $2.33         $3.40 View
-## 44                     Jynx  Uncommon     31        $0.71         $0.99 View
-## 45                  Kadabra  Uncommon     32        $2.59         $2.75 View
-## 46                   Kakuna  Uncommon     33        $0.75         $1.02 View
-## 47                  Koffing    Common     51        $0.44         $0.60 View
-## 48                     Lass      Rare     75        $2.41         $2.75 View
-## 49         Lightning Energy    Common    100        $0.29         $0.50 View
-## 50                  Machoke  Uncommon     34        $0.63         $0.91 View
-## 51                   Machop    Common     52        $0.32         $0.49 View
-## 52                 Magikarp  Uncommon     35        $1.45         $1.60 View
-## 53                   Magmar  Uncommon     36        $1.95         $2.03 View
-## 54                Magnemite    Common     53        $0.46         $0.65 View
-## 55                 Magneton Holo Rare      9       $19.72             — View
-## 56              Maintenance  Uncommon     83        $2.17         $1.99 View
-## 57                  Metapod    Common     54        $0.79         $1.00 View
-## 58                   Mewtwo Holo Rare     10       $30.23             — View
-## 59                 Nidoking Holo Rare     11       $21.58             — View
-## 60                Nidoran M    Common     55        $0.47         $0.65 View
-## 61                 Nidorino  Uncommon     37        $2.06         $2.03 View
-## 62                Ninetales Holo Rare     12       $16.91             — View
-## 63                     Onix    Common     56        $0.36         $0.64 View
-## 64                Pidgeotto      Rare     22        $5.20         $5.95 View
-## 65                   Pidgey    Common     57        $0.91         $1.11 View
-## 66                  Pikachu    Common     58        $4.33         $4.42 View
-## 67                PlusPower  Uncommon     84        $0.76         $0.97 View
-## 68                  Pokedex  Uncommon     87        $0.49         $0.59 View
-## 69          Pokemon Breeder      Rare     76        $5.22         $5.22 View
-## 70           Pokemon Center  Uncommon     85        $1.85         $1.85 View
-## 71            Pokemon Flute  Uncommon     86        $1.65         $2.00 View
-## 72           Pokemon Trader      Rare     77        $3.30         $3.99 View
-## 73                  Poliwag    Common     59        $0.43         $0.60 View
-## 74                Poliwhirl  Uncommon     38        $1.03         $1.28 View
-## 75                Poliwrath Holo Rare     13       $13.44             — View
-## 76                   Ponyta    Common     60        $0.48         $0.50 View
-## 77                  Porygon  Uncommon     39        $2.24         $2.89 View
-## 78                   Potion    Common     94        $0.19         $0.26 View
-## 79            Professor Oak  Uncommon     88        $1.65         $2.23 View
-## 80           Psychic Energy    Common    101        $0.28         $0.50 View
-## 81                   Raichu Holo Rare     14       $31.90             — View
-## 82                 Raticate  Uncommon     40        $2.94         $2.75 View
-## 83                  Rattata    Common     61        $0.59         $0.67 View
-## 84                   Revive  Uncommon     89        $2.29         $2.56 View
-## 85                Sandshrew    Common     62        $0.32         $0.75 View
-## 86                 Scoop Up      Rare     78        $6.60         $7.28 View
-## 87                     Seel  Uncommon     41        $0.83         $1.36 View
-## 88                 Squirtle    Common     63        $3.80         $4.91 View
-## 89                  Starmie    Common     64        $0.44         $0.70 View
-## 90                   Staryu    Common     65        $0.40         $0.52 View
-## 91     Super Energy Removal      Rare     79        $3.64         $3.99 View
-## 92             Super Potion  Uncommon     90        $0.28         $0.35 View
-## 93                   Switch    Common     95        $0.33         $0.45 View
-## 94                  Tangela    Common     66        $0.53         $0.64 View
-## 95                 Venusaur Holo Rare     15       $93.62             — View
-## 96                  Voltorb    Common     67        $1.66         $1.69 View
-## 97                   Vulpix    Common     68        $0.70         $0.88 View
-## 98                Wartortle  Uncommon     42        $2.99         $3.00 View
-## 99             Water Energy    Common    102        $0.37         $0.50 View
-## 100                  Weedle    Common     69        $0.40         $0.65 View
-## 101                  Zapdos Holo Rare     16       $24.28             — View</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="working-with-strings.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
-<span id="cb107-2"><a href="working-with-strings.html#cb107-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
-<span id="cb107-3"><a href="working-with-strings.html#cb107-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
-<span id="cb107-4"><a href="working-with-strings.html#cb107-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-5"><a href="working-with-strings.html#cb107-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+## 1                      Abra    Common     43        $0.81         $0.82 View
+## 2                  Alakazam Holo Rare      1       $31.05             — View
+## 3                  Arcanine  Uncommon     23        $2.38         $2.60 View
+## 4                  Beedrill      Rare     17        $2.87         $2.99 View
+## 5                      Bill    Common     91        $0.31         $0.49 View
+## 6                 Blastoise Holo Rare      2      $116.57             — View
+## 7                 Bulbasaur    Common     44        $1.94         $3.00 View
+## 8                  Caterpie    Common     45        $0.88         $0.95 View
+## 9                   Chansey Holo Rare      3       $18.98             — View
+## 10                Charizard Holo Rare      4      $366.49             — View
+## 11               Charmander    Common     46        $1.53         $2.65 View
+## 12               Charmeleon  Uncommon     24        $1.61         $2.08 View
+## 13                 Clefairy Holo Rare      5       $19.46             — View
+## 14            Clefairy Doll      Rare     70        $2.39         $2.73 View
+## 15          Computer Search      Rare     71        $2.60         $4.02 View
+## 16                 Defender  Uncommon     80        $1.26         $1.24 View
+## 17         Devolution Spray      Rare     72        $2.51         $2.69 View
+## 18                  Dewgong  Uncommon     25        $2.03         $2.01 View
+## 19                  Diglett    Common     47        $0.50         $0.75 View
+## 20                    Doduo    Common     48        $0.82         $1.00 View
+## 21  Double Colorless Energy  Uncommon     96        $3.98         $4.08 View
+## 22                Dragonair      Rare     18        $8.13         $8.54 View
+## 23                  Dratini  Uncommon     26        $1.22         $1.51 View
+## 24                  Drowzee    Common     49        $0.61         $0.75 View
+## 25                  Dugtrio      Rare     19        $4.68         $5.00 View
+## 26               Electabuzz      Rare     20        $4.89         $5.51 View
+## 27                Electrode      Rare     21        $4.05         $4.50 View
+## 28           Energy Removal    Common     92        $0.51         $0.51 View
+## 29         Energy Retrieval  Uncommon     81        $0.42         $0.65 View
+## 30               Farfetch&#39;d  Uncommon     27        $1.00         $1.29 View
+## 31          Fighting Energy    Common     97        $0.30         $0.36 View
+## 32              Fire Energy    Common     98        $0.27         $0.38 View
+## 33                Full Heal  Uncommon     82        $0.95         $0.92 View
+## 34                   Gastly    Common     50        $0.60         $0.85 View
+## 35             Grass Energy    Common     99        $0.23         $0.34 View
+## 36                Growlithe  Uncommon     28        $1.13         $1.00 View
+## 37             Gust of Wind    Common     93        $0.34         $0.42 View
+## 38                 Gyarados Holo Rare      6       $20.12             — View
+## 39                  Haunter  Uncommon     29        $1.65         $1.65 View
+## 40               Hitmonchan Holo Rare      7       $15.19             — View
+## 41   Imposter Professor Oak      Rare     73        $2.57         $3.05 View
+## 42              Item Finder      Rare     74        $8.25         $9.95 View
+## 43                  Ivysaur  Uncommon     30        $2.46         $2.93 View
+## 44                     Jynx  Uncommon     31        $0.73         $0.98 View
+## 45                  Kadabra  Uncommon     32        $2.48         $2.50 View
+## 46                   Kakuna  Uncommon     33        $0.91         $0.94 View
+## 47                  Koffing    Common     51        $0.48         $0.59 View
+## 48                     Lass      Rare     75        $2.02         $2.69 View
+## 49         Lightning Energy    Common    100        $0.32         $0.51 View
+## 50                  Machoke  Uncommon     34        $0.76         $0.96 View
+## 51                   Machop    Common     52        $0.31         $0.48 View
+## 52                 Magikarp  Uncommon     35        $1.58         $1.62 View
+## 53                   Magmar  Uncommon     36        $2.12         $2.23 View
+## 54                Magnemite    Common     53        $0.48         $0.65 View
+## 55                 Magneton Holo Rare      9       $19.98             — View
+## 56              Maintenance  Uncommon     83        $1.90         $1.88 View
+## 57                  Metapod    Common     54        $0.96         $0.97 View
+## 58                   Mewtwo Holo Rare     10       $36.50             — View
+## 59                 Nidoking Holo Rare     11       $21.05             — View
+## 60                Nidoran M    Common     55        $0.37         $0.57 View
+## 61                 Nidorino  Uncommon     37        $2.20         $2.02 View
+## 62                Ninetales Holo Rare     12       $17.05             — View
+## 63                     Onix    Common     56        $0.40         $0.59 View
+## 64                Pidgeotto      Rare     22        $5.08         $5.41 View
+## 65                   Pidgey    Common     57        $0.91         $1.15 View
+## 66                  Pikachu    Common     58        $3.74         $4.25 View
+## 67                PlusPower  Uncommon     84        $0.75         $0.93 View
+## 68                  Pokedex  Uncommon     87        $0.46         $0.55 View
+## 69          Pokemon Breeder      Rare     76        $4.77         $5.45 View
+## 70           Pokemon Center  Uncommon     85        $1.78         $1.90 View
+## 71            Pokemon Flute  Uncommon     86        $1.97         $1.97 View
+## 72           Pokemon Trader      Rare     77        $2.73         $3.99 View
+## 73                  Poliwag    Common     59        $0.41         $0.50 View
+## 74                Poliwhirl  Uncommon     38        $1.22         $1.22 View
+## 75                Poliwrath Holo Rare     13       $15.93             — View
+## 76                   Ponyta    Common     60        $0.43         $0.50 View
+## 77                  Porygon  Uncommon     39        $2.30         $2.74 View
+## 78                   Potion    Common     94        $0.25         $0.26 View
+## 79            Professor Oak  Uncommon     88        $1.61         $2.05 View
+## 80           Psychic Energy    Common    101        $0.26         $0.49 View
+## 81                   Raichu Holo Rare     14       $29.49             — View
+## 82                 Raticate  Uncommon     40        $2.74         $2.40 View
+## 83                  Rattata    Common     61        $0.57         $0.63 View
+## 84                   Revive  Uncommon     89        $2.39         $2.37 View
+## 85                Sandshrew    Common     62        $0.36         $0.79 View
+## 86                 Scoop Up      Rare     78        $5.25         $6.19 View
+## 87                     Seel  Uncommon     41        $1.00         $1.43 View
+## 88                 Squirtle    Common     63        $4.38         $4.59 View
+## 89                  Starmie    Common     64        $0.43         $0.70 View
+## 90                   Staryu    Common     65        $0.44         $0.54 View
+## 91     Super Energy Removal      Rare     79        $3.05         $3.80 View
+## 92             Super Potion  Uncommon     90        $0.25         $0.30 View
+## 93                   Switch    Common     95        $0.37         $0.40 View
+## 94                  Tangela    Common     66        $0.53         $0.60 View
+## 95                 Venusaur Holo Rare     15       $97.23             — View
+## 96                  Voltorb    Common     67        $1.65         $1.70 View
+## 97                   Vulpix    Common     68        $0.71         $0.82 View
+## 98                Wartortle  Uncommon     42        $2.85         $2.99 View
+## 99             Water Energy    Common    102        $0.31         $0.48 View
+## 100                  Weedle    Common     69        $0.51         $0.65 View
+## 101                  Zapdos Holo Rare     16       $25.36             — View</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="working-with-strings.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
+<span id="cb111-2"><a href="working-with-strings.html#cb111-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
+<span id="cb111-3"><a href="working-with-strings.html#cb111-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
+<span id="cb111-4"><a href="working-with-strings.html#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="working-with-strings.html#cb111-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
 <pre><code>## # A tibble: 101 x 4
 ##    PRODUCT   Rarity    Number `Market Price`
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;         
-##  1 Abra      Common        43 $0.59         
-##  2 Alakazam  Holo Rare      1 $31.63        
-##  3 Arcanine  Uncommon      23 $2.61         
-##  4 Beedrill  Rare          17 $3.49         
-##  5 Bill      Common        91 $0.27         
-##  6 Blastoise Holo Rare      2 $115.56       
-##  7 Bulbasaur Common        44 $1.89         
-##  8 Caterpie  Common        45 $0.83         
-##  9 Chansey   Holo Rare      3 $20.92        
-## 10 Charizard Holo Rare      4 $408.10       
+##  1 Abra      Common        43 $0.81         
+##  2 Alakazam  Holo Rare      1 $31.05        
+##  3 Arcanine  Uncommon      23 $2.38         
+##  4 Beedrill  Rare          17 $2.87         
+##  5 Bill      Common        91 $0.31         
+##  6 Blastoise Holo Rare      2 $116.57       
+##  7 Bulbasaur Common        44 $1.94         
+##  8 Caterpie  Common        45 $0.88         
+##  9 Chansey   Holo Rare      3 $18.98        
+## 10 Charizard Holo Rare      4 $366.49       
 ## # ... with 91 more rows</code></pre>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="working-with-strings.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BASE R METHOD (sub by replacing something with nothing)</span></span>
-<span id="cb109-2"><a href="working-with-strings.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">$&#39;</span>,<span class="st">&#39;&#39;</span>,html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>) <span class="co">#(what you&#39;re looking for, replace with, from where)</span></span></code></pre></div>
-<pre><code>##   [1] &quot;0.59&quot;   &quot;31.63&quot;  &quot;2.61&quot;   &quot;3.49&quot;   &quot;0.27&quot;   &quot;115.56&quot; &quot;1.89&quot;   &quot;0.83&quot;   &quot;20.92&quot;  &quot;408.10&quot; &quot;2.03&quot;   &quot;1.28&quot;   &quot;19.05&quot;  &quot;3.07&quot;   &quot;2.22&quot;  
-##  [16] &quot;1.23&quot;   &quot;2.63&quot;   &quot;1.86&quot;   &quot;0.40&quot;   &quot;0.87&quot;   &quot;4.04&quot;   &quot;9.30&quot;   &quot;1.52&quot;   &quot;0.59&quot;   &quot;4.39&quot;   &quot;5.53&quot;   &quot;4.90&quot;   &quot;0.39&quot;   &quot;0.53&quot;   &quot;1.19&quot;  
-##  [31] &quot;0.28&quot;   &quot;0.30&quot;   &quot;0.93&quot;   &quot;0.56&quot;   &quot;0.26&quot;   &quot;0.91&quot;   &quot;0.32&quot;   &quot;21.54&quot;  &quot;1.46&quot;   &quot;15.43&quot;  &quot;2.95&quot;   &quot;9.76&quot;   &quot;2.33&quot;   &quot;0.71&quot;   &quot;2.59&quot;  
-##  [46] &quot;0.75&quot;   &quot;0.44&quot;   &quot;2.41&quot;   &quot;0.29&quot;   &quot;0.63&quot;   &quot;0.32&quot;   &quot;1.45&quot;   &quot;1.95&quot;   &quot;0.46&quot;   &quot;19.72&quot;  &quot;2.17&quot;   &quot;0.79&quot;   &quot;30.23&quot;  &quot;21.58&quot;  &quot;0.47&quot;  
-##  [61] &quot;2.06&quot;   &quot;16.91&quot;  &quot;0.36&quot;   &quot;5.20&quot;   &quot;0.91&quot;   &quot;4.33&quot;   &quot;0.76&quot;   &quot;0.49&quot;   &quot;5.22&quot;   &quot;1.85&quot;   &quot;1.65&quot;   &quot;3.30&quot;   &quot;0.43&quot;   &quot;1.03&quot;   &quot;13.44&quot; 
-##  [76] &quot;0.48&quot;   &quot;2.24&quot;   &quot;0.19&quot;   &quot;1.65&quot;   &quot;0.28&quot;   &quot;31.90&quot;  &quot;2.94&quot;   &quot;0.59&quot;   &quot;2.29&quot;   &quot;0.32&quot;   &quot;6.60&quot;   &quot;0.83&quot;   &quot;3.80&quot;   &quot;0.44&quot;   &quot;0.40&quot;  
-##  [91] &quot;3.64&quot;   &quot;0.28&quot;   &quot;0.33&quot;   &quot;0.53&quot;   &quot;93.62&quot;  &quot;1.66&quot;   &quot;0.70&quot;   &quot;2.99&quot;   &quot;0.37&quot;   &quot;0.40&quot;   &quot;24.28&quot;</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="working-with-strings.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD (just remove)</span></span>
-<span id="cb111-2"><a href="working-with-strings.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
-<pre><code>##   [1] &quot;0.59&quot;   &quot;31.63&quot;  &quot;2.61&quot;   &quot;3.49&quot;   &quot;0.27&quot;   &quot;115.56&quot; &quot;1.89&quot;   &quot;0.83&quot;   &quot;20.92&quot;  &quot;408.10&quot; &quot;2.03&quot;   &quot;1.28&quot;   &quot;19.05&quot;  &quot;3.07&quot;   &quot;2.22&quot;  
-##  [16] &quot;1.23&quot;   &quot;2.63&quot;   &quot;1.86&quot;   &quot;0.40&quot;   &quot;0.87&quot;   &quot;4.04&quot;   &quot;9.30&quot;   &quot;1.52&quot;   &quot;0.59&quot;   &quot;4.39&quot;   &quot;5.53&quot;   &quot;4.90&quot;   &quot;0.39&quot;   &quot;0.53&quot;   &quot;1.19&quot;  
-##  [31] &quot;0.28&quot;   &quot;0.30&quot;   &quot;0.93&quot;   &quot;0.56&quot;   &quot;0.26&quot;   &quot;0.91&quot;   &quot;0.32&quot;   &quot;21.54&quot;  &quot;1.46&quot;   &quot;15.43&quot;  &quot;2.95&quot;   &quot;9.76&quot;   &quot;2.33&quot;   &quot;0.71&quot;   &quot;2.59&quot;  
-##  [46] &quot;0.75&quot;   &quot;0.44&quot;   &quot;2.41&quot;   &quot;0.29&quot;   &quot;0.63&quot;   &quot;0.32&quot;   &quot;1.45&quot;   &quot;1.95&quot;   &quot;0.46&quot;   &quot;19.72&quot;  &quot;2.17&quot;   &quot;0.79&quot;   &quot;30.23&quot;  &quot;21.58&quot;  &quot;0.47&quot;  
-##  [61] &quot;2.06&quot;   &quot;16.91&quot;  &quot;0.36&quot;   &quot;5.20&quot;   &quot;0.91&quot;   &quot;4.33&quot;   &quot;0.76&quot;   &quot;0.49&quot;   &quot;5.22&quot;   &quot;1.85&quot;   &quot;1.65&quot;   &quot;3.30&quot;   &quot;0.43&quot;   &quot;1.03&quot;   &quot;13.44&quot; 
-##  [76] &quot;0.48&quot;   &quot;2.24&quot;   &quot;0.19&quot;   &quot;1.65&quot;   &quot;0.28&quot;   &quot;31.90&quot;  &quot;2.94&quot;   &quot;0.59&quot;   &quot;2.29&quot;   &quot;0.32&quot;   &quot;6.60&quot;   &quot;0.83&quot;   &quot;3.80&quot;   &quot;0.44&quot;   &quot;0.40&quot;  
-##  [91] &quot;3.64&quot;   &quot;0.28&quot;   &quot;0.33&quot;   &quot;0.53&quot;   &quot;93.62&quot;  &quot;1.66&quot;   &quot;0.70&quot;   &quot;2.99&quot;   &quot;0.37&quot;   &quot;0.40&quot;   &quot;24.28&quot;</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-strings.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BASE R METHOD (sub by replacing something with nothing)</span></span>
+<span id="cb113-2"><a href="working-with-strings.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">$&#39;</span>,<span class="st">&#39;&#39;</span>,html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>) <span class="co">#(what you&#39;re looking for, replace with, from where)</span></span></code></pre></div>
+<pre><code>##   [1] &quot;0.81&quot;   &quot;31.05&quot;  &quot;2.38&quot;   &quot;2.87&quot;   &quot;0.31&quot;   &quot;116.57&quot; &quot;1.94&quot;   &quot;0.88&quot;   &quot;18.98&quot;  &quot;366.49&quot; &quot;1.53&quot;   &quot;1.61&quot;   &quot;19.46&quot;  &quot;2.39&quot;   &quot;2.60&quot;  
+##  [16] &quot;1.26&quot;   &quot;2.51&quot;   &quot;2.03&quot;   &quot;0.50&quot;   &quot;0.82&quot;   &quot;3.98&quot;   &quot;8.13&quot;   &quot;1.22&quot;   &quot;0.61&quot;   &quot;4.68&quot;   &quot;4.89&quot;   &quot;4.05&quot;   &quot;0.51&quot;   &quot;0.42&quot;   &quot;1.00&quot;  
+##  [31] &quot;0.30&quot;   &quot;0.27&quot;   &quot;0.95&quot;   &quot;0.60&quot;   &quot;0.23&quot;   &quot;1.13&quot;   &quot;0.34&quot;   &quot;20.12&quot;  &quot;1.65&quot;   &quot;15.19&quot;  &quot;2.57&quot;   &quot;8.25&quot;   &quot;2.46&quot;   &quot;0.73&quot;   &quot;2.48&quot;  
+##  [46] &quot;0.91&quot;   &quot;0.48&quot;   &quot;2.02&quot;   &quot;0.32&quot;   &quot;0.76&quot;   &quot;0.31&quot;   &quot;1.58&quot;   &quot;2.12&quot;   &quot;0.48&quot;   &quot;19.98&quot;  &quot;1.90&quot;   &quot;0.96&quot;   &quot;36.50&quot;  &quot;21.05&quot;  &quot;0.37&quot;  
+##  [61] &quot;2.20&quot;   &quot;17.05&quot;  &quot;0.40&quot;   &quot;5.08&quot;   &quot;0.91&quot;   &quot;3.74&quot;   &quot;0.75&quot;   &quot;0.46&quot;   &quot;4.77&quot;   &quot;1.78&quot;   &quot;1.97&quot;   &quot;2.73&quot;   &quot;0.41&quot;   &quot;1.22&quot;   &quot;15.93&quot; 
+##  [76] &quot;0.43&quot;   &quot;2.30&quot;   &quot;0.25&quot;   &quot;1.61&quot;   &quot;0.26&quot;   &quot;29.49&quot;  &quot;2.74&quot;   &quot;0.57&quot;   &quot;2.39&quot;   &quot;0.36&quot;   &quot;5.25&quot;   &quot;1.00&quot;   &quot;4.38&quot;   &quot;0.43&quot;   &quot;0.44&quot;  
+##  [91] &quot;3.05&quot;   &quot;0.25&quot;   &quot;0.37&quot;   &quot;0.53&quot;   &quot;97.23&quot;  &quot;1.65&quot;   &quot;0.71&quot;   &quot;2.85&quot;   &quot;0.31&quot;   &quot;0.51&quot;   &quot;25.36&quot;</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD (just remove)</span></span>
+<span id="cb115-2"><a href="working-with-strings.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
+<pre><code>##   [1] &quot;0.81&quot;   &quot;31.05&quot;  &quot;2.38&quot;   &quot;2.87&quot;   &quot;0.31&quot;   &quot;116.57&quot; &quot;1.94&quot;   &quot;0.88&quot;   &quot;18.98&quot;  &quot;366.49&quot; &quot;1.53&quot;   &quot;1.61&quot;   &quot;19.46&quot;  &quot;2.39&quot;   &quot;2.60&quot;  
+##  [16] &quot;1.26&quot;   &quot;2.51&quot;   &quot;2.03&quot;   &quot;0.50&quot;   &quot;0.82&quot;   &quot;3.98&quot;   &quot;8.13&quot;   &quot;1.22&quot;   &quot;0.61&quot;   &quot;4.68&quot;   &quot;4.89&quot;   &quot;4.05&quot;   &quot;0.51&quot;   &quot;0.42&quot;   &quot;1.00&quot;  
+##  [31] &quot;0.30&quot;   &quot;0.27&quot;   &quot;0.95&quot;   &quot;0.60&quot;   &quot;0.23&quot;   &quot;1.13&quot;   &quot;0.34&quot;   &quot;20.12&quot;  &quot;1.65&quot;   &quot;15.19&quot;  &quot;2.57&quot;   &quot;8.25&quot;   &quot;2.46&quot;   &quot;0.73&quot;   &quot;2.48&quot;  
+##  [46] &quot;0.91&quot;   &quot;0.48&quot;   &quot;2.02&quot;   &quot;0.32&quot;   &quot;0.76&quot;   &quot;0.31&quot;   &quot;1.58&quot;   &quot;2.12&quot;   &quot;0.48&quot;   &quot;19.98&quot;  &quot;1.90&quot;   &quot;0.96&quot;   &quot;36.50&quot;  &quot;21.05&quot;  &quot;0.37&quot;  
+##  [61] &quot;2.20&quot;   &quot;17.05&quot;  &quot;0.40&quot;   &quot;5.08&quot;   &quot;0.91&quot;   &quot;3.74&quot;   &quot;0.75&quot;   &quot;0.46&quot;   &quot;4.77&quot;   &quot;1.78&quot;   &quot;1.97&quot;   &quot;2.73&quot;   &quot;0.41&quot;   &quot;1.22&quot;   &quot;15.93&quot; 
+##  [76] &quot;0.43&quot;   &quot;2.30&quot;   &quot;0.25&quot;   &quot;1.61&quot;   &quot;0.26&quot;   &quot;29.49&quot;  &quot;2.74&quot;   &quot;0.57&quot;   &quot;2.39&quot;   &quot;0.36&quot;   &quot;5.25&quot;   &quot;1.00&quot;   &quot;4.38&quot;   &quot;0.43&quot;   &quot;0.44&quot;  
+##  [91] &quot;3.05&quot;   &quot;0.25&quot;   &quot;0.37&quot;   &quot;0.53&quot;   &quot;97.23&quot;  &quot;1.65&quot;   &quot;0.71&quot;   &quot;2.85&quot;   &quot;0.31&quot;   &quot;0.51&quot;   &quot;25.36&quot;</code></pre>
 </div>
 <div id="replace-one-pattern-in-a-string-with-another" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Replace one pattern in a string with another</h2>
 <p>Tidyverse command: <code>str_replace()</code>
 Base R command: <code>gsub()</code></p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-strings.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-strings.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;hello&quot;</code></pre>
 </div>
 <div id="find-i.e.-filter-for-all-instances-of-a-string" class="section level2" number="7.3">
@@ -478,26 +486,26 @@ Base R command: <code>gsub()</code></p>
 <p>Tidyverse command: <code>str_detect()</code>
 Base R command: <code>grepl()</code></p>
 <p>Note both must be nested inside of <code>filter()</code></p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
-<span id="cb115-2"><a href="working-with-strings.html#cb115-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-3"><a href="working-with-strings.html#cb115-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="working-with-strings.html#cb119-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
+<span id="cb119-2"><a href="working-with-strings.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="working-with-strings.html#cb119-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
 </div>
 <div id="force-all-letters-to-lower-case" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Force all letters to lower case</h2>
 <p>Use <code>str_to_lower()</code></p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="working-with-strings.html#cb116-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
-<span id="cb116-2"><a href="working-with-strings.html#cb116-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
-<span id="cb116-3"><a href="working-with-strings.html#cb116-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
-<span id="cb116-4"><a href="working-with-strings.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-5"><a href="working-with-strings.html#cb116-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="working-with-strings.html#cb120-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
+<span id="cb120-2"><a href="working-with-strings.html#cb120-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
+<span id="cb120-3"><a href="working-with-strings.html#cb120-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
+<span id="cb120-4"><a href="working-with-strings.html#cb120-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-5"><a href="working-with-strings.html#cb120-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   A     B    
 ##   &lt;chr&gt; &lt;chr&gt;
 ## 1 A     X    
 ## 2 A     X</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
-<span id="cb118-2"><a href="working-with-strings.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="working-with-strings.html#cb118-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="working-with-strings.html#cb122-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
+<span id="cb122-2"><a href="working-with-strings.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="working-with-strings.html#cb122-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   A     B    
 ##   &lt;chr&gt; &lt;chr&gt;
@@ -562,6 +570,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

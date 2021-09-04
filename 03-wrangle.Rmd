@@ -68,7 +68,7 @@ print("hello")
 ```
 
 
-## Selecting specific columns/variables
+## Selecting/extracting specific variables
 
 Sometimes when working with a data set, you want to work with a few *specific* variables. For instance, maybe you want to view a graph of only reverse-coded variables (which start with the prefix "r"); or maybe you want to create a subset of your data that has a few specific variables removed. For this you can use `dplyr::select()` and its associated helper commands
 
@@ -120,14 +120,15 @@ Other examples can be seen on [THIS LINK](https://tidyselect.r-lib.org/reference
 
 
 
-## If, If-then, and Case-when
+## If-then and Case-when
 
 ### If-then
 The premise of an if/then or if/else statement is simple: "If condition 1 is satisfied, perform x operation; if not, then do y"
 
 ```{r}
-mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High")) # if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
+mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High"))
 ```
+This line of code effectively says: if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
 
 
 ### Case-when
@@ -146,17 +147,17 @@ My_vector= case_when(
 Example:
 ```{r}
 
-mtcars %>% mutate(test= case_when(cyl==4 ~ "small",
+mtcars %>% mutate(size= case_when(cyl==4 ~ "small",
                                   cyl==6 ~ "medium",
                                   cyl==8 ~ "large")) %>% 
-  select(c(cyl,test))
+  select(c(cyl,size))
 ```
 
 
 
-## Merge or Collapse variables
+## Merging variables
 
-Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this
+Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this.
 
 ```{r}
 example_data=tribble(~A,~B,~C,
@@ -206,14 +207,16 @@ mtcars %>% mutate(across(c(disp:qsec),round,1))
 
 ### Condense multiple rows into a single column (pivot wide to long)
 
-Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas). The original file had every assignment in its own column, but that is a pain when you're trying to analyze sums, patterns, etc. across people and assignment categories.
+Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas), with fake names. 
+
+The command structure is as follows:
 
 ```{r eval=FALSE}
-# general command structure
- pivot_longer( # Transpose lengthwise by:
+
+ pivot_longer( # Transpose LENGTHWISE by....
     cols = everything(), # Taking ALL variable names...
-    names_to="variable", # ...and dumping them into this new variable
-    values_to="missing_count") #...then place their values in this new column
+    names_to="variable", # ...and dumping them into this new variable/column
+    values_to="missing_count") #...and placing their values in this other new column
 ```
 
 **NOTE!!!** Pivoting data from wide to long like this expands the number of rows to make a matrix so that (for example, each student now has as a row for each assignment). Therefore, you can only pivot longways (or wide) **ONCE**, otherwise you will make duplicates. 
@@ -238,7 +241,7 @@ gradebook=gradebook %>%
     names_to="Assignment", # ...and dumping them into this new variable, storing them lengthwise
     values_to="Points") #...then place their values in this new column
 
-gradebook
+gradebook %>% head()
 ```
 
 
@@ -399,8 +402,6 @@ To access and change the names faster via tidyverse, run use `rename()`
 ```{r}
 rm(list=ls()) # clear R's memory
 
-iris %>% rename("Sepal.blaahhhhhh"="Sepal.Length")
-
 iris %>% rename("hurr"="Sepal.Length",
                 "durr"="Sepal.Width",
                 "abcdefgh"="Species")
@@ -415,38 +416,40 @@ This command has two parts to it: the data set, and the function you wish to app
 rename_with(iris, ~ gsub(pattern = ".", replacement = "_", .x, fixed = TRUE))
 ```
 
-The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like a "Find all and replace with" function
+The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like R's version of Find/Replace from Microsoft Word.
 
-The above line thus does the following:
-	1. Checks the column names of the supplied data set (iris) for a specific pattern (pattern= )
-	2. Replaces said pattern with your input (replacement= )
+The above line of code thus does the following:
+	1. First, it checks the column names of the supplied data set (`iris`) for a specific pattern (specified in `pattern=` )
+	2. Then it replaces that pattern with your input in `replacement=`
 
-The great thing about rename_with() is that the .fn (or `~` shortcut) can take ANY function as input. For example, if you want to add a prefix or suffix to columns, you can change the function to:
+The great thing about rename_with() is that the .fn (or `~` for short) can take *ANY* function as input. For example, if you want to **add** an element to the column names rather than replace something, (e.g., a prefix or suffix), you can change the function to:
 
 ```{r}
 rename_with( iris, ~ paste0(.x,  "_text"))
 ```
 
-The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command
+The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command.
 
 
 ***Alternative method to the above***
-This is a second way to do the above. It may appear more simple, but it's also probably not as theoretically consistent with how the packages were made…..it uses the {stringr} package to rename the column names, and {stringr} is typically for editing vectors of strings…..
-…so it works, but it's a little unconventional because you call and edit the column names like they're a vector in a data set
+This is a second way to do the above. It may appear more simple, but it's also probably not as theoretically consistent with how the packages were made…..it uses the `stringr` package to rename the column names, and `stringr` is typically used for editing vectors of strings in a data set.
+
+…so it works, but it's a little unconventional because you call and edit the column names like you would a variable in your data set.
 
 ```{r}
 colnames(iris)=str_replace(colnames(iris), pattern = ".", replacement = "_")
 ```
 
+In short: `rename()` and `rename_with()` are for *renaming* variables, as their names imply. The `str_` verbs from the stringr package are for editing string-based variabels in your data set. Either works though with a little ingenuity.
+
+
 ## Re-order columns in a data set
 
-Use `relocate()` to change column positions, using the same syntax as `select()` to make it easy to move blocks of columns at once.
+Use `relocate()` to change column positions. If you need to move multiple columns at once, this command uses the same syntax as `select()`.
 
 ```{r}
 
 mtcars # notice the column order
-
-mtcars %>% relocate(hp, .before = mpg)
 
 mtcars %>% relocate(hp:wt, .after= am)
 ```
@@ -456,24 +459,49 @@ mtcars %>% relocate(hp:wt, .after= am)
 
 ### Format date-and-time variables appropriate as date objects in R
 
-```{r eval=FALSE}
-part_1$start_date=format(as.POSIXct(part_1$start_date,format='%Y-%m-%d %H:%M:%S'),format='%m/%d/%Y')
+Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass. It requires things to be done in two stages, and very precisely. Particularly in the first stage.
+
+First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.
+
+```{r}
+example_date_data=tibble::tribble(~X1,     ~X2,
+                                  "8/4/2021",  -49.87,
+                                  "8/4/2021",  -13.85,
+                                  "8/3/2021",   -7.45,
+                                  "8/3/2021", -172.71,
+                                  "8/2/2021",   -6.37,
+                                  "8/2/2021",     -25,
+                                  "8/2/2021", -219.68,
+                                  "8/2/2021",  -53.75,
+                                  "8/2/2021",  -29.83,
+                                  "8/2/2021",  -77.06,
+                                  "8/2/2021",  -16.16,
+                                  "8/2/2021", -114.78,
+                                  "8/2/2021",     -50,
+                                  "8/2/2021", -157.64)
+
+
+# Correct formatting
+example_date_data$X1=format(as.POSIXct(example_date_data$X1,format='%m/%d/%y'),format='%Y-%m-%d')
+
+head(as_tibble(example_date_data))
 ```
 
-Note that the 'format' part has to be **EXACTLY** as the format appears in the data. If you have an extra space in there or / instead of - separating the numbers, it will wipe the column out.
+In the code above, note that there are two `format` commands: The first one tells R how the date data is **currently being stored**, while the second at the end tells it how **you want it to be stored.** In this case, we are changing it from the way we would usually hand write a date (e.g., 10/26/1993) to a format commonly recognized and used in Excel and stats software (1993-10-26). *If your column also has times in it, you also need to include that too!*
 
-Can also do the tidyverse way:
+Second, you can now correct the object's structure. You can do this with base R's `as.Date()` or tidyverse's `date()` verbs.
 
-```{r eval=FALSE}
-full_data$start_date=lubridate::date(no_slice$start_date)
+```{r}
+# Correct structure
+example_date_data$X1= lubridate::date(example_date_data$X1) # tidyverse
+
+# Base R version
+# example_date_data$X1=as.Date(example_date_data$X1)
+
+head(as_tibble(example_date_data))
 ```
 
-Or import the column as a Date object with readr:
-```{r eval=FALSE}
-wellsfargo=read_csv(here::here("Data", "wfdata.csv"), col_names = FALSE, 
-                    col_types = cols(X1 = col_date(format = "%m/%d/%Y"))) #format of the data as it is recorded in the .csv file
-```
-
+Notice how the object is now stored as the correct type in the table above.
 
 
 ### Find the difference between two dates/times

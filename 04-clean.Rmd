@@ -58,6 +58,14 @@ y <- c(1,2,3,NA)
 is.na(y) # returns a vector (F F F T)
 ```
 
+You can nest this within a filter command to find all rows where no variable has missing values...
+```{r eval=FALSE}
+starwars %>% filter(across(everything(), ~is.na(.x)))
+```
+
+
+
+
 ## Find the percentage of a variable that is missing
 
 Sometimes necessary to check before conducting an analysis. *This requires my package*, `legaldmlab`

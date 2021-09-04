@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-07-27" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
@@ -308,26 +316,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="functions" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Functions</h2>
 <p>A function is a command that performs a specified operation and returns an output in accordance with that operation.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="functions-loops-and-iterative-programming.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example structure</span></span>
-<span id="cb175-2"><a href="functions-loops-and-iterative-programming.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-3"><a href="functions-loops-and-iterative-programming.html#cb175-3" aria-hidden="true" tabindex="-1"></a>Function_name<span class="ot">=</span><span class="cf">function</span>(argument){</span>
-<span id="cb175-4"><a href="functions-loops-and-iterative-programming.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  Expressions</span>
-<span id="cb175-5"><a href="functions-loops-and-iterative-programming.html#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb175-6"><a href="functions-loops-and-iterative-programming.html#cb175-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="functions-loops-and-iterative-programming.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example structure</span></span>
+<span id="cb179-2"><a href="functions-loops-and-iterative-programming.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="functions-loops-and-iterative-programming.html#cb179-3" aria-hidden="true" tabindex="-1"></a>Function_name<span class="ot">=</span><span class="cf">function</span>(argument){</span>
+<span id="cb179-4"><a href="functions-loops-and-iterative-programming.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  Expressions</span>
+<span id="cb179-5"><a href="functions-loops-and-iterative-programming.html#cb179-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb179-6"><a href="functions-loops-and-iterative-programming.html#cb179-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><em>Argument</em> is your input. It is the thing you want to perform the operation on.</li>
 <li><em>Expressions</em> is the actual operation (or operations) you want to perform on the supplied argument</li>
 <li><em>return</em> tells R to return the result of the Expression to you when done.</li>
 </ul>
 <p><strong>Example.</strong> This function takes an input of numbers in the form of a vector and subtracts two from each.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="functions-loops-and-iterative-programming.html#cb176-1" aria-hidden="true" tabindex="-1"></a>numbers<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">80</span>)</span>
-<span id="cb176-2"><a href="functions-loops-and-iterative-programming.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-3"><a href="functions-loops-and-iterative-programming.html#cb176-3" aria-hidden="true" tabindex="-1"></a>sub_2<span class="ot">=</span><span class="cf">function</span>(vector){</span>
-<span id="cb176-4"><a href="functions-loops-and-iterative-programming.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  result<span class="ot">=</span>vector<span class="dv">-2</span></span>
-<span id="cb176-5"><a href="functions-loops-and-iterative-programming.html#cb176-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb176-6"><a href="functions-loops-and-iterative-programming.html#cb176-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb176-7"><a href="functions-loops-and-iterative-programming.html#cb176-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-8"><a href="functions-loops-and-iterative-programming.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="functions-loops-and-iterative-programming.html#cb180-1" aria-hidden="true" tabindex="-1"></a>numbers<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">80</span>)</span>
+<span id="cb180-2"><a href="functions-loops-and-iterative-programming.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="functions-loops-and-iterative-programming.html#cb180-3" aria-hidden="true" tabindex="-1"></a>sub_2<span class="ot">=</span><span class="cf">function</span>(vector){</span>
+<span id="cb180-4"><a href="functions-loops-and-iterative-programming.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  result<span class="ot">=</span>vector<span class="dv">-2</span></span>
+<span id="cb180-5"><a href="functions-loops-and-iterative-programming.html#cb180-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb180-6"><a href="functions-loops-and-iterative-programming.html#cb180-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb180-7"><a href="functions-loops-and-iterative-programming.html#cb180-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-8"><a href="functions-loops-and-iterative-programming.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(numbers)</span></code></pre></div>
 <pre><code>## [1]  0  8 10 78</code></pre>
 <p>You can literally make a function to do anything you want!</p>
 <p><strong><em>Limitations to your average, everyday functions</em></strong>
@@ -337,20 +345,20 @@ However, there will be times when you want to perform some kind of function to m
 <h2><span class="header-section-number">11.2</span> For-loops</h2>
 <p>A for loop is essentially a function that applies a function or given set of operations iteratively on multiple things at once, and returns an output of many items.</p>
 <p>For example, this code finds the means of every vector/column in a dataset by repeatedly applying the same code over and over to element “i” in the given list:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="functions-loops-and-iterative-programming.html#cb178-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb178-2"><a href="functions-loops-and-iterative-programming.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb178-3"><a href="functions-loops-and-iterative-programming.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb178-4"><a href="functions-loops-and-iterative-programming.html#cb178-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb178-5"><a href="functions-loops-and-iterative-programming.html#cb178-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb178-6"><a href="functions-loops-and-iterative-programming.html#cb178-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb178-7"><a href="functions-loops-and-iterative-programming.html#cb178-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-8"><a href="functions-loops-and-iterative-programming.html#cb178-8" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1.Output. Create the object you want the results of the loop stored in.</span></span>
-<span id="cb178-9"><a href="functions-loops-and-iterative-programming.html#cb178-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-10"><a href="functions-loops-and-iterative-programming.html#cb178-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2.Sequence of operations. &quot;For each item &#39;i&#39; along data frame…&quot;</span></span>
-<span id="cb178-11"><a href="functions-loops-and-iterative-programming.html#cb178-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3.Body:&quot;every individual item in &#39;output&#39; = the median of each col in df</span></span>
-<span id="cb178-12"><a href="functions-loops-and-iterative-programming.html#cb178-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb178-13"><a href="functions-loops-and-iterative-programming.html#cb178-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-14"><a href="functions-loops-and-iterative-programming.html#cb178-14" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="functions-loops-and-iterative-programming.html#cb182-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb182-2"><a href="functions-loops-and-iterative-programming.html#cb182-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb182-3"><a href="functions-loops-and-iterative-programming.html#cb182-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb182-4"><a href="functions-loops-and-iterative-programming.html#cb182-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb182-5"><a href="functions-loops-and-iterative-programming.html#cb182-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb182-6"><a href="functions-loops-and-iterative-programming.html#cb182-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb182-7"><a href="functions-loops-and-iterative-programming.html#cb182-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-8"><a href="functions-loops-and-iterative-programming.html#cb182-8" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1.Output. Create the object you want the results of the loop stored in.</span></span>
+<span id="cb182-9"><a href="functions-loops-and-iterative-programming.html#cb182-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-10"><a href="functions-loops-and-iterative-programming.html#cb182-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2.Sequence of operations. &quot;For each item &#39;i&#39; along data frame…&quot;</span></span>
+<span id="cb182-11"><a href="functions-loops-and-iterative-programming.html#cb182-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3.Body:&quot;every individual item in &#39;output&#39; = the median of each col in df</span></span>
+<span id="cb182-12"><a href="functions-loops-and-iterative-programming.html#cb182-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb182-13"><a href="functions-loops-and-iterative-programming.html#cb182-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-14"><a href="functions-loops-and-iterative-programming.html#cb182-14" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
 <pre><code>## [1]  0.3771802 -0.5176346  0.4171879  0.5704655</code></pre>
 <p>Check out <a href="https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments">this book chapter</a> for a great and detailed explanation of for-loops and functional coding</p>
 <p>Although for loops are nice, they can be somewhat unwieldy. R programmers typically use iterating functions instead!</p>
@@ -367,25 +375,25 @@ However, there will be times when you want to perform some kind of function to m
 <div id="apply-a-single-function-to-every-column-in-a-data-frame" class="section level4" number="11.3.1.1">
 <h4><span class="header-section-number">11.3.1.1</span> Apply a single function to every column in a data frame</h4>
 <p>Pipe the whole data frame to the map command:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="functions-loops-and-iterative-programming.html#cb180-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">map_df</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="functions-loops-and-iterative-programming.html#cb184-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">map_df</span>()</span></code></pre></div>
 </div>
 <div id="apply-a-function-to-every-item-in-a-columnvector" class="section level4" number="11.3.1.2">
 <h4><span class="header-section-number">11.3.1.2</span> Apply a function to every item in a column/vector</h4>
 <p>Pipe the data frame and column/variable, and include the [ ] to index by vector position:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="functions-loops-and-iterative-programming.html#cb181-1" aria-hidden="true" tabindex="-1"></a>BF_output<span class="sc">$</span>Evidence<span class="ot">=</span> BF_output<span class="sc">$</span>BF[] <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(effectsize<span class="sc">::</span>interpret_bf)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="functions-loops-and-iterative-programming.html#cb185-1" aria-hidden="true" tabindex="-1"></a>BF_output<span class="sc">$</span>Evidence<span class="ot">=</span> BF_output<span class="sc">$</span>BF[] <span class="sc">%&gt;%</span> <span class="fu">map_chr</span>(effectsize<span class="sc">::</span>interpret_bf)</span></code></pre></div>
 </div>
 <div id="import-several-files-in-a-directory-at-once-batch-importing" class="section level4" number="11.3.1.3">
 <h4><span class="header-section-number">11.3.1.3</span> Import several files in a directory at once (batch importing)</h4>
 <p><strong>Note.</strong> This reads many .csv files into a SINGLE, unified data frame.
 If you want to import many files at once but keep them separated, you’ll need a different command</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="functions-loops-and-iterative-programming.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first run these commands</span></span>
-<span id="cb182-2"><a href="functions-loops-and-iterative-programming.html#cb182-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span><span class="st">&quot;log dump&quot;</span></span>
-<span id="cb182-3"><a href="functions-loops-and-iterative-programming.html#cb182-3" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir)</span>
-<span id="cb182-4"><a href="functions-loops-and-iterative-programming.html#cb182-4" aria-hidden="true" tabindex="-1"></a>csv_files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir, <span class="at">regexp =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv$&quot;</span>)</span>
-<span id="cb182-5"><a href="functions-loops-and-iterative-programming.html#cb182-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-6"><a href="functions-loops-and-iterative-programming.html#cb182-6" aria-hidden="true" tabindex="-1"></a><span class="co"># then run this</span></span>
-<span id="cb182-7"><a href="functions-loops-and-iterative-programming.html#cb182-7" aria-hidden="true" tabindex="-1"></a>File_name_here<span class="ot">=</span>csv_files <span class="sc">%&gt;%</span> </span>
-<span id="cb182-8"><a href="functions-loops-and-iterative-programming.html#cb182-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(read_csv)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="functions-loops-and-iterative-programming.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first run these commands</span></span>
+<span id="cb186-2"><a href="functions-loops-and-iterative-programming.html#cb186-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span><span class="st">&quot;log dump&quot;</span></span>
+<span id="cb186-3"><a href="functions-loops-and-iterative-programming.html#cb186-3" aria-hidden="true" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir)</span>
+<span id="cb186-4"><a href="functions-loops-and-iterative-programming.html#cb186-4" aria-hidden="true" tabindex="-1"></a>csv_files <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir, <span class="at">regexp =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.csv$&quot;</span>)</span>
+<span id="cb186-5"><a href="functions-loops-and-iterative-programming.html#cb186-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-6"><a href="functions-loops-and-iterative-programming.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="co"># then run this</span></span>
+<span id="cb186-7"><a href="functions-loops-and-iterative-programming.html#cb186-7" aria-hidden="true" tabindex="-1"></a>File_name_here<span class="ot">=</span>csv_files <span class="sc">%&gt;%</span> </span>
+<span id="cb186-8"><a href="functions-loops-and-iterative-programming.html#cb186-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dfr</span>(read_csv)</span></code></pre></div>
 </div>
 </div>
 <div id="walkthrough-case-example" class="section level3" number="11.3.2">
@@ -393,7 +401,7 @@ If you want to import many files at once but keep them separated, you’ll need 
 <p>This is an example walk through showing how we can use <code>purrr</code> to speed things up dramatically and/or reduce the use of unwanted, extra code in our scripts. In this guide I’ll be building a table of LPGA Tour statistics from multiple webpages.</p>
 <p>If I tried to do each table individually, I’d be copying and pasting and re-writing the same code up to <strong>four times</strong> to get each table downloaded, extracted, and formatted the way I want before I could unify them with <code>left_join</code>. By using <code>purrr::map()</code>, we can cut our needed code down by 75%.</p>
 <p>Not only does this mean we have a tidier script, but also, things will be less messy, and we have less chances for error (since we are coding less). And of course, we don’t have the annoyances of redoing multiple sections of code.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="functions-loops-and-iterative-programming.html#cb183-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="functions-loops-and-iterative-programming.html#cb187-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span></code></pre></div>
 <p>The workflow for purrr goes like this:</p>
 <p>First, you want to figure out how to do each step of your process line-by-line, for a single item. The idea is to try and walk through each step of the process and see exactly what will need to be done each each step and what the code will like, <em>before trying to code it all at once at a higher level</em>.</p>
 <p>Once you have each step for the first item figured out, make functions for each step that condense that code down to one command.</p>
@@ -403,23 +411,23 @@ If you want to import many files at once but keep them separated, you’ll need 
 <h3><span class="header-section-number">11.3.3</span> Do for One</h3>
 <div id="scrape-data" class="section level4" number="11.3.3.1">
 <h4><span class="header-section-number">11.3.3.1</span> 1. Scrape data</h4>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="functions-loops-and-iterative-programming.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># line</span></span>
-<span id="cb184-2"><a href="functions-loops-and-iterative-programming.html#cb184-2" aria-hidden="true" tabindex="-1"></a>html1<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb184-3"><a href="functions-loops-and-iterative-programming.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb184-4"><a href="functions-loops-and-iterative-programming.html#cb184-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-5"><a href="functions-loops-and-iterative-programming.html#cb184-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-6"><a href="functions-loops-and-iterative-programming.html#cb184-6" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
-<span id="cb184-7"><a href="functions-loops-and-iterative-programming.html#cb184-7" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
-<span id="cb184-8"><a href="functions-loops-and-iterative-programming.html#cb184-8" aria-hidden="true" tabindex="-1"></a>  url<span class="ot">=</span>url <span class="sc">%&gt;%</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
-<span id="cb184-9"><a href="functions-loops-and-iterative-programming.html#cb184-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb184-10"><a href="functions-loops-and-iterative-programming.html#cb184-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb184-11"><a href="functions-loops-and-iterative-programming.html#cb184-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-12"><a href="functions-loops-and-iterative-programming.html#cb184-12" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">quick_read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="functions-loops-and-iterative-programming.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># line</span></span>
+<span id="cb188-2"><a href="functions-loops-and-iterative-programming.html#cb188-2" aria-hidden="true" tabindex="-1"></a>html1<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb188-3"><a href="functions-loops-and-iterative-programming.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb188-4"><a href="functions-loops-and-iterative-programming.html#cb188-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-5"><a href="functions-loops-and-iterative-programming.html#cb188-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-6"><a href="functions-loops-and-iterative-programming.html#cb188-6" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
+<span id="cb188-7"><a href="functions-loops-and-iterative-programming.html#cb188-7" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
+<span id="cb188-8"><a href="functions-loops-and-iterative-programming.html#cb188-8" aria-hidden="true" tabindex="-1"></a>  url<span class="ot">=</span>url <span class="sc">%&gt;%</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb188-9"><a href="functions-loops-and-iterative-programming.html#cb188-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb188-10"><a href="functions-loops-and-iterative-programming.html#cb188-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb188-11"><a href="functions-loops-and-iterative-programming.html#cb188-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-12"><a href="functions-loops-and-iterative-programming.html#cb188-12" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">quick_read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>)</span></code></pre></div>
 </div>
 <div id="find-out-which-element-of-the-list-the-desired-table-is-in" class="section level4" number="11.3.3.2">
 <h4><span class="header-section-number">11.3.3.2</span> 2. Find out which element of the list the desired table is in</h4>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="functions-loops-and-iterative-programming.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(html1[[<span class="dv">2</span>]])</span></code></pre></div>
-<pre><code>## # A tibble: 169 x 3
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="functions-loops-and-iterative-programming.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(html1[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>## # A tibble: 172 x 3
 ##    X1    X2                   X3      
 ##    &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;   
 ##  1 Rank  Name                 Distance
@@ -432,31 +440,31 @@ If you want to import many files at once but keep them separated, you’ll need 
 ##  8 7     Jessica Korda        275.17  
 ##  9 8     Nanna Koerstz Madsen 274.807 
 ## 10 9     Patty Tavatanakit    274.653 
-## # ... with 159 more rows</code></pre>
+## # ... with 162 more rows</code></pre>
 </div>
 <div id="extract-the-table" class="section level4" number="11.3.3.3">
 <h4><span class="header-section-number">11.3.3.3</span> 3. Extract the table</h4>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="functions-loops-and-iterative-programming.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co">#line</span></span>
-<span id="cb187-2"><a href="functions-loops-and-iterative-programming.html#cb187-2" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span><span class="fu">as_tibble</span>(html1[[<span class="dv">2</span>]])</span>
-<span id="cb187-3"><a href="functions-loops-and-iterative-programming.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-4"><a href="functions-loops-and-iterative-programming.html#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-5"><a href="functions-loops-and-iterative-programming.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function version</span></span>
-<span id="cb187-6"><a href="functions-loops-and-iterative-programming.html#cb187-6" aria-hidden="true" tabindex="-1"></a>extract_tibble<span class="ot">=</span><span class="cf">function</span>(html_list){</span>
-<span id="cb187-7"><a href="functions-loops-and-iterative-programming.html#cb187-7" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span><span class="fu">as_tibble</span>(html_list[[<span class="dv">2</span>]])</span>
-<span id="cb187-8"><a href="functions-loops-and-iterative-programming.html#cb187-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
-<span id="cb187-9"><a href="functions-loops-and-iterative-programming.html#cb187-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb187-10"><a href="functions-loops-and-iterative-programming.html#cb187-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-11"><a href="functions-loops-and-iterative-programming.html#cb187-11" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span><span class="fu">extract_tibble</span>(html1)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="functions-loops-and-iterative-programming.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co">#line</span></span>
+<span id="cb191-2"><a href="functions-loops-and-iterative-programming.html#cb191-2" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span><span class="fu">as_tibble</span>(html1[[<span class="dv">2</span>]])</span>
+<span id="cb191-3"><a href="functions-loops-and-iterative-programming.html#cb191-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-4"><a href="functions-loops-and-iterative-programming.html#cb191-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-5"><a href="functions-loops-and-iterative-programming.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function version</span></span>
+<span id="cb191-6"><a href="functions-loops-and-iterative-programming.html#cb191-6" aria-hidden="true" tabindex="-1"></a>extract_tibble<span class="ot">=</span><span class="cf">function</span>(html_list){</span>
+<span id="cb191-7"><a href="functions-loops-and-iterative-programming.html#cb191-7" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span><span class="fu">as_tibble</span>(html_list[[<span class="dv">2</span>]])</span>
+<span id="cb191-8"><a href="functions-loops-and-iterative-programming.html#cb191-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb191-9"><a href="functions-loops-and-iterative-programming.html#cb191-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb191-10"><a href="functions-loops-and-iterative-programming.html#cb191-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-11"><a href="functions-loops-and-iterative-programming.html#cb191-11" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span><span class="fu">extract_tibble</span>(html1)</span></code></pre></div>
 </div>
 <div id="format-table" class="section level4" number="11.3.3.4">
 <h4><span class="header-section-number">11.3.3.4</span> 4. Format table</h4>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="functions-loops-and-iterative-programming.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co">#line</span></span>
-<span id="cb188-2"><a href="functions-loops-and-iterative-programming.html#cb188-2" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span>table1 <span class="sc">%&gt;%</span> </span>
-<span id="cb188-3"><a href="functions-loops-and-iterative-programming.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
-<span id="cb188-4"><a href="functions-loops-and-iterative-programming.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb188-5"><a href="functions-loops-and-iterative-programming.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb188-6"><a href="functions-loops-and-iterative-programming.html#cb188-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-7"><a href="functions-loops-and-iterative-programming.html#cb188-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table1)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="functions-loops-and-iterative-programming.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co">#line</span></span>
+<span id="cb192-2"><a href="functions-loops-and-iterative-programming.html#cb192-2" aria-hidden="true" tabindex="-1"></a>table1<span class="ot">=</span>table1 <span class="sc">%&gt;%</span> </span>
+<span id="cb192-3"><a href="functions-loops-and-iterative-programming.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb192-4"><a href="functions-loops-and-iterative-programming.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb192-5"><a href="functions-loops-and-iterative-programming.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb192-6"><a href="functions-loops-and-iterative-programming.html#cb192-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-7"><a href="functions-loops-and-iterative-programming.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table1)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   Name               X3     
 ##   &lt;chr&gt;              &lt;chr&gt;  
@@ -466,66 +474,66 @@ If you want to import many files at once but keep them separated, you’ll need 
 ## 4 Lexi Thompson      278.832
 ## 5 Maria Fassi        278.107
 ## 6 Brooke Henderson   275.22</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="functions-loops-and-iterative-programming.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
-<span id="cb190-2"><a href="functions-loops-and-iterative-programming.html#cb190-2" aria-hidden="true" tabindex="-1"></a>test_format<span class="ot">=</span><span class="cf">function</span>(table){</span>
-<span id="cb190-3"><a href="functions-loops-and-iterative-programming.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  table<span class="ot">=</span>table <span class="sc">%&gt;%</span> </span>
-<span id="cb190-4"><a href="functions-loops-and-iterative-programming.html#cb190-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
-<span id="cb190-5"><a href="functions-loops-and-iterative-programming.html#cb190-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb190-6"><a href="functions-loops-and-iterative-programming.html#cb190-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb190-7"><a href="functions-loops-and-iterative-programming.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb190-8"><a href="functions-loops-and-iterative-programming.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb190-9"><a href="functions-loops-and-iterative-programming.html#cb190-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb190-10"><a href="functions-loops-and-iterative-programming.html#cb190-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-11"><a href="functions-loops-and-iterative-programming.html#cb190-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test_format(table1)</span></span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="functions-loops-and-iterative-programming.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function</span></span>
+<span id="cb194-2"><a href="functions-loops-and-iterative-programming.html#cb194-2" aria-hidden="true" tabindex="-1"></a>test_format<span class="ot">=</span><span class="cf">function</span>(table){</span>
+<span id="cb194-3"><a href="functions-loops-and-iterative-programming.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  table<span class="ot">=</span>table <span class="sc">%&gt;%</span> </span>
+<span id="cb194-4"><a href="functions-loops-and-iterative-programming.html#cb194-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb194-5"><a href="functions-loops-and-iterative-programming.html#cb194-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb194-6"><a href="functions-loops-and-iterative-programming.html#cb194-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb194-7"><a href="functions-loops-and-iterative-programming.html#cb194-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb194-8"><a href="functions-loops-and-iterative-programming.html#cb194-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb194-9"><a href="functions-loops-and-iterative-programming.html#cb194-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb194-10"><a href="functions-loops-and-iterative-programming.html#cb194-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-11"><a href="functions-loops-and-iterative-programming.html#cb194-11" aria-hidden="true" tabindex="-1"></a><span class="co"># test_format(table1)</span></span></code></pre></div>
 </div>
 </div>
 <div id="do-for-all" class="section level3" number="11.3.4">
 <h3><span class="header-section-number">11.3.4</span> DO FOR ALL</h3>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="functions-loops-and-iterative-programming.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FUNCTIONS ####</span></span>
-<span id="cb191-2"><a href="functions-loops-and-iterative-programming.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read</span></span>
-<span id="cb191-3"><a href="functions-loops-and-iterative-programming.html#cb191-3" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
-<span id="cb191-4"><a href="functions-loops-and-iterative-programming.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  url<span class="ot">=</span>url <span class="sc">%&gt;%</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
-<span id="cb191-5"><a href="functions-loops-and-iterative-programming.html#cb191-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb191-6"><a href="functions-loops-and-iterative-programming.html#cb191-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb191-7"><a href="functions-loops-and-iterative-programming.html#cb191-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-8"><a href="functions-loops-and-iterative-programming.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract</span></span>
-<span id="cb191-9"><a href="functions-loops-and-iterative-programming.html#cb191-9" aria-hidden="true" tabindex="-1"></a>extract_tibble<span class="ot">=</span><span class="cf">function</span>(html_list){</span>
-<span id="cb191-10"><a href="functions-loops-and-iterative-programming.html#cb191-10" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span><span class="fu">as_tibble</span>(html_list[[<span class="dv">2</span>]])</span>
-<span id="cb191-11"><a href="functions-loops-and-iterative-programming.html#cb191-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
-<span id="cb191-12"><a href="functions-loops-and-iterative-programming.html#cb191-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb191-13"><a href="functions-loops-and-iterative-programming.html#cb191-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-14"><a href="functions-loops-and-iterative-programming.html#cb191-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Format</span></span>
-<span id="cb191-15"><a href="functions-loops-and-iterative-programming.html#cb191-15" aria-hidden="true" tabindex="-1"></a>test_format<span class="ot">=</span><span class="cf">function</span>(table){</span>
-<span id="cb191-16"><a href="functions-loops-and-iterative-programming.html#cb191-16" aria-hidden="true" tabindex="-1"></a>  table<span class="ot">=</span>table <span class="sc">%&gt;%</span> </span>
-<span id="cb191-17"><a href="functions-loops-and-iterative-programming.html#cb191-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-18"><a href="functions-loops-and-iterative-programming.html#cb191-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-19"><a href="functions-loops-and-iterative-programming.html#cb191-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb191-20"><a href="functions-loops-and-iterative-programming.html#cb191-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb191-21"><a href="functions-loops-and-iterative-programming.html#cb191-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
-<span id="cb191-22"><a href="functions-loops-and-iterative-programming.html#cb191-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb191-23"><a href="functions-loops-and-iterative-programming.html#cb191-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-24"><a href="functions-loops-and-iterative-programming.html#cb191-24" aria-hidden="true" tabindex="-1"></a><span class="do">#### GO FOR IT ####</span></span>
-<span id="cb191-25"><a href="functions-loops-and-iterative-programming.html#cb191-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-26"><a href="functions-loops-and-iterative-programming.html#cb191-26" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>,</span>
-<span id="cb191-27"><a href="functions-loops-and-iterative-programming.html#cb191-27" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>,</span>
-<span id="cb191-28"><a href="functions-loops-and-iterative-programming.html#cb191-28" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=06&quot;</span>,</span>
-<span id="cb191-29"><a href="functions-loops-and-iterative-programming.html#cb191-29" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=12&quot;</span>)</span>
-<span id="cb191-30"><a href="functions-loops-and-iterative-programming.html#cb191-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-31"><a href="functions-loops-and-iterative-programming.html#cb191-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-32"><a href="functions-loops-and-iterative-programming.html#cb191-32" aria-hidden="true" tabindex="-1"></a>tables_list<span class="ot">=</span>URLs <span class="sc">%&gt;%</span> </span>
-<span id="cb191-33"><a href="functions-loops-and-iterative-programming.html#cb191-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(quick_read_html) <span class="sc">%&gt;%</span> <span class="co">#read and scrape every URL</span></span>
-<span id="cb191-34"><a href="functions-loops-and-iterative-programming.html#cb191-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(extract_tibble) <span class="sc">%&gt;%</span> <span class="co"># Get rid of the extra list levels</span></span>
-<span id="cb191-35"><a href="functions-loops-and-iterative-programming.html#cb191-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(test_format) <span class="co"># Apply any formatting that would be universal to all of them at once</span></span>
-<span id="cb191-36"><a href="functions-loops-and-iterative-programming.html#cb191-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-37"><a href="functions-loops-and-iterative-programming.html#cb191-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-38"><a href="functions-loops-and-iterative-programming.html#cb191-38" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> tables_list <span class="sc">%&gt;%</span> </span>
-<span id="cb191-39"><a href="functions-loops-and-iterative-programming.html#cb191-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;Name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Combine all list levels into a single tibble, matching by the &quot;Name&quot; column</span></span>
-<span id="cb191-40"><a href="functions-loops-and-iterative-programming.html#cb191-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Avg_Drive&quot;</span><span class="ot">=</span><span class="st">&quot;X3.x&quot;</span>, <span class="st">&quot;Avg_Putts&quot;</span><span class="ot">=</span><span class="st">&quot;X3.y&quot;</span>, <span class="co"># final, non-universal formatting</span></span>
-<span id="cb191-41"><a href="functions-loops-and-iterative-programming.html#cb191-41" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Rounds_Played&quot;</span><span class="ot">=</span><span class="st">&quot;X3.y.y&quot;</span> , <span class="st">&quot;Avg_Score&quot;</span><span class="ot">=</span><span class="st">&quot;X4&quot;</span>, </span>
-<span id="cb191-42"><a href="functions-loops-and-iterative-programming.html#cb191-42" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Greens_Hit&quot;</span><span class="ot">=</span><span class="st">&quot;X3.x.x&quot;</span>)</span>
-<span id="cb191-43"><a href="functions-loops-and-iterative-programming.html#cb191-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb191-44"><a href="functions-loops-and-iterative-programming.html#cb191-44" aria-hidden="true" tabindex="-1"></a><span class="co"># VOILA! </span></span>
-<span id="cb191-45"><a href="functions-loops-and-iterative-programming.html#cb191-45" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="functions-loops-and-iterative-programming.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### FUNCTIONS ####</span></span>
+<span id="cb195-2"><a href="functions-loops-and-iterative-programming.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read</span></span>
+<span id="cb195-3"><a href="functions-loops-and-iterative-programming.html#cb195-3" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
+<span id="cb195-4"><a href="functions-loops-and-iterative-programming.html#cb195-4" aria-hidden="true" tabindex="-1"></a>  url<span class="ot">=</span>url <span class="sc">%&gt;%</span> <span class="fu">read_html</span>(url) <span class="sc">%&gt;%</span></span>
+<span id="cb195-5"><a href="functions-loops-and-iterative-programming.html#cb195-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb195-6"><a href="functions-loops-and-iterative-programming.html#cb195-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb195-7"><a href="functions-loops-and-iterative-programming.html#cb195-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-8"><a href="functions-loops-and-iterative-programming.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract</span></span>
+<span id="cb195-9"><a href="functions-loops-and-iterative-programming.html#cb195-9" aria-hidden="true" tabindex="-1"></a>extract_tibble<span class="ot">=</span><span class="cf">function</span>(html_list){</span>
+<span id="cb195-10"><a href="functions-loops-and-iterative-programming.html#cb195-10" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span><span class="fu">as_tibble</span>(html_list[[<span class="dv">2</span>]])</span>
+<span id="cb195-11"><a href="functions-loops-and-iterative-programming.html#cb195-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb195-12"><a href="functions-loops-and-iterative-programming.html#cb195-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb195-13"><a href="functions-loops-and-iterative-programming.html#cb195-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-14"><a href="functions-loops-and-iterative-programming.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Format</span></span>
+<span id="cb195-15"><a href="functions-loops-and-iterative-programming.html#cb195-15" aria-hidden="true" tabindex="-1"></a>test_format<span class="ot">=</span><span class="cf">function</span>(table){</span>
+<span id="cb195-16"><a href="functions-loops-and-iterative-programming.html#cb195-16" aria-hidden="true" tabindex="-1"></a>  table<span class="ot">=</span>table <span class="sc">%&gt;%</span> </span>
+<span id="cb195-17"><a href="functions-loops-and-iterative-programming.html#cb195-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>X1) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-18"><a href="functions-loops-and-iterative-programming.html#cb195-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="st">&quot;Name&quot;</span><span class="ot">=</span><span class="st">&quot;X2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-19"><a href="functions-loops-and-iterative-programming.html#cb195-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb195-20"><a href="functions-loops-and-iterative-programming.html#cb195-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb195-21"><a href="functions-loops-and-iterative-programming.html#cb195-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(table)</span>
+<span id="cb195-22"><a href="functions-loops-and-iterative-programming.html#cb195-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb195-23"><a href="functions-loops-and-iterative-programming.html#cb195-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-24"><a href="functions-loops-and-iterative-programming.html#cb195-24" aria-hidden="true" tabindex="-1"></a><span class="do">#### GO FOR IT ####</span></span>
+<span id="cb195-25"><a href="functions-loops-and-iterative-programming.html#cb195-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-26"><a href="functions-loops-and-iterative-programming.html#cb195-26" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>,</span>
+<span id="cb195-27"><a href="functions-loops-and-iterative-programming.html#cb195-27" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>,</span>
+<span id="cb195-28"><a href="functions-loops-and-iterative-programming.html#cb195-28" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=06&quot;</span>,</span>
+<span id="cb195-29"><a href="functions-loops-and-iterative-programming.html#cb195-29" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=12&quot;</span>)</span>
+<span id="cb195-30"><a href="functions-loops-and-iterative-programming.html#cb195-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-31"><a href="functions-loops-and-iterative-programming.html#cb195-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-32"><a href="functions-loops-and-iterative-programming.html#cb195-32" aria-hidden="true" tabindex="-1"></a>tables_list<span class="ot">=</span>URLs <span class="sc">%&gt;%</span> </span>
+<span id="cb195-33"><a href="functions-loops-and-iterative-programming.html#cb195-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(quick_read_html) <span class="sc">%&gt;%</span> <span class="co">#read and scrape every URL</span></span>
+<span id="cb195-34"><a href="functions-loops-and-iterative-programming.html#cb195-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(extract_tibble) <span class="sc">%&gt;%</span> <span class="co"># Get rid of the extra list levels</span></span>
+<span id="cb195-35"><a href="functions-loops-and-iterative-programming.html#cb195-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(test_format) <span class="co"># Apply any formatting that would be universal to all of them at once</span></span>
+<span id="cb195-36"><a href="functions-loops-and-iterative-programming.html#cb195-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-37"><a href="functions-loops-and-iterative-programming.html#cb195-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-38"><a href="functions-loops-and-iterative-programming.html#cb195-38" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> tables_list <span class="sc">%&gt;%</span> </span>
+<span id="cb195-39"><a href="functions-loops-and-iterative-programming.html#cb195-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;Name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Combine all list levels into a single tibble, matching by the &quot;Name&quot; column</span></span>
+<span id="cb195-40"><a href="functions-loops-and-iterative-programming.html#cb195-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Avg_Drive&quot;</span><span class="ot">=</span><span class="st">&quot;X3.x&quot;</span>, <span class="st">&quot;Avg_Putts&quot;</span><span class="ot">=</span><span class="st">&quot;X3.y&quot;</span>, <span class="co"># final, non-universal formatting</span></span>
+<span id="cb195-41"><a href="functions-loops-and-iterative-programming.html#cb195-41" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Rounds_Played&quot;</span><span class="ot">=</span><span class="st">&quot;X3.y.y&quot;</span> , <span class="st">&quot;Avg_Score&quot;</span><span class="ot">=</span><span class="st">&quot;X4&quot;</span>, </span>
+<span id="cb195-42"><a href="functions-loops-and-iterative-programming.html#cb195-42" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Greens_Hit&quot;</span><span class="ot">=</span><span class="st">&quot;X3.x.x&quot;</span>)</span>
+<span id="cb195-43"><a href="functions-loops-and-iterative-programming.html#cb195-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb195-44"><a href="functions-loops-and-iterative-programming.html#cb195-44" aria-hidden="true" tabindex="-1"></a><span class="co"># VOILA! </span></span>
+<span id="cb195-45"><a href="functions-loops-and-iterative-programming.html#cb195-45" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 6
 ##   Name               Avg_Drive Avg_Putts Greens_Hit Rounds_Played Avg_Score
 ##   &lt;chr&gt;              &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;         &lt;chr&gt;    
@@ -595,6 +603,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

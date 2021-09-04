@@ -15,14 +15,16 @@ summary(diamonds$cut)
 
 ## Collapse factor levels
 
-fct_collapse(dataset$variable,
-			NewLevelA=c("OldLevel1","Oldlevel2"),
-			NewLevelB=c("OldLevel3"))
-			
-```{r}
-print("temp")
-```
+Extremely useful command for when you have infrequent cases in one factor and need to combine it with another.
 
+Works by specifying a series of new level names, each of which contains the information from the old variables. Format is as follows:
+```{r eval=FALSE}
+
+fct_collapse(dataset$variable,
+			NewLevelA=c("OldLevel1","Oldlevel2"), # NewLevelA is the new variable that contains both variables 1 and 2
+			NewLevelB=c("OldLevel3"))
+```
+			
 
 ## Add levels to a factor
 
@@ -43,7 +45,7 @@ print("temp")
 
 ## Change the order of a factor's levels
 
-```{r chapter_5_end}
+```{r }
 
 example_data=tribble(~person, ~condition,
                      "bob", "25 years",
@@ -54,11 +56,14 @@ example_data=tribble(~person, ~condition,
 example_data$condition=factor(example_data$condition)
 
 str(example_data$condition)
+```
 
-example_data$condition =fct_relevel(example_data$condition, c("5 years", "25 years"))
+Notice that R thinks these are nominal factors, and that 25 comes before 5. To fix this and correct the level order...
+
+```{r chapter_5_end}
+example_data$condition =fct_relevel(example_data$condition, c("5 years", "25 years")) # specify level order
 
 str(example_data$condition)
 ```
-
 
 

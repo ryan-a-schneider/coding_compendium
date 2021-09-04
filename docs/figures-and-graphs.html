@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-07-27" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
@@ -308,14 +316,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are three parts to a ggplot2 call: 1. data 2. aesthetic mapping 3. Layer</p>
 <p>There is no piping involved in ggplot. You simply invoke ggplot, and tell it what they dataset is. Then you specify the aesthetics, and then the mapping. Lastly, include other optional stuff (e.g. expanded y-axis scale; titles and legends; etc.)</p>
 <p>Every single plot has the exact same layout that ONLY USES the above three points:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="figures-and-graphs.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataframe, <span class="fu">aes</span>(graph dimensions and variables used)) <span class="sc">+</span></span>
-<span id="cb120-2"><a href="figures-and-graphs.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_GraphType</span>(specific graph controls)</span>
-<span id="cb120-3"><a href="figures-and-graphs.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-4"><a href="figures-and-graphs.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="do">## OR ##</span></span>
-<span id="cb120-5"><a href="figures-and-graphs.html#cb120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataframe) <span class="sc">+</span></span>
-<span id="cb120-6"><a href="figures-and-graphs.html#cb120-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_GraphType</span>(<span class="fu">aes</span>(graph dimensions and variables used), specific graph controls)</span>
-<span id="cb120-7"><a href="figures-and-graphs.html#cb120-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-8"><a href="figures-and-graphs.html#cb120-8" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping= aes() can go in either spot</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="figures-and-graphs.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataframe, <span class="fu">aes</span>(graph dimensions and variables used)) <span class="sc">+</span></span>
+<span id="cb124-2"><a href="figures-and-graphs.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_GraphType</span>(specific graph controls)</span>
+<span id="cb124-3"><a href="figures-and-graphs.html#cb124-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-4"><a href="figures-and-graphs.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="do">## OR ##</span></span>
+<span id="cb124-5"><a href="figures-and-graphs.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataframe) <span class="sc">+</span></span>
+<span id="cb124-6"><a href="figures-and-graphs.html#cb124-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_GraphType</span>(<span class="fu">aes</span>(graph dimensions and variables used), specific graph controls)</span>
+<span id="cb124-7"><a href="figures-and-graphs.html#cb124-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-8"><a href="figures-and-graphs.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="co"># mapping= aes() can go in either spot</span></span></code></pre></div>
 <p>Then if you have other stuff you want to add on top of this, like axis labels, annotations, highlights, etc., you keep adding those in separate lines</p>
 <div id="commands-for-graph-types" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Commands for graph types</h2>
@@ -359,50 +367,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Note that bar and column graphs look identical at first glance, but they serve two different purposes.</p>
 <p><em>Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data</em></p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="figures-and-graphs.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># heihgt of bars is a frequency count of each level of the X variable cut</span></span>
-<span id="cb121-2"><a href="figures-and-graphs.html#cb121-2" aria-hidden="true" tabindex="-1"></a>bar_plot<span class="ot">=</span><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x=</span>cut)) <span class="sc">+</span> </span>
-<span id="cb121-3"><a href="figures-and-graphs.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
-<span id="cb121-4"><a href="figures-and-graphs.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb121-5"><a href="figures-and-graphs.html#cb121-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-6"><a href="figures-and-graphs.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="co"># height of bars represents relationship between price and cut</span></span>
-<span id="cb121-7"><a href="figures-and-graphs.html#cb121-7" aria-hidden="true" tabindex="-1"></a>col_plot<span class="ot">=</span><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
-<span id="cb121-8"><a href="figures-and-graphs.html#cb121-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
-<span id="cb121-9"><a href="figures-and-graphs.html#cb121-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb121-10"><a href="figures-and-graphs.html#cb121-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-11"><a href="figures-and-graphs.html#cb121-11" aria-hidden="true" tabindex="-1"></a>see<span class="sc">::</span><span class="fu">plots</span>(bar_plot, col_plot, <span class="at">n_columns =</span> <span class="dv">2</span>, <span class="at">tags =</span> <span class="fu">c</span>(<span class="st">&quot;Bar&quot;</span>, <span class="st">&quot;Column&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="figures-and-graphs.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BAR GRAPH</span></span>
+<span id="cb125-2"><a href="figures-and-graphs.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="co"># height of bars is a frequency count of each level of the X variable cut</span></span>
+<span id="cb125-3"><a href="figures-and-graphs.html#cb125-3" aria-hidden="true" tabindex="-1"></a>bar_plot<span class="ot">=</span><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x=</span>cut)) <span class="sc">+</span> </span>
+<span id="cb125-4"><a href="figures-and-graphs.html#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()<span class="sc">+</span></span>
+<span id="cb125-5"><a href="figures-and-graphs.html#cb125-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb125-6"><a href="figures-and-graphs.html#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="figures-and-graphs.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="co"># COLUMN GRAPH</span></span>
+<span id="cb125-8"><a href="figures-and-graphs.html#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="co"># height of bars represents relationship between price and cut</span></span>
+<span id="cb125-9"><a href="figures-and-graphs.html#cb125-9" aria-hidden="true" tabindex="-1"></a>col_plot<span class="ot">=</span><span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(<span class="at">x=</span>cut, <span class="at">y=</span>price)) <span class="sc">+</span> </span>
+<span id="cb125-10"><a href="figures-and-graphs.html#cb125-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb125-11"><a href="figures-and-graphs.html#cb125-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb125-12"><a href="figures-and-graphs.html#cb125-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-13"><a href="figures-and-graphs.html#cb125-13" aria-hidden="true" tabindex="-1"></a>see<span class="sc">::</span><span class="fu">plots</span>(bar_plot, col_plot, <span class="at">n_columns =</span> <span class="dv">2</span>, <span class="at">tags =</span> <span class="fu">c</span>(<span class="st">&quot;Bar&quot;</span>, <span class="st">&quot;Column&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 </div>
 <div id="highlight-specific-points" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> Highlight specific points</h2>
 <p>The <code>gghighlight</code> package is great for this</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="figures-and-graphs.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 1</span></span>
-<span id="cb122-2"><a href="figures-and-graphs.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
-<span id="cb122-3"><a href="figures-and-graphs.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb122-4"><a href="figures-and-graphs.html#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb122-5"><a href="figures-and-graphs.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">label =</span> hp))<span class="sc">+</span> <span class="co"># add data labels (optional)</span></span>
-<span id="cb122-6"><a href="figures-and-graphs.html#cb122-6" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>(hp <span class="sc">&gt;</span> <span class="dv">200</span>) <span class="co"># add highlights, according to some criteria</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="figures-and-graphs.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2</span></span>
-<span id="cb123-2"><a href="figures-and-graphs.html#cb123-2" aria-hidden="true" tabindex="-1"></a>diamonds_abr<span class="ot">=</span>diamonds <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
-<span id="cb123-3"><a href="figures-and-graphs.html#cb123-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-4"><a href="figures-and-graphs.html#cb123-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds_abr, <span class="fu">aes</span>(<span class="at">x=</span> cut, <span class="at">y=</span> price, <span class="at">colour=</span>price))<span class="sc">+</span></span>
-<span id="cb123-5"><a href="figures-and-graphs.html#cb123-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb123-6"><a href="figures-and-graphs.html#cb123-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb123-7"><a href="figures-and-graphs.html#cb123-7" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> diamonds_abr, <span class="fu">aes</span>(<span class="at">label =</span> price))<span class="sc">+</span> <span class="co"># this line labels</span></span>
-<span id="cb123-8"><a href="figures-and-graphs.html#cb123-8" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>(cut <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Very Good&quot;</span>, <span class="st">&quot;Ideal&quot;</span>)) <span class="co">#this line highlights</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="figures-and-graphs.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 1</span></span>
+<span id="cb126-2"><a href="figures-and-graphs.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
+<span id="cb126-3"><a href="figures-and-graphs.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb126-4"><a href="figures-and-graphs.html#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb126-5"><a href="figures-and-graphs.html#cb126-5" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">label =</span> hp))<span class="sc">+</span> <span class="co"># add data labels (optional)</span></span>
+<span id="cb126-6"><a href="figures-and-graphs.html#cb126-6" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>(hp <span class="sc">&gt;</span> <span class="dv">200</span>) <span class="co"># add highlights, according to some criteria</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="figures-and-graphs.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2</span></span>
+<span id="cb127-2"><a href="figures-and-graphs.html#cb127-2" aria-hidden="true" tabindex="-1"></a>diamonds_abr<span class="ot">=</span>diamonds <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
+<span id="cb127-3"><a href="figures-and-graphs.html#cb127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-4"><a href="figures-and-graphs.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamonds_abr, <span class="fu">aes</span>(<span class="at">x=</span> cut, <span class="at">y=</span> price, <span class="at">colour=</span>price))<span class="sc">+</span></span>
+<span id="cb127-5"><a href="figures-and-graphs.html#cb127-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb127-6"><a href="figures-and-graphs.html#cb127-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb127-7"><a href="figures-and-graphs.html#cb127-7" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> diamonds_abr, <span class="fu">aes</span>(<span class="at">label =</span> price))<span class="sc">+</span> <span class="co"># this line labels</span></span>
+<span id="cb127-8"><a href="figures-and-graphs.html#cb127-8" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>(cut <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Very Good&quot;</span>, <span class="st">&quot;Ideal&quot;</span>)) <span class="co">#this line highlights</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-42-2.png" width="672" /></p>
 </div>
 <div id="add-labels-to-data-points" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Add labels to data points</h2>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="figures-and-graphs.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
-<span id="cb124-2"><a href="figures-and-graphs.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb124-3"><a href="figures-and-graphs.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
-<span id="cb124-4"><a href="figures-and-graphs.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">label =</span> hp))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="figures-and-graphs.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
-<span id="cb125-2"><a href="figures-and-graphs.html#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>hp, <span class="at">hjust=</span><span class="fl">2.5</span>, <span class="at">vjust=</span><span class="fl">2.5</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="figures-and-graphs.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">comma</span>(n)), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">nudge_y =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="figures-and-graphs.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
+<span id="cb128-2"><a href="figures-and-graphs.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb128-3"><a href="figures-and-graphs.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb128-4"><a href="figures-and-graphs.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">label =</span> hp))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="figures-and-graphs.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
+<span id="cb129-2"><a href="figures-and-graphs.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>hp, <span class="at">hjust=</span><span class="fl">2.5</span>, <span class="at">vjust=</span><span class="fl">2.5</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="figures-and-graphs.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">comma</span>(n)), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">nudge_y =</span> <span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## mapping: label = ~scales::comma(n) 
 ## geom_label: parse = FALSE, label.padding = 0.25, label.r = 0.15, label.size = 0.25, na.rm = FALSE
 ## stat_identity: na.rm = FALSE
@@ -411,61 +421,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-multiple-graphs-at-once" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Plotting multiple graphs at once</h2>
 <p><code>see::plots()</code> is good for this.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="figures-and-graphs.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="figures-and-graphs.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;temp&quot;</code></pre>
 </div>
 <div id="change-the-colors-bars-columns-dots-etc." class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Change the colors (bars; columns; dots; etc.)</h2>
 <p>This can be done in at least two different ways, depending on your goal.</p>
 <p>If you want to <em>add color and make all of the (bars; dots; lines; etc.) the same color</em>, than that is a graph-wide control and needs to be put in <code>geom_point()</code>. This manually sets the color for the whole graph.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="figures-and-graphs.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a color scale to the dots</span></span>
-<span id="cb130-2"><a href="figures-and-graphs.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
-<span id="cb130-3"><a href="figures-and-graphs.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="figures-and-graphs.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a color scale to the dots</span></span>
+<span id="cb134-2"><a href="figures-and-graphs.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
+<span id="cb134-3"><a href="figures-and-graphs.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>If you want to add color that changes according to a variable (e.g., by factor level), then the color needs to be specified <strong>as a variable name</strong>, in the aes mapping with the other variables.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="figures-and-graphs.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">color=</span>cyl))<span class="sc">+</span></span>
-<span id="cb131-2"><a href="figures-and-graphs.html#cb131-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="figures-and-graphs.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">color=</span>cyl))<span class="sc">+</span></span>
+<span id="cb135-2"><a href="figures-and-graphs.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <div id="fine-tuning-colors" class="section level3" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> Fine-tuning colors</h3>
 <p>You can change the spectrum of colors to specific colors if you want. Useful for example, when making graphs for APLS presentations; you can change the colors to be Montclair State University themed.</p>
 <p>The two commands for this are EITHER <code>scale_fill_manual()</code> or <code>scale_color_manual()</code>: Use <em>the former for box, bar, violin, etc. plots</em>; and the latter for <em>line and plot graphs</em></p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="figures-and-graphs.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set colors manually</span></span>
-<span id="cb132-2"><a href="figures-and-graphs.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
-<span id="cb132-3"><a href="figures-and-graphs.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb132-4"><a href="figures-and-graphs.html#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="figures-and-graphs.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">color=</span><span class="fu">as.factor</span>(cyl)))<span class="sc">+</span></span>
-<span id="cb133-2"><a href="figures-and-graphs.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb133-3"><a href="figures-and-graphs.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="figures-and-graphs.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use color scales from a package</span></span>
-<span id="cb134-2"><a href="figures-and-graphs.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gameofthrones)</span>
-<span id="cb134-3"><a href="figures-and-graphs.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTICE</span><span class="co"> THAT scale_fill AND scale_color STILL APPLY TO THEIR RESPECTIVE GRAPH TYPES</span></span>
-<span id="cb134-4"><a href="figures-and-graphs.html#cb134-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb134-5"><a href="figures-and-graphs.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co"># bar graphs</span></span>
-<span id="cb134-6"><a href="figures-and-graphs.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
-<span id="cb134-7"><a href="figures-and-graphs.html#cb134-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb134-8"><a href="figures-and-graphs.html#cb134-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_got</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>, <span class="at">option =</span> <span class="st">&quot;Tully&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-3.png" width="672" /></p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="figures-and-graphs.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(cyl), <span class="at">fill=</span><span class="fu">factor</span>(vs)))<span class="sc">+</span></span>
-<span id="cb135-2"><a href="figures-and-graphs.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb135-3"><a href="figures-and-graphs.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_got</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>, <span class="at">option =</span> <span class="st">&quot;Daenerys&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-4.png" width="672" /></p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="figures-and-graphs.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot graph</span></span>
-<span id="cb136-2"><a href="figures-and-graphs.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> disp, <span class="at">colour =</span> hp))<span class="sc">+</span></span>
-<span id="cb136-3"><a href="figures-and-graphs.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb136-4"><a href="figures-and-graphs.html#cb136-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_got</span>(<span class="at">option =</span> <span class="st">&quot;Lannister&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-5.png" width="672" /></p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="figures-and-graphs.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set colors manually</span></span>
+<span id="cb136-2"><a href="figures-and-graphs.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
+<span id="cb136-3"><a href="figures-and-graphs.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb136-4"><a href="figures-and-graphs.html#cb136-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="figures-and-graphs.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">color=</span><span class="fu">as.factor</span>(cyl)))<span class="sc">+</span></span>
+<span id="cb137-2"><a href="figures-and-graphs.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb137-3"><a href="figures-and-graphs.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="figures-and-graphs.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use color scales from a package</span></span>
+<span id="cb138-2"><a href="figures-and-graphs.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gameofthrones)</span>
+<span id="cb138-3"><a href="figures-and-graphs.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTICE</span><span class="co"> THAT scale_fill AND scale_color STILL APPLY TO THEIR RESPECTIVE GRAPH TYPES</span></span>
+<span id="cb138-4"><a href="figures-and-graphs.html#cb138-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-5"><a href="figures-and-graphs.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="co"># bar graphs</span></span>
+<span id="cb138-6"><a href="figures-and-graphs.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
+<span id="cb138-7"><a href="figures-and-graphs.html#cb138-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb138-8"><a href="figures-and-graphs.html#cb138-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_got</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>, <span class="at">option =</span> <span class="st">&quot;Tully&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-3.png" width="672" /></p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="figures-and-graphs.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(cyl), <span class="at">fill=</span><span class="fu">factor</span>(vs)))<span class="sc">+</span></span>
+<span id="cb139-2"><a href="figures-and-graphs.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb139-3"><a href="figures-and-graphs.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_got</span>(<span class="at">discrete =</span> <span class="cn">TRUE</span>, <span class="at">option =</span> <span class="st">&quot;Daenerys&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-4.png" width="672" /></p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="figures-and-graphs.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot graph</span></span>
+<span id="cb140-2"><a href="figures-and-graphs.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> disp, <span class="at">colour =</span> hp))<span class="sc">+</span></span>
+<span id="cb140-3"><a href="figures-and-graphs.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb140-4"><a href="figures-and-graphs.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_got</span>(<span class="at">option =</span> <span class="st">&quot;Lannister&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-5.png" width="672" /></p>
 <p>“Fill” graphs also come with an extra option: Setting the outline color. You can change the outline of the bar/column/etc. by specifying the color inside <code>geom_()</code></p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="figures-and-graphs.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change only the fill of the bars</span></span>
-<span id="cb137-2"><a href="figures-and-graphs.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
-<span id="cb137-3"><a href="figures-and-graphs.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="figures-and-graphs.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the outline of the bars by adding color inside the geom_bar() command</span></span>
-<span id="cb138-2"><a href="figures-and-graphs.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
-<span id="cb138-3"><a href="figures-and-graphs.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-2.png" width="672" /></p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="figures-and-graphs.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change only the fill of the bars</span></span>
+<span id="cb141-2"><a href="figures-and-graphs.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
+<span id="cb141-3"><a href="figures-and-graphs.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="figures-and-graphs.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the outline of the bars by adding color inside the geom_bar() command</span></span>
+<span id="cb142-2"><a href="figures-and-graphs.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="fu">factor</span>(gear), <span class="at">fill=</span><span class="fu">factor</span>(carb)))<span class="sc">+</span></span>
+<span id="cb142-3"><a href="figures-and-graphs.html#cb142-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-2.png" width="672" /></p>
 </div>
 <div id="more-options" class="section level3" number="8.5.2">
 <h3><span class="header-section-number">8.5.2</span> More options</h3>
@@ -478,88 +488,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <code>alpha()</code> controls transparency
 <code>size()</code> controls size</p>
 <p>Note again that if you want it to change by variable, it goes <strong>INSIDE</strong> <code>aes()</code>; but if you want to set it manually for the whole graph, it goes in <code>geom_x()</code></p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="figures-and-graphs.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shape</span></span>
-<span id="cb139-2"><a href="figures-and-graphs.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">shape=</span><span class="fu">as.factor</span>(cyl)))<span class="sc">+</span></span>
-<span id="cb139-3"><a href="figures-and-graphs.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="figures-and-graphs.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
-<span id="cb140-2"><a href="figures-and-graphs.html#cb140-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">23</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-2.png" width="672" /></p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="figures-and-graphs.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transparency</span></span>
-<span id="cb141-2"><a href="figures-and-graphs.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">alpha=</span>hp))<span class="sc">+</span></span>
-<span id="cb141-3"><a href="figures-and-graphs.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-3.png" width="672" /></p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="figures-and-graphs.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># size</span></span>
-<span id="cb142-2"><a href="figures-and-graphs.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">size=</span>cyl))<span class="sc">+</span></span>
-<span id="cb142-3"><a href="figures-and-graphs.html#cb142-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-4.png" width="672" /></p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="figures-and-graphs.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shape</span></span>
+<span id="cb143-2"><a href="figures-and-graphs.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">shape=</span><span class="fu">as.factor</span>(cyl)))<span class="sc">+</span></span>
+<span id="cb143-3"><a href="figures-and-graphs.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="figures-and-graphs.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp))<span class="sc">+</span></span>
+<span id="cb144-2"><a href="figures-and-graphs.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">23</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-49-2.png" width="672" /></p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="figures-and-graphs.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transparency</span></span>
+<span id="cb145-2"><a href="figures-and-graphs.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">alpha=</span>hp))<span class="sc">+</span></span>
+<span id="cb145-3"><a href="figures-and-graphs.html#cb145-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="figures-and-graphs.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># size</span></span>
+<span id="cb146-2"><a href="figures-and-graphs.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">size=</span>cyl))<span class="sc">+</span></span>
+<span id="cb146-3"><a href="figures-and-graphs.html#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-49-4.png" width="672" /></p>
 </div>
 <div id="adding-and-customizing-text" class="section level2" number="8.7">
 <h2><span class="header-section-number">8.7</span> Adding and Customizing Text</h2>
 <div id="add-a-title-axis-labels-and-captions" class="section level3" number="8.7.1">
 <h3><span class="header-section-number">8.7.1</span> Add a title, axis labels, and captions</h3>
 <p>Titles and axis labels are added via <code>labs()</code>.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="figures-and-graphs.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
-<span id="cb143-2"><a href="figures-and-graphs.html#cb143-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
-<span id="cb143-3"><a href="figures-and-graphs.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
-<span id="cb143-4"><a href="figures-and-graphs.html#cb143-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
-<span id="cb143-5"><a href="figures-and-graphs.html#cb143-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="figures-and-graphs.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
+<span id="cb147-2"><a href="figures-and-graphs.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
+<span id="cb147-3"><a href="figures-and-graphs.html#cb147-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
+<span id="cb147-4"><a href="figures-and-graphs.html#cb147-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
+<span id="cb147-5"><a href="figures-and-graphs.html#cb147-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 </div>
 <div id="center-graph-title" class="section level3" number="8.7.2">
 <h3><span class="header-section-number">8.7.2</span> Center graph title</h3>
 <p>Add the line <code>theme(plot.title = element_text(hjust = 0.5))</code></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="figures-and-graphs.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
-<span id="cb144-2"><a href="figures-and-graphs.html#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
-<span id="cb144-3"><a href="figures-and-graphs.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
-<span id="cb144-4"><a href="figures-and-graphs.html#cb144-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
-<span id="cb144-5"><a href="figures-and-graphs.html#cb144-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)<span class="sc">+</span></span>
-<span id="cb144-6"><a href="figures-and-graphs.html#cb144-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="figures-and-graphs.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
+<span id="cb148-2"><a href="figures-and-graphs.html#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
+<span id="cb148-3"><a href="figures-and-graphs.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
+<span id="cb148-4"><a href="figures-and-graphs.html#cb148-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
+<span id="cb148-5"><a href="figures-and-graphs.html#cb148-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)<span class="sc">+</span></span>
+<span id="cb148-6"><a href="figures-and-graphs.html#cb148-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 </div>
 <div id="use-different-fonts" class="section level3" number="8.7.3">
 <h3><span class="header-section-number">8.7.3</span> Use different fonts</h3>
 <p>See tutorial on <a href="https://www-r--bloggers-com.cdn.ampproject.org/v/s/www.r-bloggers.com/2021/07/using-different-fonts-with-ggplot2/amp/?amp_gsa=1&amp;amp_js_v=a6&amp;usqp=mq331AQIKAGwASCAAgM%3D#amp_tf=From%20%251%24s&amp;aoh=16259111950507&amp;csi=0&amp;referrer=https%3A%2F%2Fwww.google.com&amp;ampshare=https%3A%2F%2Fwww.r-bloggers.com%2F2021%2F07%2Fusing-different-fonts-with-ggplot2%2F">this web page</a></p>
 <p>Or, use the <code>extrafont</code> package, and set everything using the <code>theme()</code> command.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="figures-and-graphs.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize new groups</span></span>
-<span id="cb145-2"><a href="figures-and-graphs.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
-<span id="cb145-3"><a href="figures-and-graphs.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="fu">loadfonts</span>(<span class="at">device=</span><span class="st">&quot;win&quot;</span>)</span>
-<span id="cb145-4"><a href="figures-and-graphs.html#cb145-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb145-5"><a href="figures-and-graphs.html#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
-<span id="cb145-6"><a href="figures-and-graphs.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
-<span id="cb145-7"><a href="figures-and-graphs.html#cb145-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
-<span id="cb145-8"><a href="figures-and-graphs.html#cb145-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
-<span id="cb145-9"><a href="figures-and-graphs.html#cb145-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)<span class="sc">+</span></span>
-<span id="cb145-10"><a href="figures-and-graphs.html#cb145-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
-<span id="cb145-11"><a href="figures-and-graphs.html#cb145-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb145-12"><a href="figures-and-graphs.html#cb145-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>),</span>
-<span id="cb145-13"><a href="figures-and-graphs.html#cb145-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Calibri&quot;</span>, <span class="at">size =</span> <span class="dv">9</span>),</span>
-<span id="cb145-14"><a href="figures-and-graphs.html#cb145-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>))</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="figures-and-graphs.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize new groups</span></span>
+<span id="cb149-2"><a href="figures-and-graphs.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extrafont)</span>
+<span id="cb149-3"><a href="figures-and-graphs.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="fu">loadfonts</span>(<span class="at">device=</span><span class="st">&quot;win&quot;</span>)</span>
+<span id="cb149-4"><a href="figures-and-graphs.html#cb149-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb149-5"><a href="figures-and-graphs.html#cb149-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
+<span id="cb149-6"><a href="figures-and-graphs.html#cb149-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
+<span id="cb149-7"><a href="figures-and-graphs.html#cb149-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
+<span id="cb149-8"><a href="figures-and-graphs.html#cb149-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
+<span id="cb149-9"><a href="figures-and-graphs.html#cb149-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)<span class="sc">+</span></span>
+<span id="cb149-10"><a href="figures-and-graphs.html#cb149-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb149-11"><a href="figures-and-graphs.html#cb149-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb149-12"><a href="figures-and-graphs.html#cb149-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>),</span>
+<span id="cb149-13"><a href="figures-and-graphs.html#cb149-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Calibri&quot;</span>, <span class="at">size =</span> <span class="dv">9</span>),</span>
+<span id="cb149-14"><a href="figures-and-graphs.html#cb149-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 </div>
 <div id="remove-gridlines" class="section level2" number="8.8">
 <h2><span class="header-section-number">8.8</span> Remove gridlines</h2>
 <p>Add <code>theme(panel.grid = element_blank())</code></p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="figures-and-graphs.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
-<span id="cb146-2"><a href="figures-and-graphs.html#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
-<span id="cb146-3"><a href="figures-and-graphs.html#cb146-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
-<span id="cb146-4"><a href="figures-and-graphs.html#cb146-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
-<span id="cb146-5"><a href="figures-and-graphs.html#cb146-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)<span class="sc">+</span></span>
-<span id="cb146-6"><a href="figures-and-graphs.html#cb146-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
-<span id="cb146-7"><a href="figures-and-graphs.html#cb146-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb146-8"><a href="figures-and-graphs.html#cb146-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>),</span>
-<span id="cb146-9"><a href="figures-and-graphs.html#cb146-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Calibri&quot;</span>, <span class="at">size =</span> <span class="dv">9</span>),</span>
-<span id="cb146-10"><a href="figures-and-graphs.html#cb146-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>))<span class="sc">+</span></span>
-<span id="cb146-11"><a href="figures-and-graphs.html#cb146-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="figures-and-graphs.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
+<span id="cb150-2"><a href="figures-and-graphs.html#cb150-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">colour=</span><span class="st">&quot;gray&quot;</span>, <span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>)<span class="sc">+</span></span>
+<span id="cb150-3"><a href="figures-and-graphs.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Ages of Survey Respondants by Group&quot;</span>,</span>
+<span id="cb150-4"><a href="figures-and-graphs.html#cb150-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Age Group&quot;</span>,</span>
+<span id="cb150-5"><a href="figures-and-graphs.html#cb150-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption=</span><span class="st">&quot;Note. Younger= ages 11-29; Older= ages 30-86.&quot;</span>)<span class="sc">+</span></span>
+<span id="cb150-6"><a href="figures-and-graphs.html#cb150-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb150-7"><a href="figures-and-graphs.html#cb150-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb150-8"><a href="figures-and-graphs.html#cb150-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>),</span>
+<span id="cb150-9"><a href="figures-and-graphs.html#cb150-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;italic&quot;</span>, <span class="at">family =</span> <span class="st">&quot;Calibri&quot;</span>, <span class="at">size =</span> <span class="dv">9</span>),</span>
+<span id="cb150-10"><a href="figures-and-graphs.html#cb150-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>,<span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">&quot;Courier New&quot;</span>))<span class="sc">+</span></span>
+<span id="cb150-11"><a href="figures-and-graphs.html#cb150-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 </div>
 <div id="faceting" class="section level2" number="8.9">
 <h2><span class="header-section-number">8.9</span> Faceting</h2>
 <p>This is dividing one plot into subplots, in order to communicate relationships better.
 Again, this is just a single extra command, this time at the end of the code: facet_wrap(~columnhead)
 The tilde sign in R means “by”, as in “divide (something) by this”</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="figures-and-graphs.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="figures-and-graphs.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
 <p>This line produces a graph of population and life expectency, breaking it down to make a separate graph per each continent</p>
 </div>
 <div id="log-transformations" class="section level2" number="8.10">
@@ -567,21 +577,21 @@ The tilde sign in R means “by”, as in “divide (something) by this”</p>
 <p>Sometimes when your data is really squished together on a graph it is hard to read. In this case, log transformations are really helpful, to change the scale of the data.</p>
 <p>For example, by multiplying all your points by 10x</p>
 <p>To create a log transformation of the same scatter plot above, add one extra bit: scale_x_log10()</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="figures-and-graphs.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="figures-and-graphs.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
 <p>You can also make both axis be logged by adding +scale again for y</p>
 </div>
 <div id="changing-the-scale-of-the-axis" class="section level2" number="8.11">
 <h2><span class="header-section-number">8.11</span> Changing the scale of the axis</h2>
 <p>Add <code>coord_cartesian(xlim = c(lower,upper))</code></p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="figures-and-graphs.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="figures-and-graphs.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;temp&quot;</code></pre>
 </div>
 <div id="add-a-regression-line" class="section level2" number="8.12">
 <h2><span class="header-section-number">8.12</span> Add a regression line</h2>
 <p>Add the line <code>geom_smooth(method = "lm", formula = y ~ x)</code></p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="figures-and-graphs.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">color=</span>mpg))<span class="sc">+</span></span>
-<span id="cb151-2"><a href="figures-and-graphs.html#cb151-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb151-3"><a href="figures-and-graphs.html#cb151-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="figures-and-graphs.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x=</span> mpg, <span class="at">y=</span>hp, <span class="at">color=</span>mpg))<span class="sc">+</span></span>
+<span id="cb155-2"><a href="figures-and-graphs.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb155-3"><a href="figures-and-graphs.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> x)</span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/chapter_7_end-1.png" width="672" /></p>
 
 </div>
@@ -642,6 +652,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

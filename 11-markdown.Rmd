@@ -1,1 +1,74 @@
 # Intro to R Markdown
+
+R Markdown is a better and more organized way to write scripts. Seriously, once you learn it, there's no going back. New and don't know where to start? Read [The R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/conceptual-overview.html). Amazing overview with tons of neat tricks and how-to's. [This other source](https://rmd4sci.njtierney.com/using-rmarkdown.html#the-anatomy-of-an-rmarkdown-document) may also be of some help.
+
+Below are some quick tips for common tasks; but be sure to read the Cookbook above.
+
+## Important code chunk options
+
+```{r}
+knitr::include_graphics("pics", "markdown_stuff.png")
+```
+
+
+## Writing math equations and symbols
+
+### Greek symbols
+
+A few notes first:
+Math notation is done with dollar signs and forward slashes...
+
+For Greek letters, just type the name of the letter:
+`$\mu$` for $\mu$
+`$\sigma$` for $\sigma$
+`$\alpha$` for $\alpha$
+`$\pi$` for $\pi$
+`$\rho$` for $\rho$
+
+### Math notation
+
+`$\pm$` for ±
+`$\ge$` for ≥
+`$\le$` for ≤
+`$\neq$` for ≠
+
+### Statistics notation
+
+
+## Including graphics/inserting pictures
+
+The default method doesn't work for me for some reason, but you can still insert images using a combination of the `here` package and `knitr`.
+
+Use the `include_graphics()` command and specify both the file location and it's name:
+```{r }
+knitr::include_graphics(here::here("pics","snapchat.png"))
+```
+
+
+The [bookdown book](https://bookdown.org/yihui/bookdown/figures.html) notes that:
+
+  The syntax for controlling the image attributes is the same as when images are generated from R 
+  code. Chunk options `fig.cap`, `out.width`, and `fig.show` still have the same meanings. 
+
+and:
+  You can easily scale these images proportionally using the same ratio. This can be done via the 
+  `dpi` argument (dots per inch), which takes the value from the chunk option `dpi` by default If it is a 
+  numeric value and the chunk option `out.width` is not set, the output width of an image will be its 
+  actual width (in pixels) divided by dpi , and the unit will be inches. For example, for an image with 
+  the size 672 x 480, its output width will be 7 inches ( 7in ) when `dpi=96`. 
+  This feature requires the package png and/or jpeg to be installed. You can always override the automatic calculation of 
+  width in inches by providing a non-NULL value to the chunk option `out.width` , or use `include_graphics(dpi = NA)`
+
+
+
+## Footnotes
+
+To add a footnote, use the "^" symbol and put the note in brackets:
+
+You can also write footnotes^[Kruschke, J. (2015). Goals, power, and sample size. In J. K. Kruschke (Ed.), Doing bayesian data analysis: A tutorial with r, jags, and stan (2nd ed., pp. 359-398). Academic Press.] like this.
+
+## Change the color of your text
+
+<span style="color:blue">  YOUR TEXT HERE </span>
+
+

@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-07-27" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.4" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html#do-for-all"><i class="fa fa-check"></i><b>11.3.4</b> DO FOR ALL</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a></li>
+<li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
@@ -309,212 +317,212 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> Scrape web pages for data tables</h2>
 <p>See Chapter 10’s example <code>purrr</code> walk through for a guide on how to scrape multiple web tables simultaneously</p>
 <p><strong><em>Simple example</em></strong></p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="misc-stuff.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb156-2"><a href="misc-stuff.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb156-3"><a href="misc-stuff.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-4"><a href="misc-stuff.html#cb156-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb156-5"><a href="misc-stuff.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb156-6"><a href="misc-stuff.html#cb156-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-7"><a href="misc-stuff.html#cb156-7" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="misc-stuff.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb160-2"><a href="misc-stuff.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb160-3"><a href="misc-stuff.html#cb160-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-4"><a href="misc-stuff.html#cb160-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-5"><a href="misc-stuff.html#cb160-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb160-6"><a href="misc-stuff.html#cb160-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-7"><a href="misc-stuff.html#cb160-7" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
 <pre><code>## [[1]]
 ##                     PRODUCT    Rarity Number Market Price Listed Median     
-## 1                      Abra    Common     43        $0.59         $0.80 View
-## 2                  Alakazam Holo Rare      1       $31.63             — View
-## 3                  Arcanine  Uncommon     23        $2.61         $2.99 View
-## 4                  Beedrill      Rare     17        $3.49         $3.00 View
-## 5                      Bill    Common     91        $0.27         $0.49 View
-## 6                 Blastoise Holo Rare      2      $115.56             — View
-## 7                 Bulbasaur    Common     44        $1.89         $3.00 View
-## 8                  Caterpie    Common     45        $0.83         $0.92 View
-## 9                   Chansey Holo Rare      3       $20.92             — View
-## 10                Charizard Holo Rare      4      $408.10             — View
-## 11               Charmander    Common     46        $2.03         $2.70 View
-## 12               Charmeleon  Uncommon     24        $1.28         $2.08 View
-## 13                 Clefairy Holo Rare      5       $19.05             — View
-## 14            Clefairy Doll      Rare     70        $3.07         $3.34 View
-## 15          Computer Search      Rare     71        $2.22         $4.38 View
-## 16                 Defender  Uncommon     80        $1.23         $1.44 View
-## 17         Devolution Spray      Rare     72        $2.63         $2.67 View
-## 18                  Dewgong  Uncommon     25        $1.86         $2.26 View
-## 19                  Diglett    Common     47        $0.40         $0.68 View
-## 20                    Doduo    Common     48        $0.87         $1.09 View
-## 21  Double Colorless Energy  Uncommon     96        $4.04         $4.35 View
-## 22                Dragonair      Rare     18        $9.30         $9.21 View
-## 23                  Dratini  Uncommon     26        $1.52         $1.53 View
-## 24                  Drowzee    Common     49        $0.59         $0.75 View
-## 25                  Dugtrio      Rare     19        $4.39         $5.13 View
-## 26               Electabuzz      Rare     20        $5.53         $6.90 View
-## 27                Electrode      Rare     21        $4.90         $4.72 View
-## 28           Energy Removal    Common     92        $0.39         $0.50 View
-## 29         Energy Retrieval  Uncommon     81        $0.53         $0.73 View
-## 30               Farfetch&#39;d  Uncommon     27        $1.19         $1.24 View
-## 31          Fighting Energy    Common     97        $0.28         $0.36 View
-## 32              Fire Energy    Common     98        $0.30         $0.46 View
-## 33                Full Heal  Uncommon     82        $0.93         $1.06 View
-## 34                   Gastly    Common     50        $0.56         $0.85 View
-## 35             Grass Energy    Common     99        $0.26         $0.34 View
-## 36                Growlithe  Uncommon     28        $0.91         $1.05 View
-## 37             Gust of Wind    Common     93        $0.32         $0.47 View
-## 38                 Gyarados Holo Rare      6       $21.54             — View
-## 39                  Haunter  Uncommon     29        $1.46         $1.96 View
-## 40               Hitmonchan Holo Rare      7       $15.43             — View
-## 41   Imposter Professor Oak      Rare     73        $2.95         $3.50 View
-## 42              Item Finder      Rare     74        $9.76         $9.95 View
-## 43                  Ivysaur  Uncommon     30        $2.33         $3.40 View
-## 44                     Jynx  Uncommon     31        $0.71         $0.99 View
-## 45                  Kadabra  Uncommon     32        $2.59         $2.75 View
-## 46                   Kakuna  Uncommon     33        $0.75         $1.02 View
-## 47                  Koffing    Common     51        $0.44         $0.60 View
-## 48                     Lass      Rare     75        $2.41         $2.75 View
-## 49         Lightning Energy    Common    100        $0.29         $0.50 View
-## 50                  Machoke  Uncommon     34        $0.63         $0.91 View
-## 51                   Machop    Common     52        $0.32         $0.49 View
-## 52                 Magikarp  Uncommon     35        $1.45         $1.60 View
-## 53                   Magmar  Uncommon     36        $1.95         $2.03 View
-## 54                Magnemite    Common     53        $0.46         $0.65 View
-## 55                 Magneton Holo Rare      9       $19.72             — View
-## 56              Maintenance  Uncommon     83        $2.17         $1.99 View
-## 57                  Metapod    Common     54        $0.79         $1.00 View
-## 58                   Mewtwo Holo Rare     10       $30.23             — View
-## 59                 Nidoking Holo Rare     11       $21.58             — View
-## 60                Nidoran M    Common     55        $0.47         $0.65 View
-## 61                 Nidorino  Uncommon     37        $2.06         $2.03 View
-## 62                Ninetales Holo Rare     12       $16.91             — View
-## 63                     Onix    Common     56        $0.36         $0.64 View
-## 64                Pidgeotto      Rare     22        $5.20         $5.95 View
-## 65                   Pidgey    Common     57        $0.91         $1.11 View
-## 66                  Pikachu    Common     58        $4.33         $4.42 View
-## 67                PlusPower  Uncommon     84        $0.76         $0.97 View
-## 68                  Pokedex  Uncommon     87        $0.49         $0.59 View
-## 69          Pokemon Breeder      Rare     76        $5.22         $5.22 View
-## 70           Pokemon Center  Uncommon     85        $1.85         $1.85 View
-## 71            Pokemon Flute  Uncommon     86        $1.65         $2.00 View
-## 72           Pokemon Trader      Rare     77        $3.30         $3.99 View
-## 73                  Poliwag    Common     59        $0.43         $0.60 View
-## 74                Poliwhirl  Uncommon     38        $1.03         $1.28 View
-## 75                Poliwrath Holo Rare     13       $13.44             — View
-## 76                   Ponyta    Common     60        $0.48         $0.50 View
-## 77                  Porygon  Uncommon     39        $2.24         $2.89 View
-## 78                   Potion    Common     94        $0.19         $0.26 View
-## 79            Professor Oak  Uncommon     88        $1.65         $2.23 View
-## 80           Psychic Energy    Common    101        $0.28         $0.50 View
-## 81                   Raichu Holo Rare     14       $31.90             — View
-## 82                 Raticate  Uncommon     40        $2.94         $2.75 View
-## 83                  Rattata    Common     61        $0.59         $0.67 View
-## 84                   Revive  Uncommon     89        $2.29         $2.56 View
-## 85                Sandshrew    Common     62        $0.32         $0.75 View
-## 86                 Scoop Up      Rare     78        $6.60         $7.28 View
-## 87                     Seel  Uncommon     41        $0.83         $1.36 View
-## 88                 Squirtle    Common     63        $3.80         $4.91 View
-## 89                  Starmie    Common     64        $0.44         $0.70 View
-## 90                   Staryu    Common     65        $0.40         $0.52 View
-## 91     Super Energy Removal      Rare     79        $3.64         $3.99 View
-## 92             Super Potion  Uncommon     90        $0.28         $0.35 View
-## 93                   Switch    Common     95        $0.33         $0.45 View
-## 94                  Tangela    Common     66        $0.53         $0.64 View
-## 95                 Venusaur Holo Rare     15       $93.62             — View
-## 96                  Voltorb    Common     67        $1.66         $1.69 View
-## 97                   Vulpix    Common     68        $0.70         $0.88 View
-## 98                Wartortle  Uncommon     42        $2.99         $3.00 View
-## 99             Water Energy    Common    102        $0.37         $0.50 View
-## 100                  Weedle    Common     69        $0.40         $0.65 View
-## 101                  Zapdos Holo Rare     16       $24.28             — View</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="misc-stuff.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
-<span id="cb158-2"><a href="misc-stuff.html#cb158-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
-<span id="cb158-3"><a href="misc-stuff.html#cb158-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
-<span id="cb158-4"><a href="misc-stuff.html#cb158-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-5"><a href="misc-stuff.html#cb158-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+## 1                      Abra    Common     43        $0.81         $0.82 View
+## 2                  Alakazam Holo Rare      1       $31.05             — View
+## 3                  Arcanine  Uncommon     23        $2.38         $2.60 View
+## 4                  Beedrill      Rare     17        $2.87         $2.99 View
+## 5                      Bill    Common     91        $0.31         $0.49 View
+## 6                 Blastoise Holo Rare      2      $116.57             — View
+## 7                 Bulbasaur    Common     44        $1.94         $3.00 View
+## 8                  Caterpie    Common     45        $0.88         $0.95 View
+## 9                   Chansey Holo Rare      3       $18.98             — View
+## 10                Charizard Holo Rare      4      $366.49             — View
+## 11               Charmander    Common     46        $1.53         $2.65 View
+## 12               Charmeleon  Uncommon     24        $1.61         $2.08 View
+## 13                 Clefairy Holo Rare      5       $19.46             — View
+## 14            Clefairy Doll      Rare     70        $2.39         $2.73 View
+## 15          Computer Search      Rare     71        $2.60         $4.02 View
+## 16                 Defender  Uncommon     80        $1.26         $1.24 View
+## 17         Devolution Spray      Rare     72        $2.51         $2.69 View
+## 18                  Dewgong  Uncommon     25        $2.03         $2.01 View
+## 19                  Diglett    Common     47        $0.50         $0.75 View
+## 20                    Doduo    Common     48        $0.82         $1.00 View
+## 21  Double Colorless Energy  Uncommon     96        $3.98         $4.08 View
+## 22                Dragonair      Rare     18        $8.13         $8.54 View
+## 23                  Dratini  Uncommon     26        $1.22         $1.51 View
+## 24                  Drowzee    Common     49        $0.61         $0.75 View
+## 25                  Dugtrio      Rare     19        $4.68         $5.00 View
+## 26               Electabuzz      Rare     20        $4.89         $5.51 View
+## 27                Electrode      Rare     21        $4.05         $4.50 View
+## 28           Energy Removal    Common     92        $0.51         $0.51 View
+## 29         Energy Retrieval  Uncommon     81        $0.42         $0.65 View
+## 30               Farfetch&#39;d  Uncommon     27        $1.00         $1.29 View
+## 31          Fighting Energy    Common     97        $0.30         $0.36 View
+## 32              Fire Energy    Common     98        $0.27         $0.38 View
+## 33                Full Heal  Uncommon     82        $0.95         $0.92 View
+## 34                   Gastly    Common     50        $0.60         $0.85 View
+## 35             Grass Energy    Common     99        $0.23         $0.34 View
+## 36                Growlithe  Uncommon     28        $1.13         $1.00 View
+## 37             Gust of Wind    Common     93        $0.34         $0.42 View
+## 38                 Gyarados Holo Rare      6       $20.12             — View
+## 39                  Haunter  Uncommon     29        $1.65         $1.65 View
+## 40               Hitmonchan Holo Rare      7       $15.19             — View
+## 41   Imposter Professor Oak      Rare     73        $2.57         $3.05 View
+## 42              Item Finder      Rare     74        $8.25         $9.95 View
+## 43                  Ivysaur  Uncommon     30        $2.46         $2.93 View
+## 44                     Jynx  Uncommon     31        $0.73         $0.98 View
+## 45                  Kadabra  Uncommon     32        $2.48         $2.50 View
+## 46                   Kakuna  Uncommon     33        $0.91         $0.94 View
+## 47                  Koffing    Common     51        $0.48         $0.59 View
+## 48                     Lass      Rare     75        $2.02         $2.69 View
+## 49         Lightning Energy    Common    100        $0.32         $0.51 View
+## 50                  Machoke  Uncommon     34        $0.76         $0.96 View
+## 51                   Machop    Common     52        $0.31         $0.48 View
+## 52                 Magikarp  Uncommon     35        $1.58         $1.62 View
+## 53                   Magmar  Uncommon     36        $2.12         $2.23 View
+## 54                Magnemite    Common     53        $0.48         $0.65 View
+## 55                 Magneton Holo Rare      9       $19.98             — View
+## 56              Maintenance  Uncommon     83        $1.90         $1.88 View
+## 57                  Metapod    Common     54        $0.96         $0.97 View
+## 58                   Mewtwo Holo Rare     10       $36.50             — View
+## 59                 Nidoking Holo Rare     11       $21.05             — View
+## 60                Nidoran M    Common     55        $0.37         $0.57 View
+## 61                 Nidorino  Uncommon     37        $2.20         $2.02 View
+## 62                Ninetales Holo Rare     12       $17.05             — View
+## 63                     Onix    Common     56        $0.40         $0.59 View
+## 64                Pidgeotto      Rare     22        $5.08         $5.41 View
+## 65                   Pidgey    Common     57        $0.91         $1.15 View
+## 66                  Pikachu    Common     58        $3.74         $4.25 View
+## 67                PlusPower  Uncommon     84        $0.75         $0.93 View
+## 68                  Pokedex  Uncommon     87        $0.46         $0.55 View
+## 69          Pokemon Breeder      Rare     76        $4.77         $5.45 View
+## 70           Pokemon Center  Uncommon     85        $1.78         $1.90 View
+## 71            Pokemon Flute  Uncommon     86        $1.97         $1.97 View
+## 72           Pokemon Trader      Rare     77        $2.73         $3.99 View
+## 73                  Poliwag    Common     59        $0.41         $0.50 View
+## 74                Poliwhirl  Uncommon     38        $1.22         $1.22 View
+## 75                Poliwrath Holo Rare     13       $15.93             — View
+## 76                   Ponyta    Common     60        $0.43         $0.50 View
+## 77                  Porygon  Uncommon     39        $2.30         $2.74 View
+## 78                   Potion    Common     94        $0.25         $0.26 View
+## 79            Professor Oak  Uncommon     88        $1.61         $2.05 View
+## 80           Psychic Energy    Common    101        $0.26         $0.49 View
+## 81                   Raichu Holo Rare     14       $29.49             — View
+## 82                 Raticate  Uncommon     40        $2.74         $2.40 View
+## 83                  Rattata    Common     61        $0.57         $0.63 View
+## 84                   Revive  Uncommon     89        $2.39         $2.37 View
+## 85                Sandshrew    Common     62        $0.36         $0.79 View
+## 86                 Scoop Up      Rare     78        $5.25         $6.19 View
+## 87                     Seel  Uncommon     41        $1.00         $1.43 View
+## 88                 Squirtle    Common     63        $4.38         $4.59 View
+## 89                  Starmie    Common     64        $0.43         $0.70 View
+## 90                   Staryu    Common     65        $0.44         $0.54 View
+## 91     Super Energy Removal      Rare     79        $3.05         $3.80 View
+## 92             Super Potion  Uncommon     90        $0.25         $0.30 View
+## 93                   Switch    Common     95        $0.37         $0.40 View
+## 94                  Tangela    Common     66        $0.53         $0.60 View
+## 95                 Venusaur Holo Rare     15       $97.23             — View
+## 96                  Voltorb    Common     67        $1.65         $1.70 View
+## 97                   Vulpix    Common     68        $0.71         $0.82 View
+## 98                Wartortle  Uncommon     42        $2.85         $2.99 View
+## 99             Water Energy    Common    102        $0.31         $0.48 View
+## 100                  Weedle    Common     69        $0.51         $0.65 View
+## 101                  Zapdos Holo Rare     16       $25.36             — View</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="misc-stuff.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
+<span id="cb162-2"><a href="misc-stuff.html#cb162-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
+<span id="cb162-3"><a href="misc-stuff.html#cb162-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
+<span id="cb162-4"><a href="misc-stuff.html#cb162-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="misc-stuff.html#cb162-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
 <pre><code>## # A tibble: 101 x 4
 ##    PRODUCT   Rarity    Number `Market Price`
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;         
-##  1 Abra      Common        43 $0.59         
-##  2 Alakazam  Holo Rare      1 $31.63        
-##  3 Arcanine  Uncommon      23 $2.61         
-##  4 Beedrill  Rare          17 $3.49         
-##  5 Bill      Common        91 $0.27         
-##  6 Blastoise Holo Rare      2 $115.56       
-##  7 Bulbasaur Common        44 $1.89         
-##  8 Caterpie  Common        45 $0.83         
-##  9 Chansey   Holo Rare      3 $20.92        
-## 10 Charizard Holo Rare      4 $408.10       
+##  1 Abra      Common        43 $0.81         
+##  2 Alakazam  Holo Rare      1 $31.05        
+##  3 Arcanine  Uncommon      23 $2.38         
+##  4 Beedrill  Rare          17 $2.87         
+##  5 Bill      Common        91 $0.31         
+##  6 Blastoise Holo Rare      2 $116.57       
+##  7 Bulbasaur Common        44 $1.94         
+##  8 Caterpie  Common        45 $0.88         
+##  9 Chansey   Holo Rare      3 $18.98        
+## 10 Charizard Holo Rare      4 $366.49       
 ## # ... with 91 more rows</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="misc-stuff.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove $ symbol in Price column to make it easier to work with</span></span>
-<span id="cb160-2"><a href="misc-stuff.html#cb160-2" aria-hidden="true" tabindex="-1"></a>html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span>
-<span id="cb160-3"><a href="misc-stuff.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb160-4"><a href="misc-stuff.html#cb160-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span>html <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>)) <span class="co"># convert from string to numeric</span></span>
-<span id="cb160-5"><a href="misc-stuff.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-6"><a href="misc-stuff.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co"># view finished table</span></span>
-<span id="cb160-7"><a href="misc-stuff.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="misc-stuff.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove $ symbol in Price column to make it easier to work with</span></span>
+<span id="cb164-2"><a href="misc-stuff.html#cb164-2" aria-hidden="true" tabindex="-1"></a>html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span>
+<span id="cb164-3"><a href="misc-stuff.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb164-4"><a href="misc-stuff.html#cb164-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span>html <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>)) <span class="co"># convert from string to numeric</span></span>
+<span id="cb164-5"><a href="misc-stuff.html#cb164-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-6"><a href="misc-stuff.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co"># view finished table</span></span>
+<span id="cb164-7"><a href="misc-stuff.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   PRODUCT   Rarity    Number `Market Price`
 ##   &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;          &lt;dbl&gt;
-## 1 Abra      Common        43           0.59
-## 2 Alakazam  Holo Rare      1          31.6 
-## 3 Arcanine  Uncommon      23           2.61
-## 4 Beedrill  Rare          17           3.49
-## 5 Bill      Common        91           0.27
-## 6 Blastoise Holo Rare      2         116.</code></pre>
+## 1 Abra      Common        43           0.81
+## 2 Alakazam  Holo Rare      1          31.0 
+## 3 Arcanine  Uncommon      23           2.38
+## 4 Beedrill  Rare          17           2.87
+## 5 Bill      Common        91           0.31
+## 6 Blastoise Holo Rare      2         117.</code></pre>
 <p><strong><em>Slightly more complicated example</em></strong></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="misc-stuff.html#cb162-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span>
-<span id="cb162-2"><a href="misc-stuff.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb162-3"><a href="misc-stuff.html#cb162-3" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb162-4"><a href="misc-stuff.html#cb162-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.ms-listviewtable&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb162-5"><a href="misc-stuff.html#cb162-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="misc-stuff.html#cb166-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span>
+<span id="cb166-2"><a href="misc-stuff.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="misc-stuff.html#cb166-3" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-4"><a href="misc-stuff.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.ms-listviewtable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-5"><a href="misc-stuff.html#cb166-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>From here you now need to clean up the table</p>
 <p>!(a pic)[/pics/scrape.png]</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="misc-stuff.html#cb163-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;pics/scrape.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="misc-stuff.html#cb164-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as.data.frame</span>(exonerations_table) <span class="co"># turn into a df</span></span>
-<span id="cb164-2"><a href="misc-stuff.html#cb164-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-3"><a href="misc-stuff.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save the names to a vector</span></span>
-<span id="cb164-4"><a href="misc-stuff.html#cb164-4" aria-hidden="true" tabindex="-1"></a>table_names<span class="ot">=</span>exonerations_table<span class="sc">$</span>Last.Name[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
-<span id="cb164-5"><a href="misc-stuff.html#cb164-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-6"><a href="misc-stuff.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim out the garbage rows and columns</span></span>
-<span id="cb164-7"><a href="misc-stuff.html#cb164-7" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> </span>
-<span id="cb164-8"><a href="misc-stuff.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Last.Name<span class="sc">:</span>Tags<span class="fl">.1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb164-9"><a href="misc-stuff.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">22</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb164-10"><a href="misc-stuff.html#cb164-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-11"><a href="misc-stuff.html#cb164-11" aria-hidden="true" tabindex="-1"></a><span class="co"># over-write incorrect col names with the vector of correct ones we saved above</span></span>
-<span id="cb164-12"><a href="misc-stuff.html#cb164-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exonerations_table)<span class="ot">=</span>table_names</span>
-<span id="cb164-13"><a href="misc-stuff.html#cb164-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-14"><a href="misc-stuff.html#cb164-14" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up names</span></span>
-<span id="cb164-15"><a href="misc-stuff.html#cb164-15" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb164-16"><a href="misc-stuff.html#cb164-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb164-17"><a href="misc-stuff.html#cb164-17" aria-hidden="true" tabindex="-1"></a><span class="co"># check structure of columns</span></span>
-<span id="cb164-18"><a href="misc-stuff.html#cb164-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(exonerations_table)</span></code></pre></div>
-<pre><code>## Rows: 2,832
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="misc-stuff.html#cb167-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;pics/scrape.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="misc-stuff.html#cb168-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as.data.frame</span>(exonerations_table) <span class="co"># turn into a df</span></span>
+<span id="cb168-2"><a href="misc-stuff.html#cb168-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="misc-stuff.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save the names to a vector</span></span>
+<span id="cb168-4"><a href="misc-stuff.html#cb168-4" aria-hidden="true" tabindex="-1"></a>table_names<span class="ot">=</span>exonerations_table<span class="sc">$</span>Last.Name[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb168-5"><a href="misc-stuff.html#cb168-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="misc-stuff.html#cb168-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim out the garbage rows and columns</span></span>
+<span id="cb168-7"><a href="misc-stuff.html#cb168-7" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> </span>
+<span id="cb168-8"><a href="misc-stuff.html#cb168-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Last.Name<span class="sc">:</span>Tags<span class="fl">.1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb168-9"><a href="misc-stuff.html#cb168-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">22</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb168-10"><a href="misc-stuff.html#cb168-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-11"><a href="misc-stuff.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="co"># over-write incorrect col names with the vector of correct ones we saved above</span></span>
+<span id="cb168-12"><a href="misc-stuff.html#cb168-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exonerations_table)<span class="ot">=</span>table_names</span>
+<span id="cb168-13"><a href="misc-stuff.html#cb168-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-14"><a href="misc-stuff.html#cb168-14" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up names</span></span>
+<span id="cb168-15"><a href="misc-stuff.html#cb168-15" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb168-16"><a href="misc-stuff.html#cb168-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-17"><a href="misc-stuff.html#cb168-17" aria-hidden="true" tabindex="-1"></a><span class="co"># check structure of columns</span></span>
+<span id="cb168-18"><a href="misc-stuff.html#cb168-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(exonerations_table)</span></code></pre></div>
+<pre><code>## Rows: 2,839
 ## Columns: 20
-## $ last_name       &lt;chr&gt; &quot;Abbitt&quot;, &quot;Abdal&quot;, &quot;Abernathy&quot;, &quot;Abney&quot;, &quot;Acero&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Ad...
-## $ first_name      &lt;chr&gt; &quot;Joseph&quot;, &quot;Warith Habib&quot;, &quot;Christopher&quot;, &quot;Quentin&quot;, &quot;Longino&quot;, &quot;Anthony&quot;, &quot;Cheryl&quot;, &quot;Darryl&quot;, &quot;Demetris&quot;, &quot;Don Ray&quot;,...
-## $ age             &lt;int&gt; 31, 43, 17, 32, 35, 26, 26, 25, 22, 32, 17, 12, 52, 21, 19, 28, 26, 29, 21, 20, 18, 19, 28, 28, 24, 31, 22, 17, 20, ...
-## $ race            &lt;chr&gt; &quot;Black&quot;, &quot;Black&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Hispanic&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;White&quot;, &quot;B...
-## $ st              &lt;chr&gt; &quot;NC&quot;, &quot;NY&quot;, &quot;IL&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;MA&quot;, &quot;TX&quot;, &quot;IL&quot;, &quot;PA&quot;, &quot;WI&quot;, &quot;GA&quot;, &quot;TX&quot;, &quot;IL&quot;, &quot;MA&quot;, &quot;TX&quot;, &quot;LA&quot;, &quot;NY&quot;, &quot;CT&quot;, &quot;I...
-## $ county_of_crime &lt;chr&gt; &quot;Forsyth&quot;, &quot;Erie&quot;, &quot;Cook&quot;, &quot;New York&quot;, &quot;Santa Clara&quot;, &quot;Los Angeles&quot;, &quot;Essex&quot;, &quot;Dallas&quot;, &quot;Cook&quot;, &quot;Philadelphia&quot;, &quot;Jef...
-## $ tags            &lt;chr&gt; &quot;CV, IO&quot;, &quot;IO&quot;, &quot;CIU, CV, H, IO&quot;, &quot;CV&quot;, &quot;NC, P&quot;, &quot;H, P&quot;, &quot;F, NC, P&quot;, &quot;CIU, IO, NC, P&quot;, &quot;CIU, IO, NC, P&quot;, &quot;H&quot;, &quot;IO, N...
-## $ om_tags         &lt;chr&gt; &quot;&quot;, &quot;OF, WH, NW, WT&quot;, &quot;OF, WH, NW, INT&quot;, &quot;&quot;, &quot;&quot;, &quot;OF, WH, NW, WT&quot;, &quot;&quot;, &quot;&quot;, &quot;OF, WH, NW&quot;, &quot;OF, WH, NW, WT&quot;, &quot;&quot;, &quot;OF, ...
-## $ crime           &lt;chr&gt; &quot;Child Sex Abuse&quot;, &quot;Sexual Assault&quot;, &quot;Murder&quot;, &quot;Robbery&quot;, &quot;Sex Offender Registration&quot;, &quot;Manslaughter&quot;, &quot;Theft&quot;, &quot;Sex...
-## $ sentence        &lt;chr&gt; &quot;Life&quot;, &quot;20 to Life&quot;, &quot;Life without parole&quot;, &quot;20 to Life&quot;, &quot;2 years and 4 months&quot;, &quot;12 years&quot;, &quot;Probation&quot;, &quot;25 year...
-## $ convicted       &lt;int&gt; 1995, 1983, 1987, 2006, 1994, 1996, 1989, 1992, 2004, 1992, 2000, 2005, 2009, 1978, 1974, 1977, 1983, 1998, 1999, 20...
-## $ exonerated      &lt;int&gt; 2009, 1999, 2015, 2012, 2006, 2001, 1993, 2017, 2020, 2011, 2007, 2006, 2016, 1996, 2004, 1989, 2014, 1999, 2013, 20...
-## $ dna             &lt;chr&gt; &quot;DNA&quot;, &quot;DNA&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;...
-## $ x               &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,...
-## $ mwid            &lt;chr&gt; &quot;MWID&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, ...
-## $ fc              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;...
-## $ p_fa            &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/F...
-## $ f_mfe           &lt;chr&gt; &quot;&quot;, &quot;F/MFE&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;F/MFE&quot;, &quot;F/MFE&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;F/MF...
-## $ om              &lt;chr&gt; &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;&quot;, &quot;&quot;, &quot;OM&quot;, &quot;&quot;, &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;&quot;, &quot;OM&quot;, &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;...
-## $ ild             &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;ILD&quot;...</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="misc-stuff.html#cb166-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as_tibble</span>(exonerations_table) <span class="sc">%&gt;%</span> <span class="co"># convert to tibble</span></span>
-<span id="cb166-2"><a href="misc-stuff.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), na_if,<span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># turn missing values into NA&#39;s</span></span>
-<span id="cb166-3"><a href="misc-stuff.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), replace_na, <span class="st">&quot;derp&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># replace NA&#39;s with a some string (needed for the next lines to work)</span></span>
-<span id="cb166-4"><a href="misc-stuff.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dna=</span><span class="fu">ifelse</span>(dna<span class="sc">==</span><span class="st">&quot;DNA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="co"># change these variables from text to numeric to better facilitate analysis</span></span>
-<span id="cb166-5"><a href="misc-stuff.html#cb166-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mwid=</span><span class="fu">ifelse</span>(mwid<span class="sc">==</span><span class="st">&quot;MWID&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb166-6"><a href="misc-stuff.html#cb166-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">fc=</span><span class="fu">ifelse</span>(fc<span class="sc">==</span><span class="st">&quot;FC&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb166-7"><a href="misc-stuff.html#cb166-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_fa=</span><span class="fu">ifelse</span>(p_fa<span class="sc">==</span><span class="st">&quot;P/FA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb166-8"><a href="misc-stuff.html#cb166-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">f_mfe=</span><span class="fu">ifelse</span>(f_mfe<span class="sc">==</span><span class="st">&quot;F/MFE&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb166-9"><a href="misc-stuff.html#cb166-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(st, crime, dna<span class="sc">:</span>f_mfe),factor)) <span class="co"># correct form by converting to factors</span></span>
-<span id="cb166-10"><a href="misc-stuff.html#cb166-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-11"><a href="misc-stuff.html#cb166-11" aria-hidden="true" tabindex="-1"></a>exonerations_table</span></code></pre></div>
-<pre><code>## # A tibble: 2,832 x 20
+## $ last_name       &lt;chr&gt; &quot;Abbitt&quot;, &quot;Abdal&quot;, &quot;Abernathy&quot;, &quot;Abney&quot;, &quot;Acero&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;Adams&quot;, &quot;A...
+## $ first_name      &lt;chr&gt; &quot;Joseph&quot;, &quot;Warith Habib&quot;, &quot;Christopher&quot;, &quot;Quentin&quot;, &quot;Longino&quot;, &quot;Anthony&quot;, &quot;Cheryl&quot;, &quot;Darryl&quot;, &quot;Demetris&quot;, &quot;Don Ray&quot;...
+## $ age             &lt;int&gt; 31, 43, 17, 32, 35, 26, 26, 25, 22, 32, 17, 12, 52, 21, 19, 28, 26, 29, 21, 20, 18, 19, 28, 28, 24, 31, 22, 17, 20,...
+## $ race            &lt;chr&gt; &quot;Black&quot;, &quot;Black&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Hispanic&quot;, &quot;Hispanic&quot;, &quot;White&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;Black&quot;, &quot;White&quot;, &quot;...
+## $ st              &lt;chr&gt; &quot;NC&quot;, &quot;NY&quot;, &quot;IL&quot;, &quot;NY&quot;, &quot;CA&quot;, &quot;CA&quot;, &quot;MA&quot;, &quot;TX&quot;, &quot;IL&quot;, &quot;PA&quot;, &quot;WI&quot;, &quot;GA&quot;, &quot;TX&quot;, &quot;IL&quot;, &quot;MA&quot;, &quot;TX&quot;, &quot;LA&quot;, &quot;NY&quot;, &quot;CT&quot;, &quot;...
+## $ county_of_crime &lt;chr&gt; &quot;Forsyth&quot;, &quot;Erie&quot;, &quot;Cook&quot;, &quot;New York&quot;, &quot;Santa Clara&quot;, &quot;Los Angeles&quot;, &quot;Essex&quot;, &quot;Dallas&quot;, &quot;Cook&quot;, &quot;Philadelphia&quot;, &quot;Je...
+## $ tags            &lt;chr&gt; &quot;CV, IO&quot;, &quot;IO&quot;, &quot;CIU, CV, H, IO&quot;, &quot;CV&quot;, &quot;NC, P&quot;, &quot;H, P&quot;, &quot;F, NC, P&quot;, &quot;CIU, IO, NC, P&quot;, &quot;CIU, IO, NC, P&quot;, &quot;H&quot;, &quot;IO, ...
+## $ om_tags         &lt;chr&gt; &quot;&quot;, &quot;OF, WH, NW, WT&quot;, &quot;OF, WH, NW, INT&quot;, &quot;&quot;, &quot;&quot;, &quot;OF, WH, NW, WT&quot;, &quot;&quot;, &quot;&quot;, &quot;OF, WH, NW&quot;, &quot;OF, WH, NW, WT&quot;, &quot;&quot;, &quot;OF,...
+## $ crime           &lt;chr&gt; &quot;Child Sex Abuse&quot;, &quot;Sexual Assault&quot;, &quot;Murder&quot;, &quot;Robbery&quot;, &quot;Sex Offender Registration&quot;, &quot;Manslaughter&quot;, &quot;Theft&quot;, &quot;Se...
+## $ sentence        &lt;chr&gt; &quot;Life&quot;, &quot;20 to Life&quot;, &quot;Life without parole&quot;, &quot;20 to Life&quot;, &quot;2 years and 4 months&quot;, &quot;12 years&quot;, &quot;Probation&quot;, &quot;25 yea...
+## $ convicted       &lt;int&gt; 1995, 1983, 1987, 2006, 1994, 1996, 1989, 1992, 2004, 1992, 2000, 2005, 2009, 1978, 1974, 1977, 1983, 1998, 1999, 2...
+## $ exonerated      &lt;int&gt; 2009, 1999, 2015, 2012, 2006, 2001, 1993, 2017, 2020, 2011, 2007, 2006, 2016, 1996, 2004, 1989, 2014, 1999, 2013, 2...
+## $ dna             &lt;chr&gt; &quot;DNA&quot;, &quot;DNA&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;DNA...
+## $ x               &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;*&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;...
+## $ mwid            &lt;chr&gt; &quot;MWID&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;MWID&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,...
+## $ fc              &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;FC&quot;, &quot;FC&quot;, &quot;&quot;, &quot;&quot;, &quot;...
+## $ p_fa            &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;&quot;, &quot;&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/FA&quot;, &quot;P/...
+## $ f_mfe           &lt;chr&gt; &quot;&quot;, &quot;F/MFE&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;F/MFE&quot;, &quot;F/MFE&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;F/M...
+## $ om              &lt;chr&gt; &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;&quot;, &quot;&quot;, &quot;OM&quot;, &quot;&quot;, &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;&quot;, &quot;OM&quot;, &quot;&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM&quot;, &quot;OM...
+## $ ild             &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;ILD&quot;, &quot;ILD&quot;, &quot;&quot;, &quot;ILD...</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="misc-stuff.html#cb170-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as_tibble</span>(exonerations_table) <span class="sc">%&gt;%</span> <span class="co"># convert to tibble</span></span>
+<span id="cb170-2"><a href="misc-stuff.html#cb170-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), na_if,<span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># turn missing values into NA&#39;s</span></span>
+<span id="cb170-3"><a href="misc-stuff.html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), replace_na, <span class="st">&quot;derp&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># replace NA&#39;s with a some string (needed for the next lines to work)</span></span>
+<span id="cb170-4"><a href="misc-stuff.html#cb170-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dna=</span><span class="fu">ifelse</span>(dna<span class="sc">==</span><span class="st">&quot;DNA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="co"># change these variables from text to numeric to better facilitate analysis</span></span>
+<span id="cb170-5"><a href="misc-stuff.html#cb170-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mwid=</span><span class="fu">ifelse</span>(mwid<span class="sc">==</span><span class="st">&quot;MWID&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb170-6"><a href="misc-stuff.html#cb170-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">fc=</span><span class="fu">ifelse</span>(fc<span class="sc">==</span><span class="st">&quot;FC&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb170-7"><a href="misc-stuff.html#cb170-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_fa=</span><span class="fu">ifelse</span>(p_fa<span class="sc">==</span><span class="st">&quot;P/FA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb170-8"><a href="misc-stuff.html#cb170-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">f_mfe=</span><span class="fu">ifelse</span>(f_mfe<span class="sc">==</span><span class="st">&quot;F/MFE&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb170-9"><a href="misc-stuff.html#cb170-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(st, crime, dna<span class="sc">:</span>f_mfe),factor)) <span class="co"># correct form by converting to factors</span></span>
+<span id="cb170-10"><a href="misc-stuff.html#cb170-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-11"><a href="misc-stuff.html#cb170-11" aria-hidden="true" tabindex="-1"></a>exonerations_table</span></code></pre></div>
+<pre><code>## # A tibble: 2,839 x 20
 ##    last_name first_name   age race  st    county_of_crime tags  om_tags crime sentence convicted exonerated dna   x     mwid  fc    p_fa  f_mfe
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt; &lt;fct&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
 ##  1 Abbitt    Joseph        31 Black NC    Forsyth         CV, ~ &quot;&quot;      Chil~ Life          1995       2009 1     &quot;&quot;    1     0     0     0    
@@ -527,24 +535,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8 Adams     Darryl        25 Black TX    Dallas          CIU,~ &quot;&quot;      Sexu~ 25 years      1992       2017 1     &quot;*&quot;   0     0     1     0    
 ##  9 Adams     Demetris      22 Black IL    Cook            CIU,~ &quot;OF, W~ Drug~ 1 year        2004       2020 0     &quot;&quot;    0     0     1     0    
 ## 10 Adams     Don Ray       32 Black PA    Philadelphia    H     &quot;OF, W~ Murd~ Life          1992       2011 0     &quot;&quot;    0     0     1     0    
-## # ... with 2,822 more rows, and 2 more variables: om &lt;chr&gt;, ild &lt;chr&gt;</code></pre>
+## # ... with 2,829 more rows, and 2 more variables: om &lt;chr&gt;, ild &lt;chr&gt;</code></pre>
 <p>Check out <a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">this page</a> for a quick overview.</p>
 </div>
 <div id="read-spss-files-into-r" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> Read SPSS files into R</h2>
 <p>Use <code>foreign::read.spss</code></p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="misc-stuff.html#cb168-1" aria-hidden="true" tabindex="-1"></a>spss_version<span class="ot">=</span>foreign<span class="sc">::</span><span class="fu">read.spss</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>, <span class="st">&quot;JLWOP_RYAN.sav&quot;</span>), <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="misc-stuff.html#cb172-1" aria-hidden="true" tabindex="-1"></a>spss_version<span class="ot">=</span>foreign<span class="sc">::</span><span class="fu">read.spss</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>, <span class="st">&quot;JLWOP_RYAN.sav&quot;</span>), <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Might also want to add <code>as_tibble()</code> on the end.</p>
 </div>
 <div id="turn-numbers-into-percentages" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> Turn numbers into percentages</h2>
 <p>Use <code>scales::percent()</code>, which converts normal numbers into percentages and includes the percent sign (%) afterwards</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="misc-stuff.html#cb169-1" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>n_people, <span class="sc">~</span>votes_in_favor,</span>
-<span id="cb169-2"><a href="misc-stuff.html#cb169-2" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">25</span>, <span class="dv">14</span>)</span>
-<span id="cb169-3"><a href="misc-stuff.html#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-4"><a href="misc-stuff.html#cb169-4" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span>simple_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">percent_voted_for=</span>scales<span class="sc">::</span><span class="fu">percent</span>(votes_in_favor<span class="sc">/</span>n_people, <span class="at">accuracy =</span> <span class="fl">0.1</span>, <span class="at">scale =</span> <span class="dv">100</span>))</span>
-<span id="cb169-5"><a href="misc-stuff.html#cb169-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-6"><a href="misc-stuff.html#cb169-6" aria-hidden="true" tabindex="-1"></a>simple_table</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="misc-stuff.html#cb173-1" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>n_people, <span class="sc">~</span>votes_in_favor,</span>
+<span id="cb173-2"><a href="misc-stuff.html#cb173-2" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">25</span>, <span class="dv">14</span>)</span>
+<span id="cb173-3"><a href="misc-stuff.html#cb173-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-4"><a href="misc-stuff.html#cb173-4" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span>simple_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">percent_voted_for=</span>scales<span class="sc">::</span><span class="fu">percent</span>(votes_in_favor<span class="sc">/</span>n_people, <span class="at">accuracy =</span> <span class="fl">0.1</span>, <span class="at">scale =</span> <span class="dv">100</span>))</span>
+<span id="cb173-5"><a href="misc-stuff.html#cb173-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-6"><a href="misc-stuff.html#cb173-6" aria-hidden="true" tabindex="-1"></a>simple_table</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   n_people votes_in_favor percent_voted_for
 ##      &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            
@@ -553,9 +561,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="find-all-possible-combindations-of-items-in-a-vector" class="section level2" number="10.4">
 <h2><span class="header-section-number">10.4</span> Find all possible combindations of items in a vector</h2>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="misc-stuff.html#cb171-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span>
-<span id="cb171-2"><a href="misc-stuff.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-3"><a href="misc-stuff.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">combn</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>),<span class="dv">2</span>) <span class="co"># find all possible combinations of these numbers, drawn two at a time</span></span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="misc-stuff.html#cb175-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span>
+<span id="cb175-2"><a href="misc-stuff.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-3"><a href="misc-stuff.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="fu">combn</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>),<span class="dv">2</span>) <span class="co"># find all possible combinations of these numbers, drawn two at a time</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
 ## [1,]    2    2    2    4    4    6
 ## [2,]    4    6    8    6    8    8</code></pre>
@@ -566,7 +574,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="print-multiple-things-in-one-statement" class="section level2" number="10.6">
 <h2><span class="header-section-number">10.6</span> Print multiple things in one statement</h2>
 <p>Use <code>cat()</code> from base R</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="misc-stuff.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;The p-value dropped below 0.05 for the first time as sample size&quot;</span>, <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="misc-stuff.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;The p-value dropped below 0.05 for the first time as sample size&quot;</span>, <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## The p-value dropped below 0.05 for the first time as sample size 100</code></pre>
 
 </div>
@@ -627,6 +635,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

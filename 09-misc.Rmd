@@ -2,9 +2,9 @@
 
 ## Scrape web pages for data tables
 
-See Chapter 10's example `purrr` walk through for a guide on how to scrape multiple web tables simultaneously
+*Note. See Chapter 10's example `purrr` walk through for a guide on how to scrape multiple web tables simultaneously*
 
-***Simple example***
+*Simple example.*
 
 ```{r chapter_9}
 library(rvest)
@@ -32,6 +32,10 @@ head(html)
 
 ***Slightly more complicated example***
 
+Reading a table into R takes a few steps.
+
+Step 1 is to copy and paste the URL into the `read_html()` verb like below: 
+
 ```{r complex example}
 pacman::p_load(rvest, tidyverse)
 
@@ -40,19 +44,30 @@ exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Page
   html_table(fill=TRUE, header = TRUE)
 ```
 
-From here you now need to clean up the table
 
-!(a pic)[/pics/scrape.png]
+Sometimes if the web page is extremely basic and pretty much the only thing on it is a table, you can stop there. Most of the time though, there will be tons of other stuff on the website and you need to get more specific so R can find the table. This is the `html_nodes()` part of the above command; in there you specify the exact part of the web page where the table is located/what object file it is.
 
+To find this you will need to use the Developer mode in your browser. See this screenshot for an example...
 ```{r pic, eval=FALSE}
-knitr::include_graphics("pics/scrape.png")
+knitr::include_graphics(here::here("pics", "scrape.png"))
 ```
+In Firefox you open this by going to Settings > More Tools > Web Developer Tools (or CNTRL + Shift + I).
 
+Begin by looking through the console in the center bottom for names that look like they would be related to your table. A good place to start might be "<body>", which contains the main body of the web page. Click on a name to expand it and see all the elements on the page contained there.
+
+Ultimately what you're looking for is what you see above: an element that, when selected, highlights ONLY the area of the web page you're looking for. To get at this you will need to keep expanding, highlighting, and clicking repeatedly....it can take some digging.
+
+Keep drilling down through page elements until you find the one that highlights the table and just the table. When you find this, look for the **.ms file** in that name; you should also see this in the smaller console box on the right. That is the file you'll need. Write that name in the `html_node` command and read it into R.
+
+That's stage 1. From here you now need to clean up the table.
 
 ```{r exonerations table}
+exonerations_table=as.data.frame(exonerations_table) # convert into a df
+```
 
-exonerations_table=as.data.frame(exonerations_table) # turn into a df
+Your table might be different, but this one's names were messed up when read in, so lets fix those first and then fix the rows and columns.
 
+```{r}
 # save the names to a vector
 table_names=exonerations_table$Last.Name[1:20]
 
@@ -67,22 +82,28 @@ colnames(exonerations_table)=table_names
 # clean up names
 exonerations_table=exonerations_table %>% janitor::clean_names()
 
-# check structure of columns
+# verify structure of columns is correct
 glimpse(exonerations_table)
+```
 
-
+Yikes, a lot of stuff is stored incorrectly, and as a result there's some missing values that need to be addressed and other data that needs to be corrected.
+```{r}
 exonerations_table=as_tibble(exonerations_table) %>% # convert to tibble
   mutate(across(c(dna,mwid:ild), na_if,"")) %>% # turn missing values into NA's
-  mutate(across(c(dna,mwid:ild), replace_na, "derp")) %>% # replace NA's with a some string (needed for the next lines to work)
+  mutate(across(c(dna,mwid:ild), replace_na, "derp")) %>% # replace NA's with a string (required for the next lines to work)
   mutate(dna=ifelse(dna=="DNA",1,0), # change these variables from text to numeric to better facilitate analysis
          mwid=ifelse(mwid=="MWID",1,0),
          fc=ifelse(fc=="FC",1,0),
          p_fa=ifelse(p_fa=="P/FA",1,0),
          f_mfe=ifelse(f_mfe=="F/MFE",1,0)) %>% 
   mutate(across(c(st, crime, dna:f_mfe),factor)) # correct form by converting to factors
-
-exonerations_table
 ```
+
+And that's it! Check out final result!
+```{r}
+head(exonerations_table)
+```
+
 
 Check out [this page](https://www.dataquest.io/blog/web-scraping-in-r-rvest/) for a quick overview.
 
