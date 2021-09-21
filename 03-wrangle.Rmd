@@ -153,6 +153,25 @@ mtcars %>% mutate(size= case_when(cyl==4 ~ "small",
   select(c(cyl,size))
 ```
 
+## Conditional replacement of values
+
+The following code is useful if you want to replace a value in one column, and the replacement is conditional upon the value in another column.
+
+```{r}
+mpg %>% 
+  mutate(across(.cols = c(displ, cty, hwy),
+                .fns = ~case_when(cyl == 4L ~ as.numeric(NA),
+                                  TRUE ~ as.numeric(.x))))
+```
+
+
+```{r eval=FALSE}
+test %>% 
+  mutate(across(.cols = c(rank),
+                .fns = ~case_when(is.na(participant_score) ~ as.numeric(NA),
+                                  TRUE ~ as.numeric(.x))))
+```
+
 
 
 ## Merging variables
