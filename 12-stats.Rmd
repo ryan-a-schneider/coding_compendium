@@ -44,6 +44,28 @@ df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 
 df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
 
+
+## Create a relative ranking among several variables
+
+```{r}
+y=y %>% 
+  pivot_longer(
+    cols= starts_with("barrier"),
+    names_to = "variable",
+    values_to = "participant_score") %>% 
+  arrange(id,participant_score) %>% 
+  group_by(id) %>% # group the scores to be ranked by participant
+  mutate(rank=rank(participant_score, 
+                   ties.method = "max", # When two numbers are tied, they both get the higher number (e.g., 1,2,3,3)
+                   na.last = FALSE)) # when this is set to TRUE it ranks NA's highest in the rank order
+
+
+# Flip the ranks around so they are highest to lowest
+y$rank=car::recode(y$rank,"1 = 6 ; 2 = 5 ; 3 = 4 ; 4 = 3 ; 5 = 2 ; 6 = 1")
+```
+
+
+
 ## (Almost) all statistics made easy
 
 https://easystats.github.io/easystats/

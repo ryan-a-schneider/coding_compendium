@@ -34,6 +34,13 @@ For Greek letters, just type the name of the letter:
 
 ### Statistics notation
 
+### Writing in-line code
+
+Use the funny looking symbol on the tilde key that looks like this: `
+To write in line, code, put one of those symbols on either side of the code, like you would with quotation marks. Helps you write lines like:
+
+I love `dplyr`
+
 
 ## Including graphics/inserting pictures
 
