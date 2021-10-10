@@ -100,16 +100,47 @@ BF_output$Evidence= BF_output$BF[] %>% map_chr(effectsize::interpret_bf)
 If you want to import many files at once but keep them separated, you'll need a different command
 
 ```{r eval=FALSE}
-# first run these commands
-data_dir <-"log dump"
-fs::dir_ls(data_dir)
-csv_files <- fs::dir_ls(data_dir, regexp = "\\.csv$")
+file_path <- "JLWOP/Data and Models/"
 
-# then run this
-File_name_here=csv_files %>% 
-  map_dfr(read_csv)
+# view all files
+file_path %>% list.files()
+
+# save only file names with the desired extension
+csv_file_names=file_path %>% 
+  list.files() %>% 
+  .[str_detect(., ".csv")]
+
+
+# Load everything into the Global Environment
+csv_file_names %>%
+  purrr::map(function(file_name){ # iterate through each file name
+    assign(x = str_remove(file_name, ".csv"), # Remove file extension ".csv"
+           value = read_csv(paste0(file_path, file_name)),
+           envir = .GlobalEnv)
+  })
 ```
 
+All of the above can be combined into a single function:
+
+```{r eval=FALSE}
+read_all_excel=function(path){
+  file_path <- path
+  
+  # save only file names with the desired extension
+  file_names=file_path %>% 
+    list.files() %>% 
+    .[str_detect(., ".xlsx")]
+  
+  file_names %>%
+    purrr::map(function(file_name){ # iterate through each file name
+      assign(x = str_remove(file_name, ".xlsx"), # Remove file extension ".csv"
+             value = readxl::read_excel(paste0(file_path, file_name)),
+             envir = .GlobalEnv)
+    })
+}
+
+read_all_excel(path = "JLWOP/Data and Models/")
+```
 
 
 ### Walkthrough Case Example
@@ -156,7 +187,7 @@ html=quick_read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&r
 #### 2. Find out which element of the list the desired table is in
 
 ```{r}
-as_tibble(html1[[2]])
+head(as_tibble(html1[[2]]))
 ```
 
 #### 3. Extract the table

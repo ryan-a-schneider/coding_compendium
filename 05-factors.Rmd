@@ -18,7 +18,7 @@ summary(diamonds$cut)
 Extremely useful command for when you have infrequent cases in one factor and need to combine it with another.
 
 Works by specifying a series of new level names, each of which contains the information from the old variables. Format is as follows:
-```{r eval=FALSE}
+```{r 5.2, eval=FALSE}
 
 fct_collapse(dataset$variable,
 			NewLevelA=c("OldLevel1","Oldlevel2"), # NewLevelA is the new variable that contains both variables 1 and 2
@@ -30,7 +30,7 @@ fct_collapse(dataset$variable,
 
 use `fct_expand()`
 
-```{r}
+```{r 5.3}
 print("temp")
 ```
 
@@ -38,14 +38,14 @@ print("temp")
 ## Drop unused levels
 
 Use `fct_drop()`
-```{r}
+```{r 5.4}
 print("temp")
 ```
 
 
 ## Change the order of a factor's levels
 
-```{r }
+```{r 5.5}
 
 example_data=tribble(~person, ~condition,
                      "bob", "25 years",

@@ -33,7 +33,7 @@ str_remove(html$`Market Price`, pattern = "\\$")
 Tidyverse command: `str_replace()`
 Base R command: `gsub()`
 
-```{r}
+```{r 6.2}
 print("hello")
 ```
 
@@ -46,7 +46,7 @@ Tidyverse command: `str_detect()`
 Base R command: `grepl()`
 
 Note both must be nested inside of `filter()`
-```{r eval=FALSE}
+```{r 6.3, eval=FALSE}
 
 mtcars=rownames_to_column(mtcars, var = "car")
 
@@ -57,7 +57,7 @@ mtcars %>% filter(str_detect(car,"Firebird"))
 
 Use `str_to_lower()`
 
-```{r chapter_6_end}
+```{r 6.4, chapter_6_end}
 blah=tribble(~A, ~B,
              "A","X",
              "A","X")

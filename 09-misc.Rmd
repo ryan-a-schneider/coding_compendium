@@ -83,7 +83,7 @@ colnames(exonerations_table)=table_names
 exonerations_table=exonerations_table %>% janitor::clean_names()
 
 # verify structure of columns is correct
-glimpse(exonerations_table)
+# glimpse(exonerations_table)
 ```
 
 Yikes, a lot of stuff is stored incorrectly, and as a result there's some missing values that need to be addressed and other data that needs to be corrected.

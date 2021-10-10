@@ -154,17 +154,17 @@ df2=tibble::as_tibble(df2)
 Inner join - retains only rows with values that appear in both tables, and matches by keys.
 
 *If you're joining two Qualtrics surveys together, this is most likely the one you want to use (e.g. matching by participant name, and only keeping rows in the joined data set for participants that have responses logged in both survey 1 and survey 2*
-```{r}
+```{r 3.2}
 df1 %>% inner_join(df2,by='customer_id')
 ```
 
 Left join - returns everything in the left, and rows with matching keys in the right
-```{r}
+```{r 3.3}
 df1 %>% left_join(df2,by='customer_id')
 ```
 
 Right join - returns everything in the right, and rows with matching keys in the left
-```{r}
+```{r 3.4}
 df1 %>% right_join(df2,by='customer_id')
 
 # note: example if the customer id column was named something different in the second df
@@ -172,12 +172,12 @@ df1 %>% right_join(df2,by='customer_id')
 ```
 
 Full join - retain all rows from both tables, and join matching keys in both right and left
-```{r}
+```{r 3.5}
 df1 %>% full_join(df2,by='customer_id')
 ```
 
 Anti join - returns all rows in the left that do not have matching keys in the right
-```{r}
+```{r 3.6}
 df1 %>% anti_join(df2,by='customer_id')
 ```
 
@@ -186,7 +186,7 @@ df1 %>% anti_join(df2,by='customer_id')
 
 Splitting or joining columns is much easier than doing it to whole data sets. You can use `dplyr::separate()` to accomplish the former, and `dplyr::unite()` for the latter.
 
-```{r}
+```{r 3.7}
 print("hello")
 ```
 
@@ -198,7 +198,7 @@ Sometimes when working with a data set, you want to work with a few *specific* v
 `select()` can be thought of as "extract"; it tells R to identify and "extract" a specific variable (or variables)
 
 
-```{r eval=FALSE}
+```{r 3.8, eval=FALSE}
 cars=mtcars
 
 # select one column
@@ -248,8 +248,8 @@ Other examples can be seen on [THIS LINK](https://tidyselect.r-lib.org/reference
 ### If-then
 The premise of an if/then or if/else statement is simple: "If condition 1 is satisfied, perform x operation; if not, then do y"
 
-```{r}
-mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High"))
+```{r 3.9}
+mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High")) %>% head()
 ```
 This line of code effectively says: if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
 
@@ -258,7 +258,7 @@ This line of code effectively says: if the length in Sepal.Length is >5, set new
 
 When you have 3+ conditions, it's easier to use case-when. This is a more simple and straightforward approach than nesting multiple if-else commands
 
-```{r eval=FALSE}
+```{r 3.10, eval=FALSE}
 My_vector= case_when(
 	Condition1 ~ value1,
 	Condition2 ~ value2,
@@ -268,19 +268,19 @@ My_vector= case_when(
 ```
 
 Example:
-```{r}
+```{r 3.11}
 
 mtcars %>% mutate(size= case_when(cyl==4 ~ "small",
                                   cyl==6 ~ "medium",
                                   cyl==8 ~ "large")) %>% 
-  select(c(cyl,size))
+  select(c(cyl,size)) %>% head()
 ```
 
 ## Conditional replacement of values
 
 The following code is useful if you want to replace a value in one column, and the replacement is conditional upon the value in another column.
 
-```{r}
+```{r 3.12}
 mpg %>% 
   mutate(across(.cols = c(displ, cty, hwy),
                 .fns = ~case_when(cyl == 4L ~ as.numeric(NA),
@@ -288,7 +288,7 @@ mpg %>%
 ```
 
 
-```{r eval=FALSE}
+```{r 3.13, eval=FALSE}
 test %>% 
   mutate(across(.cols = c(rank),
                 .fns = ~case_when(is.na(participant_score) ~ as.numeric(NA),
@@ -301,7 +301,7 @@ test %>%
 
 Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this.
 
-```{r}
+```{r3.14}
 example_data=tribble(~A,~B,~C,
                      1,NA,NA,
                      2,NA,NA,
@@ -326,7 +326,7 @@ You can either specify each column individually, like above, or tell R to identi
 
 Two simple examples:
 
-```{r}
+```{r 3.15}
 # turn multiple variables into factors
 ex_data=dplyr::tribble(~color, ~car,
                        "red", "corvette",
@@ -341,7 +341,7 @@ dplyr::glimpse(ex_data)
 ex_data %>% mutate(across(c(color, car),factor))
 
 # round multiple columns to 1 decimal place
-mtcars %>% mutate(across(c(disp:qsec),round,1))
+mtcars %>% mutate(across(c(disp:qsec),round,1)) %>% head()
 ```
 
 
@@ -353,7 +353,7 @@ Rearranging data like this can make it easier to work with and analyze. Example 
 
 The command structure is as follows:
 
-```{r eval=FALSE}
+```{r 3.16, eval=FALSE}
 
  pivot_longer( # Transpose LENGTHWISE by....
     cols = everything(), # Taking ALL variable names...
@@ -367,7 +367,7 @@ The command structure is as follows:
 
 Example:
 
-```{r}
+```{r 3.17}
 gradebook=tibble::tribble(
   ~Student, ~Homework.1, ~Homework.2, ~Homework.3, ~Homework.4, ~Homework.5, ~Quiz.1, ~Quiz.2, ~Quiz.3, ~Quiz.4, ~Final,
      "Bob",         19L,          0L,          13,          16,          0L,      21,      7L,      15,    17.5,     33,
@@ -395,7 +395,7 @@ This is done via "nesting"...
 
 Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don't. Code works like this:
 
-```{r eval=FALSE}
+```{r 3.18, eval=FALSE}
 by_country=gapminder::gapminder %>% 
   group_by(continent,country) %>% # indicate the variables to keep at the top level
   nest() # smush the rest into a list-column
@@ -531,7 +531,7 @@ Use the `rownames()` command to turn row names into a variable
 ```{r}
 cars=rownames_to_column(mtcars, var = "car")
 
-as_tibble(cars)
+as_tibble(cars) %>% slice(1:6)
 ```
 
 ## How to edit/change column names
@@ -546,7 +546,8 @@ rm(list=ls()) # clear R's memory
 
 iris %>% rename("hurr"="Sepal.Length",
                 "durr"="Sepal.Width",
-                "abcdefgh"="Species")
+                "abcdefgh"="Species") %>% 
+  head()
 ```
 
 
@@ -555,7 +556,8 @@ If you need to do some really fancy conditional renaming (e.g., changing all var
 This command has two parts to it: the data set, and the function you wish to apply to it (which you put after the `~`)
 
 ```{r }
-rename_with(iris, ~ gsub(pattern = ".", replacement = "_", .x, fixed = TRUE))
+rename_with(iris, ~ gsub(pattern = ".", replacement = "_", .x, fixed = TRUE)) %>% 
+  head()
 ```
 
 The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like R's version of Find/Replace from Microsoft Word.
@@ -567,7 +569,8 @@ The above line of code thus does the following:
 The great thing about rename_with() is that the .fn (or `~` for short) can take *ANY* function as input. For example, if you want to **add** an element to the column names rather than replace something, (e.g., a prefix or suffix), you can change the function to:
 
 ```{r}
-rename_with( iris, ~ paste0(.x,  "_text"))
+rename_with( iris, ~ paste0(.x,  "_text")) %>% 
+  head()
 ```
 
 The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command.
@@ -593,7 +596,7 @@ Use `relocate()` to change column positions. If you need to move multiple column
 
 mtcars # notice the column order
 
-mtcars %>% relocate(hp:wt, .after= am)
+mtcars %>% relocate(hp:wt, .after= am) %>% head()
 ```
 
 
@@ -624,7 +627,7 @@ example_date_data=tibble::tribble(~X1,     ~X2,
 
 
 # Correct formatting
-example_date_data$X1=format(as.POSIXct(example_date_data$X1,format='%m/%d/%y'),format='%Y-%m-%d')
+example_date_data$X1=format(as.POSIXct(example_date_data$X1,format='%m/%d/%Y'),format='%Y-%m-%d')
 
 head(as_tibble(example_date_data))
 ```
@@ -645,6 +648,8 @@ head(as_tibble(example_date_data))
 
 Notice how the object is now stored as the correct type in the table above.
 
+***NOTE!*** This entire process has been included in the `tidy_date()` command in my package, `legaldmlab`.
+
 
 ### Find the difference between two dates/times
 ```{r chapter_3_end, eval=FALSE}
@@ -660,7 +665,7 @@ difftime(part_1$end_date[1], part_2$end_date[1], units="days")
 
 Use `dplyr::na_if()` if you have a value coded in your data (e.g., 999) that you want to convert to NA
 
-```{r chapter_4}
+```{r 4.1}
 
 example_data=dplyr::tribble(~name, ~bday_month,
                             "Ryan", 10,
@@ -684,7 +689,7 @@ example_data %>% # can also pass the data to mutate and do it the tidyverse way
 
 `tidyr::replace_na()` is very useful if you have some NA's in your data and you want to fill them in with some value.
 
-```{r}
+```{r 4.2}
 example_data=tibble::tribble(~name, ~fav_color, ~fav_food,
                              "Ryan", "green", "Mexican",
                              "Cassidy", "blue", NA,
@@ -708,17 +713,11 @@ example_data %>% mutate(across(c(fav_color, fav_food), replace_na, "MISSING"))
 
 `is.na()` is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector
 
-```{r}
+```{r 4.3}
 y <- c(1,2,3,NA)
 
 is.na(y) # returns a vector (F F F T)
 ```
-
-You can nest this within a filter command to find all rows where no variable has missing values...
-```{r eval=FALSE}
-starwars %>% filter(across(everything(), ~is.na(.x)))
-```
-
 
 
 
@@ -726,7 +725,7 @@ starwars %>% filter(across(everything(), ~is.na(.x)))
 
 Sometimes necessary to check before conducting an analysis. *This requires my package*, `legaldmlab`
 
-```{r}
+```{r 4.4}
 ?legaldmlab::count_missing
 
 mtcars %>% 
@@ -744,7 +743,7 @@ mtcars %>%
 
 `tidyr::drop_na()`
 
-```{r chapter_4_end}
+```{r 4.5}
 example_data=dplyr::tribble(~name, ~bday_month, ~car,
                             "Ryan", 10, "kia",
                             "Z", NA, "toyota",
@@ -786,7 +785,7 @@ summary(diamonds$cut)
 Extremely useful command for when you have infrequent cases in one factor and need to combine it with another.
 
 Works by specifying a series of new level names, each of which contains the information from the old variables. Format is as follows:
-```{r eval=FALSE}
+```{r 5.2, eval=FALSE}
 
 fct_collapse(dataset$variable,
 			NewLevelA=c("OldLevel1","Oldlevel2"), # NewLevelA is the new variable that contains both variables 1 and 2
@@ -798,7 +797,7 @@ fct_collapse(dataset$variable,
 
 use `fct_expand()`
 
-```{r}
+```{r 5.3}
 print("temp")
 ```
 
@@ -806,14 +805,14 @@ print("temp")
 ## Drop unused levels
 
 Use `fct_drop()`
-```{r}
+```{r 5.4}
 print("temp")
 ```
 
 
 ## Change the order of a factor's levels
 
-```{r }
+```{r 5.5}
 
 example_data=tribble(~person, ~condition,
                      "bob", "25 years",
@@ -873,7 +872,7 @@ str_remove(html$`Market Price`, pattern = "\\$")
 Tidyverse command: `str_replace()`
 Base R command: `gsub()`
 
-```{r}
+```{r 6.2}
 print("hello")
 ```
 
@@ -886,7 +885,7 @@ Tidyverse command: `str_detect()`
 Base R command: `grepl()`
 
 Note both must be nested inside of `filter()`
-```{r eval=FALSE}
+```{r 6.3, eval=FALSE}
 
 mtcars=rownames_to_column(mtcars, var = "car")
 
@@ -897,7 +896,7 @@ mtcars %>% filter(str_detect(car,"Firebird"))
 
 Use `str_to_lower()`
 
-```{r chapter_6_end}
+```{r 6.4, chapter_6_end}
 blah=tribble(~A, ~B,
              "A","X",
              "A","X")
@@ -1007,7 +1006,7 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point() + geom_text(aes(label=hp, hjust=2.5, vjust=2.5))
 
-geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
+#geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
 ```
 
 
@@ -1420,7 +1419,7 @@ colnames(exonerations_table)=table_names
 exonerations_table=exonerations_table %>% janitor::clean_names()
 
 # verify structure of columns is correct
-glimpse(exonerations_table)
+# glimpse(exonerations_table)
 ```
 
 Yikes, a lot of stuff is stored incorrectly, and as a result there's some missing values that need to be addressed and other data that needs to be corrected.
@@ -1596,16 +1595,47 @@ BF_output$Evidence= BF_output$BF[] %>% map_chr(effectsize::interpret_bf)
 If you want to import many files at once but keep them separated, you'll need a different command
 
 ```{r eval=FALSE}
-# first run these commands
-data_dir <-"log dump"
-fs::dir_ls(data_dir)
-csv_files <- fs::dir_ls(data_dir, regexp = "\\.csv$")
+file_path <- "JLWOP/Data and Models/"
 
-# then run this
-File_name_here=csv_files %>% 
-  map_dfr(read_csv)
+# view all files
+file_path %>% list.files()
+
+# save only file names with the desired extension
+csv_file_names=file_path %>% 
+  list.files() %>% 
+  .[str_detect(., ".csv")]
+
+
+# Load everything into the Global Environment
+csv_file_names %>%
+  purrr::map(function(file_name){ # iterate through each file name
+    assign(x = str_remove(file_name, ".csv"), # Remove file extension ".csv"
+           value = read_csv(paste0(file_path, file_name)),
+           envir = .GlobalEnv)
+  })
 ```
 
+All of the above can be combined into a single function:
+
+```{r eval=FALSE}
+read_all_excel=function(path){
+  file_path <- path
+  
+  # save only file names with the desired extension
+  file_names=file_path %>% 
+    list.files() %>% 
+    .[str_detect(., ".xlsx")]
+  
+  file_names %>%
+    purrr::map(function(file_name){ # iterate through each file name
+      assign(x = str_remove(file_name, ".xlsx"), # Remove file extension ".csv"
+             value = readxl::read_excel(paste0(file_path, file_name)),
+             envir = .GlobalEnv)
+    })
+}
+
+read_all_excel(path = "JLWOP/Data and Models/")
+```
 
 
 ### Walkthrough Case Example
@@ -1652,7 +1682,7 @@ html=quick_read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&r
 #### 2. Find out which element of the list the desired table is in
 
 ```{r}
-as_tibble(html1[[2]])
+head(as_tibble(html1[[2]]))
 ```
 
 #### 3. Extract the table

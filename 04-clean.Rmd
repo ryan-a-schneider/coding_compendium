@@ -4,7 +4,7 @@
 
 Use `dplyr::na_if()` if you have a value coded in your data (e.g., 999) that you want to convert to NA
 
-```{r chapter_4}
+```{r 4.1}
 
 example_data=dplyr::tribble(~name, ~bday_month,
                             "Ryan", 10,
@@ -28,7 +28,7 @@ example_data %>% # can also pass the data to mutate and do it the tidyverse way
 
 `tidyr::replace_na()` is very useful if you have some NA's in your data and you want to fill them in with some value.
 
-```{r}
+```{r 4.2}
 example_data=tibble::tribble(~name, ~fav_color, ~fav_food,
                              "Ryan", "green", "Mexican",
                              "Cassidy", "blue", NA,
@@ -52,17 +52,11 @@ example_data %>% mutate(across(c(fav_color, fav_food), replace_na, "MISSING"))
 
 `is.na()` is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector
 
-```{r}
+```{r 4.3}
 y <- c(1,2,3,NA)
 
 is.na(y) # returns a vector (F F F T)
 ```
-
-You can nest this within a filter command to find all rows where no variable has missing values...
-```{r eval=FALSE}
-starwars %>% filter(across(everything(), ~is.na(.x)))
-```
-
 
 
 
@@ -70,7 +64,7 @@ starwars %>% filter(across(everything(), ~is.na(.x)))
 
 Sometimes necessary to check before conducting an analysis. *This requires my package*, `legaldmlab`
 
-```{r}
+```{r 4.4}
 ?legaldmlab::count_missing
 
 mtcars %>% 
@@ -88,7 +82,7 @@ mtcars %>%
 
 `tidyr::drop_na()`
 
-```{r chapter_4_end}
+```{r 4.5}
 example_data=dplyr::tribble(~name, ~bday_month, ~car,
                             "Ryan", 10, "kia",
                             "Z", NA, "toyota",
