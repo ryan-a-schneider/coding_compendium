@@ -4,7 +4,7 @@
 
 A function is a command that performs a specified operation and returns an output in accordance with that operation.
 
-```{r eval=FALSE}
+```{r chapter_10, eval=FALSE}
 # example structure
 
 Function_name=function(argument){
@@ -19,7 +19,7 @@ Function_name=function(argument){
 
 **Example.** This function takes an input of numbers in the form of a vector and subtracts two from each.
 
-```{r}
+```{r 10.2}
 numbers=c(2,10,12,80)
 
 sub_2=function(vector){
@@ -43,7 +43,7 @@ A for loop is essentially  a function that applies a function or given set of op
 
 For example, this code finds the means of every vector/column in a dataset by repeatedly applying the same code over and over to element "i" in the given list:
 
-```{r}
+```{r 10.3}
 df <- tibble(
   a = rnorm(10),
   b = rnorm(10),
@@ -82,14 +82,14 @@ When you have tasks that you want to do repeatedly, you can either copy and past
 #### Apply a single function to every column in a data frame
 
 Pipe the whole data frame to the map command:
-```{r eval=FALSE}
+```{r 10.4, eval=FALSE}
 df %>% map_df()
 ```
 
 
 #### Apply a function to every item in a column/vector
 Pipe the data frame and column/variable, and include the [ ] to index by vector position:
-```{r eval=FALSE}
+```{r 10.5, eval=FALSE}
 BF_output$Evidence= BF_output$BF[] %>% map_chr(effectsize::interpret_bf)
 ```
 
@@ -99,7 +99,7 @@ BF_output$Evidence= BF_output$BF[] %>% map_chr(effectsize::interpret_bf)
 **Note.** This reads many .csv files into a SINGLE, unified data frame.
 If you want to import many files at once but keep them separated, you'll need a different command
 
-```{r eval=FALSE}
+```{r 10.6, eval=FALSE}
 file_path <- "JLWOP/Data and Models/"
 
 # view all files
@@ -122,7 +122,7 @@ csv_file_names %>%
 
 All of the above can be combined into a single function:
 
-```{r eval=FALSE}
+```{r 10.7, eval=FALSE}
 read_all_excel=function(path){
   file_path <- path
   
@@ -151,7 +151,7 @@ If I tried to do each table individually, I'd be copying and pasting and re-writ
 
 Not only does this mean we have a tidier script, but also, things will be less messy, and we have less chances for error (since we are coding less). And of course, we don't have the annoyances of redoing multiple sections of code.
 
-```{r}
+```{r 10.8, include=FALSE, echo=FALSE}
 pacman::p_load(rvest, tidyverse)
 ```
 
@@ -168,7 +168,7 @@ Lastly, apply each function from your individual steps to all items in your list
 
 #### 1. Scrape data
 
-```{r}
+```{r 10.9}
 # line
 html1=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=04") %>% 
   html_table(fill = TRUE)
@@ -186,13 +186,13 @@ html=quick_read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&r
 
 #### 2. Find out which element of the list the desired table is in
 
-```{r}
+```{r 10.10}
 head(as_tibble(html1[[2]]))
 ```
 
 #### 3. Extract the table
 
-```{r}
+```{r 10.11}
 #line
 table1=as_tibble(html1[[2]])
 
@@ -209,7 +209,7 @@ table1=extract_tibble(html1)
 
 #### 4. Format table
 
-```{r}
+```{r 10.12}
 #line
 table1=table1 %>% 
   select(-X1) %>% 
@@ -234,7 +234,7 @@ test_format=function(table){
 
 ### DO FOR ALL
 
-```{r}
+```{r 10.13}
 
 #### FUNCTIONS ####
 # Read

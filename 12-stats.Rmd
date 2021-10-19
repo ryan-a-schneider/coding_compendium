@@ -9,7 +9,7 @@ When you do this, you are setting the true population parameter; you are in cont
 
 In a binomial distribution, the parameter is normally distributed, and can take any value from 0.0 to 1.0
 But the data that this process generates is not normal
-```{r}
+```{r chapter_12}
 rbinom(n= 1000, size= 1, prob =  0.5)
 
 rnorm(n=2500,mean=500, sd=100)
@@ -32,7 +32,7 @@ See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overv
 To reverse-score a variable, you should use `car::recode()`
 Can be done a few different ways, depending on how many variables you're looking to recode:
 
-```{r eval=FALSE}
+```{r 12.2, eval=FALSE}
 
 # Recode just one variable
 df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
@@ -55,7 +55,7 @@ If you want to create a variable that is an ordinal ranking of other variables, 
 
 - In either case, the ranks are generated from lowest to highest, so if you want to flip them around you'll need to include `desc()` in the command.
 
-```{r}
+```{r 12.3}
 
 dat=tibble::tribble(~name, ~score,
                     "bob", 0,
@@ -79,6 +79,12 @@ dat %>% mutate(ranked = dense_rank(desc(score)))
 ## (Almost) all statistics made easy
 
 https://easystats.github.io/easystats/
+
+Using `format_table()` formats the table so its super easy to read and comes out printed nicely. It automatically rounds all p-values and collapses CI's into a single column. **However!** *It makes every column into a Character column!* Use this for creating flextables and objects for export only, not for creating tidy tibbles
+
+
+
+
 
 
 

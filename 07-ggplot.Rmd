@@ -36,7 +36,7 @@ Note that bar and column graphs look identical at first glance, but they serve t
 
 *Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.2, warning=FALSE, message=FALSE}
 
 # BAR GRAPH
 # height of bars is a frequency count of each level of the X variable cut
@@ -58,14 +58,14 @@ see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
 Since I use these so often I figure they deserve their own special section.
 
 Basic histograms can be built with the following code:
-```{r histogram}
+```{r 7.3_histogram}
 ggplot(data = mtcars, aes(x=cyl)) + 
   geom_histogram(binwidth = .5, colour="Black", fill="green") + # histogram
   theme_classic()
 ```
 
 and your basic density curve with the following:
-```{r}
+```{r 7.4}
 ggplot(diamonds, aes(x=price)) + 
 geom_density(alpha=.3)+ # density plot. Alpha sets the transparency level of the fill.
   theme_classic()
@@ -73,7 +73,7 @@ geom_density(alpha=.3)+ # density plot. Alpha sets the transparency level of the
 
 
 You can also use the following code from `bayestestR` to build a really quick and nice density curve
-```{r}
+```{r 7.5}
 plot(bayestestR::point_estimate(diamonds, centrality=c("median","mean")))+
   labs(title="Mean and Median")
 ```
@@ -84,7 +84,7 @@ plot(bayestestR::point_estimate(diamonds, centrality=c("median","mean")))+
 
 The `gghighlight` package is great for this
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.6, warning=FALSE, message=FALSE}
 
 # example 1
 ggplot(mtcars, aes(x= mpg, y=hp))+
@@ -108,7 +108,7 @@ ggplot(diamonds_abr, aes(x= cut, y= price, colour=price))+
 
 ## Add labels to data points
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.7, warning=FALSE, message=FALSE}
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point()+
   theme_classic()+
@@ -126,7 +126,7 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 
 `see::plots()` is good for this.
 
-```{r}
+```{r 7.8}
 print("temp")
 ```
 
@@ -139,7 +139,7 @@ To change the fill color by factor or group, add `fill = ___` within the `aes()`
 
 If you want to *add color and make all of the (bars; dots; lines; etc.) the same color*, than that is a graph-wide control and needs to be put in `geom_point()`. This manually sets the color for the whole graph.
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.9, warning=FALSE, message=FALSE}
 # add a color scale to the dots
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point(color="blue")
@@ -147,7 +147,7 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 
 If you want to add color that changes according to a variable (e.g., by factor level), then the color needs to be specified **as a variable name**, in the aes mapping with the other variables.
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.10, warning=FALSE, message=FALSE}
 ggplot(mtcars, aes(x= mpg, y=hp, color=cyl))+
   geom_point()
 ```
@@ -162,7 +162,7 @@ When changing the color scale of graphs, note that `scale_fill` commands are use
 - For figures that have solid area (e.g., density; box; bar; violin plots; etc.), use `scale_fill`
 - For figures that have continuous changes (e.g., line and scatter plots), use `scale_color`
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.11, warning=FALSE, message=FALSE}
 # Set colors manually
 ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar() +
@@ -196,7 +196,7 @@ ggplot(mtcars, aes(x = mpg, y = disp, colour = hp))+
 
 "Fill" graphs also come with an extra option: Setting the outline color. You can change the outline of the bar/column/etc. by specifying the color inside `geom_x()`
 
-```{r}
+```{r 7.12}
 # change only the fill of the bars
 ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar()
@@ -223,7 +223,7 @@ Quick highlights here of my favorite functions from this package. See (ha) the f
 You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
 
 #### Probability of Direction (*Pd*) figure
-```{r eval=FALSE}
+```{r 7.13, eval=FALSE}
 
 plot(pd(Main_EffectsModel))+
   scale_fill_manual(values=c("#FFC107", "#E91E63"))+ 
@@ -235,7 +235,7 @@ plot(pd(Main_EffectsModel))+
 
 #### ROPE figure
 
-```{r eval=FALSE}
+```{r 7.14, eval=FALSE}
 plot(ropetest, rope_color = "grey70")+
   gameofthrones::scale_fill_got_d(option = "white_walkers") # or scale_fill_manual(values = c("gray75","red")
 ```
@@ -247,7 +247,7 @@ values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their
 
 #### Bayes factor models comparison figure
 
-```{r eval=FALSE}
+```{r 7.15, eval=FALSE}
 plot(bayesfactor_models(Thesis_Model,discount_model))+
   scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
 ```
@@ -261,7 +261,7 @@ plot(bayesfactor_models(Thesis_Model,discount_model))+
 
 Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
 
-```{r}
+```{r 7.16}
 # shape
 ggplot(mtcars, aes(x= mpg, y=hp, shape=as.factor(cyl)))+
   geom_point()
@@ -286,7 +286,7 @@ ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
 
 Titles and axis labels are added via `labs()`.
 
-```{r}
+```{r 7.17}
 ggplot(mtcars, aes(x=cyl))+
     geom_bar(colour="gray", fill="lightgreen")+
   labs(title = "Ages of Survey Respondants by Group",
@@ -299,7 +299,7 @@ ggplot(mtcars, aes(x=cyl))+
 
 Add the line `theme(plot.title = element_text(hjust = 0.5))`
 
-```{r}
+```{r 7.18}
 
 ggplot(mtcars, aes(x=cyl))+
     geom_bar(colour="gray", fill="lightgreen")+
@@ -316,7 +316,7 @@ See tutorial on [this web page](https://www-r--bloggers-com.cdn.ampproject.org/v
 
 Or, use the `extrafont` package, and set everything using the `theme()` command.
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.19, warning=FALSE, message=FALSE}
 # Visualize new groups
 library(extrafont)
 loadfonts(device="win")
@@ -338,7 +338,7 @@ ggplot(mtcars, aes(x=cyl))+
 
 Add `theme(panel.grid = element_blank())`
 
-```{r warning=FALSE, message=FALSE}
+```{r 7.20, warning=FALSE, message=FALSE}
 ggplot(mtcars, aes(x=cyl))+
     geom_bar(colour="gray", fill="lightgreen")+
   labs(title = "Ages of Survey Respondants by Group",
@@ -361,7 +361,7 @@ This is dividing one plot into subplots, in order to communicate relationships b
 Again, this is just a single extra command, this time at the end of the code: facet_wrap(~columnhead)
 The tilde sign in R means "by", as in "divide (something) by this"
 
-```{r eval=FALSE}
+```{r 7.21, eval=FALSE}
 print("temp")
 ```
 
@@ -376,7 +376,7 @@ For example, by multiplying all your points by 10x
 
 To create a log transformation of the same scatter plot above, add one extra bit: scale_x_log10()
 
-```{r eval=FALSE}
+```{r 7.22, eval=FALSE}
 print("temp")
 ```
 
@@ -386,7 +386,7 @@ You can also make both axis be logged by adding +scale again for y
 
 Add `coord_cartesian(xlim = c(lower,upper))`
 
-```{r}
+```{r 7.23}
 print("temp")
 ```
 

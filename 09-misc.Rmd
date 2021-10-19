@@ -36,7 +36,7 @@ Reading a table into R takes a few steps.
 
 Step 1 is to copy and paste the URL into the `read_html()` verb like below: 
 
-```{r complex example}
+```{r 9.2}
 pacman::p_load(rvest, tidyverse)
 
 exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx") %>% 
@@ -48,7 +48,7 @@ exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Page
 Sometimes if the web page is extremely basic and pretty much the only thing on it is a table, you can stop there. Most of the time though, there will be tons of other stuff on the website and you need to get more specific so R can find the table. This is the `html_nodes()` part of the above command; in there you specify the exact part of the web page where the table is located/what object file it is.
 
 To find this you will need to use the Developer mode in your browser. See this screenshot for an example...
-```{r pic, eval=FALSE}
+```{r 9.3_pic, eval=FALSE}
 knitr::include_graphics(here::here("pics", "scrape.png"))
 ```
 In Firefox you open this by going to Settings > More Tools > Web Developer Tools (or CNTRL + Shift + I).
@@ -61,13 +61,13 @@ Keep drilling down through page elements until you find the one that highlights 
 
 That's stage 1. From here you now need to clean up the table.
 
-```{r exonerations table}
+```{r 9.4}
 exonerations_table=as.data.frame(exonerations_table) # convert into a df
 ```
 
 Your table might be different, but this one's names were messed up when read in, so lets fix those first and then fix the rows and columns.
 
-```{r}
+```{r 9.5}
 # save the names to a vector
 table_names=exonerations_table$Last.Name[1:20]
 
@@ -87,7 +87,7 @@ exonerations_table=exonerations_table %>% janitor::clean_names()
 ```
 
 Yikes, a lot of stuff is stored incorrectly, and as a result there's some missing values that need to be addressed and other data that needs to be corrected.
-```{r}
+```{r 9.6}
 exonerations_table=as_tibble(exonerations_table) %>% # convert to tibble
   mutate(across(c(dna,mwid:ild), na_if,"")) %>% # turn missing values into NA's
   mutate(across(c(dna,mwid:ild), replace_na, "derp")) %>% # replace NA's with a string (required for the next lines to work)
@@ -111,7 +111,7 @@ Check out [this page](https://www.dataquest.io/blog/web-scraping-in-r-rvest/) fo
 
 Use `foreign::read.spss`
 
-```{r eval=FALSE}
+```{r 9.7, eval=FALSE}
 spss_version=foreign::read.spss(here::here("JLWOP", "Data and Models", "JLWOP_RYAN.sav"), to.data.frame = TRUE)
 ```
 
@@ -121,7 +121,7 @@ Might also want to add `as_tibble()` on the end.
 
 Use `scales::percent()`, which converts normal numbers into percentages and includes the percent sign (%) afterwards
 
-```{r}
+```{r 9.8}
 
 simple_table=tribble(~n_people, ~votes_in_favor,
                      25, 14)
@@ -135,7 +135,7 @@ Scale is what to multiple the original number by (e.g., convert 0.05 to 5% by x1
 
 ## Find all possible combindations of items in a vector
 
-```{r}
+```{r 9.9}
 y <- c(2,4,6,8)
 
 combn(c(2,4,6,8),2) # find all possible combinations of these numbers, drawn two at a time
@@ -143,7 +143,7 @@ combn(c(2,4,6,8),2) # find all possible combinations of these numbers, drawn two
 
 ## Download files from the internet
 
-```{r eval=FALSE}
+```{r 9.10, eval=FALSE}
 
 ```
 

@@ -6,10 +6,10 @@ Below are some quick tips for common tasks; but be sure to read the Cookbook abo
 
 ## Important code chunk options
 
-```{r}
-knitr::include_graphics("pics", "markdown_stuff.png")
-```
-
+- `cache`: TRUE or FALSE. Do you want to save the output of the chunk so it doesn't have to run next time? Creates a cached folder in the directory.
+- `eval`: Do you want to evaluate (i.e., run) the code in the chunk?
+- `echo`: Do you want to *print* the code after it's run?
+- `include`: Do you want to include code output in the final output document? Setting to `FALSE` means the code does not appear in the output document, but it is still run.
 
 ## Writing math equations and symbols
 
@@ -47,7 +47,7 @@ I love `dplyr`
 The default method doesn't work for me for some reason, but you can still insert images using a combination of the `here` package and `knitr`.
 
 Use the `include_graphics()` command and specify both the file location and it's name:
-```{r }
+```{r 11.2}
 knitr::include_graphics(here::here("pics","snapchat.png"))
 ```
 

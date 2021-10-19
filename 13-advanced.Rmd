@@ -5,7 +5,7 @@
 
 ### Regex expressions and symbols
 
-```{r eval=FALSE}
+```{r chapter_13, eval=FALSE}
 str_remove(html$`Market Price`, pattern = "$") # doesn't remove the $ sign
 str_remove(html$`Market Price`, pattern = "\\$") # works
 ```

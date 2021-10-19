@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Intro to R Markdown | R Coding Compendium</title>
   <meta name="description" content="Chapter 12 Intro to R Markdown | R Coding Compendium" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Intro to R Markdown | R Coding Compendium" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-08-14" />
+<meta name="date" content="2021-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="functions-loops-and-iterative-programming.html"/>
 <link rel="next" href="statistics-and-psych-specific-stuff.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,8 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -118,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -159,26 +162,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selecting-specific-columnsvariables"><i class="fa fa-check"></i><b>3.2</b> Selecting specific columns/variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If, If-then, and Case-when</a>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
 <li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#merge-or-collapse-variables"><i class="fa fa-check"></i><b>3.4</b> Merge or Collapse variables</a></li>
-<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.5</b> Apply a function to multiple variables at once</a></li>
-<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.6</b> Pivoting (i.e., transposing) data</a>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.6.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.7</b> Managing Many Models</a></li>
-<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
-<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
-<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Working with date and time variables</a>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.8</b> Managing Many Models</a></li>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Working with date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.11.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
-<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.2</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.12.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.2</b> Find the difference between two dates/times</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -207,14 +211,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a></li>
+<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>8.1.1</b> Histograms and density curves</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.2</b> Highlight specific points</a></li>
 <li class="chapter" data-level="8.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.3</b> Add labels to data points</a></li>
 <li class="chapter" data-level="8.4" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.4</b> Plotting multiple graphs at once</a></li>
 <li class="chapter" data-level="8.5" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.5</b> Change the colors (bars; columns; dots; etc.)</a>
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.5.1</b> Fine-tuning colors</a></li>
-<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#more-options"><i class="fa fa-check"></i><b>8.5.2</b> More options</a></li>
+<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#the-see-package-and-more-options"><i class="fa fa-check"></i><b>8.5.2</b> The see package and more options</a></li>
+<li class="chapter" data-level="8.5.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#see-for-bayes-and-density-functions"><i class="fa fa-check"></i><b>8.5.3</b> See for Bayes and density functions</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.6</b> Other aesthetic mappings</a></li>
 <li class="chapter" data-level="8.7" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.7</b> Adding and Customizing Text</a>
@@ -238,14 +246,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
 <li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="misc-stuff.html"><a href="misc-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<li class="chapter" data-level="10" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="misc-stuff.html"><a href="misc-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
-<li class="chapter" data-level="10.2" data-path="misc-stuff.html"><a href="misc-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
-<li class="chapter" data-level="10.3" data-path="misc-stuff.html"><a href="misc-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
-<li class="chapter" data-level="10.4" data-path="misc-stuff.html"><a href="misc-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
-<li class="chapter" data-level="10.5" data-path="misc-stuff.html"><a href="misc-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
-<li class="chapter" data-level="10.6" data-path="misc-stuff.html"><a href="misc-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+<li class="chapter" data-level="10.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="10.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="10.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="10.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="10.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="10.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Functions, Loops, and Iterative Programming</a>
 <ul>
@@ -261,18 +269,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>12.1</b> Important code chunk options</a></li>
+<li class="chapter" data-level="12.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.2</b> Writing math equations and symbols</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
-<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
-<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="12.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.2.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.2.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.2.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="12.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>12.2.4</b> Writing in-line code</a></li>
 </ul></li>
+<li class="chapter" data-level="12.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>12.3</b> Including graphics/inserting pictures</a></li>
+<li class="chapter" data-level="12.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>12.4</b> Footnotes</a></li>
+<li class="chapter" data-level="12.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>12.5</b> Change the color of your text</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
 <li class="chapter" data-level="13.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>13.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
 <li class="chapter" data-level="13.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>13.3</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="13.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>13.4</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="13.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#almost-all-statistics-made-easy"><i class="fa fa-check"></i><b>13.5</b> (Almost) all statistics made easy</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>14</b> Coding Tips and Tricks</a>
 <ul>
@@ -313,10 +328,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="intro-to-r-markdown" class="section level1" number="12">
 <h1><span class="header-section-number">Chapter 12</span> Intro to R Markdown</h1>
-<div id="writing-math-equations-and-symbols" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Writing math equations and symbols</h2>
-<div id="greek-symbols" class="section level3" number="12.1.1">
-<h3><span class="header-section-number">12.1.1</span> Greek symbols</h3>
+<p>R Markdown is a better and more organized way to write scripts. Seriously, once you learn it, there’s no going back. New and don’t know where to start? Read <a href="https://bookdown.org/yihui/rmarkdown-cookbook/conceptual-overview.html">The R Markdown Cookbook</a>. Amazing overview with tons of neat tricks and how-to’s. <a href="https://rmd4sci.njtierney.com/using-rmarkdown.html#the-anatomy-of-an-rmarkdown-document">This other source</a> may also be of some help.</p>
+<p>Below are some quick tips for common tasks; but be sure to read the Cookbook above.</p>
+<div id="important-code-chunk-options" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Important code chunk options</h2>
+<ul>
+<li><code>cache</code>: TRUE or FALSE. Do you want to save the output of the chunk so it doesn’t have to run next time? Creates a cached folder in the directory.</li>
+<li><code>eval</code>: Do you want to evaluate (i.e., run) the code in the chunk?</li>
+<li><code>echo</code>: Do you want to <em>print</em> the code after it’s run?</li>
+<li><code>include</code>: Do you want to include code output in the final output document? Setting to <code>FALSE</code> means the code does not appear in the output document, but it is still run.</li>
+</ul>
+</div>
+<div id="writing-math-equations-and-symbols" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Writing math equations and symbols</h2>
+<div id="greek-symbols" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Greek symbols</h3>
 <p>A few notes first:
 Math notation is done with dollar signs and forward slashes…</p>
 <p>For Greek letters, just type the name of the letter:
@@ -326,18 +352,57 @@ Math notation is done with dollar signs and forward slashes…</p>
 <code>$\pi$</code> for <span class="math inline">\(\pi\)</span>
 <code>$\rho$</code> for <span class="math inline">\(\rho\)</span></p>
 </div>
-<div id="math-notation" class="section level3" number="12.1.2">
-<h3><span class="header-section-number">12.1.2</span> Math notation</h3>
+<div id="math-notation" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Math notation</h3>
 <p><code>$\pm$</code> for ±
 <code>$\ge$</code> for ≥
 <code>$\le$</code> for ≤
 <code>$\neq$</code> for ≠</p>
 </div>
-<div id="statistics-notation" class="section level3" number="12.1.3">
-<h3><span class="header-section-number">12.1.3</span> Statistics notation</h3>
+<div id="statistics-notation" class="section level3" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Statistics notation</h3>
+</div>
+<div id="writing-in-line-code" class="section level3" number="12.2.4">
+<h3><span class="header-section-number">12.2.4</span> Writing in-line code</h3>
+<p>Use the funny looking symbol on the tilde key that looks like this: `
+To write in line, code, put one of those symbols on either side of the code, like you would with quotation marks. Helps you write lines like:</p>
+<p>I love <code>dplyr</code></p>
+</div>
+</div>
+<div id="including-graphicsinserting-pictures" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Including graphics/inserting pictures</h2>
+<p>The default method doesn’t work for me for some reason, but you can still insert images using a combination of the <code>here</code> package and <code>knitr</code>.</p>
+<p>Use the <code>include_graphics()</code> command and specify both the file location and it’s name:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="intro-to-r-markdown.html#cb193-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>,<span class="st">&quot;snapchat.png&quot;</span>))</span></code></pre></div>
+<p><img src="pics/snapchat.png" width="540" /></p>
+<p>The <a href="https://bookdown.org/yihui/bookdown/figures.html">bookdown book</a> notes that:</p>
+<p>The syntax for controlling the image attributes is the same as when images are generated from R
+code. Chunk options <code>fig.cap</code>, <code>out.width</code>, and <code>fig.show</code> still have the same meanings.</p>
+<p>and:
+You can easily scale these images proportionally using the same ratio. This can be done via the
+<code>dpi</code> argument (dots per inch), which takes the value from the chunk option <code>dpi</code> by default If it is a
+numeric value and the chunk option <code>out.width</code> is not set, the output width of an image will be its
+actual width (in pixels) divided by dpi , and the unit will be inches. For example, for an image with
+the size 672 x 480, its output width will be 7 inches ( 7in ) when <code>dpi=96</code>.
+This feature requires the package png and/or jpeg to be installed. You can always override the automatic calculation of
+width in inches by providing a non-NULL value to the chunk option <code>out.width</code> , or use <code>include_graphics(dpi = NA)</code></p>
+</div>
+<div id="footnotes" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Footnotes</h2>
+<p>To add a footnote, use the “^” symbol and put the note in brackets:</p>
+<p>You can also write footnotes<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> like this.</p>
+</div>
+<div id="change-the-color-of-your-text" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Change the color of your text</h2>
+<p><span style="color:blue"> YOUR TEXT HERE </span></p>
 
 </div>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Kruschke, J. (2015). Goals, power, and sample size. In J. K. Kruschke (Ed.), Doing bayesian data analysis: A tutorial with r, jags, and stan (2nd ed., pp. 359-398). Academic Press.<a href="intro-to-r-markdown.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
@@ -349,7 +414,6 @@ Math notation is done with dollar signs and forward slashes…</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -368,6 +432,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -388,6 +453,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Clean Data | R Coding Compendium</title>
   <meta name="description" content="Chapter 4 Clean Data | R Coding Compendium" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Clean Data | R Coding Compendium" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-08-14" />
+<meta name="date" content="2021-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="wrangle-data.html"/>
 <link rel="next" href="dropping-missing-values-from-the-data-set.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,8 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -118,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -159,26 +162,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selecting-specific-columnsvariables"><i class="fa fa-check"></i><b>3.2</b> Selecting specific columns/variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If, If-then, and Case-when</a>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
 <li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#merge-or-collapse-variables"><i class="fa fa-check"></i><b>3.4</b> Merge or Collapse variables</a></li>
-<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.5</b> Apply a function to multiple variables at once</a></li>
-<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.6</b> Pivoting (i.e., transposing) data</a>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.6.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.7</b> Managing Many Models</a></li>
-<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
-<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
-<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Working with date and time variables</a>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.8</b> Managing Many Models</a></li>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Working with date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.11.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
-<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.2</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.12.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.2</b> Find the difference between two dates/times</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -207,14 +211,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a></li>
+<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>8.1.1</b> Histograms and density curves</a></li>
+</ul></li>
 <li class="chapter" data-level="8.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.2</b> Highlight specific points</a></li>
 <li class="chapter" data-level="8.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.3</b> Add labels to data points</a></li>
 <li class="chapter" data-level="8.4" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.4</b> Plotting multiple graphs at once</a></li>
 <li class="chapter" data-level="8.5" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.5</b> Change the colors (bars; columns; dots; etc.)</a>
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.5.1</b> Fine-tuning colors</a></li>
-<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#more-options"><i class="fa fa-check"></i><b>8.5.2</b> More options</a></li>
+<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#the-see-package-and-more-options"><i class="fa fa-check"></i><b>8.5.2</b> The see package and more options</a></li>
+<li class="chapter" data-level="8.5.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#see-for-bayes-and-density-functions"><i class="fa fa-check"></i><b>8.5.3</b> See for Bayes and density functions</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.6</b> Other aesthetic mappings</a></li>
 <li class="chapter" data-level="8.7" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.7</b> Adding and Customizing Text</a>
@@ -238,14 +246,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
 <li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="misc-stuff.html"><a href="misc-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<li class="chapter" data-level="10" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="misc-stuff.html"><a href="misc-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
-<li class="chapter" data-level="10.2" data-path="misc-stuff.html"><a href="misc-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
-<li class="chapter" data-level="10.3" data-path="misc-stuff.html"><a href="misc-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
-<li class="chapter" data-level="10.4" data-path="misc-stuff.html"><a href="misc-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
-<li class="chapter" data-level="10.5" data-path="misc-stuff.html"><a href="misc-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
-<li class="chapter" data-level="10.6" data-path="misc-stuff.html"><a href="misc-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+<li class="chapter" data-level="10.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="10.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="10.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="10.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="10.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="10.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="functions-loops-and-iterative-programming.html"><a href="functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Functions, Loops, and Iterative Programming</a>
 <ul>
@@ -261,18 +269,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>12</b> Intro to R Markdown</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.1</b> Writing math equations and symbols</a>
+<li class="chapter" data-level="12.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>12.1</b> Important code chunk options</a></li>
+<li class="chapter" data-level="12.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>12.2</b> Writing math equations and symbols</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.1.1</b> Greek symbols</a></li>
-<li class="chapter" data-level="12.1.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.1.2</b> Math notation</a></li>
-<li class="chapter" data-level="12.1.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.1.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="12.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>12.2.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="12.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>12.2.2</b> Math notation</a></li>
+<li class="chapter" data-level="12.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>12.2.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="12.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>12.2.4</b> Writing in-line code</a></li>
 </ul></li>
+<li class="chapter" data-level="12.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>12.3</b> Including graphics/inserting pictures</a></li>
+<li class="chapter" data-level="12.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>12.4</b> Footnotes</a></li>
+<li class="chapter" data-level="12.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>12.5</b> Change the color of your text</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>13</b> Statistics and Psych-specific Stuff</a>
 <ul>
 <li class="chapter" data-level="13.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>13.1</b> Create or sample from a distribution</a></li>
 <li class="chapter" data-level="13.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>13.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
 <li class="chapter" data-level="13.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>13.3</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="13.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>13.4</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="13.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#almost-all-statistics-made-easy"><i class="fa fa-check"></i><b>13.5</b> (Almost) all statistics made easy</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>14</b> Coding Tips and Tricks</a>
 <ul>
@@ -316,14 +331,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="replace-a-value-with-na" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Replace a value with NA</h2>
 <p>Use <code>dplyr::na_if()</code> if you have a value coded in your data (e.g., 999) that you want to convert to NA</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="clean-data.html#cb71-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month,</span>
-<span id="cb71-2"><a href="clean-data.html#cb71-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>,</span>
-<span id="cb71-3"><a href="clean-data.html#cb71-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="dv">3</span>,</span>
-<span id="cb71-4"><a href="clean-data.html#cb71-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="dv">999</span>, </span>
-<span id="cb71-5"><a href="clean-data.html#cb71-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>,</span>
-<span id="cb71-6"><a href="clean-data.html#cb71-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>)</span>
-<span id="cb71-7"><a href="clean-data.html#cb71-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-8"><a href="clean-data.html#cb71-8" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="clean-data.html#cb66-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month,</span>
+<span id="cb66-2"><a href="clean-data.html#cb66-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>,</span>
+<span id="cb66-3"><a href="clean-data.html#cb66-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="dv">3</span>,</span>
+<span id="cb66-4"><a href="clean-data.html#cb66-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="dv">999</span>, </span>
+<span id="cb66-5"><a href="clean-data.html#cb66-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>,</span>
+<span id="cb66-6"><a href="clean-data.html#cb66-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>)</span>
+<span id="cb66-7"><a href="clean-data.html#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="clean-data.html#cb66-8" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   name    bday_month
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -332,9 +347,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Jen            999
 ## 4 Tristin        999
 ## 5 Cassidy          6</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="clean-data.html#cb73-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>bday_month<span class="ot">=</span><span class="fu">na_if</span>(example_data<span class="sc">$</span>bday_month, <span class="dv">999</span>) <span class="co">#example doing one column at a time </span></span>
-<span id="cb73-2"><a href="clean-data.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-3"><a href="clean-data.html#cb73-3" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="clean-data.html#cb68-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>bday_month<span class="ot">=</span><span class="fu">na_if</span>(example_data<span class="sc">$</span>bday_month, <span class="dv">999</span>) <span class="co">#example doing one column at a time </span></span>
+<span id="cb68-2"><a href="clean-data.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="clean-data.html#cb68-3" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   name    bday_month
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -343,8 +358,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Jen             NA
 ## 4 Tristin         NA
 ## 5 Cassidy          6</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="clean-data.html#cb75-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="co"># can also pass the data to mutate and do it the tidyverse way</span></span>
-<span id="cb75-2"><a href="clean-data.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bday_month=</span><span class="fu">na_if</span>(bday_month, <span class="dv">999</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="clean-data.html#cb70-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="co"># can also pass the data to mutate and do it the tidyverse way</span></span>
+<span id="cb70-2"><a href="clean-data.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bday_month=</span><span class="fu">na_if</span>(bday_month, <span class="dv">999</span>)) </span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   name    bday_month
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -357,15 +372,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="replace-nas-with-a-value" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Replace NA’s with a value</h2>
 <p><code>tidyr::replace_na()</code> is very useful if you have some NA’s in your data and you want to fill them in with some value.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="clean-data.html#cb77-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>fav_color, <span class="sc">~</span>fav_food,</span>
-<span id="cb77-2"><a href="clean-data.html#cb77-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Ryan&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;Mexican&quot;</span>,</span>
-<span id="cb77-3"><a href="clean-data.html#cb77-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Cassidy&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="cn">NA</span>,</span>
-<span id="cb77-4"><a href="clean-data.html#cb77-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
-<span id="cb77-5"><a href="clean-data.html#cb77-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tristin&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="cn">NA</span>,</span>
-<span id="cb77-6"><a href="clean-data.html#cb77-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tarika&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
-<span id="cb77-7"><a href="clean-data.html#cb77-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Italian&quot;</span>)</span>
-<span id="cb77-8"><a href="clean-data.html#cb77-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-9"><a href="clean-data.html#cb77-9" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="clean-data.html#cb72-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>fav_color, <span class="sc">~</span>fav_food,</span>
+<span id="cb72-2"><a href="clean-data.html#cb72-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Ryan&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;Mexican&quot;</span>,</span>
+<span id="cb72-3"><a href="clean-data.html#cb72-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Cassidy&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb72-4"><a href="clean-data.html#cb72-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
+<span id="cb72-5"><a href="clean-data.html#cb72-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tristin&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb72-6"><a href="clean-data.html#cb72-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tarika&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
+<span id="cb72-7"><a href="clean-data.html#cb72-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Italian&quot;</span>)</span>
+<span id="cb72-8"><a href="clean-data.html#cb72-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-9"><a href="clean-data.html#cb72-9" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   name    fav_color fav_food
 ##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
@@ -375,11 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Tristin purple    &lt;NA&gt;    
 ## 5 Tarika  &lt;NA&gt;      &lt;NA&gt;    
 ## 6 Jen     &lt;NA&gt;      Italian</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="clean-data.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace NA&#39;s in one col</span></span>
-<span id="cb79-2"><a href="clean-data.html#cb79-2" aria-hidden="true" tabindex="-1"></a>tidyr<span class="sc">::</span><span class="fu">replace_na</span>(example_data<span class="sc">$</span>fav_food, <span class="st">&quot;MISSING&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="clean-data.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace NA&#39;s in one col</span></span>
+<span id="cb74-2"><a href="clean-data.html#cb74-2" aria-hidden="true" tabindex="-1"></a>tidyr<span class="sc">::</span><span class="fu">replace_na</span>(example_data<span class="sc">$</span>fav_food, <span class="st">&quot;MISSING&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Mexican&quot; &quot;MISSING&quot; &quot;MISSING&quot; &quot;MISSING&quot; &quot;MISSING&quot; &quot;Italian&quot;</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="clean-data.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace in multiple columns</span></span>
-<span id="cb81-2"><a href="clean-data.html#cb81-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(fav_color, fav_food), replace_na, <span class="st">&quot;MISSING&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="clean-data.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace in multiple columns</span></span>
+<span id="cb76-2"><a href="clean-data.html#cb76-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(fav_color, fav_food), replace_na, <span class="st">&quot;MISSING&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   name    fav_color fav_food
 ##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
@@ -393,19 +408,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="identify-columns-or-rows-with-missing-values" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Identify columns or rows with Missing values</h2>
 <p><code>is.na()</code> is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="clean-data.html#cb83-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>)</span>
-<span id="cb83-2"><a href="clean-data.html#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-3"><a href="clean-data.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(y) <span class="co"># returns a vector (F F F T)</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="clean-data.html#cb78-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>)</span>
+<span id="cb78-2"><a href="clean-data.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="clean-data.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(y) <span class="co"># returns a vector (F F F T)</span></span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
 </div>
 <div id="find-the-percentage-of-a-variable-that-is-missing" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Find the percentage of a variable that is missing</h2>
 <p>Sometimes necessary to check before conducting an analysis. <em>This requires my package</em>, <code>legaldmlab</code></p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="clean-data.html#cb85-1" aria-hidden="true" tabindex="-1"></a>?legaldmlab<span class="sc">::</span>count_missing</span>
-<span id="cb85-2"><a href="clean-data.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-3"><a href="clean-data.html#cb85-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb85-4"><a href="clean-data.html#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(hp<span class="sc">:</span>drat) <span class="sc">%&gt;%</span> </span>
-<span id="cb85-5"><a href="clean-data.html#cb85-5" aria-hidden="true" tabindex="-1"></a>  legaldmlab<span class="sc">::</span><span class="fu">count_missing</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="clean-data.html#cb80-1" aria-hidden="true" tabindex="-1"></a>?legaldmlab<span class="sc">::</span>count_missing</span>
+<span id="cb80-2"><a href="clean-data.html#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="clean-data.html#cb80-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb80-4"><a href="clean-data.html#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(hp<span class="sc">:</span>drat) <span class="sc">%&gt;%</span> </span>
+<span id="cb80-5"><a href="clean-data.html#cb80-5" aria-hidden="true" tabindex="-1"></a>  legaldmlab<span class="sc">::</span><span class="fu">count_missing</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   variable missing_count percent_missing
 ##   &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;          
@@ -426,7 +441,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -445,6 +459,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -465,6 +480,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
