@@ -39,4 +39,33 @@ Here is an example:
 Generally when you see `.fn` inside a function (e.g., `map(x, .fn)`), that means *function*. You put whatever formula or function you want in there. You may also see the tilde used instead, which does the same thing.
 
 
+## Creating a package
+
+https://rstudio4edu.github.io/rstudio4edu-book/data-pkg.html
+
+
+### Documenting pacakge meta-data
+https://r-pkgs.org/description.html
+
+### Connecting to other packages
+https://kbroman.org/pkg_primer/pages/depends.html
+
+
+### Git and Github
+https://r-pkgs.org/git.html#git-rstudio
+https://www.youtube.com/watch?v=XbSwdHBiO4E
+
+
+
+## Creating a bookdown
+https://www.youtube.com/watch?app=desktop&v=m5D-yoH416Y&feature=youtu.be
+
+
+### Rendering the book once it's done
+
+1. Render locally with bookdown::render_book("index.Rmd")
+
+2. Use `browseURL("docs/index.html")` to view your book locally (or just open `index.html` in a browser).
+
+3. If it looks good, commit and push all changed files to GitHub.
 

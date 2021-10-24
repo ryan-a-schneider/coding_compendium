@@ -60,20 +60,14 @@ for (i in seq_along(df)) {            # 2.Sequence of operations. "For each item
 output
 ```
 
-Check out [this book chapter](https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments) for a great and detailed explanation of for-loops and functional coding
+Check out [this book chapter](https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments) for a great and detailed explanation of for-loops and functional coding.
 
-Although for loops are nice, they can be somewhat unwieldy. R programmers typically use iterating functions instead! 
-
-Examples of iterating functions are the lapply, vapply, sapply, etc. family of base R commands. But these can be confusing and the commands are not great.
+Although for loops are nice, they are unwieldy. R programmers typically use iterating functions instead. Examples of iterating functions are the lapply, vapply, sapply, etc. family of base R commands. But these can also be confusing and the commands are not great.
 
 The purrr package offers a better way to do iterating functions over base R; it's the tidyverse way to make efficient and understandable for loops! **If you have a need for a for-loop for something, see the next section instead on how to use purrr to make an iterative function. Important to understand conceptually what a for-loop is, but using them is impractical when you have purrr**
 
 ## Purrr and iterative loops
-*All notes here come from Charlotte Wickham's lecture tutorial [on YouTube](https://www.youtube.com/watch?v=7UlWJWfZO9M)
-
-Purrr's map functions offer a way to apply any existing function (even functions you've made) to multiple things at once (be it lists; data frame columns, individual items in vector, etc.).
-
-When you have tasks that you want to do repeatedly, you can either copy and paste your code a bunch of times, or make an iterative function that does each task for you. You could use a for-loop to do these tasks, but {purrr} is a package that lets you build iterating functions, which have advantages over for-loops.
+*All notes here come from Charlotte Wickham's lecture tutorial; [part 1 is on YouTube here](https://www.youtube.com/watch?v=7UlWJWfZO9M), and part 2 is [here](https://www.youtube.com/watch?v=b0ozKTUho0A&t=1210s).
 
 
 
