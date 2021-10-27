@@ -1,8 +1,10 @@
-# Functions, Loops, and Iterative Programming
+# Intermediate R: Functions, Loops, and Iterative Programming
 
 ## Functions
 
-A function is a command that performs a specified operation and returns an output in accordance with that operation.
+A function is a command that performs a specified operation and returns an output in accordance with that operation. You can literally make a function to do anything you want.
+
+*General structure of a basic function:*
 
 ```{r chapter_10, eval=FALSE}
 # example structure
@@ -17,29 +19,50 @@ Function_name=function(argument){
 - *Expressions* is the actual operation (or operations) you want to perform on the supplied argument
 - *return* tells R to return the result of the Expression to you when done.
 
-**Example.** This function takes an input of numbers in the form of a vector and subtracts two from each.
+This example function takes an input of numbers in the form of a vector and subtracts two from each.
 
 ```{r 10.2}
 numbers=c(2,10,12,80)
 
-sub_2=function(vector){
-  result=vector-2
+sub_2=function(x){
+  result= x - 2
   return(result)
 }
 
 sub_2(numbers)
+
+sub_2(100)
 ```
 
-You can literally make a function to do anything you want!
+One of the primary advantages of functions are that they can reduce a complex process or a process that involves many steps down into a single line of code; thus, creating your own functions is a fast way to make your life easier down the line either at some point in the far future or even in just a few minutes, if you know you will be writing the code for some process two or more times.
 
-***Limitations to your average, everyday functions***
-However, there will be times when you want to perform some kind of function to multiple items, perhaps even simultaneously. For example, finding the mean of every column in a data set. To do this, you will probably find yourself repeating the same lines of code over and over, which violates a cardinal rule of efficient coding: Never paste the same code more than twice. If you have an iterative process or a task that needs to be repeated two or more times, consider how to replace the multiple lines of code with a For Loop or an iterative function.
+Take this script for instance. You can see from the circled parts that I needed to transform three different data sets in a similar way:
 
+```{r}
+knitr::include_graphics(here::here("pics", "repeat_process.jpg"))
+```
+
+Copying and pasting the code and tweaking it originally worked....but this method can make the script needlessly long and harder to read later, and more tedious to write or for coauthors/collaborators to sift through, and importantly, increases your chances of making an error. Better to write a single function that could be applied to all three....
+
+***In short, use functions to reduce a multi-step process or a process that you're implementing >=2 times in a single script into one command. This saves you space and makes the script shorter; it saves you the trouble and effort of re-writing or adapting code from earlier sections; and importantly, reduces the chances of you making a coding error by proxy of the former two.*** As a quick example, I replaced each of the circled paragraphs of code above with a custom function that ran everything in one simple line. Instead of 3 paragraphs, I now had 3 lines that looked like this:
+
+```{r eval=FALSE}
+na_zero_helpreint=rotate_data(data = na_zero_helpreint, variable_prefix = "reintegrate_")
+na_blank=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
+na_zero=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
+```
+
+
+
+### Limitations to your average, everyday functions
+While reducing a whole *process or sequence* of commands is extremely useful, it still leaves a limitation. For instance, while we avoided copying and pasting whole paragraphs or processes, I still had to copy-paste the same function three times. This still leaves chances for error on the table, and it still leaves us with wasted lines that make the script longer.
+
+In general, when you want to perform some function or process **multiple times on multiple items (as above where the same command is used three times on three different data frames)**, you need to use a for-loop or iterating function. These can reduce further unwanted redundancies by applying the function or process iteratively. Read on for more info.
 
 
 ## For-loops
 
-A for loop is essentially  a function that applies a function or given set of operations iteratively on multiple things at once, and returns an output of many items.
+A for loop is essentially  a function that applies a function or given set of operations to multiple things at once, and returns an output of many items.
 
 For example, this code finds the means of every vector/column in a dataset by repeatedly applying the same code over and over to element "i" in the given list:
 
@@ -66,12 +89,72 @@ Although for loops are nice, they are unwieldy. R programmers typically use iter
 
 The purrr package offers a better way to do iterating functions over base R; it's the tidyverse way to make efficient and understandable for loops! **If you have a need for a for-loop for something, see the next section instead on how to use purrr to make an iterative function. Important to understand conceptually what a for-loop is, but using them is impractical when you have purrr**
 
-## Purrr and iterative loops
-*All notes here come from Charlotte Wickham's lecture tutorial; [part 1 is on YouTube here](https://www.youtube.com/watch?v=7UlWJWfZO9M), and part 2 is [here](https://www.youtube.com/watch?v=b0ozKTUho0A&t=1210s).
+
+## purrr and Iterative Functions
+
+*All notes here come from Charlotte Wickham's lecture tutorial below*
+
+Part 1: https://www.youtube.com/watch?v=7UlWJWfZO9M
+Part 2: https://www.youtube.com/watch?v=b0ozKTUho0A&t=1210s
+
+purrr's map functions offer a way to apply any existing function (even functions you've made) to multiple things at once (be it lists; data frame columns, individual items in vector, etc.).
+
+When you have tasks that you want to do repeatedly, you can either copy and paste your code a bunch of times, or make an iterative function that does each task for you. You could use a for-loop to do these tasks, but {purrr} is a package that lets you build iterating functions, which have advantages over for-loops.
+
+For example, instead of copy-pasting the above function `rotate_data` and having it repeated three times in our script, we can use `purrr::map()` to apply that function iteratively to each data frame in a list. The result....
+
+```{r eval=FALSE}
+dfs=list(na_blank=na_blank, na_zero=na_zero) %>% 
+  map(.f=rotate_data, variable_prefix = "barrier")
+```
+
+...is now a single line of code where once we had three. Instead of applying the same function three times to each data frame separately, `map` applies it to each in turn with one command.
+
+## How to use purrr
+
+```{r purrr_pic}
+knitr::include_graphics(here::here("pics", "purrr.png"))
+```
+
+The structure of `map()` commands is the same as the others in the tidyverse:
+```{r eval=FALSE}
+#option 1
+map(data, function)
+
+# option 2
+data %>% map(function)
+```
+
+```{r}
+knitr::include_graphics(here::here("pics", "map_structure.png"))
+```
+
+*map() commands work like this:* For each element of x, do f.
+
+So if you pass it object x and object x is....
+- A vector, it will perform function f on every item in the vector
+- A data frame, it will perform function f on every *column* in the data frame
+- A list, it will perform function f on every *level in the list*
+
+Etc., etc.; the point is it applies a function repeatedly to every element in the object you supply it with.
+Or in English: *"For each element of x, apply f"*
+```{r}
+knitr::include_graphics(here::here("pics", "map_structure_2.png"))
+```
 
 
 
-### Useful ways to use map()
+**NOTE that when you include additional arguments in a map call, you do not include extra parantases. 
+
+
+
+
+
+
+
+
+
+
 
 #### Apply a single function to every column in a data frame
 
