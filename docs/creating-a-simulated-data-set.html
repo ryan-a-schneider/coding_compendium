@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Working with Strings | Creating a simulated data set</title>
-  <meta name="description" content="Chapter 7 Working with Strings | Creating a simulated data set" />
+  <title>Chapter 16 Creating a simulated data set | Creating a simulated data set</title>
+  <meta name="description" content="Chapter 16 Creating a simulated data set | Creating a simulated data set" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Working with Strings | Creating a simulated data set" />
+  <meta property="og:title" content="Chapter 16 Creating a simulated data set | Creating a simulated data set" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Working with Strings | Creating a simulated data set" />
+  <meta name="twitter:title" content="Chapter 16 Creating a simulated data set | Creating a simulated data set" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="working-with-factors.html"/>
-<link rel="next" href="figures-and-graphs.html"/>
+<link rel="prev" href="coding-tips-and-tricks.html"/>
+
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -353,124 +353,228 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-strings" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Working with Strings</h1>
-<div id="remove-a-pattern-from-a-string" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Remove a pattern from a string</h2>
-<p>Tidyverse command: <code>str_remove()</code></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="working-with-strings.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;rvest&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:readr&#39;:
-## 
-##     guess_encoding</code></pre>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="working-with-strings.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb102-2"><a href="working-with-strings.html#cb102-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-3"><a href="working-with-strings.html#cb102-3" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-4"><a href="working-with-strings.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb102-5"><a href="working-with-strings.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-6"><a href="working-with-strings.html#cb102-6" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<div id="creating-a-simulated-data-set" class="section level1" number="16">
+<h1><span class="header-section-number">Chapter 16</span> Creating a simulated data set</h1>
+<p>From the tutorial <a href="https://debruine.github.io/tutorials/sim-data.html">on this page</a></p>
+<div id="part-1-independent-samples-from-a-normal-distribution" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Part 1: Independent samples from a normal distribution</h2>
+<p>Consider the following first before you start doing stuff: - How many subjects are in each condition? - What are the means and standard deviations of each group?</p>
+<p>Set that shit below.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="creating-a-simulated-data-set.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of subjects per group</span></span>
+<span id="cb212-2"><a href="creating-a-simulated-data-set.html#cb212-2" aria-hidden="true" tabindex="-1"></a>A_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb212-3"><a href="creating-a-simulated-data-set.html#cb212-3" aria-hidden="true" tabindex="-1"></a>B_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb212-4"><a href="creating-a-simulated-data-set.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-5"><a href="creating-a-simulated-data-set.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution parameters</span></span>
+<span id="cb212-6"><a href="creating-a-simulated-data-set.html#cb212-6" aria-hidden="true" tabindex="-1"></a>A_mean  <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb212-7"><a href="creating-a-simulated-data-set.html#cb212-7" aria-hidden="true" tabindex="-1"></a>A_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
+<span id="cb212-8"><a href="creating-a-simulated-data-set.html#cb212-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-9"><a href="creating-a-simulated-data-set.html#cb212-9" aria-hidden="true" tabindex="-1"></a>B_mean  <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb212-10"><a href="creating-a-simulated-data-set.html#cb212-10" aria-hidden="true" tabindex="-1"></a>B_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
+<p>Now generate scores for each group</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="creating-a-simulated-data-set.html#cb213-1" aria-hidden="true" tabindex="-1"></a>A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(A_sub_n, A_mean, A_sd)</span>
+<span id="cb213-2"><a href="creating-a-simulated-data-set.html#cb213-2" aria-hidden="true" tabindex="-1"></a>B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B_sub_n, B_mean, B_sd)</span></code></pre></div>
+<p>Technically you <em>could</em> stop here and just analyze the data in this fashion…but its better to organize it into a table. One that looks like something you would import after real data collection.</p>
+<p>So do that next; make it look nice.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="creating-a-simulated-data-set.html#cb214-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb214-2"><a href="creating-a-simulated-data-set.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub_condition =</span> <span class="fu">rep</span>( <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(A_sub_n, B_sub_n) ),</span>
+<span id="cb214-3"><a href="creating-a-simulated-data-set.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(A_scores, B_scores)</span>
+<span id="cb214-4"><a href="creating-a-simulated-data-set.html#cb214-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb214-5"><a href="creating-a-simulated-data-set.html#cb214-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-6"><a href="creating-a-simulated-data-set.html#cb214-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   sub_condition score
+##   &lt;chr&gt;         &lt;dbl&gt;
+## 1 A             11.4 
+## 2 A             12.0 
+## 3 A             12.5 
+## 4 A              8.84
+## 5 A              6.84
+## 6 A             11.0</code></pre>
+<p>Always perform a quality and consistency check on your data to verify that shit’s ok.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="creating-a-simulated-data-set.html#cb216-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb216-2"><a href="creating-a-simulated-data-set.html#cb216-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sub_condition) <span class="sc">%&gt;%</span></span>
+<span id="cb216-3"><a href="creating-a-simulated-data-set.html#cb216-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>() ,</span>
+<span id="cb216-4"><a href="creating-a-simulated-data-set.html#cb216-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb216-5"><a href="creating-a-simulated-data-set.html#cb216-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(score))</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 4
+##   sub_condition     n  mean    sd
+##   &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 A                50  9.98  2.78
+## 2 B                50 10.9   3.02</code></pre>
+</div>
+<div id="part-2-creating-data-sets-with-quantitative-and-categorical-variables" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Part 2: Creating data sets with quantitative and categorical variables</h2>
+<p>From the web page <a href="https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/#creating-datasets-with-quantiative-and-categorical-variables">at this link</a></p>
+<div id="a.-data-with-no-difference-among-groups" class="section level3" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</h3>
+<p><strong>Critically important notes to know</strong>: When you use the <code>rep()</code> function, there are several different arguments you can specify inside it that control how stuff is repeated:</p>
+<ul>
+<li>using <code>rep(x, each= )</code> repeats things <em>element-wise</em>; each element gets replicated n times, in order</li>
+</ul>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="creating-a-simulated-data-set.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">each=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
+<ul>
+<li>using <code>rep(x, times= )</code> repeats the <em>sequence</em>; the vector as a whole, as it appears, will be repeated with one sequence following the next</li>
+</ul>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="creating-a-simulated-data-set.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">times=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<ul>
+<li>using <code>rep(x, length.out)</code> repeats <em>only the number of elements you specify</em>, in their original order</li>
+</ul>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="creating-a-simulated-data-set.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">length.out=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<p>In this particular data, we want <em>every combination of <code>group</code> and <code>letter</code> to be present ONCE</em>.</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="creating-a-simulated-data-set.html#cb224-1" aria-hidden="true" tabindex="-1"></a>letters<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
+<span id="cb224-2"><a href="creating-a-simulated-data-set.html#cb224-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-3"><a href="creating-a-simulated-data-set.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb224-4"><a href="creating-a-simulated-data-set.html#cb224-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">factor =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">times =</span> <span class="dv">2</span>),</span>
+<span id="cb224-5"><a href="creating-a-simulated-data-set.html#cb224-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) )</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   group factor response
+##   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
+## 1 A     C       -0.559 
+## 2 A     D        0.0378
+## 3 A     E       -1.14  
+## 4 B     C       -1.10  
+## 5 B     D        0.509 
+## 6 B     E       -0.304</code></pre>
+</div>
+<div id="b.-data-with-a-difference-among-groups" class="section level3" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</h3>
+<p>What if we want data where the means are different between groups? Let’s make two groups of three observations where the mean of one group is 5 and the other is 10. The two groups have a shared variance (and so standard deviation) of 1.</p>
+<div id="some-notes-first" class="section level4" number="16.2.2.1">
+<h4><span class="header-section-number">16.2.2.1</span> Some notes first</h4>
+<p>Creating a difference between the two group’s average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within <code>rnorm</code>, like so:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="creating-a-simulated-data-set.html#cb226-1" aria-hidden="true" tabindex="-1"></a>response <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb226-2"><a href="creating-a-simulated-data-set.html#cb226-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
+<pre><code>## [1]  4.066141  9.831952  4.307055 11.059641  4.808349 10.009015</code></pre>
+<p>You can see that: 1. draw 1 is from the distribution <span class="math inline">\((\mu=5,\sigma=1)\)</span> 2. draw 2 is from the distribution <span class="math inline">\((\mu=5,\sigma=1)\)</span></p>
+<p>And this process repeats a total of six times.</p>
+<p>And if you happen to also specify a vector of standard deviations (purely to demonstrate what is happening, we won’t actually do this), <em>the first mean is paired with the first SD; the second mean is paired with the second SD; and so on.</em></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="creating-a-simulated-data-set.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">0.1</span>))</span></code></pre></div>
+<pre><code>## [1]  5.744356 10.043787  7.378609  9.952296  8.064520 10.119440</code></pre>
+</div>
+<div id="ok-back-to-creating-the-data" class="section level4" number="16.2.2.2">
+<h4><span class="header-section-number">16.2.2.2</span> Ok, back to creating the data</h4>
+<p>If you want there to be differences between the groups, we need to change the way the vector of factors is replicated, in addition to specifying the vector of means. We want to ensure that the sequence of “A”, “B” in the <code>group</code> column matches the sequence repeated in the <code>response</code> column.</p>
+<p>Here we are going to use <code>length.out</code> so that the whole sequence of A,B is repeated exactly in line with the alternating drawing from <span class="math inline">\(\mu=5\)</span>, <span class="math inline">\(\mu=10\)</span>.</p>
+<p>It’s often best to do this by building each thing separately, and then combining it into a tibble when you have it figured out.</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="creating-a-simulated-data-set.html#cb230-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">=</span><span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">6</span>)</span>
+<span id="cb230-2"><a href="creating-a-simulated-data-set.html#cb230-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="creating-a-simulated-data-set.html#cb232-1" aria-hidden="true" tabindex="-1"></a>response<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb232-2"><a href="creating-a-simulated-data-set.html#cb232-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
+<pre><code>## [1]  4.948867 10.118024  3.109300  8.589811  4.047384 10.121841</code></pre>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="creating-a-simulated-data-set.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(group,</span>
+<span id="cb234-2"><a href="creating-a-simulated-data-set.html#cb234-2" aria-hidden="true" tabindex="-1"></a>       response)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 2
+##   group response
+##   &lt;chr&gt;    &lt;dbl&gt;
+## 1 A         4.95
+## 2 B        10.1 
+## 3 A         3.11
+## 4 B         8.59
+## 5 A         4.05
+## 6 B        10.1</code></pre>
+</div>
+</div>
+<div id="c.-data-with-multiple-quantitative-variables-with-groups" class="section level3" number="16.2.3">
+<h3><span class="header-section-number">16.2.3</span> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</h3>
+</div>
+</div>
+<div id="part-3-repeatedly-simulate-samples-with-replicate" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Part 3: Repeatedly simulate samples with replicate()</h2>
+<p>Instead of drawing values one at a time from a distribution, we want to do it many times. This is a job for <code>replicate()</code>. What <code>replicate()</code> does is run a function repeatedly.</p>
+<p>The <code>replicate()</code> function will perform a given operation as many times as you tell it to. Here we tell it to generate numbers from the distribution <span class="math inline">\(N~(\mu=0, \sigma=1)\)</span>, three times (as specified in the <code>n=3</code> argument in line one)</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="creating-a-simulated-data-set.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb236-2"><a href="creating-a-simulated-data-set.html#cb236-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb236-3"><a href="creating-a-simulated-data-set.html#cb236-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span> )</span></code></pre></div>
 <pre><code>## [[1]]
-## # A tibble: 101 x 6
-##    PRODUCT   Rarity    Number `Market Price` `Listed Median` ``   
-##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;
-##  1 Abra      Common        43 $0.30          $0.65           View 
-##  2 Alakazam  Holo Rare      1 $28.36         —               View 
-##  3 Arcanine  Uncommon      23 $2.17          $2.26           View 
-##  4 Beedrill  Rare          17 $2.39          $2.55           View 
-##  5 Bill      Common        91 $0.44          $0.40           View 
-##  6 Blastoise Holo Rare      2 $117.97        —               View 
-##  7 Bulbasaur Common        44 $1.95          $2.50           View 
-##  8 Caterpie  Common        45 $0.59          $0.52           View 
-##  9 Chansey   Holo Rare      3 $16.17         —               View 
-## 10 Charizard Holo Rare      4 $365.48        —               View 
-## # ... with 91 more rows</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="working-with-strings.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
-<span id="cb104-2"><a href="working-with-strings.html#cb104-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
-<span id="cb104-3"><a href="working-with-strings.html#cb104-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
-<span id="cb104-4"><a href="working-with-strings.html#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="working-with-strings.html#cb104-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
-<pre><code>## # A tibble: 101 x 4
-##    PRODUCT   Rarity    Number `Market Price`
-##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;         
-##  1 Abra      Common        43 $0.30         
-##  2 Alakazam  Holo Rare      1 $28.36        
-##  3 Arcanine  Uncommon      23 $2.17         
-##  4 Beedrill  Rare          17 $2.39         
-##  5 Bill      Common        91 $0.44         
-##  6 Blastoise Holo Rare      2 $117.97       
-##  7 Bulbasaur Common        44 $1.95         
-##  8 Caterpie  Common        45 $0.59         
-##  9 Chansey   Holo Rare      3 $16.17        
-## 10 Charizard Holo Rare      4 $365.48       
-## # ... with 91 more rows</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="working-with-strings.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BASE R METHOD (sub by replacing something with nothing)</span></span>
-<span id="cb106-2"><a href="working-with-strings.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;</span><span class="sc">\\</span><span class="st">$&#39;</span>,<span class="st">&#39;&#39;</span>,html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>) <span class="co">#(what you&#39;re looking for, replace with, from where)</span></span></code></pre></div>
-<pre><code>##   [1] &quot;0.30&quot;   &quot;28.36&quot;  &quot;2.17&quot;   &quot;2.39&quot;   &quot;0.44&quot;   &quot;117.97&quot; &quot;1.95&quot;   &quot;0.59&quot;   &quot;16.17&quot;  &quot;365.48&quot; &quot;1.38&quot;   &quot;1.04&quot;   &quot;20.23&quot;  &quot;3.63&quot;   &quot;3.98&quot;   &quot;0.77&quot;  
-##  [17] &quot;2.68&quot;   &quot;1.13&quot;   &quot;0.36&quot;   &quot;0.32&quot;   &quot;3.60&quot;   &quot;8.69&quot;   &quot;0.80&quot;   &quot;0.45&quot;   &quot;4.38&quot;   &quot;4.67&quot;   &quot;3.44&quot;   &quot;0.40&quot;   &quot;0.43&quot;   &quot;0.70&quot;   &quot;0.38&quot;   &quot;0.31&quot;  
-##  [33] &quot;0.92&quot;   &quot;0.32&quot;   &quot;0.34&quot;   &quot;0.73&quot;   &quot;0.39&quot;   &quot;23.01&quot;  &quot;1.09&quot;   &quot;12.86&quot;  &quot;4.01&quot;   &quot;8.04&quot;   &quot;2.66&quot;   &quot;0.37&quot;   &quot;1.29&quot;   &quot;0.50&quot;   &quot;0.26&quot;   &quot;2.43&quot;  
-##  [49] &quot;0.36&quot;   &quot;0.46&quot;   &quot;0.29&quot;   &quot;1.10&quot;   &quot;1.54&quot;   &quot;0.22&quot;   &quot;16.65&quot;  &quot;1.75&quot;   &quot;0.37&quot;   &quot;26.66&quot;  &quot;18.37&quot;  &quot;0.33&quot;   &quot;1.58&quot;   &quot;15.18&quot;  &quot;0.26&quot;   &quot;5.89&quot;  
-##  [65] &quot;0.43&quot;   &quot;4.02&quot;   &quot;0.73&quot;   &quot;0.39&quot;   &quot;5.30&quot;   &quot;1.26&quot;   &quot;2.16&quot;   &quot;2.62&quot;   &quot;0.39&quot;   &quot;1.16&quot;   &quot;13.82&quot;  &quot;0.31&quot;   &quot;1.34&quot;   &quot;0.18&quot;   &quot;1.32&quot;   &quot;0.38&quot;  
-##  [81] &quot;28.79&quot;  &quot;1.39&quot;   &quot;0.33&quot;   &quot;1.40&quot;   &quot;0.25&quot;   &quot;5.20&quot;   &quot;0.85&quot;   &quot;2.19&quot;   &quot;0.30&quot;   &quot;0.22&quot;   &quot;3.62&quot;   &quot;0.23&quot;   &quot;0.39&quot;   &quot;0.27&quot;   &quot;92.38&quot;  &quot;0.73&quot;  
-##  [97] &quot;0.36&quot;   &quot;2.26&quot;   &quot;0.45&quot;   &quot;0.24&quot;   &quot;18.19&quot;</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="working-with-strings.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD (just remove)</span></span>
-<span id="cb108-2"><a href="working-with-strings.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
-<pre><code>##   [1] &quot;0.30&quot;   &quot;28.36&quot;  &quot;2.17&quot;   &quot;2.39&quot;   &quot;0.44&quot;   &quot;117.97&quot; &quot;1.95&quot;   &quot;0.59&quot;   &quot;16.17&quot;  &quot;365.48&quot; &quot;1.38&quot;   &quot;1.04&quot;   &quot;20.23&quot;  &quot;3.63&quot;   &quot;3.98&quot;   &quot;0.77&quot;  
-##  [17] &quot;2.68&quot;   &quot;1.13&quot;   &quot;0.36&quot;   &quot;0.32&quot;   &quot;3.60&quot;   &quot;8.69&quot;   &quot;0.80&quot;   &quot;0.45&quot;   &quot;4.38&quot;   &quot;4.67&quot;   &quot;3.44&quot;   &quot;0.40&quot;   &quot;0.43&quot;   &quot;0.70&quot;   &quot;0.38&quot;   &quot;0.31&quot;  
-##  [33] &quot;0.92&quot;   &quot;0.32&quot;   &quot;0.34&quot;   &quot;0.73&quot;   &quot;0.39&quot;   &quot;23.01&quot;  &quot;1.09&quot;   &quot;12.86&quot;  &quot;4.01&quot;   &quot;8.04&quot;   &quot;2.66&quot;   &quot;0.37&quot;   &quot;1.29&quot;   &quot;0.50&quot;   &quot;0.26&quot;   &quot;2.43&quot;  
-##  [49] &quot;0.36&quot;   &quot;0.46&quot;   &quot;0.29&quot;   &quot;1.10&quot;   &quot;1.54&quot;   &quot;0.22&quot;   &quot;16.65&quot;  &quot;1.75&quot;   &quot;0.37&quot;   &quot;26.66&quot;  &quot;18.37&quot;  &quot;0.33&quot;   &quot;1.58&quot;   &quot;15.18&quot;  &quot;0.26&quot;   &quot;5.89&quot;  
-##  [65] &quot;0.43&quot;   &quot;4.02&quot;   &quot;0.73&quot;   &quot;0.39&quot;   &quot;5.30&quot;   &quot;1.26&quot;   &quot;2.16&quot;   &quot;2.62&quot;   &quot;0.39&quot;   &quot;1.16&quot;   &quot;13.82&quot;  &quot;0.31&quot;   &quot;1.34&quot;   &quot;0.18&quot;   &quot;1.32&quot;   &quot;0.38&quot;  
-##  [81] &quot;28.79&quot;  &quot;1.39&quot;   &quot;0.33&quot;   &quot;1.40&quot;   &quot;0.25&quot;   &quot;5.20&quot;   &quot;0.85&quot;   &quot;2.19&quot;   &quot;0.30&quot;   &quot;0.22&quot;   &quot;3.62&quot;   &quot;0.23&quot;   &quot;0.39&quot;   &quot;0.27&quot;   &quot;92.38&quot;  &quot;0.73&quot;  
-##  [97] &quot;0.36&quot;   &quot;2.26&quot;   &quot;0.45&quot;   &quot;0.24&quot;   &quot;18.19&quot;</code></pre>
+## [1]  1.3203910  0.2040899 -0.7970636 -1.2431823 -0.4844866
+## 
+## [[2]]
+## [1] -1.2322047  0.1063858  0.7922842  0.4413982 -0.8931153
+## 
+## [[3]]
+## [1]  1.7023983  0.1654943  0.7787761 -0.1186586 -0.2111680</code></pre>
+<p>The argument <code>simplify=FALSE</code> tells it to return the output as a list. If you set this to <code>TRUE</code> it returns a matrix instead</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="creating-a-simulated-data-set.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb238-2"><a href="creating-a-simulated-data-set.html#cb238-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb238-3"><a href="creating-a-simulated-data-set.html#cb238-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
+<pre><code>##             [,1]       [,2]       [,3]
+## [1,]  0.72115635  0.7402300  0.1134487
+## [2,]  0.92810115 -1.1035296 -1.0247406
+## [3,]  0.53107386  0.0286275 -0.3009290
+## [4,] -0.01083094  0.5085364  1.7663764
+## [5,] -0.51711197  0.3824463 -1.0787283</code></pre>
+<p>Specifying <code>as.data.frame()</code> with the matrix output can turn it into a data frame.</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="creating-a-simulated-data-set.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb240-2"><a href="creating-a-simulated-data-set.html#cb240-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb240-3"><a href="creating-a-simulated-data-set.html#cb240-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb240-4"><a href="creating-a-simulated-data-set.html#cb240-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb240-5"><a href="creating-a-simulated-data-set.html#cb240-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample_a=</span>V1, <span class="at">sample_b=</span>V2, <span class="at">sample_c=</span>V3)</span></code></pre></div>
+<pre><code>##      sample_a   sample_b   sample_c
+## 1  0.56415036 -1.7060196  1.1146509
+## 2 -0.24011787  1.8521680  1.4152690
+## 3 -0.09948105  1.9130434  0.1568660
+## 4 -1.76657069 -0.2574811 -1.0662388
+## 5  0.67864934  0.5891597 -0.1166993</code></pre>
 </div>
-<div id="replace-one-pattern-in-a-string-with-another" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Replace one pattern in a string with another</h2>
-<p>Tidyverse command: <code>str_replace()</code>
-Base R command: <code>gsub()</code></p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="working-with-strings.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;hello&quot;</code></pre>
+<div id="part-4-repeatedly-making-whole-data-sets" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> Part 4: repeatedly making whole data sets</h2>
+<p>This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="creating-a-simulated-data-set.html#cb242-1" aria-hidden="true" tabindex="-1"></a>simlist <span class="ot">=</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb242-2"><a href="creating-a-simulated-data-set.html#cb242-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb242-3"><a href="creating-a-simulated-data-set.html#cb242-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) ),</span>
+<span id="cb242-4"><a href="creating-a-simulated-data-set.html#cb242-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb242-5"><a href="creating-a-simulated-data-set.html#cb242-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb242-6"><a href="creating-a-simulated-data-set.html#cb242-6" aria-hidden="true" tabindex="-1"></a>simlist</span></code></pre></div>
+<pre><code>## [[1]]
+##   group   response
+## 1     A -1.1482417
+## 2     A -0.5806775
+## 3     A  0.3688638
+## 4     B  0.3304444
+## 5     B  0.3483946
+## 6     B -1.1257075
+## 
+## [[2]]
+##   group   response
+## 1     A  0.8829318
+## 2     A -1.3660498
+## 3     A -0.7142761
+## 4     B -0.2700098
+## 5     B -0.2419871
+## 6     B -0.4623374
+## 
+## [[3]]
+##   group   response
+## 1     A -0.6018124
+## 2     A  1.0289143
+## 3     A  0.1779939
+## 4     B  1.7056511
+## 5     B -0.3255277
+## 6     B -0.7897194</code></pre>
 </div>
-<div id="find-i.e.-filter-for-all-instances-of-a-string" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Find (i.e., filter for) All instances of a string</h2>
-<p>Useful for finding very specific things inside a column (e.g., one particular person’s name in a roster of names; everyone with a particular last name)</p>
-<p>Tidyverse command: <code>str_detect()</code>
-Base R command: <code>grepl()</code></p>
-<p>Note both must be nested inside of <code>filter()</code></p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="working-with-strings.html#cb112-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
-<span id="cb112-2"><a href="working-with-strings.html#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb112-3"><a href="working-with-strings.html#cb112-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
-</div>
-<div id="force-all-letters-to-lower-case" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Force all letters to lower case</h2>
-<p>Use <code>str_to_lower()</code></p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-strings.html#cb113-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
-<span id="cb113-2"><a href="working-with-strings.html#cb113-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
-<span id="cb113-3"><a href="working-with-strings.html#cb113-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
-<span id="cb113-4"><a href="working-with-strings.html#cb113-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-5"><a href="working-with-strings.html#cb113-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
-##   A     B    
-##   &lt;chr&gt; &lt;chr&gt;
-## 1 A     X    
-## 2 A     X</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
-<span id="cb115-2"><a href="working-with-strings.html#cb115-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb115-3"><a href="working-with-strings.html#cb115-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
-##   A     B    
-##   &lt;chr&gt; &lt;chr&gt;
-## 1 a     X    
-## 2 a     X</code></pre>
+<div id="part-5-using-purrr" class="section level2" number="16.5">
+<h2><span class="header-section-number">16.5</span> Part 5: Using purrr</h2>
+<p>See <a href="https://aosmith.rbind.io/2018/06/05/a-closer-look-at-replicate-and-purrr/">this blog post</a></p>
 
 </div>
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="working-with-factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="figures-and-graphs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="coding-tips-and-tricks.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -501,7 +605,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ryan-a-schneider/coding_compendium/edit/master/06-strings.Rmd",
+"link": "https://github.com/ryan-a-schneider/coding_compendium/edit/master/14-creating_datasets.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -509,7 +613,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ryan-a-schneider/coding_compendium/blob/master/06-strings.Rmd",
+"link": "https://github.com/ryan-a-schneider/coding_compendium/blob/master/14-creating_datasets.Rmd",
 "text": null
 },
 "download": null,

@@ -3,28 +3,17 @@
 
 ## Remove a pattern from a string
 
-Tidyverse command: `str_remove()`
-
 ```{r chapter_6}
-library(rvest)
-library(tidyverse)
 
-html=read_html('https://shop.tcgplayer.com/price-guide/pokemon/base-set') %>% 
-  html_table(fill = TRUE)
-
-html
-
-# Saved as a list by default. Now extract your table from said list
-html=as_tibble(html[[1]] %>% # find out which number it is in the list
-                 select('PRODUCT','Rarity','Number','Market Price')) # if needed, specify which columns you want too
-
-html
+price_table=tribble(~car, ~price,
+        "Corvette", "$65,000",
+        "Mustang GT", "$40,000")
 
 # BASE R METHOD (sub by replacing something with nothing)
-gsub('\\$','',html$`Market Price`) #(what you're looking for, replace with, from where)
+gsub("\\$", "",price_table$price) # (pattern, replace with, object$column)
 
-# TIDYVERSE METHOD (just remove)
-str_remove(html$`Market Price`, pattern = "\\$")
+# TIDYVERSE METHOD
+str_remove(price_table$price, pattern = "\\$")
 ```
 
 
@@ -34,11 +23,16 @@ Tidyverse command: `str_replace()`
 Base R command: `gsub()`
 
 ```{r 6.2}
-print("hello")
+# base R
+gsub(mtcars, replacement = )
+
+#tidyverse
+
+
 ```
 
 
-## Find (i.e., filter for) All instances of a string
+## Find (i.e., filter for) all instances of a string
 
 Useful for finding very specific things inside a column (e.g., one particular person's name in a roster of names; everyone with a particular last name)
 
@@ -50,8 +44,31 @@ Note both must be nested inside of `filter()`
 
 mtcars=rownames_to_column(mtcars, var = "car")
 
+# base R
+mtcars |> filter(grepl("Firebird", car))
+
+# tidyverse
 mtcars %>% filter(str_detect(car,"Firebird"))
 ```
+
+You can also search for **multiple strings simultaneously** by including the "or" logical operator *inside* the quotes.
+
+```{r}
+mtcars |> filter(str_detect(car, "Firebird|Fiat"))
+```
+
+You can also include the negation logical operator to filter for all instances *except* those with the specified string.
+
+```{r eval=FALSE}
+# base R
+mtcars |> filter(!(grepl("Pontiac", car)))
+
+# tidyverse
+mtcars |> filter(!(str_detect(car, "Pontiac")))
+```
+
+
+
 
 ## Force all letters to lower case
 

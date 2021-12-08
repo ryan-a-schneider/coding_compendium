@@ -26,65 +26,74 @@ https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa
 See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is if you need a recap/intro.
 
 
-
-## Reverse-code a variable
-
-To reverse-score a variable, you should use `car::recode()`
-Can be done a few different ways, depending on how many variables you're looking to recode:
-
-```{r 12.2, eval=FALSE}
-
-# Recode just one variable
-df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
-
-# Recode a select bunch of variables
-df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1"))
-
-# Recode the whole damn thing. All columns.
-df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
-```
-
-
-## Create a relative ranking among several variables
-
-If you want to create a variable that is an ordinal ranking of other variables, first you need to make sure your data is long-wise. Then, depending on the type of ranking system you want, you'll might need a different ranking command....
-
-- The `min_rank` command from dplyr works in a manner similar to base R's `rank` command. It ranks things like you see in sporting events. For example, if there is a clear winner in a game but 3 people tie for second place, the ranks would look like this: 1,2,2,2,4,5. Notice that the positions are independent from the counts.
-
-- Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr's `dense_rank` command.
-
-- In either case, the ranks are generated from lowest to highest, so if you want to flip them around you'll need to include `desc()` in the command.
-
-```{r 12.3}
-
-dat=tibble::tribble(~name, ~score,
-                    "bob", 0,
-                    "bob", 5,
-                    "bob", 50,
-                    "bob", 50,
-                    "bob", 50,
-                    "bob", NA,
-                    "alice", 70,
-                    "alice", 80,
-                    "alice", 90,
-                    "alice", 20,
-                    "alice", 20,
-                    "alice", 1)
-
-dat %>% mutate(ranked = dense_rank(desc(score)))
-```
-
-
-
-## (Almost) all statistics made easy
+## Statistical tests and modeling with `easystats`
 
 https://easystats.github.io/easystats/
 
-Using `format_table()` formats the table so its super easy to read and comes out printed nicely. It automatically rounds all p-values and collapses CI's into a single column. **However!** *It makes every column into a Character column!* Use this for creating flextables and objects for export only, not for creating tidy tibbles
+### Getting parameter estimates from model objects
+
+Scenario: You've run some statistical test (like the below regression), and want a summary of the model estimates.
+```{r}
+model <- lm(Sepal.Length ~ Species, data = iris)
+```
+
+You have a few options when it comes to getting a summary of a model and getting the coefficient estimates:
+- `summary()`
+- `broom::tidy()`
+- `paramters::model_paramters()`, or just `paramters::paramters()` for short
+
+*There's no reason to use `summary`, generally speaking, because it sucks. It doesn't give you tidy output that's easy to manipulate or extract, it's hard to read, and it can't be turned into a useful table. Skip it unless you need something specific from it's output (i.e., you're using lavaan)*
+
+Options two and three are pretty similar and both give you most of the same information, though `parameters()` prints neater to the console window. Generally I find `parameters` preferable.
+
+Note though that *neither command* will round the numbers if you store it as a table in the environment. So....
+
+1. If you want to manipulate ANY info in the table and/or extract info, just use `tidy` or `parameters`.
+2. If you're using the command to export said info in a neat table, or you want to view it in a more readable fashion and *do not care about extracting/modifying/manipulating anything in it*, then use `parameters` and pipe it to `format_table()`
+
+Using `format_table()` rounds all columns to 2 decimal places, reformats p-values to APA format, and collapses CI's into a single column. Do note though that it makes every column into a Character column! So this is for exporting-use only.
+
+Here's a comparison of broom's output (first) vs. parameter's (second) when you save each in the environment. As you can see, both produce tidy tibbles
+
+```{r echo=FALSE}
+knitr::include_graphics(here::here("pics", "tidy.png"))
+```
+
+```{r echo=FALSE}
+knitr::include_graphics(here::here("pics", "parameters.png"))
+```
+And here's what `parameters(model) |> format_table()` does to the a parameters table:
+
+```{r echo=FALSE}
+knitr::include_graphics(here::here("pics", "format_table.png"))
+```
+Much cleaner for making a table to export to Word.
 
 
+### Getting model information and performance metrics
+
+Again, two options here. You can use either `glance` from the broom package, or `performance` from the package of the same name. These each produce slightly different output, though unlike above, I don't think one is necessarily better than the other.
+
+```{r}
+broom::glance(model)
+```
+
+```{r}
+performance::performance(model)
+```
 
 
+### Effect size info with `effectsize`
+
+```{r}
+effectsize::interpret_oddsratio(exp(block_2$coefficients), rules = "chen2010")
+```
+
+
+### Quick, detailed, and automated reporting with `report`
+
+
+### Running correlations with `correlation`
 
 
 

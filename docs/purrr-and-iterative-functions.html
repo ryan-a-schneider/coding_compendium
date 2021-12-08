@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 purrr and Iterative Functions | Creating a simulated data set</title>
+  <meta name="description" content="Chapter 12 purrr and Iterative Functions | Creating a simulated data set" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 purrr and Iterative Functions | Creating a simulated data set" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 purrr and Iterative Functions | Creating a simulated data set" />
+  
+  
+  
+
+<meta name="author" content="Ryan Schneider" />
+
+
+<meta name="date" content="2021-12-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intermediate-r-functions-loops-and-iterative-programming.html"/>
+<link rel="next" href="intro-to-r-markdown.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Compendium</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> A Monument to my Madness</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#what-this-book-is-and-what-it-is-not"><i class="fa fa-check"></i><b>1.1</b> What this book is, and what it is not</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html"><i class="fa fa-check"></i><b>2</b> Introduction: R Basics</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#importing-data"><i class="fa fa-check"></i><b>2.1</b> Importing Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#spreadsheets"><i class="fa fa-check"></i><b>2.1.1</b> Spreadsheets</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#exporting-i.e.-saving-data-and-output"><i class="fa fa-check"></i><b>2.2</b> Exporting (i.e., saving) Data and Output</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#exporting-to-.csv"><i class="fa fa-check"></i><b>2.2.1</b> Exporting to .CSV</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#export-to-.rdata-and-load-the-data-again-later"><i class="fa fa-check"></i><b>2.2.2</b> Export to .RData (and load the data again later)</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#export-to-excel"><i class="fa fa-check"></i><b>2.2.3</b> Export to Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction-r-basics.html"><a href="introduction-r-basics.html#accessedit-specific-cell-number-values"><i class="fa fa-check"></i><b>2.2.4</b> Access/edit specific cell number values</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="wrangle-data.html"><a href="wrangle-data.html"><i class="fa fa-check"></i><b>3</b> Wrangle Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#joining-or-splitting"><i class="fa fa-check"></i><b>3.1</b> Joining or Splitting</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
+<li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#managing-many-models"><i class="fa fa-check"></i><b>3.8</b> Managing Many Models</a></li>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Working with date and time variables</a>
+<ul>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.12.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.2</b> Find the difference between two dates/times</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="clean-data.html"><a href="clean-data.html#replace-a-value-with-na"><i class="fa fa-check"></i><b>4.1</b> Replace a value with NA</a></li>
+<li class="chapter" data-level="4.2" data-path="clean-data.html"><a href="clean-data.html#replace-nas-with-a-value"><i class="fa fa-check"></i><b>4.2</b> Replace NA’s with a value</a></li>
+<li class="chapter" data-level="4.3" data-path="clean-data.html"><a href="clean-data.html#identify-columns-or-rows-with-missing-values"><i class="fa fa-check"></i><b>4.3</b> Identify columns or rows with Missing values</a></li>
+<li class="chapter" data-level="4.4" data-path="clean-data.html"><a href="clean-data.html#find-the-percentage-of-a-variable-that-is-missing"><i class="fa fa-check"></i><b>4.4</b> Find the percentage of a variable that is missing</a></li>
+<li class="chapter" data-level="4.5" data-path="clean-data.html"><a href="clean-data.html#exclude-missing-values-from-analysis"><i class="fa fa-check"></i><b>4.5</b> Exclude Missing values from analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dropping-missing-values-from-the-data-set.html"><a href="dropping-missing-values-from-the-data-set.html"><i class="fa fa-check"></i><b>5</b> Dropping Missing values from the data set</a></li>
+<li class="chapter" data-level="6" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>6</b> Working with Factors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>6.1</b> Manually recode/change a factor’s levels</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>6.2</b> Collapse factor levels</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>6.3</b> Add levels to a factor</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>6.4</b> Drop unused levels</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>6.5</b> Change the order of a factor’s levels</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>7</b> Working with Strings</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>7.1</b> Remove a pattern from a string</a></li>
+<li class="chapter" data-level="7.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>7.2</b> Replace one pattern in a string with another</a></li>
+<li class="chapter" data-level="7.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>7.3</b> Find (i.e., filter for) All instances of a string</a></li>
+<li class="chapter" data-level="7.4" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>7.4</b> Force all letters to lower case</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#commands-for-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for graph types</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>8.1.1</b> Histograms and density curves</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.2</b> Highlight specific points</a></li>
+<li class="chapter" data-level="8.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.3</b> Add labels to data points</a></li>
+<li class="chapter" data-level="8.4" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.4</b> Plotting multiple graphs at once</a></li>
+<li class="chapter" data-level="8.5" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.5</b> Change the colors (bars; columns; dots; etc.)</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.5.1</b> Fine-tuning colors</a></li>
+<li class="chapter" data-level="8.5.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#the-see-package-and-more-options"><i class="fa fa-check"></i><b>8.5.2</b> The see package and more options</a></li>
+<li class="chapter" data-level="8.5.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#see-for-bayes-and-density-functions"><i class="fa fa-check"></i><b>8.5.3</b> See for Bayes and density functions</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.6</b> Other aesthetic mappings</a></li>
+<li class="chapter" data-level="8.7" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.7</b> Adding and Customizing Text</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>8.7.1</b> Add a title, axis labels, and captions</a></li>
+<li class="chapter" data-level="8.7.2" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#center-graph-title"><i class="fa fa-check"></i><b>8.7.2</b> Center graph title</a></li>
+<li class="chapter" data-level="8.7.3" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#use-different-fonts"><i class="fa fa-check"></i><b>8.7.3</b> Use different fonts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#remove-gridlines"><i class="fa fa-check"></i><b>8.8</b> Remove gridlines</a></li>
+<li class="chapter" data-level="8.9" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#faceting"><i class="fa fa-check"></i><b>8.9</b> Faceting</a></li>
+<li class="chapter" data-level="8.10" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#log-transformations"><i class="fa fa-check"></i><b>8.10</b> Log transformations</a></li>
+<li class="chapter" data-level="8.11" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>8.11</b> Changing the scale of the axis</a></li>
+<li class="chapter" data-level="8.12" data-path="figures-and-graphs.html"><a href="figures-and-graphs.html#add-a-regression-line"><i class="fa fa-check"></i><b>8.12</b> Add a regression line</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>9</b> Making Tables with flextable</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>9.1</b> APA Table Components</a></li>
+<li class="chapter" data-level="9.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>9.2</b> Indent values</a></li>
+<li class="chapter" data-level="9.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>9.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
+<li class="chapter" data-level="9.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>9.4</b> Change font and font size</a></li>
+<li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
+<li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="10.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="10.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="10.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="10.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="10.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Intermediate R: Functions, Loops, and Iterative Programming</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>11.1</b> Functions</a></li>
+<li class="chapter" data-level="11.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>11.2</b> For-loops</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html"><i class="fa fa-check"></i><b>12</b> purrr and Iterative Functions</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#reproducible-example"><i class="fa fa-check"></i><b>12.1</b> Reproducible example</a></li>
+<li class="chapter" data-level="12.2" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#non-reproducible-example-juvenile-life-without-parole-study"><i class="fa fa-check"></i><b>12.2</b> Non-reproducible example (Juvenile Life Without Parole study)</a></li>
+<li class="chapter" data-level="12.3" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#other-purrr-commands"><i class="fa fa-check"></i><b>12.3</b> Other purrr commands</a></li>
+<li class="chapter" data-level="12.4" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#more-purrr-examples"><i class="fa fa-check"></i><b>12.4</b> More purrr examples</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#readimport-several-files-at-once-with-map"><i class="fa fa-check"></i><b>12.4.1</b> Read/Import several files at once with <code>map()</code></a></li>
+<li class="chapter" data-level="12.4.2" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#exporting-multiple-.csv-files-at-once-with-walk2"><i class="fa fa-check"></i><b>12.4.2</b> Exporting multiple .csv files at once with <code>walk2()</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>13</b> Intro to R Markdown</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>13.1</b> Important code chunk options</a></li>
+<li class="chapter" data-level="13.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>13.2</b> Writing math equations and symbols</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>13.2.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="13.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>13.2.2</b> Math notation</a></li>
+<li class="chapter" data-level="13.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>13.2.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="13.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>13.2.4</b> Writing in-line code</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>13.3</b> Including graphics/inserting pictures</a></li>
+<li class="chapter" data-level="13.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>13.4</b> Footnotes</a></li>
+<li class="chapter" data-level="13.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>13.5</b> Change the color of your text</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>14</b> Statistics and Psych-specific Stuff</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>14.1</b> Create or sample from a distribution</a></li>
+<li class="chapter" data-level="14.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>14.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
+<li class="chapter" data-level="14.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>14.3</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="14.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>14.4</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="14.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#almost-all-statistics-made-easy"><i class="fa fa-check"></i><b>14.5</b> (Almost) all statistics made easy</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>15</b> Coding Tips and Tricks</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regular-r-stuff"><i class="fa fa-check"></i><b>15.1</b> Regular R stuff</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>15.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="15.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>15.1.2</b> The new pipe (Base R)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>15.2</b> Tidyverse stuff</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>15.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>15.3</b> Function-related stuff</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>15.3.1</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="15.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>15.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
+<li class="chapter" data-level="15.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>15.3.3</b> Formulas within functions</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>15.4</b> Creating a package</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>15.4.1</b> Documenting pacakge meta-data</a></li>
+<li class="chapter" data-level="15.4.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>15.4.2</b> Connecting to other packages</a></li>
+<li class="chapter" data-level="15.4.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#git-and-github"><i class="fa fa-check"></i><b>15.4.3</b> Git and Github</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>15.5</b> Creating a bookdown</a>
+<ul>
+<li class="chapter" data-level="15.5.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>15.5.1</b> Rendering the book once it’s done</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>16</b> Creating a simulated data set</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-1-independent-samples-from-a-normal-distribution"><i class="fa fa-check"></i><b>16.1</b> Part 1: Independent samples from a normal distribution</a></li>
+<li class="chapter" data-level="16.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-2-creating-data-sets-with-quantitative-and-categorical-variables"><i class="fa fa-check"></i><b>16.2</b> Part 2: Creating data sets with quantitative and categorical variables</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#a.-data-with-no-difference-among-groups"><i class="fa fa-check"></i><b>16.2.1</b> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</a></li>
+<li class="chapter" data-level="16.2.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#b.-data-with-a-difference-among-groups"><i class="fa fa-check"></i><b>16.2.2</b> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</a></li>
+<li class="chapter" data-level="16.2.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#c.-data-with-multiple-quantitative-variables-with-groups"><i class="fa fa-check"></i><b>16.2.3</b> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-3-repeatedly-simulate-samples-with-replicate"><i class="fa fa-check"></i><b>16.3</b> Part 3: Repeatedly simulate samples with replicate()</a></li>
+<li class="chapter" data-level="16.4" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-4-repeatedly-making-whole-data-sets"><i class="fa fa-check"></i><b>16.4</b> Part 4: repeatedly making whole data sets</a></li>
+<li class="chapter" data-level="16.5" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-5-using-purrr"><i class="fa fa-check"></i><b>16.5</b> Part 5: Using purrr</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Creating a simulated data set</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="purrr-and-iterative-functions" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> purrr and Iterative Functions</h1>
+<p><em>All notes here come from Charlotte Wickham’s lecture tutorial below</em></p>
+<ul>
+<li>Part 1: <a href="https://www.youtube.com/watch?v=7UlWJWfZO9M" class="uri">https://www.youtube.com/watch?v=7UlWJWfZO9M</a></li>
+<li>Part 2: <a href="https://www.youtube.com/watch?v=b0ozKTUho0A&amp;t=1210s" class="uri">https://www.youtube.com/watch?v=b0ozKTUho0A&amp;t=1210s</a></li>
+</ul>
+<p>purrr’s <code>map()</code> series of functions offer a way to apply any existing
+function (even functions you’ve made) to multiple things at once, be it
+lists, data frame columns, individual items in vector, etc. In short,
+they are for doing the same type of task repeatedly in a very quick and
+efficient manner. They work in much the same way as for-loops, but are
+far simpler to write, and can be applied in the same way to solve the
+same problems.</p>
+<p><strong><em>How to use purrr</em></strong></p>
+<p>The structure of <code>map()</code> commands is the same as the others in the
+tidyverse:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="purrr-and-iterative-functions.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co">#option 1</span></span>
+<span id="cb187-2"><a href="purrr-and-iterative-functions.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(data, <span class="cf">function</span>)</span>
+<span id="cb187-3"><a href="purrr-and-iterative-functions.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="purrr-and-iterative-functions.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2</span></span>
+<span id="cb187-5"><a href="purrr-and-iterative-functions.html#cb187-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="cf">function</span>)</span></code></pre></div>
+<p>As a quick example and to highlight why purrr is so much more efficient
+and easier to use than for-loops, look at the same example from before,
+now using <code>map()</code> instead of a <code>for</code>:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="purrr-and-iterative-functions.html#cb188-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">map_dbl</span>(median)</span></code></pre></div>
+<pre><code>##          a          b          c          d 
+##  0.3771802 -0.5176346  0.4171879  0.5704655</code></pre>
+<p>A single line is all it took to get the same results! And, it follows
+tidyverse grammar structure.</p>
+<p>Now lets get into how it works….</p>
+<p><em>map() commands work like this:</em> For each element of x, do f.</p>
+<p>So if you pass it object <code>x</code> and object <code>x</code> is….
+- A vector, it will perform function f on every item in the vector
+- A data frame, it will perform function f on every <em>column</em> in the data frame
+- A list, it will perform function f on every <em>level in the list</em></p>
+<p>Etc., etc.; the point is it applies a function repeatedly to every
+element in the object you supply it with.</p>
+<p>So lets walk through a case example.</p>
+<div id="reproducible-example" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Reproducible example</h2>
+<p>This is an example walk through showing how we can use <code>purrr</code> to speed
+things up dramatically and/or reduce the use of unwanted, extra code in
+our scripts. In this guide I’ll be building a table of LPGA Tour
+statistics from multiple webpages.</p>
+<p>The workflow for purrr goes like this:</p>
+<p>First, you want to figure out how to do each step of your process
+line-by-line, for a single item. The idea is to try and walk through
+each step of the process and see exactly what will need to be done each
+each step and what the code will like, before trying to code it all at
+once at a higher level.</p>
+<p>Once you have each step for the first item figured out, then you make functions
+for each step that condense that code down to one command.</p>
+<p>Lastly, apply each function from your individual steps to all items in
+your list by using <code>purr::map()</code>.</p>
+<p><strong><em>Do for One</em></strong></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="purrr-and-iterative-functions.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb190-2"><a href="purrr-and-iterative-functions.html#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="purrr-and-iterative-functions.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="co"># line-by-line process for one item</span></span>
+<span id="cb190-4"><a href="purrr-and-iterative-functions.html#cb190-4" aria-hidden="true" tabindex="-1"></a>html1<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb190-5"><a href="purrr-and-iterative-functions.html#cb190-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.shsTable.shsBorderTable&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb190-6"><a href="purrr-and-iterative-functions.html#cb190-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb190-7"><a href="purrr-and-iterative-functions.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb190-8"><a href="purrr-and-iterative-functions.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb190-9"><a href="purrr-and-iterative-functions.html#cb190-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-10"><a href="purrr-and-iterative-functions.html#cb190-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html1)</span></code></pre></div>
+<pre><code>##   rank                 name distance
+## 1    1         Anne van Dam  290.822
+## 2    2   Bianca Pagdanganan  284.846
+## 3    3          Maria Fassi  279.784
+## 4    4        Lexi Thompson  278.353
+## 5    5            A Lim Kim  276.762
+## 6    6 Nanna Koerstz Madsen  276.580</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="purrr-and-iterative-functions.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a custom function of the above to shorten and generalize the process</span></span>
+<span id="cb192-2"><a href="purrr-and-iterative-functions.html#cb192-2" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
+<span id="cb192-3"><a href="purrr-and-iterative-functions.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  web_page<span class="ot">=</span><span class="fu">read_html</span>(url) <span class="sc">|&gt;</span> </span>
+<span id="cb192-4"><a href="purrr-and-iterative-functions.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.shsTable.shsBorderTable&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># fortunately this node works for all four pages so it can be baked into the function</span></span>
+<span id="cb192-5"><a href="purrr-and-iterative-functions.html#cb192-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb192-6"><a href="purrr-and-iterative-functions.html#cb192-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb192-7"><a href="purrr-and-iterative-functions.html#cb192-7" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb192-8"><a href="purrr-and-iterative-functions.html#cb192-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb192-9"><a href="purrr-and-iterative-functions.html#cb192-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(web_page)</span>
+<span id="cb192-10"><a href="purrr-and-iterative-functions.html#cb192-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb192-11"><a href="purrr-and-iterative-functions.html#cb192-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-12"><a href="purrr-and-iterative-functions.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test</span></span>
+<span id="cb192-13"><a href="purrr-and-iterative-functions.html#cb192-13" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">quick_read_html</span>(<span class="at">url=</span> <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>) </span>
+<span id="cb192-14"><a href="purrr-and-iterative-functions.html#cb192-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test) <span class="co">#nice, this works perfectly</span></span></code></pre></div>
+<pre><code>##   rank          name putt_average
+## 1    1      Lydia Ko        1.721
+## 2    2    Inbee Park        1.724
+## 3    3  Hannah Green        1.730
+## 4    4     Yuka Saso        1.732
+## 5    5 Jeong Eun Lee        1.740
+## 6    6  Jin Young Ko        1.741</code></pre>
+<p><strong><em>DO FOR ALL.</em></strong>
+Now create the object that contains all the elements you want to iterate over, and then pass it to your generalized function with map.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="purrr-and-iterative-functions.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># object that contains all elements</span></span>
+<span id="cb194-2"><a href="purrr-and-iterative-functions.html#cb194-2" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>,</span>
+<span id="cb194-3"><a href="purrr-and-iterative-functions.html#cb194-3" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>,</span>
+<span id="cb194-4"><a href="purrr-and-iterative-functions.html#cb194-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=06&quot;</span>,</span>
+<span id="cb194-5"><a href="purrr-and-iterative-functions.html#cb194-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=12&quot;</span>)</span>
+<span id="cb194-6"><a href="purrr-and-iterative-functions.html#cb194-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-7"><a href="purrr-and-iterative-functions.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="co"># map it</span></span>
+<span id="cb194-8"><a href="purrr-and-iterative-functions.html#cb194-8" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> URLs <span class="sc">|&gt;</span> <span class="fu">map</span>(quick_read_html)</span>
+<span id="cb194-9"><a href="purrr-and-iterative-functions.html#cb194-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-10"><a href="purrr-and-iterative-functions.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
+<pre><code>## [[1]]
+##     rank                   name distance
+## 1      1           Anne van Dam  290.822
+## 2      2     Bianca Pagdanganan  284.846
+## 3      3            Maria Fassi  279.784
+## 4      4          Lexi Thompson  278.353
+## 5      5              A Lim Kim  276.762
+## 6      6   Nanna Koerstz Madsen  276.580
+## 7      7            Nelly Korda  275.121
+## 8      8      Patty Tavatanakit  274.703
+## 9      9       Brooke Henderson  274.280
+## 10    10          Jessica Korda  273.857
+## 11    11      Madelene Sagstrom  273.580
+## 12    12              Yuka Saso  271.953
+## 13    13             Gaby Lopez  270.925
+## 14    14           Alana Uriell  269.473
+## 15    15         Cydney Clanton  269.321
+## 16    16         Nuria Iturrioz  268.773
+## 17    17    Nicole Broch Larsen  268.267
+## 18    18               Mel Reid  267.587
+## 19    19        Carlota Ciganda  267.536
+## 20    20       Elizabeth Szokol  267.504
+## 21    21           Hannah Green  267.446
+## 22    22          Sei Young Kim  267.424
+## 23    23           Charley Hull  266.429
+## 24    24           Linnea Strom  266.412
+## 25    25            Alena Sharp  266.364
+## 26    26        Jennifer Kupcho  265.866
+## 27    27            Yealimi Noh  265.413
+## 28    28             Ally Ewing  264.959
+## 29    29           Georgia Hall  264.804
+## 30    30        Elizabeth Nagel  264.353
+## 31    31         Hee Young Park  264.314
+## 32    32          Ryann O&#39;Toole  263.978
+## 33    33             Alison Lee  263.908
+## 34    34       Perrine Delacour  263.659
+## 35    35        Daniela Darquea  263.577
+## 36    36     Brittany Lincicome  263.343
+## 37    37              Ana Belac  263.296
+## 38    38         Sung Hyun Park  263.245
+## 39    39       Jaye Marie Green  263.104
+## 40    40         Katherine Kirk  262.783
+## 41    41             Minjee Lee  262.707
+## 42    42       Ariya Jutanugarn  262.356
+## 43    43        Giulia Molinaro  261.807
+## 44    44                 Yu Liu  261.793
+## 45    45      Albane Valenzuela  261.788
+## 46    46          Jeong Eun Lee  261.646
+## 47    47   Pajaree Anannarukarn  261.642
+## 48    48          Celine Herbin  261.566
+## 49    49   Benyapa Niphatsophon  261.550
+## 50    50           Mi Hyang Lee  261.420
+## 51    51               Amy Yang  261.387
+## 52    52               Xiyu Lin  261.192
+## 53    53           Nasa Hataoka  260.675
+## 54    54           Lindy Duncan  260.647
+## 55    55         Maia Schechter  260.511
+## 56    56          Jennifer Song  260.316
+## 57    57           Austin Ernst  260.141
+## 58    58           Sophia Popov  260.008
+## 59    59             Jenny Shin  259.849
+## 60    60           Maria Torres  259.629
+## 61    61              Angel Yin  259.563
+## 62    62             Jaclyn Lee  259.419
+## 63    63            Haley Moore  259.316
+## 64    64               Lydia Ko  259.208
+## 65    65      Pernilla Lindberg  259.188
+## 66    66             Paula Reto  259.157
+## 67    67       Stephanie Meadow  258.912
+## 68    68        Lauren Coughlin  258.819
+## 69    69       Esther Henseleit  258.774
+## 70    70          Brittany Lang  258.568
+## 71    71           Jin Young Ko  258.403
+## 72    72              Kelly Tan  258.403
+## 73    73          Gerina Piller  258.367
+## 74    74            Luna Sobron  258.183
+## 75    75      Lauren Stephenson  258.129
+## 76    76        Matilda Castren  257.798
+## 77    77         Dani Holmqvist  257.354
+## 78    78           Jeongeun Lee  256.698
+## 79    79              Amy Olson  256.455
+## 80    80           Laura Davies  256.055
+## 81    81     Jodi Ewart Shadoff  255.875
+## 82    82           Cristie Kerr  255.778
+## 83    83                Min Lee  255.542
+## 84    84          Leona Maguire  255.418
+## 85    85            In Gee Chun  255.233
+## 86    86       Wichanee Meechai  255.110
+## 87    87             Su-Hyun Oh  254.980
+## 88    88            Hyo Joo Kim  254.833
+## 89    89         Celine Boutier  254.827
+## 90    90          Sarah Burnham  254.773
+## 91    91        Angela Stanford  254.630
+## 92    92            Marina Alex  254.538
+## 93    93            So Yeon Ryu  254.231
+## 94    94       Pavarisa Yoktuan  254.215
+## 95    95         Gemma Dryburgh  254.088
+## 96    96        Sarah Schmelzel  253.866
+## 97    97         Anna Nordqvist  253.551
+## 98    98          Jenny Coleman  253.299
+## 99    99             Eun-Hee Ji  252.993
+## 100  100          Danielle Kang  252.905
+## 101  101      Moriya Jutanugarn  252.899
+## 102  102               Jing Yan  252.823
+## 103  103         Jennifer Chang  252.709
+## 104  104            Megan Khang  252.265
+## 105  105           Tiffany Chan  252.000
+## 106  106 Katherine Perry-Hamski  251.966
+## 107  107       Sarah Jane Smith  251.826
+## 108  108                Muni He  251.768
+## 109  109             Annie Park  251.689
+## 110  110        Caroline Masson  251.613
+## 111  111         Ashleigh Buhai  251.472
+## 112  112              Mirim Lee  251.352
+## 113  113            Mi Jung Hur  251.268
+## 114  114        Kristen Gillman  251.207
+## 115  115          Azahara Munoz  250.869
+## 116  116    Jasmine Suwannapura  250.846
+## 117  117      Mariah Stackhouse  250.778
+## 118  118           Na Yeon Choi  250.512
+## 119  119        Caroline Inglis  250.324
+## 120  120          Christina Kim  249.750
+## 121  121         Lindsey Weaver  249.669
+## 122  122       Suzuka Yamaguchi  249.543
+## 123  123            Haru Nomura  249.535
+## 124  124              Jane Park  249.392
+## 125  125           Mina Harigae  248.986
+## 126  126           Min Seo Kwak  248.649
+## 127  127           Wei-Ling Hsu  248.594
+## 128  128            Stacy Lewis  248.493
+## 129  129            Emma Talley  248.484
+## 130  130             Lauren Kim  248.424
+## 131  131             Esther Lee  248.110
+## 132  132      Pornanong Phatlum  248.110
+## 133  133             Haeji Kang  247.520
+## 134  134             Sarah Kemp  247.045
+## 135  135        Cheyenne Knight  246.901
+## 136  136         Ssu-Chia Cheng  246.517
+## 137  137      Brittany Altomare  246.347
+## 138  138             Bronte Law  246.220
+## 139  139            Chella Choi  246.072
+## 140  140             Brianna Do  244.776
+## 141  141    Mind Muangkhumsakul  244.431
+## 142  142          Lizette Salas  244.243
+## 143  143     Louise Ridderstrom  243.920
+## 144  144          Marissa Steen  243.843
+## 145  145            Tiffany Joh  242.662
+## 146  146              Lee Lopez  242.630
+## 147  147       Kristy McPherson  241.942
+## 148  148             Inbee Park  241.328
+## 149  149             Andrea Lee  241.105
+## 150  150       Jackie Stoelting  239.521
+## 151  151          Dottie Ardina  237.654
+## 152  152         Jillian Hollis  236.946
+## 153  153            Aditi Ashok  236.945
+## 154  154              Mo Martin  236.279
+## 155  155       Dana Finkelstein  236.211
+## 156  156           Ayako Uehara  232.250
+## 
+## [[2]]
+##     rank                   name putt_average
+## 1      1               Lydia Ko        1.721
+## 2      2             Inbee Park        1.724
+## 3      3           Hannah Green        1.730
+## 4      4              Yuka Saso        1.732
+## 5      5          Jeong Eun Lee        1.740
+## 6      6           Jin Young Ko        1.741
+## 7      7          Danielle Kang        1.749
+## 8      8            So Yeon Ryu        1.753
+## 9      9      Patty Tavatanakit        1.753
+## 10    10              Angel Yin        1.757
+## 11    11          Leona Maguire        1.757
+## 12    12             Su-Hyun Oh        1.757
+## 13    13       Ariya Jutanugarn        1.762
+## 14    14            Nelly Korda        1.763
+## 15    15          Jessica Korda        1.766
+## 16    16           Mina Harigae        1.767
+## 17    17             Alison Lee        1.769
+## 18    18        Caroline Masson        1.771
+## 19    19            In Gee Chun        1.771
+## 20    20               Xiyu Lin        1.771
+## 21    21          Sei Young Kim        1.771
+## 22    22            Hyo Joo Kim        1.773
+## 23    23           Charley Hull        1.773
+## 24    24      Moriya Jutanugarn        1.774
+## 25    25           Georgia Hall        1.775
+## 26    26           Nasa Hataoka        1.778
+## 27    27      Madelene Sagstrom        1.780
+## 28    28             Gaby Lopez        1.783
+## 29    29               Amy Yang        1.783
+## 30    30         Celine Boutier        1.784
+## 31    31         Gemma Dryburgh        1.785
+## 32    32           Wei-Ling Hsu        1.786
+## 33    33        Lauren Coughlin        1.786
+## 34    34          Celine Herbin        1.789
+## 35    35   Pajaree Anannarukarn        1.789
+## 36    36      Brittany Altomare        1.789
+## 37    37            Megan Khang        1.790
+## 38    38    Nicole Broch Larsen        1.790
+## 39    39            Chella Choi        1.791
+## 40    40        Carlota Ciganda        1.791
+## 41    41          Ryann O&#39;Toole        1.791
+## 42    42       Esther Henseleit        1.792
+## 43    43            Yealimi Noh        1.796
+## 44    44             Paula Reto        1.797
+## 45    45          Sarah Burnham        1.797
+## 46    46              A Lim Kim        1.798
+## 47    47         Lindsey Weaver        1.798
+## 48    48            Stacy Lewis        1.798
+## 49    49             Minjee Lee        1.799
+## 50    50        Sarah Schmelzel        1.799
+## 51    51              Ana Belac        1.800
+## 52    52          Lizette Salas        1.800
+## 53    53             Ally Ewing        1.801
+## 54    54   Nanna Koerstz Madsen        1.801
+## 55    55             Jenny Shin        1.807
+## 56    56            Mi Jung Hur        1.807
+## 57    57        Cheyenne Knight        1.807
+## 58    58         Jillian Hollis        1.808
+## 59    59           Cristie Kerr        1.809
+## 60    60       Brooke Henderson        1.809
+## 61    61            Aditi Ashok        1.809
+## 62    62      Lauren Stephenson        1.810
+## 63    63             Annie Park        1.811
+## 64    64         Hee Young Park        1.812
+## 65    65              Amy Olson        1.813
+## 66    66            Marina Alex        1.814
+## 67    67       Dana Finkelstein        1.814
+## 68    68            Haru Nomura        1.815
+## 69    69             Eun-Hee Ji        1.815
+## 70    70         Sung Hyun Park        1.815
+## 71    71       Wichanee Meechai        1.816
+## 72    72         Nuria Iturrioz        1.816
+## 73    73        Matilda Castren        1.817
+## 74    74           Austin Ernst        1.817
+## 75    75            Maria Fassi        1.818
+## 76    76          Lexi Thompson        1.819
+## 77    77       Elizabeth Szokol        1.820
+## 78    78        Jennifer Kupcho        1.820
+## 79    79           Lindy Duncan        1.821
+## 80    80           Mi Hyang Lee        1.821
+## 81    81          Azahara Munoz        1.822
+## 82    82      Pernilla Lindberg        1.823
+## 83    83                Min Lee        1.823
+## 84    84    Jasmine Suwannapura        1.823
+## 85    85             Sarah Kemp        1.824
+## 86    86          Dottie Ardina        1.824
+## 87    87             Andrea Lee        1.824
+## 88    88             Haeji Kang        1.825
+## 89    89              Mirim Lee        1.825
+## 90    90      Albane Valenzuela        1.826
+## 91    91          Jennifer Song        1.826
+## 92    92         Katherine Kirk        1.826
+## 93    93         Ssu-Chia Cheng        1.828
+## 94    94         Ashleigh Buhai        1.829
+## 95    95       Perrine Delacour        1.830
+## 96    96     Bianca Pagdanganan        1.830
+## 97    97            Emma Talley        1.831
+## 98    98          Christina Kim        1.831
+## 99    99         Anna Nordqvist        1.831
+## 100  100       Kristy McPherson        1.832
+## 101  101          Gerina Piller        1.832
+## 102  102        Kristen Gillman        1.832
+## 103  103     Brittany Lincicome        1.832
+## 104  104           Min Seo Kwak        1.833
+## 105  105        Caroline Inglis        1.834
+## 106  106             Esther Lee        1.834
+## 107  107           Tiffany Chan        1.834
+## 108  108        Angela Stanford        1.837
+## 109  109    Mind Muangkhumsakul        1.837
+## 110  110            Luna Sobron        1.837
+## 111  111     Louise Ridderstrom        1.838
+## 112  112           Sophia Popov        1.838
+## 113  113        Giulia Molinaro        1.838
+## 114  114             Lauren Kim        1.840
+## 115  115               Mel Reid        1.841
+## 116  116       Stephanie Meadow        1.842
+## 117  117              Lee Lopez        1.842
+## 118  118       Jaye Marie Green        1.843
+## 119  119      Pornanong Phatlum        1.845
+## 120  120             Brianna Do        1.846
+## 121  121                 Yu Liu        1.847
+## 122  122           Jeongeun Lee        1.848
+## 123  123               Jing Yan        1.849
+## 124  124                Muni He        1.850
+## 125  125           Linnea Strom        1.850
+## 126  126        Elizabeth Nagel        1.851
+## 127  127             Bronte Law        1.852
+## 128  128         Jennifer Chang        1.852
+## 129  129           Alana Uriell        1.852
+## 130  130       Jackie Stoelting        1.853
+## 131  131              Kelly Tan        1.854
+## 132  132 Katherine Perry-Hamski        1.855
+## 133  133       Sarah Jane Smith        1.856
+## 134  134           Na Yeon Choi        1.857
+## 135  135         Dani Holmqvist        1.859
+## 136  136       Pavarisa Yoktuan        1.860
+## 137  137            Alena Sharp        1.861
+## 138  138              Mo Martin        1.864
+## 139  139         Cydney Clanton        1.866
+## 140  140          Jenny Coleman        1.866
+## 141  141           Laura Davies        1.872
+## 142  142          Marissa Steen        1.872
+## 143  143           Ayako Uehara        1.874
+## 144  144     Jodi Ewart Shadoff        1.880
+## 145  145            Haley Moore        1.884
+## 146  146       Suzuka Yamaguchi        1.885
+## 147  147          Brittany Lang        1.888
+## 148  148           Maria Torres        1.889
+## 149  149           Anne van Dam        1.895
+## 150  150            Tiffany Joh        1.896
+## 151  151             Jaclyn Lee        1.905
+## 152  152        Daniela Darquea        1.906
+## 153  153      Mariah Stackhouse        1.908
+## 154  154              Jane Park        1.913
+## 155  155   Benyapa Niphatsophon        1.914
+## 156  156         Maia Schechter        1.960
+## 
+## [[3]]
+##     rank                   name greens_hit
+## 1      1          Lexi Thompson       78.8
+## 2      2           Jin Young Ko       78.8
+## 3      3        Lauren Coughlin       78.0
+## 4      4       Brooke Henderson       77.6
+## 5      5            Nelly Korda       77.2
+## 6      6     Brittany Lincicome       76.7
+## 7      7        Matilda Castren       76.3
+## 8      8        Jennifer Kupcho       76.3
+## 9      9          Jessica Korda       76.0
+## 10    10             Ally Ewing       75.8
+## 11    11            In Gee Chun       75.7
+## 12    12      Moriya Jutanugarn       75.5
+## 13    13           Austin Ernst       75.4
+## 14    14         Anna Nordqvist       75.4
+## 15    15     Jodi Ewart Shadoff       74.9
+## 16    16          Sei Young Kim       74.9
+## 17    17             Minjee Lee       74.7
+## 18    18          Gerina Piller       74.7
+## 19    19          Lizette Salas       74.5
+## 20    20               Xiyu Lin       74.4
+## 21    21             Gaby Lopez       74.3
+## 22    22         Celine Boutier       74.2
+## 23    23          Leona Maguire       74.1
+## 24    24              Amy Olson       73.9
+## 25    25            Megan Khang       73.9
+## 26    26            Chella Choi       73.7
+## 27    27           Jeongeun Lee       73.7
+## 28    28           Charley Hull       73.6
+## 29    29                 Yu Liu       73.4
+## 30    30         Cydney Clanton       73.4
+## 31    31              A Lim Kim       73.2
+## 32    32              Mo Martin       73.2
+## 33    33   Pajaree Anannarukarn       73.2
+## 34    34               Lydia Ko       73.1
+## 35    35           Georgia Hall       73.0
+## 36    36       Perrine Delacour       72.8
+## 37    37      Brittany Altomare       72.6
+## 38    38      Lauren Stephenson       72.6
+## 39    39          Jenny Coleman       72.4
+## 40    40         Katherine Kirk       72.4
+## 41    41   Nanna Koerstz Madsen       72.2
+## 42    42       Esther Henseleit       72.0
+## 43    43          Danielle Kang       71.9
+## 44    44            Marina Alex       71.8
+## 45    45        Carlota Ciganda       71.7
+## 46   46t            Stacy Lewis       71.7
+## 47   46t          Ryann O&#39;Toole       71.7
+## 48    48      Patty Tavatanakit       71.6
+## 49   49t           Nasa Hataoka       71.6
+## 50   49t        Caroline Masson       71.6
+## 51    51              Yuka Saso       71.5
+## 52    52      Madelene Sagstrom       71.5
+## 53    53       Elizabeth Szokol       71.4
+## 54   54t         Ashleigh Buhai       71.3
+## 55   54t                Min Lee       71.3
+## 56    56             Alison Lee       71.2
+## 57    57             Inbee Park       71.2
+## 58    58            So Yeon Ryu       71.1
+## 59    59               Mel Reid       71.0
+## 60    60        Sarah Schmelzel       71.0
+## 61    61          Jeong Eun Lee       70.9
+## 62    62            Yealimi Noh       70.9
+## 63    63       Ariya Jutanugarn       70.8
+## 64    64       Wichanee Meechai       70.7
+## 65    65             Lauren Kim       70.7
+## 66    66       Dana Finkelstein       70.7
+## 67    67       Jaye Marie Green       70.6
+## 68    68          Azahara Munoz       70.5
+## 69    69           Hannah Green       70.4
+## 70    70            Alena Sharp       70.2
+## 71    71         Jennifer Chang       70.2
+## 72    72       Stephanie Meadow       70.2
+## 73    73            Hyo Joo Kim       70.2
+## 74    74    Jasmine Suwannapura       70.1
+## 75    75             Bronte Law       70.1
+## 76   76t           Mina Harigae       70.1
+## 77   76t          Christina Kim       70.1
+## 78   78t             Paula Reto       70.0
+## 79   78t               Amy Yang       70.0
+## 80    80             Jenny Shin       69.9
+## 81    81         Lindsey Weaver       69.9
+## 82    82        Angela Stanford       69.7
+## 83    83           Sophia Popov       69.7
+## 84    84          Jennifer Song       69.6
+## 85    85             Annie Park       69.5
+## 86   86t           Mi Hyang Lee       69.4
+## 87   86t      Pernilla Lindberg       69.4
+## 88   86t     Bianca Pagdanganan       69.4
+## 89    89      Pornanong Phatlum       69.4
+## 90    90    Nicole Broch Larsen       69.2
+## 91    91             Sarah Kemp       69.1
+## 92   92t             Haeji Kang       69.1
+## 93   92t      Mariah Stackhouse       69.1
+## 94    94              Jane Park       69.0
+## 95    95              Lee Lopez       69.0
+## 96    96        Cheyenne Knight       68.9
+## 97    97           Anne van Dam       68.8
+## 98    98      Albane Valenzuela       68.8
+## 99   99t            Maria Fassi       68.7
+## 100  99t        Caroline Inglis       68.7
+## 101  101          Marissa Steen       68.6
+## 102  102             Brianna Do       68.6
+## 103  103     Louise Ridderstrom       68.4
+## 104  104             Su-Hyun Oh       68.4
+## 105  105              Ana Belac       68.3
+## 106  106           Wei-Ling Hsu       68.2
+## 107  107         Gemma Dryburgh       68.1
+## 108  108        Elizabeth Nagel       68.1
+## 109  109           Na Yeon Choi       68.0
+## 110  110                Muni He       68.0
+## 111  111             Eun-Hee Ji       68.0
+## 112  112          Sarah Burnham       67.9
+## 113  113           Lindy Duncan       67.8
+## 114  114        Giulia Molinaro       67.4
+## 115  115           Alana Uriell       67.1
+## 116  116          Dottie Ardina       67.1
+## 117  117        Daniela Darquea       67.0
+## 118 118t         Hee Young Park       66.7
+## 119 118t            Emma Talley       66.7
+## 120  120         Dani Holmqvist       66.6
+## 121  121          Celine Herbin       66.4
+## 122  122           Maria Torres       66.0
+## 123  123              Mirim Lee       65.7
+## 124  124        Kristen Gillman       65.6
+## 125  125         Ssu-Chia Cheng       65.5
+## 126  126           Cristie Kerr       65.4
+## 127  127          Brittany Lang       65.4
+## 128  128       Sarah Jane Smith       65.4
+## 129  129            Luna Sobron       65.1
+## 130  130               Jing Yan       65.0
+## 131  131       Kristy McPherson       64.7
+## 132  132           Linnea Strom       64.7
+## 133  133           Tiffany Chan       64.6
+## 134  134         Sung Hyun Park       64.5
+## 135  135             Andrea Lee       64.4
+## 136  136            Haley Moore       64.0
+## 137  137       Pavarisa Yoktuan       63.6
+## 138  138              Kelly Tan       63.6
+## 139  139           Ayako Uehara       63.6
+## 140  140         Maia Schechter       63.4
+## 141  141 Katherine Perry-Hamski       63.2
+## 142  142       Jackie Stoelting       63.2
+## 143  143         Nuria Iturrioz       63.0
+## 144  144             Esther Lee       62.9
+## 145  145            Mi Jung Hur       62.3
+## 146  146           Min Seo Kwak       61.9
+## 147  147            Aditi Ashok       61.8
+## 148  148   Benyapa Niphatsophon       61.7
+## 149  149              Angel Yin       61.0
+## 150  150             Jaclyn Lee       60.9
+## 151  151            Tiffany Joh       60.1
+## 152  152    Mind Muangkhumsakul       57.9
+## 153  153            Haru Nomura       57.3
+## 154  154         Jillian Hollis       56.9
+## 155  155           Laura Davies       55.2
+## 156  156       Suzuka Yamaguchi       45.7
+## 
+## [[4]]
+##     rank                   name rounds score_average_actual
+## 1      1            Nelly Korda     62               68.774
+## 2      2           Jin Young Ko     67               68.866
+## 3      3               Lydia Ko     73               69.329
+## 4      4              Yuka Saso     33               69.364
+## 5      5             Inbee Park     58               69.534
+## 6      6          Lexi Thompson     70               69.629
+## 7      7            In Gee Chun     76               69.632
+## 8      8          Jessica Korda     63               69.794
+## 9      9       Brooke Henderson     75               69.800
+## 10    10          Danielle Kang     69               69.826
+## 11    11      Patty Tavatanakit     65               69.831
+## 12    12          Sei Young Kim     72               69.944
+## 13    13          Leona Maguire     68               69.985
+## 14    14            So Yeon Ryu     67               70.015
+## 15    15       Ariya Jutanugarn     75               70.080
+## 16    16             Gaby Lopez     74               70.081
+## 17    17               Xiyu Lin     65               70.092
+## 18    18         Celine Boutier     79               70.127
+## 19    19      Moriya Jutanugarn     70               70.157
+## 20    20            Hyo Joo Kim     54               70.185
+## 21    21          Jeong Eun Lee     82               70.293
+## 22    22             Minjee Lee     59               70.322
+## 23    23             Ally Ewing     74               70.351
+## 24    24           Hannah Green     62               70.452
+## 25    25           Nasa Hataoka     63               70.460
+## 26    26            Megan Khang     66               70.470
+## 27    27       Esther Henseleit     63               70.476
+## 28    28        Jennifer Kupcho     75               70.600
+## 29    29           Georgia Hall     75               70.627
+## 30    30        Lauren Coughlin     41               70.634
+## 31    31          Lizette Salas     69               70.638
+## 32    32        Matilda Castren     57               70.667
+## 33    33      Madelene Sagstrom     70               70.714
+## 34    34               Amy Yang     70               70.729
+## 35    35           Charley Hull     71               70.732
+## 36    36          Ryann O&#39;Toole     70               70.757
+## 37    37           Mina Harigae     72               70.764
+## 38    38   Nanna Koerstz Madsen     70               70.771
+## 39    39   Pajaree Anannarukarn     82               70.780
+## 40    40             Alison Lee     51               70.804
+## 41    41         Anna Nordqvist     69               70.812
+## 42    42     Brittany Lincicome     55               70.818
+## 43    43      Brittany Altomare     73               70.849
+## 44    44             Su-Hyun Oh     76               70.855
+## 45    45       Perrine Delacour     64               70.922
+## 46    46           Austin Ernst     65               70.923
+## 47    47            Yealimi Noh     79               70.962
+## 48    48              A Lim Kim     68               70.971
+## 49    49            Stacy Lewis     69               70.986
+## 50   50t            Chella Choi     71               71.000
+## 51   50t      Lauren Stephenson     67               71.000
+## 52    52              Amy Olson     68               71.029
+## 53    53             Paula Reto     55               71.055
+## 54    54        Caroline Masson     63               71.063
+## 55    55                 Yu Liu     76               71.145
+## 56    56        Carlota Ciganda     71               71.169
+## 57    57             Eun-Hee Ji     69               71.188
+## 58    58           Jeongeun Lee     54               71.204
+## 59    59       Wichanee Meechai     78               71.205
+## 60    60             Jenny Shin     74               71.216
+## 61    61           Wei-Ling Hsu     67               71.239
+## 62    62          Gerina Piller     61               71.262
+## 63    63         Ashleigh Buhai     73               71.274
+## 64    64        Angela Stanford     50               71.300
+## 65    65           Sophia Popov     65               71.308
+## 66    66        Sarah Schmelzel     72               71.319
+## 67    67         Katherine Kirk     70               71.329
+## 68    68               Mel Reid     53               71.358
+## 69    69            Marina Alex     66               71.364
+## 70    70           Lindy Duncan     58               71.379
+## 71    71                Min Lee     36               71.389
+## 72    72         Lindsey Weaver     60               71.417
+## 73    73             Haeji Kang     63               71.444
+## 74    74          Azahara Munoz     66               71.455
+## 75    75    Jasmine Suwannapura     79               71.456
+## 76    76          Jennifer Song     68               71.485
+## 77    77          Dottie Ardina     39               71.487
+## 78    78       Elizabeth Szokol     67               71.522
+## 79    79      Albane Valenzuela     66               71.561
+## 80    80             Annie Park     53               71.642
+## 81    81     Jodi Ewart Shadoff     49               71.694
+## 82    82          Celine Herbin     39               71.718
+## 83    83     Bianca Pagdanganan     32               71.719
+## 84    84      Pornanong Phatlum     74               71.770
+## 85    85       Dana Finkelstein     58               71.776
+## 86    86    Nicole Broch Larsen     59               71.797
+## 87    87        Cheyenne Knight     77               71.805
+## 88    88          Christina Kim     55               71.836
+## 89    89             Sarah Kemp     56               71.893
+## 90    90       Stephanie Meadow     57               71.965
+## 91    91         Ssu-Chia Cheng     60               71.967
+## 92    92       Jaye Marie Green     68               72.015
+## 93    93              Ana Belac     42               72.024
+## 94    94         Gemma Dryburgh     30               72.033
+## 95    95           Cristie Kerr     36               72.056
+## 96   96t            Maria Fassi     44               72.068
+## 97   96t         Hee Young Park     44               72.068
+## 98    98              Angel Yin     64               72.094
+## 99    99        Kristen Gillman     70               72.100
+## 100 100t            Aditi Ashok     56               72.125
+## 101 100t      Pernilla Lindberg     64               72.125
+## 102 100t              Lee Lopez     24               72.125
+## 103  103        Caroline Inglis     55               72.145
+## 104  104          Sarah Burnham     44               72.159
+## 105  105              Mo Martin     34               72.206
+## 106  106            Mi Jung Hur     42               72.214
+## 107  107             Bronte Law     67               72.224
+## 108  108             Esther Lee     41               72.244
+## 109  109         Cydney Clanton     68               72.250
+## 110  110          Jenny Coleman     68               72.279
+## 111  111     Louise Ridderstrom     25               72.320
+## 112  112            Alena Sharp     59               72.339
+## 113  113        Giulia Molinaro     58               72.345
+## 114  114          Marissa Steen     52               72.346
+## 115  115         Jennifer Chang     53               72.358
+## 116  116             Lauren Kim     33               72.364
+## 117  117           Mi Hyang Lee     57               72.368
+## 118  118         Sung Hyun Park     49               72.408
+## 119  119            Emma Talley     63               72.429
+## 120  120           Alana Uriell     37               72.432
+## 121  121           Na Yeon Choi     41               72.439
+## 122  122              Mirim Lee     46               72.587
+## 123  123           Tiffany Chan     40               72.600
+## 124  124                Muni He     56               72.607
+## 125  125        Elizabeth Nagel     34               72.618
+## 126  126         Dani Holmqvist     48               72.688
+## 127  127         Nuria Iturrioz     23               72.696
+## 128  128             Andrea Lee     47               72.787
+## 129  129             Brianna Do     29               72.828
+## 130  130           Ayako Uehara     34               72.882
+## 131 131t       Kristy McPherson     26               73.000
+## 132 131t              Kelly Tan     36               73.000
+## 133  133          Brittany Lang     44               73.023
+## 134  134       Sarah Jane Smith     43               73.023
+## 135  135           Min Seo Kwak     37               73.027
+## 136  136       Pavarisa Yoktuan     33               73.030
+## 137  137            Luna Sobron     42               73.048
+## 138  138           Anne van Dam     46               73.087
+## 139  139               Jing Yan     63               73.222
+## 140  140           Linnea Strom     52               73.231
+## 141  141       Jackie Stoelting     24               73.375
+## 142  142 Katherine Perry-Hamski     29               73.379
+## 143  143    Mind Muangkhumsakul     36               73.417
+## 144  144           Maria Torres     44               73.432
+## 145 145t            Haley Moore     38               73.500
+## 146 145t            Haru Nomura     22               73.500
+## 147  147      Mariah Stackhouse     36               73.611
+## 148 148t        Daniela Darquea     39               73.692
+## 149 148t              Jane Park     26               73.692
+## 150  150            Tiffany Joh     32               73.813
+## 151  151   Benyapa Niphatsophon     20               73.850
+## 152  152         Jillian Hollis     28               74.786
+## 153  153             Jaclyn Lee     22               74.955
+## 154  154         Maia Schechter     22               75.000
+## 155  155           Laura Davies     29               75.241
+## 156  156       Suzuka Yamaguchi     18               76.611</code></pre>
+<p>All done!! And just like that, we’ve downloaded four different web
+pages, extracted the tabled info, and formatted them without copying and
+pasting any code. The same process for all four was only used one time
+to write the initial function. Just apply some final formatting to clean
+it up a bit and combine the separate data frames into a single, unified
+one.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="purrr-and-iterative-functions.html#cb196-1" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> lpga_data <span class="sc">%&gt;%</span> </span>
+<span id="cb196-2"><a href="purrr-and-iterative-functions.html#cb196-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Combine all list levels into a single tibble, matching by the &quot;Name&quot; column</span></span>
+<span id="cb196-3"><a href="purrr-and-iterative-functions.html#cb196-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;rank.&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb196-4"><a href="purrr-and-iterative-functions.html#cb196-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;score_average&quot;</span><span class="ot">=</span><span class="st">&quot;score_average_actual&quot;</span>)</span>
+<span id="cb196-5"><a href="purrr-and-iterative-functions.html#cb196-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb196-6"><a href="purrr-and-iterative-functions.html#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="co"># VOILA! </span></span>
+<span id="cb196-7"><a href="purrr-and-iterative-functions.html#cb196-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
+<pre><code>##                   name distance putt_average greens_hit rounds score_average
+## 1         Anne van Dam  290.822        1.895       68.8     46        73.087
+## 2   Bianca Pagdanganan  284.846        1.830       69.4     32        71.719
+## 3          Maria Fassi  279.784        1.818       68.7     44        72.068
+## 4        Lexi Thompson  278.353        1.819       78.8     70        69.629
+## 5            A Lim Kim  276.762        1.798       73.2     68        70.971
+## 6 Nanna Koerstz Madsen  276.580        1.801       72.2     70        70.771</code></pre>
+</div>
+<div id="non-reproducible-example-juvenile-life-without-parole-study" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Non-reproducible example (Juvenile Life Without Parole study)</h2>
+<p>In the Juvenile Lifers study, there were a series of questions that
+participants rated on a scale of 0-100 in terms of difficulty. Part of
+our analysis involved taking the ratings on those variables and giving
+them relative rankings, so that each of the 6 variables in the series
+was rated from the least to most difficult, by participant.</p>
+<p>Now if we only needed to compute these rankings once this wouldn’t have
+been any big deal; however, we needed to do it three times. Much of the
+same code and the same process would need to be copied and pasted,
+resulting in a very long, messy, harder to read script. With purrr
+however, we can reduce the redundancies to a minimum.</p>
+<p><strong><em>Step 1.</em></strong>
+First import the data and create the custom functions that can be generalized to each item.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="purrr-and-iterative-functions.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;C:/Users/rschn/OneDrive/Research/Legal DM Lab stuff/Lab Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData&quot;</span>)</span>
+<span id="cb198-2"><a href="purrr-and-iterative-functions.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-3"><a href="purrr-and-iterative-functions.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="do">#### CREATE DATA SETS ####</span></span>
+<span id="cb198-4"><a href="purrr-and-iterative-functions.html#cb198-4" aria-hidden="true" tabindex="-1"></a>na_blank<span class="ot">=</span>jlwop_reentry_survey <span class="co"># analysis 1 keeps the data as-is</span></span>
+<span id="cb198-5"><a href="purrr-and-iterative-functions.html#cb198-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-6"><a href="purrr-and-iterative-functions.html#cb198-6" aria-hidden="true" tabindex="-1"></a>na_zero<span class="ot">=</span>jlwop_reentry_survey <span class="sc">%&gt;%</span> <span class="co"># supplementary analysis replaces the NA&#39;s with 0</span></span>
+<span id="cb198-7"><a href="purrr-and-iterative-functions.html#cb198-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(barrier_housing<span class="sc">:</span>barrier_identification), replace_na,<span class="dv">0</span>))</span>
+<span id="cb198-8"><a href="purrr-and-iterative-functions.html#cb198-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-9"><a href="purrr-and-iterative-functions.html#cb198-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(jlwop_reentry_survey) <span class="co"># remove old data set to avoid confusion</span></span>
+<span id="cb198-10"><a href="purrr-and-iterative-functions.html#cb198-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-11"><a href="purrr-and-iterative-functions.html#cb198-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-12"><a href="purrr-and-iterative-functions.html#cb198-12" aria-hidden="true" tabindex="-1"></a><span class="do">#### Functions ####</span></span>
+<span id="cb198-13"><a href="purrr-and-iterative-functions.html#cb198-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-14"><a href="purrr-and-iterative-functions.html#cb198-14" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation function to wrangle the data into proper formatting</span></span>
+<span id="cb198-15"><a href="purrr-and-iterative-functions.html#cb198-15" aria-hidden="true" tabindex="-1"></a>rotate_data<span class="ot">=</span><span class="cf">function</span>(data, variable_prefix){</span>
+<span id="cb198-16"><a href="purrr-and-iterative-functions.html#cb198-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb198-17"><a href="purrr-and-iterative-functions.html#cb198-17" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb198-18"><a href="purrr-and-iterative-functions.html#cb198-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb198-19"><a href="purrr-and-iterative-functions.html#cb198-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols=</span> <span class="fu">starts_with</span>(variable_prefix), <span class="co"># collect all the desired variables (i.e., columns)....</span></span>
+<span id="cb198-20"><a href="purrr-and-iterative-functions.html#cb198-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="co">#...and put them into a new categorical variable called &quot;variable&quot;</span></span>
+<span id="cb198-21"><a href="purrr-and-iterative-functions.html#cb198-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;participant_score&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># ...and store their values in a new variable called &quot;participant_score&quot;</span></span>
+<span id="cb198-22"><a href="purrr-and-iterative-functions.html#cb198-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(unique,participant_score) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-23"><a href="purrr-and-iterative-functions.html#cb198-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb198-24"><a href="purrr-and-iterative-functions.html#cb198-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(unique, participant_score, variable)) <span class="sc">%&gt;%</span> <span class="co"># keep only these 3 variables</span></span>
+<span id="cb198-25"><a href="purrr-and-iterative-functions.html#cb198-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(variable, <span class="at">.before =</span> participant_score) <span class="co"># put the newly created variable up front</span></span>
+<span id="cb198-26"><a href="purrr-and-iterative-functions.html#cb198-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-27"><a href="purrr-and-iterative-functions.html#cb198-27" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(data)</span>
+<span id="cb198-28"><a href="purrr-and-iterative-functions.html#cb198-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb198-29"><a href="purrr-and-iterative-functions.html#cb198-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-30"><a href="purrr-and-iterative-functions.html#cb198-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-31"><a href="purrr-and-iterative-functions.html#cb198-31" aria-hidden="true" tabindex="-1"></a><span class="co"># creating the rankings for each variable; then transform data back to original structure</span></span>
+<span id="cb198-32"><a href="purrr-and-iterative-functions.html#cb198-32" aria-hidden="true" tabindex="-1"></a>rank_and_unpivot<span class="ot">=</span><span class="cf">function</span>(data){</span>
+<span id="cb198-33"><a href="purrr-and-iterative-functions.html#cb198-33" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb198-34"><a href="purrr-and-iterative-functions.html#cb198-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique) <span class="sc">%&gt;%</span> <span class="co"># group the scores so they can be ranked by participant</span></span>
+<span id="cb198-35"><a href="purrr-and-iterative-functions.html#cb198-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank1=</span><span class="fu">dense_rank</span>(participant_score), <span class="co"># create ranking variable</span></span>
+<span id="cb198-36"><a href="purrr-and-iterative-functions.html#cb198-36" aria-hidden="true" tabindex="-1"></a>               <span class="at">rank=</span><span class="fu">max</span>(rank1,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> rank1) <span class="sc">%&gt;%</span> <span class="co"># fix ranks by flipping to ascending order</span></span>
+<span id="cb198-37"><a href="purrr-and-iterative-functions.html#cb198-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank=</span><span class="fu">factor</span>(rank)) <span class="sc">%&gt;%</span> <span class="co"># convert rank to factor structure</span></span>
+<span id="cb198-38"><a href="purrr-and-iterative-functions.html#cb198-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>rank1)</span>
+<span id="cb198-39"><a href="purrr-and-iterative-functions.html#cb198-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-40"><a href="purrr-and-iterative-functions.html#cb198-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-41"><a href="purrr-and-iterative-functions.html#cb198-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot back to wide</span></span>
+<span id="cb198-42"><a href="purrr-and-iterative-functions.html#cb198-42" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb198-43"><a href="purrr-and-iterative-functions.html#cb198-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> rank<span class="sc">:</span>participant_score) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-44"><a href="purrr-and-iterative-functions.html#cb198-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="co"># un-group the data and delete the generated names</span></span>
+<span id="cb198-45"><a href="purrr-and-iterative-functions.html#cb198-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-46"><a href="purrr-and-iterative-functions.html#cb198-46" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(data)</span>
+<span id="cb198-47"><a href="purrr-and-iterative-functions.html#cb198-47" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb198-48"><a href="purrr-and-iterative-functions.html#cb198-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-49"><a href="purrr-and-iterative-functions.html#cb198-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-50"><a href="purrr-and-iterative-functions.html#cb198-50" aria-hidden="true" tabindex="-1"></a>bundle_paths<span class="ot">=</span><span class="cf">function</span>(df_list, folder_location){</span>
+<span id="cb198-51"><a href="purrr-and-iterative-functions.html#cb198-51" aria-hidden="true" tabindex="-1"></a>  names<span class="ot">=</span><span class="fu">names</span>(df_list)</span>
+<span id="cb198-52"><a href="purrr-and-iterative-functions.html#cb198-52" aria-hidden="true" tabindex="-1"></a>  paths<span class="ot">=</span><span class="fu">rep</span>(here<span class="sc">::</span><span class="fu">here</span>(folder_location), <span class="fu">length</span>(names))</span>
+<span id="cb198-53"><a href="purrr-and-iterative-functions.html#cb198-53" aria-hidden="true" tabindex="-1"></a>  extension<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;.csv&quot;</span>), <span class="fu">length</span>(names))</span>
+<span id="cb198-54"><a href="purrr-and-iterative-functions.html#cb198-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb198-55"><a href="purrr-and-iterative-functions.html#cb198-55" aria-hidden="true" tabindex="-1"></a>  fixed_names<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">&quot;/&quot;</span>,names)</span>
+<span id="cb198-56"><a href="purrr-and-iterative-functions.html#cb198-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb198-57"><a href="purrr-and-iterative-functions.html#cb198-57" aria-hidden="true" tabindex="-1"></a>  path_bundle<span class="ot">=</span><span class="fu">list</span>(paths,fixed_names, extension) <span class="sc">%&gt;%</span> </span>
+<span id="cb198-58"><a href="purrr-and-iterative-functions.html#cb198-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pmap</span>(., paste0)</span>
+<span id="cb198-59"><a href="purrr-and-iterative-functions.html#cb198-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb198-60"><a href="purrr-and-iterative-functions.html#cb198-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(path_bundle)</span>
+<span id="cb198-61"><a href="purrr-and-iterative-functions.html#cb198-61" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong><em>Step 2.</em></strong>
+Create the object that contains all elements (a list in this case) of interest; then pass said object to map and supply the function.</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="purrr-and-iterative-functions.html#cb199-1" aria-hidden="true" tabindex="-1"></a>dfs<span class="ot">=</span><span class="fu">list</span>(<span class="at">na_blank=</span>na_blank, <span class="at">na_zero=</span>na_zero) <span class="sc">%&gt;%</span> <span class="co"># create lists</span></span>
+<span id="cb199-2"><a href="purrr-and-iterative-functions.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="at">.f=</span>rotate_data, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># apply custom function from above to each element in list</span></span>
+<span id="cb199-3"><a href="purrr-and-iterative-functions.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rank_and_unpivot) <span class="co"># again, apply function to each element in list</span></span>
+<span id="cb199-4"><a href="purrr-and-iterative-functions.html#cb199-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-5"><a href="purrr-and-iterative-functions.html#cb199-5" aria-hidden="true" tabindex="-1"></a><span class="co"># extract list elements to make them data frames again</span></span>
+<span id="cb199-6"><a href="purrr-and-iterative-functions.html#cb199-6" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(dfs, <span class="fu">globalenv</span>())</span>
+<span id="cb199-7"><a href="purrr-and-iterative-functions.html#cb199-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-8"><a href="purrr-and-iterative-functions.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(dfs) <span class="co">#discard list. It has fulfilled its purpose</span></span></code></pre></div>
+<p>And just like that, we’re done!</p>
+<p>To export all data sets at once with purrr instead of writing each
+file individually, see the last section of this chapter.</p>
+</div>
+<div id="other-purrr-commands" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Other purrr commands</h2>
+<p>Note that <code>map()</code> always returns a list, and depending on the output
+that you want, you may need to use a variation of <code>map()</code>. These
+variations are as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Return</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>map_lgl()</code></td>
+<td>logical vector</td>
+</tr>
+<tr class="even">
+<td><code>map_int()</code></td>
+<td>integer vector</td>
+</tr>
+<tr class="odd">
+<td><code>map_dbl()</code></td>
+<td>double vector</td>
+</tr>
+<tr class="even">
+<td><code>map_chr()</code></td>
+<td>character vector</td>
+</tr>
+<tr class="odd">
+<td><code>walk()</code></td>
+<td>only returns the side effects of a function</td>
+</tr>
+</tbody>
+</table>
+<ol style="list-style-type: decimal">
+<li><code>walk</code></li>
+</ol>
+<p>Walk() is useful for when you just want to plot something or write a
+save file to your disk, etc. It does not give you any return to store
+something in the environment. You use it to write/read files, open
+graphics windows, and so on.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p><code>map2</code> (and <code>walk2</code>)</p></li>
+<li><p><code>pmap</code> The <code>pmap()</code> function is for iterating over <em>three or more</em>
+elements. As soon as you have &gt;2 items you have to iterate over, you
+need pmap().It works similar to to map and map2, but instead of
+iterating over a single object x or two objects x and y, it acts on
+<strong>a list object called .l</strong></p></li>
+</ol>
+<p>The list is a list of all the objects you want to iterate over. If you
+give it a list of 18 items, it iterates over all 18. If the list only
+has two things, it only acts on those two.</p>
+<p>She says its easiest to imagine the list as a data frame, and the
+columns of the data frame like the elements of that list.</p>
+</div>
+<div id="more-purrr-examples" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> More purrr examples</h2>
+<div id="readimport-several-files-at-once-with-map" class="section level3" number="12.4.1">
+<h3><span class="header-section-number">12.4.1</span> Read/Import several files at once with <code>map()</code></h3>
+<p><strong>Note.</strong> This reads many .csv files and combines them into a <em>SINGLE,
+unified data frame</em>. If you want to import many files at once but keep
+them separated, you’ll need a different command.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="purrr-and-iterative-functions.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="do">######### Step-by-step version #########</span></span>
+<span id="cb200-2"><a href="purrr-and-iterative-functions.html#cb200-2" aria-hidden="true" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;JLWOP/Data and Models/&quot;</span></span>
+<span id="cb200-3"><a href="purrr-and-iterative-functions.html#cb200-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-4"><a href="purrr-and-iterative-functions.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. view all files; make sure you see everything you want/need</span></span>
+<span id="cb200-5"><a href="purrr-and-iterative-functions.html#cb200-5" aria-hidden="true" tabindex="-1"></a>file_path <span class="sc">%&gt;%</span> <span class="fu">list.files</span>()</span>
+<span id="cb200-6"><a href="purrr-and-iterative-functions.html#cb200-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-7"><a href="purrr-and-iterative-functions.html#cb200-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. save only file names with the desired extension</span></span>
+<span id="cb200-8"><a href="purrr-and-iterative-functions.html#cb200-8" aria-hidden="true" tabindex="-1"></a>csv_file_names<span class="ot">=</span>file_path <span class="sc">%&gt;%</span> </span>
+<span id="cb200-9"><a href="purrr-and-iterative-functions.html#cb200-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list.files</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb200-10"><a href="purrr-and-iterative-functions.html#cb200-10" aria-hidden="true" tabindex="-1"></a>  .[<span class="fu">str_detect</span>(., <span class="st">&quot;.csv&quot;</span>)]</span>
+<span id="cb200-11"><a href="purrr-and-iterative-functions.html#cb200-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-12"><a href="purrr-and-iterative-functions.html#cb200-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-13"><a href="purrr-and-iterative-functions.html#cb200-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Load everything into the Global Environment</span></span>
+<span id="cb200-14"><a href="purrr-and-iterative-functions.html#cb200-14" aria-hidden="true" tabindex="-1"></a>csv_file_names <span class="sc">%&gt;%</span></span>
+<span id="cb200-15"><a href="purrr-and-iterative-functions.html#cb200-15" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="cf">function</span>(file_name){ <span class="co"># iterate through each file name</span></span>
+<span id="cb200-16"><a href="purrr-and-iterative-functions.html#cb200-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assign</span>(<span class="at">x =</span> <span class="fu">str_remove</span>(file_name, <span class="st">&quot;.csv&quot;</span>), <span class="co"># Remove file extension &quot;.csv&quot;</span></span>
+<span id="cb200-17"><a href="purrr-and-iterative-functions.html#cb200-17" aria-hidden="true" tabindex="-1"></a>           <span class="at">value =</span> <span class="fu">read_csv</span>(<span class="fu">paste0</span>(file_path, file_name)),</span>
+<span id="cb200-18"><a href="purrr-and-iterative-functions.html#cb200-18" aria-hidden="true" tabindex="-1"></a>           <span class="at">envir =</span> .GlobalEnv)</span>
+<span id="cb200-19"><a href="purrr-and-iterative-functions.html#cb200-19" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb200-20"><a href="purrr-and-iterative-functions.html#cb200-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-21"><a href="purrr-and-iterative-functions.html#cb200-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-22"><a href="purrr-and-iterative-functions.html#cb200-22" aria-hidden="true" tabindex="-1"></a><span class="do">######### Combining all steps into a single, one-line function ##########</span></span>
+<span id="cb200-23"><a href="purrr-and-iterative-functions.html#cb200-23" aria-hidden="true" tabindex="-1"></a>read_all_excel<span class="ot">=</span><span class="cf">function</span>(path){</span>
+<span id="cb200-24"><a href="purrr-and-iterative-functions.html#cb200-24" aria-hidden="true" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> path</span>
+<span id="cb200-25"><a href="purrr-and-iterative-functions.html#cb200-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-26"><a href="purrr-and-iterative-functions.html#cb200-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># save only file names with the desired extension</span></span>
+<span id="cb200-27"><a href="purrr-and-iterative-functions.html#cb200-27" aria-hidden="true" tabindex="-1"></a>  file_names<span class="ot">=</span>file_path <span class="sc">%&gt;%</span> </span>
+<span id="cb200-28"><a href="purrr-and-iterative-functions.html#cb200-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list.files</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb200-29"><a href="purrr-and-iterative-functions.html#cb200-29" aria-hidden="true" tabindex="-1"></a>    .[<span class="fu">str_detect</span>(., <span class="st">&quot;.xlsx&quot;</span>)]</span>
+<span id="cb200-30"><a href="purrr-and-iterative-functions.html#cb200-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb200-31"><a href="purrr-and-iterative-functions.html#cb200-31" aria-hidden="true" tabindex="-1"></a>  file_names <span class="sc">%&gt;%</span></span>
+<span id="cb200-32"><a href="purrr-and-iterative-functions.html#cb200-32" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">map</span>(<span class="cf">function</span>(file_name){ <span class="co"># iterate through each file name</span></span>
+<span id="cb200-33"><a href="purrr-and-iterative-functions.html#cb200-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">assign</span>(<span class="at">x =</span> <span class="fu">str_remove</span>(file_name, <span class="st">&quot;.xlsx&quot;</span>), <span class="co"># Remove file extension &quot;.csv&quot;</span></span>
+<span id="cb200-34"><a href="purrr-and-iterative-functions.html#cb200-34" aria-hidden="true" tabindex="-1"></a>             <span class="at">value =</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">paste0</span>(file_path, file_name)),</span>
+<span id="cb200-35"><a href="purrr-and-iterative-functions.html#cb200-35" aria-hidden="true" tabindex="-1"></a>             <span class="at">envir =</span> .GlobalEnv)</span>
+<span id="cb200-36"><a href="purrr-and-iterative-functions.html#cb200-36" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb200-37"><a href="purrr-and-iterative-functions.html#cb200-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb200-38"><a href="purrr-and-iterative-functions.html#cb200-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-39"><a href="purrr-and-iterative-functions.html#cb200-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-40"><a href="purrr-and-iterative-functions.html#cb200-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb200-41"><a href="purrr-and-iterative-functions.html#cb200-41" aria-hidden="true" tabindex="-1"></a><span class="fu">read_all_excel</span>(<span class="at">path =</span> <span class="st">&quot;JLWOP/Data and Models/&quot;</span>)</span></code></pre></div>
+</div>
+<div id="exporting-multiple-.csv-files-at-once-with-walk2" class="section level3" number="12.4.2">
+<h3><span class="header-section-number">12.4.2</span> Exporting multiple .csv files at once with <code>walk2()</code></h3>
+<p>Utilize <code>purrr::walk2()</code> to apply a function iteratively on TWO objects
+simultaneously. To save multiple .csv files with <code>walk2</code>, we need two
+distinct lists: 1. A list of data frames that we wish to export, 2. and
+the file paths, complete with the file names and extensions, for each
+file to be written</p>
+<p>First create and define both list items. Then apply <code>walk2()</code> to pluck
+an element from list 1 and its corresponding element from list 2, and
+apply the <code>write_csv</code> function in for-loop fashion.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="purrr-and-iterative-functions.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Exporting the .csv files for SPSS/JASP/etc. ####</span></span>
+<span id="cb201-2"><a href="purrr-and-iterative-functions.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define list 1</span></span>
+<span id="cb201-3"><a href="purrr-and-iterative-functions.html#cb201-3" aria-hidden="true" tabindex="-1"></a>dfs<span class="ot">=</span><span class="fu">list</span>(<span class="at">na_blank=</span>na_blank,</span>
+<span id="cb201-4"><a href="purrr-and-iterative-functions.html#cb201-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">na_zero=</span>na_zero,</span>
+<span id="cb201-5"><a href="purrr-and-iterative-functions.html#cb201-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">na_zero_helpreint=</span>na_zero_helpreint)</span>
+<span id="cb201-6"><a href="purrr-and-iterative-functions.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="co"># list 2</span></span>
+<span id="cb201-7"><a href="purrr-and-iterative-functions.html#cb201-7" aria-hidden="true" tabindex="-1"></a>paths_csv<span class="ot">=</span><span class="fu">bundle_paths</span>(<span class="at">df_list =</span> dfs, <span class="at">folder_location =</span> <span class="st">&quot;JLWOP/Data and Models&quot;</span>)</span>
+<span id="cb201-8"><a href="purrr-and-iterative-functions.html#cb201-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-9"><a href="purrr-and-iterative-functions.html#cb201-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-10"><a href="purrr-and-iterative-functions.html#cb201-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over all elements in list 1 and corresponding element in list 2;</span></span>
+<span id="cb201-11"><a href="purrr-and-iterative-functions.html#cb201-11" aria-hidden="true" tabindex="-1"></a><span class="co"># and apply the the write_csv function to each</span></span>
+<span id="cb201-12"><a href="purrr-and-iterative-functions.html#cb201-12" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(<span class="at">.x=</span>dfs, <span class="at">.y=</span> paths, <span class="at">.f=</span>write_csv)</span>
+<span id="cb201-13"><a href="purrr-and-iterative-functions.html#cb201-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-14"><a href="purrr-and-iterative-functions.html#cb201-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-15"><a href="purrr-and-iterative-functions.html#cb201-15" aria-hidden="true" tabindex="-1"></a><span class="do">#### .RData file for R users ####</span></span>
+<span id="cb201-16"><a href="purrr-and-iterative-functions.html#cb201-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine multiple data frames into a single .RData file and export</span></span>
+<span id="cb201-17"><a href="purrr-and-iterative-functions.html#cb201-17" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(<span class="at">list =</span> <span class="fu">c</span>(<span class="st">&quot;na_blank&quot;</span>, <span class="st">&quot;na_zero&quot;</span>, <span class="st">&quot;na_zero_helpreint&quot;</span>), </span>
+<span id="cb201-18"><a href="purrr-and-iterative-functions.html#cb201-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>,<span class="st">&quot;ranking_data.RData&quot;</span>))</span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intermediate-r-functions-loops-and-iterative-programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-to-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ryan-a-schneider/coding_compendium/edit/master/10-functions.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/ryan-a-schneider/coding_compendium/blob/master/10-functions.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

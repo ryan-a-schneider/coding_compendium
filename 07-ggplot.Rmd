@@ -1,4 +1,4 @@
-# Figures and Graphs
+# Figures and Graphs with the ggplot and see packages
 
 There are three parts to a ggplot2 call: 1. data 2. aesthetic mapping 3. Layer
 
@@ -19,7 +19,7 @@ ggplot(dataframe) +
 
 Then if you have other stuff you want to add on top of this, like axis labels, annotations, highlights, etc., you keep adding those in separate lines
 
-## Commands for graph types
+## Commands for ggplot graph types
 
 | Graph Type    | Geom command       |
 |---------------|--------------------|
@@ -206,51 +206,13 @@ ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar(color="black")
 ```
 
-### The see package and more options
+### More options with the see package
 
 See [this link](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually) for setting color gradients for continuous variables, or using other custom color palattes like the `gameofthrones` package.
 
 Check out the [see package](https://easystats.github.io/see/articles/seecolorscales.html#overview-of-palette-colors-1) for some good color scales; the commands for which are [here](https://easystats.github.io/see/reference/index.html#section-geoms). 
 
 Incidentally, see is great not only for regular ggplot graphs, but also Bayesian stats graphs [link](https://easystats.github.io/see/articles/bayestestR.html#introduction-1); effect size graphs [link](https://easystats.github.io/see/articles/effectsize.html); correlation graphs [link](https://easystats.github.io/see/articles/correlation.html); and more.
-
-
-
-### See for Bayes and density functions
-
-Quick highlights here of my favorite functions from this package. See (ha) the full package overview at [this link](https://easystats.github.io/see/)
-
-You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
-
-#### Probability of Direction (*Pd*) figure
-```{r 7.13, eval=FALSE}
-
-plot(pd(Main_EffectsModel))+
-  scale_fill_manual(values=c("#FFC107", "#E91E63"))+ 
-  theme_classic()+
-  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
-
-```
-
-
-#### ROPE figure
-
-```{r 7.14, eval=FALSE}
-plot(ropetest, rope_color = "grey70")+
-  gameofthrones::scale_fill_got_d(option = "white_walkers") # or scale_fill_manual(values = c("gray75","red")
-```
-
-
-ROPE tests are plots of distributions, and therefore use scale_fill_xyz_d commands. (the 'd' stands for 'discrete'). You can use any scale theme color set from any package, as long as it ends in _d
-
-values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website
-
-#### Bayes factor models comparison figure
-
-```{r 7.15, eval=FALSE}
-plot(bayesfactor_models(Thesis_Model,discount_model))+
-  scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
-```
 
 
 ## Other aesthetic mappings
@@ -261,7 +223,7 @@ plot(bayesfactor_models(Thesis_Model,discount_model))+
 
 Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
 
-```{r 7.16}
+```{r 7.16, eval=FALSE}
 # shape
 ggplot(mtcars, aes(x= mpg, y=hp, shape=as.factor(cyl)))+
   geom_point()
@@ -284,7 +246,7 @@ ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
 
 ### Add a title, axis labels, and captions
 
-Titles and axis labels are added via `labs()`.
+All three can be added with `labs()`.
 
 ```{r 7.17}
 ggplot(mtcars, aes(x=cyl))+
@@ -400,4 +362,57 @@ ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
   geom_point()+
   geom_smooth(method = "lm", formula = y ~ x)
 ```
+
+
+
+## Specific Commands for Specific Types of Analysis
+
+### lavaan stuff
+```{r echo}
+tidySEM::graph_sem(model=fit1)
+```
+
+
+### Bayes and density functions
+
+Quick highlights here of my favorite functions from this package. See (ha) the full package overview at [this link](https://easystats.github.io/see/)
+
+You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
+
+```{r}
+bayes_model=rstanarm::stan_glm()
+```
+
+
+#### Probability of Direction (*Pd*) figure
+```{r 7.13, eval=FALSE}
+
+plot(pd(Main_EffectsModel))+
+  scale_fill_manual(values=c("#FFC107", "#E91E63"))+ 
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
+```
+
+
+#### ROPE figure
+
+```{r 7.14, eval=FALSE}
+plot(ropetest, rope_color = "grey70")+
+  gameofthrones::scale_fill_got_d(option = "white_walkers") 
+# scale_fill_manual(values = c("gray75","red")
+```
+
+
+ROPE tests are plots of distributions, and therefore use scale_fill_xyz_d commands. (the 'd' stands for 'discrete'). You can use any scale theme color set from any package, as long as it ends in _d
+
+values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website
+
+#### Bayes factor models comparison figure
+
+```{r 7.15, eval=FALSE}
+plot(bayesfactor_models(Thesis_Model,discount_model))+
+  scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
+```
+
+
 

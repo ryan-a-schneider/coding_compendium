@@ -1,0 +1,207 @@
+---
+title: "Creating a simulated data set"
+output: html_document
+---
+
+```{r}
+pacman::p_load(tidyverse, legaldmlab)
+```
+
+# Creating a simulated data set
+
+From the tutorial [on this page](https://debruine.github.io/tutorials/sim-data.html)
+
+## Part 1: Independent samples from a normal distribution
+
+Consider the following first before you start doing stuff: - How many subjects are in each condition? - What are the means and standard deviations of each group?
+
+Set that shit below.
+
+```{r}
+# number of subjects per group
+A_sub_n <- 50
+B_sub_n <- 50
+
+# distribution parameters
+A_mean  <- 10
+A_sd    <- 2.5
+
+B_mean  <- 11
+B_sd    <- 2.5
+```
+
+Now generate scores for each group
+
+```{r}
+A_scores <- rnorm(A_sub_n, A_mean, A_sd)
+B_scores <- rnorm(B_sub_n, B_mean, B_sd)
+```
+
+Technically you *could* stop here and just analyze the data in this fashion...but its better to organize it into a table. One that looks like something you would import after real data collection.
+
+So do that next; make it look nice.
+
+```{r}
+dat <- tibble(
+  sub_condition = rep( c("A", "B"), c(A_sub_n, B_sub_n) ),
+  score = c(A_scores, B_scores)
+)
+
+head(dat)
+```
+
+Always perform a quality and consistency check on your data to verify that shit's ok.
+
+```{r}
+dat %>%
+  group_by(sub_condition) %>%
+  summarise(n = n() ,
+            mean = mean(score),
+            sd = sd(score))
+```
+
+## Part 2: Creating data sets with quantitative and categorical variables
+
+From the web page [at this link](https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/#creating-datasets-with-quantiative-and-categorical-variables)
+
+### 2.a. DATA WITH **NO DIFFERENCE** AMONG GROUPS
+
+**Critically important notes to know**: When you use the `rep()` function, there are several different arguments you can specify inside it that control how stuff is repeated:
+
+-   using `rep(x, each= )` repeats things *element-wise*; each element gets replicated n times, in order
+
+```{r}
+rep(c("A","B"), each=3)
+```
+
+-   using `rep(x, times= )` repeats the *sequence*; the vector as a whole, as it appears, will be repeated with one sequence following the next
+
+```{r}
+rep(c("A","B", "C", "D", "E"), times=3)
+```
+
+-   using `rep(x, length.out)` repeats *only the number of elements you specify*, in their original order
+
+```{r}
+rep(c("A","B", "C", "D", "E"), length.out=3)
+```
+
+In this particular data, we want *every combination of `group` and `letter` to be present ONCE*.
+
+```{r}
+
+letters=c("A","B","C","D","E")
+
+tibble(group = rep(letters[1:2], each = 3),
+           factor = rep(LETTERS[3:5], times = 2),
+           response = rnorm(n = 6, mean = 0, sd = 1) )
+```
+
+### 2.b. Data **WITH A DIFFERENCE** among groups
+
+What if we want data where the means are different between groups? Let's make two groups of three observations where the mean of one group is 5 and the other is 10. The two groups have a shared variance (and so standard deviation) of 1.
+
+#### Some notes first
+
+Creating a difference between the two group's average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within `rnorm`, like so:
+
+```{r}
+response = rnorm(n = 6, mean = c(5, 10), sd = 1)
+response
+```
+
+You can see that: 1. draw 1 is from the distribution $(\mu=5,\sigma=1)$ 2. draw 2 is from the distribution $(\mu=5,\sigma=1)$
+
+And this process repeats a total of six times.
+
+And if you happen to also specify a vector of standard deviations (purely to demonstrate what is happening, we won't actually do this), *the first mean is paired with the first SD; the second mean is paired with the second SD; and so on.*
+
+```{r}
+rnorm(n = 6, mean = c(5, 10), sd = c(2,0.1))
+```
+
+#### Ok, back to creating the data
+
+
+If you want there to be differences between the groups, we need to change the way the vector of factors is replicated, in addition to specifying the vector of means. We want to ensure that the sequence of "A", "B" in the `group` column matches the sequence repeated in the `response` column.
+
+Here we are going to use `length.out` so that the whole sequence of A,B is repeated exactly in line with the alternating drawing from $\mu=5$, $\mu=10$.
+
+It's often best to do this by building each thing separately, and then combining it into a tibble when you have it figured out.
+
+```{r}
+group=rep(letters[1:2], length.out = 6)
+group
+
+response=rnorm(n = 6, mean = c(5, 10), sd = 1)
+response
+
+
+tibble(group,
+       response)
+```
+
+
+
+
+
+
+
+
+### 2.c. Data with **MULTIPLE QUANTITATIVE VARIABLES** with groups
+
+
+
+
+## Part 3: Repeatedly simulate samples with replicate()
+
+
+Instead of drawing values one at a time from a distribution, we want to do it many times. This is a job for `replicate()`. What `replicate()` does is run a function repeatedly.
+
+The `replicate()` function will perform a given operation as many times as you tell it to. Here we tell it to generate numbers from the distribution $N~(\mu=0, \sigma=1)$, three times (as specified in the `n=3` argument in line one)
+
+```{r}
+replicate(n = 3, 
+          expr = rnorm(n = 5, mean = 0, sd = 1), 
+          simplify = FALSE )
+```
+
+The argument `simplify=FALSE` tells it to return the output as a list. If you set this to `TRUE` it returns a matrix instead
+
+```{r}
+replicate(n = 3, 
+          expr = rnorm(n = 5, mean = 0, sd = 1), 
+          simplify = TRUE )
+```
+
+Specifying `as.data.frame()` with the matrix output can turn it into a data frame.
+
+```{r}
+replicate(n = 3, 
+          expr = rnorm(n = 5, mean = 0, sd = 1), 
+          simplify = TRUE ) %>% 
+  as.data.frame() %>% 
+  rename(sample_a=V1, sample_b=V2, sample_c=V3)
+```
+
+
+## Part 4: repeatedly making whole data sets
+
+This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.
+
+```{r}
+simlist = replicate(n = 3, 
+          expr = data.frame(group = rep(letters[1:2], each = 3),
+                            response = rnorm(n = 6, mean = 0, sd = 1) ),
+          simplify = FALSE)
+
+simlist
+```
+
+
+## Part 5: Using purrr
+
+See [this blog post](https://aosmith.rbind.io/2018/06/05/a-closer-look-at-replicate-and-purrr/)
+
+
+

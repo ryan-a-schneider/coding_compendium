@@ -527,9 +527,59 @@ Notice how the object is now stored as the correct type in the table above.
 
 ***NOTE!*** This entire process has been included in the `tidy_date()` command in my package, `legaldmlab`.
 
-
 ### Find the difference between two dates/times
-```{r chapter_3_end, eval=FALSE}
+```{r , eval=FALSE}
 difftime(part_1$end_date[1], part_2$end_date[1], units="days")
 ```
+
+
+
+## Reverse-code a variable
+
+To reverse-score a variable, you should use `car::recode()`
+Can be done a few different ways, depending on how many variables you're looking to recode:
+
+```{r eval=FALSE}
+
+# Recode just one variable
+df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
+
+# Recode a select bunch of variables
+df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1"))
+
+# Recode the whole damn thing. All columns.
+df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
+```
+
+## Create a relative ranking among several variables
+
+If you want to create a variable that is an ordinal ranking of other variables, first you need to make sure your data is long-wise. Then, depending on the type of ranking system you want, you'll might need a different ranking command....
+
+- The `min_rank` command from dplyr works in a manner similar to base R's `rank` command. It ranks things like you see in sporting events. For example, if there is a clear winner in a game but 3 people tie for second place, the ranks would look like this: 1,2,2,2,4,5. Notice that the positions are independent from the counts.
+
+- Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr's `dense_rank` command.
+
+- In either case, the ranks are generated from lowest to highest, so if you want to flip them around you'll need to include `desc()` in the command.
+
+```{r chapter_3_end}
+
+dat=tibble::tribble(~name, ~score,
+                    "bob", 0,
+                    "bob", 5,
+                    "bob", 50,
+                    "bob", 50,
+                    "bob", 50,
+                    "bob", NA,
+                    "alice", 70,
+                    "alice", 80,
+                    "alice", 90,
+                    "alice", 20,
+                    "alice", 20,
+                    "alice", 1)
+
+dat %>% mutate(ranked = dense_rank(desc(score)))
+```
+
+
+
 
