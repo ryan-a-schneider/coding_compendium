@@ -379,15 +379,30 @@ Quick highlights here of my favorite functions from this package. See (ha) the f
 
 You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
 
-```{r}
-bayes_model=rstanarm::stan_glm()
-```
-
 
 #### Probability of Direction (*Pd*) figure
-```{r 7.13, eval=FALSE}
 
-plot(pd(Main_EffectsModel))+
+```{r include=FALSE}
+library(rstanarm)
+library(easystats)
+data(wells)
+
+t_prior <- student_t(df = 7, location = 0, scale = 2.5)
+wells=rstanarm::wells
+wells$dist100 <- wells$dist / 100
+```
+
+Use `plot(pd())` to visualize the Probability of Direction index.
+
+```{r 7_pd_graph, eval=FALSE}
+
+fit1 <- stan_glm(switch ~ dist, data = wells,
+                 family = binomial(link = "logit"),
+                 prior = t_prior, prior_intercept = t_prior,
+                 cores = 4, seed = 12345)
+
+
+plot(bayestestR::pd(fit1))+
   scale_fill_manual(values=c("#FFC107", "#E91E63"))+ 
   theme_classic()+
   theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
@@ -396,8 +411,8 @@ plot(pd(Main_EffectsModel))+
 
 #### ROPE figure
 
-```{r 7.14, eval=FALSE}
-plot(ropetest, rope_color = "grey70")+
+```{r 7_ROPE_graph, eval=FALSE}
+plot(fit1, rope_color = "grey70")+
   gameofthrones::scale_fill_got_d(option = "white_walkers") 
 # scale_fill_manual(values = c("gray75","red")
 ```

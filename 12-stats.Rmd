@@ -86,6 +86,9 @@ performance::performance(model)
 ### Effect size info with `effectsize`
 
 ```{r}
+logreg_model=glm()
+logreg_model_coeff=parameters::parameters(logreg_model)
+  
 effectsize::interpret_oddsratio(exp(block_2$coefficients), rules = "chen2010")
 ```
 
