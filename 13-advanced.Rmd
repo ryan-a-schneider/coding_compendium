@@ -51,10 +51,24 @@ https://r-pkgs.org/description.html
 https://kbroman.org/pkg_primer/pages/depends.html
 
 
-### Git and Github
-https://r-pkgs.org/git.html#git-rstudio
-https://www.youtube.com/watch?v=XbSwdHBiO4E
+### Linking Git and Github
+[view this detailed guide](https://r-pkgs.org/git.html#git-rstudio) by Jenny Bryan, and [this YouTube video](https://www.youtube.com/watch?v=XbSwdHBiO4E).
 
+Quick summary of steps in YouTube video:
+
+1. Open project folder in Windows Explorer and click in the URL bar, then type `cmd` to open command prompt
+
+2. If there are any pre-existing git files or repository info there, remove it with the following: `rd .git /S/Q`
+
+3. Tell git to create a new repo by typing: `git init`
+
+4. Then tell it to include all files in the current place by typing: `git add .`
+
+5. Commit these files with: `git commit -m "Initial commit"`
+
+6. At this point you've created a git and GitHub repo each; now link them with: `git remote add origin [https URL of GitHub repo]`
+
+7. Push all these changes live with: `git push -u origin master`
 
 
 ## Creating a bookdown
