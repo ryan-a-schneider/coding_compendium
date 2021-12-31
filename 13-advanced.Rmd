@@ -1,7 +1,7 @@
 # Coding Tips and Tricks
 
 
-## Regular R stuff
+## Grammar stuff in base R
 
 ### Regex expressions and symbols
 
@@ -15,6 +15,9 @@ str_remove(html$`Market Price`, pattern = "\\$") # works
 
 Good reading material/stuff to know: https://www.r-bloggers.com/2021/05/the-new-r-pipe/?__twitter_impression=true&
 
+Not really any functional differences from the tidyverse pipe, but using this instead puts one less dependency in your code. So it's probably worth changing.
+
+You can set this in the global options in RStudio.
 
 ## Tidyverse stuff
 
@@ -58,17 +61,23 @@ Quick summary of steps in YouTube video:
 
 1. Open project folder in Windows Explorer and click in the URL bar, then type `cmd` to open command prompt
 
-2. If there are any pre-existing git files or repository info there, remove it with the following: `rd .git /S/Q`
+2. If there are any pre-existing git files or repository info there, remove it with the following: 
+- `rd .git /S/Q`
 
-3. Tell git to create a new repo by typing: `git init`
+3. Tell git to create a new repo by typing: 
+- `git init`
 
-4. Then tell it to include all files in the current place by typing: `git add .`
+4. Then tell it to include all files in the current place by typing: 
+- `git add .`
 
-5. Commit these files with: `git commit -m "Initial commit"`
+5. Commit these files with: 
+- `git commit -m "Initial commit"`
 
-6. At this point you've created a git and GitHub repo each; now link them with: `git remote add origin [https URL of GitHub repo]`
+6. At this point you've created a git and GitHub repo each; now link them with: 
+- `git remote add origin [https URL of GitHub repo]`
 
-7. Push all these changes live with: `git push -u origin master`
+7. Push all these changes live with: 
+- `git push -u origin master`
 
 
 ## Creating a bookdown

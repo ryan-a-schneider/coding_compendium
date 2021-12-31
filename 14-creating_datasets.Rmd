@@ -3,7 +3,7 @@ title: "Creating a simulated data set"
 output: html_document
 ---
 
-```{r}
+```{r include=FALSE, echo=FALSE, warning=FALSE}
 pacman::p_load(tidyverse, legaldmlab)
 ```
 
@@ -17,7 +17,7 @@ Consider the following first before you start doing stuff: - How many subjects a
 
 Set that shit below.
 
-```{r}
+```{r 14_1}
 # number of subjects per group
 A_sub_n <- 50
 B_sub_n <- 50
@@ -32,7 +32,7 @@ B_sd    <- 2.5
 
 Now generate scores for each group
 
-```{r}
+```{r 14_2}
 A_scores <- rnorm(A_sub_n, A_mean, A_sd)
 B_scores <- rnorm(B_sub_n, B_mean, B_sd)
 ```
@@ -41,7 +41,7 @@ Technically you *could* stop here and just analyze the data in this fashion...bu
 
 So do that next; make it look nice.
 
-```{r}
+```{r 14_3}
 dat <- tibble(
   sub_condition = rep( c("A", "B"), c(A_sub_n, B_sub_n) ),
   score = c(A_scores, B_scores)
@@ -52,7 +52,7 @@ head(dat)
 
 Always perform a quality and consistency check on your data to verify that shit's ok.
 
-```{r}
+```{r 14_4}
 dat %>%
   group_by(sub_condition) %>%
   summarise(n = n() ,
@@ -70,25 +70,25 @@ From the web page [at this link](https://aosmith.rbind.io/2018/08/29/getting-sta
 
 -   using `rep(x, each= )` repeats things *element-wise*; each element gets replicated n times, in order
 
-```{r}
+```{r 14_5}
 rep(c("A","B"), each=3)
 ```
 
 -   using `rep(x, times= )` repeats the *sequence*; the vector as a whole, as it appears, will be repeated with one sequence following the next
 
-```{r}
+```{r 14_6}
 rep(c("A","B", "C", "D", "E"), times=3)
 ```
 
 -   using `rep(x, length.out)` repeats *only the number of elements you specify*, in their original order
 
-```{r}
+```{r 14_7}
 rep(c("A","B", "C", "D", "E"), length.out=3)
 ```
 
 In this particular data, we want *every combination of `group` and `letter` to be present ONCE*.
 
-```{r}
+```{r 14_8}
 
 letters=c("A","B","C","D","E")
 
@@ -105,7 +105,7 @@ What if we want data where the means are different between groups? Let's make tw
 
 Creating a difference between the two group's average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within `rnorm`, like so:
 
-```{r}
+```{r 14_9}
 response = rnorm(n = 6, mean = c(5, 10), sd = 1)
 response
 ```
@@ -116,7 +116,7 @@ And this process repeats a total of six times.
 
 And if you happen to also specify a vector of standard deviations (purely to demonstrate what is happening, we won't actually do this), *the first mean is paired with the first SD; the second mean is paired with the second SD; and so on.*
 
-```{r}
+```{r 14_9}
 rnorm(n = 6, mean = c(5, 10), sd = c(2,0.1))
 ```
 
@@ -129,7 +129,7 @@ Here we are going to use `length.out` so that the whole sequence of A,B is repea
 
 It's often best to do this by building each thing separately, and then combining it into a tibble when you have it figured out.
 
-```{r}
+```{r 14_10}
 group=rep(letters[1:2], length.out = 6)
 group
 
@@ -160,7 +160,7 @@ Instead of drawing values one at a time from a distribution, we want to do it ma
 
 The `replicate()` function will perform a given operation as many times as you tell it to. Here we tell it to generate numbers from the distribution $N~(\mu=0, \sigma=1)$, three times (as specified in the `n=3` argument in line one)
 
-```{r}
+```{r 14_11}
 replicate(n = 3, 
           expr = rnorm(n = 5, mean = 0, sd = 1), 
           simplify = FALSE )
@@ -168,7 +168,7 @@ replicate(n = 3,
 
 The argument `simplify=FALSE` tells it to return the output as a list. If you set this to `TRUE` it returns a matrix instead
 
-```{r}
+```{r 14_12}
 replicate(n = 3, 
           expr = rnorm(n = 5, mean = 0, sd = 1), 
           simplify = TRUE )
@@ -176,7 +176,7 @@ replicate(n = 3,
 
 Specifying `as.data.frame()` with the matrix output can turn it into a data frame.
 
-```{r}
+```{r 14_13}
 replicate(n = 3, 
           expr = rnorm(n = 5, mean = 0, sd = 1), 
           simplify = TRUE ) %>% 
@@ -189,7 +189,7 @@ replicate(n = 3,
 
 This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.
 
-```{r}
+```{r 14_14}
 simlist = replicate(n = 3, 
           expr = data.frame(group = rep(letters[1:2], each = 3),
                             response = rnorm(n = 6, mean = 0, sd = 1) ),

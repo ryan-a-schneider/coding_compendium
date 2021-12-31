@@ -33,7 +33,7 @@ https://easystats.github.io/easystats/
 ### Getting parameter estimates from model objects
 
 Scenario: You've run some statistical test (like the below regression), and want a summary of the model estimates.
-```{r}
+```{r 12_model}
 model <- lm(Sepal.Length ~ Species, data = iris)
 ```
 
@@ -55,16 +55,16 @@ Using `format_table()` rounds all columns to 2 decimal places, reformats p-value
 
 Here's a comparison of broom's output (first) vs. parameter's (second) when you save each in the environment. As you can see, both produce tidy tibbles
 
-```{r echo=FALSE}
+```{r 12_pic1, echo=FALSE}
 knitr::include_graphics(here::here("pics", "tidy.png"))
 ```
 
-```{r echo=FALSE}
+```{r 12_pic2, echo=FALSE}
 knitr::include_graphics(here::here("pics", "parameters.png"))
 ```
 And here's what `parameters(model) |> format_table()` does to the a parameters table:
 
-```{r echo=FALSE}
+```{r 12_pic3, echo=FALSE}
 knitr::include_graphics(here::here("pics", "format_table.png"))
 ```
 Much cleaner for making a table to export to Word.
@@ -72,31 +72,31 @@ Much cleaner for making a table to export to Word.
 
 ### Getting model information and performance metrics
 
-Again, two options here. You can use either `glance` from the broom package, or `performance` from the package of the same name. These each produce slightly different output, though unlike above, I don't think one is necessarily better than the other.
+Again, two options here. You can use either `glance` from the broom package, or `performance` from the package of the same name. These each produce slightly different output, though unlike above, I don't think one is necessarily better than the other. Use whichever one you prefer.
 
-```{r}
+```{r 12_broomdemo}
 broom::glance(model)
 ```
 
-```{r}
+```{r 12_perfdemo}
 performance::performance(model)
 ```
 
 
 ### Effect size info with `effectsize`
 
-```{r}
-logreg_model=glm()
+```{r 12_effectsizedemo}
+logreg_model=glm(smoke ~ age + sex, data= legaldmlab::survey, family = "binomial")
 logreg_model_coeff=parameters::parameters(logreg_model)
+logreg_model_coeff=logreg_model_coeff |> dplyr::mutate(odds_ratio=exp(Coefficient))
   
-effectsize::interpret_oddsratio(exp(block_2$coefficients), rules = "chen2010")
+effectsize::interpret_oddsratio(logreg_model_coeff$odds_ratio, rules = "chen2010")
 ```
 
 
 ### Quick, detailed, and automated reporting with `report`
-
+Check out https://easystats.github.io/report/
 
 ### Running correlations with `correlation`
-
-
+https://easystats.github.io/correlation/
 

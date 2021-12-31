@@ -224,7 +224,8 @@ your list by using `purr::map()`.
 
 library(rvest)
 
-# line-by-line process for one item
+# STEP 1
+# Figure out a line-by-line process for one item/one single web page
 html1=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=04") |> 
   html_nodes("table.shsTable.shsBorderTable") |> 
   html_table(fill = TRUE, header=TRUE) |> 
@@ -232,7 +233,9 @@ html1=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=0
   janitor::clean_names()
 
 head(html1)
-  
+
+
+# STEP 2
 # create a custom function of the above to shorten and generalize the process
 quick_read_html=function(url){
   web_page=read_html(url) |> 
@@ -244,22 +247,27 @@ quick_read_html=function(url){
   return(web_page)
 }
 
-# test
+
+
+# test to verify it works
 test=quick_read_html(url= "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=08") 
-head(test) #nice, this works perfectly
+
+head(test) # nice 
 ```
 
 ***DO FOR ALL.***
 Now create the object that contains all the elements you want to iterate over, and then pass it to your generalized function with map.
 
 ```{r 10.13}
-# object that contains all elements
+# Step 3a
+# create an object that contains ALL elements of interest
 URLs=c("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=04",
        "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=08",
        "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=06",
        "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=12")
 
-# map it
+# Step 4
+# use the power of map and be amazed
 lpga_data= URLs |> map(quick_read_html)
 
 head(lpga_data)
@@ -282,6 +290,8 @@ lpga_data= lpga_data %>%
 head(lpga_data)
 ```
 
+
+
 ## Non-reproducible example (Juvenile Life Without Parole study)
 
 In the Juvenile Lifers study, there were a series of questions that
@@ -291,18 +301,21 @@ them relative rankings, so that each of the 6 variables in the series
 was rated from the least to most difficult, by participant.
 
 Now if we only needed to compute these rankings once this wouldn't have
-been any big deal; however, we needed to do it three times. Much of the
-same code and the same process would need to be copied and pasted,
+been any big deal; however, we needed to do it **three times**. 
+
+Much of the same code and the same process would need to be copied and pasted,
 resulting in a very long, messy, harder to read script. With purrr
-however, we can reduce the redundancies to a minimum.
+however, we can reduce the redundancies to a minimum, saving time and reducing the chances of mistakes.
 
 ***Step 1.***
-First import the data and create the custom functions that can be generalized to each item.
+Just like before, the first step is to find a line-by-line solution for a single item, and then to generalize this into a shortcut function that can be applied to the any item "i" in a series of items.
 
-```{r eval=FALSE}
-load("C:/Users/rschn/OneDrive/Research/Legal DM Lab stuff/Lab Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData")
+For the sake of brevity, I'm going to skip most of that and just include the functions below.
 
-#### CREATE DATA SETS ####
+```{r }
+load("C:/Github Repos/Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData")
+
+#### CREATE THE DATA SETS WE NEED####
 na_blank=jlwop_reentry_survey # analysis 1 keeps the data as-is
 
 na_zero=jlwop_reentry_survey %>% # supplementary analysis replaces the NA's with 0
@@ -348,96 +361,27 @@ data=data %>%
 return(data)
 }
 
-
-bundle_paths=function(df_list, folder_location){
-  names=names(df_list)
-  paths=rep(here::here(folder_location), length(names))
-  extension=rep(c(".csv"), length(names))
-  
-  fixed_names=paste0("/",names)
-
-  path_bundle=list(paths,fixed_names, extension) %>% 
-    pmap(., paste0)
-  
-  return(path_bundle)
-}
-
 ```
 
+
 ***Step 2.***
-Create the object that contains all elements (a list in this case) of interest; then pass said object to map and supply the function.
+Again, like before, we want to combine all elements of interest into some object. Once we have that, we then pass said object to `map()` and supply the map call with our custom function.
 ```{r eval=FALSE}
 
 dfs=list(na_blank=na_blank, na_zero=na_zero) %>% # create lists
-  map(.f=rotate_data, variable_prefix = "barrier") %>% # apply custom function from above to each element in list
-  map(rank_and_unpivot) # again, apply function to each element in list
+  map(.f=rotate_data, variable_prefix = "barrier") %>% # apply custom function along whole list
+  map(rank_and_unpivot) # again!!  DO IT AGAIN! With another function this time.
 
 # extract list elements to make them data frames again
 list2env(dfs, globalenv())
 
-rm(dfs) #discard list. It has fulfilled its purpose
+rm(dfs) #discard list. It has fulfilled its purpose.
 ```
 
 And just like that, we're done!
 
-To export all data sets at once with purrr instead of writing each
-file individually, see the last section of this chapter.
 
-## Other purrr commands
-
-Note that `map()` always returns a list, and depending on the output
-that you want, you may need to use a variation of `map()`. These
-variations are as follows:
-
-| Command     | Return                                      |
-|-------------|---------------------------------------------|
-| `map_lgl()` | logical vector                              |
-| `map_int()` | integer vector                              |
-| `map_dbl()` | double vector                               |
-| `map_chr()` | character vector                            |
-| `walk()`    | only returns the side effects of a function |
-
-
-
-1.  `walk`
-
-Walk() is useful for when you just want to plot something or write a
-save file to your disk, etc. It does not give you any return to store
-something in the environment. You use it to write/read files, open
-graphics windows, and so on.
-
-```{r, include=FALSE}
-knitr::include_graphics(here::here("pics", "walk.png"))
-```
-
-2.  `map2` (and `walk2`)
-
-```{r, include=FALSE}
-knitr::include_graphics(here::here("pics", "map2_a.png"))
-knitr::include_graphics(here::here("pics", "map2_b.png"))
-```
-
-3.  `pmap` The `pmap()` function is for iterating over *three or more*
-    elements. As soon as you have >2 items you have to iterate over, you
-    need pmap().It works similar to to map and map2, but instead of
-    iterating over a single object x or two objects x and y, it acts on
-    **a list object called .l**
-
-The list is a list of all the objects you want to iterate over. If you
-give it a list of 18 items, it iterates over all 18. If the list only
-has two things, it only acts on those two.
-
-She says its easiest to imagine the list as a data frame, and the
-columns of the data frame like the elements of that list.
-
-```{r, include=FALSE}
-knitr::include_graphics(here::here("pics", "pmap.png"))
-knitr::include_graphics(here::here("pics", "pmap_2.png"))
-```
-
-## More purrr examples
-
-### Read/Import several files at once with `map()`
+## Example 3: Read/Import several files at once with `map()`
 
 **Note.** This reads many .csv files and combines them into a *SINGLE,
 unified data frame*. If you want to import many files at once but keep
@@ -484,11 +428,38 @@ read_all_excel=function(path){
 }
 
 
-
 read_all_excel(path = "JLWOP/Data and Models/")
 ```
 
-### Exporting multiple .csv files at once with `walk2()`
+
+## Other purrr commands
+
+Note that `map()` always returns a list, and depending on the output
+that you want, you may need to use a variation of `map()`. These
+variations are as follows:
+
+| Command     | Return                                      |
+|-------------|---------------------------------------------|
+| `map_lgl()` | logical vector                              |
+| `map_int()` | integer vector                              |
+| `map_dbl()` | double vector                               |
+| `map_chr()` | character vector                            |
+| `walk()`    | only returns the side effects of a function |
+
+
+
+### The `walk` and `walk2` commands
+
+Walk() is useful for when you just want to plot something or write a
+save file to your disk, etc. It does not give you any return to store
+something in the environment. You use it to write/read files, open
+graphics windows, and so on.
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "walk.png"))
+```
+
+***Example: Exporting multiple .csv files at once***
 
 ```{r, include=FALSE}
 knitr::include_graphics(here::here("pics", "export_purrr.png"))
@@ -505,6 +476,20 @@ an element from list 1 and its corresponding element from list 2, and
 apply the `write_csv` function in for-loop fashion.
 
 ```{r eval=FALSE}
+
+### Custom function ####
+bundle_paths=function(df_list, folder_location){
+  names=names(df_list)
+  paths=rep(here::here(folder_location), length(names))
+  extension=rep(c(".csv"), length(names))
+  
+  fixed_names=paste0("/",names)
+
+  path_bundle=list(paths,fixed_names, extension) %>% 
+    pmap(., paste0)
+  
+  return(path_bundle)
+}
 
 #### Exporting the .csv files for SPSS/JASP/etc. ####
 # Define list 1
@@ -525,3 +510,39 @@ walk2(.x=dfs, .y= paths, .f=write_csv)
 save(list = c("na_blank", "na_zero", "na_zero_helpreint"), 
      file = here::here("JLWOP", "Data and Models","ranking_data.RData"))
 ```
+
+
+### `map2` (and `walk2`)
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "map2_a.png"))
+```
+
+```{r}
+knitr::include_graphics(here::here("pics", "map2_b.png"))
+```
+
+
+### `pmap` for when you have a bunch of shit
+
+This function is for iterating over *three or more* elements. As soon as you have >2 items you have to iterate over, you need pmap().It works similar to to map and map2, but instead of  iterating over a single object x or two objects x and y, it acts on **a list object called .l**
+
+The list is a list of all the objects you want to iterate over. If you
+give it a list of 18 items, it iterates over all 18. If the list only
+has two things, it only acts on those two.
+
+She says its easiest to imagine the list as a data frame, and the
+columns of the data frame like the elements of that list.
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "pmap.png"))
+```
+
+```{r}
+knitr::include_graphics(here::here("pics", "pmap_2.png"))
+```
+
+
+
+
+
