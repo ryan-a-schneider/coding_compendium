@@ -67,11 +67,12 @@ trouble and effort of re-writing or adapting code from earlier sections;
 and importantly, reduces the chances of you making a coding error by
 proxy of the former two.*** As a quick example, I replaced each of the
 circled paragraphs of code above with a custom function that ran
-everything in one simple line. Instead of 3 paragraphs, I now had 3
-lines that looked like this:
+everything in one simple line. Instead of 3 whole (and redundant) paragraphs, I now have 3 short lines, like so....
 
 ```{r eval=FALSE}
-na_zero_helpreint=rotate_data(data = na_zero_helpreint, variable_prefix = "reintegrate_")
+na_zero_helpreint=rotate_data(data = na_zero_helpreint,
+                              variable_prefix = "reintegrate_")
+
 na_blank=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
 na_zero=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
 ```
@@ -312,7 +313,7 @@ Just like before, the first step is to find a line-by-line solution for a single
 
 For the sake of brevity, I'm going to skip most of that and just include the functions below.
 
-```{r }
+```{r 10_nonrepro_ex1, eval=FALSE}
 load("C:/Github Repos/Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData")
 
 #### CREATE THE DATA SETS WE NEED####
@@ -366,7 +367,7 @@ return(data)
 
 ***Step 2.***
 Again, like before, we want to combine all elements of interest into some object. Once we have that, we then pass said object to `map()` and supply the map call with our custom function.
-```{r eval=FALSE}
+```{r 10_nonrepro_ex2, eval=FALSE}
 
 dfs=list(na_blank=na_blank, na_zero=na_zero) %>% # create lists
   map(.f=rotate_data, variable_prefix = "barrier") %>% # apply custom function along whole list
@@ -475,7 +476,7 @@ First create and define both list items. Then apply `walk2()` to pluck
 an element from list 1 and its corresponding element from list 2, and
 apply the `write_csv` function in for-loop fashion.
 
-```{r eval=FALSE}
+```{r walk_demo, eval=FALSE}
 
 ### Custom function ####
 bundle_paths=function(df_list, folder_location){
@@ -514,11 +515,11 @@ save(list = c("na_blank", "na_zero", "na_zero_helpreint"),
 
 ### `map2` (and `walk2`)
 
-```{r, include=FALSE}
+```{r, map2_pic1}
 knitr::include_graphics(here::here("pics", "map2_a.png"))
 ```
 
-```{r}
+```{r map2_pic2}
 knitr::include_graphics(here::here("pics", "map2_b.png"))
 ```
 
@@ -534,11 +535,11 @@ has two things, it only acts on those two.
 She says its easiest to imagine the list as a data frame, and the
 columns of the data frame like the elements of that list.
 
-```{r, include=FALSE}
+```{r pmap_pic1}
 knitr::include_graphics(here::here("pics", "pmap.png"))
 ```
 
-```{r}
+```{r pmap_pic2}
 knitr::include_graphics(here::here("pics", "pmap_2.png"))
 ```
 
