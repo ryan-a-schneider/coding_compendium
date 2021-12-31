@@ -1,0 +1,2696 @@
+--- 
+title: "R Coding Compendium"
+author: "Ryan Schneider"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+---
+
+# A Monument to my Madness
+
+This book contains all my personal coding notes from the last two years. Why am I doing this? Probably because I'm a glutton for punishment, and I'd rather procrastinate than write my dissertation proposal.
+<<<<<<< HEAD
+
+## What this book is, and what it is not
+
+You know those absolutely amazing, comprehensive guides where you can learn everything you need to know about R? This is is not one of those guides.
+
+This book is designed as a ***quick reference guide*** for many of the most common things you'll need to do in everyday data analysis and research. Think of it like a coding *dictionary*, as opposed to a manual or comprehensive text. 
+
+**If you want (or need) to learn R in-depth and/or from the ground up (i.e., you're a novice user)**, then you should go read [Hadley Wickham's book](https://r4ds.had.co.nz/) and [the tidyverse websites](https://www.tidyverse.org/packages/). Also, [these slides](https://oliviergimenez.github.io/intro_tidyverse/#1) might be a good high-level overview if you've never used the tidyverse before. 
+
+That said, if you're already familiar with R and the tidyverse and just need a quick reference for *"what command do I need to accomplish XYZ"*, you've come to the right place.
+
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction: R Basics
+
+For the love of God before you do anything, familiarize yourself with R Projects and the `here` package. These make R so much more user friendly and less of a nightmare. If you need an overview, go here: http://jenrichmond.rbind.io/post/how-to-use-the-here-package/
+
+
+Now lets get stuck in.
+
+```{r setup, message=FALSE, warning=FALSE, cache=FALSE, include=TRUE}
+library(tidyverse)
+```
+
+
+## Importing Data
+
+### Spreadsheets
+
+See https://nacnudus.github.io/spreadsheet-munging-strategies/index.html for more detailed and in-depth tutorials (if you need that kind of thing)
+
+
+## Exporting (i.e., saving) Data and Output
+
+### Exporting to .CSV
+
+Generally speaking, unless you have a specific reason to, don't. But if you must: `write_csv()`
+
+### Export to .RData (and load the data again later)
+
+```{r eval=FALSE}
+save(obj_name, file=here::here("subfolder", "save_file_name"), compress = FALSE)
+
+load(here::here("folder", "save_name.RData"))
+```
+
+
+### Export to Excel
+
+```{r eval=FALSE}
+library(openxlsx)
+
+#Method 1: If you only want to export 1 thing, and/or only need output document
+  #write as object, with no formatting:
+  write.xlsx(objectname,file = "filenamehere.xlsx",colnames=TRUE, borders="columns")
+
+  #write as table:
+  write.xlsx(objectname,"filename.xlsx",asTable = TRUE)
+
+
+#Method 2: If you want to do the above, but add multiple objects or tables to one workbook/file:
+  ## first Create Workbook object
+  wb <- createWorkbook("AuthorName")
+  #then add worksheets (as many as desired)
+  addWorksheet(wb, "worksheetnamehere")
+  
+#then write the object to the worksheet  
+writeData(wb, "test", nameofobjectordataframe, startCol = 2, startRow = 3, rowNames = TRUE)
+
+#save excel file
+saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
+
+
+#Method 3: exact same as method 2, but creating a more fancy tables
+
+wb <- createWorkbook("Ryan")
+addWorksheet(wb, "worksheetnamehere")
+writeDataTable(wb, sheetName, objectName, startCol = 1, startRow = 1, colNames = TRUE, rowNames = FALSE,
+          tableStyle="TableStyleLight2",tableName=NULL, headerStyle = NULL,withFilter=FALSE,keepNA=TRUE,sep=", ",
+          stack = FALSE, firstColumn = FALSE, lastColumn = FALSE,bandedRows = TRUE,bandedCols = FALSE)
+
+saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
+
+```
+
+
+### Access/edit specific cell number values
+
+```{r}
+rainbow=tibble::tribble(~Color,
+                "red",
+                "orange",
+                "black",
+                "green",
+                "blue",
+                "purple")
+
+rainbow$Color[3] # access, but can't overwrite this way
+rainbow[3,"Color"] # access and can overwrite
+
+rainbow[3, "Color"]= "yellow" # save this value to row 3 in column "Color"
+
+rainbow
+```
+
+
+
+
+
+<!--chapter:end:02-basics.Rmd-->
+
+# Wrangle Data
+
+This chapter contains useful tips on wrangling (i.e., manipulating) data. If you need to know to do to things like create new variables, split one variable into multiple variables, pivot a data set from wide to long, etc., look no further.
+
+If you want a pretty good intro tutorial to the `dplyr` package, click [here](https://www-r--bloggers-com.cdn.ampproject.org/v/s/www.r-bloggers.com/2021/01/how-to-analyze-data-with-r-a-complete-beginner-guide-to-dplyr/amp/?amp_js_v=a6&gsa=1&usqp=mq331AQFKAGwASA%3D#csi=0&referrer=https%3A%2F%2Fwww.google.com&tf=From%20%251%24s&ampshare=https%3A%2F%2Fwww.r-bloggers.com%2F2021%2F01%2Fhow-to-analyze-data-with-r-a-complete-beginner-guide-to-dplyr%2F)
+
+## Joining or Splitting
+
+Joining and splitting data is pretty straightforward....
+
+### Whole Data Sets
+
+The code below is from [this excellent tutorial](https://www.youtube.com/watch?v=SCdmyyoudb8&t=23s)
+
+```{r chapter_3}
+set.seed(2018)
+
+df1=data.frame(customer_id=c(1:10),
+               product=sample(c('toaster','TV','Dishwasher'),10,replace = TRUE))
+
+
+df2=data.frame(customer_id=c(sample(df1$customer_id, 5)),state=sample(c('New York','California'),5,replace = TRUE))
+
+df1=tibble::as_tibble(df1)
+df2=tibble::as_tibble(df2)
+
+# df1 =left table
+# df2= right table
+```
+
+Inner join - retains only rows with values that appear in both tables, and matches by keys.
+
+*If you're joining two Qualtrics surveys together, this is most likely the one you want to use (e.g. matching by participant name, and only keeping rows in the joined data set for participants that have responses logged in both survey 1 and survey 2*
+```{r 3.2}
+df1 %>% inner_join(df2,by='customer_id')
+```
+
+Left join - returns everything in the left, and rows with matching keys in the right
+```{r 3.3}
+df1 %>% left_join(df2,by='customer_id')
+```
+
+Right join - returns everything in the right, and rows with matching keys in the left
+```{r 3.4}
+df1 %>% right_join(df2,by='customer_id')
+
+# note: example if the customer id column was named something different in the second df
+    #df1 %>% left_join(df2,by=c('customer_id'='name2'))
+```
+
+Full join - retain all rows from both tables, and join matching keys in both right and left
+```{r 3.5}
+df1 %>% full_join(df2,by='customer_id')
+```
+
+Anti join - returns all rows in the left that do not have matching keys in the right
+```{r 3.6}
+df1 %>% anti_join(df2,by='customer_id')
+```
+
+
+### Individual Columns/Variables
+
+Splitting or joining columns is much easier than doing it to whole data sets. You can use `dplyr::separate()` to accomplish the former, and `dplyr::unite()` for the latter.
+
+```{r 3.7}
+print("hello")
+```
+
+
+## Selecting/extracting specific variables
+
+Sometimes when working with a data set, you want to work with a few *specific* variables. For instance, maybe you want to view a graph of only reverse-coded variables (which start with the prefix "r"); or maybe you want to create a subset of your data that has a few specific variables removed. For this you can use `dplyr::select()` and its associated helper commands
+
+`select()` can be thought of as "extract"; it tells R to identify and "extract" a specific variable (or variables)
+
+
+```{r 3.8, eval=FALSE}
+cars=mtcars
+
+# select one column
+cars %>% select(mpg)
+
+# select multiple columns, if they are all next to one another
+cars %>% select(mpg:hp)
+
+# select multiple columns by name (when not next to one another) by defining them in a vector
+cars %>% select(c(mpg, hp, wt))
+
+# select only variables that start with a certain prefix/character/pattern/etc.
+cars %>% select(starts_with("d"))
+
+# ...or columns that end with a certain prefix/etc.
+cars %>% select(ends_with("t"))
+
+# ...or contains a certain pattern or string
+cars %>% select(contains("se"))
+
+# select ALL OF the variables in a data set that match those of a pre-defined vector
+  
+  # first define the names in a vector
+  vars=c("hp", "drat", "gear", "carb")
+  
+  #now use helper
+  cars %>% select(all_of(vars))
+  
+# select ANY OF the variables in a pre-defined vector
+  
+  vars_2=c("hp", "drat", "watermelon", "grilled_cheese") # only the first two will be in the data
+  
+  cars %>% select(any_of(vars_2)) # only (and all of) the variables actually PRESENT in the data are pulled
+  
+# select only variables of a certain class or type
+  cars %>% select(where(is.numeric))
+  cars %>% select(where(is.character))
+```
+
+
+Other examples can be seen on [THIS LINK](https://tidyselect.r-lib.org/reference/language.html) for a simple but detailed guide.
+
+
+
+## If-then and Case-when
+
+### If-then
+The premise of an if/then or if/else statement is simple: "If condition 1 is satisfied, perform x operation; if not, then do y"
+
+```{r 3.9}
+mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High")) %>% head()
+```
+This line of code effectively says: if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
+
+
+### Case-when
+
+When you have 3+ conditions, it's easier to use case-when. This is a more simple and straightforward approach than nesting multiple if-else commands
+
+```{r 3.10, eval=FALSE}
+My_vector= case_when(
+	Condition1 ~ value1,
+	Condition2 ~ value2,
+	Condition3 ~ value3
+	TRUE ~ valueForEverythingElse #catch all for things that don't meet the above conditions
+	)
+```
+
+Example:
+```{r 3.11}
+
+mtcars %>% mutate(size= case_when(cyl==4 ~ "small",
+                                  cyl==6 ~ "medium",
+                                  cyl==8 ~ "large")) %>% 
+  select(c(cyl,size)) %>% head()
+```
+
+## Conditional replacement of values
+
+The following code is useful if you want to replace a value in one column, and the replacement is conditional upon the value in another column.
+
+```{r 3.12}
+mpg %>% 
+  mutate(across(.cols = c(displ, cty, hwy),
+                .fns = ~case_when(cyl == 4L ~ as.numeric(NA),
+                                  TRUE ~ as.numeric(.x))))
+```
+
+
+```{r 3.13, eval=FALSE}
+test %>% 
+  mutate(across(.cols = c(rank),
+                .fns = ~case_when(is.na(participant_score) ~ as.numeric(NA),
+                                  TRUE ~ as.numeric(.x))))
+```
+
+
+
+## Merging variables
+
+Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this.
+
+```{r3.14}
+example_data=tribble(~A,~B,~C,
+                     1,NA,NA,
+                     2,NA,NA,
+                     3,NA,NA,
+                     NA,4,NA,
+                     NA,5,NA,
+                     NA,6,NA,
+                     NA,NA,7,
+                     NA,NA,8,
+                     NA,NA,9)
+
+example_data %>%
+  mutate(accept_reject = 
+           pmin(A,B,C,na.rm = TRUE))
+```
+
+
+
+## Apply a function to multiple variables at once
+
+You can either specify each column individually, like above, or tell R to identify columns for you based on their type or their name. This requires adding in one additional verb--either contains() or where() depending on what you want to do.
+
+Two simple examples:
+
+```{r 3.15}
+# turn multiple variables into factors
+ex_data=dplyr::tribble(~color, ~car,
+                       "red", "corvette",
+                       "blue", "chevelle",
+                       "green", "camaro",
+                       "red", "corvette",
+                       "green", "chevelle",
+                       "yellow", "gto")
+
+dplyr::glimpse(ex_data)
+
+ex_data %>% mutate(across(c(color, car),factor))
+
+# round multiple columns to 1 decimal place
+mtcars %>% mutate(across(c(disp:qsec),round,1)) %>% head()
+```
+
+
+## Pivoting (i.e., transposing) data
+
+### Condense multiple rows into a single column (pivot wide to long)
+
+Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas), with fake names. 
+
+The command structure is as follows:
+
+```{r 3.16, eval=FALSE}
+
+ pivot_longer( # Transpose LENGTHWISE by....
+    cols = everything(), # Taking ALL variable names...
+    names_to="variable", # ...and dumping them into this new variable/column
+    values_to="missing_count") #...and placing their values in this other new column
+```
+
+**NOTE!!!** Pivoting data from wide to long like this expands the number of rows to make a matrix so that (for example, each student now has as a row for each assignment). Therefore, you can only pivot longways (or wide) **ONCE**, otherwise you will make duplicates. 
+
+*If you need to pivot multiple columns, just include all of the columns in one single pivot; do not use two separate, back to back pivot commands.*
+
+Example:
+
+```{r 3.17}
+gradebook=tibble::tribble(
+  ~Student, ~Homework.1, ~Homework.2, ~Homework.3, ~Homework.4, ~Homework.5, ~Quiz.1, ~Quiz.2, ~Quiz.3, ~Quiz.4, ~Final,
+     "Bob",         19L,          0L,          13,          16,          0L,      21,      7L,      15,    17.5,     33,
+    "Jane",         17L,         19L,          16,        16.5,         25L,    21.5,     19L,   14.75,     9.5,   39.5,
+    "John",         19L,         19L,        14.5,        19.5,         25L,      21,     21L,    18.5,      17,   46.5
+  )
+
+head(gradebook)
+
+gradebook=gradebook %>% 
+   pivot_longer( # Transpose lengthwise by:
+    cols = Homework.1:Final, # Taking these variables
+    names_to="Assignment", # ...and dumping them into this new variable, storing them lengthwise
+    values_to="Points") #...then place their values in this new column
+
+gradebook %>% head()
+```
+
+
+## Managing Many Models
+
+Imagine the concept of Russian Dolls, applied to data sets. You can manage data sets more effectively my collapsing them into a single tiny, mini data frame, and stuffing that inside of another one.
+
+This is done via "nesting"...
+
+Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don't. Code works like this:
+
+```{r 3.18, eval=FALSE}
+by_country=gapminder::gapminder %>% 
+  group_by(continent,country) %>% # indicate the variables to keep at the top level
+  nest() # smush the rest into a list-column
+
+
+country_model=function(df){
+  lm(lifExp~year1950,data = df)
+}
+
+# Transform a list of models into a df
+models=by_country %>% 
+  mutate(mod=map(data,country_model))
+```
+
+- You can store anything in a data frame. You can keep the df connected to the model, which makes it very easy to manage a whole slew of related models
+- You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways.
+- Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information
+
+Below is the full script I copied from Hadley Wickham's lecture, which you can watch [here](https://www.youtube.com/watch?v=rz3_FDVt9eg)
+
+```{r eval=FALSE}
+
+pacman::p_load(dplyr,purrr,tidyverse,gapminder)
+
+#### Workflow for managing many models in R ####
+# 1. Nest data with {tidyr}
+# 2. Use {purrr} to map a modeling function
+# 3. Use {broom} to inspect your tidy data
+
+
+gapminder=gapminder %>% 
+  mutate(year1950= year-1950) #the number of years it's been since 1950
+
+#--------------------------------------------------------------------------------------------
+#### Step 1. Nest the data. ####
+
+# A nested data frame has one column per country. You're essentially 
+# creating a Russian doll; a data frame inside of a larger data frame.
+
+by_country=gapminder %>% 
+  group_by(continent,country) %>% # variables to keep at the top level
+  nest() # smush everything else into a df, and store this mini-df in its own column
+
+# with this, you can have an entire table per row; a whole data frame for each country
+# Essentially condensing a list into a table
+by_country$data[[1]]
+
+
+#--------------------------------------------------------------------------------------------
+
+#### Step 2. Use purrr to map stuff. ####
+
+# 12:50
+country_model=function(df){
+  lm(lifeExp ~ year1950, data = df)
+}
+
+models= by_country %>% 
+  mutate(
+    mod=map(data,country_model)
+  )
+
+
+gapminder %>% 
+  group_by(continent,country) %>% 
+  nest() %>% 
+  mutate(
+    mod= data %>% map(country_model)
+  )
+
+# 27:11
+
+#--------------------------------------------------------------------------------------------
+##### Step 3. ####
+
+# This creates another nested df inside of your main data frame that has the summary stats of each model
+models=models %>% mutate(
+  tidy=map(mod, broom::tidy), # tidy() gives model estimates
+  glance=map(mod,broom::glance), # glance() gives model summaries
+  augment=map(mod,broom::augment) # model coefficients
+)
+
+# What can you do with this nest of data frames? 
+# The reverse of step 1; un-nest it to unpack everything!
+# 34:40
+# Keeps a massive list of related information neatly organized!
+
+unnest(models,data) # back to where we started
+unnest(models,glance, .drop = TRUE) 
+unnest(models,tidy) 
+```
+
+...and here is a version I made of the above to manage many Bayesian models. Admittedly, I'm not really sure how useful this is though.
+
+```{r eval=FALSE}
+# CONDENSED MASTER TABLE VERSION -----------------------------------------------------------------------------
+# Models table that has all models condensed
+
+models=tribble(~Model_name, ~model_descrip, ~model,
+               "Thesis_Model", "Discount and PTS", Thesis_Model,
+               "discount_model", "Discount variable only", discount_model,
+               "PTS_model", "PTS variable only", PTS_model
+)
+
+# Clean up work space
+#rm(DiscountPrior,Priors_MEmodel,Priors_Interactionmodel)
+
+# Grab and store all model info 
+models=models %>% 
+  mutate(prior_info=map(model,describe_prior),
+         posterior_info=map(model, describe_posterior_fancy),
+         model_performance=map(model,performance::performance)
+         
+  )
+
+# DO NOT TRY AND VIEW THE TABLE IN A WINDOW!!!! RStan objects are so large they cause R to lock up
+# Call the model in the console instead
+
+#### summon individual model stats ####
+describe_prior(models$model[[1]]) #by specific model
+map(models$model,describe_prior) # do for all models at once
+
+# or all info for all models at once
+unnest(models,posterior_info) %>% 
+  select(-c(model,prior_info,model_descrip))
+```
+
+
+## Turn row names into a column/variable
+
+Use the `rownames()` command to turn row names into a variable
+
+```{r}
+cars=rownames_to_column(mtcars, var = "car")
+
+as_tibble(cars) %>% slice(1:6)
+```
+
+## How to edit/change column names
+
+TWO WAYS TO DO THIS: Use `colnames()` (for base R) or `rename()` (for tidyverse)
+
+`colnames()` pulls up all the column/variable names as a vector. If you want to actually change them, you'll need to combine this command with something like the sub() or gsub() commands (for base R). I'm going to skip this because...its base R.
+
+To access and change the names faster via tidyverse, run use `rename()`
+```{r}
+rm(list=ls()) # clear R's memory
+
+iris %>% rename("hurr"="Sepal.Length",
+                "durr"="Sepal.Width",
+                "abcdefgh"="Species") %>% 
+  head()
+```
+
+
+If you need to do some really fancy conditional renaming (e.g., changing all variables that start with "r" to start with "rf" instead, to make it more clear that the prefix actually stands for "risk factor" rather than "reverse coded"), you'll need to use `rename_with()`. 
+
+This command has two parts to it: the data set, and the function you wish to apply to it (which you put after the `~`)
+
+```{r }
+rename_with(iris, ~ gsub(pattern = ".", replacement = "_", .x, fixed = TRUE)) %>% 
+  head()
+```
+
+The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like R's version of Find/Replace from Microsoft Word.
+
+The above line of code thus does the following:
+	1. First, it checks the column names of the supplied data set (`iris`) for a specific pattern (specified in `pattern=` )
+	2. Then it replaces that pattern with your input in `replacement=`
+
+The great thing about rename_with() is that the .fn (or `~` for short) can take *ANY* function as input. For example, if you want to **add** an element to the column names rather than replace something, (e.g., a prefix or suffix), you can change the function to:
+
+```{r}
+rename_with( iris, ~ paste0(.x,  "_text")) %>% 
+  head()
+```
+
+The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command.
+
+
+***Alternative method to the above***
+This is a second way to do the above. It may appear more simple, but it's also probably not as theoretically consistent with how the packages were made…..it uses the `stringr` package to rename the column names, and `stringr` is typically used for editing vectors of strings in a data set.
+
+…so it works, but it's a little unconventional because you call and edit the column names like you would a variable in your data set.
+
+```{r}
+colnames(iris)=str_replace(colnames(iris), pattern = ".", replacement = "_")
+```
+
+In short: `rename()` and `rename_with()` are for *renaming* variables, as their names imply. The `str_` verbs from the stringr package are for editing string-based variabels in your data set. Either works though with a little ingenuity.
+
+
+## Re-order columns in a data set
+
+Use `relocate()` to change column positions. If you need to move multiple columns at once, this command uses the same syntax as `select()`.
+
+```{r}
+
+mtcars # notice the column order
+
+mtcars %>% relocate(hp:wt, .after= am) %>% head()
+```
+
+
+## Working with date and time variables
+
+### Format date-and-time variables appropriate as date objects in R
+
+Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass. It requires things to be done in two stages, and very precisely. Particularly in the first stage.
+
+First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.
+
+```{r}
+example_date_data=tibble::tribble(~X1,     ~X2,
+                                  "8/4/2021",  -49.87,
+                                  "8/4/2021",  -13.85,
+                                  "8/3/2021",   -7.45,
+                                  "8/3/2021", -172.71,
+                                  "8/2/2021",   -6.37,
+                                  "8/2/2021",     -25,
+                                  "8/2/2021", -219.68,
+                                  "8/2/2021",  -53.75,
+                                  "8/2/2021",  -29.83,
+                                  "8/2/2021",  -77.06,
+                                  "8/2/2021",  -16.16,
+                                  "8/2/2021", -114.78,
+                                  "8/2/2021",     -50,
+                                  "8/2/2021", -157.64)
+
+
+# Correct formatting
+example_date_data$X1=format(as.POSIXct(example_date_data$X1,format='%m/%d/%Y'),format='%Y-%m-%d')
+
+head(as_tibble(example_date_data))
+```
+
+In the code above, note that there are two `format` commands: The first one tells R how the date data is **currently being stored**, while the second at the end tells it how **you want it to be stored.** In this case, we are changing it from the way we would usually hand write a date (e.g., 10/26/1993) to a format commonly recognized and used in Excel and stats software (1993-10-26). *If your column also has times in it, you also need to include that too!*
+
+Second, you can now correct the object's structure. You can do this with base R's `as.Date()` or tidyverse's `date()` verbs.
+
+```{r}
+# Correct structure
+example_date_data$X1= lubridate::date(example_date_data$X1) # tidyverse
+
+# Base R version
+# example_date_data$X1=as.Date(example_date_data$X1)
+
+head(as_tibble(example_date_data))
+```
+
+Notice how the object is now stored as the correct type in the table above.
+
+***NOTE!*** This entire process has been included in the `tidy_date()` command in my package, `legaldmlab`.
+
+### Find the difference between two dates/times
+```{r , eval=FALSE}
+difftime(part_1$end_date[1], part_2$end_date[1], units="days")
+```
+
+
+
+## Reverse-code a variable
+
+To reverse-score a variable, you should use `car::recode()`
+Can be done a few different ways, depending on how many variables you're looking to recode:
+
+```{r eval=FALSE}
+
+# Recode just one variable
+df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
+
+# Recode a select bunch of variables
+df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1"))
+
+# Recode the whole damn thing. All columns.
+df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
+```
+
+## Create a relative ranking among several variables
+
+If you want to create a variable that is an ordinal ranking of other variables, first you need to make sure your data is long-wise. Then, depending on the type of ranking system you want, you'll might need a different ranking command....
+
+- The `min_rank` command from dplyr works in a manner similar to base R's `rank` command. It ranks things like you see in sporting events. For example, if there is a clear winner in a game but 3 people tie for second place, the ranks would look like this: 1,2,2,2,4,5. Notice that the positions are independent from the counts.
+
+- Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr's `dense_rank` command.
+
+- In either case, the ranks are generated from lowest to highest, so if you want to flip them around you'll need to include `desc()` in the command.
+
+```{r chapter_3_end}
+
+dat=tibble::tribble(~name, ~score,
+                    "bob", 0,
+                    "bob", 5,
+                    "bob", 50,
+                    "bob", 50,
+                    "bob", 50,
+                    "bob", NA,
+                    "alice", 70,
+                    "alice", 80,
+                    "alice", 90,
+                    "alice", 20,
+                    "alice", 20,
+                    "alice", 1)
+
+dat %>% mutate(ranked = dense_rank(desc(score)))
+```
+
+
+
+
+
+<!--chapter:end:03-wrangle.Rmd-->
+
+# Clean Data
+
+## Replace a value with NA
+
+Use `dplyr::na_if()` if you have a value coded in your data (e.g., 999) that you want to convert to NA
+
+```{r 4.1}
+
+example_data=dplyr::tribble(~name, ~bday_month,
+                            "Ryan", 10,
+                            "Z", 3,
+                            "Jen", 999, 
+                            "Tristin", 999,
+                            "Cassidy", 6)
+
+example_data
+
+example_data$bday_month=na_if(example_data$bday_month, 999) #example doing one column at a time 
+
+example_data
+
+example_data %>% # can also pass the data to mutate and do it the tidyverse way
+  mutate(bday_month=na_if(bday_month, 999)) 
+```
+
+
+## Replace NA's with a value
+
+`tidyr::replace_na()` is very useful if you have some NA's in your data and you want to fill them in with some value.
+
+```{r 4.2}
+example_data=tibble::tribble(~name, ~fav_color, ~fav_food,
+                             "Ryan", "green", "Mexican",
+                             "Cassidy", "blue", NA,
+                             "Z", NA, NA,
+                             "Tristin", "purple", NA,
+                             "Tarika", NA, NA,
+                             "Jen", NA, "Italian")
+
+example_data
+
+# replace NA's in one col
+tidyr::replace_na(example_data$fav_food, "MISSING")
+
+# replace in multiple columns
+example_data %>% mutate(across(c(fav_color, fav_food), replace_na, "MISSING"))
+```
+
+
+
+## Identify columns or rows with Missing values
+
+`is.na()` is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector
+
+```{r 4.3}
+y <- c(1,2,3,NA)
+
+is.na(y) # returns a vector (F F F T)
+```
+
+
+
+## Find the percentage of a variable that is missing
+
+Sometimes necessary to check before conducting an analysis. *This requires my package*, `legaldmlab`
+
+```{r 4.4}
+?legaldmlab::count_missing
+
+mtcars %>% 
+  select(hp:drat) %>% 
+  legaldmlab::count_missing()
+```
+
+
+
+## Exclude Missing values from analysis
+
+
+
+# Dropping Missing values from the data set
+
+`tidyr::drop_na()`
+
+```{r 4.5}
+example_data=dplyr::tribble(~name, ~bday_month, ~car,
+                            "Ryan", 10, "kia",
+                            "Z", NA, "toyota",
+                            "Jen", NA, NA,
+                            "Tristin", 999, NA,
+                            "Cassidy", 6, "honda")
+
+
+example_data
+
+example_data %>% drop_na() # with nothing specified, it drops ALL variables that have >=1 missing value
+
+example_data %>% drop_na(car) # drops only rows with values missing in the specified column
+
+```
+
+
+
+
+<!--chapter:end:04-clean.Rmd-->
+
+# Working with Factors
+
+
+## Manually recode/change a factor's levels
+
+Use `forcats::fct_recode()`
+
+```{r chapter_5}
+diamonds=diamonds %>% as_tibble()
+
+diamonds$cut=fct_recode(diamonds$cut, "meh"="Fair", "Wow"="Premium")
+
+summary(diamonds$cut)
+```
+
+## Collapse factor levels
+
+Extremely useful command for when you have infrequent cases in one factor and need to combine it with another.
+
+Works by specifying a series of new level names, each of which contains the information from the old variables. Format is as follows:
+```{r 5.2, eval=FALSE}
+
+fct_collapse(dataset$variable,
+			NewLevelA=c("OldLevel1","Oldlevel2"), # NewLevelA is the new variable that contains both variables 1 and 2
+			NewLevelB=c("OldLevel3"))
+```
+			
+
+## Add levels to a factor
+
+use `fct_expand()`
+
+```{r 5.3}
+print("temp")
+```
+
+
+## Drop unused levels
+
+Use `fct_drop()`
+```{r 5.4}
+print("temp")
+```
+
+
+## Change the order of a factor's levels
+
+```{r 5.5}
+
+example_data=tribble(~person, ~condition,
+                     "bob", "25 years",
+                     "jane", "5 years",
+                     "jim", "5 years",
+                     "john", "25 years")
+
+example_data$condition=factor(example_data$condition)
+
+str(example_data$condition)
+```
+
+Notice that R thinks these are nominal factors, and that 25 comes before 5. To fix this and correct the level order...
+
+```{r chapter_5_end}
+example_data$condition =fct_relevel(example_data$condition, c("5 years", "25 years")) # specify level order
+
+str(example_data$condition)
+```
+
+
+
+<!--chapter:end:05-factors.Rmd-->
+
+# Working with Strings
+
+
+## Remove a pattern from a string
+
+```{r chapter_6}
+
+price_table=tribble(~car, ~price,
+        "Corvette", "$65,000",
+        "Mustang GT", "$40,000")
+
+# BASE R METHOD (sub by replacing something with nothing)
+gsub("\\$", "",price_table$price) # (pattern, replace with, object$column)
+
+# TIDYVERSE METHOD
+str_remove(price_table$price, pattern = "\\$")
+```
+
+
+## Replace one pattern in a string with another
+
+Tidyverse command: `str_replace()`
+Base R command: `gsub()`
+
+```{r 6.2, eval=FALSE}
+# base R
+gsub(mtcars, replacement = )
+
+#tidyverse
+
+
+```
+
+
+## Find (i.e., filter for) all instances of a string
+
+Useful for finding very specific things inside a column (e.g., one particular person's name in a roster of names; everyone with a particular last name)
+
+Tidyverse command: `str_detect()`
+Base R command: `grepl()`
+
+Note both must be nested inside of `filter()`
+```{r 6.3, eval=FALSE}
+
+cars_df=rownames_to_column(mtcars, var = "car")
+
+# base R
+cars_df |> filter(grepl("Firebird", car))
+
+# tidyverse
+cars_df %>% filter(str_detect(car,"Firebird"))
+```
+
+You can also search for **multiple strings simultaneously** by including the "or" logical operator *inside* the quotes.
+
+```{r 6_filtermultiple, eval=FALSE}
+cars_df |> filter(str_detect(car, "Firebird|Fiat"))
+```
+
+You can also include the negation logical operator to filter for all instances *except* those with the specified string.
+
+```{r eval=FALSE}
+# base R
+cars_df |> filter(!(grepl("Pontiac", car)))
+
+# tidyverse
+cars_df |> filter(!(str_detect(car, "Pontiac")))
+```
+
+
+
+
+## Force all letters to lower case
+
+Use `str_to_lower()`
+
+```{r 6.4, chapter_6_end}
+blah=tribble(~A, ~B,
+             "A","X",
+             "A","X")
+
+blah
+
+blah$A=str_to_lower(blah$A)
+
+blah
+```
+
+
+<!--chapter:end:06-strings.Rmd-->
+
+# Figures and Graphs with the ggplot and see packages
+
+There are three parts to a ggplot2 call: 1. data 2. aesthetic mapping 3. Layer
+
+There is no piping involved in ggplot. You simply invoke ggplot, and tell it what they dataset is. Then you specify the aesthetics, and then the mapping. Lastly, include other optional stuff (e.g. expanded y-axis scale; titles and legends; etc.)
+
+Every single plot has the exact same layout that ONLY USES the above three points:
+
+```{r chapter_7, eval=FALSE}
+ggplot(dataframe, aes(graph dimensions and variables used)) +
+  geom_GraphType(specific graph controls)
+
+## OR ##
+ggplot(dataframe) +
+  geom_GraphType(aes(graph dimensions and variables used), specific graph controls)
+
+# mapping= aes() can go in either spot
+```
+
+Then if you have other stuff you want to add on top of this, like axis labels, annotations, highlights, etc., you keep adding those in separate lines
+
+## Commands for ggplot graph types
+
+| Graph Type    | Geom command       |
+|---------------|--------------------|
+| Scatter       | `geom_point()`     |
+| Line          | `geom_line()`      |
+| Box           | `geom_boxplot()`   |
+| Bar           | `geom_bar()`       |
+| Column        | `geom_col()`       |
+| Histogram     | `geom_histogram()` |
+| Density curve | `geom_density()`   |
+
+
+Note that bar and column graphs look identical at first glance, but they serve two different purposes.
+
+*Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
+
+```{r 7.2, warning=FALSE, message=FALSE}
+
+# BAR GRAPH
+# height of bars is a frequency count of each level of the X variable cut
+bar_plot=ggplot(diamonds, aes(x=cut)) + 
+  geom_bar()+
+  theme_classic()
+
+# COLUMN GRAPH
+# height of bars represents relationship between price and cut
+col_plot=ggplot(diamonds, aes(x=cut, y=price)) + 
+  geom_col()+
+  theme_classic()
+
+see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
+```
+
+
+
+## Specific Commands for Specific Types of Analysis
+
+### lavaan stuff
+
+#### Plotting an SEM or CFA model
+
+First lets set up a model to use.
+```{r 7_lavaan}
+library(lavaan)
+
+HS.model <- ' visual  =~ x1 + x2 + x3 
+              textual =~ x4 + x5 + x6
+              speed   =~ x7 + x8 + x9'
+
+fit1 <- cfa(HS.model, data=HolzingerSwineford1939)
+```
+
+Two options for graphing it. Option 1 is `graph_sem()` from the tidySEM package.
+```{r 7_semplot, eval=FALSE}
+tidySEM::graph_sem(fit1)
+```
+
+Option 2 is from the easystats suite
+```{r 7_paramplot}
+
+plot(parameters::parameters(fit1))
+```
+
+
+
+### Bayes stuff
+
+Quick highlights here of my favorite functions from this package. See (ha) the full package overview at [this link](https://easystats.github.io/see/)
+
+You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
+
+
+#### Probability of Direction (*Pd*) figure
+
+```{r 7_bayesmodel, include=FALSE}
+library(rstanarm)
+library(easystats)
+data(wells)
+
+t_prior <- student_t(df = 7, location = 0, scale = 2.5)
+wells=rstanarm::wells
+wells$dist100 <- wells$dist / 100
+
+fit1 <- stan_glm(switch ~ dist, data = wells,
+                 family = binomial(link = "logit"),
+                 prior = t_prior, prior_intercept = t_prior,
+                 cores = 4, seed = 12345)
+```
+
+Use `plot(pd())` to visualize the Probability of Direction index.
+
+```{r 7_pd_graph, eval=FALSE}
+
+plot(bayestestR::pd(fit1))+
+  scale_fill_manual(values=c("#FFC107", "#E91E63"))+ 
+  theme_classic()+
+  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
+```
+
+
+#### ROPE figure
+
+```{r 7_ROPE_graph, eval=FALSE}
+plot(fit1, rope_color = "grey70")+
+  gameofthrones::scale_fill_got_d(option = "white_walkers") 
+# scale_fill_manual(values = c("gray75","red")
+```
+
+
+ROPE tests are plots of distributions, and therefore use scale_fill_xyz_d commands. (the 'd' stands for 'discrete'). You can use any scale theme color set from any package, as long as it ends in _d
+
+values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website
+
+#### Bayes factor models comparison figure
+
+```{r 7.15, eval=FALSE}
+plot(bayesfactor_models(Thesis_Model,discount_model))+
+  scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
+```
+
+
+
+### Histograms and density curves
+
+Since I use these so often I figure they deserve their own special section.
+
+Basic histograms can be built with the following code:
+```{r 7.3_histogram}
+ggplot(data = mtcars, aes(x=cyl)) + 
+  geom_histogram(binwidth = .5, colour="Black", fill="green") + # histogram
+  theme_classic()
+```
+
+and your basic density curve with the following:
+```{r 7.4}
+ggplot(diamonds, aes(x=price)) + 
+geom_density(alpha=.3)+ # density plot. Alpha sets the transparency level of the fill.
+  theme_classic()
+```
+
+
+You can also use the following code from `bayestestR` to build a really quick and nice density curve
+```{r 7.5}
+plot(bayestestR::point_estimate(diamonds, centrality=c("median","mean")))+
+  labs(title="Mean and Median")
+```
+
+
+
+## Highlight specific points
+
+The `gghighlight` package is great for this
+
+```{r 7.6, warning=FALSE, message=FALSE}
+
+# example 1
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point()+
+  theme_classic()+
+  ggrepel::geom_text_repel(data = mtcars, aes(label = hp))+ # add data labels (optional)
+  gghighlight::gghighlight(hp > 200) # add highlights, according to some criteria
+
+
+# example 2
+diamonds_abr=diamonds %>% slice(1:100)
+
+ggplot(diamonds_abr, aes(x= cut, y= price, colour=price))+
+  geom_point()+
+  theme_classic()+
+  ggrepel::geom_text_repel(data = diamonds_abr, aes(label = price))+ # this line labels
+  gghighlight::gghighlight(cut %in% c("Very Good", "Ideal")) #this line highlights
+
+```
+
+
+## Add labels to data points
+
+```{r 7.7, warning=FALSE, message=FALSE}
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point()+
+  theme_classic()+
+  ggrepel::geom_text_repel(data = mtcars, aes(label = hp))
+
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point() + geom_text(aes(label=hp, hjust=2.5, vjust=2.5))
+
+#geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
+```
+
+
+
+## Plotting multiple graphs at once
+
+`see::plots()` is good for this.
+
+```{r 7.8}
+print("temp")
+```
+
+
+## Change the colors (bars; columns; dots; etc.)
+
+This can be done in at least two different ways, depending on your goal.
+
+To change the fill color by factor or group, add `fill = ___` within the `aes()` command. If you want to add color and/or fill to a *continuous* variable, do that within the `geom_density()` command.
+
+If you want to *add color and make all of the (bars; dots; lines; etc.) the same color*, than that is a graph-wide control and needs to be put in `geom_point()`. This manually sets the color for the whole graph.
+
+```{r 7.9, warning=FALSE, message=FALSE}
+# add a color scale to the dots
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point(color="blue")
+```
+
+If you want to add color that changes according to a variable (e.g., by factor level), then the color needs to be specified **as a variable name**, in the aes mapping with the other variables.
+
+```{r 7.10, warning=FALSE, message=FALSE}
+ggplot(mtcars, aes(x= mpg, y=hp, color=cyl))+
+  geom_point()
+```
+
+
+### Fine-tuning colors
+
+You can change the spectrum of colors to specific colors if you want. Useful for example, when making graphs for APLS presentations; you can change the colors to be Montclair State University themed.
+
+When changing the color scale of graphs, note that `scale_fill` commands are used for representing *nominal data*, while `scale_color` commands are for representing *continuous data*. As such, you use `scale_fill` to *fill in* area on a graph that shows a whole category or distinct things; and `scale_color` to use *gradients of color* to show changes in continuous data.
+
+- For figures that have solid area (e.g., density; box; bar; violin plots; etc.), use `scale_fill`
+- For figures that have continuous changes (e.g., line and scatter plots), use `scale_color`
+
+```{r 7.11, warning=FALSE, message=FALSE}
+# Set colors manually
+ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
+  geom_bar() +
+  scale_fill_manual(values=c("green", "yellow", "orange", "red", "purple", "blue"))
+
+ggplot(mtcars, aes(x = wt, y = mpg, color=as.factor(cyl)))+
+  geom_point() +
+  scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))
+
+# Use color scales from a package
+library(gameofthrones)
+# NOTICE THAT scale_fill AND scale_color STILL APPLY TO THEIR RESPECTIVE GRAPH TYPES
+
+# bar graphs
+ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
+  geom_bar() +
+  scale_fill_got(discrete = TRUE, option = "Tully")
+
+ggplot(mtcars, aes(factor(cyl), fill=factor(vs)))+
+  geom_bar() +
+  scale_fill_got(discrete = TRUE, option = "Daenerys")
+
+
+# scatter plot
+ggplot(mtcars, aes(x = mpg, y = disp, colour = hp))+
+  geom_point(size = 2) +
+  scale_colour_got(option = "Lannister")
+```
+
+
+
+"Fill" graphs also come with an extra option: Setting the outline color. You can change the outline of the bar/column/etc. by specifying the color inside `geom_x()`
+
+```{r 7.12}
+# change only the fill of the bars
+ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
+  geom_bar()
+
+# Change the outline of the bars by adding color inside the geom_bar() command
+ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
+  geom_bar(color="black")
+```
+
+### More options with the see package
+
+See [this link](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually) for setting color gradients for continuous variables, or using other custom color palattes like the `gameofthrones` package.
+
+Check out the [see package](https://easystats.github.io/see/articles/seecolorscales.html#overview-of-palette-colors-1) for some good color scales; the commands for which are [here](https://easystats.github.io/see/reference/index.html#section-geoms). 
+
+Incidentally, see is great not only for regular ggplot graphs, but also Bayesian stats graphs [link](https://easystats.github.io/see/articles/bayestestR.html#introduction-1); effect size graphs [link](https://easystats.github.io/see/articles/effectsize.html); correlation graphs [link](https://easystats.github.io/see/articles/correlation.html); and more.
+
+
+## Other aesthetic mappings
+
+`shape()` controls the shapes on the graph
+`alpha()` controls transparency
+`size()` controls size
+
+Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
+
+```{r 7.16, eval=FALSE}
+# shape
+ggplot(mtcars, aes(x= mpg, y=hp, shape=as.factor(cyl)))+
+  geom_point()
+
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point(shape=23)
+
+# transparency
+ggplot(mtcars, aes(x= mpg, y=hp, alpha=hp))+
+  geom_point()
+
+# size
+ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
+  geom_point()
+```
+
+
+
+## Adding and Customizing Text
+
+### Add a title, axis labels, and captions
+
+All three can be added with `labs()`.
+
+```{r 7.17}
+ggplot(mtcars, aes(x=cyl))+
+    geom_bar(colour="gray", fill="lightgreen")+
+  labs(title = "Ages of Survey Respondants by Group",
+       x="Age Group",
+       caption="Note. Younger= ages 11-29; Older= ages 30-86.")
+```
+
+
+### Center graph title
+
+Add the line `theme(plot.title = element_text(hjust = 0.5))`
+
+```{r 7.18}
+
+ggplot(mtcars, aes(x=cyl))+
+    geom_bar(colour="gray", fill="lightgreen")+
+  labs(title = "Ages of Survey Respondants by Group",
+       x="Age Group",
+       caption="Note. Younger= ages 11-29; Older= ages 30-86.")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+### Use different fonts
+
+See tutorial on [this web page](https://www-r--bloggers-com.cdn.ampproject.org/v/s/www.r-bloggers.com/2021/07/using-different-fonts-with-ggplot2/amp/?amp_gsa=1&amp_js_v=a6&usqp=mq331AQIKAGwASCAAgM%3D#amp_tf=From%20%251%24s&aoh=16259111950507&csi=0&referrer=https%3A%2F%2Fwww.google.com&ampshare=https%3A%2F%2Fwww.r-bloggers.com%2F2021%2F07%2Fusing-different-fonts-with-ggplot2%2F)
+
+Or, use the `extrafont` package, and set everything using the `theme()` command.
+
+```{r 7.19, warning=FALSE, message=FALSE}
+# Visualize new groups
+library(extrafont)
+loadfonts(device="win")
+
+ggplot(mtcars, aes(x=cyl))+
+    geom_bar(colour="gray", fill="lightgreen")+
+  labs(title = "Ages of Survey Respondants by Group",
+       x="Age Group",
+       caption="Note. Younger= ages 11-29; Older= ages 30-86.")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(axis.title = element_text(face = "bold", family = "Courier New", size = 12),
+        axis.text = element_text(face = "italic"),
+        plot.caption = element_text(face = "italic", family = "Calibri", size = 9),
+        plot.title = element_text(face = "bold",size = 14, family = "Courier New"))
+
+```
+
+## Remove gridlines
+
+Add `theme(panel.grid = element_blank())`
+
+```{r 7.20, warning=FALSE, message=FALSE}
+ggplot(mtcars, aes(x=cyl))+
+    geom_bar(colour="gray", fill="lightgreen")+
+  labs(title = "Ages of Survey Respondants by Group",
+       x="Age Group",
+       caption="Note. Younger= ages 11-29; Older= ages 30-86.")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(axis.title = element_text(face = "bold", family = "Courier New", size = 12),
+        axis.text = element_text(face = "italic"),
+        plot.caption = element_text(face = "italic", family = "Calibri", size = 9),
+        plot.title = element_text(face = "bold",size = 14, family = "Courier New"))+
+    theme(panel.grid = element_blank())
+```
+
+
+
+
+## Faceting
+
+This is dividing one plot into subplots, in order to communicate relationships better.
+Again, this is just a single extra command, this time at the end of the code: facet_wrap(~columnhead)
+The tilde sign in R means "by", as in "divide (something) by this"
+
+```{r 7.21, eval=FALSE}
+print("temp")
+```
+
+
+This line produces a graph of population and life expectency, breaking it down to make a separate graph per each continent
+
+## Log transformations
+
+Sometimes when your data is really squished together on a graph it is hard to read. In this case, log transformations are really helpful, to change the scale of the data.
+
+For example, by multiplying all your points by 10x
+
+To create a log transformation of the same scatter plot above, add one extra bit: scale_x_log10()
+
+```{r 7.22, eval=FALSE}
+print("temp")
+```
+
+You can also make both axis be logged by adding +scale again for y
+
+## Changing the scale of the axis
+
+Add `coord_cartesian(xlim = c(lower,upper))`
+
+```{r 7.23}
+print("temp")
+```
+
+
+## Add a regression line
+
+Add the line `geom_smooth(method = "lm", formula = y ~ x)`
+
+```{r chapter_7_end}
+ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
+  geom_point()+
+  geom_smooth(method = "lm", formula = y ~ x)
+```
+
+
+
+
+<!--chapter:end:07-ggplot.Rmd-->
+
+# Making Tables with flextable
+
+NOTES:
+- **j** refers to the column
+- **i** refers to the row number
+
+
+## APA Table Components
+
+
+
+## Indent values
+https://davidgohel.github.io/flextable/reference/padding.html
+https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object
+
+Use the `padding` function:
+```{r chapter_8, eval=FALSE}
+ft <- padding(ft, i=2, j=1, padding.left=20)
+```
+
+
+## Add a Horizontal border (AKA horizontal "spanner")
+
+```{r 8.2, eval=FALSE}
+hline(., i=4, j=1:2, part = "body")
+```
+
+
+## Change font and font size
+
+```{r 8.3, eval=FALSE}
+  glm_table<-flextable::font(glm_table, part = "all", fontname = "Times") %>% # Font
+                        fontsize(., size = 11, part = "all") # Font size
+```
+
+## Grouped table
+
+```{r chapter_8_end, eval=FALSE}
+
+cars=rownames_to_column(mtcars, var = "Model")
+test=flextable::as_grouped_data(x=cars, groups = c("cyl"))
+```
+
+
+
+## Complete Example
+
+
+
+<!--chapter:end:08-tables.Rmd-->
+
+# Misc. Stuff
+
+## Scrape web pages for data tables
+
+*Note. See Chapter 10's example `purrr` walk through for a guide on how to scrape multiple web tables simultaneously*
+
+*Simple example.*
+
+```{r chapter_9}
+library(rvest)
+library(tidyverse)
+
+html=read_html('https://shop.tcgplayer.com/price-guide/pokemon/base-set') %>% 
+  html_table(fill = TRUE)
+
+html
+
+# Saved as a list by default. Now extract your table from said list
+html=as_tibble(html[[1]] %>% # find out which number it is in the list
+                 select('PRODUCT','Rarity','Number','Market Price')) # if needed, specify which columns you want too
+
+html
+
+# remove $ symbol in Price column to make it easier to work with
+html$`Market Price`=str_remove(html$`Market Price`, pattern = "\\$")
+  
+html=html %>%  mutate(`Market Price`=as.numeric(`Market Price`)) # convert from string to numeric
+
+# view finished table
+head(html)
+```
+
+***Slightly more complicated example***
+
+Reading a table into R takes a few steps.
+
+Step 1 is to copy and paste the URL into the `read_html()` verb like below: 
+
+```{r 9.2}
+pacman::p_load(rvest, tidyverse)
+
+exonerations_table=read_html("https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx") %>% 
+  html_nodes("table.ms-listviewtable") %>% 
+  html_table(fill=TRUE, header = TRUE)
+```
+
+
+Sometimes if the web page is extremely basic and pretty much the only thing on it is a table, you can stop there. Most of the time though, there will be tons of other stuff on the website and you need to get more specific so R can find the table. This is the `html_nodes()` part of the above command; in there you specify the exact part of the web page where the table is located/what object file it is.
+
+To find this you will need to use the Developer mode in your browser. See this screenshot for an example...
+```{r 9.3_pic, eval=FALSE}
+knitr::include_graphics(here::here("pics", "scrape.png"))
+```
+In Firefox you open this by going to Settings > More Tools > Web Developer Tools (or CNTRL + Shift + I).
+
+Begin by looking through the console in the center bottom for names that look like they would be related to your table. A good place to start might be "<body>", which contains the main body of the web page. Click on a name to expand it and see all the elements on the page contained there.
+
+Ultimately what you're looking for is what you see above: an element that, when selected, highlights ONLY the area of the web page you're looking for. To get at this you will need to keep expanding, highlighting, and clicking repeatedly....it can take some digging.
+
+Keep drilling down through page elements until you find the one that highlights the table and just the table. When you find this, look for the **.ms file** in that name; you should also see this in the smaller console box on the right. That is the file you'll need. Write that name in the `html_node` command and read it into R.
+
+That's stage 1. From here you now need to clean up the table.
+
+```{r 9.4}
+exonerations_table=as.data.frame(exonerations_table) # convert into a df
+```
+
+Your table might be different, but this one's names were messed up when read in, so lets fix those first and then fix the rows and columns.
+
+```{r 9.5}
+# save the names to a vector
+table_names=exonerations_table$Last.Name[1:20]
+
+# Trim out the garbage rows and columns
+exonerations_table=exonerations_table %>% 
+  select(Last.Name:Tags.1) %>% 
+  slice(22:n())
+
+# over-write incorrect col names with the vector of correct ones we saved above
+colnames(exonerations_table)=table_names
+
+# clean up names
+exonerations_table=exonerations_table %>% janitor::clean_names()
+
+# verify structure of columns is correct
+# glimpse(exonerations_table)
+```
+
+Yikes, a lot of stuff is stored incorrectly, and as a result there's some missing values that need to be addressed and other data that needs to be corrected.
+```{r 9.6}
+exonerations_table=as_tibble(exonerations_table) %>% # convert to tibble
+  mutate(across(c(dna,mwid:ild), na_if,"")) %>% # turn missing values into NA's
+  mutate(across(c(dna,mwid:ild), replace_na, "derp")) %>% # replace NA's with a string (required for the next lines to work)
+  mutate(dna=ifelse(dna=="DNA",1,0), # change these variables from text to numeric to better facilitate analysis
+         mwid=ifelse(mwid=="MWID",1,0),
+         fc=ifelse(fc=="FC",1,0),
+         p_fa=ifelse(p_fa=="P/FA",1,0),
+         f_mfe=ifelse(f_mfe=="F/MFE",1,0)) %>% 
+  mutate(across(c(st, crime, dna:f_mfe),factor)) # correct form by converting to factors
+```
+
+And that's it! Check out final result!
+```{r}
+head(exonerations_table)
+```
+
+
+Check out [this page](https://www.dataquest.io/blog/web-scraping-in-r-rvest/) for a quick overview.
+
+## Read SPSS files into R
+
+Use `foreign::read.spss`
+
+```{r 9.7, eval=FALSE}
+spss_version=foreign::read.spss(here::here("JLWOP", "Data and Models", "JLWOP_RYAN.sav"), to.data.frame = TRUE)
+```
+
+Might also want to add `as_tibble()` on the end.
+
+## Turn numbers into percentages
+
+Use `scales::percent()`, which converts normal numbers into percentages and includes the percent sign (%) afterwards
+
+```{r 9.8}
+
+simple_table=tribble(~n_people, ~votes_in_favor,
+                     25, 14)
+
+simple_table=simple_table %>% mutate(percent_voted_for=scales::percent(votes_in_favor/n_people, accuracy = 0.1, scale = 100))
+
+simple_table
+```
+
+Scale is what to multiple the original number by (e.g., convert 0.05 to 5% by x100) Accuracy controls how many places out the decimal goes
+
+## Find all possible combindations of items in a vector
+
+```{r 9.9}
+y <- c(2,4,6,8)
+
+combn(c(2,4,6,8),2) # find all possible combinations of these numbers, drawn two at a time
+```
+
+## Download files from the internet
+
+```{r 9.10, eval=FALSE}
+
+```
+
+## Print multiple things in one statement
+
+Use `cat()` from base R
+
+```{r chapter_9_end}
+cat("The p-value dropped below 0.05 for the first time as sample size", 100)
+```
+
+<!--chapter:end:09-misc.Rmd-->
+
+# Intermediate R: Functions, Loops, and Iterative Programming
+
+## Functions
+
+A function is a command that performs a specified operation and returns
+an output in accordance with that operation. You can literally make a
+function to do anything you want.
+
+*General structure of a basic function:*
+
+```{r chapter_10, eval=FALSE}
+# example structure
+
+Function_name=function(argument){
+  Expressions
+  return(output)
+}
+```
+
+-   *Argument* is your input. It is the thing you want to perform the
+    operation on.
+-   *Expressions* is the actual operation (or operations) you want to
+    perform on the supplied argument
+-   *return* tells R to return the result of the Expression to you when
+    done.
+
+This example function takes an input of numbers in the form of a vector
+and subtracts two from each.
+
+```{r 10.2}
+numbers=c(2,10,12,80)
+
+sub_2=function(x){
+  result= x - 2
+  return(result)
+}
+
+sub_2(numbers)
+
+sub_2(100)
+```
+
+One of the primary advantages of functions are that they can reduce a
+complex process or a process that involves many steps down into a single
+line of code; thus, creating your own functions is a fast way to make
+your life easier down the line either at some point in the far future or
+even in just a few minutes, if you know you will be writing the code for
+some process two or more times.
+
+Take this script for instance. You can see from the circled parts that I
+needed to transform three different data sets in a similar way:
+
+```{r}
+knitr::include_graphics(here::here("pics", "repeat_process.jpg"))
+```
+
+Copying and pasting the code and tweaking it originally worked....but
+this method can make the script needlessly long and harder to read
+later, and more tedious to write or for coauthors/collaborators to sift
+through, and importantly, increases your chances of making an error.
+Better to write a single function that could be applied to all three....
+
+***In short, use functions to reduce a multi-step process or a process
+that you're implementing \>=2 times in a single script into one command.
+This saves you space and makes the script shorter; it saves you the
+trouble and effort of re-writing or adapting code from earlier sections;
+and importantly, reduces the chances of you making a coding error by
+proxy of the former two.*** As a quick example, I replaced each of the
+circled paragraphs of code above with a custom function that ran
+everything in one simple line. Instead of 3 paragraphs, I now had 3
+lines that looked like this:
+
+```{r eval=FALSE}
+na_zero_helpreint=rotate_data(data = na_zero_helpreint, variable_prefix = "reintegrate_")
+na_blank=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
+na_zero=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
+```
+
+**Limitations to your average, everyday functions.** While reducing a
+whole *process or sequence* of commands is extremely useful, it still
+leaves a limitation. For instance, while we avoided copying and pasting
+whole paragraphs or processes, I still had to copy-paste the same
+function three times. This still leaves chances for error on the table,
+and it still leaves us with wasted lines that make the script longer.
+
+In general, when you want to perform some function or process **multiple
+times on multiple items (as above where the same command is used three
+times on three different data frames)**, you need to use a for-loop or
+iterating function. These can reduce further unwanted redundancies by
+applying the function or process iteratively. Read on for more info.
+
+## For-loops
+
+A for loop is essentially a function that applies a function or given
+set of operations to multiple things at once, and returns an output of
+many items.
+
+For example, this code finds the means of every vector/column in a
+dataset by repeatedly applying the same code over and over to element
+"i" in the given list:
+
+```{r 10.3}
+df <- tibble(
+  a = rnorm(10),
+  b = rnorm(10),
+  c = rnorm(10),
+  d = rnorm(10)
+)
+
+output <- vector("double", ncol(df))  # 1.Output. Create the object you want the results of the loop stored in.
+
+for (i in seq_along(df)) {            # 2.Sequence of operations. "For each item 'i' along data frame…"
+  output[[i]] <- median(df[[i]])      # 3.Body:"every individual item in 'output' = the median of each col in df
+}
+
+output
+```
+
+Check out [this book
+chapter](https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments)
+for a great and detailed explanation of for-loops and functional coding.
+
+Although for loops are nice, they are unwieldy. R programmers typically
+use iterating functions instead. Examples of iterating functions are the
+`lapply`, `vapply`, `sapply`, etc. family of base R commands. But these can
+also be confusing and the commands are not great.
+
+The purrr package offers a better way to do iterating functions over
+base R; it's the tidyverse way to make efficient and understandable for
+loops! **If you have a need for a for-loop for something, see the next
+section instead on how to use purrr to make an iterative function.
+Important to understand conceptually what a for-loop is, but using them
+is impractical when you have purrr**
+
+# purrr and Iterative Functions
+
+*All notes here come from Charlotte Wickham's lecture tutorial below*
+
+- Part 1: <https://www.youtube.com/watch?v=7UlWJWfZO9M> 
+- Part 2: <https://www.youtube.com/watch?v=b0ozKTUho0A&t=1210s>
+
+purrr's `map()` series of functions offer a way to apply any existing
+function (even functions you've made) to multiple things at once, be it
+lists, data frame columns, individual items in vector, etc. In short,
+they are for doing the same type of task repeatedly in a very quick and
+efficient manner. They work in much the same way as for-loops, but are
+far simpler to write, and can be applied in the same way to solve the
+same problems.
+
+```{r purrr_pic, include=FALSE}
+knitr::include_graphics(here::here("pics", "purrr.png"))
+```
+
+***How to use purrr***
+
+The structure of `map()` commands is the same as the others in the
+tidyverse:
+
+```{r eval=FALSE}
+#option 1
+map(data, function)
+
+# option 2
+data %>% map(function)
+```
+
+As a quick example and to highlight why purrr is so much more efficient
+and easier to use than for-loops, look at the same example from before,
+now using `map()` instead of a `for`:
+
+```{r}
+df |> map_dbl(median)
+```
+
+A single line is all it took to get the same results! And, it follows
+tidyverse grammar structure.
+
+Now lets get into how it works....
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "map_structure.png"))
+```
+
+*map() commands work like this:* For each element of x, do f.
+
+So if you pass it object `x` and object `x` is....
+- A vector, it will perform function f on every item in the vector
+- A data frame, it will perform function f on every *column* in the data frame
+- A list, it will perform function f on every *level in the list*
+
+Etc., etc.; the point is it applies a function repeatedly to every
+element in the object you supply it with.
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "map_structure_2.png"))
+```
+
+So lets walk through a case example.
+
+## Reproducible example
+
+This is an example walk through showing how we can use `purrr` to speed
+things up dramatically and/or reduce the use of unwanted, extra code in
+our scripts. In this guide I'll be building a table of LPGA Tour
+statistics from multiple webpages.
+
+The workflow for purrr goes like this:
+
+First, you want to figure out how to do each step of your process
+line-by-line, for a single item. The idea is to try and walk through
+each step of the process and see exactly what will need to be done each
+each step and what the code will like, before trying to code it all at
+once at a higher level.
+
+Once you have each step for the first item figured out, then you make functions
+for each step that condense that code down to one command.
+
+Lastly, apply each function from your individual steps to all items in
+your list by using `purr::map()`.
+
+***Do for One***
+
+```{r 10.9}
+
+library(rvest)
+
+# STEP 1
+# Figure out a line-by-line process for one item/one single web page
+html1=read_html("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=04") |> 
+  html_nodes("table.shsTable.shsBorderTable") |> 
+  html_table(fill = TRUE, header=TRUE) |> 
+  as.data.frame() |> 
+  janitor::clean_names()
+
+head(html1)
+
+
+# STEP 2
+# create a custom function of the above to shorten and generalize the process
+quick_read_html=function(url){
+  web_page=read_html(url) |> 
+  html_nodes("table.shsTable.shsBorderTable") |> # fortunately this node works for all four pages so it can be baked into the function
+    html_table(fill = TRUE, header = TRUE) |> 
+    as.data.frame() |> 
+    janitor::clean_names()
+  
+  return(web_page)
+}
+
+
+
+# test to verify it works
+test=quick_read_html(url= "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=08") 
+
+head(test) # nice 
+```
+
+***DO FOR ALL.***
+Now create the object that contains all the elements you want to iterate over, and then pass it to your generalized function with map.
+
+```{r 10.13}
+# Step 3a
+# create an object that contains ALL elements of interest
+URLs=c("https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=04",
+       "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=08",
+       "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=06",
+       "https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&rank=12")
+
+# Step 4
+# use the power of map and be amazed
+lpga_data= URLs |> map(quick_read_html)
+
+head(lpga_data)
+```
+
+All done!! And just like that, we've downloaded four different web
+pages, extracted the tabled info, and formatted them without copying and
+pasting any code. The same process for all four was only used one time
+to write the initial function. Just apply some final formatting to clean
+it up a bit and combine the separate data frames into a single, unified
+one.
+
+```{r}
+lpga_data= lpga_data %>% 
+  reduce(left_join, by="name") %>% # Combine all list levels into a single tibble, matching by the "Name" column
+  select(-contains("rank.")) |> 
+  rename("score_average"="score_average_actual")
+  
+# VOILA! 
+head(lpga_data)
+```
+
+
+
+## Non-reproducible example (Juvenile Life Without Parole study)
+
+In the Juvenile Lifers study, there were a series of questions that
+participants rated on a scale of 0-100 in terms of difficulty. Part of
+our analysis involved taking the ratings on those variables and giving
+them relative rankings, so that each of the 6 variables in the series
+was rated from the least to most difficult, by participant.
+
+Now if we only needed to compute these rankings once this wouldn't have
+been any big deal; however, we needed to do it **three times**. 
+
+Much of the same code and the same process would need to be copied and pasted,
+resulting in a very long, messy, harder to read script. With purrr
+however, we can reduce the redundancies to a minimum, saving time and reducing the chances of mistakes.
+
+***Step 1.***
+Just like before, the first step is to find a line-by-line solution for a single item, and then to generalize this into a shortcut function that can be applied to the any item "i" in a series of items.
+
+For the sake of brevity, I'm going to skip most of that and just include the functions below.
+
+```{r }
+load("C:/Github Repos/Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData")
+
+#### CREATE THE DATA SETS WE NEED####
+na_blank=jlwop_reentry_survey # analysis 1 keeps the data as-is
+
+na_zero=jlwop_reentry_survey %>% # supplementary analysis replaces the NA's with 0
+  mutate(across(c(barrier_housing:barrier_identification), replace_na,0))
+
+rm(jlwop_reentry_survey) # remove old data set to avoid confusion
+
+
+#### Functions ####
+
+# transformation function to wrangle the data into proper formatting
+rotate_data=function(data, variable_prefix){
+  
+data=data %>% 
+  pivot_longer(
+    cols= starts_with(variable_prefix), # collect all the desired variables (i.e., columns)....
+    names_to = "variable", #...and put them into a new categorical variable called "variable"
+    values_to = "participant_score") %>% # ...and store their values in a new variable called "participant_score"
+  arrange(unique,participant_score) %>% 
+  
+  select(c(unique, participant_score, variable)) %>% # keep only these 3 variables
+  relocate(variable, .before = participant_score) # put the newly created variable up front
+
+return(data)
+}
+
+
+# creating the rankings for each variable; then transform data back to original structure
+rank_and_unpivot=function(data){
+  data=data %>% 
+  group_by(unique) %>% # group the scores so they can be ranked by participant
+  mutate(rank1=dense_rank(participant_score), # create ranking variable
+               rank=max(rank1,na.rm = TRUE) + 1 - rank1) %>% # fix ranks by flipping to ascending order
+  mutate(rank=factor(rank)) %>% # convert rank to factor structure
+  select(-rank1)
+
+
+# Pivot back to wide
+data=data %>% 
+  pivot_wider(names_from = variable, values_from = rank:participant_score) %>% 
+  ungroup() # un-group the data and delete the generated names
+
+return(data)
+}
+
+```
+
+
+***Step 2.***
+Again, like before, we want to combine all elements of interest into some object. Once we have that, we then pass said object to `map()` and supply the map call with our custom function.
+```{r eval=FALSE}
+
+dfs=list(na_blank=na_blank, na_zero=na_zero) %>% # create lists
+  map(.f=rotate_data, variable_prefix = "barrier") %>% # apply custom function along whole list
+  map(rank_and_unpivot) # again!!  DO IT AGAIN! With another function this time.
+
+# extract list elements to make them data frames again
+list2env(dfs, globalenv())
+
+rm(dfs) #discard list. It has fulfilled its purpose.
+```
+
+And just like that, we're done!
+
+
+## Example 3: Read/Import several files at once with `map()`
+
+**Note.** This reads many .csv files and combines them into a *SINGLE,
+unified data frame*. If you want to import many files at once but keep
+them separated, you'll need a different command.
+
+```{r 10.6, eval=FALSE}
+
+######### Step-by-step version #########
+file_path <- "JLWOP/Data and Models/"
+
+# 1. view all files; make sure you see everything you want/need
+file_path %>% list.files()
+
+# 2. save only file names with the desired extension
+csv_file_names=file_path %>% 
+  list.files() %>% 
+  .[str_detect(., ".csv")]
+
+
+# 3. Load everything into the Global Environment
+csv_file_names %>%
+  purrr::map(function(file_name){ # iterate through each file name
+    assign(x = str_remove(file_name, ".csv"), # Remove file extension ".csv"
+           value = read_csv(paste0(file_path, file_name)),
+           envir = .GlobalEnv)
+  })
+
+
+######### Combining all steps into a single, one-line function ##########
+read_all_excel=function(path){
+  file_path <- path
+  
+  # save only file names with the desired extension
+  file_names=file_path %>% 
+    list.files() %>% 
+    .[str_detect(., ".xlsx")]
+  
+  file_names %>%
+    purrr::map(function(file_name){ # iterate through each file name
+      assign(x = str_remove(file_name, ".xlsx"), # Remove file extension ".csv"
+             value = readxl::read_excel(paste0(file_path, file_name)),
+             envir = .GlobalEnv)
+    })
+}
+
+
+read_all_excel(path = "JLWOP/Data and Models/")
+```
+
+
+## Other purrr commands
+
+Note that `map()` always returns a list, and depending on the output
+that you want, you may need to use a variation of `map()`. These
+variations are as follows:
+
+| Command     | Return                                      |
+|-------------|---------------------------------------------|
+| `map_lgl()` | logical vector                              |
+| `map_int()` | integer vector                              |
+| `map_dbl()` | double vector                               |
+| `map_chr()` | character vector                            |
+| `walk()`    | only returns the side effects of a function |
+
+
+
+### The `walk` and `walk2` commands
+
+Walk() is useful for when you just want to plot something or write a
+save file to your disk, etc. It does not give you any return to store
+something in the environment. You use it to write/read files, open
+graphics windows, and so on.
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "walk.png"))
+```
+
+***Example: Exporting multiple .csv files at once***
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "export_purrr.png"))
+```
+
+Utilize `purrr::walk2()` to apply a function iteratively on TWO objects
+simultaneously. To save multiple .csv files with `walk2`, we need two
+distinct lists: 1. A list of data frames that we wish to export, 2. and
+the file paths, complete with the file names and extensions, for each
+file to be written
+
+First create and define both list items. Then apply `walk2()` to pluck
+an element from list 1 and its corresponding element from list 2, and
+apply the `write_csv` function in for-loop fashion.
+
+```{r eval=FALSE}
+
+### Custom function ####
+bundle_paths=function(df_list, folder_location){
+  names=names(df_list)
+  paths=rep(here::here(folder_location), length(names))
+  extension=rep(c(".csv"), length(names))
+  
+  fixed_names=paste0("/",names)
+
+  path_bundle=list(paths,fixed_names, extension) %>% 
+    pmap(., paste0)
+  
+  return(path_bundle)
+}
+
+#### Exporting the .csv files for SPSS/JASP/etc. ####
+# Define list 1
+dfs=list(na_blank=na_blank,
+         na_zero=na_zero,
+         na_zero_helpreint=na_zero_helpreint)
+# list 2
+paths_csv=bundle_paths(df_list = dfs, folder_location = "JLWOP/Data and Models")
+
+
+# Iterate over all elements in list 1 and corresponding element in list 2;
+# and apply the the write_csv function to each
+walk2(.x=dfs, .y= paths, .f=write_csv)
+
+
+#### .RData file for R users ####
+# Combine multiple data frames into a single .RData file and export
+save(list = c("na_blank", "na_zero", "na_zero_helpreint"), 
+     file = here::here("JLWOP", "Data and Models","ranking_data.RData"))
+```
+
+
+### `map2` (and `walk2`)
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "map2_a.png"))
+```
+
+```{r}
+knitr::include_graphics(here::here("pics", "map2_b.png"))
+```
+
+
+### `pmap` for when you have a bunch of shit
+
+This function is for iterating over *three or more* elements. As soon as you have >2 items you have to iterate over, you need pmap().It works similar to to map and map2, but instead of  iterating over a single object x or two objects x and y, it acts on **a list object called .l**
+
+The list is a list of all the objects you want to iterate over. If you
+give it a list of 18 items, it iterates over all 18. If the list only
+has two things, it only acts on those two.
+
+She says its easiest to imagine the list as a data frame, and the
+columns of the data frame like the elements of that list.
+
+```{r, include=FALSE}
+knitr::include_graphics(here::here("pics", "pmap.png"))
+```
+
+```{r}
+knitr::include_graphics(here::here("pics", "pmap_2.png"))
+```
+
+
+
+
+
+
+<!--chapter:end:10-functions.Rmd-->
+
+# Intro to R Markdown
+
+R Markdown is a better and more organized way to write scripts. Seriously, once you learn it, there's no going back. New and don't know where to start? Read [The R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/conceptual-overview.html). Amazing overview with tons of neat tricks and how-to's. [This other source](https://rmd4sci.njtierney.com/using-rmarkdown.html#the-anatomy-of-an-rmarkdown-document) may also be of some help.
+
+Below are some quick tips for common tasks; but be sure to read the Cookbook above.
+
+## Important code chunk options
+
+- `cache`: TRUE or FALSE. Do you want to save the output of the chunk so it doesn't have to run next time? Creates a cached folder in the directory.
+- `eval`: Do you want to evaluate (i.e., run) the code in the chunk?
+- `echo`: Do you want to *print* the code after it's run?
+- `include`: Do you want to include code output in the final output document? Setting to `FALSE` means the code does not appear in the output document, but it is still run.
+
+## Writing math equations and symbols
+
+### Greek symbols
+
+A few notes first:
+Math notation is done with dollar signs and forward slashes...
+
+For Greek letters, just type the name of the letter:
+`$\mu$` for $\mu$
+`$\sigma$` for $\sigma$
+`$\alpha$` for $\alpha$
+`$\pi$` for $\pi$
+`$\rho$` for $\rho$
+
+### Math notation
+
+`$\pm$` for ±
+`$\ge$` for ≥
+`$\le$` for ≤
+`$\neq$` for ≠
+
+### Statistics notation
+
+### Writing in-line code
+
+Use the funny looking symbol on the tilde key that looks like this: `
+To write in line, code, put one of those symbols on either side of the code, like you would with quotation marks. Helps you write lines like:
+
+I love `dplyr`
+
+
+## Including graphics/inserting pictures
+
+The default method doesn't work for me for some reason, but you can still insert images using a combination of the `here` package and `knitr`.
+
+Use the `include_graphics()` command and specify both the file location and it's name:
+```{r 11.2}
+knitr::include_graphics(here::here("pics","snapchat.png"))
+```
+
+
+The [bookdown book](https://bookdown.org/yihui/bookdown/figures.html) notes that:
+
+  The syntax for controlling the image attributes is the same as when images are generated from R 
+  code. Chunk options `fig.cap`, `out.width`, and `fig.show` still have the same meanings. 
+
+and:
+  You can easily scale these images proportionally using the same ratio. This can be done via the 
+  `dpi` argument (dots per inch), which takes the value from the chunk option `dpi` by default If it is a 
+  numeric value and the chunk option `out.width` is not set, the output width of an image will be its 
+  actual width (in pixels) divided by dpi , and the unit will be inches. For example, for an image with 
+  the size 672 x 480, its output width will be 7 inches ( 7in ) when `dpi=96`. 
+  This feature requires the package png and/or jpeg to be installed. You can always override the automatic calculation of 
+  width in inches by providing a non-NULL value to the chunk option `out.width` , or use `include_graphics(dpi = NA)`
+
+
+
+## Footnotes
+
+To add a footnote, use the "^" symbol and put the note in brackets:
+
+You can also write footnotes^[Kruschke, J. (2015). Goals, power, and sample size. In J. K. Kruschke (Ed.), Doing bayesian data analysis: A tutorial with r, jags, and stan (2nd ed., pp. 359-398). Academic Press.] like this.
+
+## Change the color of your text
+
+<span style="color:blue">  YOUR TEXT HERE </span>
+
+
+
+<!--chapter:end:11-markdown.Rmd-->
+
+# Statistics and Psych-specific Stuff
+
+
+## Create or sample from a distribution
+
+*Creating a binomial distribution*
+
+When you do this, you are setting the true population parameter; you are in control of the Data Generating Process and the true distribution
+
+In a binomial distribution, the parameter is normally distributed, and can take any value from 0.0 to 1.0
+But the data that this process generates is not normal
+```{r chapter_12}
+rbinom(n= 1000, size= 1, prob =  0.5)
+
+rnorm(n=2500,mean=500, sd=100)
+```
+
+
+## Find Cohen's Kappa (Interrater reliability)
+
+Useful for IRR agreement on categorical variables
+
+Going to use the `psych` package for this:
+https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa
+
+See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is if you need a recap/intro.
+
+
+## Statistical tests and modeling with `easystats`
+
+https://easystats.github.io/easystats/
+
+### Getting parameter estimates from model objects
+
+Scenario: You've run some statistical test (like the below regression), and want a summary of the model estimates.
+```{r 12_model}
+model <- lm(Sepal.Length ~ Species, data = iris)
+```
+
+You have a few options when it comes to getting a summary of a model and getting the coefficient estimates:
+- `summary()`
+- `broom::tidy()`
+- `paramters::model_paramters()`, or just `paramters::paramters()` for short
+
+*There's no reason to use `summary`, generally speaking, because it sucks. It doesn't give you tidy output that's easy to manipulate or extract, it's hard to read, and it can't be turned into a useful table. Skip it unless you need something specific from it's output (i.e., you're using lavaan)*
+
+Options two and three are pretty similar and both give you most of the same information, though `parameters()` prints neater to the console window. Generally I find `parameters` preferable.
+
+Note though that *neither command* will round the numbers if you store it as a table in the environment. So....
+
+1. If you want to manipulate ANY info in the table and/or extract info, just use `tidy` or `parameters`.
+2. If you're using the command to export said info in a neat table, or you want to view it in a more readable fashion and *do not care about extracting/modifying/manipulating anything in it*, then use `parameters` and pipe it to `format_table()`
+
+Using `format_table()` rounds all columns to 2 decimal places, reformats p-values to APA format, and collapses CI's into a single column. Do note though that it makes every column into a Character column! So this is for exporting-use only.
+
+Here's a comparison of broom's output (first) vs. parameter's (second) when you save each in the environment. As you can see, both produce tidy tibbles
+
+```{r 12_pic1, echo=FALSE}
+knitr::include_graphics(here::here("pics", "tidy.png"))
+```
+
+```{r 12_pic2, echo=FALSE}
+knitr::include_graphics(here::here("pics", "parameters.png"))
+```
+And here's what `parameters(model) |> format_table()` does to the a parameters table:
+
+```{r 12_pic3, echo=FALSE}
+knitr::include_graphics(here::here("pics", "format_table.png"))
+```
+Much cleaner for making a table to export to Word.
+
+
+### Getting model information and performance metrics
+
+Again, two options here. You can use either `glance` from the broom package, or `performance` from the package of the same name. These each produce slightly different output, though unlike above, I don't think one is necessarily better than the other. Use whichever one you prefer.
+
+```{r 12_broomdemo}
+broom::glance(model)
+```
+
+```{r 12_perfdemo}
+performance::performance(model)
+```
+
+
+### Effect size info with `effectsize`
+
+```{r 12_effectsizedemo}
+logreg_model=glm(smoke ~ age + sex, data= legaldmlab::survey, family = "binomial")
+logreg_model_coeff=parameters::parameters(logreg_model)
+logreg_model_coeff=logreg_model_coeff |> dplyr::mutate(odds_ratio=exp(Coefficient))
+  
+effectsize::interpret_oddsratio(logreg_model_coeff$odds_ratio, rules = "chen2010")
+```
+
+
+### Quick, detailed, and automated reporting with `report`
+Check out https://easystats.github.io/report/
+
+### Running correlations with `correlation`
+https://easystats.github.io/correlation/
+
+
+<!--chapter:end:12-stats.Rmd-->
+
+# Coding Tips and Tricks
+
+
+## Grammar stuff in base R
+
+### Regex expressions and symbols
+
+```{r chapter_13, eval=FALSE}
+str_remove(html$`Market Price`, pattern = "$") # doesn't remove the $ sign
+str_remove(html$`Market Price`, pattern = "\\$") # works
+```
+
+
+### The new pipe (Base R)
+
+Good reading material/stuff to know: https://www.r-bloggers.com/2021/05/the-new-r-pipe/?__twitter_impression=true&
+
+Not really any functional differences from the tidyverse pipe, but using this instead puts one less dependency in your code. So it's probably worth changing.
+
+You can set this in the global options in RStudio.
+
+## Tidyverse stuff
+
+### Sometimes when making a function you need to use the colon-equals operator, rather than just the normal <- or = assignment operators
+
+Specifically, when you have multiple named arguments in your function
+Read my question and someone's answer on this blogpost: https://community.rstudio.com/t/help-creating-simple-function/109011/2
+
+
+## Function-related stuff
+
+### User-supplied expressions or named columns in functions
+
+
+### When a command requires a named column or data set, but you've already supplied it and it's required a second time
+If you're writing a function with a pipe but the command you're using needs the data set defined in it, you specify it as .x
+Here is an example:
+
+
+### Formulas within functions
+
+Generally when you see `.fn` inside a function (e.g., `map(x, .fn)`), that means *function*. You put whatever formula or function you want in there. You may also see the tilde used instead, which does the same thing.
+
+
+## Creating a package
+
+https://rstudio4edu.github.io/rstudio4edu-book/data-pkg.html
+
+
+### Documenting pacakge meta-data
+https://r-pkgs.org/description.html
+
+### Connecting to other packages
+https://kbroman.org/pkg_primer/pages/depends.html
+
+
+### Linking Git and Github
+[view this detailed guide](https://r-pkgs.org/git.html#git-rstudio) by Jenny Bryan, and [this YouTube video](https://www.youtube.com/watch?v=XbSwdHBiO4E).
+
+Quick summary of steps in YouTube video:
+
+1. Open project folder in Windows Explorer and click in the URL bar, then type `cmd` to open command prompt
+
+2. If there are any pre-existing git files or repository info there, remove it with the following: 
+- `rd .git /S/Q`
+
+3. Tell git to create a new repo by typing: 
+- `git init`
+
+4. Then tell it to include all files in the current place by typing: 
+- `git add .`
+
+5. Commit these files with: 
+- `git commit -m "Initial commit"`
+
+6. At this point you've created a git and GitHub repo each; now link them with: 
+- `git remote add origin [https URL of GitHub repo]`
+
+7. Push all these changes live with: 
+- `git push -u origin master`
+
+
+## Creating a bookdown
+https://www.youtube.com/watch?app=desktop&v=m5D-yoH416Y&feature=youtu.be
+
+
+### Rendering the book once it's done
+
+1. Render locally with bookdown::render_book("index.Rmd")
+
+2. Use `browseURL("docs/index.html")` to view your book locally (or just open `index.html` in a browser).
+
+3. If it looks good, commit and push all changed files to GitHub.
+
+
+<!--chapter:end:13-advanced.Rmd-->
+
+---
+title: "Creating a simulated data set"
+output: html_document
+---
+
+```{r include=FALSE, echo=FALSE, warning=FALSE}
+pacman::p_load(tidyverse, legaldmlab)
+```
+
+# Creating a simulated data set
+
+From the tutorial [on this page](https://debruine.github.io/tutorials/sim-data.html)
+
+## Part 1: Independent samples from a normal distribution
+
+Consider the following first before you start doing stuff: - How many subjects are in each condition? - What are the means and standard deviations of each group?
+
+Set that shit below.
+
+```{r 14_1}
+# number of subjects per group
+A_sub_n <- 50
+B_sub_n <- 50
+
+# distribution parameters
+A_mean  <- 10
+A_sd    <- 2.5
+
+B_mean  <- 11
+B_sd    <- 2.5
+```
+
+Now generate scores for each group
+
+```{r 14_2}
+A_scores <- rnorm(A_sub_n, A_mean, A_sd)
+B_scores <- rnorm(B_sub_n, B_mean, B_sd)
+```
+
+Technically you *could* stop here and just analyze the data in this fashion...but its better to organize it into a table. One that looks like something you would import after real data collection.
+
+So do that next; make it look nice.
+
+```{r 14_3}
+dat <- tibble(
+  sub_condition = rep( c("A", "B"), c(A_sub_n, B_sub_n) ),
+  score = c(A_scores, B_scores)
+)
+
+head(dat)
+```
+
+Always perform a quality and consistency check on your data to verify that shit's ok.
+
+```{r 14_4}
+dat %>%
+  group_by(sub_condition) %>%
+  summarise(n = n() ,
+            mean = mean(score),
+            sd = sd(score))
+```
+
+## Part 2: Creating data sets with quantitative and categorical variables
+
+From the web page [at this link](https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/#creating-datasets-with-quantiative-and-categorical-variables)
+
+### 2.a. DATA WITH **NO DIFFERENCE** AMONG GROUPS
+
+**Critically important notes to know**: When you use the `rep()` function, there are several different arguments you can specify inside it that control how stuff is repeated:
+
+-   using `rep(x, each= )` repeats things *element-wise*; each element gets replicated n times, in order
+
+```{r 14_5}
+rep(c("A","B"), each=3)
+```
+
+-   using `rep(x, times= )` repeats the *sequence*; the vector as a whole, as it appears, will be repeated with one sequence following the next
+
+```{r 14_6}
+rep(c("A","B", "C", "D", "E"), times=3)
+```
+
+-   using `rep(x, length.out)` repeats *only the number of elements you specify*, in their original order
+
+```{r 14_7}
+rep(c("A","B", "C", "D", "E"), length.out=3)
+```
+
+In this particular data, we want *every combination of `group` and `letter` to be present ONCE*.
+
+```{r 14_8}
+
+letters=c("A","B","C","D","E")
+
+tibble(group = rep(letters[1:2], each = 3),
+           factor = rep(LETTERS[3:5], times = 2),
+           response = rnorm(n = 6, mean = 0, sd = 1) )
+```
+
+### 2.b. Data **WITH A DIFFERENCE** among groups
+
+What if we want data where the means are different between groups? Let's make two groups of three observations where the mean of one group is 5 and the other is 10. The two groups have a shared variance (and so standard deviation) of 1.
+
+#### Some notes first
+
+Creating a difference between the two group's average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within `rnorm`, like so:
+
+```{r 14_9a}
+response = rnorm(n = 6, mean = c(5, 10), sd = 1)
+response
+```
+
+You can see that: 1. draw 1 is from the distribution $(\mu=5,\sigma=1)$ 2. draw 2 is from the distribution $(\mu=5,\sigma=1)$
+
+And this process repeats a total of six times.
+
+And if you happen to also specify a vector of standard deviations (purely to demonstrate what is happening, we won't actually do this), *the first mean is paired with the first SD; the second mean is paired with the second SD; and so on.*
+
+```{r 14_9}
+rnorm(n = 6, mean = c(5, 10), sd = c(2,0.1))
+```
+
+#### Ok, back to creating the data
+
+
+If you want there to be differences between the groups, we need to change the way the vector of factors is replicated, in addition to specifying the vector of means. We want to ensure that the sequence of "A", "B" in the `group` column matches the sequence repeated in the `response` column.
+
+Here we are going to use `length.out` so that the whole sequence of A,B is repeated exactly in line with the alternating drawing from $\mu=5$, $\mu=10$.
+
+It's often best to do this by building each thing separately, and then combining it into a tibble when you have it figured out.
+
+```{r 14_10}
+group=rep(letters[1:2], length.out = 6)
+group
+
+response=rnorm(n = 6, mean = c(5, 10), sd = 1)
+response
+
+
+tibble(group,
+       response)
+```
+
+
+
+
+
+
+
+
+### 2.c. Data with **MULTIPLE QUANTITATIVE VARIABLES** with groups
+
+
+
+
+## Part 3: Repeatedly simulate samples with replicate()
+
+
+Instead of drawing values one at a time from a distribution, we want to do it many times. This is a job for `replicate()`. What `replicate()` does is run a function repeatedly.
+
+The `replicate()` function will perform a given operation as many times as you tell it to. Here we tell it to generate numbers from the distribution $N~(\mu=0, \sigma=1)$, three times (as specified in the `n=3` argument in line one)
+
+```{r 14_11}
+replicate(n = 3, 
+          expr = rnorm(n = 5, mean = 0, sd = 1), 
+          simplify = FALSE )
+```
+
+The argument `simplify=FALSE` tells it to return the output as a list. If you set this to `TRUE` it returns a matrix instead
+
+```{r 14_12}
+replicate(n = 3, 
+          expr = rnorm(n = 5, mean = 0, sd = 1), 
+          simplify = TRUE )
+```
+
+Specifying `as.data.frame()` with the matrix output can turn it into a data frame.
+
+```{r 14_13}
+replicate(n = 3, 
+          expr = rnorm(n = 5, mean = 0, sd = 1), 
+          simplify = TRUE ) %>% 
+  as.data.frame() %>% 
+  rename(sample_a=V1, sample_b=V2, sample_c=V3)
+```
+
+
+## Part 4: repeatedly making whole data sets
+
+This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.
+
+```{r 14_14}
+simlist = replicate(n = 3, 
+          expr = data.frame(group = rep(letters[1:2], each = 3),
+                            response = rnorm(n = 6, mean = 0, sd = 1) ),
+          simplify = FALSE)
+
+simlist
+```
+
+
+## Part 5: Using purrr
+
+See [this blog post](https://aosmith.rbind.io/2018/06/05/a-closer-look-at-replicate-and-purrr/)
+
+
+
+
+<!--chapter:end:14-creating_datasets.Rmd-->
+

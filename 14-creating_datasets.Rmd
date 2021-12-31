@@ -105,7 +105,7 @@ What if we want data where the means are different between groups? Let's make tw
 
 Creating a difference between the two group's average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within `rnorm`, like so:
 
-```{r 14_9}
+```{r 14_9a}
 response = rnorm(n = 6, mean = c(5, 10), sd = 1)
 response
 ```

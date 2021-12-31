@@ -73,7 +73,7 @@ fit1 <- cfa(HS.model, data=HolzingerSwineford1939)
 ```
 
 Two options for graphing it. Option 1 is `graph_sem()` from the tidySEM package.
-```{r 7_semplot}
+```{r 7_semplot, eval=FALSE}
 tidySEM::graph_sem(fit1)
 ```
 
