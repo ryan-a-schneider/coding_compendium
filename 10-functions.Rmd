@@ -36,13 +36,17 @@ sub_2=function(x){
 }
 
 sub_2(numbers)
+```
 
+We can also supply the function with a single number and it still works...
+```{r}
 sub_2(100)
 ```
 
-One of the primary advantages of functions are that they can reduce a
-complex process or a process that involves many steps down into a single
-line of code; thus, creating your own functions is a fast way to make
+***Well this looks useful. So what's the bigger picture?***
+
+One of the primary advantages of functions are that they can reduce a long and
+complex process, or a process that involves many steps, into a *single line of code*; thus, creating your own functions is a fast way to make
 your life easier down the line either at some point in the far future or
 even in just a few minutes, if you know you will be writing the code for
 some process two or more times.
@@ -54,10 +58,9 @@ needed to transform three different data sets in a similar way:
 knitr::include_graphics(here::here("pics", "repeat_process.jpg"))
 ```
 
-Copying and pasting the code and tweaking it originally worked....but
-this method can make the script needlessly long and harder to read
-later, and more tedious to write or for coauthors/collaborators to sift
-through, and importantly, increases your chances of making an error.
+Yes, I could have just done a copy-paste of the original code and tweak it slightly each time....
+But that is time consuming, produces a sloppier and longer script, and introduces a lot more room for error because of the repeated code and extra steps.
+
 Better to write a single function that could be applied to all three....
 
 ***In short, use functions to reduce a multi-step process or a process
@@ -65,15 +68,17 @@ that you're implementing \>=2 times in a single script into one command.
 This saves you space and makes the script shorter; it saves you the
 trouble and effort of re-writing or adapting code from earlier sections;
 and importantly, reduces the chances of you making a coding error by
-proxy of the former two.*** As a quick example, I replaced each of the
-circled paragraphs of code above with a custom function that ran
-everything in one simple line. Instead of 3 whole (and redundant) paragraphs, I now have 3 short lines, like so....
+proxy of the former two.*** 
+
+As a quick example, I was able to replace each of the circled paragraphs of code above with a custom function that ran
+everything in one simple line. Now instead of 3 whole (and redundant) paragraphs, I now have 3 short lines, like so....
 
 ```{r eval=FALSE}
 na_zero_helpreint=rotate_data(data = na_zero_helpreint,
                               variable_prefix = "reintegrate_")
 
 na_blank=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
+
 na_zero=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
 ```
 
@@ -81,14 +86,10 @@ na_zero=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
 whole *process or sequence* of commands is extremely useful, it still
 leaves a limitation. For instance, while we avoided copying and pasting
 whole paragraphs or processes, I still had to copy-paste the same
-function three times. This still leaves chances for error on the table,
-and it still leaves us with wasted lines that make the script longer.
+function three times. *This still leaves chances for error on the table, and it still leaves us with wasted lines that make the script longer.*
 
-In general, when you want to perform some function or process **multiple
-times on multiple items (as above where the same command is used three
-times on three different data frames)**, you need to use a for-loop or
-iterating function. These can reduce further unwanted redundancies by
-applying the function or process iteratively. Read on for more info.
+In general, when you want to perform some function or process **multiple times on multiple items (as above where the same command is used three times on three different data frames)**, you need to use a for-loop or
+iterating function. These can reduce further unwanted redundancies by applying the function or process iteratively. Read on for more info.
 
 ## For-loops
 
@@ -133,7 +134,7 @@ section instead on how to use purrr to make an iterative function.
 Important to understand conceptually what a for-loop is, but using them
 is impractical when you have purrr**
 
-# purrr and Iterative Functions
+## purrr and Iterative Functions
 
 *All notes here come from Charlotte Wickham's lecture tutorial below*
 
@@ -198,7 +199,7 @@ knitr::include_graphics(here::here("pics", "map_structure_2.png"))
 
 So lets walk through a case example.
 
-## Reproducible example
+### Reproducible example: Scraping web data
 
 This is an example walk through showing how we can use `purrr` to speed
 things up dramatically and/or reduce the use of unwanted, extra code in
@@ -293,7 +294,7 @@ head(lpga_data)
 
 
 
-## Non-reproducible example (Juvenile Life Without Parole study)
+### Non-reproducible example (Juvenile Life Without Parole study)
 
 In the Juvenile Lifers study, there were a series of questions that
 participants rated on a scale of 0-100 in terms of difficulty. Part of
@@ -382,7 +383,7 @@ rm(dfs) #discard list. It has fulfilled its purpose.
 And just like that, we're done!
 
 
-## Example 3: Read/Import several files at once with `map()`
+### Example 3: Read/Import several files at once with `map()`
 
 **Note.** This reads many .csv files and combines them into a *SINGLE,
 unified data frame*. If you want to import many files at once but keep

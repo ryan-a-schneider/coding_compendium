@@ -78,9 +78,9 @@ mtcars %>%
 
 
 
-# Dropping Missing values from the data set
+## Dropping Missing values from the data set
 
-`tidyr::drop_na()`
+Use `tidyr::drop_na()` to remove rows with missing values.
 
 ```{r 4.5}
 example_data=dplyr::tribble(~name, ~bday_month, ~car,
@@ -91,7 +91,7 @@ example_data=dplyr::tribble(~name, ~bday_month, ~car,
                             "Cassidy", 6, "honda")
 
 
-example_data
+knitr::kable(example_data)
 
 example_data %>% drop_na() # with nothing specified, it drops ALL variables that have >=1 missing value
 
