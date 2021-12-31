@@ -34,6 +34,8 @@ https://easystats.github.io/easystats/
 
 Scenario: You've run some statistical test (like the below regression), and want a summary of the model estimates.
 ```{r 12_model}
+rm(iris)
+
 model <- lm(Sepal.Length ~ Species, data = iris)
 ```
 
