@@ -72,7 +72,7 @@ cars_df |> filter(!(str_detect(car, "Pontiac")))
 
 ## Force all letters to lower case
 
-Use `str_to_lower()`
+Use `stringr::str_to_lower()`
 
 ```{r 6.4, chapter_6_end}
 blah=tribble(~A, ~B,

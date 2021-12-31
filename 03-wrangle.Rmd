@@ -477,9 +477,7 @@ mtcars %>% relocate(hp:wt, .after= am) %>% head()
 ```
 
 
-## Working with date and time variables
-
-### Format date-and-time variables appropriate as date objects in R
+## Date and time variables
 
 Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass. It requires things to be done in two stages, and very precisely. Particularly in the first stage.
 

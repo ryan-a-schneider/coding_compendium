@@ -51,6 +51,7 @@ Use the `include_graphics()` command and specify both the file location and it's
 knitr::include_graphics(here::here("pics","snapchat.png"))
 ```
 
+***NOTE***. Use 3000-600 DPI to get good looking pictures.
 
 The [bookdown book](https://bookdown.org/yihui/bookdown/figures.html) notes that:
 
@@ -77,5 +78,24 @@ You can also write footnotes^[Kruschke, J. (2015). Goals, power, and sample size
 ## Change the color of your text
 
 <span style="color:blue">  YOUR TEXT HERE </span>
+
+
+## Re-using code chunk options
+https://yihui.org/en/2021/05/knitr-reuse/
+
+
+## Making better tables
+
+https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/
+
+
+## Running in-line code
+
+To run code in the middle of a sentence, you create a mini code chunk *inside* the sentence. For example:
+> There are 2x2 apples in the basket
+
+Could be typed as...
+
+There are `r 2*2` apples in the basket
 
 
