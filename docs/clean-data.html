@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-12-30" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="wrangle-data.html"/>
-<link rel="next" href="dropping-missing-values-from-the-data-set.html"/>
+<link rel="next" href="working-with-factors.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -179,10 +179,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
 <li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Working with date and time variables</a>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.12.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
-<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.2</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.1</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
 <li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
@@ -194,155 +193,159 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="clean-data.html"><a href="clean-data.html#identify-columns-or-rows-with-missing-values"><i class="fa fa-check"></i><b>4.3</b> Identify columns or rows with Missing values</a></li>
 <li class="chapter" data-level="4.4" data-path="clean-data.html"><a href="clean-data.html#find-the-percentage-of-a-variable-that-is-missing"><i class="fa fa-check"></i><b>4.4</b> Find the percentage of a variable that is missing</a></li>
 <li class="chapter" data-level="4.5" data-path="clean-data.html"><a href="clean-data.html#exclude-missing-values-from-analysis"><i class="fa fa-check"></i><b>4.5</b> Exclude Missing values from analysis</a></li>
+<li class="chapter" data-level="4.6" data-path="clean-data.html"><a href="clean-data.html#dropping-missing-values-from-the-data-set"><i class="fa fa-check"></i><b>4.6</b> Dropping Missing values from the data set</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dropping-missing-values-from-the-data-set.html"><a href="dropping-missing-values-from-the-data-set.html"><i class="fa fa-check"></i><b>5</b> Dropping Missing values from the data set</a></li>
-<li class="chapter" data-level="6" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>6</b> Working with Factors</a>
+<li class="chapter" data-level="5" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>5</b> Working with Factors</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>6.1</b> Manually recode/change a factor’s levels</a></li>
-<li class="chapter" data-level="6.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>6.2</b> Collapse factor levels</a></li>
-<li class="chapter" data-level="6.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>6.3</b> Add levels to a factor</a></li>
-<li class="chapter" data-level="6.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>6.4</b> Drop unused levels</a></li>
-<li class="chapter" data-level="6.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>6.5</b> Change the order of a factor’s levels</a></li>
+<li class="chapter" data-level="5.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>5.1</b> Manually recode/change a factor’s levels</a></li>
+<li class="chapter" data-level="5.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>5.2</b> Collapse factor levels</a></li>
+<li class="chapter" data-level="5.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>5.3</b> Add levels to a factor</a></li>
+<li class="chapter" data-level="5.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>5.4</b> Drop unused levels</a></li>
+<li class="chapter" data-level="5.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>5.5</b> Change the order of a factor’s levels</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>7</b> Working with Strings</a>
+<li class="chapter" data-level="6" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>6</b> Working with Strings</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>7.1</b> Remove a pattern from a string</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>7.2</b> Replace one pattern in a string with another</a></li>
-<li class="chapter" data-level="7.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>7.3</b> Find (i.e., filter for) all instances of a string</a></li>
-<li class="chapter" data-level="7.4" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>7.4</b> Force all letters to lower case</a></li>
+<li class="chapter" data-level="6.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>6.1</b> Remove a pattern from a string</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>6.2</b> Replace one pattern in a string with another</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>6.3</b> Find (i.e., filter for) all instances of a string</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-strings.html"><a href="working-with-strings.html#drop-all-rows-from-a-data-set-that-contain-a-certain-string"><i class="fa fa-check"></i><b>6.4</b> Drop all rows from a data set that contain a certain string</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>6.5</b> Force all letters to lower case</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs with the ggplot and see packages</a>
+<li class="chapter" data-level="7" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html"><i class="fa fa-check"></i><b>7</b> Figures and Graphs with the ggplot and see packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#commands-for-ggplot-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for ggplot graph types</a></li>
-<li class="chapter" data-level="8.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#specific-commands-for-specific-types-of-analysis"><i class="fa fa-check"></i><b>8.2</b> Specific Commands for Specific Types of Analysis</a>
+<li class="chapter" data-level="7.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#commands-for-ggplot-graph-types"><i class="fa fa-check"></i><b>7.1</b> Commands for ggplot graph types</a></li>
+<li class="chapter" data-level="7.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#specific-commands-for-specific-types-of-analysis"><i class="fa fa-check"></i><b>7.2</b> Specific Commands for Specific Types of Analysis</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#lavaan-stuff"><i class="fa fa-check"></i><b>8.2.1</b> lavaan stuff</a></li>
-<li class="chapter" data-level="8.2.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#bayes-stuff"><i class="fa fa-check"></i><b>8.2.2</b> Bayes stuff</a></li>
-<li class="chapter" data-level="8.2.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>8.2.3</b> Histograms and density curves</a></li>
+<li class="chapter" data-level="7.2.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#lavaan-stuff"><i class="fa fa-check"></i><b>7.2.1</b> lavaan stuff</a></li>
+<li class="chapter" data-level="7.2.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#bayes-stuff"><i class="fa fa-check"></i><b>7.2.2</b> Bayes stuff</a></li>
+<li class="chapter" data-level="7.2.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>7.2.3</b> Histograms and density curves</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.3</b> Highlight specific points</a></li>
-<li class="chapter" data-level="8.4" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.4</b> Add labels to data points</a></li>
-<li class="chapter" data-level="8.5" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.5</b> Plotting multiple graphs at once</a></li>
-<li class="chapter" data-level="8.6" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.6</b> Change the colors (bars; columns; dots; etc.)</a>
+<li class="chapter" data-level="7.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#highlight-specific-points"><i class="fa fa-check"></i><b>7.3</b> Highlight specific points</a></li>
+<li class="chapter" data-level="7.4" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>7.4</b> Add labels to data points</a></li>
+<li class="chapter" data-level="7.5" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>7.5</b> Plotting multiple graphs at once</a></li>
+<li class="chapter" data-level="7.6" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>7.6</b> Change the colors (bars; columns; dots; etc.)</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.6.1</b> Fine-tuning colors</a></li>
-<li class="chapter" data-level="8.6.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#more-options-with-the-see-package"><i class="fa fa-check"></i><b>8.6.2</b> More options with the see package</a></li>
+<li class="chapter" data-level="7.6.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#fine-tuning-colors"><i class="fa fa-check"></i><b>7.6.1</b> Fine-tuning colors</a></li>
+<li class="chapter" data-level="7.6.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#more-options-with-the-see-package"><i class="fa fa-check"></i><b>7.6.2</b> More options with the see package</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.7</b> Other aesthetic mappings</a></li>
-<li class="chapter" data-level="8.8" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.8</b> Adding and Customizing Text</a>
+<li class="chapter" data-level="7.7" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>7.7</b> Other aesthetic mappings</a></li>
+<li class="chapter" data-level="7.8" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>7.8</b> Adding and Customizing Text</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>8.8.1</b> Add a title, axis labels, and captions</a></li>
-<li class="chapter" data-level="8.8.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#center-graph-title"><i class="fa fa-check"></i><b>8.8.2</b> Center graph title</a></li>
-<li class="chapter" data-level="8.8.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#use-different-fonts"><i class="fa fa-check"></i><b>8.8.3</b> Use different fonts</a></li>
+<li class="chapter" data-level="7.8.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>7.8.1</b> Add a title, axis labels, and captions</a></li>
+<li class="chapter" data-level="7.8.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#center-graph-title"><i class="fa fa-check"></i><b>7.8.2</b> Center graph title</a></li>
+<li class="chapter" data-level="7.8.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#use-different-fonts"><i class="fa fa-check"></i><b>7.8.3</b> Use different fonts</a></li>
 </ul></li>
-<li class="chapter" data-level="8.9" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#remove-gridlines"><i class="fa fa-check"></i><b>8.9</b> Remove gridlines</a></li>
-<li class="chapter" data-level="8.10" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#faceting"><i class="fa fa-check"></i><b>8.10</b> Faceting</a></li>
-<li class="chapter" data-level="8.11" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#log-transformations"><i class="fa fa-check"></i><b>8.11</b> Log transformations</a></li>
-<li class="chapter" data-level="8.12" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>8.12</b> Changing the scale of the axis</a></li>
-<li class="chapter" data-level="8.13" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-regression-line"><i class="fa fa-check"></i><b>8.13</b> Add a regression line</a></li>
+<li class="chapter" data-level="7.9" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#remove-gridlines"><i class="fa fa-check"></i><b>7.9</b> Remove gridlines</a></li>
+<li class="chapter" data-level="7.10" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#faceting"><i class="fa fa-check"></i><b>7.10</b> Faceting</a></li>
+<li class="chapter" data-level="7.11" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#log-transformations"><i class="fa fa-check"></i><b>7.11</b> Log transformations</a></li>
+<li class="chapter" data-level="7.12" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>7.12</b> Changing the scale of the axis</a></li>
+<li class="chapter" data-level="7.13" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-regression-line"><i class="fa fa-check"></i><b>7.13</b> Add a regression line</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>9</b> Making Tables with flextable</a>
+<li class="chapter" data-level="8" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>8</b> Making Tables with flextable</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>9.1</b> APA Table Components</a></li>
-<li class="chapter" data-level="9.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>9.2</b> Indent values</a></li>
-<li class="chapter" data-level="9.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>9.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
-<li class="chapter" data-level="9.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>9.4</b> Change font and font size</a></li>
-<li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
-<li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
+<li class="chapter" data-level="8.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>8.1</b> APA Table Components</a></li>
+<li class="chapter" data-level="8.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>8.2</b> Indent values</a></li>
+<li class="chapter" data-level="8.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>8.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
+<li class="chapter" data-level="8.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>8.4</b> Change font and font size</a></li>
+<li class="chapter" data-level="8.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>8.5</b> Grouped table</a></li>
+<li class="chapter" data-level="8.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>8.6</b> Complete Example</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<li class="chapter" data-level="9" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>9</b> Misc. Stuff</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
-<li class="chapter" data-level="10.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
-<li class="chapter" data-level="10.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
-<li class="chapter" data-level="10.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
-<li class="chapter" data-level="10.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
-<li class="chapter" data-level="10.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+<li class="chapter" data-level="9.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>9.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="9.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>9.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="9.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>9.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="9.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>9.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="9.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>9.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="9.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>9.6</b> Print multiple things in one statement</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Intermediate R: Functions, Loops, and Iterative Programming</a>
+<li class="chapter" data-level="10" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>10</b> Intermediate R: Functions, Loops, and Iterative Programming</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>11.1</b> Functions</a></li>
-<li class="chapter" data-level="11.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>11.2</b> For-loops</a></li>
+<li class="chapter" data-level="10.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>10.1</b> Functions</a></li>
+<li class="chapter" data-level="10.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>10.2</b> For-loops</a></li>
+<li class="chapter" data-level="10.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#purrr-and-iterative-functions"><i class="fa fa-check"></i><b>10.3</b> purrr and Iterative Functions</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#reproducible-example-scraping-web-data"><i class="fa fa-check"></i><b>10.3.1</b> Reproducible example: Scraping web data</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#non-reproducible-example-juvenile-life-without-parole-study"><i class="fa fa-check"></i><b>10.3.2</b> Non-reproducible example (Juvenile Life Without Parole study)</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#example-3-readimport-several-files-at-once-with-map"><i class="fa fa-check"></i><b>10.3.3</b> Example 3: Read/Import several files at once with <code>map()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html"><i class="fa fa-check"></i><b>12</b> purrr and Iterative Functions</a>
+<li class="chapter" data-level="10.4" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#other-purrr-commands"><i class="fa fa-check"></i><b>10.4</b> Other purrr commands</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#reproducible-example"><i class="fa fa-check"></i><b>12.1</b> Reproducible example</a></li>
-<li class="chapter" data-level="12.2" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#non-reproducible-example-juvenile-life-without-parole-study"><i class="fa fa-check"></i><b>12.2</b> Non-reproducible example (Juvenile Life Without Parole study)</a></li>
-<li class="chapter" data-level="12.3" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#example-3-readimport-several-files-at-once-with-map"><i class="fa fa-check"></i><b>12.3</b> Example 3: Read/Import several files at once with <code>map()</code></a></li>
-<li class="chapter" data-level="12.4" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#other-purrr-commands"><i class="fa fa-check"></i><b>12.4</b> Other purrr commands</a>
-<ul>
-<li class="chapter" data-level="12.4.1" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>12.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
-<li class="chapter" data-level="12.4.2" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#map2-and-walk2"><i class="fa fa-check"></i><b>12.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
-<li class="chapter" data-level="12.4.3" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>12.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>13</b> Intro to R Markdown</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>13.1</b> Important code chunk options</a></li>
-<li class="chapter" data-level="13.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>13.2</b> Writing math equations and symbols</a>
-<ul>
-<li class="chapter" data-level="13.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>13.2.1</b> Greek symbols</a></li>
-<li class="chapter" data-level="13.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>13.2.2</b> Math notation</a></li>
-<li class="chapter" data-level="13.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>13.2.3</b> Statistics notation</a></li>
-<li class="chapter" data-level="13.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>13.2.4</b> Writing in-line code</a></li>
-</ul></li>
-<li class="chapter" data-level="13.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>13.3</b> Including graphics/inserting pictures</a></li>
-<li class="chapter" data-level="13.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>13.4</b> Footnotes</a></li>
-<li class="chapter" data-level="13.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>13.5</b> Change the color of your text</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>14</b> Statistics and Psych-specific Stuff</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>14.1</b> Create or sample from a distribution</a></li>
-<li class="chapter" data-level="14.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>14.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
-<li class="chapter" data-level="14.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#statistical-tests-and-modeling-with-easystats"><i class="fa fa-check"></i><b>14.3</b> Statistical tests and modeling with <code>easystats</code></a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-parameter-estimates-from-model-objects"><i class="fa fa-check"></i><b>14.3.1</b> Getting parameter estimates from model objects</a></li>
-<li class="chapter" data-level="14.3.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-model-information-and-performance-metrics"><i class="fa fa-check"></i><b>14.3.2</b> Getting model information and performance metrics</a></li>
-<li class="chapter" data-level="14.3.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#effect-size-info-with-effectsize"><i class="fa fa-check"></i><b>14.3.3</b> Effect size info with <code>effectsize</code></a></li>
-<li class="chapter" data-level="14.3.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#quick-detailed-and-automated-reporting-with-report"><i class="fa fa-check"></i><b>14.3.4</b> Quick, detailed, and automated reporting with <code>report</code></a></li>
-<li class="chapter" data-level="14.3.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#running-correlations-with-correlation"><i class="fa fa-check"></i><b>14.3.5</b> Running correlations with <code>correlation</code></a></li>
+<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>10.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
+<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2-and-walk2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
+<li class="chapter" data-level="10.4.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>10.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>15</b> Coding Tips and Tricks</a>
+<li class="chapter" data-level="11" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Intro to R Markdown</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#grammar-stuff-in-base-r"><i class="fa fa-check"></i><b>15.1</b> Grammar stuff in base R</a>
+<li class="chapter" data-level="11.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>11.1</b> Important code chunk options</a></li>
+<li class="chapter" data-level="11.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>11.2</b> Writing math equations and symbols</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>15.1.1</b> Regex expressions and symbols</a></li>
-<li class="chapter" data-level="15.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>15.1.2</b> The new pipe (Base R)</a></li>
+<li class="chapter" data-level="11.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>11.2.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="11.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>11.2.2</b> Math notation</a></li>
+<li class="chapter" data-level="11.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>11.2.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="11.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>11.2.4</b> Writing in-line code</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>15.2</b> Tidyverse stuff</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>15.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+<li class="chapter" data-level="11.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>11.3</b> Including graphics/inserting pictures</a></li>
+<li class="chapter" data-level="11.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>11.4</b> Footnotes</a></li>
+<li class="chapter" data-level="11.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>11.5</b> Change the color of your text</a></li>
+<li class="chapter" data-level="11.6" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#re-using-code-chunk-options"><i class="fa fa-check"></i><b>11.6</b> Re-using code chunk options</a></li>
+<li class="chapter" data-level="11.7" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#making-better-tables"><i class="fa fa-check"></i><b>11.7</b> Making better tables</a></li>
+<li class="chapter" data-level="11.8" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#running-in-line-code"><i class="fa fa-check"></i><b>11.8</b> Running in-line code</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>15.3</b> Function-related stuff</a>
+<li class="chapter" data-level="12" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>12</b> Statistics and Psych-specific Stuff</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>15.3.1</b> User-supplied expressions or named columns in functions</a></li>
-<li class="chapter" data-level="15.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>15.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
-<li class="chapter" data-level="15.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>15.3.3</b> Formulas within functions</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>15.4</b> Creating a package</a>
+<li class="chapter" data-level="12.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>12.1</b> Create or sample from a distribution</a></li>
+<li class="chapter" data-level="12.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>12.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
+<li class="chapter" data-level="12.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#statistical-tests-and-modeling-with-easystats"><i class="fa fa-check"></i><b>12.3</b> Statistical tests and modeling with <code>easystats</code></a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>15.4.1</b> Documenting pacakge meta-data</a></li>
-<li class="chapter" data-level="15.4.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>15.4.2</b> Connecting to other packages</a></li>
-<li class="chapter" data-level="15.4.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#linking-git-and-github"><i class="fa fa-check"></i><b>15.4.3</b> Linking Git and Github</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>15.5</b> Creating a bookdown</a>
-<ul>
-<li class="chapter" data-level="15.5.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>15.5.1</b> Rendering the book once it’s done</a></li>
+<li class="chapter" data-level="12.3.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-parameter-estimates-from-model-objects"><i class="fa fa-check"></i><b>12.3.1</b> Getting parameter estimates from model objects</a></li>
+<li class="chapter" data-level="12.3.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-model-information-and-performance-metrics"><i class="fa fa-check"></i><b>12.3.2</b> Getting model information and performance metrics</a></li>
+<li class="chapter" data-level="12.3.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#effect-size-info-with-effectsize"><i class="fa fa-check"></i><b>12.3.3</b> Effect size info with <code>effectsize</code></a></li>
+<li class="chapter" data-level="12.3.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#quick-detailed-and-automated-reporting-with-report"><i class="fa fa-check"></i><b>12.3.4</b> Quick, detailed, and automated reporting with <code>report</code></a></li>
+<li class="chapter" data-level="12.3.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#running-correlations-with-correlation"><i class="fa fa-check"></i><b>12.3.5</b> Running correlations with <code>correlation</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>16</b> Creating a simulated data set</a>
+<li class="chapter" data-level="13" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>13</b> Coding Tips and Tricks</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-1-independent-samples-from-a-normal-distribution"><i class="fa fa-check"></i><b>16.1</b> Part 1: Independent samples from a normal distribution</a></li>
-<li class="chapter" data-level="16.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-2-creating-data-sets-with-quantitative-and-categorical-variables"><i class="fa fa-check"></i><b>16.2</b> Part 2: Creating data sets with quantitative and categorical variables</a>
+<li class="chapter" data-level="13.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#grammar-stuff-in-base-r"><i class="fa fa-check"></i><b>13.1</b> Grammar stuff in base R</a>
 <ul>
-<li class="chapter" data-level="16.2.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#a.-data-with-no-difference-among-groups"><i class="fa fa-check"></i><b>16.2.1</b> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</a></li>
-<li class="chapter" data-level="16.2.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#b.-data-with-a-difference-among-groups"><i class="fa fa-check"></i><b>16.2.2</b> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</a></li>
-<li class="chapter" data-level="16.2.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#c.-data-with-multiple-quantitative-variables-with-groups"><i class="fa fa-check"></i><b>16.2.3</b> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</a></li>
+<li class="chapter" data-level="13.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>13.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="13.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>13.1.2</b> The new pipe (Base R)</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-3-repeatedly-simulate-samples-with-replicate"><i class="fa fa-check"></i><b>16.3</b> Part 3: Repeatedly simulate samples with replicate()</a></li>
-<li class="chapter" data-level="16.4" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-4-repeatedly-making-whole-data-sets"><i class="fa fa-check"></i><b>16.4</b> Part 4: repeatedly making whole data sets</a></li>
-<li class="chapter" data-level="16.5" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-5-using-purrr"><i class="fa fa-check"></i><b>16.5</b> Part 5: Using purrr</a></li>
+<li class="chapter" data-level="13.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>13.2</b> Tidyverse stuff</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>13.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>13.3</b> Function-related stuff</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>13.3.1</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>13.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
+<li class="chapter" data-level="13.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>13.3.3</b> Formulas within functions</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>13.4</b> Creating a package</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>13.4.1</b> Documenting pacakge meta-data</a></li>
+<li class="chapter" data-level="13.4.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>13.4.2</b> Connecting to other packages</a></li>
+<li class="chapter" data-level="13.4.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#linking-git-and-github"><i class="fa fa-check"></i><b>13.4.3</b> Linking Git and Github</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>13.5</b> Creating a bookdown</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>13.5.1</b> Rendering the book once it’s done</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>14</b> Creating a simulated data set</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-1-independent-samples-from-a-normal-distribution"><i class="fa fa-check"></i><b>14.1</b> Part 1: Independent samples from a normal distribution</a></li>
+<li class="chapter" data-level="14.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-2-creating-data-sets-with-quantitative-and-categorical-variables"><i class="fa fa-check"></i><b>14.2</b> Part 2: Creating data sets with quantitative and categorical variables</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#a.-data-with-no-difference-among-groups"><i class="fa fa-check"></i><b>14.2.1</b> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</a></li>
+<li class="chapter" data-level="14.2.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#b.-data-with-a-difference-among-groups"><i class="fa fa-check"></i><b>14.2.2</b> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</a></li>
+<li class="chapter" data-level="14.2.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#c.-data-with-multiple-quantitative-variables-with-groups"><i class="fa fa-check"></i><b>14.2.3</b> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-3-repeatedly-simulate-samples-with-replicate"><i class="fa fa-check"></i><b>14.3</b> Part 3: Repeatedly simulate samples with replicate()</a></li>
+<li class="chapter" data-level="14.4" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-4-repeatedly-making-whole-data-sets"><i class="fa fa-check"></i><b>14.4</b> Part 4: repeatedly making whole data sets</a></li>
+<li class="chapter" data-level="14.5" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-5-using-purrr"><i class="fa fa-check"></i><b>14.5</b> Part 5: Using purrr</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -467,6 +470,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exclude-missing-values-from-analysis" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Exclude Missing values from analysis</h2>
 </div>
+<div id="dropping-missing-values-from-the-data-set" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Dropping Missing values from the data set</h2>
+<p>Use <code>tidyr::drop_na()</code> to remove rows with missing values.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="clean-data.html#cb85-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month, <span class="sc">~</span>car,</span>
+<span id="cb85-2"><a href="clean-data.html#cb85-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>, <span class="st">&quot;kia&quot;</span>,</span>
+<span id="cb85-3"><a href="clean-data.html#cb85-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;toyota&quot;</span>,</span>
+<span id="cb85-4"><a href="clean-data.html#cb85-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
+<span id="cb85-5"><a href="clean-data.html#cb85-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>, <span class="cn">NA</span>,</span>
+<span id="cb85-6"><a href="clean-data.html#cb85-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>, <span class="st">&quot;honda&quot;</span>)</span>
+<span id="cb85-7"><a href="clean-data.html#cb85-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-8"><a href="clean-data.html#cb85-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-9"><a href="clean-data.html#cb85-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(example_data)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">name</th>
+<th align="right">bday_month</th>
+<th align="left">car</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Ryan</td>
+<td align="right">10</td>
+<td align="left">kia</td>
+</tr>
+<tr class="even">
+<td align="left">Z</td>
+<td align="right">NA</td>
+<td align="left">toyota</td>
+</tr>
+<tr class="odd">
+<td align="left">Jen</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Tristin</td>
+<td align="right">999</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Cassidy</td>
+<td align="right">6</td>
+<td align="left">honda</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="clean-data.html#cb86-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>() <span class="co"># with nothing specified, it drops ALL variables that have &gt;=1 missing value</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 x 3
+##   name    bday_month car  
+##   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;
+## 1 Ryan            10 kia  
+## 2 Cassidy          6 honda</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="clean-data.html#cb88-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(car) <span class="co"># drops only rows with values missing in the specified column</span></span></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   name    bday_month car   
+##   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt; 
+## 1 Ryan            10 kia   
+## 2 Z               NA toyota
+## 3 Cassidy          6 honda</code></pre>
+
+</div>
 </div>
             </section>
 
@@ -474,7 +540,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="wrangle-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dropping-missing-values-from-the-data-set.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="working-with-factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

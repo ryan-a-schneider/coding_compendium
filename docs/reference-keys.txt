@@ -25,8 +25,7 @@ managing-many-models
 turn-row-names-into-a-columnvariable
 how-to-editchange-column-names
 re-order-columns-in-a-data-set
-working-with-date-and-time-variables
-format-date-and-time-variables-appropriate-as-date-objects-in-r
+date-and-time-variables
 find-the-difference-between-two-datestimes
 reverse-code-a-variable
 create-a-relative-ranking-among-several-variables
@@ -47,6 +46,7 @@ working-with-strings
 remove-a-pattern-from-a-string
 replace-one-pattern-in-a-string-with-another
 find-i.e.-filter-for-all-instances-of-a-string
+drop-all-rows-from-a-data-set-that-contain-a-certain-string
 force-all-letters-to-lower-case
 figures-and-graphs-with-the-ggplot-and-see-packages
 commands-for-ggplot-graph-types
@@ -92,7 +92,7 @@ intermediate-r-functions-loops-and-iterative-programming
 functions
 for-loops
 purrr-and-iterative-functions
-reproducible-example
+reproducible-example-scraping-web-data
 non-reproducible-example-juvenile-life-without-parole-study
 example-3-readimport-several-files-at-once-with-map
 other-purrr-commands
@@ -109,6 +109,9 @@ writing-in-line-code
 including-graphicsinserting-pictures
 footnotes
 change-the-color-of-your-text
+re-using-code-chunk-options
+making-better-tables
+running-in-line-code
 statistics-and-psych-specific-stuff
 create-or-sample-from-a-distribution
 find-cohens-kappa-interrater-reliability

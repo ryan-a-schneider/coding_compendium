@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Creating a simulated data set | Creating a simulated data set</title>
-  <meta name="description" content="Chapter 16 Creating a simulated data set | Creating a simulated data set" />
+  <title>Chapter 14 Creating a simulated data set | Creating a simulated data set</title>
+  <meta name="description" content="Chapter 14 Creating a simulated data set | Creating a simulated data set" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Creating a simulated data set | Creating a simulated data set" />
+  <meta property="og:title" content="Chapter 14 Creating a simulated data set | Creating a simulated data set" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Creating a simulated data set | Creating a simulated data set" />
+  <meta name="twitter:title" content="Chapter 14 Creating a simulated data set | Creating a simulated data set" />
   
   
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2021-12-30" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,10 +179,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
 <li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#working-with-date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Working with date and time variables</a>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#format-date-and-time-variables-appropriate-as-date-objects-in-r"><i class="fa fa-check"></i><b>3.12.1</b> Format date-and-time variables appropriate as date objects in R</a></li>
-<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.2</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.1</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
 <li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
@@ -194,155 +193,159 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="clean-data.html"><a href="clean-data.html#identify-columns-or-rows-with-missing-values"><i class="fa fa-check"></i><b>4.3</b> Identify columns or rows with Missing values</a></li>
 <li class="chapter" data-level="4.4" data-path="clean-data.html"><a href="clean-data.html#find-the-percentage-of-a-variable-that-is-missing"><i class="fa fa-check"></i><b>4.4</b> Find the percentage of a variable that is missing</a></li>
 <li class="chapter" data-level="4.5" data-path="clean-data.html"><a href="clean-data.html#exclude-missing-values-from-analysis"><i class="fa fa-check"></i><b>4.5</b> Exclude Missing values from analysis</a></li>
+<li class="chapter" data-level="4.6" data-path="clean-data.html"><a href="clean-data.html#dropping-missing-values-from-the-data-set"><i class="fa fa-check"></i><b>4.6</b> Dropping Missing values from the data set</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="dropping-missing-values-from-the-data-set.html"><a href="dropping-missing-values-from-the-data-set.html"><i class="fa fa-check"></i><b>5</b> Dropping Missing values from the data set</a></li>
-<li class="chapter" data-level="6" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>6</b> Working with Factors</a>
+<li class="chapter" data-level="5" data-path="working-with-factors.html"><a href="working-with-factors.html"><i class="fa fa-check"></i><b>5</b> Working with Factors</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>6.1</b> Manually recode/change a factor’s levels</a></li>
-<li class="chapter" data-level="6.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>6.2</b> Collapse factor levels</a></li>
-<li class="chapter" data-level="6.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>6.3</b> Add levels to a factor</a></li>
-<li class="chapter" data-level="6.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>6.4</b> Drop unused levels</a></li>
-<li class="chapter" data-level="6.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>6.5</b> Change the order of a factor’s levels</a></li>
+<li class="chapter" data-level="5.1" data-path="working-with-factors.html"><a href="working-with-factors.html#manually-recodechange-a-factors-levels"><i class="fa fa-check"></i><b>5.1</b> Manually recode/change a factor’s levels</a></li>
+<li class="chapter" data-level="5.2" data-path="working-with-factors.html"><a href="working-with-factors.html#collapse-factor-levels"><i class="fa fa-check"></i><b>5.2</b> Collapse factor levels</a></li>
+<li class="chapter" data-level="5.3" data-path="working-with-factors.html"><a href="working-with-factors.html#add-levels-to-a-factor"><i class="fa fa-check"></i><b>5.3</b> Add levels to a factor</a></li>
+<li class="chapter" data-level="5.4" data-path="working-with-factors.html"><a href="working-with-factors.html#drop-unused-levels"><i class="fa fa-check"></i><b>5.4</b> Drop unused levels</a></li>
+<li class="chapter" data-level="5.5" data-path="working-with-factors.html"><a href="working-with-factors.html#change-the-order-of-a-factors-levels"><i class="fa fa-check"></i><b>5.5</b> Change the order of a factor’s levels</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>7</b> Working with Strings</a>
+<li class="chapter" data-level="6" data-path="working-with-strings.html"><a href="working-with-strings.html"><i class="fa fa-check"></i><b>6</b> Working with Strings</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>7.1</b> Remove a pattern from a string</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>7.2</b> Replace one pattern in a string with another</a></li>
-<li class="chapter" data-level="7.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>7.3</b> Find (i.e., filter for) all instances of a string</a></li>
-<li class="chapter" data-level="7.4" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>7.4</b> Force all letters to lower case</a></li>
+<li class="chapter" data-level="6.1" data-path="working-with-strings.html"><a href="working-with-strings.html#remove-a-pattern-from-a-string"><i class="fa fa-check"></i><b>6.1</b> Remove a pattern from a string</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-strings.html"><a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another"><i class="fa fa-check"></i><b>6.2</b> Replace one pattern in a string with another</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-strings.html"><a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string"><i class="fa fa-check"></i><b>6.3</b> Find (i.e., filter for) all instances of a string</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-strings.html"><a href="working-with-strings.html#drop-all-rows-from-a-data-set-that-contain-a-certain-string"><i class="fa fa-check"></i><b>6.4</b> Drop all rows from a data set that contain a certain string</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-strings.html"><a href="working-with-strings.html#force-all-letters-to-lower-case"><i class="fa fa-check"></i><b>6.5</b> Force all letters to lower case</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html"><i class="fa fa-check"></i><b>8</b> Figures and Graphs with the ggplot and see packages</a>
+<li class="chapter" data-level="7" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html"><i class="fa fa-check"></i><b>7</b> Figures and Graphs with the ggplot and see packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#commands-for-ggplot-graph-types"><i class="fa fa-check"></i><b>8.1</b> Commands for ggplot graph types</a></li>
-<li class="chapter" data-level="8.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#specific-commands-for-specific-types-of-analysis"><i class="fa fa-check"></i><b>8.2</b> Specific Commands for Specific Types of Analysis</a>
+<li class="chapter" data-level="7.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#commands-for-ggplot-graph-types"><i class="fa fa-check"></i><b>7.1</b> Commands for ggplot graph types</a></li>
+<li class="chapter" data-level="7.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#specific-commands-for-specific-types-of-analysis"><i class="fa fa-check"></i><b>7.2</b> Specific Commands for Specific Types of Analysis</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#lavaan-stuff"><i class="fa fa-check"></i><b>8.2.1</b> lavaan stuff</a></li>
-<li class="chapter" data-level="8.2.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#bayes-stuff"><i class="fa fa-check"></i><b>8.2.2</b> Bayes stuff</a></li>
-<li class="chapter" data-level="8.2.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>8.2.3</b> Histograms and density curves</a></li>
+<li class="chapter" data-level="7.2.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#lavaan-stuff"><i class="fa fa-check"></i><b>7.2.1</b> lavaan stuff</a></li>
+<li class="chapter" data-level="7.2.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#bayes-stuff"><i class="fa fa-check"></i><b>7.2.2</b> Bayes stuff</a></li>
+<li class="chapter" data-level="7.2.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#histograms-and-density-curves"><i class="fa fa-check"></i><b>7.2.3</b> Histograms and density curves</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#highlight-specific-points"><i class="fa fa-check"></i><b>8.3</b> Highlight specific points</a></li>
-<li class="chapter" data-level="8.4" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>8.4</b> Add labels to data points</a></li>
-<li class="chapter" data-level="8.5" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>8.5</b> Plotting multiple graphs at once</a></li>
-<li class="chapter" data-level="8.6" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>8.6</b> Change the colors (bars; columns; dots; etc.)</a>
+<li class="chapter" data-level="7.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#highlight-specific-points"><i class="fa fa-check"></i><b>7.3</b> Highlight specific points</a></li>
+<li class="chapter" data-level="7.4" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-labels-to-data-points"><i class="fa fa-check"></i><b>7.4</b> Add labels to data points</a></li>
+<li class="chapter" data-level="7.5" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#plotting-multiple-graphs-at-once"><i class="fa fa-check"></i><b>7.5</b> Plotting multiple graphs at once</a></li>
+<li class="chapter" data-level="7.6" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#change-the-colors-bars-columns-dots-etc."><i class="fa fa-check"></i><b>7.6</b> Change the colors (bars; columns; dots; etc.)</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#fine-tuning-colors"><i class="fa fa-check"></i><b>8.6.1</b> Fine-tuning colors</a></li>
-<li class="chapter" data-level="8.6.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#more-options-with-the-see-package"><i class="fa fa-check"></i><b>8.6.2</b> More options with the see package</a></li>
+<li class="chapter" data-level="7.6.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#fine-tuning-colors"><i class="fa fa-check"></i><b>7.6.1</b> Fine-tuning colors</a></li>
+<li class="chapter" data-level="7.6.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#more-options-with-the-see-package"><i class="fa fa-check"></i><b>7.6.2</b> More options with the see package</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>8.7</b> Other aesthetic mappings</a></li>
-<li class="chapter" data-level="8.8" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>8.8</b> Adding and Customizing Text</a>
+<li class="chapter" data-level="7.7" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#other-aesthetic-mappings"><i class="fa fa-check"></i><b>7.7</b> Other aesthetic mappings</a></li>
+<li class="chapter" data-level="7.8" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#adding-and-customizing-text"><i class="fa fa-check"></i><b>7.8</b> Adding and Customizing Text</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>8.8.1</b> Add a title, axis labels, and captions</a></li>
-<li class="chapter" data-level="8.8.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#center-graph-title"><i class="fa fa-check"></i><b>8.8.2</b> Center graph title</a></li>
-<li class="chapter" data-level="8.8.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#use-different-fonts"><i class="fa fa-check"></i><b>8.8.3</b> Use different fonts</a></li>
+<li class="chapter" data-level="7.8.1" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-title-axis-labels-and-captions"><i class="fa fa-check"></i><b>7.8.1</b> Add a title, axis labels, and captions</a></li>
+<li class="chapter" data-level="7.8.2" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#center-graph-title"><i class="fa fa-check"></i><b>7.8.2</b> Center graph title</a></li>
+<li class="chapter" data-level="7.8.3" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#use-different-fonts"><i class="fa fa-check"></i><b>7.8.3</b> Use different fonts</a></li>
 </ul></li>
-<li class="chapter" data-level="8.9" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#remove-gridlines"><i class="fa fa-check"></i><b>8.9</b> Remove gridlines</a></li>
-<li class="chapter" data-level="8.10" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#faceting"><i class="fa fa-check"></i><b>8.10</b> Faceting</a></li>
-<li class="chapter" data-level="8.11" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#log-transformations"><i class="fa fa-check"></i><b>8.11</b> Log transformations</a></li>
-<li class="chapter" data-level="8.12" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>8.12</b> Changing the scale of the axis</a></li>
-<li class="chapter" data-level="8.13" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-regression-line"><i class="fa fa-check"></i><b>8.13</b> Add a regression line</a></li>
+<li class="chapter" data-level="7.9" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#remove-gridlines"><i class="fa fa-check"></i><b>7.9</b> Remove gridlines</a></li>
+<li class="chapter" data-level="7.10" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#faceting"><i class="fa fa-check"></i><b>7.10</b> Faceting</a></li>
+<li class="chapter" data-level="7.11" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#log-transformations"><i class="fa fa-check"></i><b>7.11</b> Log transformations</a></li>
+<li class="chapter" data-level="7.12" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#changing-the-scale-of-the-axis"><i class="fa fa-check"></i><b>7.12</b> Changing the scale of the axis</a></li>
+<li class="chapter" data-level="7.13" data-path="figures-and-graphs-with-the-ggplot-and-see-packages.html"><a href="figures-and-graphs-with-the-ggplot-and-see-packages.html#add-a-regression-line"><i class="fa fa-check"></i><b>7.13</b> Add a regression line</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>9</b> Making Tables with flextable</a>
+<li class="chapter" data-level="8" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html"><i class="fa fa-check"></i><b>8</b> Making Tables with flextable</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>9.1</b> APA Table Components</a></li>
-<li class="chapter" data-level="9.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>9.2</b> Indent values</a></li>
-<li class="chapter" data-level="9.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>9.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
-<li class="chapter" data-level="9.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>9.4</b> Change font and font size</a></li>
-<li class="chapter" data-level="9.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>9.5</b> Grouped table</a></li>
-<li class="chapter" data-level="9.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>9.6</b> Complete Example</a></li>
+<li class="chapter" data-level="8.1" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#apa-table-components"><i class="fa fa-check"></i><b>8.1</b> APA Table Components</a></li>
+<li class="chapter" data-level="8.2" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#indent-values"><i class="fa fa-check"></i><b>8.2</b> Indent values</a></li>
+<li class="chapter" data-level="8.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>8.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
+<li class="chapter" data-level="8.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>8.4</b> Change font and font size</a></li>
+<li class="chapter" data-level="8.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>8.5</b> Grouped table</a></li>
+<li class="chapter" data-level="8.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>8.6</b> Complete Example</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>10</b> Misc. Stuff</a>
+<li class="chapter" data-level="9" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>9</b> Misc. Stuff</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>10.1</b> Scrape web pages for data tables</a></li>
-<li class="chapter" data-level="10.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>10.2</b> Read SPSS files into R</a></li>
-<li class="chapter" data-level="10.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>10.3</b> Turn numbers into percentages</a></li>
-<li class="chapter" data-level="10.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>10.4</b> Find all possible combindations of items in a vector</a></li>
-<li class="chapter" data-level="10.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>10.5</b> Download files from the internet</a></li>
-<li class="chapter" data-level="10.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>10.6</b> Print multiple things in one statement</a></li>
+<li class="chapter" data-level="9.1" data-path="misc.-stuff.html"><a href="misc.-stuff.html#scrape-web-pages-for-data-tables"><i class="fa fa-check"></i><b>9.1</b> Scrape web pages for data tables</a></li>
+<li class="chapter" data-level="9.2" data-path="misc.-stuff.html"><a href="misc.-stuff.html#read-spss-files-into-r"><i class="fa fa-check"></i><b>9.2</b> Read SPSS files into R</a></li>
+<li class="chapter" data-level="9.3" data-path="misc.-stuff.html"><a href="misc.-stuff.html#turn-numbers-into-percentages"><i class="fa fa-check"></i><b>9.3</b> Turn numbers into percentages</a></li>
+<li class="chapter" data-level="9.4" data-path="misc.-stuff.html"><a href="misc.-stuff.html#find-all-possible-combindations-of-items-in-a-vector"><i class="fa fa-check"></i><b>9.4</b> Find all possible combindations of items in a vector</a></li>
+<li class="chapter" data-level="9.5" data-path="misc.-stuff.html"><a href="misc.-stuff.html#download-files-from-the-internet"><i class="fa fa-check"></i><b>9.5</b> Download files from the internet</a></li>
+<li class="chapter" data-level="9.6" data-path="misc.-stuff.html"><a href="misc.-stuff.html#print-multiple-things-in-one-statement"><i class="fa fa-check"></i><b>9.6</b> Print multiple things in one statement</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>11</b> Intermediate R: Functions, Loops, and Iterative Programming</a>
+<li class="chapter" data-level="10" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html"><i class="fa fa-check"></i><b>10</b> Intermediate R: Functions, Loops, and Iterative Programming</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>11.1</b> Functions</a></li>
-<li class="chapter" data-level="11.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>11.2</b> For-loops</a></li>
+<li class="chapter" data-level="10.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#functions"><i class="fa fa-check"></i><b>10.1</b> Functions</a></li>
+<li class="chapter" data-level="10.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#for-loops"><i class="fa fa-check"></i><b>10.2</b> For-loops</a></li>
+<li class="chapter" data-level="10.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#purrr-and-iterative-functions"><i class="fa fa-check"></i><b>10.3</b> purrr and Iterative Functions</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#reproducible-example-scraping-web-data"><i class="fa fa-check"></i><b>10.3.1</b> Reproducible example: Scraping web data</a></li>
+<li class="chapter" data-level="10.3.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#non-reproducible-example-juvenile-life-without-parole-study"><i class="fa fa-check"></i><b>10.3.2</b> Non-reproducible example (Juvenile Life Without Parole study)</a></li>
+<li class="chapter" data-level="10.3.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#example-3-readimport-several-files-at-once-with-map"><i class="fa fa-check"></i><b>10.3.3</b> Example 3: Read/Import several files at once with <code>map()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html"><i class="fa fa-check"></i><b>12</b> purrr and Iterative Functions</a>
+<li class="chapter" data-level="10.4" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#other-purrr-commands"><i class="fa fa-check"></i><b>10.4</b> Other purrr commands</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#reproducible-example"><i class="fa fa-check"></i><b>12.1</b> Reproducible example</a></li>
-<li class="chapter" data-level="12.2" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#non-reproducible-example-juvenile-life-without-parole-study"><i class="fa fa-check"></i><b>12.2</b> Non-reproducible example (Juvenile Life Without Parole study)</a></li>
-<li class="chapter" data-level="12.3" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#example-3-readimport-several-files-at-once-with-map"><i class="fa fa-check"></i><b>12.3</b> Example 3: Read/Import several files at once with <code>map()</code></a></li>
-<li class="chapter" data-level="12.4" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#other-purrr-commands"><i class="fa fa-check"></i><b>12.4</b> Other purrr commands</a>
-<ul>
-<li class="chapter" data-level="12.4.1" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>12.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
-<li class="chapter" data-level="12.4.2" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#map2-and-walk2"><i class="fa fa-check"></i><b>12.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
-<li class="chapter" data-level="12.4.3" data-path="purrr-and-iterative-functions.html"><a href="purrr-and-iterative-functions.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>12.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>13</b> Intro to R Markdown</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>13.1</b> Important code chunk options</a></li>
-<li class="chapter" data-level="13.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>13.2</b> Writing math equations and symbols</a>
-<ul>
-<li class="chapter" data-level="13.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>13.2.1</b> Greek symbols</a></li>
-<li class="chapter" data-level="13.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>13.2.2</b> Math notation</a></li>
-<li class="chapter" data-level="13.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>13.2.3</b> Statistics notation</a></li>
-<li class="chapter" data-level="13.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>13.2.4</b> Writing in-line code</a></li>
-</ul></li>
-<li class="chapter" data-level="13.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>13.3</b> Including graphics/inserting pictures</a></li>
-<li class="chapter" data-level="13.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>13.4</b> Footnotes</a></li>
-<li class="chapter" data-level="13.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>13.5</b> Change the color of your text</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>14</b> Statistics and Psych-specific Stuff</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>14.1</b> Create or sample from a distribution</a></li>
-<li class="chapter" data-level="14.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>14.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
-<li class="chapter" data-level="14.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#statistical-tests-and-modeling-with-easystats"><i class="fa fa-check"></i><b>14.3</b> Statistical tests and modeling with <code>easystats</code></a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-parameter-estimates-from-model-objects"><i class="fa fa-check"></i><b>14.3.1</b> Getting parameter estimates from model objects</a></li>
-<li class="chapter" data-level="14.3.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-model-information-and-performance-metrics"><i class="fa fa-check"></i><b>14.3.2</b> Getting model information and performance metrics</a></li>
-<li class="chapter" data-level="14.3.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#effect-size-info-with-effectsize"><i class="fa fa-check"></i><b>14.3.3</b> Effect size info with <code>effectsize</code></a></li>
-<li class="chapter" data-level="14.3.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#quick-detailed-and-automated-reporting-with-report"><i class="fa fa-check"></i><b>14.3.4</b> Quick, detailed, and automated reporting with <code>report</code></a></li>
-<li class="chapter" data-level="14.3.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#running-correlations-with-correlation"><i class="fa fa-check"></i><b>14.3.5</b> Running correlations with <code>correlation</code></a></li>
+<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>10.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
+<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2-and-walk2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
+<li class="chapter" data-level="10.4.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>10.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>15</b> Coding Tips and Tricks</a>
+<li class="chapter" data-level="11" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html"><i class="fa fa-check"></i><b>11</b> Intro to R Markdown</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#grammar-stuff-in-base-r"><i class="fa fa-check"></i><b>15.1</b> Grammar stuff in base R</a>
+<li class="chapter" data-level="11.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#important-code-chunk-options"><i class="fa fa-check"></i><b>11.1</b> Important code chunk options</a></li>
+<li class="chapter" data-level="11.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-math-equations-and-symbols"><i class="fa fa-check"></i><b>11.2</b> Writing math equations and symbols</a>
 <ul>
-<li class="chapter" data-level="15.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>15.1.1</b> Regex expressions and symbols</a></li>
-<li class="chapter" data-level="15.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>15.1.2</b> The new pipe (Base R)</a></li>
+<li class="chapter" data-level="11.2.1" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#greek-symbols"><i class="fa fa-check"></i><b>11.2.1</b> Greek symbols</a></li>
+<li class="chapter" data-level="11.2.2" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#math-notation"><i class="fa fa-check"></i><b>11.2.2</b> Math notation</a></li>
+<li class="chapter" data-level="11.2.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#statistics-notation"><i class="fa fa-check"></i><b>11.2.3</b> Statistics notation</a></li>
+<li class="chapter" data-level="11.2.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#writing-in-line-code"><i class="fa fa-check"></i><b>11.2.4</b> Writing in-line code</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>15.2</b> Tidyverse stuff</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>15.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+<li class="chapter" data-level="11.3" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#including-graphicsinserting-pictures"><i class="fa fa-check"></i><b>11.3</b> Including graphics/inserting pictures</a></li>
+<li class="chapter" data-level="11.4" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#footnotes"><i class="fa fa-check"></i><b>11.4</b> Footnotes</a></li>
+<li class="chapter" data-level="11.5" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#change-the-color-of-your-text"><i class="fa fa-check"></i><b>11.5</b> Change the color of your text</a></li>
+<li class="chapter" data-level="11.6" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#re-using-code-chunk-options"><i class="fa fa-check"></i><b>11.6</b> Re-using code chunk options</a></li>
+<li class="chapter" data-level="11.7" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#making-better-tables"><i class="fa fa-check"></i><b>11.7</b> Making better tables</a></li>
+<li class="chapter" data-level="11.8" data-path="intro-to-r-markdown.html"><a href="intro-to-r-markdown.html#running-in-line-code"><i class="fa fa-check"></i><b>11.8</b> Running in-line code</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>15.3</b> Function-related stuff</a>
+<li class="chapter" data-level="12" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html"><i class="fa fa-check"></i><b>12</b> Statistics and Psych-specific Stuff</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>15.3.1</b> User-supplied expressions or named columns in functions</a></li>
-<li class="chapter" data-level="15.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>15.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
-<li class="chapter" data-level="15.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>15.3.3</b> Formulas within functions</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>15.4</b> Creating a package</a>
+<li class="chapter" data-level="12.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#create-or-sample-from-a-distribution"><i class="fa fa-check"></i><b>12.1</b> Create or sample from a distribution</a></li>
+<li class="chapter" data-level="12.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#find-cohens-kappa-interrater-reliability"><i class="fa fa-check"></i><b>12.2</b> Find Cohen’s Kappa (Interrater reliability)</a></li>
+<li class="chapter" data-level="12.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#statistical-tests-and-modeling-with-easystats"><i class="fa fa-check"></i><b>12.3</b> Statistical tests and modeling with <code>easystats</code></a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>15.4.1</b> Documenting pacakge meta-data</a></li>
-<li class="chapter" data-level="15.4.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>15.4.2</b> Connecting to other packages</a></li>
-<li class="chapter" data-level="15.4.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#linking-git-and-github"><i class="fa fa-check"></i><b>15.4.3</b> Linking Git and Github</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>15.5</b> Creating a bookdown</a>
-<ul>
-<li class="chapter" data-level="15.5.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>15.5.1</b> Rendering the book once it’s done</a></li>
+<li class="chapter" data-level="12.3.1" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-parameter-estimates-from-model-objects"><i class="fa fa-check"></i><b>12.3.1</b> Getting parameter estimates from model objects</a></li>
+<li class="chapter" data-level="12.3.2" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#getting-model-information-and-performance-metrics"><i class="fa fa-check"></i><b>12.3.2</b> Getting model information and performance metrics</a></li>
+<li class="chapter" data-level="12.3.3" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#effect-size-info-with-effectsize"><i class="fa fa-check"></i><b>12.3.3</b> Effect size info with <code>effectsize</code></a></li>
+<li class="chapter" data-level="12.3.4" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#quick-detailed-and-automated-reporting-with-report"><i class="fa fa-check"></i><b>12.3.4</b> Quick, detailed, and automated reporting with <code>report</code></a></li>
+<li class="chapter" data-level="12.3.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#running-correlations-with-correlation"><i class="fa fa-check"></i><b>12.3.5</b> Running correlations with <code>correlation</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>16</b> Creating a simulated data set</a>
+<li class="chapter" data-level="13" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>13</b> Coding Tips and Tricks</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-1-independent-samples-from-a-normal-distribution"><i class="fa fa-check"></i><b>16.1</b> Part 1: Independent samples from a normal distribution</a></li>
-<li class="chapter" data-level="16.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-2-creating-data-sets-with-quantitative-and-categorical-variables"><i class="fa fa-check"></i><b>16.2</b> Part 2: Creating data sets with quantitative and categorical variables</a>
+<li class="chapter" data-level="13.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#grammar-stuff-in-base-r"><i class="fa fa-check"></i><b>13.1</b> Grammar stuff in base R</a>
 <ul>
-<li class="chapter" data-level="16.2.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#a.-data-with-no-difference-among-groups"><i class="fa fa-check"></i><b>16.2.1</b> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</a></li>
-<li class="chapter" data-level="16.2.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#b.-data-with-a-difference-among-groups"><i class="fa fa-check"></i><b>16.2.2</b> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</a></li>
-<li class="chapter" data-level="16.2.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#c.-data-with-multiple-quantitative-variables-with-groups"><i class="fa fa-check"></i><b>16.2.3</b> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</a></li>
+<li class="chapter" data-level="13.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>13.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="13.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>13.1.2</b> The new pipe (Base R)</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-3-repeatedly-simulate-samples-with-replicate"><i class="fa fa-check"></i><b>16.3</b> Part 3: Repeatedly simulate samples with replicate()</a></li>
-<li class="chapter" data-level="16.4" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-4-repeatedly-making-whole-data-sets"><i class="fa fa-check"></i><b>16.4</b> Part 4: repeatedly making whole data sets</a></li>
-<li class="chapter" data-level="16.5" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-5-using-purrr"><i class="fa fa-check"></i><b>16.5</b> Part 5: Using purrr</a></li>
+<li class="chapter" data-level="13.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#tidyverse-stuff"><i class="fa fa-check"></i><b>13.2</b> Tidyverse stuff</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators"><i class="fa fa-check"></i><b>13.2.1</b> Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#function-related-stuff"><i class="fa fa-check"></i><b>13.3</b> Function-related stuff</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>13.3.1</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="13.3.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>13.3.2</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
+<li class="chapter" data-level="13.3.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>13.3.3</b> Formulas within functions</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>13.4</b> Creating a package</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>13.4.1</b> Documenting pacakge meta-data</a></li>
+<li class="chapter" data-level="13.4.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>13.4.2</b> Connecting to other packages</a></li>
+<li class="chapter" data-level="13.4.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#linking-git-and-github"><i class="fa fa-check"></i><b>13.4.3</b> Linking Git and Github</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>13.5</b> Creating a bookdown</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>13.5.1</b> Rendering the book once it’s done</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>14</b> Creating a simulated data set</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-1-independent-samples-from-a-normal-distribution"><i class="fa fa-check"></i><b>14.1</b> Part 1: Independent samples from a normal distribution</a></li>
+<li class="chapter" data-level="14.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-2-creating-data-sets-with-quantitative-and-categorical-variables"><i class="fa fa-check"></i><b>14.2</b> Part 2: Creating data sets with quantitative and categorical variables</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#a.-data-with-no-difference-among-groups"><i class="fa fa-check"></i><b>14.2.1</b> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</a></li>
+<li class="chapter" data-level="14.2.2" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#b.-data-with-a-difference-among-groups"><i class="fa fa-check"></i><b>14.2.2</b> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</a></li>
+<li class="chapter" data-level="14.2.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#c.-data-with-multiple-quantitative-variables-with-groups"><i class="fa fa-check"></i><b>14.2.3</b> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-3-repeatedly-simulate-samples-with-replicate"><i class="fa fa-check"></i><b>14.3</b> Part 3: Repeatedly simulate samples with replicate()</a></li>
+<li class="chapter" data-level="14.4" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-4-repeatedly-making-whole-data-sets"><i class="fa fa-check"></i><b>14.4</b> Part 4: repeatedly making whole data sets</a></li>
+<li class="chapter" data-level="14.5" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html#part-5-using-purrr"><i class="fa fa-check"></i><b>14.5</b> Part 5: Using purrr</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -363,34 +366,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-a-simulated-data-set" class="section level1" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Creating a simulated data set</h1>
+<div id="creating-a-simulated-data-set" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Creating a simulated data set</h1>
 <p>From the tutorial <a href="https://debruine.github.io/tutorials/sim-data.html">on this page</a></p>
-<div id="part-1-independent-samples-from-a-normal-distribution" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Part 1: Independent samples from a normal distribution</h2>
+<div id="part-1-independent-samples-from-a-normal-distribution" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Part 1: Independent samples from a normal distribution</h2>
 <p>Consider the following first before you start doing stuff: - How many subjects are in each condition? - What are the means and standard deviations of each group?</p>
 <p>Set that shit below.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="creating-a-simulated-data-set.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of subjects per group</span></span>
-<span id="cb217-2"><a href="creating-a-simulated-data-set.html#cb217-2" aria-hidden="true" tabindex="-1"></a>A_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb217-3"><a href="creating-a-simulated-data-set.html#cb217-3" aria-hidden="true" tabindex="-1"></a>B_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb217-4"><a href="creating-a-simulated-data-set.html#cb217-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-5"><a href="creating-a-simulated-data-set.html#cb217-5" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution parameters</span></span>
-<span id="cb217-6"><a href="creating-a-simulated-data-set.html#cb217-6" aria-hidden="true" tabindex="-1"></a>A_mean  <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb217-7"><a href="creating-a-simulated-data-set.html#cb217-7" aria-hidden="true" tabindex="-1"></a>A_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
-<span id="cb217-8"><a href="creating-a-simulated-data-set.html#cb217-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb217-9"><a href="creating-a-simulated-data-set.html#cb217-9" aria-hidden="true" tabindex="-1"></a>B_mean  <span class="ot">&lt;-</span> <span class="dv">11</span></span>
-<span id="cb217-10"><a href="creating-a-simulated-data-set.html#cb217-10" aria-hidden="true" tabindex="-1"></a>B_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="creating-a-simulated-data-set.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of subjects per group</span></span>
+<span id="cb222-2"><a href="creating-a-simulated-data-set.html#cb222-2" aria-hidden="true" tabindex="-1"></a>A_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb222-3"><a href="creating-a-simulated-data-set.html#cb222-3" aria-hidden="true" tabindex="-1"></a>B_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb222-4"><a href="creating-a-simulated-data-set.html#cb222-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-5"><a href="creating-a-simulated-data-set.html#cb222-5" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution parameters</span></span>
+<span id="cb222-6"><a href="creating-a-simulated-data-set.html#cb222-6" aria-hidden="true" tabindex="-1"></a>A_mean  <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb222-7"><a href="creating-a-simulated-data-set.html#cb222-7" aria-hidden="true" tabindex="-1"></a>A_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
+<span id="cb222-8"><a href="creating-a-simulated-data-set.html#cb222-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb222-9"><a href="creating-a-simulated-data-set.html#cb222-9" aria-hidden="true" tabindex="-1"></a>B_mean  <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb222-10"><a href="creating-a-simulated-data-set.html#cb222-10" aria-hidden="true" tabindex="-1"></a>B_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
 <p>Now generate scores for each group</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="creating-a-simulated-data-set.html#cb218-1" aria-hidden="true" tabindex="-1"></a>A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(A_sub_n, A_mean, A_sd)</span>
-<span id="cb218-2"><a href="creating-a-simulated-data-set.html#cb218-2" aria-hidden="true" tabindex="-1"></a>B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B_sub_n, B_mean, B_sd)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="creating-a-simulated-data-set.html#cb223-1" aria-hidden="true" tabindex="-1"></a>A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(A_sub_n, A_mean, A_sd)</span>
+<span id="cb223-2"><a href="creating-a-simulated-data-set.html#cb223-2" aria-hidden="true" tabindex="-1"></a>B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B_sub_n, B_mean, B_sd)</span></code></pre></div>
 <p>Technically you <em>could</em> stop here and just analyze the data in this fashion…but its better to organize it into a table. One that looks like something you would import after real data collection.</p>
 <p>So do that next; make it look nice.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="creating-a-simulated-data-set.html#cb219-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb219-2"><a href="creating-a-simulated-data-set.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub_condition =</span> <span class="fu">rep</span>( <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(A_sub_n, B_sub_n) ),</span>
-<span id="cb219-3"><a href="creating-a-simulated-data-set.html#cb219-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(A_scores, B_scores)</span>
-<span id="cb219-4"><a href="creating-a-simulated-data-set.html#cb219-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb219-5"><a href="creating-a-simulated-data-set.html#cb219-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb219-6"><a href="creating-a-simulated-data-set.html#cb219-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="creating-a-simulated-data-set.html#cb224-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb224-2"><a href="creating-a-simulated-data-set.html#cb224-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub_condition =</span> <span class="fu">rep</span>( <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(A_sub_n, B_sub_n) ),</span>
+<span id="cb224-3"><a href="creating-a-simulated-data-set.html#cb224-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(A_scores, B_scores)</span>
+<span id="cb224-4"><a href="creating-a-simulated-data-set.html#cb224-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb224-5"><a href="creating-a-simulated-data-set.html#cb224-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb224-6"><a href="creating-a-simulated-data-set.html#cb224-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   sub_condition score
 ##   &lt;chr&gt;         &lt;dbl&gt;
@@ -401,44 +404,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 A              6.84
 ## 6 A             11.0</code></pre>
 <p>Always perform a quality and consistency check on your data to verify that shit’s ok.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="creating-a-simulated-data-set.html#cb221-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb221-2"><a href="creating-a-simulated-data-set.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sub_condition) <span class="sc">%&gt;%</span></span>
-<span id="cb221-3"><a href="creating-a-simulated-data-set.html#cb221-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>() ,</span>
-<span id="cb221-4"><a href="creating-a-simulated-data-set.html#cb221-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
-<span id="cb221-5"><a href="creating-a-simulated-data-set.html#cb221-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(score))</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="creating-a-simulated-data-set.html#cb226-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb226-2"><a href="creating-a-simulated-data-set.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sub_condition) <span class="sc">%&gt;%</span></span>
+<span id="cb226-3"><a href="creating-a-simulated-data-set.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>() ,</span>
+<span id="cb226-4"><a href="creating-a-simulated-data-set.html#cb226-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb226-5"><a href="creating-a-simulated-data-set.html#cb226-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(score))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   sub_condition     n  mean    sd
 ##   &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 A                50  9.98  2.78
 ## 2 B                50 10.9   3.02</code></pre>
 </div>
-<div id="part-2-creating-data-sets-with-quantitative-and-categorical-variables" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Part 2: Creating data sets with quantitative and categorical variables</h2>
+<div id="part-2-creating-data-sets-with-quantitative-and-categorical-variables" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Part 2: Creating data sets with quantitative and categorical variables</h2>
 <p>From the web page <a href="https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/#creating-datasets-with-quantiative-and-categorical-variables">at this link</a></p>
-<div id="a.-data-with-no-difference-among-groups" class="section level3" number="16.2.1">
-<h3><span class="header-section-number">16.2.1</span> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</h3>
+<div id="a.-data-with-no-difference-among-groups" class="section level3" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> 2.a. DATA WITH <strong>NO DIFFERENCE</strong> AMONG GROUPS</h3>
 <p><strong>Critically important notes to know</strong>: When you use the <code>rep()</code> function, there are several different arguments you can specify inside it that control how stuff is repeated:</p>
 <ul>
 <li>using <code>rep(x, each= )</code> repeats things <em>element-wise</em>; each element gets replicated n times, in order</li>
 </ul>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="creating-a-simulated-data-set.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">each=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="creating-a-simulated-data-set.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">each=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
 <ul>
 <li>using <code>rep(x, times= )</code> repeats the <em>sequence</em>; the vector as a whole, as it appears, will be repeated with one sequence following the next</li>
 </ul>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="creating-a-simulated-data-set.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">times=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="creating-a-simulated-data-set.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">times=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
 <ul>
 <li>using <code>rep(x, length.out)</code> repeats <em>only the number of elements you specify</em>, in their original order</li>
 </ul>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="creating-a-simulated-data-set.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">length.out=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="creating-a-simulated-data-set.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">length.out=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
 <p>In this particular data, we want <em>every combination of <code>group</code> and <code>letter</code> to be present ONCE</em>.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="creating-a-simulated-data-set.html#cb229-1" aria-hidden="true" tabindex="-1"></a>letters<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
-<span id="cb229-2"><a href="creating-a-simulated-data-set.html#cb229-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb229-3"><a href="creating-a-simulated-data-set.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
-<span id="cb229-4"><a href="creating-a-simulated-data-set.html#cb229-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">factor =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">times =</span> <span class="dv">2</span>),</span>
-<span id="cb229-5"><a href="creating-a-simulated-data-set.html#cb229-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="creating-a-simulated-data-set.html#cb234-1" aria-hidden="true" tabindex="-1"></a>letters<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
+<span id="cb234-2"><a href="creating-a-simulated-data-set.html#cb234-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-3"><a href="creating-a-simulated-data-set.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb234-4"><a href="creating-a-simulated-data-set.html#cb234-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">factor =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">times =</span> <span class="dv">2</span>),</span>
+<span id="cb234-5"><a href="creating-a-simulated-data-set.html#cb234-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) )</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   group factor response
 ##   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
@@ -449,34 +452,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 B     D        0.509 
 ## 6 B     E       -0.304</code></pre>
 </div>
-<div id="b.-data-with-a-difference-among-groups" class="section level3" number="16.2.2">
-<h3><span class="header-section-number">16.2.2</span> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</h3>
+<div id="b.-data-with-a-difference-among-groups" class="section level3" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> 2.b. Data <strong>WITH A DIFFERENCE</strong> among groups</h3>
 <p>What if we want data where the means are different between groups? Let’s make two groups of three observations where the mean of one group is 5 and the other is 10. The two groups have a shared variance (and so standard deviation) of 1.</p>
-<div id="some-notes-first" class="section level4" number="16.2.2.1">
-<h4><span class="header-section-number">16.2.2.1</span> Some notes first</h4>
+<div id="some-notes-first" class="section level4" number="14.2.2.1">
+<h4><span class="header-section-number">14.2.2.1</span> Some notes first</h4>
 <p>Creating a difference between the two group’s average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within <code>rnorm</code>, like so:</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="creating-a-simulated-data-set.html#cb231-1" aria-hidden="true" tabindex="-1"></a>response <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb231-2"><a href="creating-a-simulated-data-set.html#cb231-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="creating-a-simulated-data-set.html#cb236-1" aria-hidden="true" tabindex="-1"></a>response <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb236-2"><a href="creating-a-simulated-data-set.html#cb236-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
 <pre><code>## [1]  4.066141  9.831952  4.307055 11.059641  4.808349 10.009015</code></pre>
 <p>You can see that: 1. draw 1 is from the distribution <span class="math inline">\((\mu=5,\sigma=1)\)</span> 2. draw 2 is from the distribution <span class="math inline">\((\mu=5,\sigma=1)\)</span></p>
 <p>And this process repeats a total of six times.</p>
 <p>And if you happen to also specify a vector of standard deviations (purely to demonstrate what is happening, we won’t actually do this), <em>the first mean is paired with the first SD; the second mean is paired with the second SD; and so on.</em></p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="creating-a-simulated-data-set.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">0.1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="creating-a-simulated-data-set.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">0.1</span>))</span></code></pre></div>
 <pre><code>## [1]  5.744356 10.043787  7.378609  9.952296  8.064520 10.119440</code></pre>
 </div>
-<div id="ok-back-to-creating-the-data" class="section level4" number="16.2.2.2">
-<h4><span class="header-section-number">16.2.2.2</span> Ok, back to creating the data</h4>
+<div id="ok-back-to-creating-the-data" class="section level4" number="14.2.2.2">
+<h4><span class="header-section-number">14.2.2.2</span> Ok, back to creating the data</h4>
 <p>If you want there to be differences between the groups, we need to change the way the vector of factors is replicated, in addition to specifying the vector of means. We want to ensure that the sequence of “A”, “B” in the <code>group</code> column matches the sequence repeated in the <code>response</code> column.</p>
 <p>Here we are going to use <code>length.out</code> so that the whole sequence of A,B is repeated exactly in line with the alternating drawing from <span class="math inline">\(\mu=5\)</span>, <span class="math inline">\(\mu=10\)</span>.</p>
 <p>It’s often best to do this by building each thing separately, and then combining it into a tibble when you have it figured out.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="creating-a-simulated-data-set.html#cb235-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">=</span><span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">6</span>)</span>
-<span id="cb235-2"><a href="creating-a-simulated-data-set.html#cb235-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="creating-a-simulated-data-set.html#cb240-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">=</span><span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">6</span>)</span>
+<span id="cb240-2"><a href="creating-a-simulated-data-set.html#cb240-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="creating-a-simulated-data-set.html#cb237-1" aria-hidden="true" tabindex="-1"></a>response<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb237-2"><a href="creating-a-simulated-data-set.html#cb237-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="creating-a-simulated-data-set.html#cb242-1" aria-hidden="true" tabindex="-1"></a>response<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb242-2"><a href="creating-a-simulated-data-set.html#cb242-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
 <pre><code>## [1]  4.948867 10.118024  3.109300  8.589811  4.047384 10.121841</code></pre>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="creating-a-simulated-data-set.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(group,</span>
-<span id="cb239-2"><a href="creating-a-simulated-data-set.html#cb239-2" aria-hidden="true" tabindex="-1"></a>       response)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="creating-a-simulated-data-set.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(group,</span>
+<span id="cb244-2"><a href="creating-a-simulated-data-set.html#cb244-2" aria-hidden="true" tabindex="-1"></a>       response)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   group response
 ##   &lt;chr&gt;    &lt;dbl&gt;
@@ -488,17 +491,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 B        10.1</code></pre>
 </div>
 </div>
-<div id="c.-data-with-multiple-quantitative-variables-with-groups" class="section level3" number="16.2.3">
-<h3><span class="header-section-number">16.2.3</span> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</h3>
+<div id="c.-data-with-multiple-quantitative-variables-with-groups" class="section level3" number="14.2.3">
+<h3><span class="header-section-number">14.2.3</span> 2.c. Data with <strong>MULTIPLE QUANTITATIVE VARIABLES</strong> with groups</h3>
 </div>
 </div>
-<div id="part-3-repeatedly-simulate-samples-with-replicate" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> Part 3: Repeatedly simulate samples with replicate()</h2>
+<div id="part-3-repeatedly-simulate-samples-with-replicate" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Part 3: Repeatedly simulate samples with replicate()</h2>
 <p>Instead of drawing values one at a time from a distribution, we want to do it many times. This is a job for <code>replicate()</code>. What <code>replicate()</code> does is run a function repeatedly.</p>
 <p>The <code>replicate()</code> function will perform a given operation as many times as you tell it to. Here we tell it to generate numbers from the distribution <span class="math inline">\(N~(\mu=0, \sigma=1)\)</span>, three times (as specified in the <code>n=3</code> argument in line one)</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="creating-a-simulated-data-set.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb241-2"><a href="creating-a-simulated-data-set.html#cb241-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb241-3"><a href="creating-a-simulated-data-set.html#cb241-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="creating-a-simulated-data-set.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb246-2"><a href="creating-a-simulated-data-set.html#cb246-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb246-3"><a href="creating-a-simulated-data-set.html#cb246-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span> )</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1]  1.3203910  0.2040899 -0.7970636 -1.2431823 -0.4844866
 ## 
@@ -508,9 +511,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[3]]
 ## [1]  1.7023983  0.1654943  0.7787761 -0.1186586 -0.2111680</code></pre>
 <p>The argument <code>simplify=FALSE</code> tells it to return the output as a list. If you set this to <code>TRUE</code> it returns a matrix instead</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="creating-a-simulated-data-set.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb243-2"><a href="creating-a-simulated-data-set.html#cb243-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb243-3"><a href="creating-a-simulated-data-set.html#cb243-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="creating-a-simulated-data-set.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb248-2"><a href="creating-a-simulated-data-set.html#cb248-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb248-3"><a href="creating-a-simulated-data-set.html#cb248-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
 <pre><code>##             [,1]       [,2]       [,3]
 ## [1,]  0.72115635  0.7402300  0.1134487
 ## [2,]  0.92810115 -1.1035296 -1.0247406
@@ -518,11 +521,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,] -0.01083094  0.5085364  1.7663764
 ## [5,] -0.51711197  0.3824463 -1.0787283</code></pre>
 <p>Specifying <code>as.data.frame()</code> with the matrix output can turn it into a data frame.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="creating-a-simulated-data-set.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb245-2"><a href="creating-a-simulated-data-set.html#cb245-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb245-3"><a href="creating-a-simulated-data-set.html#cb245-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> ) <span class="sc">%&gt;%</span> </span>
-<span id="cb245-4"><a href="creating-a-simulated-data-set.html#cb245-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb245-5"><a href="creating-a-simulated-data-set.html#cb245-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample_a=</span>V1, <span class="at">sample_b=</span>V2, <span class="at">sample_c=</span>V3)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="creating-a-simulated-data-set.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb250-2"><a href="creating-a-simulated-data-set.html#cb250-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb250-3"><a href="creating-a-simulated-data-set.html#cb250-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb250-4"><a href="creating-a-simulated-data-set.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb250-5"><a href="creating-a-simulated-data-set.html#cb250-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample_a=</span>V1, <span class="at">sample_b=</span>V2, <span class="at">sample_c=</span>V3)</span></code></pre></div>
 <pre><code>##      sample_a   sample_b   sample_c
 ## 1  0.56415036 -1.7060196  1.1146509
 ## 2 -0.24011787  1.8521680  1.4152690
@@ -530,15 +533,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 -1.76657069 -0.2574811 -1.0662388
 ## 5  0.67864934  0.5891597 -0.1166993</code></pre>
 </div>
-<div id="part-4-repeatedly-making-whole-data-sets" class="section level2" number="16.4">
-<h2><span class="header-section-number">16.4</span> Part 4: repeatedly making whole data sets</h2>
+<div id="part-4-repeatedly-making-whole-data-sets" class="section level2" number="14.4">
+<h2><span class="header-section-number">14.4</span> Part 4: repeatedly making whole data sets</h2>
 <p>This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="creating-a-simulated-data-set.html#cb247-1" aria-hidden="true" tabindex="-1"></a>simlist <span class="ot">=</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb247-2"><a href="creating-a-simulated-data-set.html#cb247-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
-<span id="cb247-3"><a href="creating-a-simulated-data-set.html#cb247-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) ),</span>
-<span id="cb247-4"><a href="creating-a-simulated-data-set.html#cb247-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb247-5"><a href="creating-a-simulated-data-set.html#cb247-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb247-6"><a href="creating-a-simulated-data-set.html#cb247-6" aria-hidden="true" tabindex="-1"></a>simlist</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="creating-a-simulated-data-set.html#cb252-1" aria-hidden="true" tabindex="-1"></a>simlist <span class="ot">=</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb252-2"><a href="creating-a-simulated-data-set.html#cb252-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb252-3"><a href="creating-a-simulated-data-set.html#cb252-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) ),</span>
+<span id="cb252-4"><a href="creating-a-simulated-data-set.html#cb252-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb252-5"><a href="creating-a-simulated-data-set.html#cb252-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-6"><a href="creating-a-simulated-data-set.html#cb252-6" aria-hidden="true" tabindex="-1"></a>simlist</span></code></pre></div>
 <pre><code>## [[1]]
 ##   group   response
 ## 1     A -1.1482417
@@ -566,8 +569,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5     B -0.3255277
 ## 6     B -0.7897194</code></pre>
 </div>
-<div id="part-5-using-purrr" class="section level2" number="16.5">
-<h2><span class="header-section-number">16.5</span> Part 5: Using purrr</h2>
+<div id="part-5-using-purrr" class="section level2" number="14.5">
+<h2><span class="header-section-number">14.5</span> Part 5: Using purrr</h2>
 <p>See <a href="https://aosmith.rbind.io/2018/06/05/a-closer-look-at-replicate-and-purrr/">this blog post</a></p>
 
 </div>

@@ -67,6 +67,16 @@ cars_df |> filter(!(grepl("Pontiac", car)))
 cars_df |> filter(!(str_detect(car, "Pontiac")))
 ```
 
+## Drop all rows from a data set that contain a certain string
+
+```{r eval=FALSE}
+# Tidyverse method
+cars_df |> 
+  filter(str_detect(car, "Merc", negate = TRUE)) #including negate=TRUE will negate all rows with the matched string
+
+# base R
+cars_df[!grepl("Merc", cars_df$car),]
+```
 
 
 
@@ -74,7 +84,7 @@ cars_df |> filter(!(str_detect(car, "Pontiac")))
 
 Use `stringr::str_to_lower()`
 
-```{r 6.4, chapter_6_end}
+```{r 6.5, chapter_6_end}
 blah=tribble(~A, ~B,
              "A","X",
              "A","X")
