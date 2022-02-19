@@ -385,52 +385,56 @@ And just like that, we're done!
 
 ### Example 3: Read/Import several files at once with `map()`
 
-**Note.** This reads many .csv files and combines them into a *SINGLE,
-unified data frame*. If you want to import many files at once but keep
-them separated, you'll need a different command.
+Multiple ways you can do this
+
+```{r 10.6a, eval=FALSE}
+########## Read multiple files at once into a SINGLE, UNIFIED data frame #######################
+files=paste0(here::here("Data", "Cognition data", "/"), list.files(path=here::here("Data", "Cognition data"), pattern = ".sav"))
+
+cog_data=files |> 
+  map_df(foreign::read.spss, to.data.frame=TRUE)
+
+
+######### Read multiple files at once but KEEP AS SEPARATE data frames ####################################
+files=paste0(here::here("Data", "Cognition data", "/"), list.files(path=here::here("Data", "Cognition data"), pattern = ".sav"))
+
+cog_data=files |> 
+  map(foreign::read.spss, to.data.frame=TRUE) # store all individual files as separate list elements
+
+names(cog_data)=file.path(here::here("Data", "Cognition data")) |> #specify file path as a string
+  list.files(pattern = ".sav") |> # pass the path string to list files; search in this location for files with this extension
+  gsub(pattern=".sav", replacement = "") # remove this pattern to save only the name
+
+# files can be extracted later with this if desired
+list2env(cog_data, globalenv())
+```
+
+Can also create a function to do this if you plan on doing it a bunch.
 
 ```{r 10.6, eval=FALSE}
 
-######### Step-by-step version #########
-file_path <- "JLWOP/Data and Models/"
-
-# 1. view all files; make sure you see everything you want/need
-file_path %>% list.files()
-
-# 2. save only file names with the desired extension
-csv_file_names=file_path %>% 
-  list.files() %>% 
-  .[str_detect(., ".csv")]
-
-
-# 3. Load everything into the Global Environment
-csv_file_names %>%
-  purrr::map(function(file_name){ # iterate through each file name
-    assign(x = str_remove(file_name, ".csv"), # Remove file extension ".csv"
-           value = read_csv(paste0(file_path, file_name)),
-           envir = .GlobalEnv)
-  })
-
-
-######### Combining all steps into a single, one-line function ##########
-read_all_excel=function(path){
+read_all=function(path, extension){
   file_path <- path
   
   # save only file names with the desired extension
   file_names=file_path %>% 
     list.files() %>% 
-    .[str_detect(., ".xlsx")]
+    .[str_detect(., extension)]
   
-  file_names %>%
-    purrr::map(function(file_name){ # iterate through each file name
-      assign(x = str_remove(file_name, ".xlsx"), # Remove file extension ".csv"
-             value = readxl::read_excel(paste0(file_path, file_name)),
-             envir = .GlobalEnv)
-    })
+  if(str_detect(extension, pattern = ".csv")) (file_names %>%
+                                                 purrr::map(function(file_name){ # iterate through each file name
+                                                   assign(x = str_remove(file_name, ".csv"), # Remove file extension ".csv"
+                                                          value = read_csv(paste0(file_path, file_name)),
+                                                          envir = .GlobalEnv)}))
+  
+  if(str_detect(extension, pattern = ".xlsx")) (file_names %>%
+                                                  purrr::map(function(file_name){ # iterate through each file name
+                                                    assign(x = str_remove(file_name, ".xlsx"), # Remove file extension ".csv"
+                                                           value = readxl::read_excel(paste0(file_path, file_name)),
+                                                           envir = .GlobalEnv)}))
 }
 
-
-read_all_excel(path = "JLWOP/Data and Models/")
+read_all(path = "JLWOP/Data and Models/", extension = ".xlsx")
 ```
 
 

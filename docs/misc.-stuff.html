@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-02-08" />
+<meta name="date" content="2022-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -372,79 +372,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> Scrape web pages for data tables</h2>
 <p><em>Note. See Chapter 10’s example <code>purrr</code> walk through for a guide on how to scrape multiple web tables simultaneously</em></p>
 <p><em>Simple example.</em></p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="misc.-stuff.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;rvest&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:readr&#39;:
-## 
-##     guess_encoding</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="misc.-stuff.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb161-2"><a href="misc.-stuff.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-3"><a href="misc.-stuff.html#cb161-3" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb161-4"><a href="misc.-stuff.html#cb161-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb161-5"><a href="misc.-stuff.html#cb161-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-6"><a href="misc.-stuff.html#cb161-6" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="misc.-stuff.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb156-2"><a href="misc.-stuff.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb156-3"><a href="misc.-stuff.html#cb156-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-4"><a href="misc.-stuff.html#cb156-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&#39;https://shop.tcgplayer.com/price-guide/pokemon/base-set&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb156-5"><a href="misc.-stuff.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb156-6"><a href="misc.-stuff.html#cb156-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb156-7"><a href="misc.-stuff.html#cb156-7" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
 <pre><code>## [[1]]
 ## # A tibble: 101 x 6
 ##    PRODUCT   Rarity    Number `Market Price` `Listed Median` ``   
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;
-##  1 Abra      Common        43 $0.43          $0.60           View 
-##  2 Alakazam  Holo Rare      1 $30.58         —               View 
-##  3 Arcanine  Uncommon      23 $2.23          $2.22           View 
-##  4 Beedrill  Rare          17 $4.13          $4.00           View 
-##  5 Bill      Common        91 $0.35          $0.47           View 
-##  6 Blastoise Holo Rare      2 $109.78        —               View 
-##  7 Bulbasaur Common        44 $2.33          $2.69           View 
-##  8 Caterpie  Common        45 $0.70          $0.66           View 
-##  9 Chansey   Holo Rare      3 $18.60         —               View 
-## 10 Charizard Holo Rare      4 $350.72        —               View 
+##  1 Abra      Common        43 $0.43          $0.51           View 
+##  2 Alakazam  Holo Rare      1 $30.52         —               View 
+##  3 Arcanine  Uncommon      23 $2.20          $2.10           View 
+##  4 Beedrill  Rare          17 $4.86          $4.33           View 
+##  5 Bill      Common        91 $0.33          $0.46           View 
+##  6 Blastoise Holo Rare      2 $105.54        —               View 
+##  7 Bulbasaur Common        44 $2.27          $2.75           View 
+##  8 Caterpie  Common        45 $0.67          $0.70           View 
+##  9 Chansey   Holo Rare      3 $18.21         —               View 
+## 10 Charizard Holo Rare      4 $353.06        —               View 
 ## # ... with 91 more rows</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="misc.-stuff.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
-<span id="cb163-2"><a href="misc.-stuff.html#cb163-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
-<span id="cb163-3"><a href="misc.-stuff.html#cb163-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
-<span id="cb163-4"><a href="misc.-stuff.html#cb163-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-5"><a href="misc.-stuff.html#cb163-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="misc.-stuff.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
+<span id="cb158-2"><a href="misc.-stuff.html#cb158-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
+<span id="cb158-3"><a href="misc.-stuff.html#cb158-3" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">select</span>(<span class="st">&#39;PRODUCT&#39;</span>,<span class="st">&#39;Rarity&#39;</span>,<span class="st">&#39;Number&#39;</span>,<span class="st">&#39;Market Price&#39;</span>)) <span class="co"># if needed, specify which columns you want too</span></span>
+<span id="cb158-4"><a href="misc.-stuff.html#cb158-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-5"><a href="misc.-stuff.html#cb158-5" aria-hidden="true" tabindex="-1"></a>html</span></code></pre></div>
 <pre><code>## # A tibble: 101 x 4
 ##    PRODUCT   Rarity    Number `Market Price`
 ##    &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;         
 ##  1 Abra      Common        43 $0.43         
-##  2 Alakazam  Holo Rare      1 $30.58        
-##  3 Arcanine  Uncommon      23 $2.23         
-##  4 Beedrill  Rare          17 $4.13         
-##  5 Bill      Common        91 $0.35         
-##  6 Blastoise Holo Rare      2 $109.78       
-##  7 Bulbasaur Common        44 $2.33         
-##  8 Caterpie  Common        45 $0.70         
-##  9 Chansey   Holo Rare      3 $18.60        
-## 10 Charizard Holo Rare      4 $350.72       
+##  2 Alakazam  Holo Rare      1 $30.52        
+##  3 Arcanine  Uncommon      23 $2.20         
+##  4 Beedrill  Rare          17 $4.86         
+##  5 Bill      Common        91 $0.33         
+##  6 Blastoise Holo Rare      2 $105.54       
+##  7 Bulbasaur Common        44 $2.27         
+##  8 Caterpie  Common        45 $0.67         
+##  9 Chansey   Holo Rare      3 $18.21        
+## 10 Charizard Holo Rare      4 $353.06       
 ## # ... with 91 more rows</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="misc.-stuff.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove $ symbol in Price column to make it easier to work with</span></span>
-<span id="cb165-2"><a href="misc.-stuff.html#cb165-2" aria-hidden="true" tabindex="-1"></a>html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span>
-<span id="cb165-3"><a href="misc.-stuff.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb165-4"><a href="misc.-stuff.html#cb165-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span>html <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>)) <span class="co"># convert from string to numeric</span></span>
-<span id="cb165-5"><a href="misc.-stuff.html#cb165-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-6"><a href="misc.-stuff.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co"># view finished table</span></span>
-<span id="cb165-7"><a href="misc.-stuff.html#cb165-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="misc.-stuff.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove $ symbol in Price column to make it easier to work with</span></span>
+<span id="cb160-2"><a href="misc.-stuff.html#cb160-2" aria-hidden="true" tabindex="-1"></a>html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span>
+<span id="cb160-3"><a href="misc.-stuff.html#cb160-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb160-4"><a href="misc.-stuff.html#cb160-4" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span>html <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>)) <span class="co"># convert from string to numeric</span></span>
+<span id="cb160-5"><a href="misc.-stuff.html#cb160-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-6"><a href="misc.-stuff.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="co"># view finished table</span></span>
+<span id="cb160-7"><a href="misc.-stuff.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   PRODUCT   Rarity    Number `Market Price`
 ##   &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt;          &lt;dbl&gt;
 ## 1 Abra      Common        43           0.43
-## 2 Alakazam  Holo Rare      1          30.6 
-## 3 Arcanine  Uncommon      23           2.23
-## 4 Beedrill  Rare          17           4.13
-## 5 Bill      Common        91           0.35
-## 6 Blastoise Holo Rare      2         110.</code></pre>
+## 2 Alakazam  Holo Rare      1          30.5 
+## 3 Arcanine  Uncommon      23           2.2 
+## 4 Beedrill  Rare          17           4.86
+## 5 Bill      Common        91           0.33
+## 6 Blastoise Holo Rare      2         106.</code></pre>
 <p><strong><em>Slightly more complicated example</em></strong></p>
 <p>Reading a table into R takes a few steps.</p>
 <p>Step 1 is to copy and paste the URL into the <code>read_html()</code> verb like below:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="misc.-stuff.html#cb167-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span>
-<span id="cb167-2"><a href="misc.-stuff.html#cb167-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-3"><a href="misc.-stuff.html#cb167-3" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb167-4"><a href="misc.-stuff.html#cb167-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.ms-listviewtable&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb167-5"><a href="misc.-stuff.html#cb167-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="misc.-stuff.html#cb162-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(rvest, tidyverse)</span>
+<span id="cb162-2"><a href="misc.-stuff.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="misc.-stuff.html#cb162-3" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://www.law.umich.edu/special/exoneration/Pages/detaillist.aspx&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-4"><a href="misc.-stuff.html#cb162-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.ms-listviewtable&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb162-5"><a href="misc.-stuff.html#cb162-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Sometimes if the web page is extremely basic and pretty much the only thing on it is a table, you can stop there. Most of the time though, there will be tons of other stuff on the website and you need to get more specific so R can find the table. This is the <code>html_nodes()</code> part of the above command; in there you specify the exact part of the web page where the table is located/what object file it is.</p>
 <p>To find this you will need to use the Developer mode in your browser. See this screenshot for an example…</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="misc.-stuff.html#cb168-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;scrape.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="misc.-stuff.html#cb163-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;scrape.png&quot;</span>))</span></code></pre></div>
 <p>In Firefox you open this by going to Settings &gt; More Tools &gt; Web Developer Tools (or CNTRL + Shift + I).</p>
 Begin by looking through the console in the center bottom for names that look like they would be related to your table. A good place to start might be “
 <body>
@@ -452,62 +447,63 @@ Begin by looking through the console in the center bottom for names that look li
 <p>Ultimately what you’re looking for is what you see above: an element that, when selected, highlights ONLY the area of the web page you’re looking for. To get at this you will need to keep expanding, highlighting, and clicking repeatedly….it can take some digging.</p>
 <p>Keep drilling down through page elements until you find the one that highlights the table and just the table. When you find this, look for the <strong>.ms file</strong> in that name; you should also see this in the smaller console box on the right. That is the file you’ll need. Write that name in the <code>html_node</code> command and read it into R.</p>
 <p>That’s stage 1. From here you now need to clean up the table.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="misc.-stuff.html#cb169-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as.data.frame</span>(exonerations_table) <span class="co"># convert into a df</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="misc.-stuff.html#cb164-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as.data.frame</span>(exonerations_table) <span class="co"># convert into a df</span></span></code></pre></div>
 <p>Your table might be different, but this one’s names were messed up when read in, so lets fix those first and then fix the rows and columns.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="misc.-stuff.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the names to a vector</span></span>
-<span id="cb170-2"><a href="misc.-stuff.html#cb170-2" aria-hidden="true" tabindex="-1"></a>table_names<span class="ot">=</span>exonerations_table<span class="sc">$</span>Last.Name[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
-<span id="cb170-3"><a href="misc.-stuff.html#cb170-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-4"><a href="misc.-stuff.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim out the garbage rows and columns</span></span>
-<span id="cb170-5"><a href="misc.-stuff.html#cb170-5" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> </span>
-<span id="cb170-6"><a href="misc.-stuff.html#cb170-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Last.Name<span class="sc">:</span>Tags<span class="fl">.1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb170-7"><a href="misc.-stuff.html#cb170-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">22</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb170-8"><a href="misc.-stuff.html#cb170-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-9"><a href="misc.-stuff.html#cb170-9" aria-hidden="true" tabindex="-1"></a><span class="co"># over-write incorrect col names with the vector of correct ones we saved above</span></span>
-<span id="cb170-10"><a href="misc.-stuff.html#cb170-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exonerations_table)<span class="ot">=</span>table_names</span>
-<span id="cb170-11"><a href="misc.-stuff.html#cb170-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-12"><a href="misc.-stuff.html#cb170-12" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up names</span></span>
-<span id="cb170-13"><a href="misc.-stuff.html#cb170-13" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb170-14"><a href="misc.-stuff.html#cb170-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-15"><a href="misc.-stuff.html#cb170-15" aria-hidden="true" tabindex="-1"></a><span class="co"># verify structure of columns is correct</span></span>
-<span id="cb170-16"><a href="misc.-stuff.html#cb170-16" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(exonerations_table)</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="misc.-stuff.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the names to a vector</span></span>
+<span id="cb165-2"><a href="misc.-stuff.html#cb165-2" aria-hidden="true" tabindex="-1"></a>table_names<span class="ot">=</span>exonerations_table<span class="sc">$</span>Last.Name[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb165-3"><a href="misc.-stuff.html#cb165-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-4"><a href="misc.-stuff.html#cb165-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Trim out the garbage rows and columns</span></span>
+<span id="cb165-5"><a href="misc.-stuff.html#cb165-5" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> </span>
+<span id="cb165-6"><a href="misc.-stuff.html#cb165-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Last.Name<span class="sc">:</span>Tags<span class="fl">.1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb165-7"><a href="misc.-stuff.html#cb165-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">22</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb165-8"><a href="misc.-stuff.html#cb165-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-9"><a href="misc.-stuff.html#cb165-9" aria-hidden="true" tabindex="-1"></a><span class="co"># over-write incorrect col names with the vector of correct ones we saved above</span></span>
+<span id="cb165-10"><a href="misc.-stuff.html#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exonerations_table)<span class="ot">=</span>table_names</span>
+<span id="cb165-11"><a href="misc.-stuff.html#cb165-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-12"><a href="misc.-stuff.html#cb165-12" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up names</span></span>
+<span id="cb165-13"><a href="misc.-stuff.html#cb165-13" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span>exonerations_table <span class="sc">%&gt;%</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb165-14"><a href="misc.-stuff.html#cb165-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-15"><a href="misc.-stuff.html#cb165-15" aria-hidden="true" tabindex="-1"></a><span class="co"># verify structure of columns is correct</span></span>
+<span id="cb165-16"><a href="misc.-stuff.html#cb165-16" aria-hidden="true" tabindex="-1"></a><span class="co"># glimpse(exonerations_table)</span></span></code></pre></div>
 <p>Yikes, a lot of stuff is stored incorrectly, and as a result there’s some missing values that need to be addressed and other data that needs to be corrected.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="misc.-stuff.html#cb171-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as_tibble</span>(exonerations_table) <span class="sc">%&gt;%</span> <span class="co"># convert to tibble</span></span>
-<span id="cb171-2"><a href="misc.-stuff.html#cb171-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), na_if,<span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># turn missing values into NA&#39;s</span></span>
-<span id="cb171-3"><a href="misc.-stuff.html#cb171-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), replace_na, <span class="st">&quot;derp&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># replace NA&#39;s with a string (required for the next lines to work)</span></span>
-<span id="cb171-4"><a href="misc.-stuff.html#cb171-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dna=</span><span class="fu">ifelse</span>(dna<span class="sc">==</span><span class="st">&quot;DNA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="co"># change these variables from text to numeric to better facilitate analysis</span></span>
-<span id="cb171-5"><a href="misc.-stuff.html#cb171-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mwid=</span><span class="fu">ifelse</span>(mwid<span class="sc">==</span><span class="st">&quot;MWID&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb171-6"><a href="misc.-stuff.html#cb171-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">fc=</span><span class="fu">ifelse</span>(fc<span class="sc">==</span><span class="st">&quot;FC&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb171-7"><a href="misc.-stuff.html#cb171-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_fa=</span><span class="fu">ifelse</span>(p_fa<span class="sc">==</span><span class="st">&quot;P/FA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
-<span id="cb171-8"><a href="misc.-stuff.html#cb171-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">f_mfe=</span><span class="fu">ifelse</span>(f_mfe<span class="sc">==</span><span class="st">&quot;F/MFE&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb171-9"><a href="misc.-stuff.html#cb171-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(st, crime, dna<span class="sc">:</span>f_mfe),factor)) <span class="co"># correct form by converting to factors</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="misc.-stuff.html#cb166-1" aria-hidden="true" tabindex="-1"></a>exonerations_table<span class="ot">=</span><span class="fu">as_tibble</span>(exonerations_table) <span class="sc">%&gt;%</span> <span class="co"># convert to tibble</span></span>
+<span id="cb166-2"><a href="misc.-stuff.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), na_if,<span class="st">&quot;&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># turn missing values into NA&#39;s</span></span>
+<span id="cb166-3"><a href="misc.-stuff.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(dna,mwid<span class="sc">:</span>ild), replace_na, <span class="st">&quot;derp&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># replace NA&#39;s with a string (required for the next lines to work)</span></span>
+<span id="cb166-4"><a href="misc.-stuff.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dna=</span><span class="fu">ifelse</span>(dna<span class="sc">==</span><span class="st">&quot;DNA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="co"># change these variables from text to numeric to better facilitate analysis</span></span>
+<span id="cb166-5"><a href="misc.-stuff.html#cb166-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">mwid=</span><span class="fu">ifelse</span>(mwid<span class="sc">==</span><span class="st">&quot;MWID&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb166-6"><a href="misc.-stuff.html#cb166-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">fc=</span><span class="fu">ifelse</span>(fc<span class="sc">==</span><span class="st">&quot;FC&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb166-7"><a href="misc.-stuff.html#cb166-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">p_fa=</span><span class="fu">ifelse</span>(p_fa<span class="sc">==</span><span class="st">&quot;P/FA&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb166-8"><a href="misc.-stuff.html#cb166-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">f_mfe=</span><span class="fu">ifelse</span>(f_mfe<span class="sc">==</span><span class="st">&quot;F/MFE&quot;</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb166-9"><a href="misc.-stuff.html#cb166-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(st, crime, dna<span class="sc">:</span>f_mfe),factor)) <span class="co"># correct form by converting to factors</span></span></code></pre></div>
 <p>And that’s it! Check out final result!</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="misc.-stuff.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exonerations_table)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="misc.-stuff.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exonerations_table)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 20
-##   last_name first_name     age race     st    county_of_crime tags    om_tags   crime   sentence  convicted exonerated dna   x     mwid  fc    p_fa  f_mfe om    ild  
-##   &lt;chr&gt;     &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;     &lt;fct&gt;   &lt;chr&gt;         &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;chr&gt; &lt;chr&gt;
-## 1 Abbitt    Joseph          31 Black    NC    Forsyth         CV, IO~ &quot;&quot;        Child ~ Life           1995       2009 1     &quot;&quot;    1     0     0     0     derp  derp 
-## 2 Abdal     Warith Habib    43 Black    NY    Erie            IO, SA  &quot;OF, WH,~ Sexual~ 20 to Li~      1983       1999 1     &quot;&quot;    1     0     0     1     OM    derp 
-## 3 Abernathy Christopher     17 White    IL    Cook            CIU, C~ &quot;OF, WH,~ Murder  Life wit~      1987       2015 1     &quot;&quot;    0     1     1     0     OM    derp 
-## 4 Abney     Quentin         32 Black    NY    New York        CV      &quot;&quot;        Robbery 20 to Li~      2006       2012 0     &quot;&quot;    1     0     0     0     derp  derp 
-## 5 Acero     Longino         35 Hispanic CA    Santa Clara     NC, P   &quot;&quot;        Sex Of~ 2 years ~      1994       2006 0     &quot;&quot;    0     0     0     0     derp  ILD  
-## 6 Adams     Anthony         26 Hispanic CA    Los Angeles     H, P    &quot;OF, WH,~ Mansla~ 12 years       1996       2001 0     &quot;&quot;    0     0     1     0     OM    derp</code></pre>
+##   last_name first_name     age race     st    county_of_crime tags  om_tags crime sentence convicted exonerated dna   x     mwid  fc    p_fa  f_mfe
+##   &lt;chr&gt;     &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
+## 1 Abbitt    Joseph          31 Black    NC    Forsyth         CV, ~ &quot;&quot;      Chil~ Life          1995       2009 1     &quot;&quot;    1     0     0     0    
+## 2 Abbott    Cinque          19 Black    IL    Cook            CIU,~ &quot;OF, W~ Drug~ Probati~      2008       2022 0     &quot;&quot;    0     0     1     0    
+## 3 Abdal     Warith Habib    43 Black    NY    Erie            IO, ~ &quot;OF, W~ Sexu~ 20 to L~      1983       1999 1     &quot;&quot;    1     0     0     1    
+## 4 Abernathy Christopher     17 White    IL    Cook            CIU,~ &quot;OF, W~ Murd~ Life wi~      1987       2015 1     &quot;&quot;    0     1     1     0    
+## 5 Abney     Quentin         32 Black    NY    New York        CV    &quot;&quot;      Robb~ 20 to L~      2006       2012 0     &quot;&quot;    1     0     0     0    
+## 6 Acero     Longino         35 Hispanic CA    Santa Clara     NC, P &quot;&quot;      Sex ~ 2 years~      1994       2006 0     &quot;&quot;    0     0     0     0    
+## # ... with 2 more variables: om &lt;chr&gt;, ild &lt;chr&gt;</code></pre>
 <p>Check out <a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">this page</a> for a quick overview.</p>
 </div>
 <div id="read-spss-files-into-r" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Read SPSS files into R</h2>
 <p>Use <code>foreign::read.spss</code></p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="misc.-stuff.html#cb174-1" aria-hidden="true" tabindex="-1"></a>spss_version<span class="ot">=</span>foreign<span class="sc">::</span><span class="fu">read.spss</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>, <span class="st">&quot;JLWOP_RYAN.sav&quot;</span>), <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="misc.-stuff.html#cb169-1" aria-hidden="true" tabindex="-1"></a>spss_version<span class="ot">=</span>foreign<span class="sc">::</span><span class="fu">read.spss</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>, <span class="st">&quot;JLWOP_RYAN.sav&quot;</span>), <span class="at">to.data.frame =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Might also want to add <code>as_tibble()</code> on the end.</p>
 </div>
 <div id="turn-numbers-into-percentages" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Turn numbers into percentages</h2>
 <p>Use <code>scales::percent()</code>, which converts normal numbers into percentages and includes the percent sign (%) afterwards</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="misc.-stuff.html#cb175-1" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>n_people, <span class="sc">~</span>votes_in_favor,</span>
-<span id="cb175-2"><a href="misc.-stuff.html#cb175-2" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">25</span>, <span class="dv">14</span>)</span>
-<span id="cb175-3"><a href="misc.-stuff.html#cb175-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-4"><a href="misc.-stuff.html#cb175-4" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span>simple_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">percent_voted_for=</span>scales<span class="sc">::</span><span class="fu">percent</span>(votes_in_favor<span class="sc">/</span>n_people, <span class="at">accuracy =</span> <span class="fl">0.1</span>, <span class="at">scale =</span> <span class="dv">100</span>))</span>
-<span id="cb175-5"><a href="misc.-stuff.html#cb175-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-6"><a href="misc.-stuff.html#cb175-6" aria-hidden="true" tabindex="-1"></a>simple_table</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="misc.-stuff.html#cb170-1" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>n_people, <span class="sc">~</span>votes_in_favor,</span>
+<span id="cb170-2"><a href="misc.-stuff.html#cb170-2" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">25</span>, <span class="dv">14</span>)</span>
+<span id="cb170-3"><a href="misc.-stuff.html#cb170-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-4"><a href="misc.-stuff.html#cb170-4" aria-hidden="true" tabindex="-1"></a>simple_table<span class="ot">=</span>simple_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">percent_voted_for=</span>scales<span class="sc">::</span><span class="fu">percent</span>(votes_in_favor<span class="sc">/</span>n_people, <span class="at">accuracy =</span> <span class="fl">0.1</span>, <span class="at">scale =</span> <span class="dv">100</span>))</span>
+<span id="cb170-5"><a href="misc.-stuff.html#cb170-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-6"><a href="misc.-stuff.html#cb170-6" aria-hidden="true" tabindex="-1"></a>simple_table</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##   n_people votes_in_favor percent_voted_for
 ##      &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            
@@ -516,9 +512,9 @@ Begin by looking through the console in the center bottom for names that look li
 </div>
 <div id="find-all-possible-combindations-of-items-in-a-vector" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Find all possible combindations of items in a vector</h2>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="misc.-stuff.html#cb177-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span>
-<span id="cb177-2"><a href="misc.-stuff.html#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-3"><a href="misc.-stuff.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="fu">combn</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>),<span class="dv">2</span>) <span class="co"># find all possible combinations of these numbers, drawn two at a time</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="misc.-stuff.html#cb172-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>)</span>
+<span id="cb172-2"><a href="misc.-stuff.html#cb172-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-3"><a href="misc.-stuff.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="fu">combn</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>),<span class="dv">2</span>) <span class="co"># find all possible combinations of these numbers, drawn two at a time</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
 ## [1,]    2    2    2    4    4    6
 ## [2,]    4    6    8    6    8    8</code></pre>
@@ -529,7 +525,7 @@ Begin by looking through the console in the center bottom for names that look li
 <div id="print-multiple-things-in-one-statement" class="section level2" number="9.6">
 <h2><span class="header-section-number">9.6</span> Print multiple things in one statement</h2>
 <p>Use <code>cat()</code> from base R</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="misc.-stuff.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;The p-value dropped below 0.05 for the first time as sample size&quot;</span>, <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="misc.-stuff.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;The p-value dropped below 0.05 for the first time as sample size&quot;</span>, <span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## The p-value dropped below 0.05 for the first time as sample size 100</code></pre>
 
 </div>

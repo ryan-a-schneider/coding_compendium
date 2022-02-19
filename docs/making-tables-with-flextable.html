@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-02-08" />
+<meta name="date" content="2022-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -379,21 +379,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://davidgohel.github.io/flextable/reference/padding.html" class="uri">https://davidgohel.github.io/flextable/reference/padding.html</a>
 <a href="https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object" class="uri">https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object</a></p>
 <p>Use the <code>padding</code> function:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="making-tables-with-flextable.html#cb154-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">padding</span>(ft, <span class="at">i=</span><span class="dv">2</span>, <span class="at">j=</span><span class="dv">1</span>, <span class="at">padding.left=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="making-tables-with-flextable.html#cb152-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">padding</span>(ft, <span class="at">i=</span><span class="dv">2</span>, <span class="at">j=</span><span class="dv">1</span>, <span class="at">padding.left=</span><span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div id="add-a-horizontal-border-aka-horizontal-spanner" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Add a Horizontal border (AKA horizontal “spanner”)</h2>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="making-tables-with-flextable.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline</span>(., <span class="at">i=</span><span class="dv">4</span>, <span class="at">j=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="making-tables-with-flextable.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline</span>(., <span class="at">i=</span><span class="dv">4</span>, <span class="at">j=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>)</span></code></pre></div>
 </div>
 <div id="change-font-and-font-size" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Change font and font size</h2>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="making-tables-with-flextable.html#cb156-1" aria-hidden="true" tabindex="-1"></a>  glm_table<span class="ot">&lt;-</span>flextable<span class="sc">::</span><span class="fu">font</span>(glm_table, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>, <span class="at">fontname =</span> <span class="st">&quot;Times&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Font</span></span>
-<span id="cb156-2"><a href="making-tables-with-flextable.html#cb156-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">fontsize</span>(., <span class="at">size =</span> <span class="dv">11</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="co"># Font size</span></span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="making-tables-with-flextable.html#cb154-1" aria-hidden="true" tabindex="-1"></a>  glm_table<span class="ot">&lt;-</span>flextable<span class="sc">::</span><span class="fu">font</span>(glm_table, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>, <span class="at">fontname =</span> <span class="st">&quot;Times&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Font</span></span>
+<span id="cb154-2"><a href="making-tables-with-flextable.html#cb154-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">fontsize</span>(., <span class="at">size =</span> <span class="dv">11</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="co"># Font size</span></span></code></pre></div>
 </div>
 <div id="grouped-table" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Grouped table</h2>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="making-tables-with-flextable.html#cb157-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;Model&quot;</span>)</span>
-<span id="cb157-2"><a href="making-tables-with-flextable.html#cb157-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span>flextable<span class="sc">::</span><span class="fu">as_grouped_data</span>(<span class="at">x=</span>cars, <span class="at">groups =</span> <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="making-tables-with-flextable.html#cb155-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;Model&quot;</span>)</span>
+<span id="cb155-2"><a href="making-tables-with-flextable.html#cb155-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span>flextable<span class="sc">::</span><span class="fu">as_grouped_data</span>(<span class="at">x=</span>cars, <span class="at">groups =</span> <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>))</span></code></pre></div>
 </div>
 <div id="complete-example" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Complete Example</h2>

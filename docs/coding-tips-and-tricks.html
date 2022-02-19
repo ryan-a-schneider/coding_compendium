@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-02-08" />
+<meta name="date" content="2022-02-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -372,8 +372,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.1</span> Grammar stuff in base R</h2>
 <div id="regex-expressions-and-symbols" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Regex expressions and symbols</h3>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="coding-tips-and-tricks.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;$&quot;</span>) <span class="co"># doesn&#39;t remove the $ sign</span></span>
-<span id="cb221-2"><a href="coding-tips-and-tricks.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>) <span class="co"># works</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="coding-tips-and-tricks.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;$&quot;</span>) <span class="co"># doesn&#39;t remove the $ sign</span></span>
+<span id="cb217-2"><a href="coding-tips-and-tricks.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>) <span class="co"># works</span></span></code></pre></div>
 </div>
 <div id="the-new-pipe-base-r" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> The new pipe (Base R)</h3>
