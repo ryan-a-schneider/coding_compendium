@@ -389,21 +389,29 @@ Multiple ways you can do this
 
 ```{r 10.6a, eval=FALSE}
 ########## Read multiple files at once into a SINGLE, UNIFIED data frame #######################
+
+# 1. specify and store the file names and their paths
 files=paste0(here::here("Data", "Cognition data", "/"), list.files(path=here::here("Data", "Cognition data"), pattern = ".sav"))
 
+# 2. pass this info to purrr
 cog_data=files |> 
   map_df(foreign::read.spss, to.data.frame=TRUE)
 
 
 ######### Read multiple files at once but KEEP AS SEPARATE data frames ####################################
+
+# 1. specify and store the file names and their paths
 files=paste0(here::here("Data", "Cognition data", "/"), list.files(path=here::here("Data", "Cognition data"), pattern = ".sav"))
 
+# 2. pass this info to purrr
 cog_data=files |> 
   map(foreign::read.spss, to.data.frame=TRUE) # store all individual files as separate list elements
 
+# 3. name each list level with the file names
 names(cog_data)=file.path(here::here("Data", "Cognition data")) |> #specify file path as a string
   list.files(pattern = ".sav") |> # pass the path string to list files; search in this location for files with this extension
   gsub(pattern=".sav", replacement = "") # remove this pattern to save only the name
+
 
 # files can be extracted later with this if desired
 list2env(cog_data, globalenv())
