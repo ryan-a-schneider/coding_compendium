@@ -385,64 +385,33 @@ And just like that, we're done!
 
 ### Example 3: Read/Import several files at once with `map()`
 
-Multiple ways you can do this
+Multiple ways you can do this....
 
 ```{r 10.6a, eval=FALSE}
-########## Read multiple files at once into a SINGLE, UNIFIED data frame #######################
 
-# 1. specify and store the file names and their paths
-files=paste0(here::here("Data", "Cognition data", "/"), list.files(path=here::here("Data", "Cognition data"), pattern = ".sav"))
+################### Option 1: read all into the global environment, keeping them as SEPERATE df's ###############
+legaldmlab::read_all(path="Data Repository/Stats Data Repository/JASP files", extension = ".csv")
 
-# 2. pass this info to purrr
-cog_data=files |> 
-  map_df(foreign::read.spss, to.data.frame=TRUE)
-
-
-######### Read multiple files at once but KEEP AS SEPARATE data frames ####################################
-
-# 1. specify and store the file names and their paths
-files=paste0(here::here("Data", "Cognition data", "/"), list.files(path=here::here("Data", "Cognition data"), pattern = ".sav"))
-
-# 2. pass this info to purrr
-cog_data=files |> 
-  map(foreign::read.spss, to.data.frame=TRUE) # store all individual files as separate list elements
-
-# 3. name each list level with the file names
-names(cog_data)=file.path(here::here("Data", "Cognition data")) |> #specify file path as a string
-  list.files(pattern = ".sav") |> # pass the path string to list files; search in this location for files with this extension
-  gsub(pattern=".sav", replacement = "") # remove this pattern to save only the name
+# Option 1.A: Squish ALL OBJECTS in the working environment into a list
+# Again, note the "ALL OBJECTS" part; make sure there are no functions or other things in the environment when you run this.
+files=mget(ls())
 
 
-# files can be extracted later with this if desired
+############# Option 2: Read in all files as a LIST of df's, then stitch in the names #####################################
+
+files=paste0(here::here("Data Repository", "Stats Data Repository", "JASP files", "/"), 
+             list.files(path=here::here("Data Repository", "Stats Data Repository", "JASP files"), pattern = ".csv"))
+
+files_list=files |> 
+  map(readr::read_csv)
+
+names(files_list)=file.path(here::here("Data Repository", "Stats Data Repository", "JASP files")) |> #specify file path as a string
+  list.files(pattern = ".csv") |> # pass the path string to list files; search in this location for files with this extension
+  gsub(pattern=".csv", replacement = "") # remove this pattern to save only the name
+
+
+# Option 2.A: Extract each data frame and put everything into the global environment
 list2env(cog_data, globalenv())
-```
-
-Can also create a function to do this if you plan on doing it a bunch.
-
-```{r 10.6, eval=FALSE}
-
-read_all=function(path, extension){
-  file_path <- path
-  
-  # save only file names with the desired extension
-  file_names=file_path %>% 
-    list.files() %>% 
-    .[str_detect(., extension)]
-  
-  if(str_detect(extension, pattern = ".csv")) (file_names %>%
-                                                 purrr::map(function(file_name){ # iterate through each file name
-                                                   assign(x = str_remove(file_name, ".csv"), # Remove file extension ".csv"
-                                                          value = read_csv(paste0(file_path, file_name)),
-                                                          envir = .GlobalEnv)}))
-  
-  if(str_detect(extension, pattern = ".xlsx")) (file_names %>%
-                                                  purrr::map(function(file_name){ # iterate through each file name
-                                                    assign(x = str_remove(file_name, ".xlsx"), # Remove file extension ".csv"
-                                                           value = readxl::read_excel(paste0(file_path, file_name)),
-                                                           envir = .GlobalEnv)}))
-}
-
-read_all(path = "JLWOP/Data and Models/", extension = ".xlsx")
 ```
 
 
@@ -473,7 +442,7 @@ graphics windows, and so on.
 knitr::include_graphics(here::here("pics", "walk.png"))
 ```
 
-***Example: Exporting multiple .csv files at once***
+***Example: Writing multiple files at once***
 
 ```{r, include=FALSE}
 knitr::include_graphics(here::here("pics", "export_purrr.png"))
@@ -492,13 +461,15 @@ apply the `write_csv` function in for-loop fashion.
 ```{r walk_demo, eval=FALSE}
 
 ### Custom function ####
-bundle_paths=function(df_list, folder_location){
+# Create needed function that grabs file names and stitches them together with the correct path and extension
+# Included in legaldmlab package
+bundle_paths=function(df_list, output_location, file_type){
   names=names(df_list)
-  paths=rep(here::here(folder_location), length(names))
-  extension=rep(c(".csv"), length(names))
+  paths=rep(here::here(output_location), length(names))
+  extension=rep(c(file_type), length(names))
   
   fixed_names=paste0("/",names)
-
+  
   path_bundle=list(paths,fixed_names, extension) %>% 
     pmap(., paste0)
   
@@ -510,13 +481,14 @@ bundle_paths=function(df_list, folder_location){
 dfs=list(na_blank=na_blank,
          na_zero=na_zero,
          na_zero_helpreint=na_zero_helpreint)
+
 # list 2
-paths_csv=bundle_paths(df_list = dfs, folder_location = "JLWOP/Data and Models")
+paths_csv=bundle_paths(df_list = dfs, folder_location = "JLWOP/Data and Models", file_type = ".sav")
 
 
 # Iterate over all elements in list 1 and corresponding element in list 2;
 # and apply the the write_csv function to each
-walk2(.x=dfs, .y= paths, .f=write_csv)
+walk2(.x=dfs, .y= paths, .f=haven::write_sav)
 
 
 #### .RData file for R users ####

@@ -26,9 +26,15 @@ turn-row-names-into-a-columnvariable
 how-to-editchange-column-names
 re-order-columns-in-a-data-set
 date-and-time-variables
+part-1-date-time-objects
+part-2-date-only-objects
 find-the-difference-between-two-datestimes
 reverse-code-a-variable
 create-a-relative-ranking-among-several-variables
+manipulating-the-working-environment-and-many-things-at-once
+stuff-the-whole-working-environment-into-a-list
+extract-everything-from-a-list-into-the-environment
+delete-everything-in-the-entire-environment-except-for-one-item
 clean-data
 replace-a-value-with-na
 replace-nas-with-a-value

@@ -479,7 +479,27 @@ mtcars %>% relocate(hp:wt, .after= am) %>% head()
 
 ## Date and time variables
 
-Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass. It requires things to be done in two stages, and very precisely. Particularly in the first stage.
+Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it's not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely. 
+
+### Part 1: Date-time objects
+
+If you're lucky enough to have a vector of date-times, like what Qualtrics gives you, this will be brainless. Just do the following:
+
+```{r}
+example_datetime_data=tibble::tribble(~datetime,
+                                      "2010-08-03 00:50:50",
+                                      "2010-08-04 01:40:50",
+                                      "2010-08-07 21:50:50")
+
+head(example_datetime_data) # stored as character string
+
+# Tidyverse
+lubridate::as_date(example_datetime_data$datetime)
+```
+
+### Part 2: Date-only objects
+
+If you're unlucky enough to have only dates, and said dates are written in the traditional x/x/xxxx format, this will be an annoyance that has to be done in two stages.
 
 First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.
 
@@ -488,18 +508,7 @@ example_date_data=tibble::tribble(~X1,     ~X2,
                                   "8/4/2021",  -49.87,
                                   "8/4/2021",  -13.85,
                                   "8/3/2021",   -7.45,
-                                  "8/3/2021", -172.71,
-                                  "8/2/2021",   -6.37,
-                                  "8/2/2021",     -25,
-                                  "8/2/2021", -219.68,
-                                  "8/2/2021",  -53.75,
-                                  "8/2/2021",  -29.83,
-                                  "8/2/2021",  -77.06,
-                                  "8/2/2021",  -16.16,
-                                  "8/2/2021", -114.78,
-                                  "8/2/2021",     -50,
-                                  "8/2/2021", -157.64)
-
+                                  "8/3/2021", -172.71)
 
 # Correct formatting
 example_date_data$X1=format(as.POSIXct(example_date_data$X1,format='%m/%d/%Y'),format='%Y-%m-%d')
@@ -511,14 +520,13 @@ In the code above, note that there are two `format` commands: The first one tell
 
 Second, you can now correct the object's structure. You can do this with base R's `as.Date()` or tidyverse's `date()` verbs.
 
-```{r}
-# Correct structure
-example_date_data$X1= lubridate::date(example_date_data$X1) # tidyverse
+```{r eval=FALSE}
+
+# Tidyverse
+example_date_data$X1= lubridate::date(example_date_data$X1) 
 
 # Base R version
-# example_date_data$X1=as.Date(example_date_data$X1)
-
-head(as_tibble(example_date_data))
+example_date_data$X1=as.Date(example_date_data$X1)
 ```
 
 Notice how the object is now stored as the correct type in the table above.
@@ -579,5 +587,25 @@ dat %>% mutate(ranked = dense_rank(desc(score)))
 ```
 
 
+## Manipulating the working environment and many things at once
 
+### Stuff the WHOLE working environment into a list
+
+```{r eval=FALSE}
+files=mget(ls())
+```
+
+
+### Extract everything from a list into the environment
+
+```{r eval=FALSE}
+list2env(cog_data, globalenv())
+```
+
+
+### Delete everything in the entire environment, except for one item
+
+```{r eval=FALSE}
+rm(list=setdiff(ls(), "cog_data")) # delete everything in the local environment except the final data set
+```
 

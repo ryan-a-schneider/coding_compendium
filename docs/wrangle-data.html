@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-02-19" />
+<meta name="date" content="2022-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,10 +181,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
 <li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.1</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#part-1-date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Part 1: Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#part-2-date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Part 2: Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
 <li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<ul>
+<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
 <ul>
@@ -905,75 +913,74 @@ This is a second way to do the above. It may appear more simple, but it’s also
 </div>
 <div id="date-and-time-variables" class="section level2" number="3.12">
 <h2><span class="header-section-number">3.12</span> Date and time variables</h2>
-<p>Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass. It requires things to be done in two stages, and very precisely. Particularly in the first stage.</p>
+<p>Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it’s not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely.</p>
+<div id="part-1-date-time-objects" class="section level3" number="3.12.1">
+<h3><span class="header-section-number">3.12.1</span> Part 1: Date-time objects</h3>
+<p>If you’re lucky enough to have a vector of date-times, like what Qualtrics gives you, this will be brainless. Just do the following:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="wrangle-data.html#cb61-1" aria-hidden="true" tabindex="-1"></a>example_datetime_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>datetime,</span>
+<span id="cb61-2"><a href="wrangle-data.html#cb61-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-03 00:50:50&quot;</span>,</span>
+<span id="cb61-3"><a href="wrangle-data.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-04 01:40:50&quot;</span>,</span>
+<span id="cb61-4"><a href="wrangle-data.html#cb61-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-07 21:50:50&quot;</span>)</span>
+<span id="cb61-5"><a href="wrangle-data.html#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-6"><a href="wrangle-data.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(example_datetime_data) <span class="co"># stored as character string</span></span></code></pre></div>
+<pre><code>## # A tibble: 3 x 1
+##   datetime           
+##   &lt;chr&gt;              
+## 1 2010-08-03 00:50:50
+## 2 2010-08-04 01:40:50
+## 3 2010-08-07 21:50:50</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="wrangle-data.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse</span></span>
+<span id="cb63-2"><a href="wrangle-data.html#cb63-2" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_date</span>(example_datetime_data<span class="sc">$</span>datetime)</span></code></pre></div>
+<pre><code>## [1] &quot;2010-08-03&quot; &quot;2010-08-04&quot; &quot;2010-08-07&quot;</code></pre>
+</div>
+<div id="part-2-date-only-objects" class="section level3" number="3.12.2">
+<h3><span class="header-section-number">3.12.2</span> Part 2: Date-only objects</h3>
+<p>If you’re unlucky enough to have only dates, and said dates are written in the traditional x/x/xxxx format, this will be an annoyance that has to be done in two stages.</p>
 <p>First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="wrangle-data.html#cb61-1" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>X1,     <span class="sc">~</span>X2,</span>
-<span id="cb61-2"><a href="wrangle-data.html#cb61-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">49.87</span>,</span>
-<span id="cb61-3"><a href="wrangle-data.html#cb61-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">13.85</span>,</span>
-<span id="cb61-4"><a href="wrangle-data.html#cb61-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>,   <span class="sc">-</span><span class="fl">7.45</span>,</span>
-<span id="cb61-5"><a href="wrangle-data.html#cb61-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>, <span class="sc">-</span><span class="fl">172.71</span>,</span>
-<span id="cb61-6"><a href="wrangle-data.html#cb61-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,   <span class="sc">-</span><span class="fl">6.37</span>,</span>
-<span id="cb61-7"><a href="wrangle-data.html#cb61-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,     <span class="sc">-</span><span class="dv">25</span>,</span>
-<span id="cb61-8"><a href="wrangle-data.html#cb61-8" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>, <span class="sc">-</span><span class="fl">219.68</span>,</span>
-<span id="cb61-9"><a href="wrangle-data.html#cb61-9" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">53.75</span>,</span>
-<span id="cb61-10"><a href="wrangle-data.html#cb61-10" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">29.83</span>,</span>
-<span id="cb61-11"><a href="wrangle-data.html#cb61-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">77.06</span>,</span>
-<span id="cb61-12"><a href="wrangle-data.html#cb61-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,  <span class="sc">-</span><span class="fl">16.16</span>,</span>
-<span id="cb61-13"><a href="wrangle-data.html#cb61-13" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>, <span class="sc">-</span><span class="fl">114.78</span>,</span>
-<span id="cb61-14"><a href="wrangle-data.html#cb61-14" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>,     <span class="sc">-</span><span class="dv">50</span>,</span>
-<span id="cb61-15"><a href="wrangle-data.html#cb61-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/2/2021&quot;</span>, <span class="sc">-</span><span class="fl">157.64</span>)</span>
-<span id="cb61-16"><a href="wrangle-data.html#cb61-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-17"><a href="wrangle-data.html#cb61-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-18"><a href="wrangle-data.html#cb61-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct formatting</span></span>
-<span id="cb61-19"><a href="wrangle-data.html#cb61-19" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(example_date_data<span class="sc">$</span>X1,<span class="at">format=</span><span class="st">&#39;%m/%d/%Y&#39;</span>),<span class="at">format=</span><span class="st">&#39;%Y-%m-%d&#39;</span>)</span>
-<span id="cb61-20"><a href="wrangle-data.html#cb61-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-21"><a href="wrangle-data.html#cb61-21" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 2
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="wrangle-data.html#cb65-1" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>X1,     <span class="sc">~</span>X2,</span>
+<span id="cb65-2"><a href="wrangle-data.html#cb65-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">49.87</span>,</span>
+<span id="cb65-3"><a href="wrangle-data.html#cb65-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">13.85</span>,</span>
+<span id="cb65-4"><a href="wrangle-data.html#cb65-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>,   <span class="sc">-</span><span class="fl">7.45</span>,</span>
+<span id="cb65-5"><a href="wrangle-data.html#cb65-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>, <span class="sc">-</span><span class="fl">172.71</span>)</span>
+<span id="cb65-6"><a href="wrangle-data.html#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="wrangle-data.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct formatting</span></span>
+<span id="cb65-8"><a href="wrangle-data.html#cb65-8" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(example_date_data<span class="sc">$</span>X1,<span class="at">format=</span><span class="st">&#39;%m/%d/%Y&#39;</span>),<span class="at">format=</span><span class="st">&#39;%Y-%m-%d&#39;</span>)</span>
+<span id="cb65-9"><a href="wrangle-data.html#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="wrangle-data.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
 ##   X1              X2
 ##   &lt;chr&gt;        &lt;dbl&gt;
 ## 1 2021-08-04  -49.9 
 ## 2 2021-08-04  -13.8 
 ## 3 2021-08-03   -7.45
-## 4 2021-08-03 -173.  
-## 5 2021-08-02   -6.37
-## 6 2021-08-02  -25</code></pre>
+## 4 2021-08-03 -173.</code></pre>
 <p>In the code above, note that there are two <code>format</code> commands: The first one tells R how the date data is <strong>currently being stored</strong>, while the second at the end tells it how <strong>you want it to be stored.</strong> In this case, we are changing it from the way we would usually hand write a date (e.g., 10/26/1993) to a format commonly recognized and used in Excel and stats software (1993-10-26). <em>If your column also has times in it, you also need to include that too!</em></p>
 <p>Second, you can now correct the object’s structure. You can do this with base R’s <code>as.Date()</code> or tidyverse’s <code>date()</code> verbs.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="wrangle-data.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct structure</span></span>
-<span id="cb63-2"><a href="wrangle-data.html#cb63-2" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">date</span>(example_date_data<span class="sc">$</span>X1) <span class="co"># tidyverse</span></span>
-<span id="cb63-3"><a href="wrangle-data.html#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="wrangle-data.html#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R version</span></span>
-<span id="cb63-5"><a href="wrangle-data.html#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># example_date_data$X1=as.Date(example_date_data$X1)</span></span>
-<span id="cb63-6"><a href="wrangle-data.html#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-7"><a href="wrangle-data.html#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 2
-##   X1              X2
-##   &lt;date&gt;       &lt;dbl&gt;
-## 1 2021-08-04  -49.9 
-## 2 2021-08-04  -13.8 
-## 3 2021-08-03   -7.45
-## 4 2021-08-03 -173.  
-## 5 2021-08-02   -6.37
-## 6 2021-08-02  -25</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="wrangle-data.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse</span></span>
+<span id="cb67-2"><a href="wrangle-data.html#cb67-2" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">date</span>(example_date_data<span class="sc">$</span>X1) </span>
+<span id="cb67-3"><a href="wrangle-data.html#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="wrangle-data.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R version</span></span>
+<span id="cb67-5"><a href="wrangle-data.html#cb67-5" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">as.Date</span>(example_date_data<span class="sc">$</span>X1)</span></code></pre></div>
 <p>Notice how the object is now stored as the correct type in the table above.</p>
 <p><strong><em>NOTE!</em></strong> This entire process has been included in the <code>tidy_date()</code> command in my package, <code>legaldmlab</code>.</p>
-<div id="find-the-difference-between-two-datestimes" class="section level3" number="3.12.1">
-<h3><span class="header-section-number">3.12.1</span> Find the difference between two dates/times</h3>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="wrangle-data.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(part_1<span class="sc">$</span>end_date[<span class="dv">1</span>], part_2<span class="sc">$</span>end_date[<span class="dv">1</span>], <span class="at">units=</span><span class="st">&quot;days&quot;</span>)</span></code></pre></div>
+</div>
+<div id="find-the-difference-between-two-datestimes" class="section level3" number="3.12.3">
+<h3><span class="header-section-number">3.12.3</span> Find the difference between two dates/times</h3>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="wrangle-data.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(part_1<span class="sc">$</span>end_date[<span class="dv">1</span>], part_2<span class="sc">$</span>end_date[<span class="dv">1</span>], <span class="at">units=</span><span class="st">&quot;days&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="reverse-code-a-variable" class="section level2" number="3.13">
 <h2><span class="header-section-number">3.13</span> Reverse-code a variable</h2>
 <p>To reverse-score a variable, you should use <code>car::recode()</code>
 Can be done a few different ways, depending on how many variables you’re looking to recode:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="wrangle-data.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode just one variable</span></span>
-<span id="cb66-2"><a href="wrangle-data.html#cb66-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>column<span class="ot">=</span><span class="fu">recode</span>(df<span class="sc">$</span>column,<span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span>
-<span id="cb66-3"><a href="wrangle-data.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="wrangle-data.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode a select bunch of variables</span></span>
-<span id="cb66-5"><a href="wrangle-data.html#cb66-5" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(family_close <span class="sc">:</span> family_feelings), recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>))</span>
-<span id="cb66-6"><a href="wrangle-data.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-7"><a href="wrangle-data.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode the whole damn thing. All columns.</span></span>
-<span id="cb66-8"><a href="wrangle-data.html#cb66-8" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="wrangle-data.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode just one variable</span></span>
+<span id="cb69-2"><a href="wrangle-data.html#cb69-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>column<span class="ot">=</span><span class="fu">recode</span>(df<span class="sc">$</span>column,<span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span>
+<span id="cb69-3"><a href="wrangle-data.html#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="wrangle-data.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode a select bunch of variables</span></span>
+<span id="cb69-5"><a href="wrangle-data.html#cb69-5" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(family_close <span class="sc">:</span> family_feelings), recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>))</span>
+<span id="cb69-6"><a href="wrangle-data.html#cb69-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-7"><a href="wrangle-data.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode the whole damn thing. All columns.</span></span>
+<span id="cb69-8"><a href="wrangle-data.html#cb69-8" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span></code></pre></div>
 </div>
 <div id="create-a-relative-ranking-among-several-variables" class="section level2" number="3.14">
 <h2><span class="header-section-number">3.14</span> Create a relative ranking among several variables</h2>
@@ -983,21 +990,21 @@ Can be done a few different ways, depending on how many variables you’re looki
 <li><p>Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr’s <code>dense_rank</code> command.</p></li>
 <li><p>In either case, the ranks are generated from lowest to highest, so if you want to flip them around you’ll need to include <code>desc()</code> in the command.</p></li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="wrangle-data.html#cb67-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>score,</span>
-<span id="cb67-2"><a href="wrangle-data.html#cb67-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">0</span>,</span>
-<span id="cb67-3"><a href="wrangle-data.html#cb67-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">5</span>,</span>
-<span id="cb67-4"><a href="wrangle-data.html#cb67-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
-<span id="cb67-5"><a href="wrangle-data.html#cb67-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
-<span id="cb67-6"><a href="wrangle-data.html#cb67-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
-<span id="cb67-7"><a href="wrangle-data.html#cb67-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="cn">NA</span>,</span>
-<span id="cb67-8"><a href="wrangle-data.html#cb67-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">70</span>,</span>
-<span id="cb67-9"><a href="wrangle-data.html#cb67-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">80</span>,</span>
-<span id="cb67-10"><a href="wrangle-data.html#cb67-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">90</span>,</span>
-<span id="cb67-11"><a href="wrangle-data.html#cb67-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
-<span id="cb67-12"><a href="wrangle-data.html#cb67-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
-<span id="cb67-13"><a href="wrangle-data.html#cb67-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">1</span>)</span>
-<span id="cb67-14"><a href="wrangle-data.html#cb67-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-15"><a href="wrangle-data.html#cb67-15" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranked =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(score)))</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="wrangle-data.html#cb70-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>score,</span>
+<span id="cb70-2"><a href="wrangle-data.html#cb70-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">0</span>,</span>
+<span id="cb70-3"><a href="wrangle-data.html#cb70-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">5</span>,</span>
+<span id="cb70-4"><a href="wrangle-data.html#cb70-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
+<span id="cb70-5"><a href="wrangle-data.html#cb70-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
+<span id="cb70-6"><a href="wrangle-data.html#cb70-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
+<span id="cb70-7"><a href="wrangle-data.html#cb70-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb70-8"><a href="wrangle-data.html#cb70-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">70</span>,</span>
+<span id="cb70-9"><a href="wrangle-data.html#cb70-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">80</span>,</span>
+<span id="cb70-10"><a href="wrangle-data.html#cb70-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">90</span>,</span>
+<span id="cb70-11"><a href="wrangle-data.html#cb70-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
+<span id="cb70-12"><a href="wrangle-data.html#cb70-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
+<span id="cb70-13"><a href="wrangle-data.html#cb70-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb70-14"><a href="wrangle-data.html#cb70-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-15"><a href="wrangle-data.html#cb70-15" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranked =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(score)))</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 3
 ##    name  score ranked
 ##    &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt;
@@ -1013,7 +1020,22 @@ Can be done a few different ways, depending on how many variables you’re looki
 ## 10 alice    20      5
 ## 11 alice    20      5
 ## 12 alice     1      7</code></pre>
+</div>
+<div id="manipulating-the-working-environment-and-many-things-at-once" class="section level2" number="3.15">
+<h2><span class="header-section-number">3.15</span> Manipulating the working environment and many things at once</h2>
+<div id="stuff-the-whole-working-environment-into-a-list" class="section level3" number="3.15.1">
+<h3><span class="header-section-number">3.15.1</span> Stuff the WHOLE working environment into a list</h3>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="wrangle-data.html#cb72-1" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">mget</span>(<span class="fu">ls</span>())</span></code></pre></div>
+</div>
+<div id="extract-everything-from-a-list-into-the-environment" class="section level3" number="3.15.2">
+<h3><span class="header-section-number">3.15.2</span> Extract everything from a list into the environment</h3>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="wrangle-data.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(cog_data, <span class="fu">globalenv</span>())</span></code></pre></div>
+</div>
+<div id="delete-everything-in-the-entire-environment-except-for-one-item" class="section level3" number="3.15.3">
+<h3><span class="header-section-number">3.15.3</span> Delete everything in the entire environment, except for one item</h3>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="wrangle-data.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">setdiff</span>(<span class="fu">ls</span>(), <span class="st">&quot;cog_data&quot;</span>)) <span class="co"># delete everything in the local environment except the final data set</span></span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>

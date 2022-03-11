@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-02-19" />
+<meta name="date" content="2022-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,10 +181,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
 <li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.1</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#part-1-date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Part 1: Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#part-2-date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Part 2: Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
 <li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<ul>
+<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
 <ul>
@@ -374,12 +382,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 an output in accordance with that operation. You can literally make a
 function to do anything you want.</p>
 <p><em>General structure of a basic function:</em></p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example structure</span></span>
-<span id="cb176-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb176-3" aria-hidden="true" tabindex="-1"></a>Function_name<span class="ot">=</span><span class="cf">function</span>(argument){</span>
-<span id="cb176-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  Expressions</span>
-<span id="cb176-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb176-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb176-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb176-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example structure</span></span>
+<span id="cb187-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb187-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb187-3" aria-hidden="true" tabindex="-1"></a>Function_name<span class="ot">=</span><span class="cf">function</span>(argument){</span>
+<span id="cb187-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb187-4" aria-hidden="true" tabindex="-1"></a>  Expressions</span>
+<span id="cb187-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb187-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb187-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb187-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><em>Argument</em> is your input. It is the thing you want to perform the
 operation on.</li>
@@ -390,17 +398,17 @@ done.</li>
 </ul>
 <p>This example function takes an input of numbers in the form of a vector
 and subtracts two from each.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-1" aria-hidden="true" tabindex="-1"></a>numbers<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">80</span>)</span>
-<span id="cb177-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-3" aria-hidden="true" tabindex="-1"></a>sub_2<span class="ot">=</span><span class="cf">function</span>(x){</span>
-<span id="cb177-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-4" aria-hidden="true" tabindex="-1"></a>  result<span class="ot">=</span> x <span class="sc">-</span> <span class="dv">2</span></span>
-<span id="cb177-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb177-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb177-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(numbers)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-1" aria-hidden="true" tabindex="-1"></a>numbers<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">80</span>)</span>
+<span id="cb188-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-3" aria-hidden="true" tabindex="-1"></a>sub_2<span class="ot">=</span><span class="cf">function</span>(x){</span>
+<span id="cb188-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  result<span class="ot">=</span> x <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb188-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb188-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb188-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(numbers)</span></code></pre></div>
 <pre><code>## [1]  0  8 10 78</code></pre>
 <p>We can also supply the function with a single number and it still works…</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(<span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sub_2</span>(<span class="dv">100</span>)</span></code></pre></div>
 <pre><code>## [1] 98</code></pre>
 <p><strong><em>Well this looks useful. So what’s the bigger picture?</em></strong></p>
 <p>One of the primary advantages of functions are that they can reduce a long and
@@ -410,7 +418,7 @@ even in just a few minutes, if you know you will be writing the code for
 some process two or more times.</p>
 <p>Take this script for instance. You can see from the circled parts that I
 needed to transform three different data sets in a similar way:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb181-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;repeat_process.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;repeat_process.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="pics/repeat_process.jpg" width="413" /></p>
 <p>Yes, I could have just done a copy-paste of the original code and tweak it slightly each time….
 But that is time consuming, produces a sloppier and longer script, and introduces a lot more room for error because of the repeated code and extra steps.</p>
@@ -423,12 +431,12 @@ and importantly, reduces the chances of you making a coding error by
 proxy of the former two.</em></strong></p>
 <p>As a quick example, I was able to replace each of the circled paragraphs of code above with a custom function that ran
 everything in one simple line. Now instead of 3 whole (and redundant) paragraphs, I now have 3 short lines, like so….</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb182-1" aria-hidden="true" tabindex="-1"></a>na_zero_helpreint<span class="ot">=</span><span class="fu">rotate_data</span>(<span class="at">data =</span> na_zero_helpreint,</span>
-<span id="cb182-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb182-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">variable_prefix =</span> <span class="st">&quot;reintegrate_&quot;</span>)</span>
-<span id="cb182-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb182-4" aria-hidden="true" tabindex="-1"></a>na_blank<span class="ot">=</span><span class="fu">rotate_data</span>(<span class="at">data =</span> na_zero_helpreint, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier_&quot;</span>)</span>
-<span id="cb182-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb182-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb182-6" aria-hidden="true" tabindex="-1"></a>na_zero<span class="ot">=</span><span class="fu">rotate_data</span>(<span class="at">data =</span> na_zero_helpreint, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier_&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb193-1" aria-hidden="true" tabindex="-1"></a>na_zero_helpreint<span class="ot">=</span><span class="fu">rotate_data</span>(<span class="at">data =</span> na_zero_helpreint,</span>
+<span id="cb193-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb193-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">variable_prefix =</span> <span class="st">&quot;reintegrate_&quot;</span>)</span>
+<span id="cb193-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb193-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb193-4" aria-hidden="true" tabindex="-1"></a>na_blank<span class="ot">=</span><span class="fu">rotate_data</span>(<span class="at">data =</span> na_zero_helpreint, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier_&quot;</span>)</span>
+<span id="cb193-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb193-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb193-6" aria-hidden="true" tabindex="-1"></a>na_zero<span class="ot">=</span><span class="fu">rotate_data</span>(<span class="at">data =</span> na_zero_helpreint, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier_&quot;</span>)</span></code></pre></div>
 <p><strong>Limitations to your average, everyday functions.</strong> While reducing a
 whole <em>process or sequence</em> of commands is extremely useful, it still
 leaves a limitation. For instance, while we avoided copying and pasting
@@ -445,20 +453,20 @@ many items.</p>
 <p>For example, this code finds the means of every vector/column in a
 dataset by repeatedly applying the same code over and over to element
 “i” in the given list:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb183-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb183-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb183-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
-<span id="cb183-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb183-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb183-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-8" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1.Output. Create the object you want the results of the loop stored in.</span></span>
-<span id="cb183-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2.Sequence of operations. &quot;For each item &#39;i&#39; along data frame…&quot;</span></span>
-<span id="cb183-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3.Body:&quot;every individual item in &#39;output&#39; = the median of each col in df</span></span>
-<span id="cb183-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb183-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb183-14" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb194-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb194-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb194-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb194-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb194-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb194-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-8" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1.Output. Create the object you want the results of the loop stored in.</span></span>
+<span id="cb194-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2.Sequence of operations. &quot;For each item &#39;i&#39; along data frame…&quot;</span></span>
+<span id="cb194-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-11" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]])      <span class="co"># 3.Body:&quot;every individual item in &#39;output&#39; = the median of each col in df</span></span>
+<span id="cb194-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb194-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-14" aria-hidden="true" tabindex="-1"></a>output</span></code></pre></div>
 <pre><code>## [1]  0.3771802 -0.5176346  0.4171879  0.5704655</code></pre>
 <p>Check out <a href="https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments">this book
 chapter</a>
@@ -491,15 +499,15 @@ same problems.</p>
 <p><strong><em>How to use purrr</em></strong></p>
 <p>The structure of <code>map()</code> commands is the same as the others in the
 tidyverse:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co">#option 1</span></span>
-<span id="cb185-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(data, <span class="cf">function</span>)</span>
-<span id="cb185-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb185-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2</span></span>
-<span id="cb185-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb185-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="cf">function</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co">#option 1</span></span>
+<span id="cb196-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(data, <span class="cf">function</span>)</span>
+<span id="cb196-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="co"># option 2</span></span>
+<span id="cb196-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="cf">function</span>)</span></code></pre></div>
 <p>As a quick example and to highlight why purrr is so much more efficient
 and easier to use than for-loops, look at the same example from before,
 now using <code>map()</code> instead of a <code>for</code>:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb186-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">map_dbl</span>(median)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">map_dbl</span>(median)</span></code></pre></div>
 <pre><code>##          a          b          c          d 
 ##  0.3771802 -0.5176346  0.4171879  0.5704655</code></pre>
 <p>A single line is all it took to get the same results! And, it follows
@@ -530,610 +538,658 @@ for each step that condense that code down to one command.</p>
 <p>Lastly, apply each function from your individual steps to all items in
 your list by using <code>purr::map()</code>.</p>
 <p><strong><em>Do for One</em></strong></p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb188-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1</span></span>
-<span id="cb188-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure out a line-by-line process for one item/one single web page</span></span>
-<span id="cb188-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-5" aria-hidden="true" tabindex="-1"></a>html1<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb188-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.shsTable.shsBorderTable&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb188-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb188-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb188-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb188-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb188-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html1)</span></code></pre></div>
-<pre><code>##   rank               name distance
-## 1    1 Bianca Pagdanganan  284.000
-## 2    2     Emily Pedersen  276.750
-## 3    3      Lexi Thompson  276.286
-## 4    4       Charley Hull  275.714
-## 5    5       Alana Uriell  274.000
-## 6    6      Frida Kinhult  273.750</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 2</span></span>
-<span id="cb190-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a custom function of the above to shorten and generalize the process</span></span>
-<span id="cb190-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-3" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
-<span id="cb190-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-4" aria-hidden="true" tabindex="-1"></a>  web_page<span class="ot">=</span><span class="fu">read_html</span>(url) <span class="sc">|&gt;</span> </span>
-<span id="cb190-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.shsTable.shsBorderTable&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># fortunately this node works for all four pages so it can be baked into the function</span></span>
-<span id="cb190-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb190-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb190-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-8" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb190-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb190-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(web_page)</span>
-<span id="cb190-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb190-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-15" aria-hidden="true" tabindex="-1"></a><span class="co"># test to verify it works</span></span>
-<span id="cb190-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-16" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">quick_read_html</span>(<span class="at">url=</span> <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>) </span>
-<span id="cb190-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb190-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb190-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test) <span class="co"># nice </span></span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb199-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1</span></span>
+<span id="cb199-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure out a line-by-line process for one item/one single web page</span></span>
+<span id="cb199-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-5" aria-hidden="true" tabindex="-1"></a>html1<span class="ot">=</span><span class="fu">read_html</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb199-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.shsTable.shsBorderTable&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb199-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb199-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb199-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb199-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(html1)</span></code></pre></div>
+<pre><code>##   rank                 name distance
+## 1    1   Bianca Pagdanganan  284.000
+## 2    2 Nanna Koerstz Madsen  277.500
+## 3    3        Lexi Thompson  276.286
+## 4    4         Charley Hull  274.250
+## 5    5         Alana Uriell  274.000
+## 6    6        Frida Kinhult  273.750</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 2</span></span>
+<span id="cb201-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create a custom function of the above to shorten and generalize the process</span></span>
+<span id="cb201-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-3" aria-hidden="true" tabindex="-1"></a>quick_read_html<span class="ot">=</span><span class="cf">function</span>(url){</span>
+<span id="cb201-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-4" aria-hidden="true" tabindex="-1"></a>  web_page<span class="ot">=</span><span class="fu">read_html</span>(url) <span class="sc">|&gt;</span> </span>
+<span id="cb201-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">&quot;table.shsTable.shsBorderTable&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># fortunately this node works for all four pages so it can be baked into the function</span></span>
+<span id="cb201-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb201-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb201-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-8" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb201-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb201-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(web_page)</span>
+<span id="cb201-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb201-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-15" aria-hidden="true" tabindex="-1"></a><span class="co"># test to verify it works</span></span>
+<span id="cb201-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-16" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">quick_read_html</span>(<span class="at">url=</span> <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>) </span>
+<span id="cb201-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test) <span class="co"># nice </span></span></code></pre></div>
 <pre><code>##   rank              name putt_average
-## 1    1     Leona Maguire        1.655
-## 2    2     Danielle Kang        1.661
-## 3    3  Brooke Henderson        1.701
-## 4    4        Su-Hyun Oh        1.707
-## 5    5   Carlota Ciganda        1.711
-## 6    6 Madelene Sagstrom        1.711</code></pre>
+## 1   1t      Jin Young Ko        1.667
+## 2   1t        Minjee Lee        1.667
+## 3    3     Danielle Kang        1.677
+## 4    4     Leona Maguire        1.684
+## 5    5     Jeong Eun Lee        1.688
+## 6    6 Patty Tavatanakit        1.696</code></pre>
 <p><strong><em>DO FOR ALL.</em></strong>
 Now create the object that contains all the elements you want to iterate over, and then pass it to your generalized function with map.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3a</span></span>
-<span id="cb192-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create an object that contains ALL elements of interest</span></span>
-<span id="cb192-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-3" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>,</span>
-<span id="cb192-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>,</span>
-<span id="cb192-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=06&quot;</span>,</span>
-<span id="cb192-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-6" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=12&quot;</span>)</span>
-<span id="cb192-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb192-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4</span></span>
-<span id="cb192-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use the power of map and be amazed</span></span>
-<span id="cb192-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-10" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> URLs <span class="sc">|&gt;</span> <span class="fu">map</span>(quick_read_html)</span>
-<span id="cb192-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb192-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb192-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3a</span></span>
+<span id="cb203-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="co"># create an object that contains ALL elements of interest</span></span>
+<span id="cb203-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-3" aria-hidden="true" tabindex="-1"></a>URLs<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=04&quot;</span>,</span>
+<span id="cb203-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=08&quot;</span>,</span>
+<span id="cb203-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=06&quot;</span>,</span>
+<span id="cb203-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-6" aria-hidden="true" tabindex="-1"></a>       <span class="st">&quot;https://scores.nbcsports.com/golf/averages.asp?tour=LPGA&amp;rank=12&quot;</span>)</span>
+<span id="cb203-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4</span></span>
+<span id="cb203-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-9" aria-hidden="true" tabindex="-1"></a><span class="co"># use the power of map and be amazed</span></span>
+<span id="cb203-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-10" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> URLs <span class="sc">|&gt;</span> <span class="fu">map</span>(quick_read_html)</span>
+<span id="cb203-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb203-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
 <pre><code>## [[1]]
 ##     rank                     name distance
 ## 1      1       Bianca Pagdanganan  284.000
-## 2      2           Emily Pedersen  276.750
+## 2      2     Nanna Koerstz Madsen  277.500
 ## 3      3            Lexi Thompson  276.286
-## 4      4             Charley Hull  275.714
+## 4      4             Charley Hull  274.250
 ## 5      5             Alana Uriell  274.000
 ## 6      6            Frida Kinhult  273.750
 ## 7      7 Pauline Roussin-Bouchard  273.071
-## 8      8            Janie Jackson  270.600
-## 9      9          Jennifer Kupcho  270.333
-## 10    10     Nanna Koerstz Madsen  270.300
+## 8      8         Brooke Henderson  271.733
+## 9      9          Carlota Ciganda  270.636
+## 10    10            Janie Jackson  270.600
 ## 11    11              Maria Fassi  270.125
-## 12    12                Yuka Saso  270.050
-## 13    13        Patty Tavatanakit  269.773
-## 14    14         Brooke Henderson  268.727
-## 15    15              Nelly Korda  268.636
-## 16    16              Luna Sobron  268.500
-## 17    17          Carlota Ciganda  268.143
-## 18    18           Amanda Doherty  267.750
-## 19    19         Atthaya Thitikul  267.429
-## 20   20t           Cydney Clanton  266.714
-## 21   20t           Rachel Rohanna  266.714
-## 22    22               Sarah Kemp  265.750
-## 23    23             Peiyun Chien  265.375
-## 24   24t    Fatima Fernandez Cano  265.200
-## 25   24t              Yealimi Noh  265.200
-## 26    26                 Amy Yang  265.071
-## 27    27        Madelene Sagstrom  265.045
-## 28   28t            Agathe Laisne  264.500
-## 29   28t          Giulia Molinaro  264.500
-## 30    30                 Xiyu Lin  264.286
-## 31    31         Jaye Marie Green  263.917
-## 32    32                A Lim Kim  263.909
-## 33    33               Alison Lee  263.900
-## 34    34           Gerina Mendoza  263.417
-## 35    35             Laura Davies  263.400
-## 36    36      Maude-Aimee Leblanc  262.833
-## 37    37           Allisen Corpuz  262.333
-## 38    38         Stephanie Meadow  262.250
-## 39    39          Sophia Schubert  261.917
-## 40    40              Hyejin Choi  261.429
-## 41    41           Gemma Dryburgh  261.167
-## 42    42            Jennifer Song  261.125
-## 43    43          Lauren Coughlin  260.625
-## 44    44                 Lilia Vu  260.571
-## 45    45       Brittany Lincicome  260.071
-## 46    46            Jessica Korda  259.875
-## 47    47                Isi Gabsa  259.833
-## 48    48   Katherine Perry-Hamski  259.800
-## 49    49           Katherine Kirk  259.625
-## 50    50            Ryann O&#39;Toole  259.591
-## 51    51               Annie Park  259.500
-## 52    52               Ally Ewing  259.300
-## 53    53         Ariya Jutanugarn  258.889
-## 54    54                   Yu Liu  258.375
-## 55    55            Jeong Eun Lee  258.357
-## 56    56             Georgia Hall  258.273
-## 57    57                 Lydia Ko  258.063
-## 58    58            Leona Maguire  257.500
-## 59    59               Ruixin Liu  257.200
-## 60    60          Angela Stanford  257.000
-## 61    61                Ana Belac  256.875
-## 62    62             Nasa Hataoka  256.727
-## 63    63         Esther Henseleit  256.500
-## 64    64         Perrine Delacour  256.429
-## 65    65             Sophia Popov  256.375
-## 66    66               Lauren Kim  256.000
-## 67    67         Linnea Johansson  255.929
-## 68   68t          Casey Danielson  255.375
-## 69   68t             Cristie Kerr  255.375
-## 70    70               Gaby Lopez  255.300
-## 71    71             Jeongeun Lee  255.250
-## 72    72        Lauren Stephenson  254.786
-## 73    73       Jodi Ewart Shadoff  254.714
-## 74    74                 Mel Reid  254.250
-## 75    75           Jennifer Chang  254.000
-## 76    76        Pernilla Lindberg  253.800
-## 77    77               Paula Reto  253.700
-## 78    78          Cheyenne Knight  253.600
-## 79    79         Elizabeth Szokol  253.250
-## 80    80          Sarah Schmelzel  253.143
-## 81    81                Angel Yin  253.000
-## 82    82               Jenny Shin  252.929
-## 83    83                Amy Olson  252.786
-## 84    84      Jasmine Suwannapura  252.571
-## 85    85     Pajaree Anannarukarn  252.409
-## 86    86            Danielle Kang  252.313
-## 87    87                Na Rin An  252.071
-## 88    88             Austin Ernst  252.056
-## 89    89         Wichanee Meechai  252.000
-## 90    90        Brittany Altomare  251.900
-## 91    91            Jenny Coleman  251.875
-## 92    92        Albane Valenzuela  251.500
-## 93    93                  Muni He  251.250
-## 94    94              Megan Khang  250.929
-## 95    95               Dewi Weber  250.500
-## 96    96           Hee Young Park  250.400
-## 97    97           Celine Boutier  250.364
-## 98    98        Pornanong Phatlum  250.214
-## 99    99               Andrea Lee  249.750
-## 100  100              In Gee Chun  249.286
-## 101  101          Caroline Masson  249.200
-## 102  102               Su-Hyun Oh  249.071
-## 103  103                Kelly Tan  248.929
-## 104  104             Mina Harigae  248.875
-## 105  105          Morgane Metraux  248.500
-## 106  106            Brittany Lang  248.417
-## 107  107           Anna Nordqvist  248.227
-## 108  108               Bronte Law  247.643
-## 109  109              Ayaka Furue  246.714
-## 110  110              Marina Alex  246.571
-## 111  111             Yae Eun Hong  246.500
-## 112  112           Lindsey Weaver  246.357
-## 113  113        Moriya Jutanugarn  245.389
-## 114  114           Ashleigh Buhai  245.125
-## 115  115          Matilda Castren  244.833
-## 116  116            Marissa Steen  244.200
-## 117  117               Heaji Kang  243.875
-## 118  118             Na Yeon Choi  242.750
-## 119  119              Emma Talley  242.000
-## 120  120              Karrie Webb  241.625
-## 121  121            Christina Kim  240.083
-## 122  122              Stacy Lewis  238.682
-## 123  123                Mirim Lee  238.563
-## 124  124            Allison Emrey  237.083
-## 125  125              Aditi Ashok  236.429
-## 126  126        Michelle Wie West  235.875
-## 127  127               Inbee Park  235.056
-## 128  128         Dana Finkelstein  234.786
-## 129  129           Beatriz Recari  228.250
+## 12    12               Minjee Lee  270.000
+## 13    13        Patty Tavatanakit  269.667
+## 14    14           Emily Pedersen  269.583
+## 15    15                Yuka Saso  269.036
+## 16    16         Atthaya Thitikul  268.818
+## 17    17              Nelly Korda  268.636
+## 18    18              Luna Sobron  268.500
+## 19    19        Madelene Sagstrom  268.233
+## 20    20             Hannah Green  267.875
+## 21    21           Amanda Doherty  267.750
+## 22    22          Jennifer Kupcho  266.950
+## 23    23                A Lim Kim  266.933
+## 24   24t           Cydney Clanton  266.714
+## 25   24t           Rachel Rohanna  266.714
+## 26    26              Yealimi Noh  266.167
+## 27    27             Peiyun Chien  265.375
+## 28    28    Fatima Fernandez Cano  265.200
+## 29    29                Angel Yin  264.938
+## 30   30t            Agathe Laisne  264.500
+## 31   30t          Giulia Molinaro  264.500
+## 32    32               Alison Lee  264.444
+## 33    33         Jaye Marie Green  263.917
+## 34    34                 Xiyu Lin  263.864
+## 35    35            Sei Young Kim  263.750
+## 36    36                 Amy Yang  263.591
+## 37    37           Sung Hyun Park  263.500
+## 38    38           Gerina Mendoza  263.417
+## 39    39             Laura Davies  263.400
+## 40    40           Hinako Shibuno  263.125
+## 41    41      Maude-Aimee Leblanc  262.833
+## 42    42               Gaby Lopez  262.357
+## 43    43           Allisen Corpuz  262.333
+## 44    44         Stephanie Meadow  262.250
+## 45    45         Perrine Delacour  262.136
+## 46    46                   Yu Liu  262.063
+## 47    47          Sophia Schubert  261.917
+## 48    48              Hyejin Choi  261.429
+## 49    49            Jeong Eun Lee  261.273
+## 50    50           Gemma Dryburgh  261.167
+## 51    51            Jennifer Song  261.125
+## 52    52          Lauren Coughlin  260.625
+## 53    53                 Lilia Vu  260.571
+## 54    54               Sarah Kemp  260.083
+## 55    55       Brittany Lincicome  260.071
+## 56    56            Jessica Korda  259.875
+## 57    57                Isi Gabsa  259.833
+## 58    58   Katherine Perry-Hamski  259.800
+## 59    59           Katherine Kirk  259.625
+## 60    60            Ryann O&#39;Toole  259.591
+## 61    61               Annie Park  259.500
+## 62    62               Ally Ewing  259.300
+## 63    63         Ariya Jutanugarn  259.077
+## 64    64             Georgia Hall  258.273
+## 65    65             Nasa Hataoka  258.233
+## 66    66               Ruixin Liu  257.200
+## 67    67          Angela Stanford  257.000
+## 68    68                Ana Belac  256.875
+## 69    69                 Mel Reid  256.786
+## 70    70             Sophia Popov  256.375
+## 71    71            Leona Maguire  256.136
+## 72    72               Lauren Kim  256.000
+## 73    73         Linnea Johansson  255.929
+## 74   74t          Casey Danielson  255.375
+## 75   74t             Cristie Kerr  255.375
+## 76    76     Pajaree Anannarukarn  255.100
+## 77    77        Lauren Stephenson  254.786
+## 78    78       Jodi Ewart Shadoff  254.714
+## 79    79                 Lydia Ko  254.292
+## 80   80t           Jennifer Chang  254.000
+## 81   80t              Chella Choi  254.000
+## 82    82        Pernilla Lindberg  253.800
+## 83    83               Paula Reto  253.700
+## 84    84          Cheyenne Knight  253.600
+## 85    85               Jenny Shin  253.455
+## 86    86             Jeongeun Lee  253.400
+## 87   87t            Jenny Coleman  253.250
+## 88   87t         Elizabeth Szokol  253.250
+## 89    89              Hyo Joo Kim  253.125
+## 90    90                Amy Olson  252.786
+## 91    91         Wichanee Meechai  252.727
+## 92    92          Sarah Schmelzel  252.455
+## 93    93            Lizette Salas  252.375
+## 94    94                Na Rin An  252.071
+## 95    95             Austin Ernst  252.056
+## 96    96              Megan Khang  251.773
+## 97    97               Su-Hyun Oh  251.591
+## 98   98t        Brittany Altomare  251.500
+## 99   98t        Albane Valenzuela  251.500
+## 100  100                  Muni He  251.250
+## 101  101         Esther Henseleit  251.000
+## 102  102              In Gee Chun  250.773
+## 103  103           Ashleigh Buhai  250.688
+## 104  104               Dewi Weber  250.500
+## 105  105           Hee Young Park  250.400
+## 106  106             Mina Harigae  250.375
+## 107  107      Jasmine Suwannapura  250.318
+## 108  108             Wei-Ling Hsu  250.250
+## 109  109        Pornanong Phatlum  250.214
+## 110  110              Marina Alex  249.818
+## 111  111            Danielle Kang  249.792
+## 112  112               Andrea Lee  249.750
+## 113  113                  Min Lee  249.375
+## 114  114              Ayaka Furue  249.273
+## 115  115                Kelly Tan  248.929
+## 116  116          Morgane Metraux  248.500
+## 117  117            Brittany Lang  248.417
+## 118  118              Emma Talley  248.250
+## 119  119           Anna Nordqvist  248.227
+## 120  120               Bronte Law  247.643
+## 121  121              So Yeon Ryu  247.625
+## 122  122             Yae Eun Hong  246.500
+## 123  123           Lindsey Weaver  246.357
+## 124  124           Celine Boutier  246.100
+## 125  125             Jin Young Ko  245.375
+## 126  126            Marissa Steen  244.200
+## 127  127               Heaji Kang  243.875
+## 128  128          Caroline Masson  243.778
+## 129  129             Na Yeon Choi  242.750
+## 130  130        Moriya Jutanugarn  242.692
+## 131  131              Karrie Webb  241.625
+## 132  132            Christina Kim  240.083
+## 133  133          Matilda Castren  240.000
+## 134  134              Stacy Lewis  239.467
+## 135  135               Inbee Park  238.692
+## 136  136                Mirim Lee  238.563
+## 137  137            Allison Emrey  237.083
+## 138  138              Aditi Ashok  236.429
+## 139  139        Michelle Wie West  235.875
+## 140  140         Dana Finkelstein  234.786
+## 141  141           Beatriz Recari  228.250
 ## 
 ## [[2]]
 ##     rank                     name putt_average
-## 1      1            Leona Maguire        1.655
-## 2      2            Danielle Kang        1.661
-## 3      3         Brooke Henderson        1.701
-## 4      4               Su-Hyun Oh        1.707
-## 5      5          Carlota Ciganda        1.711
-## 6      6        Madelene Sagstrom        1.711
-## 7      7             Georgia Hall        1.715
-## 8      8        Lauren Stephenson        1.718
-## 9      9           Gemma Dryburgh        1.719
-## 10    10               Inbee Park        1.719
-## 11    11        Patty Tavatanakit        1.719
-## 12    12     Nanna Koerstz Madsen        1.721
-## 13    13            Jeong Eun Lee        1.723
-## 14    14            Lexi Thompson        1.724
-## 15   15t             Yae Eun Hong        1.726
-## 16   15t Pauline Roussin-Bouchard        1.726
-## 17    17           Celine Boutier        1.729
-## 18    18          Caroline Masson        1.731
+## 1     1t             Jin Young Ko        1.667
+## 2     1t               Minjee Lee        1.667
+## 3      3            Danielle Kang        1.677
+## 4      4            Leona Maguire        1.684
+## 5      5            Jeong Eun Lee        1.688
+## 6      6        Patty Tavatanakit        1.696
+## 7      7         Brooke Henderson        1.704
+## 8      8               Su-Hyun Oh        1.715
+## 9      9             Georgia Hall        1.715
+## 10    10        Lauren Stephenson        1.718
+## 11    11           Gemma Dryburgh        1.719
+## 12    12            Lexi Thompson        1.724
+## 13   13t             Yae Eun Hong        1.726
+## 14   13t Pauline Roussin-Bouchard        1.726
+## 15    15                 Xiyu Lin        1.728
+## 16    16           Celine Boutier        1.730
+## 17    17                 Lydia Ko        1.736
+## 18    18                 Amy Yang        1.736
 ## 19    19        Pernilla Lindberg        1.737
-## 20    20          Sarah Schmelzel        1.739
-## 21    21            Jessica Korda        1.745
-## 22    22           Amanda Doherty        1.746
-## 23    23          Morgane Metraux        1.746
-## 24    24              Nelly Korda        1.750
-## 25    25              Stacy Lewis        1.752
-## 26    26         Linnea Johansson        1.753
-## 27    27          Cheyenne Knight        1.754
-## 28    28         Perrine Delacour        1.756
-## 29    29                Isi Gabsa        1.756
-## 30    30              Yealimi Noh        1.758
-## 31    31                 Lilia Vu        1.761
-## 32    32             Charley Hull        1.765
-## 33    33                Yuka Saso        1.767
-## 34    34               Bronte Law        1.767
-## 35   35t              Ayaka Furue        1.769
-## 36   35t           Hee Young Park        1.769
-## 37   37t              Aditi Ashok        1.773
-## 38   37t           Lindsey Weaver        1.773
-## 39    39                 Lydia Ko        1.774
-## 40    40          Angela Stanford        1.774
-## 41    41           Rachel Rohanna        1.775
-## 42    42                 Xiyu Lin        1.776
-## 43    43       Brittany Lincicome        1.776
-## 44   44t        Brittany Altomare        1.778
-## 45   44t               Heaji Kang        1.778
-## 46    46            Janie Jackson        1.780
-## 47    47             Laura Davies        1.781
-## 48   48t              Megan Khang        1.783
-## 49   48t                 Amy Yang        1.783
-## 50    50            Ryann O&#39;Toole        1.786
-## 51    51              Marina Alex        1.789
-## 52   52t           Allisen Corpuz        1.791
-## 53   52t               Ally Ewing        1.791
-## 54   52t               Gaby Lopez        1.791
-## 55   55t              Hyejin Choi        1.792
-## 56   55t               Andrea Lee        1.792
-## 57    57             Nasa Hataoka        1.792
-## 58    58      Maude-Aimee Leblanc        1.795
-## 59    59                  Muni He        1.797
-## 60    60                Na Rin An        1.798
-## 61    61                Amy Olson        1.802
-## 62    62     Pajaree Anannarukarn        1.806
-## 63    63                A Lim Kim        1.807
-## 64    64               Sarah Kemp        1.808
-## 65    65    Fatima Fernandez Cano        1.810
-## 66    66            Christina Kim        1.813
-## 67    67          Sophia Schubert        1.816
-## 68   68t           Cydney Clanton        1.816
-## 69   68t               Jenny Shin        1.816
-## 70    70         Dana Finkelstein        1.817
-## 71   71t            Agathe Laisne        1.818
-## 72   71t           Gerina Mendoza        1.818
-## 73   71t               Dewi Weber        1.818
-## 74    74         Atthaya Thitikul        1.819
-## 75    75           Jennifer Chang        1.821
-## 76    76              In Gee Chun        1.822
-## 77    77          Jennifer Kupcho        1.825
-## 78    78        Moriya Jutanugarn        1.826
-## 79   79t              Maria Fassi        1.830
-## 80   79t                   Yu Liu        1.830
-## 81    81               Ruixin Liu        1.831
-## 82    82             Na Yeon Choi        1.833
-## 83    83   Katherine Perry-Hamski        1.844
-## 84    84         Stephanie Meadow        1.847
-## 85    85                Kelly Tan        1.849
-## 86    86             Sophia Popov        1.851
-## 87   87t            Frida Kinhult        1.852
-## 88   87t               Alison Lee        1.852
-## 89    89       Jodi Ewart Shadoff        1.853
-## 90    90               Annie Park        1.855
-## 91    91               Lauren Kim        1.857
-## 92    92          Lauren Coughlin        1.860
-## 93    93      Jasmine Suwannapura        1.860
-## 94    94              Emma Talley        1.860
-## 95    95         Ariya Jutanugarn        1.863
-## 96    96        Pornanong Phatlum        1.864
-## 97    97          Matilda Castren        1.864
-## 98   98t          Giulia Molinaro        1.867
-## 99   98t              Karrie Webb        1.867
-## 100 100t         Elizabeth Szokol        1.870
-## 101 100t             Alana Uriell        1.870
-## 102  102                Mirim Lee        1.871
-## 103  103         Esther Henseleit        1.872
-## 104  104              Luna Sobron        1.875
-## 105  105            Marissa Steen        1.881
-## 106  106             Peiyun Chien        1.882
-## 107  107                Angel Yin        1.886
-## 108  108             Cristie Kerr        1.886
-## 109  109        Michelle Wie West        1.889
-## 110  110           Anna Nordqvist        1.891
-## 111  111                 Mel Reid        1.891
-## 112  112        Albane Valenzuela        1.892
-## 113  113               Paula Reto        1.896
-## 114  114           Ashleigh Buhai        1.900
-## 115  115          Casey Danielson        1.902
-## 116  116            Brittany Lang        1.903
-## 117 117t             Mina Harigae        1.905
-## 118 117t           Beatriz Recari        1.905
-## 119  119             Austin Ernst        1.909
-## 120  120            Jenny Coleman        1.913
-## 121  121                Ana Belac        1.915
-## 122  122       Bianca Pagdanganan        1.921
-## 123  123           Katherine Kirk        1.930
-## 124  124            Allison Emrey        1.932
-## 125  125             Jeongeun Lee        1.935
-## 126  126         Jaye Marie Green        1.940
-## 127  127            Jennifer Song        1.959
-## 128  128         Wichanee Meechai        1.966
-## 129  129           Emily Pedersen        2.000
+## 20    20               Inbee Park        1.744
+## 21    21        Madelene Sagstrom        1.744
+## 22    22              Stacy Lewis        1.745
+## 23   23t              Chella Choi        1.745
+## 24   23t            Jessica Korda        1.745
+## 25    25           Amanda Doherty        1.746
+## 26    26          Morgane Metraux        1.746
+## 27    27              Ayaka Furue        1.748
+## 28   28t              Nelly Korda        1.750
+## 29   28t              So Yeon Ryu        1.750
+## 30    30         Linnea Johansson        1.753
+## 31    31          Cheyenne Knight        1.754
+## 32    32          Carlota Ciganda        1.755
+## 33    33                Isi Gabsa        1.756
+## 34    34     Nanna Koerstz Madsen        1.758
+## 35    35          Sarah Schmelzel        1.761
+## 36    36                 Lilia Vu        1.761
+## 37    37               Bronte Law        1.767
+## 38    38                Yuka Saso        1.768
+## 39   39t           Hee Young Park        1.769
+## 40   39t                Angel Yin        1.769
+## 41    41         Perrine Delacour        1.770
+## 42   42t              Aditi Ashok        1.773
+## 43   42t             Charley Hull        1.773
+## 44   42t           Sung Hyun Park        1.773
+## 45   42t           Lindsey Weaver        1.773
+## 46    46          Angela Stanford        1.774
+## 47   47t              Yealimi Noh        1.775
+## 48   47t           Rachel Rohanna        1.775
+## 49    49         Atthaya Thitikul        1.776
+## 50    50       Brittany Lincicome        1.776
+## 51    51               Heaji Kang        1.778
+## 52    52              In Gee Chun        1.779
+## 53    53            Janie Jackson        1.780
+## 54    54             Nasa Hataoka        1.780
+## 55    55             Laura Davies        1.781
+## 56    56        Moriya Jutanugarn        1.786
+## 57    57            Ryann O&#39;Toole        1.786
+## 58    58          Caroline Masson        1.786
+## 59    59              Hyo Joo Kim        1.788
+## 60    60              Megan Khang        1.789
+## 61    61               Gaby Lopez        1.789
+## 62   62t           Allisen Corpuz        1.791
+## 63   62t               Ally Ewing        1.791
+## 64   62t           Hinako Shibuno        1.791
+## 65   65t              Hyejin Choi        1.792
+## 66   65t               Andrea Lee        1.792
+## 67    67      Maude-Aimee Leblanc        1.795
+## 68    68                  Muni He        1.797
+## 69    69                Na Rin An        1.798
+## 70    70                Amy Olson        1.802
+## 71    71     Pajaree Anannarukarn        1.806
+## 72    72                  Min Lee        1.808
+## 73   73t              Marina Alex        1.810
+## 74   73t    Fatima Fernandez Cano        1.810
+## 75    75                A Lim Kim        1.810
+## 76    76            Christina Kim        1.813
+## 77    77             Hannah Green        1.814
+## 78    78                   Yu Liu        1.814
+## 79    79            Sei Young Kim        1.815
+## 80    80          Sophia Schubert        1.816
+## 81    81           Cydney Clanton        1.816
+## 82    82         Dana Finkelstein        1.817
+## 83   83t            Agathe Laisne        1.818
+## 84   83t           Gerina Mendoza        1.818
+## 85   83t               Dewi Weber        1.818
+## 86    86           Jennifer Chang        1.821
+## 87    87        Brittany Altomare        1.826
+## 88   88t              Maria Fassi        1.830
+## 89   88t              Emma Talley        1.830
+## 90    90               Ruixin Liu        1.831
+## 91    91               Jenny Shin        1.832
+## 92    92             Na Yeon Choi        1.833
+## 93    93            Lizette Salas        1.837
+## 94    94   Katherine Perry-Hamski        1.844
+## 95    95         Stephanie Meadow        1.847
+## 96    96                Kelly Tan        1.849
+## 97    97             Sophia Popov        1.851
+## 98    98            Frida Kinhult        1.852
+## 99    99       Jodi Ewart Shadoff        1.853
+## 100  100               Annie Park        1.855
+## 101  101         Ariya Jutanugarn        1.856
+## 102  102               Lauren Kim        1.857
+## 103  103          Lauren Coughlin        1.860
+## 104  104      Jasmine Suwannapura        1.861
+## 105  105           Ashleigh Buhai        1.862
+## 106  106             Wei-Ling Hsu        1.863
+## 107  107        Pornanong Phatlum        1.864
+## 108  108          Jennifer Kupcho        1.865
+## 109 109t          Giulia Molinaro        1.867
+## 110 109t              Karrie Webb        1.867
+## 111  111         Esther Henseleit        1.869
+## 112 112t         Elizabeth Szokol        1.870
+## 113 112t             Alana Uriell        1.870
+## 114  114                Mirim Lee        1.871
+## 115  115          Matilda Castren        1.871
+## 116  116               Alison Lee        1.872
+## 117  117                 Mel Reid        1.873
+## 118  118             Jeongeun Lee        1.874
+## 119  119              Luna Sobron        1.875
+## 120  120            Marissa Steen        1.881
+## 121  121             Peiyun Chien        1.882
+## 122  122               Sarah Kemp        1.885
+## 123  123             Cristie Kerr        1.886
+## 124  124        Michelle Wie West        1.889
+## 125  125           Anna Nordqvist        1.891
+## 126  126        Albane Valenzuela        1.892
+## 127  127            Jenny Coleman        1.895
+## 128  128               Paula Reto        1.896
+## 129  129          Casey Danielson        1.902
+## 130  130            Brittany Lang        1.903
+## 131  131           Beatriz Recari        1.905
+## 132  132             Austin Ernst        1.909
+## 133  133                Ana Belac        1.915
+## 134  134       Bianca Pagdanganan        1.921
+## 135  135             Mina Harigae        1.923
+## 136  136           Emily Pedersen        1.926
+## 137  137         Wichanee Meechai        1.929
+## 138  138           Katherine Kirk        1.930
+## 139  139            Allison Emrey        1.932
+## 140  140         Jaye Marie Green        1.940
+## 141  141            Jennifer Song        1.959
 ## 
 ## [[3]]
 ##     rank                     name greens_hit
-## 1      1             Charley Hull       81.0
-## 2      2        Brittany Altomare       80.0
+## 1      1             Jin Young Ko       83.3
+## 2      2             Hannah Green       81.9
 ## 3      3           Allisen Corpuz       79.6
-## 4      4           Celine Boutier       78.3
-## 5     5t         Brooke Henderson       77.8
-## 6     5t                 Xiyu Lin       77.8
-## 7     5t            Lexi Thompson       77.8
-## 8      8      Maude-Aimee Leblanc       76.9
-## 9      9              Hyejin Choi       76.2
-## 10    10                Isi Gabsa       75.9
-## 11    11            Danielle Kang       75.7
-## 12    12     Nanna Koerstz Madsen       75.6
-## 13    13       Jodi Ewart Shadoff       75.4
-## 14   14t          Matilda Castren       75.0
-## 15   14t            Frida Kinhult       75.0
-## 16   16t          Caroline Masson       74.4
-## 17   16t               Paula Reto       74.4
-## 18   16t            Marissa Steen       74.4
-## 19    19          Jennifer Kupcho       74.1
-## 20    20                Yuka Saso       73.9
-## 21    21      Jasmine Suwannapura       73.8
-## 22    22                 Lydia Ko       73.6
-## 23    23              Yealimi Noh       73.3
-## 24   24t              Megan Khang       73.0
-## 25   24t                 Amy Yang       73.0
-## 26    26     Pajaree Anannarukarn       72.7
-## 27   27t           Jennifer Chang       72.2
-## 28   27t              Ayaka Furue       72.2
-## 29   27t         Ariya Jutanugarn       72.2
-## 30   27t               Sarah Kemp       72.2
-## 31   27t               Ruixin Liu       72.2
-## 32   27t           Emily Pedersen       72.2
-## 33   33t               Ally Ewing       71.7
-## 34   33t               Gaby Lopez       71.7
-## 35   35t              Marina Alex       71.4
-## 36   35t              In Gee Chun       71.4
-## 37   35t         Perrine Delacour       71.4
-## 38    38             Jeongeun Lee       71.3
-## 39    39              Stacy Lewis       71.2
-## 40    40   Katherine Perry-Hamski       71.1
-## 41   41t             Peiyun Chien       70.8
-## 42   41t          Casey Danielson       70.8
-## 43   41t            Jessica Korda       70.8
-## 44    44                Na Rin An       70.6
-## 45   45t               Inbee Park       70.4
-## 46   45t          Sophia Schubert       70.4
-## 47    47        Patty Tavatanakit       70.2
-## 48    48             Sophia Popov       70.1
-## 49   49t    Fatima Fernandez Cano       70.0
-## 50   49t       Bianca Pagdanganan       70.0
-## 51   51t              Aditi Ashok       69.8
-## 52   51t        Pornanong Phatlum       69.8
-## 53   51t          Sarah Schmelzel       69.8
-## 54   51t                 Lilia Vu       69.8
-## 55   55t           Ashleigh Buhai       69.4
-## 56   55t          Lauren Coughlin       69.4
-## 57   57t           Cydney Clanton       69.0
-## 58   57t         Wichanee Meechai       69.0
-## 59   57t               Jenny Shin       69.0
-## 60    60               Annie Park       68.9
-## 61    61              Nelly Korda       68.7
-## 62    62        Albane Valenzuela       68.5
-## 63   63t               Bronte Law       68.3
-## 64   63t                Amy Olson       68.3
-## 65   63t                Kelly Tan       68.3
-## 66    66                A Lim Kim       68.2
-## 67    67            Jennifer Song       68.1
-## 68    68             Austin Ernst       67.9
-## 69   69t       Brittany Lincicome       67.5
-## 70   69t        Lauren Stephenson       67.5
-## 71    71        Moriya Jutanugarn       67.3
-## 72   72t             Yae Eun Hong       66.7
-## 73   72t               Andrea Lee       66.7
-## 74   72t            Leona Maguire       66.7
-## 75   72t         Stephanie Meadow       66.7
-## 76   72t          Giulia Molinaro       66.7
-## 77   72t Pauline Roussin-Bouchard       66.7
-## 78   72t              Luna Sobron       66.7
-## 79    79            Ryann O&#39;Toole       66.2
-## 80   80t          Carlota Ciganda       65.9
-## 81   80t            Jeong Eun Lee       65.9
-## 82   80t         Atthaya Thitikul       65.9
-## 83    83          Morgane Metraux       65.7
-## 84   84t             Georgia Hall       65.7
-## 85   84t             Nasa Hataoka       65.7
-## 86    86            Janie Jackson       65.6
-## 87   87t                Ana Belac       65.3
-## 88   87t              Maria Fassi       65.3
-## 89   87t         Esther Henseleit       65.3
-## 90   87t                   Yu Liu       65.3
-## 91   91t         Dana Finkelstein       65.1
-## 92   91t               Su-Hyun Oh       65.1
-## 93   93t           Anna Nordqvist       64.6
-## 94   93t        Madelene Sagstrom       64.6
-## 95    95         Linnea Johansson       64.3
-## 96   96t            Jenny Coleman       63.9
-## 97   96t         Elizabeth Szokol       63.9
-## 98   96t             Alana Uriell       63.9
-## 99    99           Rachel Rohanna       63.5
-## 100 100t          Cheyenne Knight       63.3
-## 101 100t        Pernilla Lindberg       63.3
-## 102  102              Karrie Webb       62.5
-## 103  103         Jaye Marie Green       62.0
-## 104 104t             Cristie Kerr       61.1
-## 105 104t            Agathe Laisne       61.1
-## 106 104t           Gerina Mendoza       61.1
-## 107 104t                 Mel Reid       61.1
-## 108 104t               Dewi Weber       61.1
-## 109  109               Alison Lee       60.0
-## 110 110t           Katherine Kirk       59.7
-## 111 110t              Emma Talley       59.7
-## 112 112t             Laura Davies       59.3
-## 113 112t           Gemma Dryburgh       59.3
-## 114 112t                  Muni He       59.3
-## 115 112t            Christina Kim       59.3
-## 116  116                Mirim Lee       59.0
-## 117 117t           Amanda Doherty       58.3
-## 118 117t             Mina Harigae       58.3
-## 119 117t               Lauren Kim       58.3
-## 120 117t           Beatriz Recari       58.3
-## 121  121           Hee Young Park       57.8
-## 122 122t            Brittany Lang       57.4
-## 123 122t          Angela Stanford       57.4
-## 124  124            Allison Emrey       54.6
-## 125  125           Lindsey Weaver       52.4
-## 126 126t             Na Yeon Choi       50.0
-## 127 126t               Heaji Kang       50.0
-## 128 126t        Michelle Wie West       50.0
-## 129  129                Angel Yin       48.6
+## 4      4               Minjee Lee       79.2
+## 5      5     Nanna Koerstz Madsen       79.0
+## 6      6         Brooke Henderson       78.9
+## 7      7          Jennifer Kupcho       78.3
+## 8     8t              So Yeon Ryu       77.8
+## 9     8t            Lexi Thompson       77.8
+## 10    10      Maude-Aimee Leblanc       76.9
+## 11    11             Charley Hull       76.4
+## 12    12                 Xiyu Lin       76.3
+## 13    13              Hyejin Choi       76.2
+## 14    14                Isi Gabsa       75.9
+## 15    15           Celine Boutier       75.6
+## 16    16       Jodi Ewart Shadoff       75.4
+## 17    17              In Gee Chun       75.3
+## 18   18t            Sei Young Kim       75.0
+## 19   18t            Frida Kinhult       75.0
+## 20   18t             Jeongeun Lee       75.0
+## 21   18t           Emily Pedersen       75.0
+## 22   22t         Perrine Delacour       74.7
+## 23   22t                 Amy Yang       74.7
+## 24    24        Brittany Altomare       74.7
+## 25    25            Danielle Kang       74.5
+## 26   26t     Pajaree Anannarukarn       74.4
+## 27   26t               Paula Reto       74.4
+## 28   26t            Marissa Steen       74.4
+## 29    29         Ariya Jutanugarn       74.4
+## 30   30t              Marina Alex       74.2
+## 31   30t              Megan Khang       74.2
+## 32    32              Yealimi Noh       74.1
+## 33    33                 Lydia Ko       73.6
+## 34    34               Inbee Park       73.5
+## 35    35               Gaby Lopez       73.4
+## 36    36          Matilda Castren       73.3
+## 37   37t           Jennifer Chang       72.2
+## 38   37t          Carlota Ciganda       72.2
+## 39   37t              Ayaka Furue       72.2
+## 40   37t               Sarah Kemp       72.2
+## 41   37t                A Lim Kim       72.2
+## 42   37t              Hyo Joo Kim       72.2
+## 43   37t                  Min Lee       72.2
+## 44   37t               Ruixin Liu       72.2
+## 45   37t          Caroline Masson       72.2
+## 46   37t               Jenny Shin       72.2
+## 47   37t         Atthaya Thitikul       72.2
+## 48    48                Yuka Saso       71.8
+## 49    49          Sarah Schmelzel       71.7
+## 50    50               Ally Ewing       71.7
+## 51   51t              Stacy Lewis       71.1
+## 52   51t   Katherine Perry-Hamski       71.1
+## 53   53t             Peiyun Chien       70.8
+## 54   53t              Chella Choi       70.8
+## 55   53t          Casey Danielson       70.8
+## 56   53t             Wei-Ling Hsu       70.8
+## 57   53t            Jessica Korda       70.8
+## 58    58        Patty Tavatanakit       70.7
+## 59    59         Wichanee Meechai       70.7
+## 60    60                Na Rin An       70.6
+## 61    61          Sophia Schubert       70.4
+## 62    62             Sophia Popov       70.1
+## 63   63t    Fatima Fernandez Cano       70.0
+## 64   63t       Bianca Pagdanganan       70.0
+## 65   65t              Aditi Ashok       69.8
+## 66   65t        Pornanong Phatlum       69.8
+## 67   65t                 Lilia Vu       69.8
+## 68    68            Jeong Eun Lee       69.7
+## 69    69          Lauren Coughlin       69.4
+## 70   70t               Su-Hyun Oh       69.2
+## 71   70t      Jasmine Suwannapura       69.2
+## 72    72           Cydney Clanton       69.0
+## 73    73               Annie Park       68.9
+## 74    74         Esther Henseleit       68.8
+## 75   75t              Nelly Korda       68.7
+## 76   75t            Leona Maguire       68.7
+## 77    77        Albane Valenzuela       68.5
+## 78   78t               Bronte Law       68.3
+## 79   78t                Amy Olson       68.3
+## 80   78t                Kelly Tan       68.3
+## 81   81t            Lizette Salas       68.1
+## 82   81t            Jennifer Song       68.1
+## 83    83             Austin Ernst       67.9
+## 84   84t       Brittany Lincicome       67.5
+## 85   84t        Lauren Stephenson       67.5
+## 86    86             Nasa Hataoka       67.4
+## 87    87                   Yu Liu       67.4
+## 88    88               Alison Lee       67.3
+## 89   89t             Yae Eun Hong       66.7
+## 90   89t               Andrea Lee       66.7
+## 91   89t         Stephanie Meadow       66.7
+## 92   89t          Giulia Molinaro       66.7
+## 93   89t Pauline Roussin-Bouchard       66.7
+## 94   89t        Madelene Sagstrom       66.7
+## 95   89t              Luna Sobron       66.7
+## 96    96            Ryann O&#39;Toole       66.2
+## 97    97            Jenny Coleman       66.0
+## 98    98        Moriya Jutanugarn       65.8
+## 99    99          Morgane Metraux       65.7
+## 100  100             Georgia Hall       65.7
+## 101  101            Janie Jackson       65.6
+## 102 102t                Ana Belac       65.3
+## 103 102t           Ashleigh Buhai       65.3
+## 104 102t              Maria Fassi       65.3
+## 105 102t              Emma Talley       65.3
+## 106  106         Dana Finkelstein       65.1
+## 107  107           Anna Nordqvist       64.6
+## 108  108         Linnea Johansson       64.3
+## 109 109t         Elizabeth Szokol       63.9
+## 110 109t             Alana Uriell       63.9
+## 111  111           Rachel Rohanna       63.5
+## 112 112t          Cheyenne Knight       63.3
+## 113 112t        Pernilla Lindberg       63.3
+## 114  114             Mina Harigae       63.2
+## 115  115              Karrie Webb       62.5
+## 116  116                 Mel Reid       62.3
+## 117  117         Jaye Marie Green       62.0
+## 118 118t             Cristie Kerr       61.1
+## 119 118t            Agathe Laisne       61.1
+## 120 118t           Gerina Mendoza       61.1
+## 121 118t           Sung Hyun Park       61.1
+## 122 118t               Dewi Weber       61.1
+## 123 123t           Katherine Kirk       59.7
+## 124 123t           Hinako Shibuno       59.7
+## 125 125t             Laura Davies       59.3
+## 126 125t           Gemma Dryburgh       59.3
+## 127 125t                  Muni He       59.3
+## 128 125t            Christina Kim       59.3
+## 129  129                Mirim Lee       59.0
+## 130 130t           Amanda Doherty       58.3
+## 131 130t               Lauren Kim       58.3
+## 132 130t           Beatriz Recari       58.3
+## 133  133           Hee Young Park       57.8
+## 134 134t            Brittany Lang       57.4
+## 135 134t          Angela Stanford       57.4
+## 136  136            Allison Emrey       54.6
+## 137  137                Angel Yin       54.2
+## 138  138           Lindsey Weaver       52.4
+## 139 139t             Na Yeon Choi       50.0
+## 140 139t               Heaji Kang       50.0
+## 141 139t        Michelle Wie West       50.0
 ## 
 ## [[4]]
 ##     rank                     name rounds score_average_actual
-## 1      1            Danielle Kang      8               68.375
-## 2     2t             Charley Hull      7               68.857
-## 3     2t            Lexi Thompson      7               68.857
-## 4      4         Brooke Henderson     11               69.182
-## 5      5           Celine Boutier     11               69.273
-## 6      6            Leona Maguire      7               69.286
-## 7      7           Allisen Corpuz      3               69.667
-## 8      8              Hyejin Choi      7               69.714
-## 9      9                 Lydia Ko      8               69.750
-## 10    10        Brittany Altomare      5               69.800
-## 11   11t Pauline Roussin-Bouchard      7               69.857
-## 12   11t          Sarah Schmelzel      7               69.857
-## 13    13                Yuka Saso     10               69.900
-## 14   14t              Aditi Ashok      7               70.000
-## 15   14t           Jennifer Chang      3               70.000
-## 16   14t                Isi Gabsa      3               70.000
-## 17   14t              Nelly Korda     11               70.000
-## 18   18t              Marina Alex      7               70.143
-## 19   18t                 Xiyu Lin      7               70.143
-## 20    20        Patty Tavatanakit     11               70.364
-## 21   21t          Cheyenne Knight      5               70.400
-## 22   21t     Nanna Koerstz Madsen      5               70.400
-## 23    23                 Amy Yang      7               70.429
-## 24    24              Stacy Lewis     11               70.455
-## 25   25t              In Gee Chun      7               70.571
-## 26   25t              Ayaka Furue      7               70.571
-## 27   25t              Megan Khang      7               70.571
-## 28    28             Georgia Hall     11               70.636
-## 29    29               Inbee Park      9               70.667
-## 30   30t         Perrine Delacour      7               70.714
-## 31   30t         Atthaya Thitikul      7               70.714
-## 32    32            Jessica Korda      8               70.750
-## 33    33          Caroline Masson      5               70.800
-## 34   34t             Yae Eun Hong      7               70.857
-## 35   34t               Bronte Law      7               70.857
-## 36   36t           Gemma Dryburgh      3               71.000
-## 37   36t            Jeong Eun Lee      7               71.000
-## 38    38               Gaby Lopez     10               71.100
-## 39   39t                Na Rin An      7               71.143
-## 40   39t       Jodi Ewart Shadoff      7               71.143
-## 41   39t               Su-Hyun Oh      7               71.143
-## 42   39t      Jasmine Suwannapura      7               71.143
-## 43   39t                Kelly Tan      7               71.143
-## 44    44      Maude-Aimee Leblanc      6               71.167
-## 45   45t     Pajaree Anannarukarn     11               71.273
-## 46   45t        Madelene Sagstrom     11               71.273
-## 47    47        Pornanong Phatlum      7               71.286
-## 48   48t               Jenny Shin      7               71.429
-## 49   48t                 Lilia Vu      7               71.429
-## 50    50            Ryann O&#39;Toole     11               71.455
-## 51    51             Nasa Hataoka     11               71.545
-## 52   52t          Carlota Ciganda      7               71.571
-## 53   52t         Dana Finkelstein      7               71.571
-## 54   54t            Janie Jackson      5               71.600
-## 55   54t               Ruixin Liu      5               71.600
-## 56    56                A Lim Kim     11               71.636
-## 57    57          Matilda Castren      6               71.667
-## 58   58t       Brittany Lincicome      7               71.714
-## 59   58t        Lauren Stephenson      7               71.714
-## 60   60t              Yealimi Noh      5               71.800
-## 61   60t       Bianca Pagdanganan      5               71.800
-## 62   60t               Paula Reto      5               71.800
-## 63    63          Sophia Schubert      6               71.833
-## 64    64        Moriya Jutanugarn      9               71.889
-## 65    65               Ally Ewing     10               71.900
-## 66   66t           Cydney Clanton      7               72.000
-## 67   66t    Fatima Fernandez Cano      5               72.000
-## 68   66t         Linnea Johansson      7               72.000
-## 69   66t               Alison Lee      5               72.000
-## 70   66t               Andrea Lee      2               72.000
-## 71   66t         Wichanee Meechai      7               72.000
-## 72   66t            Marissa Steen      5               72.000
-## 73    73          Morgane Metraux      6               72.333
-## 74    74   Katherine Perry-Hamski      5               72.400
-## 75    75                Amy Olson      7               72.429
-## 76   76t               Sarah Kemp      2               72.500
-## 77   76t            Frida Kinhult      2               72.500
-## 78   76t          Jennifer Kupcho      6               72.500
-## 79   76t            Agathe Laisne      2               72.500
-## 80   76t             Alana Uriell      2               72.500
-## 81    81         Ariya Jutanugarn      9               72.556
-## 82   82t           Rachel Rohanna      7               72.571
-## 83   82t           Lindsey Weaver      7               72.571
-## 84    84        Albane Valenzuela      6               72.667
-## 85    85                Ana Belac      4               72.750
-## 86    86          Angela Stanford      9               72.778
-## 87   87t        Pernilla Lindberg      5               72.800
-## 88   87t          Giulia Molinaro      5               72.800
-## 89   87t               Annie Park      5               72.800
-## 90   90t             Jeongeun Lee      6               72.833
-## 91   90t         Stephanie Meadow      6               72.833
-## 92    92           Anna Nordqvist     11               72.909
-## 93   93t             Sophia Popov      8               73.000
-## 94   93t         Elizabeth Szokol      2               73.000
-## 95   93t              Emma Talley      4               73.000
-## 96   93t              Karrie Webb      4               73.000
-## 97    97               Dewi Weber      6               73.167
-## 98    98          Casey Danielson      4               73.250
-## 99    99             Laura Davies      3               73.333
-## 100 100t           Ashleigh Buhai      4               73.500
-## 101 100t                  Muni He      6               73.500
-## 102 100t             Cristie Kerr      4               73.500
-## 103 100t            Christina Kim      6               73.500
-## 104 100t               Lauren Kim      2               73.500
-## 105 100t           Emily Pedersen      2               73.500
-## 106 100t                 Mel Reid     10               73.500
-## 107 100t              Luna Sobron      2               73.500
-## 108  108             Austin Ernst      9               73.556
-## 109 109t          Lauren Coughlin      4               73.750
-## 110 109t              Maria Fassi      4               73.750
-## 111 109t             Mina Harigae      4               73.750
-## 112  112           Hee Young Park     10               73.800
-## 113  113           Amanda Doherty      6               73.833
-## 114 114t             Peiyun Chien      4               74.000
-## 115 114t           Katherine Kirk      4               74.000
-## 116 114t                   Yu Liu      4               74.000
-## 117  117            Jennifer Song      4               74.250
-## 118 118t         Esther Henseleit      4               74.500
-## 119 118t            Brittany Lang      6               74.500
-## 120 118t           Gerina Mendoza      6               74.500
-## 121  121            Jenny Coleman      4               74.750
-## 122  122         Jaye Marie Green      6               74.833
-## 123  123                Mirim Lee      8               75.375
-## 124  124               Heaji Kang      4               75.500
-## 125  125            Allison Emrey      6               76.000
-## 126 126t           Beatriz Recari      2               77.000
-## 127 126t        Michelle Wie West      4               77.000
-## 128  128             Na Yeon Choi      4               78.500
-## 129  129                Angel Yin      4               78.750</code></pre>
+## 1      1             Jin Young Ko      4               67.750
+## 2      2               Minjee Lee      4               68.250
+## 3      3            Danielle Kang     12               68.667
+## 4      4             Hannah Green      4               68.750
+## 5      5            Lexi Thompson      7               68.857
+## 6      6         Brooke Henderson     15               69.067
+## 7      7            Leona Maguire     11               69.455
+## 8      8           Allisen Corpuz      3               69.667
+## 9      9              Hyejin Choi      7               69.714
+## 10    10              In Gee Chun     11               69.727
+## 11    11             Charley Hull      8               69.750
+## 12    12           Celine Boutier     15               69.800
+## 13   13t          Sarah Schmelzel     11               69.818
+## 14   13t                 Amy Yang     11               69.818
+## 15    15 Pauline Roussin-Bouchard      7               69.857
+## 16   16t                 Xiyu Lin     11               69.909
+## 17   16t         Atthaya Thitikul     11               69.909
+## 18    18                 Lydia Ko     12               69.917
+## 19   19t              Aditi Ashok      7               70.000
+## 20   19t           Jennifer Chang      3               70.000
+## 21   19t                Isi Gabsa      3               70.000
+## 22   19t              Nelly Korda     11               70.000
+## 23    23            Jeong Eun Lee     11               70.091
+## 24    24     Nanna Koerstz Madsen      9               70.222
+## 25    25                Yuka Saso     14               70.357
+## 26   26t         Perrine Delacour     11               70.364
+## 27   26t              Megan Khang     11               70.364
+## 28   28t          Cheyenne Knight      5               70.400
+## 29   28t        Patty Tavatanakit     15               70.400
+## 30    30              Ayaka Furue     11               70.455
+## 31    31               Inbee Park     13               70.462
+## 32   32t             Wei-Ling Hsu      4               70.500
+## 33   32t              Hyo Joo Kim      4               70.500
+## 34    34              Marina Alex     11               70.545
+## 35    35              Stacy Lewis     15               70.600
+## 36    36             Georgia Hall     11               70.636
+## 37    37            Jessica Korda      8               70.750
+## 38   38t             Yae Eun Hong      7               70.857
+## 39   38t               Bronte Law      7               70.857
+## 40   38t               Gaby Lopez     14               70.857
+## 41    41               Su-Hyun Oh     11               70.909
+## 42    42     Pajaree Anannarukarn     15               70.933
+## 43   43t           Gemma Dryburgh      3               71.000
+## 44   43t             Nasa Hataoka     15               71.000
+## 45   43t                A Lim Kim     15               71.000
+## 46   43t              Yealimi Noh      9               71.000
+## 47    47        Madelene Sagstrom     15               71.067
+## 48    48        Brittany Altomare      9               71.111
+## 49   49t                Na Rin An      7               71.143
+## 50   49t       Jodi Ewart Shadoff      7               71.143
+## 51   49t                Kelly Tan      7               71.143
+## 52    52      Maude-Aimee Leblanc      6               71.167
+## 53    53          Carlota Ciganda     11               71.182
+## 54   54t              Chella Choi      4               71.250
+## 55   54t              So Yeon Ryu      4               71.250
+## 56    56               Jenny Shin     11               71.273
+## 57    57        Pornanong Phatlum      7               71.286
+## 58    58                 Lilia Vu      7               71.429
+## 59    59            Ryann O&#39;Toole     11               71.455
+## 60    60                  Min Lee      4               71.500
+## 61    61         Dana Finkelstein      7               71.571
+## 62   62t            Janie Jackson      5               71.600
+## 63   62t               Ruixin Liu      5               71.600
+## 64   64t               Alison Lee      9               71.667
+## 65   64t          Caroline Masson      9               71.667
+## 66    66        Moriya Jutanugarn     13               71.692
+## 67   67t       Brittany Lincicome      7               71.714
+## 68   67t        Lauren Stephenson      7               71.714
+## 69    69      Jasmine Suwannapura     11               71.727
+## 70    70           Hinako Shibuno      4               71.750
+## 71    71         Ariya Jutanugarn     13               71.769
+## 72   72t       Bianca Pagdanganan      5               71.800
+## 73   72t               Paula Reto      5               71.800
+## 74    74          Sophia Schubert      6               71.833
+## 75   75t               Ally Ewing     10               71.900
+## 76   75t             Jeongeun Lee     10               71.900
+## 77   77t           Cydney Clanton      7               72.000
+## 78   77t    Fatima Fernandez Cano      5               72.000
+## 79   77t         Linnea Johansson      7               72.000
+## 80   77t            Sei Young Kim      4               72.000
+## 81   77t          Jennifer Kupcho     10               72.000
+## 82   77t               Andrea Lee      2               72.000
+## 83   77t            Marissa Steen      5               72.000
+## 84    84           Emily Pedersen      6               72.167
+## 85    85              Emma Talley      8               72.250
+## 86    86          Morgane Metraux      6               72.333
+## 87    87         Wichanee Meechai     11               72.364
+## 88   88t          Matilda Castren     10               72.400
+## 89   88t   Katherine Perry-Hamski      5               72.400
+## 90    90                Amy Olson      7               72.429
+## 91   91t            Frida Kinhult      2               72.500
+## 92   91t            Agathe Laisne      2               72.500
+## 93   91t            Lizette Salas      4               72.500
+## 94   91t             Alana Uriell      2               72.500
+## 95   95t           Rachel Rohanna      7               72.571
+## 96   95t           Lindsey Weaver      7               72.571
+## 97    97        Albane Valenzuela      6               72.667
+## 98    98                Ana Belac      4               72.750
+## 99    99          Angela Stanford      9               72.778
+## 100 100t        Pernilla Lindberg      5               72.800
+## 101 100t          Giulia Molinaro      5               72.800
+## 102 100t               Annie Park      5               72.800
+## 103 103t               Sarah Kemp      6               72.833
+## 104 103t         Stephanie Meadow      6               72.833
+## 105  105           Anna Nordqvist     11               72.909
+## 106 106t             Sophia Popov      8               73.000
+## 107 106t         Elizabeth Szokol      2               73.000
+## 108 106t              Karrie Webb      4               73.000
+## 109  109           Ashleigh Buhai      8               73.125
+## 110  110               Dewi Weber      6               73.167
+## 111 111t          Casey Danielson      4               73.250
+## 112 111t             Mina Harigae      8               73.250
+## 113  113             Laura Davies      3               73.333
+## 114  114         Esther Henseleit      8               73.375
+## 115 115t                  Muni He      6               73.500
+## 116 115t             Cristie Kerr      4               73.500
+## 117 115t               Lauren Kim      2               73.500
+## 118 115t            Christina Kim      6               73.500
+## 119 115t              Luna Sobron      2               73.500
+## 120  120             Austin Ernst      9               73.556
+## 121  121                 Mel Reid     14               73.571
+## 122 122t          Lauren Coughlin      4               73.750
+## 123 122t              Maria Fassi      4               73.750
+## 124 122t                   Yu Liu      8               73.750
+## 125  125           Hee Young Park     10               73.800
+## 126  126           Amanda Doherty      6               73.833
+## 127 127t             Peiyun Chien      4               74.000
+## 128 127t           Katherine Kirk      4               74.000
+## 129  129            Jennifer Song      4               74.250
+## 130  130            Jenny Coleman      8               74.375
+## 131 131t            Brittany Lang      6               74.500
+## 132 131t           Gerina Mendoza      6               74.500
+## 133  133           Sung Hyun Park      4               74.750
+## 134  134         Jaye Marie Green      6               74.833
+## 135  135                Angel Yin      8               75.000
+## 136  136                Mirim Lee      8               75.375
+## 137  137               Heaji Kang      4               75.500
+## 138  138            Allison Emrey      6               76.000
+## 139 139t           Beatriz Recari      2               77.000
+## 140 139t        Michelle Wie West      4               77.000
+## 141  141             Na Yeon Choi      4               78.500</code></pre>
 <p>All done!! And just like that, we’ve downloaded four different web
 pages, extracted the tabled info, and formatted them without copying and
 pasting any code. The same process for all four was only used one time
 to write the initial function. Just apply some final formatting to clean
 it up a bit and combine the separate data frames into a single, unified
 one.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-1" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> lpga_data <span class="sc">%&gt;%</span> </span>
-<span id="cb194-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Combine all list levels into a single tibble, matching by the &quot;Name&quot; column</span></span>
-<span id="cb194-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;rank.&quot;</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb194-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;score_average&quot;</span><span class="ot">=</span><span class="st">&quot;score_average_actual&quot;</span>)</span>
-<span id="cb194-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb194-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co"># VOILA! </span></span>
-<span id="cb194-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
-<pre><code>##                 name distance putt_average greens_hit rounds score_average
-## 1 Bianca Pagdanganan  284.000        1.921       70.0      5        71.800
-## 2     Emily Pedersen  276.750        2.000       72.2      2        73.500
-## 3      Lexi Thompson  276.286        1.724       77.8      7        68.857
-## 4       Charley Hull  275.714        1.765       81.0      7        68.857
-## 5       Alana Uriell  274.000        1.870       63.9      2        72.500
-## 6      Frida Kinhult  273.750        1.852       75.0      2        72.500</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-1" aria-hidden="true" tabindex="-1"></a>lpga_data<span class="ot">=</span> lpga_data <span class="sc">%&gt;%</span> </span>
+<span id="cb205-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;name&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Combine all list levels into a single tibble, matching by the &quot;Name&quot; column</span></span>
+<span id="cb205-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">contains</span>(<span class="st">&quot;rank.&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb205-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;score_average&quot;</span><span class="ot">=</span><span class="st">&quot;score_average_actual&quot;</span>)</span>
+<span id="cb205-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb205-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-6" aria-hidden="true" tabindex="-1"></a><span class="co"># VOILA! </span></span>
+<span id="cb205-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb205-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lpga_data)</span></code></pre></div>
+<pre><code>##                   name distance putt_average greens_hit rounds score_average
+## 1   Bianca Pagdanganan  284.000        1.921       70.0      5        71.800
+## 2 Nanna Koerstz Madsen  277.500        1.758       79.0      9        70.222
+## 3        Lexi Thompson  276.286        1.724       77.8      7        68.857
+## 4         Charley Hull  274.250        1.773       76.4      8        69.750
+## 5         Alana Uriell  274.000        1.870       63.9      2        72.500
+## 6        Frida Kinhult  273.750        1.852       75.0      2        72.500</code></pre>
 </div>
 <div id="non-reproducible-example-juvenile-life-without-parole-study" class="section level3" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> Non-reproducible example (Juvenile Life Without Parole study)</h3>
@@ -1150,118 +1206,91 @@ however, we can reduce the redundancies to a minimum, saving time and reducing t
 <p><strong><em>Step 1.</em></strong>
 Just like before, the first step is to find a line-by-line solution for a single item, and then to generalize this into a shortcut function that can be applied to the any item “i” in a series of items.</p>
 <p>For the sake of brevity, I’m going to skip most of that and just include the functions below.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;C:/Github Repos/Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData&quot;</span>)</span>
-<span id="cb196-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="do">#### CREATE THE DATA SETS WE NEED####</span></span>
-<span id="cb196-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-4" aria-hidden="true" tabindex="-1"></a>na_blank<span class="ot">=</span>jlwop_reentry_survey <span class="co"># analysis 1 keeps the data as-is</span></span>
-<span id="cb196-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-6" aria-hidden="true" tabindex="-1"></a>na_zero<span class="ot">=</span>jlwop_reentry_survey <span class="sc">%&gt;%</span> <span class="co"># supplementary analysis replaces the NA&#39;s with 0</span></span>
-<span id="cb196-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(barrier_housing<span class="sc">:</span>barrier_identification), replace_na,<span class="dv">0</span>))</span>
-<span id="cb196-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(jlwop_reentry_survey) <span class="co"># remove old data set to avoid confusion</span></span>
-<span id="cb196-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-12" aria-hidden="true" tabindex="-1"></a><span class="do">#### Functions ####</span></span>
-<span id="cb196-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-14" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation function to wrangle the data into proper formatting</span></span>
-<span id="cb196-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-15" aria-hidden="true" tabindex="-1"></a>rotate_data<span class="ot">=</span><span class="cf">function</span>(data, variable_prefix){</span>
-<span id="cb196-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb196-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-17" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
-<span id="cb196-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb196-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols=</span> <span class="fu">starts_with</span>(variable_prefix), <span class="co"># collect all the desired variables (i.e., columns)....</span></span>
-<span id="cb196-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="co">#...and put them into a new categorical variable called &quot;variable&quot;</span></span>
-<span id="cb196-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;participant_score&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># ...and store their values in a new variable called &quot;participant_score&quot;</span></span>
-<span id="cb196-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(unique,participant_score) <span class="sc">%&gt;%</span> </span>
-<span id="cb196-23"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb196-24"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(unique, participant_score, variable)) <span class="sc">%&gt;%</span> <span class="co"># keep only these 3 variables</span></span>
-<span id="cb196-25"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(variable, <span class="at">.before =</span> participant_score) <span class="co"># put the newly created variable up front</span></span>
-<span id="cb196-26"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-27"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-27" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(data)</span>
-<span id="cb196-28"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb196-29"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-30"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-31"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-31" aria-hidden="true" tabindex="-1"></a><span class="co"># creating the rankings for each variable; then transform data back to original structure</span></span>
-<span id="cb196-32"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-32" aria-hidden="true" tabindex="-1"></a>rank_and_unpivot<span class="ot">=</span><span class="cf">function</span>(data){</span>
-<span id="cb196-33"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-33" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
-<span id="cb196-34"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique) <span class="sc">%&gt;%</span> <span class="co"># group the scores so they can be ranked by participant</span></span>
-<span id="cb196-35"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank1=</span><span class="fu">dense_rank</span>(participant_score), <span class="co"># create ranking variable</span></span>
-<span id="cb196-36"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-36" aria-hidden="true" tabindex="-1"></a>               <span class="at">rank=</span><span class="fu">max</span>(rank1,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> rank1) <span class="sc">%&gt;%</span> <span class="co"># fix ranks by flipping to ascending order</span></span>
-<span id="cb196-37"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank=</span><span class="fu">factor</span>(rank)) <span class="sc">%&gt;%</span> <span class="co"># convert rank to factor structure</span></span>
-<span id="cb196-38"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>rank1)</span>
-<span id="cb196-39"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-40"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-41"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot back to wide</span></span>
-<span id="cb196-42"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-42" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
-<span id="cb196-43"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> rank<span class="sc">:</span>participant_score) <span class="sc">%&gt;%</span> </span>
-<span id="cb196-44"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="co"># un-group the data and delete the generated names</span></span>
-<span id="cb196-45"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-46"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-46" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(data)</span>
-<span id="cb196-47"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb196-47" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;C:/Github Repos/Studies/JLWOP/Data and Models/jlwop_reentry_survey.RData&quot;</span>)</span>
+<span id="cb207-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="do">#### CREATE THE DATA SETS WE NEED####</span></span>
+<span id="cb207-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-4" aria-hidden="true" tabindex="-1"></a>na_blank<span class="ot">=</span>jlwop_reentry_survey <span class="co"># analysis 1 keeps the data as-is</span></span>
+<span id="cb207-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-6" aria-hidden="true" tabindex="-1"></a>na_zero<span class="ot">=</span>jlwop_reentry_survey <span class="sc">%&gt;%</span> <span class="co"># supplementary analysis replaces the NA&#39;s with 0</span></span>
+<span id="cb207-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(barrier_housing<span class="sc">:</span>barrier_identification), replace_na,<span class="dv">0</span>))</span>
+<span id="cb207-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(jlwop_reentry_survey) <span class="co"># remove old data set to avoid confusion</span></span>
+<span id="cb207-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-12" aria-hidden="true" tabindex="-1"></a><span class="do">#### Functions ####</span></span>
+<span id="cb207-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-14" aria-hidden="true" tabindex="-1"></a><span class="co"># transformation function to wrangle the data into proper formatting</span></span>
+<span id="cb207-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-15" aria-hidden="true" tabindex="-1"></a>rotate_data<span class="ot">=</span><span class="cf">function</span>(data, variable_prefix){</span>
+<span id="cb207-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb207-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-17" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb207-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb207-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols=</span> <span class="fu">starts_with</span>(variable_prefix), <span class="co"># collect all the desired variables (i.e., columns)....</span></span>
+<span id="cb207-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="co">#...and put them into a new categorical variable called &quot;variable&quot;</span></span>
+<span id="cb207-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;participant_score&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># ...and store their values in a new variable called &quot;participant_score&quot;</span></span>
+<span id="cb207-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(unique,participant_score) <span class="sc">%&gt;%</span> </span>
+<span id="cb207-23"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb207-24"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(unique, participant_score, variable)) <span class="sc">%&gt;%</span> <span class="co"># keep only these 3 variables</span></span>
+<span id="cb207-25"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(variable, <span class="at">.before =</span> participant_score) <span class="co"># put the newly created variable up front</span></span>
+<span id="cb207-26"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-27"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-27" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(data)</span>
+<span id="cb207-28"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb207-29"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-30"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-31"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-31" aria-hidden="true" tabindex="-1"></a><span class="co"># creating the rankings for each variable; then transform data back to original structure</span></span>
+<span id="cb207-32"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-32" aria-hidden="true" tabindex="-1"></a>rank_and_unpivot<span class="ot">=</span><span class="cf">function</span>(data){</span>
+<span id="cb207-33"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-33" aria-hidden="true" tabindex="-1"></a>  data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb207-34"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(unique) <span class="sc">%&gt;%</span> <span class="co"># group the scores so they can be ranked by participant</span></span>
+<span id="cb207-35"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank1=</span><span class="fu">dense_rank</span>(participant_score), <span class="co"># create ranking variable</span></span>
+<span id="cb207-36"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-36" aria-hidden="true" tabindex="-1"></a>               <span class="at">rank=</span><span class="fu">max</span>(rank1,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> rank1) <span class="sc">%&gt;%</span> <span class="co"># fix ranks by flipping to ascending order</span></span>
+<span id="cb207-37"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank=</span><span class="fu">factor</span>(rank)) <span class="sc">%&gt;%</span> <span class="co"># convert rank to factor structure</span></span>
+<span id="cb207-38"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>rank1)</span>
+<span id="cb207-39"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-40"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-41"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot back to wide</span></span>
+<span id="cb207-42"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-42" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span>data <span class="sc">%&gt;%</span> </span>
+<span id="cb207-43"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> variable, <span class="at">values_from =</span> rank<span class="sc">:</span>participant_score) <span class="sc">%&gt;%</span> </span>
+<span id="cb207-44"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="co"># un-group the data and delete the generated names</span></span>
+<span id="cb207-45"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-46"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-46" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(data)</span>
+<span id="cb207-47"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb207-47" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong><em>Step 2.</em></strong>
 Again, like before, we want to combine all elements of interest into some object. Once we have that, we then pass said object to <code>map()</code> and supply the map call with our custom function.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-1" aria-hidden="true" tabindex="-1"></a>dfs<span class="ot">=</span><span class="fu">list</span>(<span class="at">na_blank=</span>na_blank, <span class="at">na_zero=</span>na_zero) <span class="sc">%&gt;%</span> <span class="co"># create lists</span></span>
-<span id="cb197-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="at">.f=</span>rotate_data, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># apply custom function along whole list</span></span>
-<span id="cb197-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rank_and_unpivot) <span class="co"># again!!  DO IT AGAIN! With another function this time.</span></span>
-<span id="cb197-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-5" aria-hidden="true" tabindex="-1"></a><span class="co"># extract list elements to make them data frames again</span></span>
-<span id="cb197-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-6" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(dfs, <span class="fu">globalenv</span>())</span>
-<span id="cb197-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb197-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(dfs) <span class="co">#discard list. It has fulfilled its purpose.</span></span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-1" aria-hidden="true" tabindex="-1"></a>dfs<span class="ot">=</span><span class="fu">list</span>(<span class="at">na_blank=</span>na_blank, <span class="at">na_zero=</span>na_zero) <span class="sc">%&gt;%</span> <span class="co"># create lists</span></span>
+<span id="cb208-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="at">.f=</span>rotate_data, <span class="at">variable_prefix =</span> <span class="st">&quot;barrier&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># apply custom function along whole list</span></span>
+<span id="cb208-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(rank_and_unpivot) <span class="co"># again!!  DO IT AGAIN! With another function this time.</span></span>
+<span id="cb208-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb208-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="co"># extract list elements to make them data frames again</span></span>
+<span id="cb208-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-6" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(dfs, <span class="fu">globalenv</span>())</span>
+<span id="cb208-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb208-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb208-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(dfs) <span class="co">#discard list. It has fulfilled its purpose.</span></span></code></pre></div>
 <p>And just like that, we’re done!</p>
 </div>
 <div id="example-3-readimport-several-files-at-once-with-map" class="section level3" number="10.3.3">
 <h3><span class="header-section-number">10.3.3</span> Example 3: Read/Import several files at once with <code>map()</code></h3>
-<p>Multiple ways you can do this</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="do">########## Read multiple files at once into a SINGLE, UNIFIED data frame #######################</span></span>
-<span id="cb198-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. specify and store the file names and their paths</span></span>
-<span id="cb198-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-4" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Cognition data&quot;</span>, <span class="st">&quot;/&quot;</span>), <span class="fu">list.files</span>(<span class="at">path=</span>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Cognition data&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;.sav&quot;</span>))</span>
-<span id="cb198-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. pass this info to purrr</span></span>
-<span id="cb198-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-7" aria-hidden="true" tabindex="-1"></a>cog_data<span class="ot">=</span>files <span class="sc">|&gt;</span> </span>
-<span id="cb198-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_df</span>(foreign<span class="sc">::</span>read.spss, <span class="at">to.data.frame=</span><span class="cn">TRUE</span>)</span>
-<span id="cb198-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-11" aria-hidden="true" tabindex="-1"></a><span class="do">######### Read multiple files at once but KEEP AS SEPARATE data frames ####################################</span></span>
-<span id="cb198-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. specify and store the file names and their paths</span></span>
-<span id="cb198-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-14" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Cognition data&quot;</span>, <span class="st">&quot;/&quot;</span>), <span class="fu">list.files</span>(<span class="at">path=</span>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Cognition data&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;.sav&quot;</span>))</span>
-<span id="cb198-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. pass this info to purrr</span></span>
-<span id="cb198-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-17" aria-hidden="true" tabindex="-1"></a>cog_data<span class="ot">=</span>files <span class="sc">|&gt;</span> </span>
-<span id="cb198-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(foreign<span class="sc">::</span>read.spss, <span class="at">to.data.frame=</span><span class="cn">TRUE</span>) <span class="co"># store all individual files as separate list elements</span></span>
-<span id="cb198-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. name each list level with the file names</span></span>
-<span id="cb198-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-21" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cog_data)<span class="ot">=</span><span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data&quot;</span>, <span class="st">&quot;Cognition data&quot;</span>)) <span class="sc">|&gt;</span> <span class="co">#specify file path as a string</span></span>
-<span id="cb198-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;.sav&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># pass the path string to list files; search in this location for files with this extension</span></span>
-<span id="cb198-23"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="at">pattern=</span><span class="st">&quot;.sav&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>) <span class="co"># remove this pattern to save only the name</span></span>
-<span id="cb198-24"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-25"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-26"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-26" aria-hidden="true" tabindex="-1"></a><span class="co"># files can be extracted later with this if desired</span></span>
-<span id="cb198-27"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb198-27" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(cog_data, <span class="fu">globalenv</span>())</span></code></pre></div>
-<p>Can also create a function to do this if you plan on doing it a bunch.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-1" aria-hidden="true" tabindex="-1"></a>read_all<span class="ot">=</span><span class="cf">function</span>(path, extension){</span>
-<span id="cb199-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-2" aria-hidden="true" tabindex="-1"></a>  file_path <span class="ot">&lt;-</span> path</span>
-<span id="cb199-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># save only file names with the desired extension</span></span>
-<span id="cb199-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-5" aria-hidden="true" tabindex="-1"></a>  file_names<span class="ot">=</span>file_path <span class="sc">%&gt;%</span> </span>
-<span id="cb199-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list.files</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb199-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-7" aria-hidden="true" tabindex="-1"></a>    .[<span class="fu">str_detect</span>(., extension)]</span>
-<span id="cb199-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">str_detect</span>(extension, <span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>)) (file_names <span class="sc">%&gt;%</span></span>
-<span id="cb199-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-10" aria-hidden="true" tabindex="-1"></a>                                                 purrr<span class="sc">::</span><span class="fu">map</span>(<span class="cf">function</span>(file_name){ <span class="co"># iterate through each file name</span></span>
-<span id="cb199-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-11" aria-hidden="true" tabindex="-1"></a>                                                   <span class="fu">assign</span>(<span class="at">x =</span> <span class="fu">str_remove</span>(file_name, <span class="st">&quot;.csv&quot;</span>), <span class="co"># Remove file extension &quot;.csv&quot;</span></span>
-<span id="cb199-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-12" aria-hidden="true" tabindex="-1"></a>                                                          <span class="at">value =</span> <span class="fu">read_csv</span>(<span class="fu">paste0</span>(file_path, file_name)),</span>
-<span id="cb199-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-13" aria-hidden="true" tabindex="-1"></a>                                                          <span class="at">envir =</span> .GlobalEnv)}))</span>
-<span id="cb199-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb199-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">str_detect</span>(extension, <span class="at">pattern =</span> <span class="st">&quot;.xlsx&quot;</span>)) (file_names <span class="sc">%&gt;%</span></span>
-<span id="cb199-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-16" aria-hidden="true" tabindex="-1"></a>                                                  purrr<span class="sc">::</span><span class="fu">map</span>(<span class="cf">function</span>(file_name){ <span class="co"># iterate through each file name</span></span>
-<span id="cb199-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-17" aria-hidden="true" tabindex="-1"></a>                                                    <span class="fu">assign</span>(<span class="at">x =</span> <span class="fu">str_remove</span>(file_name, <span class="st">&quot;.xlsx&quot;</span>), <span class="co"># Remove file extension &quot;.csv&quot;</span></span>
-<span id="cb199-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-18" aria-hidden="true" tabindex="-1"></a>                                                           <span class="at">value =</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">paste0</span>(file_path, file_name)),</span>
-<span id="cb199-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-19" aria-hidden="true" tabindex="-1"></a>                                                           <span class="at">envir =</span> .GlobalEnv)}))</span>
-<span id="cb199-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb199-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb199-22" aria-hidden="true" tabindex="-1"></a><span class="fu">read_all</span>(<span class="at">path =</span> <span class="st">&quot;JLWOP/Data and Models/&quot;</span>, <span class="at">extension =</span> <span class="st">&quot;.xlsx&quot;</span>)</span></code></pre></div>
+<p>Multiple ways you can do this….</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="do">################### Option 1: read all into the global environment, keeping them as SEPERATE df&#39;s ###############</span></span>
+<span id="cb209-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-2" aria-hidden="true" tabindex="-1"></a>legaldmlab<span class="sc">::</span><span class="fu">read_all</span>(<span class="at">path=</span><span class="st">&quot;Data Repository/Stats Data Repository/JASP files&quot;</span>, <span class="at">extension =</span> <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb209-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1.A: Squish ALL OBJECTS in the working environment into a list</span></span>
+<span id="cb209-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Again, note the &quot;ALL OBJECTS&quot; part; make sure there are no functions or other things in the environment when you run this.</span></span>
+<span id="cb209-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-6" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">mget</span>(<span class="fu">ls</span>())</span>
+<span id="cb209-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-9" aria-hidden="true" tabindex="-1"></a><span class="do">############# Option 2: Read in all files as a LIST of df&#39;s, then stitch in the names #####################################</span></span>
+<span id="cb209-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-11" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">paste0</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data Repository&quot;</span>, <span class="st">&quot;Stats Data Repository&quot;</span>, <span class="st">&quot;JASP files&quot;</span>, <span class="st">&quot;/&quot;</span>), </span>
+<span id="cb209-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-12" aria-hidden="true" tabindex="-1"></a>             <span class="fu">list.files</span>(<span class="at">path=</span>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data Repository&quot;</span>, <span class="st">&quot;Stats Data Repository&quot;</span>, <span class="st">&quot;JASP files&quot;</span>), <span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>))</span>
+<span id="cb209-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-14" aria-hidden="true" tabindex="-1"></a>files_list<span class="ot">=</span>files <span class="sc">|&gt;</span> </span>
+<span id="cb209-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(readr<span class="sc">::</span>read_csv)</span>
+<span id="cb209-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-17" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(files_list)<span class="ot">=</span><span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;Data Repository&quot;</span>, <span class="st">&quot;Stats Data Repository&quot;</span>, <span class="st">&quot;JASP files&quot;</span>)) <span class="sc">|&gt;</span> <span class="co">#specify file path as a string</span></span>
+<span id="cb209-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list.files</span>(<span class="at">pattern =</span> <span class="st">&quot;.csv&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># pass the path string to list files; search in this location for files with this extension</span></span>
+<span id="cb209-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="at">pattern=</span><span class="st">&quot;.csv&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;&quot;</span>) <span class="co"># remove this pattern to save only the name</span></span>
+<span id="cb209-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2.A: Extract each data frame and put everything into the global environment</span></span>
+<span id="cb209-23"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb209-23" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(cog_data, <span class="fu">globalenv</span>())</span></code></pre></div>
 </div>
 </div>
 <div id="other-purrr-commands" class="section level2" number="10.4">
@@ -1305,7 +1334,7 @@ variations are as follows:</p>
 save file to your disk, etc. It does not give you any return to store
 something in the environment. You use it to write/read files, open
 graphics windows, and so on.</p>
-<p><strong><em>Example: Exporting multiple .csv files at once</em></strong></p>
+<p><strong><em>Example: Writing multiple files at once</em></strong></p>
 <p>Utilize <code>purrr::walk2()</code> to apply a function iteratively on TWO objects
 simultaneously. To save multiple .csv files with <code>walk2</code>, we need two
 distinct lists: 1. A list of data frames that we wish to export, 2. and
@@ -1314,44 +1343,47 @@ file to be written</p>
 <p>First create and define both list items. Then apply <code>walk2()</code> to pluck
 an element from list 1 and its corresponding element from list 2, and
 apply the <code>write_csv</code> function in for-loop fashion.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Custom function ####</span></span>
-<span id="cb200-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-2" aria-hidden="true" tabindex="-1"></a>bundle_paths<span class="ot">=</span><span class="cf">function</span>(df_list, folder_location){</span>
-<span id="cb200-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  names<span class="ot">=</span><span class="fu">names</span>(df_list)</span>
-<span id="cb200-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  paths<span class="ot">=</span><span class="fu">rep</span>(here<span class="sc">::</span><span class="fu">here</span>(folder_location), <span class="fu">length</span>(names))</span>
-<span id="cb200-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  extension<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;.csv&quot;</span>), <span class="fu">length</span>(names))</span>
-<span id="cb200-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb200-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-7" aria-hidden="true" tabindex="-1"></a>  fixed_names<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">&quot;/&quot;</span>,names)</span>
-<span id="cb200-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb200-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-9" aria-hidden="true" tabindex="-1"></a>  path_bundle<span class="ot">=</span><span class="fu">list</span>(paths,fixed_names, extension) <span class="sc">%&gt;%</span> </span>
-<span id="cb200-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pmap</span>(., paste0)</span>
-<span id="cb200-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb200-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(path_bundle)</span>
-<span id="cb200-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb200-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb200-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-15" aria-hidden="true" tabindex="-1"></a><span class="do">#### Exporting the .csv files for SPSS/JASP/etc. ####</span></span>
-<span id="cb200-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define list 1</span></span>
-<span id="cb200-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-17" aria-hidden="true" tabindex="-1"></a>dfs<span class="ot">=</span><span class="fu">list</span>(<span class="at">na_blank=</span>na_blank,</span>
-<span id="cb200-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">na_zero=</span>na_zero,</span>
-<span id="cb200-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">na_zero_helpreint=</span>na_zero_helpreint)</span>
-<span id="cb200-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-20" aria-hidden="true" tabindex="-1"></a><span class="co"># list 2</span></span>
-<span id="cb200-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-21" aria-hidden="true" tabindex="-1"></a>paths_csv<span class="ot">=</span><span class="fu">bundle_paths</span>(<span class="at">df_list =</span> dfs, <span class="at">folder_location =</span> <span class="st">&quot;JLWOP/Data and Models&quot;</span>)</span>
-<span id="cb200-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb200-23"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb200-24"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over all elements in list 1 and corresponding element in list 2;</span></span>
-<span id="cb200-25"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-25" aria-hidden="true" tabindex="-1"></a><span class="co"># and apply the the write_csv function to each</span></span>
-<span id="cb200-26"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-26" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(<span class="at">.x=</span>dfs, <span class="at">.y=</span> paths, <span class="at">.f=</span>write_csv)</span>
-<span id="cb200-27"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb200-28"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb200-29"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-29" aria-hidden="true" tabindex="-1"></a><span class="do">#### .RData file for R users ####</span></span>
-<span id="cb200-30"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine multiple data frames into a single .RData file and export</span></span>
-<span id="cb200-31"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-31" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(<span class="at">list =</span> <span class="fu">c</span>(<span class="st">&quot;na_blank&quot;</span>, <span class="st">&quot;na_zero&quot;</span>, <span class="st">&quot;na_zero_helpreint&quot;</span>), </span>
-<span id="cb200-32"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb200-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>,<span class="st">&quot;ranking_data.RData&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Custom function ####</span></span>
+<span id="cb210-2"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create needed function that grabs file names and stitches them together with the correct path and extension</span></span>
+<span id="cb210-3"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Included in legaldmlab package</span></span>
+<span id="cb210-4"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-4" aria-hidden="true" tabindex="-1"></a>bundle_paths<span class="ot">=</span><span class="cf">function</span>(df_list, output_location, file_type){</span>
+<span id="cb210-5"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-5" aria-hidden="true" tabindex="-1"></a>  names<span class="ot">=</span><span class="fu">names</span>(df_list)</span>
+<span id="cb210-6"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-6" aria-hidden="true" tabindex="-1"></a>  paths<span class="ot">=</span><span class="fu">rep</span>(here<span class="sc">::</span><span class="fu">here</span>(output_location), <span class="fu">length</span>(names))</span>
+<span id="cb210-7"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-7" aria-hidden="true" tabindex="-1"></a>  extension<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(file_type), <span class="fu">length</span>(names))</span>
+<span id="cb210-8"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb210-9"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-9" aria-hidden="true" tabindex="-1"></a>  fixed_names<span class="ot">=</span><span class="fu">paste0</span>(<span class="st">&quot;/&quot;</span>,names)</span>
+<span id="cb210-10"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb210-11"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-11" aria-hidden="true" tabindex="-1"></a>  path_bundle<span class="ot">=</span><span class="fu">list</span>(paths,fixed_names, extension) <span class="sc">%&gt;%</span> </span>
+<span id="cb210-12"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pmap</span>(., paste0)</span>
+<span id="cb210-13"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb210-14"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(path_bundle)</span>
+<span id="cb210-15"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb210-16"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-17"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-17" aria-hidden="true" tabindex="-1"></a><span class="do">#### Exporting the .csv files for SPSS/JASP/etc. ####</span></span>
+<span id="cb210-18"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define list 1</span></span>
+<span id="cb210-19"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-19" aria-hidden="true" tabindex="-1"></a>dfs<span class="ot">=</span><span class="fu">list</span>(<span class="at">na_blank=</span>na_blank,</span>
+<span id="cb210-20"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">na_zero=</span>na_zero,</span>
+<span id="cb210-21"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">na_zero_helpreint=</span>na_zero_helpreint)</span>
+<span id="cb210-22"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-23"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-23" aria-hidden="true" tabindex="-1"></a><span class="co"># list 2</span></span>
+<span id="cb210-24"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-24" aria-hidden="true" tabindex="-1"></a>paths_csv<span class="ot">=</span><span class="fu">bundle_paths</span>(<span class="at">df_list =</span> dfs, <span class="at">folder_location =</span> <span class="st">&quot;JLWOP/Data and Models&quot;</span>, <span class="at">file_type =</span> <span class="st">&quot;.sav&quot;</span>)</span>
+<span id="cb210-25"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-26"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-27"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over all elements in list 1 and corresponding element in list 2;</span></span>
+<span id="cb210-28"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-28" aria-hidden="true" tabindex="-1"></a><span class="co"># and apply the the write_csv function to each</span></span>
+<span id="cb210-29"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-29" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(<span class="at">.x=</span>dfs, <span class="at">.y=</span> paths, <span class="at">.f=</span>haven<span class="sc">::</span>write_sav)</span>
+<span id="cb210-30"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-31"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-32"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-32" aria-hidden="true" tabindex="-1"></a><span class="do">#### .RData file for R users ####</span></span>
+<span id="cb210-33"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine multiple data frames into a single .RData file and export</span></span>
+<span id="cb210-34"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-34" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(<span class="at">list =</span> <span class="fu">c</span>(<span class="st">&quot;na_blank&quot;</span>, <span class="st">&quot;na_zero&quot;</span>, <span class="st">&quot;na_zero_helpreint&quot;</span>), </span>
+<span id="cb210-35"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb210-35" aria-hidden="true" tabindex="-1"></a>     <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;JLWOP&quot;</span>, <span class="st">&quot;Data and Models&quot;</span>,<span class="st">&quot;ranking_data.RData&quot;</span>))</span></code></pre></div>
 </div>
 <div id="map2-and-walk2" class="section level3" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> <code>map2</code> (and <code>walk2</code>)</h3>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb201-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;map2_a.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb211-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;map2_a.png&quot;</span>))</span></code></pre></div>
 <p><img src="pics/map2_a.png" width="594" /></p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb202-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;map2_b.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb212-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;map2_b.png&quot;</span>))</span></code></pre></div>
 <p><img src="pics/map2_b.png" width="816" /></p>
 </div>
 <div id="pmap-for-when-you-have-a-bunch-of-shit" class="section level3" number="10.4.3">
@@ -1362,9 +1394,9 @@ give it a list of 18 items, it iterates over all 18. If the list only
 has two things, it only acts on those two.</p>
 <p>She says its easiest to imagine the list as a data frame, and the
 columns of the data frame like the elements of that list.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb203-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;pmap.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb213-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;pmap.png&quot;</span>))</span></code></pre></div>
 <p><img src="pics/pmap.png" width="466" /></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb204-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;pmap_2.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="intermediate-r-functions-loops-and-iterative-programming.html#cb214-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>, <span class="st">&quot;pmap_2.png&quot;</span>))</span></code></pre></div>
 <p><img src="pics/pmap_2.png" width="600" /></p>
 
 </div>

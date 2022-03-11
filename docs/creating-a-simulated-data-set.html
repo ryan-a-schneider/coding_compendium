@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-02-19" />
+<meta name="date" content="2022-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,10 +181,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
 <li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.1</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#part-1-date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Part 1: Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#part-2-date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Part 2: Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
 <li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<ul>
+<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
 <ul>
@@ -373,27 +381,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.1</span> Part 1: Independent samples from a normal distribution</h2>
 <p>Consider the following first before you start doing stuff: - How many subjects are in each condition? - What are the means and standard deviations of each group?</p>
 <p>Set that shit below.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="creating-a-simulated-data-set.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of subjects per group</span></span>
-<span id="cb218-2"><a href="creating-a-simulated-data-set.html#cb218-2" aria-hidden="true" tabindex="-1"></a>A_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb218-3"><a href="creating-a-simulated-data-set.html#cb218-3" aria-hidden="true" tabindex="-1"></a>B_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb218-4"><a href="creating-a-simulated-data-set.html#cb218-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-5"><a href="creating-a-simulated-data-set.html#cb218-5" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution parameters</span></span>
-<span id="cb218-6"><a href="creating-a-simulated-data-set.html#cb218-6" aria-hidden="true" tabindex="-1"></a>A_mean  <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb218-7"><a href="creating-a-simulated-data-set.html#cb218-7" aria-hidden="true" tabindex="-1"></a>A_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
-<span id="cb218-8"><a href="creating-a-simulated-data-set.html#cb218-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb218-9"><a href="creating-a-simulated-data-set.html#cb218-9" aria-hidden="true" tabindex="-1"></a>B_mean  <span class="ot">&lt;-</span> <span class="dv">11</span></span>
-<span id="cb218-10"><a href="creating-a-simulated-data-set.html#cb218-10" aria-hidden="true" tabindex="-1"></a>B_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="creating-a-simulated-data-set.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># number of subjects per group</span></span>
+<span id="cb228-2"><a href="creating-a-simulated-data-set.html#cb228-2" aria-hidden="true" tabindex="-1"></a>A_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb228-3"><a href="creating-a-simulated-data-set.html#cb228-3" aria-hidden="true" tabindex="-1"></a>B_sub_n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb228-4"><a href="creating-a-simulated-data-set.html#cb228-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-5"><a href="creating-a-simulated-data-set.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution parameters</span></span>
+<span id="cb228-6"><a href="creating-a-simulated-data-set.html#cb228-6" aria-hidden="true" tabindex="-1"></a>A_mean  <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb228-7"><a href="creating-a-simulated-data-set.html#cb228-7" aria-hidden="true" tabindex="-1"></a>A_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
+<span id="cb228-8"><a href="creating-a-simulated-data-set.html#cb228-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb228-9"><a href="creating-a-simulated-data-set.html#cb228-9" aria-hidden="true" tabindex="-1"></a>B_mean  <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb228-10"><a href="creating-a-simulated-data-set.html#cb228-10" aria-hidden="true" tabindex="-1"></a>B_sd    <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
 <p>Now generate scores for each group</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="creating-a-simulated-data-set.html#cb219-1" aria-hidden="true" tabindex="-1"></a>A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(A_sub_n, A_mean, A_sd)</span>
-<span id="cb219-2"><a href="creating-a-simulated-data-set.html#cb219-2" aria-hidden="true" tabindex="-1"></a>B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B_sub_n, B_mean, B_sd)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="creating-a-simulated-data-set.html#cb229-1" aria-hidden="true" tabindex="-1"></a>A_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(A_sub_n, A_mean, A_sd)</span>
+<span id="cb229-2"><a href="creating-a-simulated-data-set.html#cb229-2" aria-hidden="true" tabindex="-1"></a>B_scores <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B_sub_n, B_mean, B_sd)</span></code></pre></div>
 <p>Technically you <em>could</em> stop here and just analyze the data in this fashion…but its better to organize it into a table. One that looks like something you would import after real data collection.</p>
 <p>So do that next; make it look nice.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="creating-a-simulated-data-set.html#cb220-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb220-2"><a href="creating-a-simulated-data-set.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub_condition =</span> <span class="fu">rep</span>( <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(A_sub_n, B_sub_n) ),</span>
-<span id="cb220-3"><a href="creating-a-simulated-data-set.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(A_scores, B_scores)</span>
-<span id="cb220-4"><a href="creating-a-simulated-data-set.html#cb220-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb220-5"><a href="creating-a-simulated-data-set.html#cb220-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb220-6"><a href="creating-a-simulated-data-set.html#cb220-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="creating-a-simulated-data-set.html#cb230-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb230-2"><a href="creating-a-simulated-data-set.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sub_condition =</span> <span class="fu">rep</span>( <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(A_sub_n, B_sub_n) ),</span>
+<span id="cb230-3"><a href="creating-a-simulated-data-set.html#cb230-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(A_scores, B_scores)</span>
+<span id="cb230-4"><a href="creating-a-simulated-data-set.html#cb230-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb230-5"><a href="creating-a-simulated-data-set.html#cb230-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb230-6"><a href="creating-a-simulated-data-set.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   sub_condition score
 ##   &lt;chr&gt;         &lt;dbl&gt;
@@ -404,11 +412,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 A              6.84
 ## 6 A             11.0</code></pre>
 <p>Always perform a quality and consistency check on your data to verify that shit’s ok.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="creating-a-simulated-data-set.html#cb222-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
-<span id="cb222-2"><a href="creating-a-simulated-data-set.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sub_condition) <span class="sc">%&gt;%</span></span>
-<span id="cb222-3"><a href="creating-a-simulated-data-set.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>() ,</span>
-<span id="cb222-4"><a href="creating-a-simulated-data-set.html#cb222-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
-<span id="cb222-5"><a href="creating-a-simulated-data-set.html#cb222-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(score))</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="creating-a-simulated-data-set.html#cb232-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span></span>
+<span id="cb232-2"><a href="creating-a-simulated-data-set.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sub_condition) <span class="sc">%&gt;%</span></span>
+<span id="cb232-3"><a href="creating-a-simulated-data-set.html#cb232-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>() ,</span>
+<span id="cb232-4"><a href="creating-a-simulated-data-set.html#cb232-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(score),</span>
+<span id="cb232-5"><a href="creating-a-simulated-data-set.html#cb232-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(score))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   sub_condition     n  mean    sd
 ##   &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -424,24 +432,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>using <code>rep(x, each= )</code> repeats things <em>element-wise</em>; each element gets replicated n times, in order</li>
 </ul>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="creating-a-simulated-data-set.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">each=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="creating-a-simulated-data-set.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="at">each=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
 <ul>
 <li>using <code>rep(x, times= )</code> repeats the <em>sequence</em>; the vector as a whole, as it appears, will be repeated with one sequence following the next</li>
 </ul>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="creating-a-simulated-data-set.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">times=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="creating-a-simulated-data-set.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">times=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
 <ul>
 <li>using <code>rep(x, length.out)</code> repeats <em>only the number of elements you specify</em>, in their original order</li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="creating-a-simulated-data-set.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">length.out=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="creating-a-simulated-data-set.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), <span class="at">length.out=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
 <p>In this particular data, we want <em>every combination of <code>group</code> and <code>letter</code> to be present ONCE</em>.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="creating-a-simulated-data-set.html#cb230-1" aria-hidden="true" tabindex="-1"></a>letters<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
-<span id="cb230-2"><a href="creating-a-simulated-data-set.html#cb230-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb230-3"><a href="creating-a-simulated-data-set.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
-<span id="cb230-4"><a href="creating-a-simulated-data-set.html#cb230-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">factor =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">times =</span> <span class="dv">2</span>),</span>
-<span id="cb230-5"><a href="creating-a-simulated-data-set.html#cb230-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="creating-a-simulated-data-set.html#cb240-1" aria-hidden="true" tabindex="-1"></a>letters<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
+<span id="cb240-2"><a href="creating-a-simulated-data-set.html#cb240-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-3"><a href="creating-a-simulated-data-set.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb240-4"><a href="creating-a-simulated-data-set.html#cb240-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">factor =</span> <span class="fu">rep</span>(LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">times =</span> <span class="dv">2</span>),</span>
+<span id="cb240-5"><a href="creating-a-simulated-data-set.html#cb240-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) )</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   group factor response
 ##   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
@@ -458,13 +466,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="some-notes-first" class="section level4" number="14.2.2.1">
 <h4><span class="header-section-number">14.2.2.1</span> Some notes first</h4>
 <p>Creating a difference between the two group’s average score means we have to tell R to sample itteratively from distributions with different means. We do this by specifying a vector of means within <code>rnorm</code>, like so:</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="creating-a-simulated-data-set.html#cb232-1" aria-hidden="true" tabindex="-1"></a>response <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb232-2"><a href="creating-a-simulated-data-set.html#cb232-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="creating-a-simulated-data-set.html#cb242-1" aria-hidden="true" tabindex="-1"></a>response <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb242-2"><a href="creating-a-simulated-data-set.html#cb242-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
 <pre><code>## [1]  4.066141  9.831952  4.307055 11.059641  4.808349 10.009015</code></pre>
 <p>You can see that: 1. draw 1 is from the distribution <span class="math inline">\((\mu=5,\sigma=1)\)</span> 2. draw 2 is from the distribution <span class="math inline">\((\mu=5,\sigma=1)\)</span></p>
 <p>And this process repeats a total of six times.</p>
 <p>And if you happen to also specify a vector of standard deviations (purely to demonstrate what is happening, we won’t actually do this), <em>the first mean is paired with the first SD; the second mean is paired with the second SD; and so on.</em></p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="creating-a-simulated-data-set.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">0.1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="creating-a-simulated-data-set.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="fl">0.1</span>))</span></code></pre></div>
 <pre><code>## [1]  5.744356 10.043787  7.378609  9.952296  8.064520 10.119440</code></pre>
 </div>
 <div id="ok-back-to-creating-the-data" class="section level4" number="14.2.2.2">
@@ -472,14 +480,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you want there to be differences between the groups, we need to change the way the vector of factors is replicated, in addition to specifying the vector of means. We want to ensure that the sequence of “A”, “B” in the <code>group</code> column matches the sequence repeated in the <code>response</code> column.</p>
 <p>Here we are going to use <code>length.out</code> so that the whole sequence of A,B is repeated exactly in line with the alternating drawing from <span class="math inline">\(\mu=5\)</span>, <span class="math inline">\(\mu=10\)</span>.</p>
 <p>It’s often best to do this by building each thing separately, and then combining it into a tibble when you have it figured out.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="creating-a-simulated-data-set.html#cb236-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">=</span><span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">6</span>)</span>
-<span id="cb236-2"><a href="creating-a-simulated-data-set.html#cb236-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="creating-a-simulated-data-set.html#cb246-1" aria-hidden="true" tabindex="-1"></a>group<span class="ot">=</span><span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">length.out =</span> <span class="dv">6</span>)</span>
+<span id="cb246-2"><a href="creating-a-simulated-data-set.html#cb246-2" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="creating-a-simulated-data-set.html#cb238-1" aria-hidden="true" tabindex="-1"></a>response<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb238-2"><a href="creating-a-simulated-data-set.html#cb238-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="creating-a-simulated-data-set.html#cb248-1" aria-hidden="true" tabindex="-1"></a>response<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>), <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb248-2"><a href="creating-a-simulated-data-set.html#cb248-2" aria-hidden="true" tabindex="-1"></a>response</span></code></pre></div>
 <pre><code>## [1]  4.948867 10.118024  3.109300  8.589811  4.047384 10.121841</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="creating-a-simulated-data-set.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(group,</span>
-<span id="cb240-2"><a href="creating-a-simulated-data-set.html#cb240-2" aria-hidden="true" tabindex="-1"></a>       response)</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="creating-a-simulated-data-set.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(group,</span>
+<span id="cb250-2"><a href="creating-a-simulated-data-set.html#cb250-2" aria-hidden="true" tabindex="-1"></a>       response)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   group response
 ##   &lt;chr&gt;    &lt;dbl&gt;
@@ -499,9 +507,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.3</span> Part 3: Repeatedly simulate samples with replicate()</h2>
 <p>Instead of drawing values one at a time from a distribution, we want to do it many times. This is a job for <code>replicate()</code>. What <code>replicate()</code> does is run a function repeatedly.</p>
 <p>The <code>replicate()</code> function will perform a given operation as many times as you tell it to. Here we tell it to generate numbers from the distribution <span class="math inline">\(N~(\mu=0, \sigma=1)\)</span>, three times (as specified in the <code>n=3</code> argument in line one)</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="creating-a-simulated-data-set.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb242-2"><a href="creating-a-simulated-data-set.html#cb242-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb242-3"><a href="creating-a-simulated-data-set.html#cb242-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="creating-a-simulated-data-set.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb252-2"><a href="creating-a-simulated-data-set.html#cb252-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb252-3"><a href="creating-a-simulated-data-set.html#cb252-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span> )</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1]  1.3203910  0.2040899 -0.7970636 -1.2431823 -0.4844866
 ## 
@@ -511,9 +519,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[3]]
 ## [1]  1.7023983  0.1654943  0.7787761 -0.1186586 -0.2111680</code></pre>
 <p>The argument <code>simplify=FALSE</code> tells it to return the output as a list. If you set this to <code>TRUE</code> it returns a matrix instead</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="creating-a-simulated-data-set.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb244-2"><a href="creating-a-simulated-data-set.html#cb244-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb244-3"><a href="creating-a-simulated-data-set.html#cb244-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="creating-a-simulated-data-set.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb254-2"><a href="creating-a-simulated-data-set.html#cb254-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb254-3"><a href="creating-a-simulated-data-set.html#cb254-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
 <pre><code>##             [,1]       [,2]       [,3]
 ## [1,]  0.72115635  0.7402300  0.1134487
 ## [2,]  0.92810115 -1.1035296 -1.0247406
@@ -521,11 +529,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [4,] -0.01083094  0.5085364  1.7663764
 ## [5,] -0.51711197  0.3824463 -1.0787283</code></pre>
 <p>Specifying <code>as.data.frame()</code> with the matrix output can turn it into a data frame.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="creating-a-simulated-data-set.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb246-2"><a href="creating-a-simulated-data-set.html#cb246-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
-<span id="cb246-3"><a href="creating-a-simulated-data-set.html#cb246-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> ) <span class="sc">%&gt;%</span> </span>
-<span id="cb246-4"><a href="creating-a-simulated-data-set.html#cb246-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb246-5"><a href="creating-a-simulated-data-set.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample_a=</span>V1, <span class="at">sample_b=</span>V2, <span class="at">sample_c=</span>V3)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="creating-a-simulated-data-set.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb256-2"><a href="creating-a-simulated-data-set.html#cb256-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>), </span>
+<span id="cb256-3"><a href="creating-a-simulated-data-set.html#cb256-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">TRUE</span> ) <span class="sc">%&gt;%</span> </span>
+<span id="cb256-4"><a href="creating-a-simulated-data-set.html#cb256-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb256-5"><a href="creating-a-simulated-data-set.html#cb256-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sample_a=</span>V1, <span class="at">sample_b=</span>V2, <span class="at">sample_c=</span>V3)</span></code></pre></div>
 <pre><code>##      sample_a   sample_b   sample_c
 ## 1  0.56415036 -1.7060196  1.1146509
 ## 2 -0.24011787  1.8521680  1.4152690
@@ -536,12 +544,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="part-4-repeatedly-making-whole-data-sets" class="section level2" number="14.4">
 <h2><span class="header-section-number">14.4</span> Part 4: repeatedly making whole data sets</h2>
 <p>This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="creating-a-simulated-data-set.html#cb248-1" aria-hidden="true" tabindex="-1"></a>simlist <span class="ot">=</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
-<span id="cb248-2"><a href="creating-a-simulated-data-set.html#cb248-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
-<span id="cb248-3"><a href="creating-a-simulated-data-set.html#cb248-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) ),</span>
-<span id="cb248-4"><a href="creating-a-simulated-data-set.html#cb248-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb248-5"><a href="creating-a-simulated-data-set.html#cb248-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb248-6"><a href="creating-a-simulated-data-set.html#cb248-6" aria-hidden="true" tabindex="-1"></a>simlist</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="creating-a-simulated-data-set.html#cb258-1" aria-hidden="true" tabindex="-1"></a>simlist <span class="ot">=</span> <span class="fu">replicate</span>(<span class="at">n =</span> <span class="dv">3</span>, </span>
+<span id="cb258-2"><a href="creating-a-simulated-data-set.html#cb258-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">expr =</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>], <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb258-3"><a href="creating-a-simulated-data-set.html#cb258-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">response =</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">6</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>) ),</span>
+<span id="cb258-4"><a href="creating-a-simulated-data-set.html#cb258-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb258-5"><a href="creating-a-simulated-data-set.html#cb258-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-6"><a href="creating-a-simulated-data-set.html#cb258-6" aria-hidden="true" tabindex="-1"></a>simlist</span></code></pre></div>
 <pre><code>## [[1]]
 ##   group   response
 ## 1     A -1.1482417
