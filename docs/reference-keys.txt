@@ -26,10 +26,11 @@ turn-row-names-into-a-columnvariable
 how-to-editchange-column-names
 re-order-columns-in-a-data-set
 date-and-time-variables
-part-1-date-time-objects
-part-2-date-only-objects
+date-time-objects
+date-only-objects
 find-the-difference-between-two-datestimes
 reverse-code-a-variable
+dummy-coding-the-very-fast-and-easy-way
 create-a-relative-ranking-among-several-variables
 manipulating-the-working-environment-and-many-things-at-once
 stuff-the-whole-working-environment-into-a-list

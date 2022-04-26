@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-03-11" />
+<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,17 +181,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
 <li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#part-1-date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Part 1: Date-time objects</a></li>
-<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#part-2-date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Part 2: Date-only objects</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
 <li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -387,21 +388,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://davidgohel.github.io/flextable/reference/padding.html" class="uri">https://davidgohel.github.io/flextable/reference/padding.html</a>
 <a href="https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object" class="uri">https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object</a></p>
 <p>Use the <code>padding</code> function:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="making-tables-with-flextable.html#cb160-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">padding</span>(ft, <span class="at">i=</span><span class="dv">2</span>, <span class="at">j=</span><span class="dv">1</span>, <span class="at">padding.left=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="making-tables-with-flextable.html#cb162-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">padding</span>(ft, <span class="at">i=</span><span class="dv">2</span>, <span class="at">j=</span><span class="dv">1</span>, <span class="at">padding.left=</span><span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div id="add-a-horizontal-border-aka-horizontal-spanner" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Add a Horizontal border (AKA horizontal “spanner”)</h2>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="making-tables-with-flextable.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline</span>(., <span class="at">i=</span><span class="dv">4</span>, <span class="at">j=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="making-tables-with-flextable.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline</span>(., <span class="at">i=</span><span class="dv">4</span>, <span class="at">j=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>)</span></code></pre></div>
 </div>
 <div id="change-font-and-font-size" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Change font and font size</h2>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="making-tables-with-flextable.html#cb162-1" aria-hidden="true" tabindex="-1"></a>  glm_table<span class="ot">&lt;-</span>flextable<span class="sc">::</span><span class="fu">font</span>(glm_table, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>, <span class="at">fontname =</span> <span class="st">&quot;Times&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Font</span></span>
-<span id="cb162-2"><a href="making-tables-with-flextable.html#cb162-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">fontsize</span>(., <span class="at">size =</span> <span class="dv">11</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="co"># Font size</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="making-tables-with-flextable.html#cb164-1" aria-hidden="true" tabindex="-1"></a>  glm_table<span class="ot">&lt;-</span>flextable<span class="sc">::</span><span class="fu">font</span>(glm_table, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>, <span class="at">fontname =</span> <span class="st">&quot;Times&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Font</span></span>
+<span id="cb164-2"><a href="making-tables-with-flextable.html#cb164-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">fontsize</span>(., <span class="at">size =</span> <span class="dv">11</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="co"># Font size</span></span></code></pre></div>
 </div>
 <div id="grouped-table" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Grouped table</h2>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="making-tables-with-flextable.html#cb163-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;Model&quot;</span>)</span>
-<span id="cb163-2"><a href="making-tables-with-flextable.html#cb163-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span>flextable<span class="sc">::</span><span class="fu">as_grouped_data</span>(<span class="at">x=</span>cars, <span class="at">groups =</span> <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="making-tables-with-flextable.html#cb165-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;Model&quot;</span>)</span>
+<span id="cb165-2"><a href="making-tables-with-flextable.html#cb165-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span>flextable<span class="sc">::</span><span class="fu">as_grouped_data</span>(<span class="at">x=</span>cars, <span class="at">groups =</span> <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>))</span></code></pre></div>
 </div>
 <div id="complete-example" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Complete Example</h2>

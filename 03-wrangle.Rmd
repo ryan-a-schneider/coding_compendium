@@ -481,7 +481,7 @@ mtcars %>% relocate(hp:wt, .after= am) %>% head()
 
 Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it's not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely. 
 
-### Part 1: Date-time objects
+### Date-time objects
 
 If you're lucky enough to have a vector of date-times, like what Qualtrics gives you, this will be brainless. Just do the following:
 
@@ -497,9 +497,9 @@ head(example_datetime_data) # stored as character string
 lubridate::as_date(example_datetime_data$datetime)
 ```
 
-### Part 2: Date-only objects
+### Date-only objects
 
-If you're unlucky enough to have only dates, and said dates are written in the traditional x/x/xxxx format, this will be an annoyance that has to be done in two stages.
+If you're unlucky enough to have *only* dates, and said dates are written in the traditional **x/x/xxxx** format, this will be an annoyance that has to be done in two stages.
 
 First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.
 
@@ -556,6 +556,28 @@ df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 
 # Recode the whole damn thing. All columns.
 df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
+
+
+## Dummy coding (the very fast and easy way)
+
+Use dplyr's `pivot_wider` in conjunction with `mutate` to very quickly and automatically dummy code a column with any number of unique values. The middle part of the code below is what you need...just copy and paste it, and tweak the specifics
+
+```{r}
+library(tidyverse)
+
+mtcars |> 
+  mutate(car=rownames(mtcars)) |> 
+  
+  dplyr::mutate(n=1) |> 
+  tidyr::pivot_wider(names_from = cyl,
+              values_from = n,
+              names_prefix = "number_cyl",
+              values_fill = list(n=0)) |> 
+  
+  select(car, starts_with("number_")) |> head() #truncate output for easier reading
+```
+
+
 
 ## Create a relative ranking among several variables
 

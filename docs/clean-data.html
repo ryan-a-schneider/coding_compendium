@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-03-11" />
+<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,17 +181,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
 <li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#part-1-date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Part 1: Date-time objects</a></li>
-<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#part-2-date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Part 2: Date-only objects</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
 <li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -379,14 +380,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="replace-a-value-with-na" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Replace a value with NA</h2>
 <p>Use <code>dplyr::na_if()</code> if you have a value coded in your data (e.g., 999) that you want to convert to NA</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="clean-data.html#cb75-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month,</span>
-<span id="cb75-2"><a href="clean-data.html#cb75-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>,</span>
-<span id="cb75-3"><a href="clean-data.html#cb75-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="dv">3</span>,</span>
-<span id="cb75-4"><a href="clean-data.html#cb75-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="dv">999</span>, </span>
-<span id="cb75-5"><a href="clean-data.html#cb75-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>,</span>
-<span id="cb75-6"><a href="clean-data.html#cb75-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>)</span>
-<span id="cb75-7"><a href="clean-data.html#cb75-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-8"><a href="clean-data.html#cb75-8" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="clean-data.html#cb77-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month,</span>
+<span id="cb77-2"><a href="clean-data.html#cb77-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>,</span>
+<span id="cb77-3"><a href="clean-data.html#cb77-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="dv">3</span>,</span>
+<span id="cb77-4"><a href="clean-data.html#cb77-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="dv">999</span>, </span>
+<span id="cb77-5"><a href="clean-data.html#cb77-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>,</span>
+<span id="cb77-6"><a href="clean-data.html#cb77-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>)</span>
+<span id="cb77-7"><a href="clean-data.html#cb77-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-8"><a href="clean-data.html#cb77-8" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   name    bday_month
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -395,9 +396,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Jen            999
 ## 4 Tristin        999
 ## 5 Cassidy          6</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="clean-data.html#cb77-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>bday_month<span class="ot">=</span><span class="fu">na_if</span>(example_data<span class="sc">$</span>bday_month, <span class="dv">999</span>) <span class="co">#example doing one column at a time </span></span>
-<span id="cb77-2"><a href="clean-data.html#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-3"><a href="clean-data.html#cb77-3" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="clean-data.html#cb79-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>bday_month<span class="ot">=</span><span class="fu">na_if</span>(example_data<span class="sc">$</span>bday_month, <span class="dv">999</span>) <span class="co">#example doing one column at a time </span></span>
+<span id="cb79-2"><a href="clean-data.html#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="clean-data.html#cb79-3" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   name    bday_month
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -406,8 +407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3 Jen             NA
 ## 4 Tristin         NA
 ## 5 Cassidy          6</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="clean-data.html#cb79-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="co"># can also pass the data to mutate and do it the tidyverse way</span></span>
-<span id="cb79-2"><a href="clean-data.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bday_month=</span><span class="fu">na_if</span>(bday_month, <span class="dv">999</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="clean-data.html#cb81-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="co"># can also pass the data to mutate and do it the tidyverse way</span></span>
+<span id="cb81-2"><a href="clean-data.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bday_month=</span><span class="fu">na_if</span>(bday_month, <span class="dv">999</span>)) </span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   name    bday_month
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -420,15 +421,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="replace-nas-with-a-value" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Replace NA’s with a value</h2>
 <p><code>tidyr::replace_na()</code> is very useful if you have some NA’s in your data and you want to fill them in with some value.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="clean-data.html#cb81-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>fav_color, <span class="sc">~</span>fav_food,</span>
-<span id="cb81-2"><a href="clean-data.html#cb81-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Ryan&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;Mexican&quot;</span>,</span>
-<span id="cb81-3"><a href="clean-data.html#cb81-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Cassidy&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="cn">NA</span>,</span>
-<span id="cb81-4"><a href="clean-data.html#cb81-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
-<span id="cb81-5"><a href="clean-data.html#cb81-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tristin&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="cn">NA</span>,</span>
-<span id="cb81-6"><a href="clean-data.html#cb81-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tarika&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
-<span id="cb81-7"><a href="clean-data.html#cb81-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Italian&quot;</span>)</span>
-<span id="cb81-8"><a href="clean-data.html#cb81-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-9"><a href="clean-data.html#cb81-9" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="clean-data.html#cb83-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>fav_color, <span class="sc">~</span>fav_food,</span>
+<span id="cb83-2"><a href="clean-data.html#cb83-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Ryan&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;Mexican&quot;</span>,</span>
+<span id="cb83-3"><a href="clean-data.html#cb83-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Cassidy&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb83-4"><a href="clean-data.html#cb83-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
+<span id="cb83-5"><a href="clean-data.html#cb83-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tristin&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb83-6"><a href="clean-data.html#cb83-6" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Tarika&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
+<span id="cb83-7"><a href="clean-data.html#cb83-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Italian&quot;</span>)</span>
+<span id="cb83-8"><a href="clean-data.html#cb83-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-9"><a href="clean-data.html#cb83-9" aria-hidden="true" tabindex="-1"></a>example_data</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   name    fav_color fav_food
 ##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
@@ -438,11 +439,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 Tristin purple    &lt;NA&gt;    
 ## 5 Tarika  &lt;NA&gt;      &lt;NA&gt;    
 ## 6 Jen     &lt;NA&gt;      Italian</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="clean-data.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace NA&#39;s in one col</span></span>
-<span id="cb83-2"><a href="clean-data.html#cb83-2" aria-hidden="true" tabindex="-1"></a>tidyr<span class="sc">::</span><span class="fu">replace_na</span>(example_data<span class="sc">$</span>fav_food, <span class="st">&quot;MISSING&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="clean-data.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace NA&#39;s in one col</span></span>
+<span id="cb85-2"><a href="clean-data.html#cb85-2" aria-hidden="true" tabindex="-1"></a>tidyr<span class="sc">::</span><span class="fu">replace_na</span>(example_data<span class="sc">$</span>fav_food, <span class="st">&quot;MISSING&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Mexican&quot; &quot;MISSING&quot; &quot;MISSING&quot; &quot;MISSING&quot; &quot;MISSING&quot; &quot;Italian&quot;</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="clean-data.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace in multiple columns</span></span>
-<span id="cb85-2"><a href="clean-data.html#cb85-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(fav_color, fav_food), replace_na, <span class="st">&quot;MISSING&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="clean-data.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace in multiple columns</span></span>
+<span id="cb87-2"><a href="clean-data.html#cb87-2" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(fav_color, fav_food), replace_na, <span class="st">&quot;MISSING&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   name    fav_color fav_food
 ##   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;   
@@ -456,19 +457,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="identify-columns-or-rows-with-missing-values" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Identify columns or rows with Missing values</h2>
 <p><code>is.na()</code> is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="clean-data.html#cb87-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>)</span>
-<span id="cb87-2"><a href="clean-data.html#cb87-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb87-3"><a href="clean-data.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(y) <span class="co"># returns a vector (F F F T)</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="clean-data.html#cb89-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="cn">NA</span>)</span>
+<span id="cb89-2"><a href="clean-data.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-3"><a href="clean-data.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(y) <span class="co"># returns a vector (F F F T)</span></span></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE</code></pre>
 </div>
 <div id="find-the-percentage-of-a-variable-that-is-missing" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Find the percentage of a variable that is missing</h2>
 <p>Sometimes necessary to check before conducting an analysis. <em>This requires my package</em>, <code>legaldmlab</code></p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="clean-data.html#cb89-1" aria-hidden="true" tabindex="-1"></a>?legaldmlab<span class="sc">::</span>count_missing</span>
-<span id="cb89-2"><a href="clean-data.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="clean-data.html#cb89-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb89-4"><a href="clean-data.html#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(hp<span class="sc">:</span>drat) <span class="sc">%&gt;%</span> </span>
-<span id="cb89-5"><a href="clean-data.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  legaldmlab<span class="sc">::</span><span class="fu">count_missing</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="clean-data.html#cb91-1" aria-hidden="true" tabindex="-1"></a>?legaldmlab<span class="sc">::</span>count_missing</span>
+<span id="cb91-2"><a href="clean-data.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="clean-data.html#cb91-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb91-4"><a href="clean-data.html#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(hp<span class="sc">:</span>drat) <span class="sc">%&gt;%</span> </span>
+<span id="cb91-5"><a href="clean-data.html#cb91-5" aria-hidden="true" tabindex="-1"></a>  legaldmlab<span class="sc">::</span><span class="fu">count_missing</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   variable missing_count percent_missing
 ##   &lt;chr&gt;            &lt;int&gt; &lt;chr&gt;          
@@ -481,15 +482,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="dropping-missing-values-from-the-data-set" class="section level2" number="4.6">
 <h2><span class="header-section-number">4.6</span> Dropping Missing values from the data set</h2>
 <p>Use <code>tidyr::drop_na()</code> to remove rows with missing values.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="clean-data.html#cb91-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month, <span class="sc">~</span>car,</span>
-<span id="cb91-2"><a href="clean-data.html#cb91-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>, <span class="st">&quot;kia&quot;</span>,</span>
-<span id="cb91-3"><a href="clean-data.html#cb91-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;toyota&quot;</span>,</span>
-<span id="cb91-4"><a href="clean-data.html#cb91-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
-<span id="cb91-5"><a href="clean-data.html#cb91-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>, <span class="cn">NA</span>,</span>
-<span id="cb91-6"><a href="clean-data.html#cb91-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>, <span class="st">&quot;honda&quot;</span>)</span>
-<span id="cb91-7"><a href="clean-data.html#cb91-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-8"><a href="clean-data.html#cb91-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-9"><a href="clean-data.html#cb91-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(example_data)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="clean-data.html#cb93-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>bday_month, <span class="sc">~</span>car,</span>
+<span id="cb93-2"><a href="clean-data.html#cb93-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Ryan&quot;</span>, <span class="dv">10</span>, <span class="st">&quot;kia&quot;</span>,</span>
+<span id="cb93-3"><a href="clean-data.html#cb93-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Z&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;toyota&quot;</span>,</span>
+<span id="cb93-4"><a href="clean-data.html#cb93-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Jen&quot;</span>, <span class="cn">NA</span>, <span class="cn">NA</span>,</span>
+<span id="cb93-5"><a href="clean-data.html#cb93-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Tristin&quot;</span>, <span class="dv">999</span>, <span class="cn">NA</span>,</span>
+<span id="cb93-6"><a href="clean-data.html#cb93-6" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Cassidy&quot;</span>, <span class="dv">6</span>, <span class="st">&quot;honda&quot;</span>)</span>
+<span id="cb93-7"><a href="clean-data.html#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-8"><a href="clean-data.html#cb93-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb93-9"><a href="clean-data.html#cb93-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(example_data)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -526,13 +527,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="clean-data.html#cb92-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>() <span class="co"># with nothing specified, it drops ALL variables that have &gt;=1 missing value</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="clean-data.html#cb94-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>() <span class="co"># with nothing specified, it drops ALL variables that have &gt;=1 missing value</span></span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   name    bday_month car  
 ##   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;
 ## 1 Ryan            10 kia  
 ## 2 Cassidy          6 honda</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="clean-data.html#cb94-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(car) <span class="co"># drops only rows with values missing in the specified column</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="clean-data.html#cb96-1" aria-hidden="true" tabindex="-1"></a>example_data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(car) <span class="co"># drops only rows with values missing in the specified column</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   name    bday_month car   
 ##   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt; 

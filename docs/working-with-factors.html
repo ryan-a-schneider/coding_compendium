@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-03-11" />
+<meta name="date" content="2022-04-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -181,17 +181,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
 <li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#part-1-date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Part 1: Date-time objects</a></li>
-<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#part-2-date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Part 2: Date-only objects</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
 <li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
 <li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -379,11 +380,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="manually-recodechange-a-factors-levels" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Manually recode/change a factor’s levels</h2>
 <p>Use <code>forcats::fct_recode()</code></p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="working-with-factors.html#cb96-1" aria-hidden="true" tabindex="-1"></a>diamonds<span class="ot">=</span>diamonds <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
-<span id="cb96-2"><a href="working-with-factors.html#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-3"><a href="working-with-factors.html#cb96-3" aria-hidden="true" tabindex="-1"></a>diamonds<span class="sc">$</span>cut<span class="ot">=</span><span class="fu">fct_recode</span>(diamonds<span class="sc">$</span>cut, <span class="st">&quot;meh&quot;</span><span class="ot">=</span><span class="st">&quot;Fair&quot;</span>, <span class="st">&quot;Wow&quot;</span><span class="ot">=</span><span class="st">&quot;Premium&quot;</span>)</span>
-<span id="cb96-4"><a href="working-with-factors.html#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-5"><a href="working-with-factors.html#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(diamonds<span class="sc">$</span>cut)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="working-with-factors.html#cb98-1" aria-hidden="true" tabindex="-1"></a>diamonds<span class="ot">=</span>diamonds <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb98-2"><a href="working-with-factors.html#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-3"><a href="working-with-factors.html#cb98-3" aria-hidden="true" tabindex="-1"></a>diamonds<span class="sc">$</span>cut<span class="ot">=</span><span class="fu">fct_recode</span>(diamonds<span class="sc">$</span>cut, <span class="st">&quot;meh&quot;</span><span class="ot">=</span><span class="st">&quot;Fair&quot;</span>, <span class="st">&quot;Wow&quot;</span><span class="ot">=</span><span class="st">&quot;Premium&quot;</span>)</span>
+<span id="cb98-4"><a href="working-with-factors.html#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-5"><a href="working-with-factors.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(diamonds<span class="sc">$</span>cut)</span></code></pre></div>
 <pre><code>##       meh      Good Very Good       Wow     Ideal 
 ##      1610      4906     12082     13791     21551</code></pre>
 </div>
@@ -391,38 +392,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.2</span> Collapse factor levels</h2>
 <p>Extremely useful command for when you have infrequent cases in one factor and need to combine it with another.</p>
 <p>Works by specifying a series of new level names, each of which contains the information from the old variables. Format is as follows:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="working-with-factors.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_collapse</span>(dataset<span class="sc">$</span>variable,</span>
-<span id="cb98-2"><a href="working-with-factors.html#cb98-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">NewLevelA=</span><span class="fu">c</span>(<span class="st">&quot;OldLevel1&quot;</span>,<span class="st">&quot;Oldlevel2&quot;</span>), <span class="co"># NewLevelA is the new variable that contains both variables 1 and 2</span></span>
-<span id="cb98-3"><a href="working-with-factors.html#cb98-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">NewLevelB=</span><span class="fu">c</span>(<span class="st">&quot;OldLevel3&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="working-with-factors.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_collapse</span>(dataset<span class="sc">$</span>variable,</span>
+<span id="cb100-2"><a href="working-with-factors.html#cb100-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">NewLevelA=</span><span class="fu">c</span>(<span class="st">&quot;OldLevel1&quot;</span>,<span class="st">&quot;Oldlevel2&quot;</span>), <span class="co"># NewLevelA is the new variable that contains both variables 1 and 2</span></span>
+<span id="cb100-3"><a href="working-with-factors.html#cb100-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">NewLevelB=</span><span class="fu">c</span>(<span class="st">&quot;OldLevel3&quot;</span>))</span></code></pre></div>
 </div>
 <div id="add-levels-to-a-factor" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Add levels to a factor</h2>
 <p>use <code>fct_expand()</code></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="working-with-factors.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="working-with-factors.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;temp&quot;</code></pre>
 </div>
 <div id="drop-unused-levels" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Drop unused levels</h2>
 <p>Use <code>fct_drop()</code></p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="working-with-factors.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="working-with-factors.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;temp&quot;</code></pre>
 </div>
 <div id="change-the-order-of-a-factors-levels" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Change the order of a factor’s levels</h2>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="working-with-factors.html#cb103-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>person, <span class="sc">~</span>condition,</span>
-<span id="cb103-2"><a href="working-with-factors.html#cb103-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;bob&quot;</span>, <span class="st">&quot;25 years&quot;</span>,</span>
-<span id="cb103-3"><a href="working-with-factors.html#cb103-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;jane&quot;</span>, <span class="st">&quot;5 years&quot;</span>,</span>
-<span id="cb103-4"><a href="working-with-factors.html#cb103-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;jim&quot;</span>, <span class="st">&quot;5 years&quot;</span>,</span>
-<span id="cb103-5"><a href="working-with-factors.html#cb103-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;john&quot;</span>, <span class="st">&quot;25 years&quot;</span>)</span>
-<span id="cb103-6"><a href="working-with-factors.html#cb103-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-7"><a href="working-with-factors.html#cb103-7" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>condition<span class="ot">=</span><span class="fu">factor</span>(example_data<span class="sc">$</span>condition)</span>
-<span id="cb103-8"><a href="working-with-factors.html#cb103-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-9"><a href="working-with-factors.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(example_data<span class="sc">$</span>condition)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="working-with-factors.html#cb105-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>person, <span class="sc">~</span>condition,</span>
+<span id="cb105-2"><a href="working-with-factors.html#cb105-2" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;bob&quot;</span>, <span class="st">&quot;25 years&quot;</span>,</span>
+<span id="cb105-3"><a href="working-with-factors.html#cb105-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;jane&quot;</span>, <span class="st">&quot;5 years&quot;</span>,</span>
+<span id="cb105-4"><a href="working-with-factors.html#cb105-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;jim&quot;</span>, <span class="st">&quot;5 years&quot;</span>,</span>
+<span id="cb105-5"><a href="working-with-factors.html#cb105-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;john&quot;</span>, <span class="st">&quot;25 years&quot;</span>)</span>
+<span id="cb105-6"><a href="working-with-factors.html#cb105-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-7"><a href="working-with-factors.html#cb105-7" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>condition<span class="ot">=</span><span class="fu">factor</span>(example_data<span class="sc">$</span>condition)</span>
+<span id="cb105-8"><a href="working-with-factors.html#cb105-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-9"><a href="working-with-factors.html#cb105-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(example_data<span class="sc">$</span>condition)</span></code></pre></div>
 <pre><code>##  Factor w/ 2 levels &quot;25 years&quot;,&quot;5 years&quot;: 1 2 2 1</code></pre>
 <p>Notice that R thinks these are nominal factors, and that 25 comes before 5. To fix this and correct the level order…</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="working-with-factors.html#cb105-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>condition <span class="ot">=</span><span class="fu">fct_relevel</span>(example_data<span class="sc">$</span>condition, <span class="fu">c</span>(<span class="st">&quot;5 years&quot;</span>, <span class="st">&quot;25 years&quot;</span>)) <span class="co"># specify level order</span></span>
-<span id="cb105-2"><a href="working-with-factors.html#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-3"><a href="working-with-factors.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(example_data<span class="sc">$</span>condition)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="working-with-factors.html#cb107-1" aria-hidden="true" tabindex="-1"></a>example_data<span class="sc">$</span>condition <span class="ot">=</span><span class="fu">fct_relevel</span>(example_data<span class="sc">$</span>condition, <span class="fu">c</span>(<span class="st">&quot;5 years&quot;</span>, <span class="st">&quot;25 years&quot;</span>)) <span class="co"># specify level order</span></span>
+<span id="cb107-2"><a href="working-with-factors.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="working-with-factors.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(example_data<span class="sc">$</span>condition)</span></code></pre></div>
 <pre><code>##  Factor w/ 2 levels &quot;5 years&quot;,&quot;25 years&quot;: 2 1 1 2</code></pre>
 
 </div>
