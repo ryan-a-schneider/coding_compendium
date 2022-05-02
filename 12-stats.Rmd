@@ -16,14 +16,11 @@ rnorm(n=2500,mean=500, sd=100)
 ```
 
 
-## Find Cohen's Kappa (Interrater reliability)
+## Calculating Interrater reliability 
 
-Useful for IRR agreement on categorical variables
+***Cohen's Kappa*** is useful for IRR agreement on categorical variables...Use the `psych` package for this [see here](https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa); and read [this web page](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is if you need a recap/intro.
 
-Going to use the `psych` package for this:
-https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa
-
-See [here](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is if you need a recap/intro.
+For 3+ raters on a continuous variable, use ***Intraclass Correlation***. See [this page](https://www.rdocumentation.org/packages/psych/versions/2.2.3/topics/ICC] for a function to calculate this).
 
 
 ## Statistical tests and modeling with `easystats`
@@ -50,8 +47,8 @@ Options two and three are pretty similar and both give you most of the same info
 
 Note though that *neither command* will round the numbers if you store it as a table in the environment. So....
 
-1. If you want to manipulate ANY info in the table and/or extract info, just use `tidy` or `parameters`.
-2. If you're using the command to export said info in a neat table, or you want to view it in a more readable fashion and *do not care about extracting/modifying/manipulating anything in it*, then use `parameters` and pipe it to `format_table()`
+1. If you want to manipulate ANY info in the table and/or extract info, use `tidy` or `parameters`. Both make tidy tibbles.
+2. If you're using the command to ***export*** said info in a neat, presentable MS Word table or HTML table, and you *do not care about extracting/modifying/manipulating anything in it*, then use `parameters` and pipe it to `format_table()`
 
 Using `format_table()` rounds all columns to 2 decimal places, reformats p-values to APA format, and collapses CI's into a single column. Do note though that it makes every column into a Character column! So this is for exporting-use only.
 
@@ -64,11 +61,13 @@ knitr::include_graphics(here::here("pics", "tidy.png"))
 ```{r 12_pic2, echo=FALSE}
 knitr::include_graphics(here::here("pics", "parameters.png"))
 ```
+
 And here's what `parameters(model) |> format_table()` does to the a parameters table:
 
 ```{r 12_pic3, echo=FALSE}
 knitr::include_graphics(here::here("pics", "format_table.png"))
 ```
+
 Much cleaner for making a table to export to Word.
 
 
