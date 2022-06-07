@@ -529,6 +529,169 @@ knitr::include_graphics(here::here("pics", "pmap_2.png"))
 ```
 
 
+## Using purrr to manage many models
+
+Imagine the concept of Russian Dolls, applied to data sets. You can manage data sets more effectively my collapsing them into a single tiny, mini data frame, and stuffing that inside of another one.
+
+This is done via "nesting"...
+
+Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don't. Code works like this:
+
+```{r 3.18, eval=FALSE}
+by_country=gapminder::gapminder %>% 
+  group_by(continent,country) %>% # indicate the variables to keep at the top level
+  nest() # smush the rest into a list-column
 
 
+country_model=function(df){
+  lm(lifExp~year1950,data = df)
+}
+
+# Transform a list of models into a df
+models=by_country %>% 
+  mutate(mod=map(data,country_model))
+```
+
+- You can store anything in a data frame. You can keep the df connected to the model, which makes it very easy to manage a whole slew of related models
+- You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways.
+- Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information
+
+Below is the full script I copied from Hadley Wickham's lecture, which you can watch [here](https://www.youtube.com/watch?v=rz3_FDVt9eg)
+
+```{r eval=FALSE}
+
+pacman::p_load(dplyr,purrr,tidyverse,gapminder)
+
+#### Workflow for managing many models in R ####
+# 1. Nest data with {tidyr}
+# 2. Use {purrr} to map a modeling function
+# 3. Use {broom} to inspect your tidy data
+
+
+gapminder=gapminder %>% 
+  mutate(year1950= year-1950) #the number of years it's been since 1950
+
+#--------------------------------------------------------------------------------------------
+#### Step 1. Nest the data. ####
+
+# A nested data frame has one column per country. You're essentially 
+# creating a Russian doll; a data frame inside of a larger data frame.
+
+by_country=gapminder %>% 
+  group_by(continent,country) %>% # variables to keep at the top level
+  nest() # smush everything else into a df, and store this mini-df in its own column
+
+# with this, you can have an entire table per row; a whole data frame for each country
+# Essentially condensing a list into a table
+by_country$data[[1]]
+
+
+#--------------------------------------------------------------------------------------------
+
+#### Step 2. Use purrr to map stuff. ####
+
+# 12:50
+country_model=function(df){
+  lm(lifeExp ~ year1950, data = df)
+}
+
+models= by_country %>% 
+  mutate(
+    mod=map(data,country_model)
+  )
+
+
+gapminder %>% 
+  group_by(continent,country) %>% 
+  nest() %>% 
+  mutate(
+    mod= data %>% map(country_model)
+  )
+
+# 27:11
+
+#--------------------------------------------------------------------------------------------
+##### Step 3. ####
+
+# This creates another nested df inside of your main data frame that has the summary stats of each model
+models=models %>% mutate(
+  tidy=map(mod, broom::tidy), # tidy() gives model estimates
+  glance=map(mod,broom::glance), # glance() gives model summaries
+  augment=map(mod,broom::augment) # model coefficients
+)
+
+# What can you do with this nest of data frames? 
+# The reverse of step 1; un-nest it to unpack everything!
+# 34:40
+# Keeps a massive list of related information neatly organized!
+
+unnest(models,data) # back to where we started
+unnest(models,glance, .drop = TRUE) 
+unnest(models,tidy) 
+```
+
+...and here is a version I made of the above to manage many Latent Growth Curve models.
+
+```{r eval=FALSE}
+# CONDENSED MASTER TABLE VERSION -----------------------------------------------------------------------------
+# Models table that has all models condensed
+
+models_noCovs=tibble(
+  
+  #### Define model names ####
+  model_name=c("Linear", "Quadratic", "Latent_Basis"),
+  
+  ##### List model specifications for lavaan ####
+  model_spec=list(
+  
+  linear_model= '
+  # intercept and slope with fixed coefficients
+  i =~ 1*panss_total_400 + 1*panss_total_1000 + 1*panss_total_1600 + 1*panss_total_2200 + 1*panss_total_2800 +  1*panss_total_3400 + 1*panss_total_5200
+  s =~ 0*panss_total_400 + 3*panss_total_1000 + 6*panss_total_1600 + 9*panss_total_2200 + 12*panss_total_2800 + 15*panss_total_3400 + 24*panss_total_5200
+  ',
+  
+  quadratic_model= '
+  # intercept and slope with fixed coefficients
+  i =~ 1*panss_total_400 + 1*panss_total_1000 + 1*panss_total_1600 + 1*panss_total_2200 + 1*panss_total_2800 +  1*panss_total_3400
+  s =~ 0*panss_total_400 + 3*panss_total_1000 + 6*panss_total_1600 + 9*panss_total_2200 + 12*panss_total_2800 + 15*panss_total_3400 + 24*panss_total_5200
+  
+  qs =~ 0*panss_total_400 + 9*panss_total_1000 + 36*panss_total_1600 + 81*panss_total_2200 + 144*panss_total_2800 + 225*panss_total_3400 + 576*panss_total_5200
+  ',
+  
+  latentBasis_model= '
+  # intercept and slope with fixed coefficients
+  i =~ 1*panss_total_400 + 1*panss_total_1000 + 1*panss_total_1600 + 1*panss_total_2200 + 1*panss_total_2800 +  1*panss_total_3400 + 1*panss_total_5200
+  s =~ 0*panss_total_400 + NA*panss_total_1000 + NA*panss_total_1600 + NA*panss_total_2200 + NA*panss_total_2800 + NA*panss_total_3400 + 1*panss_total_5200
+  '
+  ),
+  
+  #### Fit all models at once with purrr ####
+  fitted_model=model_spec |> map(lavaan::growth, data=panss_sem_data, missing="FIML"),
+  
+)
+
+
+
+#### Add parameter estimates and fit stats ####
+models_noCovs=models_noCovs |> 
+  mutate(tidy_parameters=map(fitted_model, tidy, conf.int=.95), #parameter estimates
+         global_fit=map(fitted_model, performance::model_performance)) #global fit of models
+
+#### Clean up stuff ####
+models_noCovs$tidy_parameters=models_noCovs$tidy_parameters |> 
+  map(select,-c(std.lv:std.nox, op)) |> # remove extra columns
+  map(mutate, estimate=round(estimate, digits = 2)) |> # round numbers
+  map(mutate, (across(c(std.error:p.value, conf.low, conf.high), round, 3)))
+
+models_noCovs$global_fit=models_noCovs$global_fit |> 
+  map(select, c(Chi2:p_Chi2, RMSEA:SRMR, CFI, AIC))
+```
+
+Note how the functions inside `map` take on a slightly different form, but work the same.
+
+Using this framework, you can easily drill down into any column and be sure that you're accessing the right thing. Everything is always kept together, and always acted upon in the same way. This minimizes mistakes.
+
+```{r eval=FALSE}
+models_noCovs$tidy_parameters$latent_Basis_model
+```
 

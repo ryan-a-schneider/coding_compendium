@@ -1,7 +1,7 @@
 # Coding Tips and Tricks
 
 
-## Grammar stuff in base R
+## Grammar and Syntax
 
 ### Regex expressions and symbols
 
@@ -19,15 +19,12 @@ Not really any functional differences from the tidyverse pipe, but using this in
 
 You can set this in the global options in RStudio.
 
-## Tidyverse stuff
+### The colon-equals (`:=`) operator
 
-### Sometimes when making a function you need to use the colon-equals operator, rather than just the normal <- or = assignment operators
+Sometimes when making a function you need to use the colon-equals operator, rather than just the normal <- or = assignment operators
 
-Specifically, when you have multiple named arguments in your function
-Read my question and someone's answer on this blogpost: https://community.rstudio.com/t/help-creating-simple-function/109011/2
+Specifically, when you have multiple named arguments in your function...Read my question and someone's answer on this blogpost: https://community.rstudio.com/t/help-creating-simple-function/109011/2
 
-
-## Function-related stuff
 
 ### User-supplied expressions or named columns in functions
 

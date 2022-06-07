@@ -21,7 +21,6 @@ merging-variables
 apply-a-function-to-multiple-variables-at-once
 pivoting-i.e.-transposing-data
 condense-multiple-rows-into-a-single-column-pivot-wide-to-long
-managing-many-models
 turn-row-names-into-a-columnvariable
 how-to-editchange-column-names
 re-order-columns-in-a-data-set
@@ -36,6 +35,7 @@ manipulating-the-working-environment-and-many-things-at-once
 stuff-the-whole-working-environment-into-a-list
 extract-everything-from-a-list-into-the-environment
 delete-everything-in-the-entire-environment-except-for-one-item
+nesting
 clean-data
 replace-a-value-with-na
 replace-nas-with-a-value
@@ -81,6 +81,7 @@ faceting
 log-transformations
 changing-the-scale-of-the-axis
 add-a-regression-line
+save-a-graph-or-figure
 making-tables-with-flextable
 apa-table-components
 indent-values
@@ -106,6 +107,7 @@ other-purrr-commands
 the-walk-and-walk2-commands
 map2-and-walk2
 pmap-for-when-you-have-a-bunch-of-shit
+using-purrr-to-manage-many-models
 intro-to-r-markdown
 important-code-chunk-options
 writing-math-equations-and-symbols
@@ -121,7 +123,7 @@ making-better-tables
 running-in-line-code
 statistics-and-psych-specific-stuff
 create-or-sample-from-a-distribution
-find-cohens-kappa-interrater-reliability
+calculating-interrater-reliability
 statistical-tests-and-modeling-with-easystats
 getting-parameter-estimates-from-model-objects
 getting-model-information-and-performance-metrics
@@ -129,12 +131,10 @@ effect-size-info-with-effectsize
 quick-detailed-and-automated-reporting-with-report
 running-correlations-with-correlation
 coding-tips-and-tricks
-grammar-stuff-in-base-r
+grammar-and-syntax
 regex-expressions-and-symbols
 the-new-pipe-base-r
-tidyverse-stuff
-sometimes-when-making-a-function-you-need-to-use-the-colon-equals-operator-rather-than-just-the-normal---or-assignment-operators
-function-related-stuff
+the-colon-equals-operator
 user-supplied-expressions-or-named-columns-in-functions
 when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time
 formulas-within-functions

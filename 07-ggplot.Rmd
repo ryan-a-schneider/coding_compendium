@@ -452,5 +452,24 @@ ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
   geom_smooth(method = "lm", formula = y ~ x)
 ```
 
+## Save a graph or figure
+
+Use the `ggsave` command
+```{r eval=FALSE}
+
+ggsave(
+  "panss_total_scores.png",
+  plot = scatter_plot,
+  device = "png",
+  path = here::here("Figures and Tables"),
+  scale = 1,
+  width = NA,
+  height = NA,
+  units = c("in", "cm", "mm", "px"),
+  dpi = 300,
+  limitsize = TRUE,
+  bg = NULL,
+)
+```
 
 

@@ -51,7 +51,7 @@ Use the `include_graphics()` command and specify both the file location and it's
 knitr::include_graphics(here::here("pics","snapchat.png"))
 ```
 
-***NOTE***. Use 3000-600 DPI to get good looking pictures.
+***NOTE***. Use 300-600 DPI to get good looking pictures.
 
 The [bookdown book](https://bookdown.org/yihui/bookdown/figures.html) notes that:
 
