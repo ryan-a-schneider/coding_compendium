@@ -2,9 +2,7 @@
 
 ## Functions
 
-A function is a command that performs a specified operation and returns
-an output in accordance with that operation. You can literally make a
-function to do anything you want.
+A function is a command that performs a specified operation and returns an output in accordance with that operation. You can literally make a function to do anything you want.
 
 *General structure of a basic function:*
 
@@ -17,15 +15,11 @@ Function_name=function(argument){
 }
 ```
 
--   *Argument* is your input. It is the thing you want to perform the
-    operation on.
--   *Expressions* is the actual operation (or operations) you want to
-    perform on the supplied argument
--   *return* tells R to return the result of the Expression to you when
-    done.
+-   *Argument* is your input. It is the thing you want to perform the operation on.
+-   *Expressions* is the actual operation (or operations) you want to perform on the supplied argument
+-   *return* tells R to return the result of the Expression to you when done.
 
-This example function takes an input of numbers in the form of a vector
-and subtracts two from each.
+This example function takes an input of numbers in the form of a vector and subtracts two from each.
 
 ```{r 10.2}
 numbers=c(2,10,12,80)
@@ -39,39 +33,28 @@ sub_2(numbers)
 ```
 
 We can also supply the function with a single number and it still works...
+
 ```{r}
 sub_2(100)
 ```
 
 ***Well this looks useful. So what's the bigger picture?***
 
-One of the primary advantages of functions are that they can reduce a long and
-complex process, or a process that involves many steps, into a *single line of code*; thus, creating your own functions is a fast way to make
-your life easier down the line either at some point in the far future or
-even in just a few minutes, if you know you will be writing the code for
-some process two or more times.
+One of the primary advantages of functions are that they can reduce a long and complex process, or a process that involves many steps, into a *single line of code*; thus, creating your own functions is a fast way to make your life easier down the line either at some point in the far future or even in just a few minutes, if you know you will be writing the code for some process two or more times.
 
-Take this script for instance. You can see from the circled parts that I
-needed to transform three different data sets in a similar way:
+Take this script for instance. You can see from the circled parts that I needed to transform three different data sets in a similar way:
 
 ```{r}
 knitr::include_graphics(here::here("pics", "repeat_process.jpg"))
 ```
 
-Yes, I could have just done a copy-paste of the original code and tweak it slightly each time....
-But that is time consuming, produces a sloppier and longer script, and introduces a lot more room for error because of the repeated code and extra steps.
+Yes, I could have just done a copy-paste of the original code and tweak it slightly each time.... But that is time consuming, produces a sloppier and longer script, and introduces a lot more room for error because of the repeated code and extra steps.
 
 Better to write a single function that could be applied to all three....
 
-***In short, use functions to reduce a multi-step process or a process
-that you're implementing \>=2 times in a single script into one command.
-This saves you space and makes the script shorter; it saves you the
-trouble and effort of re-writing or adapting code from earlier sections;
-and importantly, reduces the chances of you making a coding error by
-proxy of the former two.*** 
+***In short, use functions to reduce a multi-step process or a process that you're implementing \>=2 times in a single script into one command. This saves you space and makes the script shorter; it saves you the trouble and effort of re-writing or adapting code from earlier sections; and importantly, reduces the chances of you making a coding error by proxy of the former two.***
 
-As a quick example, I was able to replace each of the circled paragraphs of code above with a custom function that ran
-everything in one simple line. Now instead of 3 whole (and redundant) paragraphs, I now have 3 short lines, like so....
+As a quick example, I was able to replace each of the circled paragraphs of code above with a custom function that ran everything in one simple line. Now instead of 3 whole (and redundant) paragraphs, I now have 3 short lines, like so....
 
 ```{r eval=FALSE}
 na_zero_helpreint=rotate_data(data = na_zero_helpreint,
@@ -82,24 +65,15 @@ na_blank=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
 na_zero=rotate_data(data = na_zero_helpreint, variable_prefix = "barrier_")
 ```
 
-**Limitations to your average, everyday functions.** While reducing a
-whole *process or sequence* of commands is extremely useful, it still
-leaves a limitation. For instance, while we avoided copying and pasting
-whole paragraphs or processes, I still had to copy-paste the same
-function three times. *This still leaves chances for error on the table, and it still leaves us with wasted lines that make the script longer.*
+**Limitations to your average, everyday functions.** While reducing a whole *process or sequence* of commands is extremely useful, it still leaves a limitation. For instance, while we avoided copying and pasting whole paragraphs or processes, I still had to copy-paste the same function three times. *This still leaves chances for error on the table, and it still leaves us with wasted lines that make the script longer.*
 
-In general, when you want to perform some function or process **multiple times on multiple items (as above where the same command is used three times on three different data frames)**, you need to use a for-loop or
-iterating function. These can reduce further unwanted redundancies by applying the function or process iteratively. Read on for more info.
+In general, when you want to perform some function or process **multiple times on multiple items (as above where the same command is used three times on three different data frames)**, you need to use a for-loop or iterating function. These can reduce further unwanted redundancies by applying the function or process iteratively. Read on for more info.
 
 ## For-loops
 
-A for loop is essentially a function that applies a function or given
-set of operations to multiple things at once, and returns an output of
-many items.
+A for loop is essentially a function that applies a function or given set of operations to multiple things at once, and returns an output of many items.
 
-For example, this code finds the means of every vector/column in a
-dataset by repeatedly applying the same code over and over to element
-"i" in the given list:
+For example, this code finds the means of every vector/column in a dataset by repeatedly applying the same code over and over to element "i" in the given list:
 
 ```{r 10.3}
 df <- tibble(
@@ -118,36 +92,20 @@ for (i in seq_along(df)) {            # 2.Sequence of operations. "For each item
 output
 ```
 
-Check out [this book
-chapter](https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments)
-for a great and detailed explanation of for-loops and functional coding.
+Check out [this book chapter](https://r4ds.had.co.nz/iteration.html#mapping-over-multiple-arguments) for a great and detailed explanation of for-loops and functional coding.
 
-Although for loops are nice, they are unwieldy. R programmers typically
-use iterating functions instead. Examples of iterating functions are the
-`lapply`, `vapply`, `sapply`, etc. family of base R commands. But these can
-also be confusing and the commands are not great.
+Although for loops are nice, they are unwieldy. R programmers typically use iterating functions instead. Examples of iterating functions are the `lapply`, `vapply`, `sapply`, etc. family of base R commands. But these can also be confusing and the commands are not great.
 
-The purrr package offers a better way to do iterating functions over
-base R; it's the tidyverse way to make efficient and understandable for
-loops! **If you have a need for a for-loop for something, see the next
-section instead on how to use purrr to make an iterative function.
-Important to understand conceptually what a for-loop is, but using them
-is impractical when you have purrr**
+The purrr package offers a better way to do iterating functions over base R; it's the tidyverse way to make efficient and understandable for loops! **If you have a need for a for-loop for something, see the next section instead on how to use purrr to make an iterative function. Important to understand conceptually what a for-loop is, but using them is impractical when you have purrr**
 
 ## purrr and Iterative Functions
 
 *All notes here come from Charlotte Wickham's lecture tutorial below*
 
-- Part 1: <https://www.youtube.com/watch?v=7UlWJWfZO9M> 
-- Part 2: <https://www.youtube.com/watch?v=b0ozKTUho0A&t=1210s>
+-   Part 1: <https://www.youtube.com/watch?v=7UlWJWfZO9M>
+-   Part 2: <https://www.youtube.com/watch?v=b0ozKTUho0A&t=1210s>
 
-purrr's `map()` series of functions offer a way to apply any existing
-function (even functions you've made) to multiple things at once, be it
-lists, data frame columns, individual items in vector, etc. In short,
-they are for doing the same type of task repeatedly in a very quick and
-efficient manner. They work in much the same way as for-loops, but are
-far simpler to write, and can be applied in the same way to solve the
-same problems.
+purrr's `map()` series of functions offer a way to apply any existing function (even functions you've made) to multiple things at once, be it lists, data frame columns, individual items in vector, etc. In short, they are for doing the same type of task repeatedly in a very quick and efficient manner. They work in much the same way as for-loops, but are far simpler to write, and can be applied in the same way to solve the same problems.
 
 ```{r purrr_pic, include=FALSE}
 knitr::include_graphics(here::here("pics", "purrr.png"))
@@ -155,8 +113,7 @@ knitr::include_graphics(here::here("pics", "purrr.png"))
 
 ***How to use purrr***
 
-The structure of `map()` commands is the same as the others in the
-tidyverse:
+The structure of `map()` commands is the same as the others in the tidyverse:
 
 ```{r eval=FALSE}
 #option 1
@@ -166,16 +123,13 @@ map(data, function)
 data %>% map(function)
 ```
 
-As a quick example and to highlight why purrr is so much more efficient
-and easier to use than for-loops, look at the same example from before,
-now using `map()` instead of a `for`:
+As a quick example and to highlight why purrr is so much more efficient and easier to use than for-loops, look at the same example from before, now using `map()` instead of a `for`:
 
 ```{r}
 df |> map_dbl(median)
 ```
 
-A single line is all it took to get the same results! And, it follows
-tidyverse grammar structure.
+A single line is all it took to get the same results! And, it follows tidyverse grammar structure.
 
 Now lets get into how it works....
 
@@ -185,13 +139,9 @@ knitr::include_graphics(here::here("pics", "map_structure.png"))
 
 *map() commands work like this:* For each element of x, do f.
 
-So if you pass it object `x` and object `x` is....
-- A vector, it will perform function f on every item in the vector
-- A data frame, it will perform function f on every *column* in the data frame
-- A list, it will perform function f on every *level in the list*
+So if you pass it object `x` and object `x` is.... - A vector, it will perform function f on every item in the vector - A data frame, it will perform function f on every *column* in the data frame - A list, it will perform function f on every *level in the list*
 
-Etc., etc.; the point is it applies a function repeatedly to every
-element in the object you supply it with.
+Etc., etc.; the point is it applies a function repeatedly to every element in the object you supply it with.
 
 ```{r, include=FALSE}
 knitr::include_graphics(here::here("pics", "map_structure_2.png"))
@@ -201,24 +151,15 @@ So lets walk through a case example.
 
 ### Reproducible example: Scraping web data
 
-This is an example walk through showing how we can use `purrr` to speed
-things up dramatically and/or reduce the use of unwanted, extra code in
-our scripts. In this guide I'll be building a table of LPGA Tour
-statistics from multiple webpages.
+This is an example walk through showing how we can use `purrr` to speed things up dramatically and/or reduce the use of unwanted, extra code in our scripts. In this guide I'll be building a table of LPGA Tour statistics from multiple webpages.
 
 The workflow for purrr goes like this:
 
-First, you want to figure out how to do each step of your process
-line-by-line, for a single item. The idea is to try and walk through
-each step of the process and see exactly what will need to be done each
-each step and what the code will like, before trying to code it all at
-once at a higher level.
+First, you want to figure out how to do each step of your process line-by-line, for a single item. The idea is to try and walk through each step of the process and see exactly what will need to be done each each step and what the code will like, before trying to code it all at once at a higher level.
 
-Once you have each step for the first item figured out, then you make functions
-for each step that condense that code down to one command.
+Once you have each step for the first item figured out, then you make functions for each step that condense that code down to one command.
 
-Lastly, apply each function from your individual steps to all items in
-your list by using `purr::map()`.
+Lastly, apply each function from your individual steps to all items in your list by using `purr::map()`.
 
 ***Do for One***
 
@@ -257,8 +198,7 @@ test=quick_read_html(url= "https://scores.nbcsports.com/golf/averages.asp?tour=L
 head(test) # nice 
 ```
 
-***DO FOR ALL.***
-Now create the object that contains all the elements you want to iterate over, and then pass it to your generalized function with map.
+***DO FOR ALL.*** Now create the object that contains all the elements you want to iterate over, and then pass it to your generalized function with map.
 
 ```{r 10.13}
 # Step 3a
@@ -275,12 +215,7 @@ lpga_data= URLs |> map(quick_read_html)
 head(lpga_data)
 ```
 
-All done!! And just like that, we've downloaded four different web
-pages, extracted the tabled info, and formatted them without copying and
-pasting any code. The same process for all four was only used one time
-to write the initial function. Just apply some final formatting to clean
-it up a bit and combine the separate data frames into a single, unified
-one.
+All done!! And just like that, we've downloaded four different web pages, extracted the tabled info, and formatted them without copying and pasting any code. The same process for all four was only used one time to write the initial function. Just apply some final formatting to clean it up a bit and combine the separate data frames into a single, unified one.
 
 ```{r}
 lpga_data= lpga_data %>% 
@@ -292,25 +227,15 @@ lpga_data= lpga_data %>%
 head(lpga_data)
 ```
 
-
-
 ### Non-reproducible example (Juvenile Life Without Parole study)
 
-In the Juvenile Lifers study, there were a series of questions that
-participants rated on a scale of 0-100 in terms of difficulty. Part of
-our analysis involved taking the ratings on those variables and giving
-them relative rankings, so that each of the 6 variables in the series
-was rated from the least to most difficult, by participant.
+In the Juvenile Lifers study, there were a series of questions that participants rated on a scale of 0-100 in terms of difficulty. Part of our analysis involved taking the ratings on those variables and giving them relative rankings, so that each of the 6 variables in the series was rated from the least to most difficult, by participant.
 
-Now if we only needed to compute these rankings once this wouldn't have
-been any big deal; however, we needed to do it **three times**. 
+Now if we only needed to compute these rankings once this wouldn't have been any big deal; however, we needed to do it **three times**.
 
-Much of the same code and the same process would need to be copied and pasted,
-resulting in a very long, messy, harder to read script. With purrr
-however, we can reduce the redundancies to a minimum, saving time and reducing the chances of mistakes.
+Much of the same code and the same process would need to be copied and pasted, resulting in a very long, messy, harder to read script. With purrr however, we can reduce the redundancies to a minimum, saving time and reducing the chances of mistakes.
 
-***Step 1.***
-Just like before, the first step is to find a line-by-line solution for a single item, and then to generalize this into a shortcut function that can be applied to the any item "i" in a series of items.
+***Step 1.*** Just like before, the first step is to find a line-by-line solution for a single item, and then to generalize this into a shortcut function that can be applied to the any item "i" in a series of items.
 
 For the sake of brevity, I'm going to skip most of that and just include the functions below.
 
@@ -365,9 +290,8 @@ return(data)
 
 ```
 
+***Step 2.*** Again, like before, we want to combine all elements of interest into some object. Once we have that, we then pass said object to `map()` and supply the map call with our custom function.
 
-***Step 2.***
-Again, like before, we want to combine all elements of interest into some object. Once we have that, we then pass said object to `map()` and supply the map call with our custom function.
 ```{r 10_nonrepro_ex2, eval=FALSE}
 
 dfs=list(na_blank=na_blank, na_zero=na_zero) %>% # create lists
@@ -381,7 +305,6 @@ rm(dfs) #discard list. It has fulfilled its purpose.
 ```
 
 And just like that, we're done!
-
 
 ### Example 3: Read/Import several files at once with `map()`
 
@@ -414,12 +337,9 @@ names(files_list)=file.path(here::here("Data Repository", "Stats Data Repository
 list2env(cog_data, globalenv())
 ```
 
-
 ## Other purrr commands
 
-Note that `map()` always returns a list, and depending on the output
-that you want, you may need to use a variation of `map()`. These
-variations are as follows:
+Note that `map()` always returns a list, and depending on the output that you want, you may need to use a variation of `map()`. These variations are as follows:
 
 | Command     | Return                                      |
 |-------------|---------------------------------------------|
@@ -429,14 +349,9 @@ variations are as follows:
 | `map_chr()` | character vector                            |
 | `walk()`    | only returns the side effects of a function |
 
-
-
 ### The `walk` and `walk2` commands
 
-Walk() is useful for when you just want to plot something or write a
-save file to your disk, etc. It does not give you any return to store
-something in the environment. You use it to write/read files, open
-graphics windows, and so on.
+Walk() is useful for when you just want to plot something or write a save file to your disk, etc. It does not give you any return to store something in the environment. You use it to write/read files, open graphics windows, and so on.
 
 ```{r, include=FALSE}
 knitr::include_graphics(here::here("pics", "walk.png"))
@@ -448,17 +363,36 @@ knitr::include_graphics(here::here("pics", "walk.png"))
 knitr::include_graphics(here::here("pics", "export_purrr.png"))
 ```
 
-Utilize `purrr::walk2()` to apply a function iteratively on TWO objects
-simultaneously. To save multiple .csv files with `walk2`, we need two
-distinct lists: 1. A list of data frames that we wish to export, 2. and
-the file paths, complete with the file names and extensions, for each
-file to be written
+Utilize `purrr::walk2()` to apply a function iteratively on TWO objects simultaneously. To save multiple .csv files with `walk2`, we need two distinct lists: 1. A list of data frames that we wish to export, 2. and the file paths, complete with the file names and extensions, for each file to be written.
 
-First create and define both list items. Then apply `walk2()` to pluck
-an element from list 1 and its corresponding element from list 2, and
-apply the `write_csv` function in for-loop fashion.
+First create and define both list items. Then apply `walk2()` to pluck an element from list 1 and its corresponding element from list 2, and apply the `write_csv` function in for-loop fashion.
 
 ```{r walk_demo, eval=FALSE}
+
+
+#######################################################################################################################
+
+# DEMO 1: Writing multiple plots at once
+
+# Create list one, the list of objects
+figs = list(scatter_plot=scatter_plot, 
+            multi_plot=multi_plot)
+
+# create list 2, the list of file names
+fig_names = figs |>
+  names() |> 
+  map(paste0, ".png")
+
+# pass both to purrr to use ggsave iteratively over both lists once and save all graphs with one command
+walk2(figs, fig_names, ~ggsave(plot = figs,
+                               filename = fig_names 
+                               path=here::here("Figures and Tables"),
+                               device = "png", dpi = 300))
+
+
+#######################################################################################################################
+
+# DEMO 2: Wrinting multiple .csv files at once
 
 ### Custom function ####
 # Create needed function that grabs file names and stitches them together with the correct path and extension
@@ -497,8 +431,7 @@ save(list = c("na_blank", "na_zero", "na_zero_helpreint"),
      file = here::here("JLWOP", "Data and Models","ranking_data.RData"))
 ```
 
-
-### `map2` (and `walk2`)
+### `map2`
 
 ```{r, map2_pic1}
 knitr::include_graphics(here::here("pics", "map2_a.png"))
@@ -508,17 +441,13 @@ knitr::include_graphics(here::here("pics", "map2_a.png"))
 knitr::include_graphics(here::here("pics", "map2_b.png"))
 ```
 
-
 ### `pmap` for when you have a bunch of shit
 
-This function is for iterating over *three or more* elements. As soon as you have >2 items you have to iterate over, you need pmap().It works similar to to map and map2, but instead of  iterating over a single object x or two objects x and y, it acts on **a list object called .l**
+This function is for iterating over *three or more* elements. As soon as you have \>2 items you have to iterate over, you need `pmap()`, which acts on **a list object called `.i`** instead of a list object.
 
-The list is a list of all the objects you want to iterate over. If you
-give it a list of 18 items, it iterates over all 18. If the list only
-has two things, it only acts on those two.
+The list `.i` is a list of all the objects you want to iterate over. If you give it a list of 18 items, it iterates over all 18. If the list only has two things, it only acts on those two.
 
-She says its easiest to imagine the list as a data frame, and the
-columns of the data frame like the elements of that list.
+She says its easiest to imagine the list as a data frame, and the columns of the data frame like the elements of that list.
 
 ```{r pmap_pic1}
 knitr::include_graphics(here::here("pics", "pmap.png"))
@@ -528,33 +457,7 @@ knitr::include_graphics(here::here("pics", "pmap.png"))
 knitr::include_graphics(here::here("pics", "pmap_2.png"))
 ```
 
-
 ## Using purrr to manage many models
-
-Imagine the concept of Russian Dolls, applied to data sets. You can manage data sets more effectively my collapsing them into a single tiny, mini data frame, and stuffing that inside of another one.
-
-This is done via "nesting"...
-
-Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don't. Code works like this:
-
-```{r 3.18, eval=FALSE}
-by_country=gapminder::gapminder %>% 
-  group_by(continent,country) %>% # indicate the variables to keep at the top level
-  nest() # smush the rest into a list-column
-
-
-country_model=function(df){
-  lm(lifExp~year1950,data = df)
-}
-
-# Transform a list of models into a df
-models=by_country %>% 
-  mutate(mod=map(data,country_model))
-```
-
-- You can store anything in a data frame. You can keep the df connected to the model, which makes it very easy to manage a whole slew of related models
-- You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways.
-- Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information
 
 Below is the full script I copied from Hadley Wickham's lecture, which you can watch [here](https://www.youtube.com/watch?v=rz3_FDVt9eg)
 
@@ -694,4 +597,3 @@ Using this framework, you can easily drill down into any column and be sure that
 ```{r eval=FALSE}
 models_noCovs$tidy_parameters$latent_Basis_model
 ```
-

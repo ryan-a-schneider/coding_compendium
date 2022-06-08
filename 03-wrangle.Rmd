@@ -31,16 +31,19 @@ df2=tibble::as_tibble(df2)
 Inner join - retains only rows with values that appear in both tables, and matches by keys.
 
 *If you're joining two Qualtrics surveys together, this is most likely the one you want to use (e.g. matching by participant name, and only keeping rows in the joined data set for participants that have responses logged in both survey 1 and survey 2*
+
 ```{r 3.2}
 df1 %>% inner_join(df2,by='customer_id')
 ```
 
 Left join - returns everything in the left, and rows with matching keys in the right
+
 ```{r 3.3}
 df1 %>% left_join(df2,by='customer_id')
 ```
 
 Right join - returns everything in the right, and rows with matching keys in the left
+
 ```{r 3.4}
 df1 %>% right_join(df2,by='customer_id')
 
@@ -49,15 +52,16 @@ df1 %>% right_join(df2,by='customer_id')
 ```
 
 Full join - retain all rows from both tables, and join matching keys in both right and left
+
 ```{r 3.5}
 df1 %>% full_join(df2,by='customer_id')
 ```
 
 Anti join - returns all rows in the left that do not have matching keys in the right
+
 ```{r 3.6}
 df1 %>% anti_join(df2,by='customer_id')
 ```
-
 
 ### Individual Columns/Variables
 
@@ -67,13 +71,11 @@ Splitting or joining columns is much easier than doing it to whole data sets. Yo
 print("hello")
 ```
 
-
 ## Selecting/extracting specific variables
 
 Sometimes when working with a data set, you want to work with a few *specific* variables. For instance, maybe you want to view a graph of only reverse-coded variables (which start with the prefix "r"); or maybe you want to create a subset of your data that has a few specific variables removed. For this you can use `dplyr::select()` and its associated helper commands
 
 `select()` can be thought of as "extract"; it tells R to identify and "extract" a specific variable (or variables)
-
 
 ```{r 3.8, eval=FALSE}
 cars=mtcars
@@ -115,21 +117,19 @@ cars %>% select(contains("se"))
   cars %>% select(where(is.character))
 ```
 
-
 Other examples can be seen on [THIS LINK](https://tidyselect.r-lib.org/reference/language.html) for a simple but detailed guide.
-
-
 
 ## If-then and Case-when
 
 ### If-then
+
 The premise of an if/then or if/else statement is simple: "If condition 1 is satisfied, perform x operation; if not, then do y"
 
 ```{r 3.9}
 mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High")) %>% head()
 ```
-This line of code effectively says: if the length in Sepal.Length is >5, set new variable = to "short"; else, set it to "long"
 
+This line of code effectively says: if the length in Sepal.Length is \>5, set new variable = to "short"; else, set it to "long"
 
 ### Case-when
 
@@ -145,6 +145,7 @@ My_vector= case_when(
 ```
 
 Example:
+
 ```{r 3.11}
 
 mtcars %>% mutate(size= case_when(cyl==4 ~ "small",
@@ -164,7 +165,6 @@ mpg %>%
                                   TRUE ~ as.numeric(.x))))
 ```
 
-
 ```{r 3.13, eval=FALSE}
 test %>% 
   mutate(across(.cols = c(rank),
@@ -172,13 +172,11 @@ test %>%
                                   TRUE ~ as.numeric(.x))))
 ```
 
-
-
 ## Merging variables
 
 Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this.
 
-```{r3.14}
+``` {r3.14}
 example_data=tribble(~A,~B,~C,
                      1,NA,NA,
                      2,NA,NA,
@@ -194,8 +192,6 @@ example_data %>%
   mutate(accept_reject = 
            pmin(A,B,C,na.rm = TRUE))
 ```
-
-
 
 ## Apply a function to multiple variables at once
 
@@ -221,12 +217,11 @@ ex_data %>% mutate(across(c(color, car),factor))
 mtcars %>% mutate(across(c(disp:qsec),round,1)) %>% head()
 ```
 
-
 ## Pivoting (i.e., transposing) data
 
 ### Condense multiple rows into a single column (pivot wide to long)
 
-Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas), with fake names. 
+Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas), with fake names.
 
 The command structure is as follows:
 
@@ -238,7 +233,7 @@ The command structure is as follows:
     values_to="missing_count") #...and placing their values in this other new column
 ```
 
-**NOTE!!!** Pivoting data from wide to long like this expands the number of rows to make a matrix so that (for example, each student now has as a row for each assignment). Therefore, you can only pivot longways (or wide) **ONCE**, otherwise you will make duplicates. 
+**NOTE!!!** Pivoting data from wide to long like this expands the number of rows to make a matrix so that (for example, each student now has as a row for each assignment). Therefore, you can only pivot longways (or wide) **ONCE**, otherwise you will make duplicates.
 
 *If you need to pivot multiple columns, just include all of the columns in one single pivot; do not use two separate, back to back pivot commands.*
 
@@ -263,7 +258,6 @@ gradebook=gradebook %>%
 gradebook %>% head()
 ```
 
-
 ## Turn row names into a column/variable
 
 Use the `rownames()` command to turn row names into a variable
@@ -281,6 +275,7 @@ TWO WAYS TO DO THIS: Use `colnames()` (for base R) or `rename()` (for tidyverse)
 `colnames()` pulls up all the column/variable names as a vector. If you want to actually change them, you'll need to combine this command with something like the sub() or gsub() commands (for base R). I'm going to skip this because...its base R.
 
 To access and change the names faster via tidyverse, run use `rename()`
+
 ```{r}
 rm(list=ls()) # clear R's memory
 
@@ -290,8 +285,7 @@ iris %>% rename("hurr"="Sepal.Length",
   head()
 ```
 
-
-If you need to do some really fancy conditional renaming (e.g., changing all variables that start with "r" to start with "rf" instead, to make it more clear that the prefix actually stands for "risk factor" rather than "reverse coded"), you'll need to use `rename_with()`. 
+If you need to do some really fancy conditional renaming (e.g., changing all variables that start with "r" to start with "rf" instead, to make it more clear that the prefix actually stands for "risk factor" rather than "reverse coded"), you'll need to use `rename_with()`.
 
 This command has two parts to it: the data set, and the function you wish to apply to it (which you put after the `~`)
 
@@ -302,9 +296,7 @@ rename_with(iris, ~ gsub(pattern = ".", replacement = "_", .x, fixed = TRUE)) %>
 
 The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like R's version of Find/Replace from Microsoft Word.
 
-The above line of code thus does the following:
-	1. First, it checks the column names of the supplied data set (`iris`) for a specific pattern (specified in `pattern=` )
-	2. Then it replaces that pattern with your input in `replacement=`
+The above line of code thus does the following: 1. First, it checks the column names of the supplied data set (`iris`) for a specific pattern (specified in `pattern=` ) 2. Then it replaces that pattern with your input in `replacement=`
 
 The great thing about rename_with() is that the .fn (or `~` for short) can take *ANY* function as input. For example, if you want to **add** an element to the column names rather than replace something, (e.g., a prefix or suffix), you can change the function to:
 
@@ -315,18 +307,15 @@ rename_with( iris, ~ paste0(.x,  "_text")) %>%
 
 The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command.
 
+***Alternative method to the above*** This is a second way to do the above. It may appear more simple, but it's also probably not as theoretically consistent with how the packages were made.....it uses the `stringr` package to rename the column names, and `stringr` is typically used for editing vectors of strings in a data set.
 
-***Alternative method to the above***
-This is a second way to do the above. It may appear more simple, but it's also probably not as theoretically consistent with how the packages were made…..it uses the `stringr` package to rename the column names, and `stringr` is typically used for editing vectors of strings in a data set.
-
-…so it works, but it's a little unconventional because you call and edit the column names like you would a variable in your data set.
+...so it works, but it's a little unconventional because you call and edit the column names like you would a variable in your data set.
 
 ```{r}
 colnames(iris)=str_replace(colnames(iris), pattern = ".", replacement = "_")
 ```
 
 In short: `rename()` and `rename_with()` are for *renaming* variables, as their names imply. The `str_` verbs from the stringr package are for editing string-based variabels in your data set. Either works though with a little ingenuity.
-
 
 ## Re-order columns in a data set
 
@@ -339,10 +328,9 @@ mtcars # notice the column order
 mtcars %>% relocate(hp:wt, .after= am) %>% head()
 ```
 
-
 ## Date and time variables
 
-Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it's not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely. 
+Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it's not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely.
 
 ### Date-time objects
 
@@ -397,16 +385,14 @@ Notice how the object is now stored as the correct type in the table above.
 ***NOTE!*** This entire process has been included in the `tidy_date()` command in my package, `legaldmlab`.
 
 ### Find the difference between two dates/times
+
 ```{r , eval=FALSE}
 difftime(part_1$end_date[1], part_2$end_date[1], units="days")
 ```
 
-
-
 ## Reverse-code a variable
 
-To reverse-score a variable, you should use `car::recode()`
-Can be done a few different ways, depending on how many variables you're looking to recode:
+To reverse-score a variable, you should use `car::recode()` Can be done a few different ways, depending on how many variables you're looking to recode:
 
 ```{r eval=FALSE}
 
@@ -419,7 +405,6 @@ df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 
 # Recode the whole damn thing. All columns.
 df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
-
 
 ## Dummy coding (the very fast and easy way)
 
@@ -440,17 +425,15 @@ mtcars |>
   select(car, starts_with("number_")) |> head() #truncate output for easier reading
 ```
 
-
-
 ## Create a relative ranking among several variables
 
 If you want to create a variable that is an ordinal ranking of other variables, first you need to make sure your data is long-wise. Then, depending on the type of ranking system you want, you'll might need a different ranking command....
 
-- The `min_rank` command from dplyr works in a manner similar to base R's `rank` command. It ranks things like you see in sporting events. For example, if there is a clear winner in a game but 3 people tie for second place, the ranks would look like this: 1,2,2,2,4,5. Notice that the positions are independent from the counts.
+-   The `min_rank` command from dplyr works in a manner similar to base R's `rank` command. It ranks things like you see in sporting events. For example, if there is a clear winner in a game but 3 people tie for second place, the ranks would look like this: 1,2,2,2,4,5. Notice that the positions are independent from the counts.
 
-- Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr's `dense_rank` command.
+-   Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr's `dense_rank` command.
 
-- In either case, the ranks are generated from lowest to highest, so if you want to flip them around you'll need to include `desc()` in the command.
+-   In either case, the ranks are generated from lowest to highest, so if you want to flip them around you'll need to include `desc()` in the command.
 
 ```{r chapter_3_end}
 
@@ -471,7 +454,6 @@ dat=tibble::tribble(~name, ~score,
 dat %>% mutate(ranked = dense_rank(desc(score)))
 ```
 
-
 ## Manipulating the working environment and many things at once
 
 ### Stuff the WHOLE working environment into a list
@@ -480,13 +462,11 @@ dat %>% mutate(ranked = dense_rank(desc(score)))
 files=mget(ls())
 ```
 
-
 ### Extract everything from a list into the environment
 
 ```{r eval=FALSE}
 list2env(cog_data, globalenv())
 ```
-
 
 ### Delete everything in the entire environment, except for one item
 
@@ -494,5 +474,48 @@ list2env(cog_data, globalenv())
 rm(list=setdiff(ls(), "cog_data")) # delete everything in the local environment except the final data set
 ```
 
-## Nesting
+## Wrangling Lists
 
+### Nesting
+
+Imagine the concept of Russian Dolls, applied to data sets. You can manage data sets more effectively my collapsing them into a single tiny, mini data frame, and stuffing that inside of another one. This is done via "nesting"...
+
+Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don't. This works because a vector/column in a data frame *is* a list of a defined length; and a data frame is thus simply a collection of lists that are all the same length.
+
+```{r}
+
+library(gapminder)
+
+by_country=gapminder::gapminder %>% 
+  group_by(continent,country) %>% # indicate the variables to keep at the top level
+  nest() # smush the rest into a list-column
+
+
+country_model=function(df){
+  lm(lifExp~year1950,data = df)
+}
+
+# Transform a list of models into a df
+models=by_country %>% 
+  mutate(mod=map(data,country_model))
+
+head(models)
+```
+
+-   You can store anything in a data frame. You can keep the df connected to the model, which makes it very easy to manage a whole slew of related models
+
+-   You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways. Moreover and more importantly, when you use `purrr` to map functions onto multiple models or objects simultaneously, you're doing it to all of them at once with a single command, and the objects are kept together while you do it. This limits the mistakes you can make (e.g., copying and pasting code and forgetting to tweak something important; applying a function to the wrong object or set of objects by accident), and also reduces unnecessary code in your script.
+
+-   Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information
+
+```{r}
+head(mtcars |> nest(crap=vs:carb))
+```
+
+### Combining/collapsing list levels (Reducing)
+
+```{r eval=FALSE}
+demo_vars=files |> 
+  map(import_spss) |> 
+  reduce(left_join, by="catieid")
+```
