@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-07" />
+<meta name="date" content="2022-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,7 +193,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
 <li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16</b> Nesting</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
 <ul>
@@ -281,8 +285,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#other-purrr-commands"><i class="fa fa-check"></i><b>10.4</b> Other purrr commands</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>10.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
-<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2-and-walk2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
+<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#walk-and-walk2"><i class="fa fa-check"></i><b>10.4.1</b> <code>walk</code> and <code>walk2</code></a></li>
+<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code></a></li>
 <li class="chapter" data-level="10.4.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>10.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#using-purrr-to-manage-many-models"><i class="fa fa-check"></i><b>10.5</b> Using purrr to manage many models</a></li>
@@ -377,8 +381,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.1</span> Grammar and Syntax</h2>
 <div id="regex-expressions-and-symbols" class="section level3" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Regex expressions and symbols</h3>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="coding-tips-and-tricks.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;$&quot;</span>) <span class="co"># doesn&#39;t remove the $ sign</span></span>
-<span id="cb231-2"><a href="coding-tips-and-tricks.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>) <span class="co"># works</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="coding-tips-and-tricks.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;$&quot;</span>) <span class="co"># doesn&#39;t remove the $ sign</span></span>
+<span id="cb234-2"><a href="coding-tips-and-tricks.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>) <span class="co"># works</span></span></code></pre></div>
 </div>
 <div id="the-new-pipe-base-r" class="section level3" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> The new pipe (Base R)</h3>

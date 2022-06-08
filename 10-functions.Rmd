@@ -349,7 +349,7 @@ Note that `map()` always returns a list, and depending on the output that you wa
 | `map_chr()` | character vector                            |
 | `walk()`    | only returns the side effects of a function |
 
-### The `walk` and `walk2` commands
+### `walk` and `walk2`
 
 Walk() is useful for when you just want to plot something or write a save file to your disk, etc. It does not give you any return to store something in the environment. You use it to write/read files, open graphics windows, and so on.
 
@@ -367,11 +367,7 @@ Utilize `purrr::walk2()` to apply a function iteratively on TWO objects simultan
 
 First create and define both list items. Then apply `walk2()` to pluck an element from list 1 and its corresponding element from list 2, and apply the `write_csv` function in for-loop fashion.
 
-```{r walk_demo, eval=FALSE}
-
-
-#######################################################################################################################
-
+```{r walk_demo_1, eval=FALSE}
 # DEMO 1: Writing multiple plots at once
 
 # Create list one, the list of objects
@@ -388,9 +384,11 @@ walk2(figs, fig_names, ~ggsave(plot = figs,
                                filename = fig_names 
                                path=here::here("Figures and Tables"),
                                device = "png", dpi = 300))
+```
 
+A second demo, this time using `write.csv` to save/export multiple CSV files at once
 
-#######################################################################################################################
+```{r walk_demo, eval=FALSE}
 
 # DEMO 2: Wrinting multiple .csv files at once
 

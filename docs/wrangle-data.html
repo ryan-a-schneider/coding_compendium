@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-07" />
+<meta name="date" content="2022-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,7 +193,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
 <li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16</b> Nesting</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
 <ul>
@@ -281,8 +285,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#other-purrr-commands"><i class="fa fa-check"></i><b>10.4</b> Other purrr commands</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>10.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
-<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2-and-walk2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
+<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#walk-and-walk2"><i class="fa fa-check"></i><b>10.4.1</b> <code>walk</code> and <code>walk2</code></a></li>
+<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code></a></li>
 <li class="chapter" data-level="10.4.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>10.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#using-purrr-to-manage-many-models"><i class="fa fa-check"></i><b>10.5</b> Using purrr to manage many models</a></li>
@@ -317,26 +321,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#running-correlations-with-correlation"><i class="fa fa-check"></i><b>12.3.5</b> Running correlations with <code>correlation</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>13</b> Coding Tips and Tricks</a>
+<li class="chapter" data-level="13" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html"><i class="fa fa-check"></i><b>13</b> Advanced Coding Tips</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#grammar-and-syntax"><i class="fa fa-check"></i><b>13.1</b> Grammar and Syntax</a>
+<li class="chapter" data-level="13.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#grammar-and-syntax"><i class="fa fa-check"></i><b>13.1</b> Grammar and Syntax</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>13.1.1</b> Regex expressions and symbols</a></li>
-<li class="chapter" data-level="13.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>13.1.2</b> The new pipe (Base R)</a></li>
-<li class="chapter" data-level="13.1.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-colon-equals-operator"><i class="fa fa-check"></i><b>13.1.3</b> The colon-equals (<code>:=</code>) operator</a></li>
-<li class="chapter" data-level="13.1.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>13.1.4</b> User-supplied expressions or named columns in functions</a></li>
-<li class="chapter" data-level="13.1.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>13.1.5</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
-<li class="chapter" data-level="13.1.6" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>13.1.6</b> Formulas within functions</a></li>
+<li class="chapter" data-level="13.1.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>13.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="13.1.2" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#the-colon-equals-operator"><i class="fa fa-check"></i><b>13.1.2</b> The colon-equals (<code>:=</code>) operator</a></li>
+<li class="chapter" data-level="13.1.3" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>13.1.3</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="13.1.4" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>13.1.4</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>13.2</b> Creating a package</a>
+<li class="chapter" data-level="13.2" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#creating-a-package"><i class="fa fa-check"></i><b>13.2</b> Creating a package</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>13.2.1</b> Documenting pacakge meta-data</a></li>
-<li class="chapter" data-level="13.2.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>13.2.2</b> Connecting to other packages</a></li>
-<li class="chapter" data-level="13.2.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#linking-git-and-github"><i class="fa fa-check"></i><b>13.2.3</b> Linking Git and Github</a></li>
+<li class="chapter" data-level="13.2.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#documenting-package-meta-data"><i class="fa fa-check"></i><b>13.2.1</b> Documenting package meta-data</a></li>
+<li class="chapter" data-level="13.2.2" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>13.2.2</b> Connecting to other packages</a></li>
+<li class="chapter" data-level="13.2.3" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#linking-git-and-github"><i class="fa fa-check"></i><b>13.2.3</b> Linking Git and Github</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>13.3</b> Creating a bookdown</a>
+<li class="chapter" data-level="13.3" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#creating-a-bookdown"><i class="fa fa-check"></i><b>13.3</b> Creating a bookdown</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>13.3.1</b> Rendering the book once it’s done</a></li>
+<li class="chapter" data-level="13.3.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>13.3.1</b> Rendering the book once it’s done</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>14</b> Creating a simulated data set</a>
@@ -719,9 +721,7 @@ example_data %&gt;%
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
 <p>The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like R’s version of Find/Replace from Microsoft Word.</p>
-<p>The above line of code thus does the following:
-1. First, it checks the column names of the supplied data set (<code>iris</code>) for a specific pattern (specified in <code>pattern=</code> )
-2. Then it replaces that pattern with your input in <code>replacement=</code></p>
+<p>The above line of code thus does the following: 1. First, it checks the column names of the supplied data set (<code>iris</code>) for a specific pattern (specified in <code>pattern=</code> ) 2. Then it replaces that pattern with your input in <code>replacement=</code></p>
 <p>The great thing about rename_with() is that the .fn (or <code>~</code> for short) can take <em>ANY</em> function as input. For example, if you want to <strong>add</strong> an element to the column names rather than replace something, (e.g., a prefix or suffix), you can change the function to:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="wrangle-data.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename_with</span>( iris, <span class="sc">~</span> <span class="fu">paste0</span>(.x,  <span class="st">&quot;_text&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb51-2"><a href="wrangle-data.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
@@ -733,8 +733,7 @@ example_data %&gt;%
 ## 5               5.0              3.6               1.4              0.2       setosa
 ## 6               5.4              3.9               1.7              0.4       setosa</code></pre>
 <p>The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command.</p>
-<p><strong><em>Alternative method to the above</em></strong>
-This is a second way to do the above. It may appear more simple, but it’s also probably not as theoretically consistent with how the packages were made…..it uses the <code>stringr</code> package to rename the column names, and <code>stringr</code> is typically used for editing vectors of strings in a data set.</p>
+<p><strong><em>Alternative method to the above</em></strong> This is a second way to do the above. It may appear more simple, but it’s also probably not as theoretically consistent with how the packages were made…..it uses the <code>stringr</code> package to rename the column names, and <code>stringr</code> is typically used for editing vectors of strings in a data set.</p>
 <p>…so it works, but it’s a little unconventional because you call and edit the column names like you would a variable in your data set.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="wrangle-data.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(iris)<span class="ot">=</span><span class="fu">str_replace</span>(<span class="fu">colnames</span>(iris), <span class="at">pattern =</span> <span class="st">&quot;.&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
 <p>In short: <code>rename()</code> and <code>rename_with()</code> are for <em>renaming</em> variables, as their names imply. The <code>str_</code> verbs from the stringr package are for editing string-based variabels in your data set. Either works though with a little ingenuity.</p>
@@ -845,8 +844,7 @@ This is a second way to do the above. It may appear more simple, but it’s also
 </div>
 <div id="reverse-code-a-variable" class="section level2" number="3.12">
 <h2><span class="header-section-number">3.12</span> Reverse-code a variable</h2>
-<p>To reverse-score a variable, you should use <code>car::recode()</code>
-Can be done a few different ways, depending on how many variables you’re looking to recode:</p>
+<p>To reverse-score a variable, you should use <code>car::recode()</code> Can be done a few different ways, depending on how many variables you’re looking to recode:</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="wrangle-data.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode just one variable</span></span>
 <span id="cb66-2"><a href="wrangle-data.html#cb66-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>column<span class="ot">=</span><span class="fu">recode</span>(df<span class="sc">$</span>column,<span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span>
 <span id="cb66-3"><a href="wrangle-data.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -935,9 +933,35 @@ Can be done a few different ways, depending on how many variables you’re looki
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="wrangle-data.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">setdiff</span>(<span class="fu">ls</span>(), <span class="st">&quot;cog_data&quot;</span>)) <span class="co"># delete everything in the local environment except the final data set</span></span></code></pre></div>
 </div>
 </div>
-<div id="nesting" class="section level2" number="3.16">
-<h2><span class="header-section-number">3.16</span> Nesting</h2>
+<div id="wrangling-lists" class="section level2" number="3.16">
+<h2><span class="header-section-number">3.16</span> Wrangling Lists</h2>
+<div id="nesting" class="section level3" number="3.16.1">
+<h3><span class="header-section-number">3.16.1</span> Nesting</h3>
+<p>Imagine the concept of Russian Dolls, applied to data sets. You can manage data sets more effectively my collapsing them into a single tiny, mini data frame, and stuffing that inside of another one. This is done via “nesting”…</p>
+<p>Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don’t. This works because a vector/column in a data frame <em>is</em> a list of a defined length; and a data frame is thus simply a collection of lists that are all the same length.</p>
+<ul>
+<li><p>You can store anything in a data frame. You can keep the df connected to the model, which makes it very easy to manage a whole slew of related models</p></li>
+<li><p>You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways. Moreover and more importantly, when you use <code>purrr</code> to map functions onto multiple models or objects simultaneously, you’re doing it to all of them at once with a single command, and the objects are kept together while you do it. This limits the mistakes you can make (e.g., copying and pasting code and forgetting to tweak something important; applying a function to the wrong object or set of objects by accident), and also reduces unnecessary code in your script.</p></li>
+<li><p>Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information</p></li>
+</ul>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="wrangle-data.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars <span class="sc">|&gt;</span> <span class="fu">nest</span>(<span class="at">crap=</span>vs<span class="sc">:</span>carb))</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 8
+##     mpg   cyl  disp    hp  drat    wt  qsec crap            
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;list&gt;          
+## 1  21       6   160   110  3.9   2.62  16.5 &lt;tibble [1 x 4]&gt;
+## 2  21       6   160   110  3.9   2.88  17.0 &lt;tibble [1 x 4]&gt;
+## 3  22.8     4   108    93  3.85  2.32  18.6 &lt;tibble [1 x 4]&gt;
+## 4  21.4     6   258   110  3.08  3.22  19.4 &lt;tibble [1 x 4]&gt;
+## 5  18.7     8   360   175  3.15  3.44  17.0 &lt;tibble [1 x 4]&gt;
+## 6  18.1     6   225   105  2.76  3.46  20.2 &lt;tibble [1 x 4]&gt;</code></pre>
+</div>
+<div id="combiningcollapsing-list-levels-reducing" class="section level3" number="3.16.2">
+<h3><span class="header-section-number">3.16.2</span> Combining/collapsing list levels (Reducing)</h3>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="wrangle-data.html#cb76-1" aria-hidden="true" tabindex="-1"></a>demo_vars<span class="ot">=</span>files <span class="sc">|&gt;</span> </span>
+<span id="cb76-2"><a href="wrangle-data.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(import_spss) <span class="sc">|&gt;</span> </span>
+<span id="cb76-3"><a href="wrangle-data.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;catieid&quot;</span>)</span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>

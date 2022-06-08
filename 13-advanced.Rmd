@@ -1,5 +1,4 @@
-# Coding Tips and Tricks
-
+# Advanced Coding Tips
 
 ## Grammar and Syntax
 
@@ -10,82 +9,87 @@ str_remove(html$`Market Price`, pattern = "$") # doesn't remove the $ sign
 str_remove(html$`Market Price`, pattern = "\\$") # works
 ```
 
-
-### The new pipe (Base R)
-
-Good reading material/stuff to know: https://www.r-bloggers.com/2021/05/the-new-r-pipe/?__twitter_impression=true&
-
-Not really any functional differences from the tidyverse pipe, but using this instead puts one less dependency in your code. So it's probably worth changing.
-
-You can set this in the global options in RStudio.
-
 ### The colon-equals (`:=`) operator
 
-Sometimes when making a function you need to use the colon-equals operator, rather than just the normal <- or = assignment operators
+Sometimes when making a function you need to use the colon-equals operator, rather than just the normal \<- or = assignment operators
 
-Specifically, when you have multiple named arguments in your function...Read my question and someone's answer on this blogpost: https://community.rstudio.com/t/help-creating-simple-function/109011/2
+Specifically, when you have multiple named arguments in your function...Read my question and someone's answer on this blogpost: <https://community.rstudio.com/t/help-creating-simple-function/109011/2>
 
+```{r}
+
+```
 
 ### User-supplied expressions or named columns in functions
 
+This is when you have to put double braces around something...
+
+```{r}
+
+```
 
 ### When a command requires a named column or data set, but you've already supplied it and it's required a second time
-If you're writing a function with a pipe but the command you're using needs the data set defined in it, you specify it as .x
-Here is an example:
 
+If you're writing a function with a pipe but the command you're using needs the data set defined in it, you specify it as `.x` , or simply just `.`; Here is an example:
 
-### Formulas within functions
+```{r}
 
-Generally when you see `.fn` inside a function (e.g., `map(x, .fn)`), that means *function*. You put whatever formula or function you want in there. You may also see the tilde used instead, which does the same thing.
-
+```
 
 ## Creating a package
 
-https://rstudio4edu.github.io/rstudio4edu-book/data-pkg.html
+<https://rstudio4edu.github.io/rstudio4edu-book/data-pkg.html>
 
+### Documenting package meta-data
 
-### Documenting pacakge meta-data
-https://r-pkgs.org/description.html
+<https://r-pkgs.org/description.html>
 
 ### Connecting to other packages
-https://kbroman.org/pkg_primer/pages/depends.html
 
+<https://kbroman.org/pkg_primer/pages/depends.html>
 
 ### Linking Git and Github
-[view this detailed guide](https://r-pkgs.org/git.html#git-rstudio) by Jenny Bryan, and [this YouTube video](https://www.youtube.com/watch?v=XbSwdHBiO4E).
 
-Quick summary of steps in YouTube video:
+[view this detailed guide](https://r-pkgs.org/git.html#git-rstudio) by Jenny Bryan, and [this YouTube video](https://www.youtube.com/watch?v=XbSwdHBiO4E) if you want the full guide; or just follow the TL;DR below.
 
-1. Open project folder in Windows Explorer and click in the URL bar, then type `cmd` to open command prompt
+**Quick summary of steps in YouTube video**:
 
-2. If there are any pre-existing git files or repository info there, remove it with the following: 
-- `rd .git /S/Q`
+1.  Open project folder in Windows Explorer and click in the URL bar, then type `cmd` to open command prompt
 
-3. Tell git to create a new repo by typing: 
-- `git init`
+2.  If there are any pre-existing git files or repository info there, remove it with the following: `rd .git /S/Q`
 
-4. Then tell it to include all files in the current place by typing: 
-- `git add .`
+```{=html}
+<!-- -->
+```
+3.  Tell git to create a new repo by typing: `git init`
 
-5. Commit these files with: 
-- `git commit -m "Initial commit"`
+```{=html}
+<!-- -->
+```
+4.  Then tell it to include all files in the current place by typing: `git add .`
 
-6. At this point you've created a git and GitHub repo each; now link them with: 
-- `git remote add origin [https URL of GitHub repo]`
+```{=html}
+<!-- -->
+```
+5.  Commit these files with: `git commit -m "Initial commit"`
 
-7. Push all these changes live with: 
-- `git push -u origin master`
+```{=html}
+<!-- -->
+```
+6.  At this point you've created a git and GitHub repo each; now link them with: `git remote add origin [https URL of GitHub repo]`
 
+```{=html}
+<!-- -->
+```
+7.  Push all these changes live with: `git push -u origin master`
 
 ## Creating a bookdown
-https://www.youtube.com/watch?app=desktop&v=m5D-yoH416Y&feature=youtu.be
 
+<https://www.youtube.com/watch?app=desktop&v=m5D-yoH416Y&feature=youtu.be>
 
 ### Rendering the book once it's done
 
-1. Render locally with bookdown::render_book("index.Rmd")
+1.  Render locally with bookdown::render_book("index.Rmd")
 
-2. Use `browseURL("docs/index.html")` to view your book locally (or just open `index.html` in a browser).
+2.  Use `browseURL("docs/index.html")` to view your book locally (or just open `index.html` in a browser).
 
-3. If it looks good, commit and push all changed files to GitHub.
-
+3.  If it looks good, commit and push all changed files to GitHub.

@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-07" />
+<meta name="date" content="2022-06-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -193,7 +193,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
 <li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16</b> Nesting</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
 <ul>
@@ -281,8 +285,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#other-purrr-commands"><i class="fa fa-check"></i><b>10.4</b> Other purrr commands</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#the-walk-and-walk2-commands"><i class="fa fa-check"></i><b>10.4.1</b> The <code>walk</code> and <code>walk2</code> commands</a></li>
-<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2-and-walk2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code> (and <code>walk2</code>)</a></li>
+<li class="chapter" data-level="10.4.1" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#walk-and-walk2"><i class="fa fa-check"></i><b>10.4.1</b> <code>walk</code> and <code>walk2</code></a></li>
+<li class="chapter" data-level="10.4.2" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#map2"><i class="fa fa-check"></i><b>10.4.2</b> <code>map2</code></a></li>
 <li class="chapter" data-level="10.4.3" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#pmap-for-when-you-have-a-bunch-of-shit"><i class="fa fa-check"></i><b>10.4.3</b> <code>pmap</code> for when you have a bunch of shit</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="intermediate-r-functions-loops-and-iterative-programming.html"><a href="intermediate-r-functions-loops-and-iterative-programming.html#using-purrr-to-manage-many-models"><i class="fa fa-check"></i><b>10.5</b> Using purrr to manage many models</a></li>
@@ -317,26 +321,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.3.5" data-path="statistics-and-psych-specific-stuff.html"><a href="statistics-and-psych-specific-stuff.html#running-correlations-with-correlation"><i class="fa fa-check"></i><b>12.3.5</b> Running correlations with <code>correlation</code></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html"><i class="fa fa-check"></i><b>13</b> Coding Tips and Tricks</a>
+<li class="chapter" data-level="13" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html"><i class="fa fa-check"></i><b>13</b> Advanced Coding Tips</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#grammar-and-syntax"><i class="fa fa-check"></i><b>13.1</b> Grammar and Syntax</a>
+<li class="chapter" data-level="13.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#grammar-and-syntax"><i class="fa fa-check"></i><b>13.1</b> Grammar and Syntax</a>
 <ul>
-<li class="chapter" data-level="13.1.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>13.1.1</b> Regex expressions and symbols</a></li>
-<li class="chapter" data-level="13.1.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-new-pipe-base-r"><i class="fa fa-check"></i><b>13.1.2</b> The new pipe (Base R)</a></li>
-<li class="chapter" data-level="13.1.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#the-colon-equals-operator"><i class="fa fa-check"></i><b>13.1.3</b> The colon-equals (<code>:=</code>) operator</a></li>
-<li class="chapter" data-level="13.1.4" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>13.1.4</b> User-supplied expressions or named columns in functions</a></li>
-<li class="chapter" data-level="13.1.5" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>13.1.5</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
-<li class="chapter" data-level="13.1.6" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#formulas-within-functions"><i class="fa fa-check"></i><b>13.1.6</b> Formulas within functions</a></li>
+<li class="chapter" data-level="13.1.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#regex-expressions-and-symbols"><i class="fa fa-check"></i><b>13.1.1</b> Regex expressions and symbols</a></li>
+<li class="chapter" data-level="13.1.2" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#the-colon-equals-operator"><i class="fa fa-check"></i><b>13.1.2</b> The colon-equals (<code>:=</code>) operator</a></li>
+<li class="chapter" data-level="13.1.3" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#user-supplied-expressions-or-named-columns-in-functions"><i class="fa fa-check"></i><b>13.1.3</b> User-supplied expressions or named columns in functions</a></li>
+<li class="chapter" data-level="13.1.4" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#when-a-command-requires-a-named-column-or-data-set-but-youve-already-supplied-it-and-its-required-a-second-time"><i class="fa fa-check"></i><b>13.1.4</b> When a command requires a named column or data set, but you’ve already supplied it and it’s required a second time</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-package"><i class="fa fa-check"></i><b>13.2</b> Creating a package</a>
+<li class="chapter" data-level="13.2" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#creating-a-package"><i class="fa fa-check"></i><b>13.2</b> Creating a package</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#documenting-pacakge-meta-data"><i class="fa fa-check"></i><b>13.2.1</b> Documenting pacakge meta-data</a></li>
-<li class="chapter" data-level="13.2.2" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>13.2.2</b> Connecting to other packages</a></li>
-<li class="chapter" data-level="13.2.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#linking-git-and-github"><i class="fa fa-check"></i><b>13.2.3</b> Linking Git and Github</a></li>
+<li class="chapter" data-level="13.2.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#documenting-package-meta-data"><i class="fa fa-check"></i><b>13.2.1</b> Documenting package meta-data</a></li>
+<li class="chapter" data-level="13.2.2" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#connecting-to-other-packages"><i class="fa fa-check"></i><b>13.2.2</b> Connecting to other packages</a></li>
+<li class="chapter" data-level="13.2.3" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#linking-git-and-github"><i class="fa fa-check"></i><b>13.2.3</b> Linking Git and Github</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#creating-a-bookdown"><i class="fa fa-check"></i><b>13.3</b> Creating a bookdown</a>
+<li class="chapter" data-level="13.3" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#creating-a-bookdown"><i class="fa fa-check"></i><b>13.3</b> Creating a bookdown</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="coding-tips-and-tricks.html"><a href="coding-tips-and-tricks.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>13.3.1</b> Rendering the book once it’s done</a></li>
+<li class="chapter" data-level="13.3.1" data-path="advanced-coding-tips.html"><a href="advanced-coding-tips.html#rendering-the-book-once-its-done"><i class="fa fa-check"></i><b>13.3.1</b> Rendering the book once it’s done</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="creating-a-simulated-data-set.html"><a href="creating-a-simulated-data-set.html"><i class="fa fa-check"></i><b>14</b> Creating a simulated data set</a>
@@ -374,7 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Creating a simulated data set</h1>
 <p class="author"><em>Ryan Schneider</em></p>
-<p class="date"><em>2022-06-07</em></p>
+<p class="date"><em>2022-06-08</em></p>
 </div>
 <div id="a-monument-to-my-madness" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> A Monument to my Madness</h1>

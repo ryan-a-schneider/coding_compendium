@@ -482,33 +482,13 @@ Imagine the concept of Russian Dolls, applied to data sets. You can manage data 
 
 Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don't. This works because a vector/column in a data frame *is* a list of a defined length; and a data frame is thus simply a collection of lists that are all the same length.
 
-```{r}
-
-library(gapminder)
-
-by_country=gapminder::gapminder %>% 
-  group_by(continent,country) %>% # indicate the variables to keep at the top level
-  nest() # smush the rest into a list-column
-
-
-country_model=function(df){
-  lm(lifExp~year1950,data = df)
-}
-
-# Transform a list of models into a df
-models=by_country %>% 
-  mutate(mod=map(data,country_model))
-
-head(models)
-```
-
 -   You can store anything in a data frame. You can keep the df connected to the model, which makes it very easy to manage a whole slew of related models
 
 -   You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways. Moreover and more importantly, when you use `purrr` to map functions onto multiple models or objects simultaneously, you're doing it to all of them at once with a single command, and the objects are kept together while you do it. This limits the mistakes you can make (e.g., copying and pasting code and forgetting to tweak something important; applying a function to the wrong object or set of objects by accident), and also reduces unnecessary code in your script.
 
 -   Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information
 
-```{r}
+```{r 3_nesting}
 head(mtcars |> nest(crap=vs:carb))
 ```
 
