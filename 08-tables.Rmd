@@ -45,4 +45,18 @@ test=flextable::as_grouped_data(x=cars, groups = c("cyl"))
 
 ## Complete Example
 
+```{r}
+
+flextable::set_flextable_defaults(font.family = "Times New Roman", font.size = 11)
+
+mtcars |> 
+  slice(1:5) |> 
+  flextable() |>
+  # SET HEADER
+    add_header_lines(values = "Car Stuff") |> 
+    hline_top(border = fp_border_default(width = 0), part = "header") |> 
+    flextable::align(align = "left", part = "header", i=1) |> 
+    italic(part = "header", i=1)
+```
+
 
