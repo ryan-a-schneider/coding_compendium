@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-08" />
+<meta name="date" content="2022-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,7 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -162,41 +163,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables-with-select"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables with <code>select()</code></a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#advanced-filtering-techniques"><i class="fa fa-check"></i><b>3.3</b> Advanced Filtering techniques</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
-<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#filter-based-on-partial-match"><i class="fa fa-check"></i><b>3.3.1</b> Filter based on partial match</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-based-on-multiple-conditions"><i class="fa fa-check"></i><b>3.3.2</b> Filtering based on multiple conditions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-across-multiple-columns"><i class="fa fa-check"></i><b>3.3.3</b> Filtering across multiple columns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
-<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
-<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
-<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.4</b> If-then and Case-when</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+<li class="chapter" data-level="3.4.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.4.1</b> If-then</a></li>
+<li class="chapter" data-level="3.4.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.4.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
-<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
-<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Date and time variables</a>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.5</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.6</b> Merging variables</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.7</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.8</b> Pivoting (i.e., transposing) data</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.11.1</b> Date-time objects</a></li>
-<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.11.2</b> Date-only objects</a></li>
-<li class="chapter" data-level="3.11.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.3</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.8.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.8.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.12</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.13</b> Dummy coding (the very fast and easy way)</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
-<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
+<li class="chapter" data-level="3.17" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.17</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.17.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.17.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.17.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.17.2</b> Combining/collapsing list levels (Reducing)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -420,7 +427,7 @@ To write in line, code, put one of those symbols on either side of the code, lik
 <h2><span class="header-section-number">11.3</span> Including graphics/inserting pictures</h2>
 <p>The default method doesn’t work for me for some reason, but you can still insert images using a combination of the <code>here</code> package and <code>knitr</code>.</p>
 <p>Use the <code>include_graphics()</code> command and specify both the file location and it’s name:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="intro-to-r-markdown.html#cb217-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>,<span class="st">&quot;snapchat.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="intro-to-r-markdown.html#cb227-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>,<span class="st">&quot;snapchat.png&quot;</span>))</span></code></pre></div>
 <p><img src="pics/snapchat.png" width="540" /></p>
 <p><strong><em>NOTE</em></strong>. Use 300-600 DPI to get good looking pictures.</p>
 <p>The <a href="https://bookdown.org/yihui/bookdown/figures.html">bookdown book</a> notes that:</p>

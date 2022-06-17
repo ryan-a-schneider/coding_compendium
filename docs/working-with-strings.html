@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-08" />
+<meta name="date" content="2022-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,7 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -162,41 +163,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables-with-select"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables with <code>select()</code></a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#advanced-filtering-techniques"><i class="fa fa-check"></i><b>3.3</b> Advanced Filtering techniques</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
-<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#filter-based-on-partial-match"><i class="fa fa-check"></i><b>3.3.1</b> Filter based on partial match</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-based-on-multiple-conditions"><i class="fa fa-check"></i><b>3.3.2</b> Filtering based on multiple conditions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-across-multiple-columns"><i class="fa fa-check"></i><b>3.3.3</b> Filtering across multiple columns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
-<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
-<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
-<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.4</b> If-then and Case-when</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+<li class="chapter" data-level="3.4.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.4.1</b> If-then</a></li>
+<li class="chapter" data-level="3.4.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.4.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
-<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
-<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Date and time variables</a>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.5</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.6</b> Merging variables</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.7</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.8</b> Pivoting (i.e., transposing) data</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.11.1</b> Date-time objects</a></li>
-<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.11.2</b> Date-only objects</a></li>
-<li class="chapter" data-level="3.11.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.3</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.8.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.8.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.12</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.13</b> Dummy coding (the very fast and easy way)</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
-<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
+<li class="chapter" data-level="3.17" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.17</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.17.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.17.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.17.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.17.2</b> Combining/collapsing list levels (Reducing)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -377,25 +384,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Working with Strings</h1>
 <div id="remove-a-pattern-from-a-string" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Remove a pattern from a string</h2>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="working-with-strings.html#cb109-1" aria-hidden="true" tabindex="-1"></a>price_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>car, <span class="sc">~</span>price,</span>
-<span id="cb109-2"><a href="working-with-strings.html#cb109-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Corvette&quot;</span>, <span class="st">&quot;$65,000&quot;</span>,</span>
-<span id="cb109-3"><a href="working-with-strings.html#cb109-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Mustang GT&quot;</span>, <span class="st">&quot;$40,000&quot;</span>)</span>
-<span id="cb109-4"><a href="working-with-strings.html#cb109-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-5"><a href="working-with-strings.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BASE R METHOD (sub by replacing something with nothing)</span></span>
-<span id="cb109-6"><a href="working-with-strings.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>, <span class="st">&quot;&quot;</span>,price_table<span class="sc">$</span>price) <span class="co"># (pattern, replace with, object$column)</span></span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-strings.html#cb113-1" aria-hidden="true" tabindex="-1"></a>price_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>car, <span class="sc">~</span>price,</span>
+<span id="cb113-2"><a href="working-with-strings.html#cb113-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Corvette&quot;</span>, <span class="st">&quot;$65,000&quot;</span>,</span>
+<span id="cb113-3"><a href="working-with-strings.html#cb113-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Mustang GT&quot;</span>, <span class="st">&quot;$40,000&quot;</span>)</span>
+<span id="cb113-4"><a href="working-with-strings.html#cb113-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-5"><a href="working-with-strings.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BASE R METHOD (sub by replacing something with nothing)</span></span>
+<span id="cb113-6"><a href="working-with-strings.html#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>, <span class="st">&quot;&quot;</span>,price_table<span class="sc">$</span>price) <span class="co"># (pattern, replace with, object$column)</span></span></code></pre></div>
 <pre><code>## [1] &quot;65,000&quot; &quot;40,000&quot;</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="working-with-strings.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD</span></span>
-<span id="cb111-2"><a href="working-with-strings.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(price_table<span class="sc">$</span>price, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD</span></span>
+<span id="cb115-2"><a href="working-with-strings.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(price_table<span class="sc">$</span>price, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;65,000&quot; &quot;40,000&quot;</code></pre>
 </div>
 <div id="replace-one-pattern-in-a-string-with-another" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Replace one pattern in a string with another</h2>
 <p>Tidyverse command: <code>str_replace()</code>
 Base R command: <code>gsub()</code></p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-strings.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb113-2"><a href="working-with-strings.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(mtcars, <span class="at">replacement =</span> )</span>
-<span id="cb113-3"><a href="working-with-strings.html#cb113-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-4"><a href="working-with-strings.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tidyverse</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-strings.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb117-2"><a href="working-with-strings.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(mtcars, <span class="at">replacement =</span> )</span>
+<span id="cb117-3"><a href="working-with-strings.html#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-4"><a href="working-with-strings.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tidyverse</span></span></code></pre></div>
 </div>
 <div id="find-i.e.-filter-for-all-instances-of-a-string" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Find (i.e., filter for) all instances of a string</h2>
@@ -403,47 +410,47 @@ Base R command: <code>gsub()</code></p>
 <p>Tidyverse command: <code>str_detect()</code>
 Base R command: <code>grepl()</code></p>
 <p>Note both must be nested inside of <code>filter()</code></p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="working-with-strings.html#cb114-1" aria-hidden="true" tabindex="-1"></a>cars_df<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
-<span id="cb114-2"><a href="working-with-strings.html#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="working-with-strings.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb114-4"><a href="working-with-strings.html#cb114-4" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Firebird&quot;</span>, car))</span>
-<span id="cb114-5"><a href="working-with-strings.html#cb114-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-6"><a href="working-with-strings.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb114-7"><a href="working-with-strings.html#cb114-7" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a>cars_df<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
+<span id="cb118-2"><a href="working-with-strings.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="working-with-strings.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb118-4"><a href="working-with-strings.html#cb118-4" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Firebird&quot;</span>, car))</span>
+<span id="cb118-5"><a href="working-with-strings.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-6"><a href="working-with-strings.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb118-7"><a href="working-with-strings.html#cb118-7" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
 <p>You can also search for <strong>multiple strings simultaneously</strong> by including the “or” logical operator <em>inside</em> the quotes.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Firebird|Fiat&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="working-with-strings.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Firebird|Fiat&quot;</span>))</span></code></pre></div>
 <p>You can also include the negation logical operator to filter for all instances <em>except</em> those with the specified string.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="working-with-strings.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb116-2"><a href="working-with-strings.html#cb116-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">grepl</span>(<span class="st">&quot;Pontiac&quot;</span>, car)))</span>
-<span id="cb116-3"><a href="working-with-strings.html#cb116-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-4"><a href="working-with-strings.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb116-5"><a href="working-with-strings.html#cb116-5" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Pontiac&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="working-with-strings.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb120-2"><a href="working-with-strings.html#cb120-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">grepl</span>(<span class="st">&quot;Pontiac&quot;</span>, car)))</span>
+<span id="cb120-3"><a href="working-with-strings.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-4"><a href="working-with-strings.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb120-5"><a href="working-with-strings.html#cb120-5" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Pontiac&quot;</span>)))</span></code></pre></div>
 </div>
 <div id="drop-all-rows-from-a-data-set-that-contain-a-certain-string" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Drop all rows from a data set that contain a certain string</h2>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-strings.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse method</span></span>
-<span id="cb117-2"><a href="working-with-strings.html#cb117-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> </span>
-<span id="cb117-3"><a href="working-with-strings.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Merc&quot;</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="co">#including negate=TRUE will negate all rows with the matched string</span></span>
-<span id="cb117-4"><a href="working-with-strings.html#cb117-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-5"><a href="working-with-strings.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb117-6"><a href="working-with-strings.html#cb117-6" aria-hidden="true" tabindex="-1"></a>cars_df[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;Merc&quot;</span>, cars_df<span class="sc">$</span>car),]</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="working-with-strings.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse method</span></span>
+<span id="cb121-2"><a href="working-with-strings.html#cb121-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> </span>
+<span id="cb121-3"><a href="working-with-strings.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Merc&quot;</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="co">#including negate=TRUE will negate all rows with the matched string</span></span>
+<span id="cb121-4"><a href="working-with-strings.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-5"><a href="working-with-strings.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb121-6"><a href="working-with-strings.html#cb121-6" aria-hidden="true" tabindex="-1"></a>cars_df[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;Merc&quot;</span>, cars_df<span class="sc">$</span>car),]</span></code></pre></div>
 </div>
 <div id="force-all-letters-to-lower-case" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Force all letters to lower case</h2>
 <p>Use <code>stringr::str_to_lower()</code></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
-<span id="cb118-2"><a href="working-with-strings.html#cb118-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
-<span id="cb118-3"><a href="working-with-strings.html#cb118-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
-<span id="cb118-4"><a href="working-with-strings.html#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-5"><a href="working-with-strings.html#cb118-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="working-with-strings.html#cb122-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
+<span id="cb122-2"><a href="working-with-strings.html#cb122-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
+<span id="cb122-3"><a href="working-with-strings.html#cb122-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
+<span id="cb122-4"><a href="working-with-strings.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-5"><a href="working-with-strings.html#cb122-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   A     B    
 ##   &lt;chr&gt; &lt;chr&gt;
 ## 1 A     X    
 ## 2 A     X</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="working-with-strings.html#cb120-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
-<span id="cb120-2"><a href="working-with-strings.html#cb120-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-3"><a href="working-with-strings.html#cb120-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="working-with-strings.html#cb124-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
+<span id="cb124-2"><a href="working-with-strings.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-3"><a href="working-with-strings.html#cb124-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   A     B    
 ##   &lt;chr&gt; &lt;chr&gt;

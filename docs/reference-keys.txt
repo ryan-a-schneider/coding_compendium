@@ -12,7 +12,11 @@ wrangle-data
 joining-or-splitting
 whole-data-sets
 individual-columnsvariables
-selectingextracting-specific-variables
+selectingextracting-specific-variables-with-select
+advanced-filtering-techniques
+filter-based-on-partial-match
+filtering-based-on-multiple-conditions
+filtering-across-multiple-columns
 if-then-and-case-when
 if-then
 case-when

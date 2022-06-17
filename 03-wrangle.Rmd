@@ -71,7 +71,7 @@ Splitting or joining columns is much easier than doing it to whole data sets. Yo
 print("hello")
 ```
 
-## Selecting/extracting specific variables
+## Selecting/extracting specific variables with `select()`
 
 Sometimes when working with a data set, you want to work with a few *specific* variables. For instance, maybe you want to view a graph of only reverse-coded variables (which start with the prefix "r"); or maybe you want to create a subset of your data that has a few specific variables removed. For this you can use `dplyr::select()` and its associated helper commands
 
@@ -118,6 +118,84 @@ cars %>% select(contains("se"))
 ```
 
 Other examples can be seen on [THIS LINK](https://tidyselect.r-lib.org/reference/language.html) for a simple but detailed guide.
+
+## Advanced Filtering techniques
+
+All info here and the code taken from [this link](https://suzan.rbind.io/2018/02/dplyr-tutorial-3/#filtering-based-on-a-exact-character-variable-matches); credit goes to Suzan Baert.
+
+### Filter based on partial match
+
+Combine `filter` with `str_detect` to search for pattern matches in a column
+
+```{r}
+
+```
+
+### Filtering based on multiple conditions
+
+You can filter for more than one value at once, or combine operators to do searches with conditions....
+
+| Goal                                                                                     | Code                                 |
+|--------------------------------------------------|----------------------|
+| Return only rows where ***both*** conditions are met                                     | `filter(condition1, condition2)`     |
+| Return all rows where condition 1 is true but condition 2 is not                         | `filter(condition1, !condition2)`    |
+| Return rows where condition 1 ***and/or*** condition 2 is met                            | `filter(condition1 | condition2)`    |
+| Return all rows where only one of the conditions is met, ***and not when both are met*** | `filter(xor(condition1, condition2)` |
+
+The sample code will return all rows with a bodywt above 100 and either have a `sleep_total` above 15 or are not part of the Carnivora order.
+
+```{r advanced_filter_1, eval=FALSE}
+msleep %>% 
+  select(name, order, sleep_total:bodywt) %>% 
+  filter(bodywt > 100, (sleep_total > 15 | order != "Carnivora"))
+```
+
+### Filtering across multiple columns
+
+From Susan Baert's blog page:
+
+You have three options for how to do this:
+
+-   `filter_all()`, which filters columns *based on your further instructions*
+
+-   `filter_if()`, which requires a boolean to indicate which columns to filter on. If that is true, the filter instructions will be followed.
+
+-   `filter_at()`, which requires you to specify columns inside a `vars` argument for which the filtering will be done.
+
+Retain all rows with the pattern match "Ca" inside. Useful for when you want to search for a key pattern (or number) across multiple columns.
+
+```{r advanced_filter_2, eval=FALSE}
+msleep %>% 
+  select(name:order, sleep_total, -vore) %>% 
+  filter_all(any_vars(str_detect(., pattern = "Ca")))
+
+msleep %>%  
+  select(name, sleep_total:bodywt) %>% 
+  filter_all(any_vars(. < 0.1))
+
+# You can also switch any_vars to all_vars to filter across the whole data frame
+msleep %>%  
+  select(name, sleep_total:bodywt, -awake) %>% 
+  filter_all(all_vars(. > 1))
+```
+
+What if you want to filter specific column types in your data frame, like just date columns, to find a specific date across multiple date columns? Or filter across multiple number columns to find every instance of a specific number? `filter_if` is better than `filter_all` here because the latter would return a filter search across the whole data frame. By using `filter_if`, we can get more specific about which columns to search through.
+
+```{r advanced_filter_3, eval=FALSE}
+msleep %>% 
+  select(name:order, sleep_total:sleep_rem) %>% 
+  filter_if(is.character, any_vars(is.na(.)))
+```
+
+The last command, `filter_at`, does things differently. It doesn't filter all columns at once; and you do not have to specify the column type or which columns. ***This one allows you to indicate which columns to search through like you would within any select statement***.
+
+Example: Search through the columns that start with "sleep", for values in all of those columns above .5.
+
+```{r advanced_filter_4, eval=FALSE}
+msleep %>% 
+  select(name, sleep_total:sleep_rem, brainwt:bodywt) %>% 
+  filter_at(vars(contains("sleep")), all_vars(.>5))
+```
 
 ## If-then and Case-when
 
@@ -401,9 +479,6 @@ df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 
 # Recode a select bunch of variables
 df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1"))
-
-# Recode the whole damn thing. All columns.
-df=df %>% map_df(recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 ```
 
 ## Dummy coding (the very fast and easy way)

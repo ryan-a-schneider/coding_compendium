@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-08" />
+<meta name="date" content="2022-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,7 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -162,41 +163,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables-with-select"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables with <code>select()</code></a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#advanced-filtering-techniques"><i class="fa fa-check"></i><b>3.3</b> Advanced Filtering techniques</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
-<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#filter-based-on-partial-match"><i class="fa fa-check"></i><b>3.3.1</b> Filter based on partial match</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-based-on-multiple-conditions"><i class="fa fa-check"></i><b>3.3.2</b> Filtering based on multiple conditions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-across-multiple-columns"><i class="fa fa-check"></i><b>3.3.3</b> Filtering across multiple columns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
-<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
-<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
-<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.4</b> If-then and Case-when</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+<li class="chapter" data-level="3.4.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.4.1</b> If-then</a></li>
+<li class="chapter" data-level="3.4.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.4.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
-<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
-<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Date and time variables</a>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.5</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.6</b> Merging variables</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.7</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.8</b> Pivoting (i.e., transposing) data</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.11.1</b> Date-time objects</a></li>
-<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.11.2</b> Date-only objects</a></li>
-<li class="chapter" data-level="3.11.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.3</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.8.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.8.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.12</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.13</b> Dummy coding (the very fast and easy way)</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
-<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
+<li class="chapter" data-level="3.17" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.17</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.17.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.17.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.17.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.17.2</b> Combining/collapsing list levels (Reducing)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -386,24 +393,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="https://davidgohel.github.io/flextable/reference/padding.html" class="uri">https://davidgohel.github.io/flextable/reference/padding.html</a>
 <a href="https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object" class="uri">https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object</a></p>
 <p>Use the <code>padding</code> function:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="making-tables-with-flextable.html#cb161-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">padding</span>(ft, <span class="at">i=</span><span class="dv">2</span>, <span class="at">j=</span><span class="dv">1</span>, <span class="at">padding.left=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="making-tables-with-flextable.html#cb167-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">padding</span>(ft, <span class="at">i=</span><span class="dv">2</span>, <span class="at">j=</span><span class="dv">1</span>, <span class="at">padding.left=</span><span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div id="add-a-horizontal-border-aka-horizontal-spanner" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Add a Horizontal border (AKA horizontal “spanner”)</h2>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="making-tables-with-flextable.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline</span>(., <span class="at">i=</span><span class="dv">4</span>, <span class="at">j=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="making-tables-with-flextable.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hline</span>(., <span class="at">i=</span><span class="dv">4</span>, <span class="at">j=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">part =</span> <span class="st">&quot;body&quot;</span>)</span></code></pre></div>
 </div>
 <div id="change-font-and-font-size" class="section level2" number="8.4">
 <h2><span class="header-section-number">8.4</span> Change font and font size</h2>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="making-tables-with-flextable.html#cb163-1" aria-hidden="true" tabindex="-1"></a>  glm_table<span class="ot">&lt;-</span>flextable<span class="sc">::</span><span class="fu">font</span>(glm_table, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>, <span class="at">fontname =</span> <span class="st">&quot;Times&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Font</span></span>
-<span id="cb163-2"><a href="making-tables-with-flextable.html#cb163-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">fontsize</span>(., <span class="at">size =</span> <span class="dv">11</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="co"># Font size</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="making-tables-with-flextable.html#cb169-1" aria-hidden="true" tabindex="-1"></a>  glm_table<span class="ot">&lt;-</span>flextable<span class="sc">::</span><span class="fu">font</span>(glm_table, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>, <span class="at">fontname =</span> <span class="st">&quot;Times&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># Font</span></span>
+<span id="cb169-2"><a href="making-tables-with-flextable.html#cb169-2" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">fontsize</span>(., <span class="at">size =</span> <span class="dv">11</span>, <span class="at">part =</span> <span class="st">&quot;all&quot;</span>) <span class="co"># Font size</span></span></code></pre></div>
 </div>
 <div id="grouped-table" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Grouped table</h2>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="making-tables-with-flextable.html#cb164-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;Model&quot;</span>)</span>
-<span id="cb164-2"><a href="making-tables-with-flextable.html#cb164-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span>flextable<span class="sc">::</span><span class="fu">as_grouped_data</span>(<span class="at">x=</span>cars, <span class="at">groups =</span> <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="making-tables-with-flextable.html#cb170-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;Model&quot;</span>)</span>
+<span id="cb170-2"><a href="making-tables-with-flextable.html#cb170-2" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span>flextable<span class="sc">::</span><span class="fu">as_grouped_data</span>(<span class="at">x=</span>cars, <span class="at">groups =</span> <span class="fu">c</span>(<span class="st">&quot;cyl&quot;</span>))</span></code></pre></div>
 </div>
 <div id="complete-example" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Complete Example</h2>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="making-tables-with-flextable.html#cb171-1" aria-hidden="true" tabindex="-1"></a>flextable<span class="sc">::</span><span class="fu">set_flextable_defaults</span>(<span class="at">font.family =</span> <span class="st">&quot;Times New Roman&quot;</span>, <span class="at">font.size =</span> <span class="dv">11</span>)</span>
+<span id="cb171-2"><a href="making-tables-with-flextable.html#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="making-tables-with-flextable.html#cb171-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb171-4"><a href="making-tables-with-flextable.html#cb171-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb171-5"><a href="making-tables-with-flextable.html#cb171-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb171-6"><a href="making-tables-with-flextable.html#cb171-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># SET HEADER</span></span>
+<span id="cb171-7"><a href="making-tables-with-flextable.html#cb171-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">add_header_lines</span>(<span class="at">values =</span> <span class="st">&quot;Car Stuff&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb171-8"><a href="making-tables-with-flextable.html#cb171-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hline_top</span>(<span class="at">border =</span> <span class="fu">fp_border_default</span>(<span class="at">width =</span> <span class="dv">0</span>), <span class="at">part =</span> <span class="st">&quot;header&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb171-9"><a href="making-tables-with-flextable.html#cb171-9" aria-hidden="true" tabindex="-1"></a>    flextable<span class="sc">::</span><span class="fu">align</span>(<span class="at">align =</span> <span class="st">&quot;left&quot;</span>, <span class="at">part =</span> <span class="st">&quot;header&quot;</span>, <span class="at">i=</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb171-10"><a href="making-tables-with-flextable.html#cb171-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">italic</span>(<span class="at">part =</span> <span class="st">&quot;header&quot;</span>, <span class="at">i=</span><span class="dv">1</span>)</span></code></pre></div>
+<template id="3dcbee2d-642f-48cc-ba77-1a8932372006"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-2f26f4d2{}.cl-2f21011c{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2f21011d{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2f2114a4{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2f2114a5{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2f214f3c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2f214f3d{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2f214f3e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2f214f3f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-2f26f4d2'>
+<thead><tr style="overflow-wrap:break-word;"><td  colspan="11"class="cl-2f214f3e"><p class="cl-2f2114a4"><span class="cl-2f21011c">Car Stuff</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">mpg</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">cyl</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">disp</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">hp</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">drat</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">wt</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">qsec</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">vs</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">am</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">gear</span></p></td><td class="cl-2f214f3f"><p class="cl-2f2114a5"><span class="cl-2f21011d">carb</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">21.0</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">6</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">160</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">110</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.90</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">2.620</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">16.46</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">0</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">4</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">21.0</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">6</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">160</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">110</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.90</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">2.875</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">17.02</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">0</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">4</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">22.8</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">4</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">108</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">93</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.85</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">2.320</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">18.61</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">4</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">21.4</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">6</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">258</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">110</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.08</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.215</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">19.44</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">0</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">3</span></p></td><td class="cl-2f214f3c"><p class="cl-2f2114a5"><span class="cl-2f21011d">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">18.7</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">8</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">360</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">175</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.15</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">3.440</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">17.02</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">0</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">0</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">3</span></p></td><td class="cl-2f214f3d"><p class="cl-2f2114a5"><span class="cl-2f21011d">2</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="3049b6a9-6b31-4012-ae7c-4c0ac62bdf3c"></div>
+<script>
+var dest = document.getElementById("3049b6a9-6b31-4012-ae7c-4c0ac62bdf3c");
+var template = document.getElementById("3dcbee2d-642f-48cc-ba77-1a8932372006");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
 
 </div>
 </div>

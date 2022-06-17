@@ -57,29 +57,14 @@ If you're writing a function with a pipe but the command you're using needs the 
 
 2.  If there are any pre-existing git files or repository info there, remove it with the following: `rd .git /S/Q`
 
-```{=html}
-<!-- -->
-```
 3.  Tell git to create a new repo by typing: `git init`
 
-```{=html}
-<!-- -->
-```
 4.  Then tell it to include all files in the current place by typing: `git add .`
 
-```{=html}
-<!-- -->
-```
 5.  Commit these files with: `git commit -m "Initial commit"`
 
-```{=html}
-<!-- -->
-```
 6.  At this point you've created a git and GitHub repo each; now link them with: `git remote add origin [https URL of GitHub repo]`
 
-```{=html}
-<!-- -->
-```
 7.  Push all these changes live with: `git push -u origin master`
 
 ## Creating a bookdown

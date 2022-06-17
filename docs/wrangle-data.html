@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-06-08" />
+<meta name="date" content="2022-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,7 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -162,41 +163,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="wrangle-data.html"><a href="wrangle-data.html#whole-data-sets"><i class="fa fa-check"></i><b>3.1.1</b> Whole Data Sets</a></li>
 <li class="chapter" data-level="3.1.2" data-path="wrangle-data.html"><a href="wrangle-data.html#individual-columnsvariables"><i class="fa fa-check"></i><b>3.1.2</b> Individual Columns/Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables</a></li>
-<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.3</b> If-then and Case-when</a>
+<li class="chapter" data-level="3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#selectingextracting-specific-variables-with-select"><i class="fa fa-check"></i><b>3.2</b> Selecting/extracting specific variables with <code>select()</code></a></li>
+<li class="chapter" data-level="3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#advanced-filtering-techniques"><i class="fa fa-check"></i><b>3.3</b> Advanced Filtering techniques</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.3.1</b> If-then</a></li>
-<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.3.2</b> Case-when</a></li>
+<li class="chapter" data-level="3.3.1" data-path="wrangle-data.html"><a href="wrangle-data.html#filter-based-on-partial-match"><i class="fa fa-check"></i><b>3.3.1</b> Filter based on partial match</a></li>
+<li class="chapter" data-level="3.3.2" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-based-on-multiple-conditions"><i class="fa fa-check"></i><b>3.3.2</b> Filtering based on multiple conditions</a></li>
+<li class="chapter" data-level="3.3.3" data-path="wrangle-data.html"><a href="wrangle-data.html#filtering-across-multiple-columns"><i class="fa fa-check"></i><b>3.3.3</b> Filtering across multiple columns</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.4</b> Conditional replacement of values</a></li>
-<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.5</b> Merging variables</a></li>
-<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.6</b> Apply a function to multiple variables at once</a></li>
-<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.7</b> Pivoting (i.e., transposing) data</a>
+<li class="chapter" data-level="3.4" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then-and-case-when"><i class="fa fa-check"></i><b>3.4</b> If-then and Case-when</a>
 <ul>
-<li class="chapter" data-level="3.7.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.7.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
+<li class="chapter" data-level="3.4.1" data-path="wrangle-data.html"><a href="wrangle-data.html#if-then"><i class="fa fa-check"></i><b>3.4.1</b> If-then</a></li>
+<li class="chapter" data-level="3.4.2" data-path="wrangle-data.html"><a href="wrangle-data.html#case-when"><i class="fa fa-check"></i><b>3.4.2</b> Case-when</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.8</b> Turn row names into a column/variable</a></li>
-<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.9</b> How to edit/change column names</a></li>
-<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.10</b> Re-order columns in a data set</a></li>
-<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.11</b> Date and time variables</a>
+<li class="chapter" data-level="3.5" data-path="wrangle-data.html"><a href="wrangle-data.html#conditional-replacement-of-values"><i class="fa fa-check"></i><b>3.5</b> Conditional replacement of values</a></li>
+<li class="chapter" data-level="3.6" data-path="wrangle-data.html"><a href="wrangle-data.html#merging-variables"><i class="fa fa-check"></i><b>3.6</b> Merging variables</a></li>
+<li class="chapter" data-level="3.7" data-path="wrangle-data.html"><a href="wrangle-data.html#apply-a-function-to-multiple-variables-at-once"><i class="fa fa-check"></i><b>3.7</b> Apply a function to multiple variables at once</a></li>
+<li class="chapter" data-level="3.8" data-path="wrangle-data.html"><a href="wrangle-data.html#pivoting-i.e.-transposing-data"><i class="fa fa-check"></i><b>3.8</b> Pivoting (i.e., transposing) data</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.11.1</b> Date-time objects</a></li>
-<li class="chapter" data-level="3.11.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.11.2</b> Date-only objects</a></li>
-<li class="chapter" data-level="3.11.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.11.3</b> Find the difference between two dates/times</a></li>
+<li class="chapter" data-level="3.8.1" data-path="wrangle-data.html"><a href="wrangle-data.html#condense-multiple-rows-into-a-single-column-pivot-wide-to-long"><i class="fa fa-check"></i><b>3.8.1</b> Condense multiple rows into a single column (pivot wide to long)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.12</b> Reverse-code a variable</a></li>
-<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.13</b> Dummy coding (the very fast and easy way)</a></li>
-<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.14</b> Create a relative ranking among several variables</a></li>
-<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.15</b> Manipulating the working environment and many things at once</a>
+<li class="chapter" data-level="3.9" data-path="wrangle-data.html"><a href="wrangle-data.html#turn-row-names-into-a-columnvariable"><i class="fa fa-check"></i><b>3.9</b> Turn row names into a column/variable</a></li>
+<li class="chapter" data-level="3.10" data-path="wrangle-data.html"><a href="wrangle-data.html#how-to-editchange-column-names"><i class="fa fa-check"></i><b>3.10</b> How to edit/change column names</a></li>
+<li class="chapter" data-level="3.11" data-path="wrangle-data.html"><a href="wrangle-data.html#re-order-columns-in-a-data-set"><i class="fa fa-check"></i><b>3.11</b> Re-order columns in a data set</a></li>
+<li class="chapter" data-level="3.12" data-path="wrangle-data.html"><a href="wrangle-data.html#date-and-time-variables"><i class="fa fa-check"></i><b>3.12</b> Date and time variables</a>
 <ul>
-<li class="chapter" data-level="3.15.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.15.1</b> Stuff the WHOLE working environment into a list</a></li>
-<li class="chapter" data-level="3.15.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.15.2</b> Extract everything from a list into the environment</a></li>
-<li class="chapter" data-level="3.15.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.15.3</b> Delete everything in the entire environment, except for one item</a></li>
+<li class="chapter" data-level="3.12.1" data-path="wrangle-data.html"><a href="wrangle-data.html#date-time-objects"><i class="fa fa-check"></i><b>3.12.1</b> Date-time objects</a></li>
+<li class="chapter" data-level="3.12.2" data-path="wrangle-data.html"><a href="wrangle-data.html#date-only-objects"><i class="fa fa-check"></i><b>3.12.2</b> Date-only objects</a></li>
+<li class="chapter" data-level="3.12.3" data-path="wrangle-data.html"><a href="wrangle-data.html#find-the-difference-between-two-datestimes"><i class="fa fa-check"></i><b>3.12.3</b> Find the difference between two dates/times</a></li>
 </ul></li>
-<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.16</b> Wrangling Lists</a>
+<li class="chapter" data-level="3.13" data-path="wrangle-data.html"><a href="wrangle-data.html#reverse-code-a-variable"><i class="fa fa-check"></i><b>3.13</b> Reverse-code a variable</a></li>
+<li class="chapter" data-level="3.14" data-path="wrangle-data.html"><a href="wrangle-data.html#dummy-coding-the-very-fast-and-easy-way"><i class="fa fa-check"></i><b>3.14</b> Dummy coding (the very fast and easy way)</a></li>
+<li class="chapter" data-level="3.15" data-path="wrangle-data.html"><a href="wrangle-data.html#create-a-relative-ranking-among-several-variables"><i class="fa fa-check"></i><b>3.15</b> Create a relative ranking among several variables</a></li>
+<li class="chapter" data-level="3.16" data-path="wrangle-data.html"><a href="wrangle-data.html#manipulating-the-working-environment-and-many-things-at-once"><i class="fa fa-check"></i><b>3.16</b> Manipulating the working environment and many things at once</a>
 <ul>
-<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.16.1</b> Nesting</a></li>
-<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.16.2</b> Combining/collapsing list levels (Reducing)</a></li>
+<li class="chapter" data-level="3.16.1" data-path="wrangle-data.html"><a href="wrangle-data.html#stuff-the-whole-working-environment-into-a-list"><i class="fa fa-check"></i><b>3.16.1</b> Stuff the WHOLE working environment into a list</a></li>
+<li class="chapter" data-level="3.16.2" data-path="wrangle-data.html"><a href="wrangle-data.html#extract-everything-from-a-list-into-the-environment"><i class="fa fa-check"></i><b>3.16.2</b> Extract everything from a list into the environment</a></li>
+<li class="chapter" data-level="3.16.3" data-path="wrangle-data.html"><a href="wrangle-data.html#delete-everything-in-the-entire-environment-except-for-one-item"><i class="fa fa-check"></i><b>3.16.3</b> Delete everything in the entire environment, except for one item</a></li>
+</ul></li>
+<li class="chapter" data-level="3.17" data-path="wrangle-data.html"><a href="wrangle-data.html#wrangling-lists"><i class="fa fa-check"></i><b>3.17</b> Wrangling Lists</a>
+<ul>
+<li class="chapter" data-level="3.17.1" data-path="wrangle-data.html"><a href="wrangle-data.html#nesting"><i class="fa fa-check"></i><b>3.17.1</b> Nesting</a></li>
+<li class="chapter" data-level="3.17.2" data-path="wrangle-data.html"><a href="wrangle-data.html#combiningcollapsing-list-levels-reducing"><i class="fa fa-check"></i><b>3.17.2</b> Combining/collapsing list levels (Reducing)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="clean-data.html"><a href="clean-data.html"><i class="fa fa-check"></i><b>4</b> Clean Data</a>
@@ -467,8 +474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;hello&quot;</code></pre>
 </div>
 </div>
-<div id="selectingextracting-specific-variables" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Selecting/extracting specific variables</h2>
+<div id="selectingextracting-specific-variables-with-select" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Selecting/extracting specific variables with <code>select()</code></h2>
 <p>Sometimes when working with a data set, you want to work with a few <em>specific</em> variables. For instance, maybe you want to view a graph of only reverse-coded variables (which start with the prefix “r”); or maybe you want to create a subset of your data that has a few specific variables removed. For this you can use <code>dplyr::select()</code> and its associated helper commands</p>
 <p><code>select()</code> can be thought of as “extract”; it tells R to identify and “extract” a specific variable (or variables)</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="wrangle-data.html#cb24-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span>mtcars</span>
@@ -510,12 +517,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb24-37"><a href="wrangle-data.html#cb24-37" aria-hidden="true" tabindex="-1"></a>  cars <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.character))</span></code></pre></div>
 <p>Other examples can be seen on <a href="https://tidyselect.r-lib.org/reference/language.html">THIS LINK</a> for a simple but detailed guide.</p>
 </div>
-<div id="if-then-and-case-when" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> If-then and Case-when</h2>
-<div id="if-then" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> If-then</h3>
+<div id="advanced-filtering-techniques" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Advanced Filtering techniques</h2>
+<p>All info here and the code taken from <a href="https://suzan.rbind.io/2018/02/dplyr-tutorial-3/#filtering-based-on-a-exact-character-variable-matches">this link</a>; credit goes to Suzan Baert.</p>
+<div id="filter-based-on-partial-match" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Filter based on partial match</h3>
+<p>Combine <code>filter</code> with <code>str_detect</code> to search for pattern matches in a column</p>
+</div>
+<div id="filtering-based-on-multiple-conditions" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Filtering based on multiple conditions</h3>
+<p>You can filter for more than one value at once, or combine operators to do searches with conditions….</p>
+<table>
+<colgroup>
+<col width="69%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Goal</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Return only rows where <strong><em>both</em></strong> conditions are met</td>
+<td><code>filter(condition1, condition2)</code></td>
+</tr>
+<tr class="even">
+<td>Return all rows where condition 1 is true but condition 2 is not</td>
+<td><code>filter(condition1, !condition2)</code></td>
+</tr>
+<tr class="odd">
+<td>Return rows where condition 1 <strong><em>and/or</em></strong> condition 2 is met</td>
+<td><code>filter(condition1 | condition2)</code></td>
+</tr>
+<tr class="even">
+<td>Return all rows where only one of the conditions is met, <strong><em>and not when both are met</em></strong></td>
+<td><code>filter(xor(condition1, condition2)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The sample code will return all rows with a bodywt above 100 and either have a <code>sleep_total</code> above 15 or are not part of the Carnivora order.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="wrangle-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="wrangle-data.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, order, sleep_total<span class="sc">:</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="wrangle-data.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bodywt <span class="sc">&gt;</span> <span class="dv">100</span>, (sleep_total <span class="sc">&gt;</span> <span class="dv">15</span> <span class="sc">|</span> order <span class="sc">!=</span> <span class="st">&quot;Carnivora&quot;</span>))</span></code></pre></div>
+</div>
+<div id="filtering-across-multiple-columns" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Filtering across multiple columns</h3>
+<p>From Susan Baert’s blog page:</p>
+<p>You have three options for how to do this:</p>
+<ul>
+<li><p><code>filter_all()</code>, which filters columns <em>based on your further instructions</em></p></li>
+<li><p><code>filter_if()</code>, which requires a boolean to indicate which columns to filter on. If that is true, the filter instructions will be followed.</p></li>
+<li><p><code>filter_at()</code>, which requires you to specify columns inside a <code>vars</code> argument for which the filtering will be done.</p></li>
+</ul>
+<p>Retain all rows with the pattern match “Ca” inside. Useful for when you want to search for a key pattern (or number) across multiple columns.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="wrangle-data.html#cb26-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="wrangle-data.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name<span class="sc">:</span>order, sleep_total, <span class="sc">-</span>vore) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="wrangle-data.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_all</span>(<span class="fu">any_vars</span>(<span class="fu">str_detect</span>(., <span class="at">pattern =</span> <span class="st">&quot;Ca&quot;</span>)))</span>
+<span id="cb26-4"><a href="wrangle-data.html#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="wrangle-data.html#cb26-5" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span>  </span>
+<span id="cb26-6"><a href="wrangle-data.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sleep_total<span class="sc">:</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-7"><a href="wrangle-data.html#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_all</span>(<span class="fu">any_vars</span>(. <span class="sc">&lt;</span> <span class="fl">0.1</span>))</span>
+<span id="cb26-8"><a href="wrangle-data.html#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="wrangle-data.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also switch any_vars to all_vars to filter across the whole data frame</span></span>
+<span id="cb26-10"><a href="wrangle-data.html#cb26-10" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span>  </span>
+<span id="cb26-11"><a href="wrangle-data.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sleep_total<span class="sc">:</span>bodywt, <span class="sc">-</span>awake) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-12"><a href="wrangle-data.html#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_all</span>(<span class="fu">all_vars</span>(. <span class="sc">&gt;</span> <span class="dv">1</span>))</span></code></pre></div>
+<p>What if you want to filter specific column types in your data frame, like just date columns, to find a specific date across multiple date columns? Or filter across multiple number columns to find every instance of a specific number? <code>filter_if</code> is better than <code>filter_all</code> here because the latter would return a filter search across the whole data frame. By using <code>filter_if</code>, we can get more specific about which columns to search through.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="wrangle-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="wrangle-data.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name<span class="sc">:</span>order, sleep_total<span class="sc">:</span>sleep_rem) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="wrangle-data.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_if</span>(is.character, <span class="fu">any_vars</span>(<span class="fu">is.na</span>(.)))</span></code></pre></div>
+<p>The last command, <code>filter_at</code>, does things differently. It doesn’t filter all columns at once; and you do not have to specify the column type or which columns. <strong><em>This one allows you to indicate which columns to search through like you would within any select statement</em></strong>.</p>
+<p>Example: Search through the columns that start with “sleep”, for values in all of those columns above .5.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="wrangle-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="wrangle-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sleep_total<span class="sc">:</span>sleep_rem, brainwt<span class="sc">:</span>bodywt) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="wrangle-data.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_at</span>(<span class="fu">vars</span>(<span class="fu">contains</span>(<span class="st">&quot;sleep&quot;</span>)), <span class="fu">all_vars</span>(.<span class="sc">&gt;</span><span class="dv">5</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="if-then-and-case-when" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> If-then and Case-when</h2>
+<div id="if-then" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> If-then</h3>
 <p>The premise of an if/then or if/else statement is simple: “If condition 1 is satisfied, perform x operation; if not, then do y”</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="wrangle-data.html#cb25-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">power_level=</span><span class="fu">ifelse</span>(mtcars<span class="sc">$</span>hp<span class="sc">&lt;</span><span class="dv">350</span>, <span class="st">&quot;Low&quot;</span>, <span class="st">&quot;High&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="wrangle-data.html#cb29-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">power_level=</span><span class="fu">ifelse</span>(mtcars<span class="sc">$</span>hp<span class="sc">&lt;</span><span class="dv">350</span>, <span class="st">&quot;Low&quot;</span>, <span class="st">&quot;High&quot;</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb power_level
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4         Low
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4         Low
@@ -525,20 +610,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1         Low</code></pre>
 <p>This line of code effectively says: if the length in Sepal.Length is &gt;5, set new variable = to “short”; else, set it to “long”</p>
 </div>
-<div id="case-when" class="section level3" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Case-when</h3>
+<div id="case-when" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Case-when</h3>
 <p>When you have 3+ conditions, it’s easier to use case-when. This is a more simple and straightforward approach than nesting multiple if-else commands</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="wrangle-data.html#cb27-1" aria-hidden="true" tabindex="-1"></a>My_vector<span class="ot">=</span> <span class="fu">case_when</span>(</span>
-<span id="cb27-2"><a href="wrangle-data.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    Condition1 <span class="sc">~</span> value1,</span>
-<span id="cb27-3"><a href="wrangle-data.html#cb27-3" aria-hidden="true" tabindex="-1"></a>    Condition2 <span class="sc">~</span> value2,</span>
-<span id="cb27-4"><a href="wrangle-data.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    Condition3 <span class="sc">~</span> value3</span>
-<span id="cb27-5"><a href="wrangle-data.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> valueForEverythingElse <span class="co">#catch all for things that don&#39;t meet the above conditions</span></span>
-<span id="cb27-6"><a href="wrangle-data.html#cb27-6" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="wrangle-data.html#cb31-1" aria-hidden="true" tabindex="-1"></a>My_vector<span class="ot">=</span> <span class="fu">case_when</span>(</span>
+<span id="cb31-2"><a href="wrangle-data.html#cb31-2" aria-hidden="true" tabindex="-1"></a>    Condition1 <span class="sc">~</span> value1,</span>
+<span id="cb31-3"><a href="wrangle-data.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    Condition2 <span class="sc">~</span> value2,</span>
+<span id="cb31-4"><a href="wrangle-data.html#cb31-4" aria-hidden="true" tabindex="-1"></a>    Condition3 <span class="sc">~</span> value3</span>
+<span id="cb31-5"><a href="wrangle-data.html#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> valueForEverythingElse <span class="co">#catch all for things that don&#39;t meet the above conditions</span></span>
+<span id="cb31-6"><a href="wrangle-data.html#cb31-6" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
 <p>Example:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="wrangle-data.html#cb28-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">size=</span> <span class="fu">case_when</span>(cyl<span class="sc">==</span><span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;small&quot;</span>,</span>
-<span id="cb28-2"><a href="wrangle-data.html#cb28-2" aria-hidden="true" tabindex="-1"></a>                                  cyl<span class="sc">==</span><span class="dv">6</span> <span class="sc">~</span> <span class="st">&quot;medium&quot;</span>,</span>
-<span id="cb28-3"><a href="wrangle-data.html#cb28-3" aria-hidden="true" tabindex="-1"></a>                                  cyl<span class="sc">==</span><span class="dv">8</span> <span class="sc">~</span> <span class="st">&quot;large&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-4"><a href="wrangle-data.html#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(cyl,size)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="wrangle-data.html#cb32-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">size=</span> <span class="fu">case_when</span>(cyl<span class="sc">==</span><span class="dv">4</span> <span class="sc">~</span> <span class="st">&quot;small&quot;</span>,</span>
+<span id="cb32-2"><a href="wrangle-data.html#cb32-2" aria-hidden="true" tabindex="-1"></a>                                  cyl<span class="sc">==</span><span class="dv">6</span> <span class="sc">~</span> <span class="st">&quot;medium&quot;</span>,</span>
+<span id="cb32-3"><a href="wrangle-data.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                                  cyl<span class="sc">==</span><span class="dv">8</span> <span class="sc">~</span> <span class="st">&quot;large&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-4"><a href="wrangle-data.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(cyl,size)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##                   cyl   size
 ## Mazda RX4           6 medium
 ## Mazda RX4 Wag       6 medium
@@ -548,13 +633,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Valiant             6 medium</code></pre>
 </div>
 </div>
-<div id="conditional-replacement-of-values" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Conditional replacement of values</h2>
+<div id="conditional-replacement-of-values" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Conditional replacement of values</h2>
 <p>The following code is useful if you want to replace a value in one column, and the replacement is conditional upon the value in another column.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="wrangle-data.html#cb30-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="wrangle-data.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(displ, cty, hwy),</span>
-<span id="cb30-3"><a href="wrangle-data.html#cb30-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">case_when</span>(cyl <span class="sc">==</span> 4L <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="cn">NA</span>),</span>
-<span id="cb30-4"><a href="wrangle-data.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.numeric</span>(.x))))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="wrangle-data.html#cb34-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="wrangle-data.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(displ, cty, hwy),</span>
+<span id="cb34-3"><a href="wrangle-data.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">case_when</span>(cyl <span class="sc">==</span> 4L <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="cn">NA</span>),</span>
+<span id="cb34-4"><a href="wrangle-data.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.numeric</span>(.x))))</span></code></pre></div>
 <pre><code>## # A tibble: 234 x 11
 ##    manufacturer model      displ  year   cyl trans      drv     cty   hwy fl    class  
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -569,13 +654,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi         a4 quattro  NA    1999     4 auto(l5)   4        NA    NA p     compact
 ## 10 audi         a4 quattro  NA    2008     4 manual(m6) 4        NA    NA p     compact
 ## # ... with 224 more rows</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="wrangle-data.html#cb32-1" aria-hidden="true" tabindex="-1"></a>test <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a href="wrangle-data.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(rank),</span>
-<span id="cb32-3"><a href="wrangle-data.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">case_when</span>(<span class="fu">is.na</span>(participant_score) <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="cn">NA</span>),</span>
-<span id="cb32-4"><a href="wrangle-data.html#cb32-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.numeric</span>(.x))))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="wrangle-data.html#cb36-1" aria-hidden="true" tabindex="-1"></a>test <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="wrangle-data.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(rank),</span>
+<span id="cb36-3"><a href="wrangle-data.html#cb36-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">case_when</span>(<span class="fu">is.na</span>(participant_score) <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="cn">NA</span>),</span>
+<span id="cb36-4"><a href="wrangle-data.html#cb36-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.numeric</span>(.x))))</span></code></pre></div>
 </div>
-<div id="merging-variables" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Merging variables</h2>
+<div id="merging-variables" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Merging variables</h2>
 <p>Sometimes you’ll have multiple variables and you want to collapse them into a single variable. The <code>pmin()</code> command is useful for this.</p>
 <pre class="{r3.14}"><code>example_data=tribble(~A,~B,~C,
                      1,NA,NA,
@@ -592,25 +677,25 @@ example_data %&gt;%
   mutate(accept_reject = 
            pmin(A,B,C,na.rm = TRUE))</code></pre>
 </div>
-<div id="apply-a-function-to-multiple-variables-at-once" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Apply a function to multiple variables at once</h2>
+<div id="apply-a-function-to-multiple-variables-at-once" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Apply a function to multiple variables at once</h2>
 <p>You can either specify each column individually, like above, or tell R to identify columns for you based on their type or their name. This requires adding in one additional verb–either contains() or where() depending on what you want to do.</p>
 <p>Two simple examples:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="wrangle-data.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># turn multiple variables into factors</span></span>
-<span id="cb34-2"><a href="wrangle-data.html#cb34-2" aria-hidden="true" tabindex="-1"></a>ex_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>color, <span class="sc">~</span>car,</span>
-<span id="cb34-3"><a href="wrangle-data.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;red&quot;</span>, <span class="st">&quot;corvette&quot;</span>,</span>
-<span id="cb34-4"><a href="wrangle-data.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;chevelle&quot;</span>,</span>
-<span id="cb34-5"><a href="wrangle-data.html#cb34-5" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;green&quot;</span>, <span class="st">&quot;camaro&quot;</span>,</span>
-<span id="cb34-6"><a href="wrangle-data.html#cb34-6" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;red&quot;</span>, <span class="st">&quot;corvette&quot;</span>,</span>
-<span id="cb34-7"><a href="wrangle-data.html#cb34-7" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;green&quot;</span>, <span class="st">&quot;chevelle&quot;</span>,</span>
-<span id="cb34-8"><a href="wrangle-data.html#cb34-8" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;gto&quot;</span>)</span>
-<span id="cb34-9"><a href="wrangle-data.html#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-10"><a href="wrangle-data.html#cb34-10" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(ex_data)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="wrangle-data.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># turn multiple variables into factors</span></span>
+<span id="cb38-2"><a href="wrangle-data.html#cb38-2" aria-hidden="true" tabindex="-1"></a>ex_data<span class="ot">=</span>dplyr<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>color, <span class="sc">~</span>car,</span>
+<span id="cb38-3"><a href="wrangle-data.html#cb38-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;red&quot;</span>, <span class="st">&quot;corvette&quot;</span>,</span>
+<span id="cb38-4"><a href="wrangle-data.html#cb38-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;chevelle&quot;</span>,</span>
+<span id="cb38-5"><a href="wrangle-data.html#cb38-5" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;green&quot;</span>, <span class="st">&quot;camaro&quot;</span>,</span>
+<span id="cb38-6"><a href="wrangle-data.html#cb38-6" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;red&quot;</span>, <span class="st">&quot;corvette&quot;</span>,</span>
+<span id="cb38-7"><a href="wrangle-data.html#cb38-7" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;green&quot;</span>, <span class="st">&quot;chevelle&quot;</span>,</span>
+<span id="cb38-8"><a href="wrangle-data.html#cb38-8" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;gto&quot;</span>)</span>
+<span id="cb38-9"><a href="wrangle-data.html#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="wrangle-data.html#cb38-10" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(ex_data)</span></code></pre></div>
 <pre><code>## Rows: 6
 ## Columns: 2
 ## $ color &lt;chr&gt; &quot;red&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;red&quot;, &quot;green&quot;, &quot;yellow&quot;
 ## $ car   &lt;chr&gt; &quot;corvette&quot;, &quot;chevelle&quot;, &quot;camaro&quot;, &quot;corvette&quot;, &quot;chevelle&quot;, &quot;gto&quot;</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="wrangle-data.html#cb36-1" aria-hidden="true" tabindex="-1"></a>ex_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(color, car),factor))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="wrangle-data.html#cb40-1" aria-hidden="true" tabindex="-1"></a>ex_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(color, car),factor))</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   color  car     
 ##   &lt;fct&gt;  &lt;fct&gt;   
@@ -620,8 +705,8 @@ example_data %&gt;%
 ## 4 red    corvette
 ## 5 green  chevelle
 ## 6 yellow gto</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="wrangle-data.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round multiple columns to 1 decimal place</span></span>
-<span id="cb38-2"><a href="wrangle-data.html#cb38-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(disp<span class="sc">:</span>qsec),round,<span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="wrangle-data.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round multiple columns to 1 decimal place</span></span>
+<span id="cb42-2"><a href="wrangle-data.html#cb42-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(disp<span class="sc">:</span>qsec),round,<span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat  wt qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110  3.9 2.6 16.5  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110  3.9 2.9 17.0  0  1    4    4
@@ -630,40 +715,40 @@ example_data %&gt;%
 ## Hornet Sportabout 18.7   8  360 175  3.1 3.4 17.0  0  0    3    2
 ## Valiant           18.1   6  225 105  2.8 3.5 20.2  1  0    3    1</code></pre>
 </div>
-<div id="pivoting-i.e.-transposing-data" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> Pivoting (i.e., transposing) data</h2>
-<div id="condense-multiple-rows-into-a-single-column-pivot-wide-to-long" class="section level3" number="3.7.1">
-<h3><span class="header-section-number">3.7.1</span> Condense multiple rows into a single column (pivot wide to long)</h3>
+<div id="pivoting-i.e.-transposing-data" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Pivoting (i.e., transposing) data</h2>
+<div id="condense-multiple-rows-into-a-single-column-pivot-wide-to-long" class="section level3" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Condense multiple rows into a single column (pivot wide to long)</h3>
 <p>Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas), with fake names.</p>
 <p>The command structure is as follows:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="wrangle-data.html#cb40-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">pivot_longer</span>( <span class="co"># Transpose LENGTHWISE by....</span></span>
-<span id="cb40-2"><a href="wrangle-data.html#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(), <span class="co"># Taking ALL variable names...</span></span>
-<span id="cb40-3"><a href="wrangle-data.html#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&quot;variable&quot;</span>, <span class="co"># ...and dumping them into this new variable/column</span></span>
-<span id="cb40-4"><a href="wrangle-data.html#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&quot;missing_count&quot;</span>) <span class="co">#...and placing their values in this other new column</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="wrangle-data.html#cb44-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">pivot_longer</span>( <span class="co"># Transpose LENGTHWISE by....</span></span>
+<span id="cb44-2"><a href="wrangle-data.html#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(), <span class="co"># Taking ALL variable names...</span></span>
+<span id="cb44-3"><a href="wrangle-data.html#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&quot;variable&quot;</span>, <span class="co"># ...and dumping them into this new variable/column</span></span>
+<span id="cb44-4"><a href="wrangle-data.html#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&quot;missing_count&quot;</span>) <span class="co">#...and placing their values in this other new column</span></span></code></pre></div>
 <p><strong>NOTE!!!</strong> Pivoting data from wide to long like this expands the number of rows to make a matrix so that (for example, each student now has as a row for each assignment). Therefore, you can only pivot longways (or wide) <strong>ONCE</strong>, otherwise you will make duplicates.</p>
 <p><em>If you need to pivot multiple columns, just include all of the columns in one single pivot; do not use two separate, back to back pivot commands.</em></p>
 <p>Example:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="wrangle-data.html#cb41-1" aria-hidden="true" tabindex="-1"></a>gradebook<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb41-2"><a href="wrangle-data.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Student, <span class="sc">~</span>Homework<span class="fl">.1</span>, <span class="sc">~</span>Homework<span class="fl">.2</span>, <span class="sc">~</span>Homework<span class="fl">.3</span>, <span class="sc">~</span>Homework<span class="fl">.4</span>, <span class="sc">~</span>Homework<span class="fl">.5</span>, <span class="sc">~</span>Quiz<span class="fl">.1</span>, <span class="sc">~</span>Quiz<span class="fl">.2</span>, <span class="sc">~</span>Quiz<span class="fl">.3</span>, <span class="sc">~</span>Quiz<span class="fl">.4</span>, <span class="sc">~</span>Final,</span>
-<span id="cb41-3"><a href="wrangle-data.html#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">&quot;Bob&quot;</span>,         19L,          0L,          <span class="dv">13</span>,          <span class="dv">16</span>,          0L,      <span class="dv">21</span>,      7L,      <span class="dv">15</span>,    <span class="fl">17.5</span>,     <span class="dv">33</span>,</span>
-<span id="cb41-4"><a href="wrangle-data.html#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Jane&quot;</span>,         17L,         19L,          <span class="dv">16</span>,        <span class="fl">16.5</span>,         25L,    <span class="fl">21.5</span>,     19L,   <span class="fl">14.75</span>,     <span class="fl">9.5</span>,   <span class="fl">39.5</span>,</span>
-<span id="cb41-5"><a href="wrangle-data.html#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;John&quot;</span>,         19L,         19L,        <span class="fl">14.5</span>,        <span class="fl">19.5</span>,         25L,      <span class="dv">21</span>,     21L,    <span class="fl">18.5</span>,      <span class="dv">17</span>,   <span class="fl">46.5</span></span>
-<span id="cb41-6"><a href="wrangle-data.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb41-7"><a href="wrangle-data.html#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="wrangle-data.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gradebook)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="wrangle-data.html#cb45-1" aria-hidden="true" tabindex="-1"></a>gradebook<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb45-2"><a href="wrangle-data.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>Student, <span class="sc">~</span>Homework<span class="fl">.1</span>, <span class="sc">~</span>Homework<span class="fl">.2</span>, <span class="sc">~</span>Homework<span class="fl">.3</span>, <span class="sc">~</span>Homework<span class="fl">.4</span>, <span class="sc">~</span>Homework<span class="fl">.5</span>, <span class="sc">~</span>Quiz<span class="fl">.1</span>, <span class="sc">~</span>Quiz<span class="fl">.2</span>, <span class="sc">~</span>Quiz<span class="fl">.3</span>, <span class="sc">~</span>Quiz<span class="fl">.4</span>, <span class="sc">~</span>Final,</span>
+<span id="cb45-3"><a href="wrangle-data.html#cb45-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">&quot;Bob&quot;</span>,         19L,          0L,          <span class="dv">13</span>,          <span class="dv">16</span>,          0L,      <span class="dv">21</span>,      7L,      <span class="dv">15</span>,    <span class="fl">17.5</span>,     <span class="dv">33</span>,</span>
+<span id="cb45-4"><a href="wrangle-data.html#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Jane&quot;</span>,         17L,         19L,          <span class="dv">16</span>,        <span class="fl">16.5</span>,         25L,    <span class="fl">21.5</span>,     19L,   <span class="fl">14.75</span>,     <span class="fl">9.5</span>,   <span class="fl">39.5</span>,</span>
+<span id="cb45-5"><a href="wrangle-data.html#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;John&quot;</span>,         19L,         19L,        <span class="fl">14.5</span>,        <span class="fl">19.5</span>,         25L,      <span class="dv">21</span>,     21L,    <span class="fl">18.5</span>,      <span class="dv">17</span>,   <span class="fl">46.5</span></span>
+<span id="cb45-6"><a href="wrangle-data.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-7"><a href="wrangle-data.html#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="wrangle-data.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(gradebook)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 11
 ##   Student Homework.1 Homework.2 Homework.3 Homework.4 Homework.5 Quiz.1 Quiz.2 Quiz.3 Quiz.4 Final
 ##   &lt;chr&gt;        &lt;int&gt;      &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;      &lt;int&gt;  &lt;dbl&gt;  &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
 ## 1 Bob             19          0       13         16            0   21        7   15     17.5  33  
 ## 2 Jane            17         19       16         16.5         25   21.5     19   14.8    9.5  39.5
 ## 3 John            19         19       14.5       19.5         25   21       21   18.5   17    46.5</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="wrangle-data.html#cb43-1" aria-hidden="true" tabindex="-1"></a>gradebook<span class="ot">=</span>gradebook <span class="sc">%&gt;%</span> </span>
-<span id="cb43-2"><a href="wrangle-data.html#cb43-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>( <span class="co"># Transpose lengthwise by:</span></span>
-<span id="cb43-3"><a href="wrangle-data.html#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> Homework<span class="fl">.1</span><span class="sc">:</span>Final, <span class="co"># Taking these variables</span></span>
-<span id="cb43-4"><a href="wrangle-data.html#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&quot;Assignment&quot;</span>, <span class="co"># ...and dumping them into this new variable, storing them lengthwise</span></span>
-<span id="cb43-5"><a href="wrangle-data.html#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&quot;Points&quot;</span>) <span class="co">#...then place their values in this new column</span></span>
-<span id="cb43-6"><a href="wrangle-data.html#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="wrangle-data.html#cb43-7" aria-hidden="true" tabindex="-1"></a>gradebook <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="wrangle-data.html#cb47-1" aria-hidden="true" tabindex="-1"></a>gradebook<span class="ot">=</span>gradebook <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="wrangle-data.html#cb47-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_longer</span>( <span class="co"># Transpose lengthwise by:</span></span>
+<span id="cb47-3"><a href="wrangle-data.html#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> Homework<span class="fl">.1</span><span class="sc">:</span>Final, <span class="co"># Taking these variables</span></span>
+<span id="cb47-4"><a href="wrangle-data.html#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&quot;Assignment&quot;</span>, <span class="co"># ...and dumping them into this new variable, storing them lengthwise</span></span>
+<span id="cb47-5"><a href="wrangle-data.html#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&quot;Points&quot;</span>) <span class="co">#...then place their values in this new column</span></span>
+<span id="cb47-6"><a href="wrangle-data.html#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="wrangle-data.html#cb47-7" aria-hidden="true" tabindex="-1"></a>gradebook <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   Student Assignment Points
 ##   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;
@@ -675,12 +760,12 @@ example_data %&gt;%
 ## 6 Bob     Quiz.1         21</code></pre>
 </div>
 </div>
-<div id="turn-row-names-into-a-columnvariable" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> Turn row names into a column/variable</h2>
+<div id="turn-row-names-into-a-columnvariable" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Turn row names into a column/variable</h2>
 <p>Use the <code>rownames()</code> command to turn row names into a variable</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="wrangle-data.html#cb45-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
-<span id="cb45-2"><a href="wrangle-data.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="wrangle-data.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(cars) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="wrangle-data.html#cb49-1" aria-hidden="true" tabindex="-1"></a>cars<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
+<span id="cb49-2"><a href="wrangle-data.html#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="wrangle-data.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(cars) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 12
 ##   car                 mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
 ##   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -691,17 +776,17 @@ example_data %&gt;%
 ## 5 Hornet Sportabout  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2
 ## 6 Valiant            18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</code></pre>
 </div>
-<div id="how-to-editchange-column-names" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> How to edit/change column names</h2>
+<div id="how-to-editchange-column-names" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> How to edit/change column names</h2>
 <p>TWO WAYS TO DO THIS: Use <code>colnames()</code> (for base R) or <code>rename()</code> (for tidyverse)</p>
 <p><code>colnames()</code> pulls up all the column/variable names as a vector. If you want to actually change them, you’ll need to combine this command with something like the sub() or gsub() commands (for base R). I’m going to skip this because…its base R.</p>
 <p>To access and change the names faster via tidyverse, run use <code>rename()</code></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="wrangle-data.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>()) <span class="co"># clear R&#39;s memory</span></span>
-<span id="cb47-2"><a href="wrangle-data.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="wrangle-data.html#cb47-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="st">&quot;hurr&quot;</span><span class="ot">=</span><span class="st">&quot;Sepal.Length&quot;</span>,</span>
-<span id="cb47-4"><a href="wrangle-data.html#cb47-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;durr&quot;</span><span class="ot">=</span><span class="st">&quot;Sepal.Width&quot;</span>,</span>
-<span id="cb47-5"><a href="wrangle-data.html#cb47-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;abcdefgh&quot;</span><span class="ot">=</span><span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-6"><a href="wrangle-data.html#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="wrangle-data.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>()) <span class="co"># clear R&#39;s memory</span></span>
+<span id="cb51-2"><a href="wrangle-data.html#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="wrangle-data.html#cb51-3" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="st">&quot;hurr&quot;</span><span class="ot">=</span><span class="st">&quot;Sepal.Length&quot;</span>,</span>
+<span id="cb51-4"><a href="wrangle-data.html#cb51-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;durr&quot;</span><span class="ot">=</span><span class="st">&quot;Sepal.Width&quot;</span>,</span>
+<span id="cb51-5"><a href="wrangle-data.html#cb51-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;abcdefgh&quot;</span><span class="ot">=</span><span class="st">&quot;Species&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-6"><a href="wrangle-data.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   hurr durr Petal.Length Petal.Width abcdefgh
 ## 1  5.1  3.5          1.4         0.2   setosa
 ## 2  4.9  3.0          1.4         0.2   setosa
@@ -711,8 +796,8 @@ example_data %&gt;%
 ## 6  5.4  3.9          1.7         0.4   setosa</code></pre>
 <p>If you need to do some really fancy conditional renaming (e.g., changing all variables that start with “r” to start with “rf” instead, to make it more clear that the prefix actually stands for “risk factor” rather than “reverse coded”), you’ll need to use <code>rename_with()</code>.</p>
 <p>This command has two parts to it: the data set, and the function you wish to apply to it (which you put after the <code>~</code>)</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="wrangle-data.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename_with</span>(iris, <span class="sc">~</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">&quot;.&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;_&quot;</span>, .x, <span class="at">fixed =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-2"><a href="wrangle-data.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="wrangle-data.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename_with</span>(iris, <span class="sc">~</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">&quot;.&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;_&quot;</span>, .x, <span class="at">fixed =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="wrangle-data.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal_Length Sepal_Width Petal_Length Petal_Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -723,8 +808,8 @@ example_data %&gt;%
 <p>The gsub() function from Base R identifies matching patterns in the data and substitutes them with what you want instead. Think of it like R’s version of Find/Replace from Microsoft Word.</p>
 <p>The above line of code thus does the following: 1. First, it checks the column names of the supplied data set (<code>iris</code>) for a specific pattern (specified in <code>pattern=</code> ) 2. Then it replaces that pattern with your input in <code>replacement=</code></p>
 <p>The great thing about rename_with() is that the .fn (or <code>~</code> for short) can take <em>ANY</em> function as input. For example, if you want to <strong>add</strong> an element to the column names rather than replace something, (e.g., a prefix or suffix), you can change the function to:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="wrangle-data.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename_with</span>( iris, <span class="sc">~</span> <span class="fu">paste0</span>(.x,  <span class="st">&quot;_text&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-2"><a href="wrangle-data.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="wrangle-data.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename_with</span>( iris, <span class="sc">~</span> <span class="fu">paste0</span>(.x,  <span class="st">&quot;_text&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="wrangle-data.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal.Length_text Sepal.Width_text Petal.Length_text Petal.Width_text Species_text
 ## 1               5.1              3.5               1.4              0.2       setosa
 ## 2               4.9              3.0               1.4              0.2       setosa
@@ -735,13 +820,13 @@ example_data %&gt;%
 <p>The above line adds a suffix. You can also add a prefix in the exact same way, just by switching the order of the string and the pattern in the paste0 command.</p>
 <p><strong><em>Alternative method to the above</em></strong> This is a second way to do the above. It may appear more simple, but it’s also probably not as theoretically consistent with how the packages were made…..it uses the <code>stringr</code> package to rename the column names, and <code>stringr</code> is typically used for editing vectors of strings in a data set.</p>
 <p>…so it works, but it’s a little unconventional because you call and edit the column names like you would a variable in your data set.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="wrangle-data.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(iris)<span class="ot">=</span><span class="fu">str_replace</span>(<span class="fu">colnames</span>(iris), <span class="at">pattern =</span> <span class="st">&quot;.&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="wrangle-data.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(iris)<span class="ot">=</span><span class="fu">str_replace</span>(<span class="fu">colnames</span>(iris), <span class="at">pattern =</span> <span class="st">&quot;.&quot;</span>, <span class="at">replacement =</span> <span class="st">&quot;_&quot;</span>)</span></code></pre></div>
 <p>In short: <code>rename()</code> and <code>rename_with()</code> are for <em>renaming</em> variables, as their names imply. The <code>str_</code> verbs from the stringr package are for editing string-based variabels in your data set. Either works though with a little ingenuity.</p>
 </div>
-<div id="re-order-columns-in-a-data-set" class="section level2" number="3.10">
-<h2><span class="header-section-number">3.10</span> Re-order columns in a data set</h2>
+<div id="re-order-columns-in-a-data-set" class="section level2" number="3.11">
+<h2><span class="header-section-number">3.11</span> Re-order columns in a data set</h2>
 <p>Use <code>relocate()</code> to change column positions. If you need to move multiple columns at once, this command uses the same syntax as <code>select()</code>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="wrangle-data.html#cb54-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="co"># notice the column order</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="wrangle-data.html#cb58-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="co"># notice the column order</span></span></code></pre></div>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -775,7 +860,7 @@ example_data %&gt;%
 ## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 ## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 ## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="wrangle-data.html#cb56-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(hp<span class="sc">:</span>wt, <span class="at">.after=</span> am) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="wrangle-data.html#cb60-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">relocate</span>(hp<span class="sc">:</span>wt, <span class="at">.after=</span> am) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  qsec vs am  hp drat    wt gear carb
 ## Mazda RX4         21.0   6  160 16.46  0  1 110 3.90 2.620    4    4
 ## Mazda RX4 Wag     21.0   6  160 17.02  0  1 110 3.90 2.875    4    4
@@ -784,42 +869,42 @@ example_data %&gt;%
 ## Hornet Sportabout 18.7   8  360 17.02  0  0 175 3.15 3.440    3    2
 ## Valiant           18.1   6  225 20.22  1  0 105 2.76 3.460    3    1</code></pre>
 </div>
-<div id="date-and-time-variables" class="section level2" number="3.11">
-<h2><span class="header-section-number">3.11</span> Date and time variables</h2>
+<div id="date-and-time-variables" class="section level2" number="3.12">
+<h2><span class="header-section-number">3.12</span> Date and time variables</h2>
 <p>Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it’s not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely.</p>
-<div id="date-time-objects" class="section level3" number="3.11.1">
-<h3><span class="header-section-number">3.11.1</span> Date-time objects</h3>
+<div id="date-time-objects" class="section level3" number="3.12.1">
+<h3><span class="header-section-number">3.12.1</span> Date-time objects</h3>
 <p>If you’re lucky enough to have a vector of date-times, like what Qualtrics gives you, this will be brainless. Just do the following:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="wrangle-data.html#cb58-1" aria-hidden="true" tabindex="-1"></a>example_datetime_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>datetime,</span>
-<span id="cb58-2"><a href="wrangle-data.html#cb58-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-03 00:50:50&quot;</span>,</span>
-<span id="cb58-3"><a href="wrangle-data.html#cb58-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-04 01:40:50&quot;</span>,</span>
-<span id="cb58-4"><a href="wrangle-data.html#cb58-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-07 21:50:50&quot;</span>)</span>
-<span id="cb58-5"><a href="wrangle-data.html#cb58-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="wrangle-data.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(example_datetime_data) <span class="co"># stored as character string</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="wrangle-data.html#cb62-1" aria-hidden="true" tabindex="-1"></a>example_datetime_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>datetime,</span>
+<span id="cb62-2"><a href="wrangle-data.html#cb62-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-03 00:50:50&quot;</span>,</span>
+<span id="cb62-3"><a href="wrangle-data.html#cb62-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-04 01:40:50&quot;</span>,</span>
+<span id="cb62-4"><a href="wrangle-data.html#cb62-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;2010-08-07 21:50:50&quot;</span>)</span>
+<span id="cb62-5"><a href="wrangle-data.html#cb62-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-6"><a href="wrangle-data.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(example_datetime_data) <span class="co"># stored as character string</span></span></code></pre></div>
 <pre><code>## # A tibble: 3 x 1
 ##   datetime           
 ##   &lt;chr&gt;              
 ## 1 2010-08-03 00:50:50
 ## 2 2010-08-04 01:40:50
 ## 3 2010-08-07 21:50:50</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="wrangle-data.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse</span></span>
-<span id="cb60-2"><a href="wrangle-data.html#cb60-2" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_date</span>(example_datetime_data<span class="sc">$</span>datetime)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="wrangle-data.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse</span></span>
+<span id="cb64-2"><a href="wrangle-data.html#cb64-2" aria-hidden="true" tabindex="-1"></a>lubridate<span class="sc">::</span><span class="fu">as_date</span>(example_datetime_data<span class="sc">$</span>datetime)</span></code></pre></div>
 <pre><code>## [1] &quot;2010-08-03&quot; &quot;2010-08-04&quot; &quot;2010-08-07&quot;</code></pre>
 </div>
-<div id="date-only-objects" class="section level3" number="3.11.2">
-<h3><span class="header-section-number">3.11.2</span> Date-only objects</h3>
+<div id="date-only-objects" class="section level3" number="3.12.2">
+<h3><span class="header-section-number">3.12.2</span> Date-only objects</h3>
 <p>If you’re unlucky enough to have <em>only</em> dates, and said dates are written in the traditional <strong>x/x/xxxx</strong> format, this will be an annoyance that has to be done in two stages.</p>
 <p>First, assuming your data is already imported and is being stored as a vector of character strings, you have to tell R to adjust the formatting of dates. You cannot change it from a character-based object into a Date or DateTime one until it recognizes the correct formatting.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="wrangle-data.html#cb62-1" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>X1,     <span class="sc">~</span>X2,</span>
-<span id="cb62-2"><a href="wrangle-data.html#cb62-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">49.87</span>,</span>
-<span id="cb62-3"><a href="wrangle-data.html#cb62-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">13.85</span>,</span>
-<span id="cb62-4"><a href="wrangle-data.html#cb62-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>,   <span class="sc">-</span><span class="fl">7.45</span>,</span>
-<span id="cb62-5"><a href="wrangle-data.html#cb62-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>, <span class="sc">-</span><span class="fl">172.71</span>)</span>
-<span id="cb62-6"><a href="wrangle-data.html#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="wrangle-data.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct formatting</span></span>
-<span id="cb62-8"><a href="wrangle-data.html#cb62-8" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(example_date_data<span class="sc">$</span>X1,<span class="at">format=</span><span class="st">&#39;%m/%d/%Y&#39;</span>),<span class="at">format=</span><span class="st">&#39;%Y-%m-%d&#39;</span>)</span>
-<span id="cb62-9"><a href="wrangle-data.html#cb62-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-10"><a href="wrangle-data.html#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="wrangle-data.html#cb66-1" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>X1,     <span class="sc">~</span>X2,</span>
+<span id="cb66-2"><a href="wrangle-data.html#cb66-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">49.87</span>,</span>
+<span id="cb66-3"><a href="wrangle-data.html#cb66-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/4/2021&quot;</span>,  <span class="sc">-</span><span class="fl">13.85</span>,</span>
+<span id="cb66-4"><a href="wrangle-data.html#cb66-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>,   <span class="sc">-</span><span class="fl">7.45</span>,</span>
+<span id="cb66-5"><a href="wrangle-data.html#cb66-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;8/3/2021&quot;</span>, <span class="sc">-</span><span class="fl">172.71</span>)</span>
+<span id="cb66-6"><a href="wrangle-data.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="wrangle-data.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Correct formatting</span></span>
+<span id="cb66-8"><a href="wrangle-data.html#cb66-8" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">format</span>(<span class="fu">as.POSIXct</span>(example_date_data<span class="sc">$</span>X1,<span class="at">format=</span><span class="st">&#39;%m/%d/%Y&#39;</span>),<span class="at">format=</span><span class="st">&#39;%Y-%m-%d&#39;</span>)</span>
+<span id="cb66-9"><a href="wrangle-data.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="wrangle-data.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as_tibble</span>(example_date_data))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 2
 ##   X1              X2
 ##   &lt;chr&gt;        &lt;dbl&gt;
@@ -829,46 +914,43 @@ example_data %&gt;%
 ## 4 2021-08-03 -173.</code></pre>
 <p>In the code above, note that there are two <code>format</code> commands: The first one tells R how the date data is <strong>currently being stored</strong>, while the second at the end tells it how <strong>you want it to be stored.</strong> In this case, we are changing it from the way we would usually hand write a date (e.g., 10/26/1993) to a format commonly recognized and used in Excel and stats software (1993-10-26). <em>If your column also has times in it, you also need to include that too!</em></p>
 <p>Second, you can now correct the object’s structure. You can do this with base R’s <code>as.Date()</code> or tidyverse’s <code>date()</code> verbs.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="wrangle-data.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse</span></span>
-<span id="cb64-2"><a href="wrangle-data.html#cb64-2" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">date</span>(example_date_data<span class="sc">$</span>X1) </span>
-<span id="cb64-3"><a href="wrangle-data.html#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="wrangle-data.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R version</span></span>
-<span id="cb64-5"><a href="wrangle-data.html#cb64-5" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">as.Date</span>(example_date_data<span class="sc">$</span>X1)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="wrangle-data.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse</span></span>
+<span id="cb68-2"><a href="wrangle-data.html#cb68-2" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span> lubridate<span class="sc">::</span><span class="fu">date</span>(example_date_data<span class="sc">$</span>X1) </span>
+<span id="cb68-3"><a href="wrangle-data.html#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-4"><a href="wrangle-data.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R version</span></span>
+<span id="cb68-5"><a href="wrangle-data.html#cb68-5" aria-hidden="true" tabindex="-1"></a>example_date_data<span class="sc">$</span>X1<span class="ot">=</span><span class="fu">as.Date</span>(example_date_data<span class="sc">$</span>X1)</span></code></pre></div>
 <p>Notice how the object is now stored as the correct type in the table above.</p>
 <p><strong><em>NOTE!</em></strong> This entire process has been included in the <code>tidy_date()</code> command in my package, <code>legaldmlab</code>.</p>
 </div>
-<div id="find-the-difference-between-two-datestimes" class="section level3" number="3.11.3">
-<h3><span class="header-section-number">3.11.3</span> Find the difference between two dates/times</h3>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="wrangle-data.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(part_1<span class="sc">$</span>end_date[<span class="dv">1</span>], part_2<span class="sc">$</span>end_date[<span class="dv">1</span>], <span class="at">units=</span><span class="st">&quot;days&quot;</span>)</span></code></pre></div>
+<div id="find-the-difference-between-two-datestimes" class="section level3" number="3.12.3">
+<h3><span class="header-section-number">3.12.3</span> Find the difference between two dates/times</h3>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="wrangle-data.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(part_1<span class="sc">$</span>end_date[<span class="dv">1</span>], part_2<span class="sc">$</span>end_date[<span class="dv">1</span>], <span class="at">units=</span><span class="st">&quot;days&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="reverse-code-a-variable" class="section level2" number="3.12">
-<h2><span class="header-section-number">3.12</span> Reverse-code a variable</h2>
+<div id="reverse-code-a-variable" class="section level2" number="3.13">
+<h2><span class="header-section-number">3.13</span> Reverse-code a variable</h2>
 <p>To reverse-score a variable, you should use <code>car::recode()</code> Can be done a few different ways, depending on how many variables you’re looking to recode:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="wrangle-data.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode just one variable</span></span>
-<span id="cb66-2"><a href="wrangle-data.html#cb66-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>column<span class="ot">=</span><span class="fu">recode</span>(df<span class="sc">$</span>column,<span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span>
-<span id="cb66-3"><a href="wrangle-data.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="wrangle-data.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode a select bunch of variables</span></span>
-<span id="cb66-5"><a href="wrangle-data.html#cb66-5" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(family_close <span class="sc">:</span> family_feelings), recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>))</span>
-<span id="cb66-6"><a href="wrangle-data.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-7"><a href="wrangle-data.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode the whole damn thing. All columns.</span></span>
-<span id="cb66-8"><a href="wrangle-data.html#cb66-8" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">map_df</span>(recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="wrangle-data.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode just one variable</span></span>
+<span id="cb70-2"><a href="wrangle-data.html#cb70-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>column<span class="ot">=</span><span class="fu">recode</span>(df<span class="sc">$</span>column,<span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>)</span>
+<span id="cb70-3"><a href="wrangle-data.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="wrangle-data.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Recode a select bunch of variables</span></span>
+<span id="cb70-5"><a href="wrangle-data.html#cb70-5" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span>df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(family_close <span class="sc">:</span> family_feelings), recode, <span class="st">&quot;1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1&quot;</span>))</span></code></pre></div>
 </div>
-<div id="dummy-coding-the-very-fast-and-easy-way" class="section level2" number="3.13">
-<h2><span class="header-section-number">3.13</span> Dummy coding (the very fast and easy way)</h2>
+<div id="dummy-coding-the-very-fast-and-easy-way" class="section level2" number="3.14">
+<h2><span class="header-section-number">3.14</span> Dummy coding (the very fast and easy way)</h2>
 <p>Use dplyr’s <code>pivot_wider</code> in conjunction with <code>mutate</code> to very quickly and automatically dummy code a column with any number of unique values. The middle part of the code below is what you need…just copy and paste it, and tweak the specifics</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="wrangle-data.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb67-2"><a href="wrangle-data.html#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="wrangle-data.html#cb67-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
-<span id="cb67-4"><a href="wrangle-data.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car=</span><span class="fu">rownames</span>(mtcars)) <span class="sc">|&gt;</span> </span>
-<span id="cb67-5"><a href="wrangle-data.html#cb67-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb67-6"><a href="wrangle-data.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">n=</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb67-7"><a href="wrangle-data.html#cb67-7" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cyl,</span>
-<span id="cb67-8"><a href="wrangle-data.html#cb67-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n,</span>
-<span id="cb67-9"><a href="wrangle-data.html#cb67-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">&quot;number_cyl&quot;</span>,</span>
-<span id="cb67-10"><a href="wrangle-data.html#cb67-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">n=</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb67-11"><a href="wrangle-data.html#cb67-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb67-12"><a href="wrangle-data.html#cb67-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, <span class="fu">starts_with</span>(<span class="st">&quot;number_&quot;</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>() <span class="co">#truncate output for easier reading</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="wrangle-data.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb71-2"><a href="wrangle-data.html#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="wrangle-data.html#cb71-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> </span>
+<span id="cb71-4"><a href="wrangle-data.html#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car=</span><span class="fu">rownames</span>(mtcars)) <span class="sc">|&gt;</span> </span>
+<span id="cb71-5"><a href="wrangle-data.html#cb71-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-6"><a href="wrangle-data.html#cb71-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">n=</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb71-7"><a href="wrangle-data.html#cb71-7" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cyl,</span>
+<span id="cb71-8"><a href="wrangle-data.html#cb71-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n,</span>
+<span id="cb71-9"><a href="wrangle-data.html#cb71-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_prefix =</span> <span class="st">&quot;number_cyl&quot;</span>,</span>
+<span id="cb71-10"><a href="wrangle-data.html#cb71-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_fill =</span> <span class="fu">list</span>(<span class="at">n=</span><span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb71-11"><a href="wrangle-data.html#cb71-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb71-12"><a href="wrangle-data.html#cb71-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(car, <span class="fu">starts_with</span>(<span class="st">&quot;number_&quot;</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>() <span class="co">#truncate output for easier reading</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   car               number_cyl6 number_cyl4 number_cyl8
 ##   &lt;chr&gt;                   &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
@@ -879,29 +961,29 @@ example_data %&gt;%
 ## 5 Hornet Sportabout           0           0           1
 ## 6 Valiant                     1           0           0</code></pre>
 </div>
-<div id="create-a-relative-ranking-among-several-variables" class="section level2" number="3.14">
-<h2><span class="header-section-number">3.14</span> Create a relative ranking among several variables</h2>
+<div id="create-a-relative-ranking-among-several-variables" class="section level2" number="3.15">
+<h2><span class="header-section-number">3.15</span> Create a relative ranking among several variables</h2>
 <p>If you want to create a variable that is an ordinal ranking of other variables, first you need to make sure your data is long-wise. Then, depending on the type of ranking system you want, you’ll might need a different ranking command….</p>
 <ul>
 <li><p>The <code>min_rank</code> command from dplyr works in a manner similar to base R’s <code>rank</code> command. It ranks things like you see in sporting events. For example, if there is a clear winner in a game but 3 people tie for second place, the ranks would look like this: 1,2,2,2,4,5. Notice that the positions are independent from the counts.</p></li>
 <li><p>Using the same example from above, if you want the ranks to have no gaps (i.e. 1,2,2,2,3,4), you need to use dplyr’s <code>dense_rank</code> command.</p></li>
 <li><p>In either case, the ranks are generated from lowest to highest, so if you want to flip them around you’ll need to include <code>desc()</code> in the command.</p></li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="wrangle-data.html#cb69-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>score,</span>
-<span id="cb69-2"><a href="wrangle-data.html#cb69-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">0</span>,</span>
-<span id="cb69-3"><a href="wrangle-data.html#cb69-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">5</span>,</span>
-<span id="cb69-4"><a href="wrangle-data.html#cb69-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
-<span id="cb69-5"><a href="wrangle-data.html#cb69-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
-<span id="cb69-6"><a href="wrangle-data.html#cb69-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
-<span id="cb69-7"><a href="wrangle-data.html#cb69-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="cn">NA</span>,</span>
-<span id="cb69-8"><a href="wrangle-data.html#cb69-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">70</span>,</span>
-<span id="cb69-9"><a href="wrangle-data.html#cb69-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">80</span>,</span>
-<span id="cb69-10"><a href="wrangle-data.html#cb69-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">90</span>,</span>
-<span id="cb69-11"><a href="wrangle-data.html#cb69-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
-<span id="cb69-12"><a href="wrangle-data.html#cb69-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
-<span id="cb69-13"><a href="wrangle-data.html#cb69-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">1</span>)</span>
-<span id="cb69-14"><a href="wrangle-data.html#cb69-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-15"><a href="wrangle-data.html#cb69-15" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranked =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(score)))</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="wrangle-data.html#cb73-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">=</span>tibble<span class="sc">::</span><span class="fu">tribble</span>(<span class="sc">~</span>name, <span class="sc">~</span>score,</span>
+<span id="cb73-2"><a href="wrangle-data.html#cb73-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">0</span>,</span>
+<span id="cb73-3"><a href="wrangle-data.html#cb73-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">5</span>,</span>
+<span id="cb73-4"><a href="wrangle-data.html#cb73-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
+<span id="cb73-5"><a href="wrangle-data.html#cb73-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
+<span id="cb73-6"><a href="wrangle-data.html#cb73-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="dv">50</span>,</span>
+<span id="cb73-7"><a href="wrangle-data.html#cb73-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;bob&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb73-8"><a href="wrangle-data.html#cb73-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">70</span>,</span>
+<span id="cb73-9"><a href="wrangle-data.html#cb73-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">80</span>,</span>
+<span id="cb73-10"><a href="wrangle-data.html#cb73-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">90</span>,</span>
+<span id="cb73-11"><a href="wrangle-data.html#cb73-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
+<span id="cb73-12"><a href="wrangle-data.html#cb73-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">20</span>,</span>
+<span id="cb73-13"><a href="wrangle-data.html#cb73-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;alice&quot;</span>, <span class="dv">1</span>)</span>
+<span id="cb73-14"><a href="wrangle-data.html#cb73-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-15"><a href="wrangle-data.html#cb73-15" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">ranked =</span> <span class="fu">dense_rank</span>(<span class="fu">desc</span>(score)))</span></code></pre></div>
 <pre><code>## # A tibble: 12 x 3
 ##    name  score ranked
 ##    &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt;
@@ -918,25 +1000,25 @@ example_data %&gt;%
 ## 11 alice    20      5
 ## 12 alice     1      7</code></pre>
 </div>
-<div id="manipulating-the-working-environment-and-many-things-at-once" class="section level2" number="3.15">
-<h2><span class="header-section-number">3.15</span> Manipulating the working environment and many things at once</h2>
-<div id="stuff-the-whole-working-environment-into-a-list" class="section level3" number="3.15.1">
-<h3><span class="header-section-number">3.15.1</span> Stuff the WHOLE working environment into a list</h3>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="wrangle-data.html#cb71-1" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">mget</span>(<span class="fu">ls</span>())</span></code></pre></div>
+<div id="manipulating-the-working-environment-and-many-things-at-once" class="section level2" number="3.16">
+<h2><span class="header-section-number">3.16</span> Manipulating the working environment and many things at once</h2>
+<div id="stuff-the-whole-working-environment-into-a-list" class="section level3" number="3.16.1">
+<h3><span class="header-section-number">3.16.1</span> Stuff the WHOLE working environment into a list</h3>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="wrangle-data.html#cb75-1" aria-hidden="true" tabindex="-1"></a>files<span class="ot">=</span><span class="fu">mget</span>(<span class="fu">ls</span>())</span></code></pre></div>
 </div>
-<div id="extract-everything-from-a-list-into-the-environment" class="section level3" number="3.15.2">
-<h3><span class="header-section-number">3.15.2</span> Extract everything from a list into the environment</h3>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="wrangle-data.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(cog_data, <span class="fu">globalenv</span>())</span></code></pre></div>
+<div id="extract-everything-from-a-list-into-the-environment" class="section level3" number="3.16.2">
+<h3><span class="header-section-number">3.16.2</span> Extract everything from a list into the environment</h3>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="wrangle-data.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list2env</span>(cog_data, <span class="fu">globalenv</span>())</span></code></pre></div>
 </div>
-<div id="delete-everything-in-the-entire-environment-except-for-one-item" class="section level3" number="3.15.3">
-<h3><span class="header-section-number">3.15.3</span> Delete everything in the entire environment, except for one item</h3>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="wrangle-data.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">setdiff</span>(<span class="fu">ls</span>(), <span class="st">&quot;cog_data&quot;</span>)) <span class="co"># delete everything in the local environment except the final data set</span></span></code></pre></div>
+<div id="delete-everything-in-the-entire-environment-except-for-one-item" class="section level3" number="3.16.3">
+<h3><span class="header-section-number">3.16.3</span> Delete everything in the entire environment, except for one item</h3>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="wrangle-data.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">setdiff</span>(<span class="fu">ls</span>(), <span class="st">&quot;cog_data&quot;</span>)) <span class="co"># delete everything in the local environment except the final data set</span></span></code></pre></div>
 </div>
 </div>
-<div id="wrangling-lists" class="section level2" number="3.16">
-<h2><span class="header-section-number">3.16</span> Wrangling Lists</h2>
-<div id="nesting" class="section level3" number="3.16.1">
-<h3><span class="header-section-number">3.16.1</span> Nesting</h3>
+<div id="wrangling-lists" class="section level2" number="3.17">
+<h2><span class="header-section-number">3.17</span> Wrangling Lists</h2>
+<div id="nesting" class="section level3" number="3.17.1">
+<h3><span class="header-section-number">3.17.1</span> Nesting</h3>
 <p>Imagine the concept of Russian Dolls, applied to data sets. You can manage data sets more effectively my collapsing them into a single tiny, mini data frame, and stuffing that inside of another one. This is done via “nesting”…</p>
 <p>Effectively, you smush/collapse everything down so it fits inside one column. You can unnest to expand this data back out later when you need it, and keep it collapsed when you don’t. This works because a vector/column in a data frame <em>is</em> a list of a defined length; and a data frame is thus simply a collection of lists that are all the same length.</p>
 <ul>
@@ -944,7 +1026,7 @@ example_data %&gt;%
 <li><p>You can use functional programming (i.e., iterative functions) to map functions or combinations of functions in new ways. Moreover and more importantly, when you use <code>purrr</code> to map functions onto multiple models or objects simultaneously, you’re doing it to all of them at once with a single command, and the objects are kept together while you do it. This limits the mistakes you can make (e.g., copying and pasting code and forgetting to tweak something important; applying a function to the wrong object or set of objects by accident), and also reduces unnecessary code in your script.</p></li>
 <li><p>Converting data into tidy data sets gives you a whole new way (and easier way) to manage lots of information</p></li>
 </ul>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="wrangle-data.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars <span class="sc">|&gt;</span> <span class="fu">nest</span>(<span class="at">crap=</span>vs<span class="sc">:</span>carb))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="wrangle-data.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars <span class="sc">|&gt;</span> <span class="fu">nest</span>(<span class="at">crap=</span>vs<span class="sc">:</span>carb))</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##     mpg   cyl  disp    hp  drat    wt  qsec crap            
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;list&gt;          
@@ -955,11 +1037,11 @@ example_data %&gt;%
 ## 5  18.7     8   360   175  3.15  3.44  17.0 &lt;tibble [1 x 4]&gt;
 ## 6  18.1     6   225   105  2.76  3.46  20.2 &lt;tibble [1 x 4]&gt;</code></pre>
 </div>
-<div id="combiningcollapsing-list-levels-reducing" class="section level3" number="3.16.2">
-<h3><span class="header-section-number">3.16.2</span> Combining/collapsing list levels (Reducing)</h3>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="wrangle-data.html#cb76-1" aria-hidden="true" tabindex="-1"></a>demo_vars<span class="ot">=</span>files <span class="sc">|&gt;</span> </span>
-<span id="cb76-2"><a href="wrangle-data.html#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(import_spss) <span class="sc">|&gt;</span> </span>
-<span id="cb76-3"><a href="wrangle-data.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;catieid&quot;</span>)</span></code></pre></div>
+<div id="combiningcollapsing-list-levels-reducing" class="section level3" number="3.17.2">
+<h3><span class="header-section-number">3.17.2</span> Combining/collapsing list levels (Reducing)</h3>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="wrangle-data.html#cb80-1" aria-hidden="true" tabindex="-1"></a>demo_vars<span class="ot">=</span>files <span class="sc">|&gt;</span> </span>
+<span id="cb80-2"><a href="wrangle-data.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(import_spss) <span class="sc">|&gt;</span> </span>
+<span id="cb80-3"><a href="wrangle-data.html#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reduce</span>(left_join, <span class="at">by=</span><span class="st">&quot;catieid&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
