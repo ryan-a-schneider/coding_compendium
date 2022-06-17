@@ -46,17 +46,33 @@ test=flextable::as_grouped_data(x=cars, groups = c("cyl"))
 ## Complete Example
 
 ```{r}
-
+# set global options for all flextables
 flextable::set_flextable_defaults(font.family = "Times New Roman", font.size = 11)
+
+# create an fp_border object to set the borders for the flextables
+border.test=officer::fp_border(color = "black", style = "solid", width = 1)
+
 
 mtcars |> 
   slice(1:5) |> 
   flextable() |>
-  # SET HEADER
-    add_header_lines(values = "Car Stuff") |> 
-    hline_top(border = fp_border_default(width = 0), part = "header") |> 
-    flextable::align(align = "left", part = "header", i=1) |> 
-    italic(part = "header", i=1)
+  # FIX BORDERS IN THE HEADER
+  hline_bottom(border = border.test, part = "header") |>
+  hline_top(border = border.test, part = "header") |>
+  # CREATE A TITLE HEADER; APPLY FORMATTING
+  add_header_lines(values = "Car Stuff") |> 
+  hline_top(border = fp_border_default(width = 0), part = "header") |> 
+  flextable::align(align = "left", part = "header", i=1) |> 
+  italic(part = "header", i=1) |> 
+  # FIX BORDER IN TABLE BODY
+  hline_bottom(border = border.test, part = "body") |> 
+  # Line spacing
+  flextable::line_spacing(space = "0.5") |> 
+  # Add a footer
+  flextable::add_footer_lines(values = "A test footer") |> 
+  # SET COLUMN WIDTH/DIMENSIONS
+  autofit(part = "all") |> 
+  width(j=1, width = 0.4, unit = "in")
 ```
 
 

@@ -136,7 +136,7 @@ Combine `filter` with `str_detect` to search for pattern matches in a column
 You can filter for more than one value at once, or combine operators to do searches with conditions....
 
 | Goal                                                                                     | Code                                 |
-|--------------------------------------------------|----------------------|
+|------------------------------------------------------------------------------------------|--------------------------------------|
 | Return only rows where ***both*** conditions are met                                     | `filter(condition1, condition2)`     |
 | Return all rows where condition 1 is true but condition 2 is not                         | `filter(condition1, !condition2)`    |
 | Return rows where condition 1 ***and/or*** condition 2 is met                            | `filter(condition1 | condition2)`    |
