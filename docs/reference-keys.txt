@@ -94,7 +94,10 @@ indent-values
 add-a-horizontal-border-aka-horizontal-spanner
 change-font-and-font-size
 grouped-table
+adjust-line-spacing
+set-global-options-for-all-flextables
 complete-example
+wraper-function-to-create-apa-style-tables
 misc.-stuff
 scrape-web-pages-for-data-tables
 read-spss-files-into-r

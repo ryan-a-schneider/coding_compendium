@@ -35,17 +35,34 @@ hline(., i=4, j=1:2, part = "body")
 
 ## Grouped table
 
-```{r chapter_8_end, eval=FALSE}
+```{r 8.4, eval=FALSE}
 
 cars=rownames_to_column(mtcars, var = "Model")
 test=flextable::as_grouped_data(x=cars, groups = c("cyl"))
 ```
 
+## Adjust line spacing
+
+```{r 8.5, eval=FALSE}
+flextable::line_spacing(space = "0.5")
+```
+
+## Set global options for all flextables
+
+```{r}
+# set global options for all flextables
+flextable::set_flextable_defaults(font.family = "Times New Roman", font.size = 11)
+
+# create an fp_border object to set the borders for the flextables
+border.test=officer::fp_border(color = "black", style = "solid", width = 1)
+```
 
 
 ## Complete Example
 
-```{r}
+```{r flextable_example_full}
+
+library(flextable)
 # set global options for all flextables
 flextable::set_flextable_defaults(font.family = "Times New Roman", font.size = 11)
 
@@ -74,5 +91,37 @@ mtcars |>
   autofit(part = "all") |> 
   width(j=1, width = 0.4, unit = "in")
 ```
+## Wraper-function to create APA-style tables
 
+This took way too many hours. You're welcome.
+```{r}
+APA_table=function(flextable_object, table_title, include_note){
+  
+  
+  flextable_object=flextable_object |> 
+    hline_bottom(border = border.test, part = "header") |>
+    hline_top(border = border.test, part = "header") |>
+    # CREATE A TITLE HEADER; APPLY FORMATTING
+    add_header_lines(values = table_title) |> 
+    hline_top(border = fp_border_default(width = 0), part = "header") |> 
+    flextable::align(align = "left", part = "header", i=1) |> 
+    italic(part = "header", i=1) |> 
+    # FIX BORDER IN TABLE BODY
+    hline_bottom(border = border.test, part = "body") |> 
+    # SET FONT
+    flextable::font(part = "all", fontname = "Times New Roman") |> 
+    flextable::fontsize(part = "all", size = 11) |> 
+    # SET COLUMN WIDTH/DIMENSIONS
+    autofit(part = "all") 
+  
+  if(include_note==FALSE) (return(flextable_object))
+  if(include_note!=FALSE) (flextable_object=add_footer_lines(flextable_object, 
+                                                             values = paste0("Note."," ", include_note)) |> 
+                             fontsize(part = "footer", size = 11) |>  
+                             font(part = "footer", fontname = "Times"))
+  
+  return(flextable_object)
+  
+}
+```
 

@@ -269,7 +269,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>8.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
 <li class="chapter" data-level="8.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>8.4</b> Change font and font size</a></li>
 <li class="chapter" data-level="8.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>8.5</b> Grouped table</a></li>
-<li class="chapter" data-level="8.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>8.6</b> Complete Example</a></li>
+<li class="chapter" data-level="8.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#adjust-line-spacing"><i class="fa fa-check"></i><b>8.6</b> Adjust line spacing</a></li>
+<li class="chapter" data-level="8.7" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#set-global-options-for-all-flextables"><i class="fa fa-check"></i><b>8.7</b> Set global options for all flextables</a></li>
+<li class="chapter" data-level="8.8" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>8.8</b> Complete Example</a></li>
+<li class="chapter" data-level="8.9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#wraper-function-to-create-apa-style-tables"><i class="fa fa-check"></i><b>8.9</b> Wraper-function to create APA-style tables</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>9</b> Misc. Stuff</a>
 <ul>
@@ -427,7 +430,7 @@ To write in line, code, put one of those symbols on either side of the code, lik
 <h2><span class="header-section-number">11.3</span> Including graphics/inserting pictures</h2>
 <p>The default method doesn’t work for me for some reason, but you can still insert images using a combination of the <code>here</code> package and <code>knitr</code>.</p>
 <p>Use the <code>include_graphics()</code> command and specify both the file location and it’s name:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="intro-to-r-markdown.html#cb227-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>,<span class="st">&quot;snapchat.png&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="intro-to-r-markdown.html#cb232-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;pics&quot;</span>,<span class="st">&quot;snapchat.png&quot;</span>))</span></code></pre></div>
 <p><img src="pics/snapchat.png" width="540" /></p>
 <p><strong><em>NOTE</em></strong>. Use 300-600 DPI to get good looking pictures.</p>
 <p>The <a href="https://bookdown.org/yihui/bookdown/figures.html">bookdown book</a> notes that:</p>

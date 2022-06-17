@@ -269,7 +269,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#add-a-horizontal-border-aka-horizontal-spanner"><i class="fa fa-check"></i><b>8.3</b> Add a Horizontal border (AKA horizontal “spanner”)</a></li>
 <li class="chapter" data-level="8.4" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#change-font-and-font-size"><i class="fa fa-check"></i><b>8.4</b> Change font and font size</a></li>
 <li class="chapter" data-level="8.5" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#grouped-table"><i class="fa fa-check"></i><b>8.5</b> Grouped table</a></li>
-<li class="chapter" data-level="8.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>8.6</b> Complete Example</a></li>
+<li class="chapter" data-level="8.6" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#adjust-line-spacing"><i class="fa fa-check"></i><b>8.6</b> Adjust line spacing</a></li>
+<li class="chapter" data-level="8.7" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#set-global-options-for-all-flextables"><i class="fa fa-check"></i><b>8.7</b> Set global options for all flextables</a></li>
+<li class="chapter" data-level="8.8" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#complete-example"><i class="fa fa-check"></i><b>8.8</b> Complete Example</a></li>
+<li class="chapter" data-level="8.9" data-path="making-tables-with-flextable.html"><a href="making-tables-with-flextable.html#wraper-function-to-create-apa-style-tables"><i class="fa fa-check"></i><b>8.9</b> Wraper-function to create APA-style tables</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="misc.-stuff.html"><a href="misc.-stuff.html"><i class="fa fa-check"></i><b>9</b> Misc. Stuff</a>
 <ul>
@@ -394,15 +397,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD</span></span>
 <span id="cb115-2"><a href="working-with-strings.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(price_table<span class="sc">$</span>price, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;65,000&quot; &quot;40,000&quot;</code></pre>
+<p>You can remove numbers by typing <code>"[:digit:]"</code></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-strings.html#cb117-1" aria-hidden="true" tabindex="-1"></a>panss_sem_data<span class="sc">$</span>cgi_sev<span class="ot">=</span><span class="fu">str_remove</span>(panss_sem_data<span class="sc">$</span>cgi_sev, <span class="at">pattern =</span> <span class="st">&quot;[:digit:]&quot;</span>)</span></code></pre></div>
 </div>
 <div id="replace-one-pattern-in-a-string-with-another" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Replace one pattern in a string with another</h2>
-<p>Tidyverse command: <code>str_replace()</code>
+<p>Tidyverse command: <code>str_replace()</code> or <code>str_replace_all()</code>
 Base R command: <code>gsub()</code></p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-strings.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb117-2"><a href="working-with-strings.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(mtcars, <span class="at">replacement =</span> )</span>
-<span id="cb117-3"><a href="working-with-strings.html#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb117-4"><a href="working-with-strings.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tidyverse</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb118-2"><a href="working-with-strings.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(mtcars, <span class="at">replacement =</span> )</span>
+<span id="cb118-3"><a href="working-with-strings.html#cb118-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-4"><a href="working-with-strings.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tidyverse</span></span>
+<span id="cb118-5"><a href="working-with-strings.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(iris<span class="sc">$</span>Species, <span class="at">pattern=</span><span class="fu">c</span>(<span class="st">&quot;e&quot;</span>, <span class="st">&quot;a&quot;</span>), <span class="at">replacement=</span><span class="st">&quot;ZZZZ&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb118-6"><a href="working-with-strings.html#cb118-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
+<span id="cb118-7"><a href="working-with-strings.html#cb118-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-8"><a href="working-with-strings.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(iris<span class="sc">$</span>Species, <span class="at">pattern=</span><span class="fu">c</span>(<span class="st">&quot;e&quot;</span>, <span class="st">&quot;a&quot;</span>), <span class="at">replacement=</span><span class="st">&quot;ZZZZ&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb118-9"><a href="working-with-strings.html#cb118-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 </div>
 <div id="find-i.e.-filter-for-all-instances-of-a-string" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Find (i.e., filter for) all instances of a string</h2>
@@ -410,47 +420,47 @@ Base R command: <code>gsub()</code></p>
 <p>Tidyverse command: <code>str_detect()</code>
 Base R command: <code>grepl()</code></p>
 <p>Note both must be nested inside of <code>filter()</code></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a>cars_df<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
-<span id="cb118-2"><a href="working-with-strings.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="working-with-strings.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb118-4"><a href="working-with-strings.html#cb118-4" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Firebird&quot;</span>, car))</span>
-<span id="cb118-5"><a href="working-with-strings.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="working-with-strings.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb118-7"><a href="working-with-strings.html#cb118-7" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="working-with-strings.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cars_df<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
+<span id="cb119-2"><a href="working-with-strings.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="working-with-strings.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb119-4"><a href="working-with-strings.html#cb119-4" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Firebird&quot;</span>, car))</span>
+<span id="cb119-5"><a href="working-with-strings.html#cb119-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-6"><a href="working-with-strings.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb119-7"><a href="working-with-strings.html#cb119-7" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
 <p>You can also search for <strong>multiple strings simultaneously</strong> by including the “or” logical operator <em>inside</em> the quotes.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="working-with-strings.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Firebird|Fiat&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="working-with-strings.html#cb120-1" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Firebird|Fiat&quot;</span>))</span></code></pre></div>
 <p>You can also include the negation logical operator to filter for all instances <em>except</em> those with the specified string.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="working-with-strings.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb120-2"><a href="working-with-strings.html#cb120-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">grepl</span>(<span class="st">&quot;Pontiac&quot;</span>, car)))</span>
-<span id="cb120-3"><a href="working-with-strings.html#cb120-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-4"><a href="working-with-strings.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb120-5"><a href="working-with-strings.html#cb120-5" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Pontiac&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="working-with-strings.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb121-2"><a href="working-with-strings.html#cb121-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">grepl</span>(<span class="st">&quot;Pontiac&quot;</span>, car)))</span>
+<span id="cb121-3"><a href="working-with-strings.html#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-4"><a href="working-with-strings.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb121-5"><a href="working-with-strings.html#cb121-5" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Pontiac&quot;</span>)))</span></code></pre></div>
 </div>
 <div id="drop-all-rows-from-a-data-set-that-contain-a-certain-string" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Drop all rows from a data set that contain a certain string</h2>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="working-with-strings.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse method</span></span>
-<span id="cb121-2"><a href="working-with-strings.html#cb121-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> </span>
-<span id="cb121-3"><a href="working-with-strings.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Merc&quot;</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="co">#including negate=TRUE will negate all rows with the matched string</span></span>
-<span id="cb121-4"><a href="working-with-strings.html#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-5"><a href="working-with-strings.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb121-6"><a href="working-with-strings.html#cb121-6" aria-hidden="true" tabindex="-1"></a>cars_df[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;Merc&quot;</span>, cars_df<span class="sc">$</span>car),]</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="working-with-strings.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse method</span></span>
+<span id="cb122-2"><a href="working-with-strings.html#cb122-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> </span>
+<span id="cb122-3"><a href="working-with-strings.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Merc&quot;</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="co">#including negate=TRUE will negate all rows with the matched string</span></span>
+<span id="cb122-4"><a href="working-with-strings.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-5"><a href="working-with-strings.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb122-6"><a href="working-with-strings.html#cb122-6" aria-hidden="true" tabindex="-1"></a>cars_df[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;Merc&quot;</span>, cars_df<span class="sc">$</span>car),]</span></code></pre></div>
 </div>
 <div id="force-all-letters-to-lower-case" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Force all letters to lower case</h2>
 <p>Use <code>stringr::str_to_lower()</code></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="working-with-strings.html#cb122-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
-<span id="cb122-2"><a href="working-with-strings.html#cb122-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
-<span id="cb122-3"><a href="working-with-strings.html#cb122-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
-<span id="cb122-4"><a href="working-with-strings.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-5"><a href="working-with-strings.html#cb122-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="working-with-strings.html#cb123-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
+<span id="cb123-2"><a href="working-with-strings.html#cb123-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
+<span id="cb123-3"><a href="working-with-strings.html#cb123-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
+<span id="cb123-4"><a href="working-with-strings.html#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="working-with-strings.html#cb123-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   A     B    
 ##   &lt;chr&gt; &lt;chr&gt;
 ## 1 A     X    
 ## 2 A     X</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="working-with-strings.html#cb124-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
-<span id="cb124-2"><a href="working-with-strings.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb124-3"><a href="working-with-strings.html#cb124-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="working-with-strings.html#cb125-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
+<span id="cb125-2"><a href="working-with-strings.html#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="working-with-strings.html#cb125-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   A     B    
 ##   &lt;chr&gt; &lt;chr&gt;
