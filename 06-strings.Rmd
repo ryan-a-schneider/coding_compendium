@@ -16,10 +16,15 @@ gsub("\\$", "",price_table$price) # (pattern, replace with, object$column)
 str_remove(price_table$price, pattern = "\\$")
 ```
 
+You can remove numbers by typing `"[:digit:]"`
+```{r 6.1, eval=FALSE}
+panss_sem_data$cgi_sev=str_remove(panss_sem_data$cgi_sev, pattern = "[:digit:]")
+```
+
 
 ## Replace one pattern in a string with another
 
-Tidyverse command: `str_replace()`
+Tidyverse command: `str_replace()` or `str_replace_all()`
 Base R command: `gsub()`
 
 ```{r 6.2, eval=FALSE}
@@ -27,7 +32,11 @@ Base R command: `gsub()`
 gsub(mtcars, replacement = )
 
 #tidyverse
+str_replace_all(iris$Species, pattern=c("e", "a"), replacement="ZZZZ") |> 
+  head()
 
+str_replace(iris$Species, pattern=c("e", "a"), replacement="ZZZZ") |> 
+  head()
 
 ```
 
