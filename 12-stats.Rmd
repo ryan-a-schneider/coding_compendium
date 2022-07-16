@@ -1,45 +1,71 @@
-# Statistics and Psych-specific Stuff
-
+# Statistics- and Psych-specific Stuff
 
 ## Create or sample from a distribution
 
-*Creating a binomial distribution*
+If you want to generate a distribution of data to sample from, use the distribution functions that start with `r`. I will create a few different binomial distributions as examples.
 
-When you do this, you are setting the true population parameter; you are in control of the Data Generating Process and the true distribution
+Each distribution command has parameters you set to create the distribution. The binomial's has three:
 
-In a binomial distribution, the parameter is normally distributed, and can take any value from 0.0 to 1.0
-But the data that this process generates is not normal
-```{r chapter_12}
-rbinom(n= 1000, size= 1, prob =  0.5)
+-   `n`, the number of samples
 
-rnorm(n=2500,mean=500, sd=100)
+-   `size`, the number of *trials* per sample
+
+-   `prob`, the probability of a success on each individual trial
+
+Note the definition of the `size` variable in particular. And imagine we are simulating a bunch of jury trials....
+
+```{r chapter_12, eval=FALSE}
+
+#### Example 1 ####
+# 10 jury trials with 1 verdict each
+rbinom(n=10, size = 1, prob = .7)
+
+#### Example 2 ####
+# 10 jury trials with 2 verdicts per trial. Each participant has 2 outcomes. 
+rbinom(n=10, size = 2, prob = .7)
+
+
+#### Example 3 ####
+# 1 jury trial with 1 verdict 
+rbinom(n=1, size = 1, prob = .7)
+
+# or alternatively...
+purrr::rbernoulli(n=1, p=.7)
 ```
 
+The third example of `rbinom` is equivalent to creating a Bernoulli distribution, because a single binomial event *is* a Bernoulli event. One coin flip comes from a Bernoulli distribution....a series of 5 coin flips (i.e., trials) comes from a Binomial.
 
-## Calculating Interrater reliability 
+### Calculating Likelihood
+
+If you already have data (or some idea of what the parameters are for a distribution) and you want to find the likelihood, use the density functions that start with `d`.
+
+For likelihood of getting 6 wins out of 10 trials, and a 50% of winning on each trial, use the density function for a binomial distribution:
+
+```{r}
+dbinom(6, size=10, prob=0.5)
+```
+
+## Calculating Interrater reliability
 
 ***Cohen's Kappa*** is useful for IRR agreement on categorical variables...Use the `psych` package for this [see here](https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa); and read [this web page](https://www.statisticshowto.com/cohens-kappa-statistic/) for an overview of what Cohen's Kappa is if you need a recap/intro.
 
-For 3+ raters on a continuous variable, use ***Intraclass Correlation***. See [this page](https://www.rdocumentation.org/packages/psych/versions/2.2.3/topics/ICC] for a function to calculate this).
-
+For 3+ raters on a continuous variable, use ***Intraclass Correlation***. See [this page](https://www.rdocumentation.org/packages/psych/versions/2.2.3/topics/ICC%5D%20for%20a%20function%20to%20calculate%20this).
 
 ## Statistical tests and modeling with `easystats`
 
-https://easystats.github.io/easystats/
+<https://easystats.github.io/easystats/>
 
 ### Getting parameter estimates from model objects
 
 Scenario: You've run some statistical test (like the below regression), and want a summary of the model estimates.
+
 ```{r 12_model}
 rm(iris)
 
 model <- lm(Sepal.Length ~ Species, data = iris)
 ```
 
-You have a few options when it comes to getting a summary of a model and getting the coefficient estimates:
-- `summary()`
-- `broom::tidy()`
-- `paramters::model_paramters()`, or just `paramters::paramters()` for short
+You have a few options when it comes to getting a summary of a model and getting the coefficient estimates: - `summary()` - `broom::tidy()` - `paramters::model_paramters()`, or just `paramters::paramters()` for short
 
 *There's no reason to use `summary`, generally speaking, because it sucks. It doesn't give you tidy output that's easy to manipulate or extract, it's hard to read, and it can't be turned into a useful table. Skip it unless you need something specific from it's output (i.e., you're using lavaan)*
 
@@ -47,8 +73,8 @@ Options two and three are pretty similar and both give you most of the same info
 
 Note though that *neither command* will round the numbers if you store it as a table in the environment. So....
 
-1. If you want to manipulate ANY info in the table and/or extract info, use `tidy` or `parameters`. Both make tidy tibbles.
-2. If you're using the command to ***export*** said info in a neat, presentable MS Word table or HTML table, and you *do not care about extracting/modifying/manipulating anything in it*, then use `parameters` and pipe it to `format_table()`
+1.  If you want to manipulate ANY info in the table and/or extract info, use `tidy` or `parameters`. Both make tidy tibbles.
+2.  If you're using the command to ***export*** said info in a neat, presentable MS Word table or HTML table, and you *do not care about extracting/modifying/manipulating anything in it*, then use `parameters` and pipe it to `format_table()`
 
 Using `format_table()` rounds all columns to 2 decimal places, reformats p-values to APA format, and collapses CI's into a single column. Do note though that it makes every column into a Character column! So this is for exporting-use only.
 
@@ -70,7 +96,6 @@ knitr::include_graphics(here::here("pics", "format_table.png"))
 
 Much cleaner for making a table to export to Word.
 
-
 ### Getting model information and performance metrics
 
 Again, two options here. You can use either `glance` from the broom package, or `performance` from the package of the same name. These each produce slightly different output, though unlike above, I don't think one is necessarily better than the other. Use whichever one you prefer.
@@ -83,7 +108,6 @@ broom::glance(model)
 performance::performance(model)
 ```
 
-
 ### Effect size info with `effectsize`
 
 ```{r 12_effectsizedemo}
@@ -94,10 +118,10 @@ logreg_model_coeff=logreg_model_coeff |> dplyr::mutate(odds_ratio=exp(Coefficien
 effectsize::interpret_oddsratio(logreg_model_coeff$odds_ratio, rules = "chen2010")
 ```
 
-
 ### Quick, detailed, and automated reporting with `report`
-Check out https://easystats.github.io/report/
+
+Check out <https://easystats.github.io/report/>
 
 ### Running correlations with `correlation`
-https://easystats.github.io/correlation/
 
+<https://easystats.github.io/correlation/>

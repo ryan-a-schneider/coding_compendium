@@ -1,30 +1,24 @@
 # Making Tables with flextable
 
-NOTES:
-- **j** refers to the column
-- **i** refers to the row number
-
+NOTES: - **j** refers to the column - **i** refers to the row number
 
 ## APA Table Components
 
-
-
 ## Indent values
-https://davidgohel.github.io/flextable/reference/padding.html
-https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object
+
+<https://davidgohel.github.io/flextable/reference/padding.html> <https://stackoverflow.com/questions/64134725/indentation-in-the-first-column-of-a-flextable-object>
 
 Use the `padding` function:
+
 ```{r chapter_8, eval=FALSE}
 ft <- padding(ft, i=2, j=1, padding.left=20)
 ```
-
 
 ## Add a Horizontal border (AKA horizontal "spanner")
 
 ```{r 8.2, eval=FALSE}
 hline(., i=4, j=1:2, part = "body")
 ```
-
 
 ## Change font and font size
 
@@ -56,7 +50,6 @@ flextable::set_flextable_defaults(font.family = "Times New Roman", font.size = 1
 # create an fp_border object to set the borders for the flextables
 border.test=officer::fp_border(color = "black", style = "solid", width = 1)
 ```
-
 
 ## Complete Example
 
@@ -91,9 +84,11 @@ mtcars |>
   autofit(part = "all") |> 
   width(j=1, width = 0.4, unit = "in")
 ```
+
 ## Wraper-function to create APA-style tables
 
 This took way too many hours. You're welcome.
+
 ```{r}
 APA_table=function(flextable_object, table_title, include_note){
   
@@ -124,4 +119,3 @@ APA_table=function(flextable_object, table_title, include_note){
   
 }
 ```
-

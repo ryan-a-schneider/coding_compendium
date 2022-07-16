@@ -1,7 +1,6 @@
 # Introduction: R Basics
 
-For the love of God before you do anything, familiarize yourself with R Projects and the `here` package. These make R so much more user friendly and less of a nightmare. If you need an overview, go here: http://jenrichmond.rbind.io/post/how-to-use-the-here-package/
-
+For the love of God before you do anything, familiarize yourself with R Projects and the `here` package. These make R so much more user friendly and less of a nightmare. If you need an overview, go here: <http://jenrichmond.rbind.io/post/how-to-use-the-here-package/>
 
 Now lets get stuck in.
 
@@ -9,13 +8,11 @@ Now lets get stuck in.
 library(tidyverse)
 ```
 
-
 ## Importing Data
 
 ### Spreadsheets
 
-See https://nacnudus.github.io/spreadsheet-munging-strategies/index.html for more detailed and in-depth tutorials (if you need that kind of thing)
-
+See <https://nacnudus.github.io/spreadsheet-munging-strategies/index.html> for more detailed and in-depth tutorials (if you need that kind of thing)
 
 ## Exporting (i.e., saving) Data and Output
 
@@ -30,7 +27,6 @@ save(obj_name, file=here::here("subfolder", "save_file_name"), compress = FALSE)
 
 load(here::here("folder", "save_name.RData"))
 ```
-
 
 ### Export to Excel
 
@@ -70,7 +66,6 @@ saveWorkbook(wb, "filenamehere.xlsx", overwrite =TRUE)
 
 ```
 
-
 ### Access/edit specific cell number values
 
 ```{r}
@@ -89,7 +84,3 @@ rainbow[3, "Color"]= "yellow" # save this value to row 3 in column "Color"
 
 rainbow
 ```
-
-
-
-
