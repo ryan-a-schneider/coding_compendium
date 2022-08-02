@@ -1,101 +1,120 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # Intro to R Markdown
 
-R Markdown is a better and more organized way to write scripts. Seriously, once you learn it, there's no going back. New and don't know where to start? Read [The R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/conceptual-overview.html). Amazing overview with tons of neat tricks and how-to's. [This other source](https://rmd4sci.njtierney.com/using-rmarkdown.html#the-anatomy-of-an-rmarkdown-document) may also be of some help.
+R Markdown is a better and more organized way to write scripts.
+Seriously, once you learn it, there's no going back. New and don't know
+where to start? Read [The R Markdown
+Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/conceptual-overview.html).
+Amazing overview with tons of neat tricks and how-to's. [This other
+source](https://rmd4sci.njtierney.com/using-rmarkdown.html#the-anatomy-of-an-rmarkdown-document)
+may also be of some help.
 
-Below are some quick tips for common tasks; but be sure to read the Cookbook above.
+Below are some quick tips for common tasks; but be sure to read the
+Cookbook above.
 
 ## Important code chunk options
 
-- `cache`: TRUE or FALSE. Do you want to save the output of the chunk so it doesn't have to run next time? Creates a cached folder in the directory.
-- `eval`: Do you want to evaluate (i.e., run) the code in the chunk?
-- `echo`: Do you want to *print* the code after it's run?
-- `include`: Do you want to include code output in the final output document? Setting to `FALSE` means the code does not appear in the output document, but it is still run.
+-   `cache`: TRUE or FALSE. Do you want to save the output of the chunk
+    so it doesn't have to run next time? Creates a cached folder in the
+    directory.
+-   `eval`: Do you want to evaluate (i.e., run) the code in the chunk?
+-   `echo`: Do you want to *print* the code after it's run?
+-   `include`: Do you want to include code output in the final output
+    document? Setting to `FALSE` means the code does not appear in the
+    output document, but it is still run.
 
 ## Writing math equations and symbols
 
 ### Greek symbols
 
-A few notes first:
-Math notation is done with dollar signs and forward slashes...
+A few notes first: Math notation is done with dollar signs and forward
+slashes...
 
-For Greek letters, just type the name of the letter:
-`$\mu$` for $\mu$
-`$\sigma$` for $\sigma$
-`$\alpha$` for $\alpha$
-`$\pi$` for $\pi$
+For Greek letters, just type the name of the letter: `$\mu$` for $\mu$
+`$\sigma$` for $\sigma$ `$\alpha$` for $\alpha$ `$\pi$` for $\pi$
 `$\rho$` for $\rho$
 
 ### Math notation
 
-`$\pm$` for ±
-`$\ge$` for ≥
-`$\le$` for ≤
-`$\neq$` for ≠
+`$\pm$` for ± `$\ge$` for ≥ `$\le$` for ≤ `$\neq$` for ≠
 
 ### Statistics notation
 
 ### Writing in-line code
 
-Use the funny looking symbol on the tilde key that looks like this: `
-To write in line, code, put one of those symbols on either side of the code, like you would with quotation marks. Helps you write lines like:
+Use the funny looking symbol on the tilde key that looks like this: \`
+To write in line, code, put one of those symbols on either side of the
+code, like you would with quotation marks. Helps you write lines like:
 
 I love `dplyr`
 
-
 ## Including graphics/inserting pictures
 
-The default method doesn't work for me for some reason, but you can still insert images using a combination of the `here` package and `knitr`.
+The default method doesn't work for me for some reason, but you can
+still insert images using a combination of the `here` package and
+`knitr`.
 
-Use the `include_graphics()` command and specify both the file location and it's name:
+Use the `include_graphics()` command and specify both the file location
+and it's name:
+
 ```{r 11.2}
 knitr::include_graphics(here::here("pics","snapchat.png"))
 ```
 
 ***NOTE***. Use 300-600 DPI to get good looking pictures.
 
-The [bookdown book](https://bookdown.org/yihui/bookdown/figures.html) notes that:
+The [bookdown book](https://bookdown.org/yihui/bookdown/figures.html)
+notes that:
 
-  The syntax for controlling the image attributes is the same as when images are generated from R 
-  code. Chunk options `fig.cap`, `out.width`, and `fig.show` still have the same meanings. 
+The syntax for controlling the image attributes is the same as when
+images are generated from R code. Chunk options `fig.cap`, `out.width`,
+and `fig.show` still have the same meanings.
 
-and:
-  You can easily scale these images proportionally using the same ratio. This can be done via the 
-  `dpi` argument (dots per inch), which takes the value from the chunk option `dpi` by default If it is a 
-  numeric value and the chunk option `out.width` is not set, the output width of an image will be its 
-  actual width (in pixels) divided by dpi , and the unit will be inches. For example, for an image with 
-  the size 672 x 480, its output width will be 7 inches ( 7in ) when `dpi=96`. 
-  This feature requires the package png and/or jpeg to be installed. You can always override the automatic calculation of 
-  width in inches by providing a non-NULL value to the chunk option `out.width` , or use `include_graphics(dpi = NA)`
-
-
+and: You can easily scale these images proportionally using the same
+ratio. This can be done via the `dpi` argument (dots per inch), which
+takes the value from the chunk option `dpi` by default If it is a
+numeric value and the chunk option `out.width` is not set, the output
+width of an image will be its actual width (in pixels) divided by dpi ,
+and the unit will be inches. For example, for an image with the size 672
+x 480, its output width will be 7 inches ( 7in ) when `dpi=96`. This
+feature requires the package png and/or jpeg to be installed. You can
+always override the automatic calculation of width in inches by
+providing a non-NULL value to the chunk option `out.width` , or use
+`include_graphics(dpi = NA)`
 
 ## Footnotes
 
-To add a footnote, use the "^" symbol and put the note in brackets:
+To add a footnote, use the "\^" symbol and put the note in brackets:
 
-You can also write footnotes^[Kruschke, J. (2015). Goals, power, and sample size. In J. K. Kruschke (Ed.), Doing bayesian data analysis: A tutorial with r, jags, and stan (2nd ed., pp. 359-398). Academic Press.] like this.
+You can also write footnotes[^11-markdown-1] like this.
+
+[^11-markdown-1]: Kruschke, J. (2015). Goals, power, and sample size. In
+    J. K. Kruschke (Ed.), Doing bayesian data analysis: A tutorial with
+    r, jags, and stan (2nd ed., pp. 359-398). Academic Press.
 
 ## Change the color of your text
 
-<span style="color:blue">  YOUR TEXT HERE </span>
-
+[ YOUR TEXT HERE ]{style="color:blue"}
 
 ## Re-using code chunk options
-https://yihui.org/en/2021/05/knitr-reuse/
 
+<https://yihui.org/en/2021/05/knitr-reuse/>
 
 ## Making better tables
 
-https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/
-
+<https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/>
 
 ## Running in-line code
 
-To run code in the middle of a sentence, you create a mini code chunk *inside* the sentence. For example:
-> There are 2x2 apples in the basket
+To run code in the middle of a sentence, you create a mini code chunk
+*inside* the sentence. For example: \> There are 2x2 apples in the
+basket
 
 Could be typed as...
 
 There are `r 2*2` apples in the basket
-
-

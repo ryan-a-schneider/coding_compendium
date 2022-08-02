@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Working with Strings | Creating a simulated data set</title>
-  <meta name="description" content="Chapter 6 Working with Strings | Creating a simulated data set" />
+  <title>Chapter 12 Statistics- and Psych-specific Stuff | Creating a simulated data set</title>
+  <meta name="description" content="Chapter 12 Statistics- and Psych-specific Stuff | Creating a simulated data set" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Working with Strings | Creating a simulated data set" />
+  <meta property="og:title" content="Chapter 12 Statistics- and Psych-specific Stuff | Creating a simulated data set" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Working with Strings | Creating a simulated data set" />
+  <meta name="twitter:title" content="Chapter 12 Statistics- and Psych-specific Stuff | Creating a simulated data set" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="working-with-factors.html"/>
-<link rel="next" href="figures-and-graphs-with-the-ggplot-and-see-packages.html"/>
+<link rel="prev" href="intro-to-r-markdown.html"/>
+<link rel="next" href="advanced-coding-tips.html"/>
 <script src="libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -387,90 +387,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-strings" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Working with Strings<a href="working-with-strings.html#working-with-strings" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="remove-a-pattern-from-a-string" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Remove a pattern from a string<a href="working-with-strings.html#remove-a-pattern-from-a-string" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-strings.html#cb113-1" aria-hidden="true" tabindex="-1"></a>price_table<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>car, <span class="sc">~</span>price,</span>
-<span id="cb113-2"><a href="working-with-strings.html#cb113-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Corvette&quot;</span>, <span class="st">&quot;$65,000&quot;</span>,</span>
-<span id="cb113-3"><a href="working-with-strings.html#cb113-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;Mustang GT&quot;</span>, <span class="st">&quot;$40,000&quot;</span>)</span>
-<span id="cb113-4"><a href="working-with-strings.html#cb113-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-5"><a href="working-with-strings.html#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="co"># BASE R METHOD (sub by replacing something with nothing)</span></span>
-<span id="cb113-6"><a href="working-with-strings.html#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>, <span class="st">&quot;&quot;</span>,price_table<span class="sc">$</span>price) <span class="co"># (pattern, replace with, object$column)</span></span></code></pre></div>
-<pre><code>## [1] &quot;65,000&quot; &quot;40,000&quot;</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-strings.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># TIDYVERSE METHOD</span></span>
-<span id="cb115-2"><a href="working-with-strings.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(price_table<span class="sc">$</span>price, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;65,000&quot; &quot;40,000&quot;</code></pre>
-<p>You can remove numbers by typing <code>"[:digit:]"</code></p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-strings.html#cb117-1" aria-hidden="true" tabindex="-1"></a>panss_sem_data<span class="sc">$</span>cgi_sev<span class="ot">=</span><span class="fu">str_remove</span>(panss_sem_data<span class="sc">$</span>cgi_sev, <span class="at">pattern =</span> <span class="st">&quot;[:digit:]&quot;</span>)</span></code></pre></div>
+<div id="statistics--and-psych-specific-stuff" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Statistics- and Psych-specific Stuff<a href="statistics--and-psych-specific-stuff.html#statistics--and-psych-specific-stuff" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="create-or-sample-from-a-distribution" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Create or sample from a distribution<a href="statistics--and-psych-specific-stuff.html#create-or-sample-from-a-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you want to generate a distribution of data to sample from, use the distribution functions that start with <code>r</code>. I will create a few different binomial distributions as examples.</p>
+<p>Each distribution command has parameters you set to create the distribution. The binomial’s has three:</p>
+<ul>
+<li><p><code>n</code>, the number of samples</p></li>
+<li><p><code>size</code>, the number of <em>trials</em> per sample</p></li>
+<li><p><code>prob</code>, the probability of a success on each individual trial</p></li>
+</ul>
+<p>Note the definition of the <code>size</code> variable in particular. And imagine we are simulating a bunch of jury trials….</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="statistics--and-psych-specific-stuff.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Example 1 ####</span></span>
+<span id="cb235-2"><a href="statistics--and-psych-specific-stuff.html#cb235-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 jury trials with 1 verdict each</span></span>
+<span id="cb235-3"><a href="statistics--and-psych-specific-stuff.html#cb235-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> .<span class="dv">7</span>)</span>
+<span id="cb235-4"><a href="statistics--and-psych-specific-stuff.html#cb235-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-5"><a href="statistics--and-psych-specific-stuff.html#cb235-5" aria-hidden="true" tabindex="-1"></a><span class="do">#### Example 2 ####</span></span>
+<span id="cb235-6"><a href="statistics--and-psych-specific-stuff.html#cb235-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 10 jury trials with 2 verdicts per trial. Each participant has 2 outcomes. </span></span>
+<span id="cb235-7"><a href="statistics--and-psych-specific-stuff.html#cb235-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">prob =</span> .<span class="dv">7</span>)</span>
+<span id="cb235-8"><a href="statistics--and-psych-specific-stuff.html#cb235-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-9"><a href="statistics--and-psych-specific-stuff.html#cb235-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-10"><a href="statistics--and-psych-specific-stuff.html#cb235-10" aria-hidden="true" tabindex="-1"></a><span class="do">#### Example 3 ####</span></span>
+<span id="cb235-11"><a href="statistics--and-psych-specific-stuff.html#cb235-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 jury trial with 1 verdict </span></span>
+<span id="cb235-12"><a href="statistics--and-psych-specific-stuff.html#cb235-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> .<span class="dv">7</span>)</span>
+<span id="cb235-13"><a href="statistics--and-psych-specific-stuff.html#cb235-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-14"><a href="statistics--and-psych-specific-stuff.html#cb235-14" aria-hidden="true" tabindex="-1"></a><span class="co"># or alternatively...</span></span>
+<span id="cb235-15"><a href="statistics--and-psych-specific-stuff.html#cb235-15" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">rbernoulli</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">p=</span>.<span class="dv">7</span>)</span></code></pre></div>
+<p>The third example of <code>rbinom</code> is equivalent to creating a Bernoulli distribution, because a single binomial event <em>is</em> a Bernoulli event. One coin flip comes from a Bernoulli distribution….a series of 5 coin flips (i.e., trials) comes from a Binomial.</p>
+<div id="calculating-likelihood" class="section level3 hasAnchor" number="12.1.1">
+<h3><span class="header-section-number">12.1.1</span> Calculating Likelihood<a href="statistics--and-psych-specific-stuff.html#calculating-likelihood" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you already have data (or some idea of what the parameters are for a distribution) and you want to find the likelihood, use the density functions that start with <code>d</code>.</p>
+<p>For likelihood of getting 6 wins out of 10 trials, and a 50% of winning on each trial, use the density function for a binomial distribution:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="statistics--and-psych-specific-stuff.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2050781</code></pre>
 </div>
-<div id="replace-one-pattern-in-a-string-with-another" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Replace one pattern in a string with another<a href="working-with-strings.html#replace-one-pattern-in-a-string-with-another" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Tidyverse command: <code>str_replace()</code> or <code>str_replace_all()</code>
-Base R command: <code>gsub()</code></p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-strings.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb118-2"><a href="working-with-strings.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(mtcars, <span class="at">replacement =</span> )</span>
-<span id="cb118-3"><a href="working-with-strings.html#cb118-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-4"><a href="working-with-strings.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co">#tidyverse</span></span>
-<span id="cb118-5"><a href="working-with-strings.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace_all</span>(iris<span class="sc">$</span>Species, <span class="at">pattern=</span><span class="fu">c</span>(<span class="st">&quot;e&quot;</span>, <span class="st">&quot;a&quot;</span>), <span class="at">replacement=</span><span class="st">&quot;ZZZZ&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb118-6"><a href="working-with-strings.html#cb118-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span>
-<span id="cb118-7"><a href="working-with-strings.html#cb118-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-8"><a href="working-with-strings.html#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(iris<span class="sc">$</span>Species, <span class="at">pattern=</span><span class="fu">c</span>(<span class="st">&quot;e&quot;</span>, <span class="st">&quot;a&quot;</span>), <span class="at">replacement=</span><span class="st">&quot;ZZZZ&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb118-9"><a href="working-with-strings.html#cb118-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 </div>
-<div id="find-i.e.-filter-for-all-instances-of-a-string" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Find (i.e., filter for) all instances of a string<a href="working-with-strings.html#find-i.e.-filter-for-all-instances-of-a-string" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Useful for finding very specific things inside a column (e.g., one particular person’s name in a roster of names; everyone with a particular last name)</p>
-<p>Tidyverse command: <code>str_detect()</code>
-Base R command: <code>grepl()</code></p>
-<p>Note both must be nested inside of <code>filter()</code></p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="working-with-strings.html#cb119-1" aria-hidden="true" tabindex="-1"></a>cars_df<span class="ot">=</span><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;car&quot;</span>)</span>
-<span id="cb119-2"><a href="working-with-strings.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-3"><a href="working-with-strings.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb119-4"><a href="working-with-strings.html#cb119-4" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;Firebird&quot;</span>, car))</span>
-<span id="cb119-5"><a href="working-with-strings.html#cb119-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb119-6"><a href="working-with-strings.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb119-7"><a href="working-with-strings.html#cb119-7" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car,<span class="st">&quot;Firebird&quot;</span>))</span></code></pre></div>
-<p>You can also search for <strong>multiple strings simultaneously</strong> by including the “or” logical operator <em>inside</em> the quotes.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="working-with-strings.html#cb120-1" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Firebird|Fiat&quot;</span>))</span></code></pre></div>
-<p>You can also include the negation logical operator to filter for all instances <em>except</em> those with the specified string.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="working-with-strings.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb121-2"><a href="working-with-strings.html#cb121-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">grepl</span>(<span class="st">&quot;Pontiac&quot;</span>, car)))</span>
-<span id="cb121-3"><a href="working-with-strings.html#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-4"><a href="working-with-strings.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
-<span id="cb121-5"><a href="working-with-strings.html#cb121-5" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Pontiac&quot;</span>)))</span></code></pre></div>
+<div id="calculating-interrater-reliability" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Calculating Interrater reliability<a href="statistics--and-psych-specific-stuff.html#calculating-interrater-reliability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong><em>Cohen’s Kappa</em></strong> is useful for IRR agreement on categorical variables…Use the <code>psych</code> package for this <a href="https://www.rdocumentation.org/packages/psych/versions/2.1.6/topics/cohen.kappa">see here</a>; and read <a href="https://www.statisticshowto.com/cohens-kappa-statistic/">this web page</a> for an overview of what Cohen’s Kappa is if you need a recap/intro.</p>
+<p>For 3+ raters on a continuous variable, use <strong><em>Intraclass Correlation</em></strong>. See <a href="https://www.rdocumentation.org/packages/psych/versions/2.2.3/topics/ICC%5D%20for%20a%20function%20to%20calculate%20this">this page</a>.</p>
 </div>
-<div id="drop-all-rows-from-a-data-set-that-contain-a-certain-string" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Drop all rows from a data set that contain a certain string<a href="working-with-strings.html#drop-all-rows-from-a-data-set-that-contain-a-certain-string" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="working-with-strings.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidyverse method</span></span>
-<span id="cb122-2"><a href="working-with-strings.html#cb122-2" aria-hidden="true" tabindex="-1"></a>cars_df <span class="sc">|&gt;</span> </span>
-<span id="cb122-3"><a href="working-with-strings.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(car, <span class="st">&quot;Merc&quot;</span>, <span class="at">negate =</span> <span class="cn">TRUE</span>)) <span class="co">#including negate=TRUE will negate all rows with the matched string</span></span>
-<span id="cb122-4"><a href="working-with-strings.html#cb122-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-5"><a href="working-with-strings.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
-<span id="cb122-6"><a href="working-with-strings.html#cb122-6" aria-hidden="true" tabindex="-1"></a>cars_df[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;Merc&quot;</span>, cars_df<span class="sc">$</span>car),]</span></code></pre></div>
+<div id="statistical-tests-and-modeling-with-easystats" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Statistical tests and modeling with <code>easystats</code><a href="statistics--and-psych-specific-stuff.html#statistical-tests-and-modeling-with-easystats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://easystats.github.io/easystats/" class="uri">https://easystats.github.io/easystats/</a></p>
+<div id="getting-parameter-estimates-from-model-objects" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Getting parameter estimates from model objects<a href="statistics--and-psych-specific-stuff.html#getting-parameter-estimates-from-model-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Scenario: You’ve run some statistical test (like the below regression), and want a summary of the model estimates.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="statistics--and-psych-specific-stuff.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(iris)</span>
+<span id="cb238-2"><a href="statistics--and-psych-specific-stuff.html#cb238-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb238-3"><a href="statistics--and-psych-specific-stuff.html#cb238-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span></code></pre></div>
+<p>You have a few options when it comes to getting a summary of a model and getting the coefficient estimates: - <code>summary()</code> - <code>broom::tidy()</code> - <code>paramters::model_paramters()</code>, or just <code>paramters::paramters()</code> for short</p>
+<p><em>There’s no reason to use <code>summary</code>, generally speaking, because it sucks. It doesn’t give you tidy output that’s easy to manipulate or extract, it’s hard to read, and it can’t be turned into a useful table. Skip it unless you need something specific from it’s output (i.e., you’re using lavaan)</em></p>
+<p>Options two and three are pretty similar and both give you most of the same information, though <code>parameters()</code> prints neater to the console window. Generally I find <code>parameters</code> preferable.</p>
+<p>Note though that <em>neither command</em> will round the numbers if you store it as a table in the environment. So….</p>
+<ol style="list-style-type: decimal">
+<li>If you want to manipulate ANY info in the table and/or extract info, use <code>tidy</code> or <code>parameters</code>. Both make tidy tibbles.</li>
+<li>If you’re using the command to <strong><em>export</em></strong> said info in a neat, presentable MS Word table or HTML table, and you <em>do not care about extracting/modifying/manipulating anything in it</em>, then use <code>parameters</code> and pipe it to <code>format_table()</code></li>
+</ol>
+<p>Using <code>format_table()</code> rounds all columns to 2 decimal places, reformats p-values to APA format, and collapses CI’s into a single column. Do note though that it makes every column into a Character column! So this is for exporting-use only.</p>
+<p>Here’s a comparison of broom’s output (first) vs. parameter’s (second) when you save each in the environment. As you can see, both produce tidy tibbles</p>
+<p><img src="pics/tidy.png" width="230" /></p>
+<p><img src="pics/parameters.png" width="354" /></p>
+<p>And here’s what <code>parameters(model) |&gt; format_table()</code> does to the a parameters table:</p>
+<p><img src="pics/format_table.png" width="244" /></p>
+<p>Much cleaner for making a table to export to Word.</p>
 </div>
-<div id="force-all-letters-to-lower-case" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Force all letters to lower case<a href="working-with-strings.html#force-all-letters-to-lower-case" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Use <code>stringr::str_to_lower()</code></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="working-with-strings.html#cb123-1" aria-hidden="true" tabindex="-1"></a>blah<span class="ot">=</span><span class="fu">tribble</span>(<span class="sc">~</span>A, <span class="sc">~</span>B,</span>
-<span id="cb123-2"><a href="working-with-strings.html#cb123-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>,</span>
-<span id="cb123-3"><a href="working-with-strings.html#cb123-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">&quot;A&quot;</span>,<span class="st">&quot;X&quot;</span>)</span>
-<span id="cb123-4"><a href="working-with-strings.html#cb123-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-5"><a href="working-with-strings.html#cb123-5" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
-##   A     B    
-##   &lt;chr&gt; &lt;chr&gt;
-## 1 A     X    
-## 2 A     X</code></pre>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="working-with-strings.html#cb125-1" aria-hidden="true" tabindex="-1"></a>blah<span class="sc">$</span>A<span class="ot">=</span><span class="fu">str_to_lower</span>(blah<span class="sc">$</span>A)</span>
-<span id="cb125-2"><a href="working-with-strings.html#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-3"><a href="working-with-strings.html#cb125-3" aria-hidden="true" tabindex="-1"></a>blah</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
-##   A     B    
-##   &lt;chr&gt; &lt;chr&gt;
-## 1 a     X    
-## 2 a     X</code></pre>
+<div id="getting-model-information-and-performance-metrics" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Getting model information and performance metrics<a href="statistics--and-psych-specific-stuff.html#getting-model-information-and-performance-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Again, two options here. You can use either <code>glance</code> from the broom package, or <code>performance</code> from the package of the same name. These each produce slightly different output, though unlike above, I don’t think one is necessarily better than the other. Use whichever one you prefer.</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="statistics--and-psych-specific-stuff.html#cb239-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(model)</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 12
+##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC deviance df.residual  nobs
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;
+## 1     0.619         0.614 0.515      119. 1.67e-31     2  -112.  231.  243.     39.0         147   150</code></pre>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="statistics--and-psych-specific-stuff.html#cb241-1" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">performance</span>(model)</span></code></pre></div>
+<pre><code>## # Indices of model performance
+## 
+## AIC     |     BIC |    R2 | R2 (adj.) |  RMSE | Sigma
+## -----------------------------------------------------
+## 231.452 | 243.494 | 0.619 |     0.614 | 0.510 | 0.515</code></pre>
+</div>
+<div id="effect-size-info-with-effectsize" class="section level3 hasAnchor" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> Effect size info with <code>effectsize</code><a href="statistics--and-psych-specific-stuff.html#effect-size-info-with-effectsize" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="statistics--and-psych-specific-stuff.html#cb243-1" aria-hidden="true" tabindex="-1"></a>logreg_model<span class="ot">=</span><span class="fu">glm</span>(smoke <span class="sc">~</span> age <span class="sc">+</span> sex, <span class="at">data=</span> legaldmlab<span class="sc">::</span>survey, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb243-2"><a href="statistics--and-psych-specific-stuff.html#cb243-2" aria-hidden="true" tabindex="-1"></a>logreg_model_coeff<span class="ot">=</span>parameters<span class="sc">::</span><span class="fu">parameters</span>(logreg_model)</span>
+<span id="cb243-3"><a href="statistics--and-psych-specific-stuff.html#cb243-3" aria-hidden="true" tabindex="-1"></a>logreg_model_coeff<span class="ot">=</span>logreg_model_coeff <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">odds_ratio=</span><span class="fu">exp</span>(Coefficient))</span>
+<span id="cb243-4"><a href="statistics--and-psych-specific-stuff.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb243-5"><a href="statistics--and-psych-specific-stuff.html#cb243-5" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret_oddsratio</span>(logreg_model_coeff<span class="sc">$</span>odds_ratio, <span class="at">rules =</span> <span class="st">&quot;chen2010&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;small&quot;      &quot;very small&quot; &quot;very small&quot;
+## (Rules: chen2010)</code></pre>
+</div>
+<div id="quick-detailed-and-automated-reporting-with-report" class="section level3 hasAnchor" number="12.3.4">
+<h3><span class="header-section-number">12.3.4</span> Quick, detailed, and automated reporting with <code>report</code><a href="statistics--and-psych-specific-stuff.html#quick-detailed-and-automated-reporting-with-report" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Check out <a href="https://easystats.github.io/report/" class="uri">https://easystats.github.io/report/</a></p>
+</div>
+<div id="running-correlations-with-correlation" class="section level3 hasAnchor" number="12.3.5">
+<h3><span class="header-section-number">12.3.5</span> Running correlations with <code>correlation</code><a href="statistics--and-psych-specific-stuff.html#running-correlations-with-correlation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://easystats.github.io/correlation/" class="uri">https://easystats.github.io/correlation/</a></p>
 
+</div>
 </div>
 </div>
             </section>
@@ -478,8 +494,8 @@ Base R command: <code>grepl()</code></p>
           </div>
         </div>
       </div>
-<a href="working-with-factors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="figures-and-graphs-with-the-ggplot-and-see-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intro-to-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advanced-coding-tips.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -510,7 +526,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ryan-a-schneider/coding_compendium/edit/master/06-strings.Rmd",
+"link": "https://github.com/ryan-a-schneider/coding_compendium/edit/master/12-stats.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -518,7 +534,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/ryan-a-schneider/coding_compendium/blob/master/06-strings.Rmd",
+"link": "https://github.com/ryan-a-schneider/coding_compendium/blob/master/12-stats.Rmd",
 "text": null
 },
 "download": null,

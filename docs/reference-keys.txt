@@ -130,8 +130,9 @@ change-the-color-of-your-text
 re-using-code-chunk-options
 making-better-tables
 running-in-line-code
-statistics-and-psych-specific-stuff
+statistics--and-psych-specific-stuff
 create-or-sample-from-a-distribution
+calculating-likelihood
 calculating-interrater-reliability
 statistical-tests-and-modeling-with-easystats
 getting-parameter-estimates-from-model-objects

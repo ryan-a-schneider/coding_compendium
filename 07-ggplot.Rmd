@@ -1,6 +1,12 @@
 # Figures and Graphs with the ggplot and see packages
 
-There are three parts to a ggplot2 call: 1. data 2. aesthetic mapping 3. Layer
+There are three parts to a ggplot2 call:
+
+1.  data
+
+2.  aesthetic mapping
+
+3.  Layer
 
 There is no piping involved in ggplot. You simply invoke ggplot, and tell it what they dataset is. Then you specify the aesthetics, and then the mapping. Lastly, include other optional stuff (e.g. expanded y-axis scale; titles and legends; etc.)
 
@@ -31,7 +37,6 @@ Then if you have other stuff you want to add on top of this, like axis labels, a
 | Histogram     | `geom_histogram()` |
 | Density curve | `geom_density()`   |
 
-
 Note that bar and column graphs look identical at first glance, but they serve two different purposes.
 
 *Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
@@ -53,8 +58,6 @@ col_plot=ggplot(diamonds, aes(x=cut, y=price)) +
 see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
 ```
 
-
-
 ## Specific Commands for Specific Types of Analysis
 
 ### lavaan stuff
@@ -62,6 +65,7 @@ see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
 #### Plotting an SEM or CFA model
 
 First lets set up a model to use.
+
 ```{r 7_lavaan}
 library(lavaan)
 
@@ -73,24 +77,23 @@ fit1 <- cfa(HS.model, data=HolzingerSwineford1939)
 ```
 
 Two options for graphing it. Option 1 is `graph_sem()` from the tidySEM package.
+
 ```{r 7_semplot, eval=FALSE}
 tidySEM::graph_sem(fit1)
 ```
 
 Option 2 is from the easystats suite
+
 ```{r 7_paramplot}
 
 plot(parameters::parameters(fit1))
 ```
-
-
 
 ### Bayes stuff
 
 Quick highlights here of my favorite functions from this package. See (ha) the full package overview at [this link](https://easystats.github.io/see/)
 
 You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
-
 
 #### Probability of Direction (*Pd*) figure
 
@@ -119,7 +122,6 @@ plot(bayestestR::pd(fit1))+
   theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
 ```
 
-
 #### ROPE figure
 
 ```{r 7_ROPE_graph, eval=FALSE}
@@ -128,10 +130,9 @@ plot(fit1, rope_color = "grey70")+
 # scale_fill_manual(values = c("gray75","red")
 ```
 
+ROPE tests are plots of distributions, and therefore use `scale_fill_xyz_d` commands. (the 'd' stands for 'discrete'). You can use any scale theme color set from any package, as long as it ends in \_d
 
-ROPE tests are plots of distributions, and therefore use scale_fill_xyz_d commands. (the 'd' stands for 'discrete'). You can use any scale theme color set from any package, as long as it ends in _d
-
-values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website
+**values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website**
 
 #### Bayes factor models comparison figure
 
@@ -140,13 +141,12 @@ plot(bayesfactor_models(Thesis_Model,discount_model))+
   scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
 ```
 
-
-
 ### Histograms and density curves
 
 Since I use these so often I figure they deserve their own special section.
 
 Basic histograms can be built with the following code:
+
 ```{r 7.3_histogram}
 ggplot(data = mtcars, aes(x=cyl)) + 
   geom_histogram(binwidth = .5, colour="Black", fill="green") + # histogram
@@ -154,20 +154,19 @@ ggplot(data = mtcars, aes(x=cyl)) +
 ```
 
 and your basic density curve with the following:
+
 ```{r 7.4}
 ggplot(diamonds, aes(x=price)) + 
 geom_density(alpha=.3)+ # density plot. Alpha sets the transparency level of the fill.
   theme_classic()
 ```
 
-
 You can also use the following code from `bayestestR` to build a really quick and nice density curve
+
 ```{r 7.5}
 plot(bayestestR::point_estimate(diamonds, centrality=c("median","mean")))+
   labs(title="Mean and Median")
 ```
-
-
 
 ## Highlight specific points
 
@@ -194,7 +193,6 @@ ggplot(diamonds_abr, aes(x= cut, y= price, colour=price))+
 
 ```
 
-
 ## Add labels to data points
 
 ```{r 7.7, warning=FALSE, message=FALSE}
@@ -209,8 +207,6 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 #geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
 ```
 
-
-
 ## Plotting multiple graphs at once
 
 `see::plots()` is good for this.
@@ -218,7 +214,6 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 ```{r 7.8}
 print("temp")
 ```
-
 
 ## Change the colors (bars; columns; dots; etc.)
 
@@ -241,15 +236,14 @@ ggplot(mtcars, aes(x= mpg, y=hp, color=cyl))+
   geom_point()
 ```
 
-
 ### Fine-tuning colors
 
 You can change the spectrum of colors to specific colors if you want. Useful for example, when making graphs for APLS presentations; you can change the colors to be Montclair State University themed.
 
 When changing the color scale of graphs, note that `scale_fill` commands are used for representing *nominal data*, while `scale_color` commands are for representing *continuous data*. As such, you use `scale_fill` to *fill in* area on a graph that shows a whole category or distinct things; and `scale_color` to use *gradients of color* to show changes in continuous data.
 
-- For figures that have solid area (e.g., density; box; bar; violin plots; etc.), use `scale_fill`
-- For figures that have continuous changes (e.g., line and scatter plots), use `scale_color`
+-   For figures that have solid area (e.g., density; box; bar; violin plots; etc.), use `scale_fill`
+-   For figures that have continuous changes (e.g., line and scatter plots), use `scale_color`
 
 ```{r 7.11, warning=FALSE, message=FALSE}
 # Set colors manually
@@ -281,8 +275,6 @@ ggplot(mtcars, aes(x = mpg, y = disp, colour = hp))+
   scale_colour_got(option = "Lannister")
 ```
 
-
-
 "Fill" graphs also come with an extra option: Setting the outline color. You can change the outline of the bar/column/etc. by specifying the color inside `geom_x()`
 
 ```{r 7.12}
@@ -299,16 +291,13 @@ ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
 
 See [this link](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually) for setting color gradients for continuous variables, or using other custom color palattes like the `gameofthrones` package.
 
-Check out the [see package](https://easystats.github.io/see/articles/seecolorscales.html#overview-of-palette-colors-1) for some good color scales; the commands for which are [here](https://easystats.github.io/see/reference/index.html#section-geoms). 
+Check out the [see package](https://easystats.github.io/see/articles/seecolorscales.html#overview-of-palette-colors-1) for some good color scales; the commands for which are [here](https://easystats.github.io/see/reference/index.html#section-geoms).
 
 Incidentally, see is great not only for regular ggplot graphs, but also Bayesian stats graphs [link](https://easystats.github.io/see/articles/bayestestR.html#introduction-1); effect size graphs [link](https://easystats.github.io/see/articles/effectsize.html); correlation graphs [link](https://easystats.github.io/see/articles/correlation.html); and more.
 
-
 ## Other aesthetic mappings
 
-`shape()` controls the shapes on the graph
-`alpha()` controls transparency
-`size()` controls size
+`shape()` controls the shapes on the graph `alpha()` controls transparency `size()` controls size
 
 Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
 
@@ -329,8 +318,6 @@ ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
   geom_point()
 ```
 
-
-
 ## Adding and Customizing Text
 
 ### Add a title, axis labels, and captions
@@ -345,7 +332,6 @@ ggplot(mtcars, aes(x=cyl))+
        caption="Note. Younger= ages 11-29; Older= ages 30-86.")
 ```
 
-
 ### Center graph title
 
 Add the line `theme(plot.title = element_text(hjust = 0.5))`
@@ -359,7 +345,6 @@ ggplot(mtcars, aes(x=cyl))+
        caption="Note. Younger= ages 11-29; Older= ages 30-86.")+
   theme(plot.title = element_text(hjust = 0.5))
 ```
-
 
 ### Use different fonts
 
@@ -403,19 +388,13 @@ ggplot(mtcars, aes(x=cyl))+
     theme(panel.grid = element_blank())
 ```
 
-
-
-
 ## Faceting
 
-This is dividing one plot into subplots, in order to communicate relationships better.
-Again, this is just a single extra command, this time at the end of the code: facet_wrap(~columnhead)
-The tilde sign in R means "by", as in "divide (something) by this"
+This is dividing one plot into subplots, in order to communicate relationships better. Again, this is just a single extra command, this time at the end of the code: facet_wrap(\~columnhead) The tilde sign in R means "by", as in "divide (something) by this"
 
 ```{r 7.21, eval=FALSE}
 print("temp")
 ```
-
 
 This line produces a graph of population and life expectency, breaking it down to make a separate graph per each continent
 
@@ -425,7 +404,7 @@ Sometimes when your data is really squished together on a graph it is hard to re
 
 For example, by multiplying all your points by 10x
 
-To create a log transformation of the same scatter plot above, add one extra bit: scale_x_log10()
+To create a log transformation of the same scatter plot above, add one extra bit: scale_x\_log10()
 
 ```{r 7.22, eval=FALSE}
 print("temp")
@@ -441,7 +420,6 @@ Add `coord_cartesian(xlim = c(lower,upper))`
 print("temp")
 ```
 
-
 ## Add a regression line
 
 Add the line `geom_smooth(method = "lm", formula = y ~ x)`
@@ -455,21 +433,11 @@ ggplot(mtcars, aes(x= mpg, y=hp, color=mpg))+
 ## Save a graph or figure
 
 Use the `ggsave` command
+
 ```{r eval=FALSE}
 
-ggsave(
-  "panss_total_scores.png",
-  plot = scatter_plot,
-  device = "png",
-  path = here::here("Figures and Tables"),
-  scale = 1,
-  width = NA,
-  height = NA,
-  units = c("in", "cm", "mm", "px"),
-  dpi = 300,
-  limitsize = TRUE,
-  bg = NULL,
-)
+ggsave(plot=better_linearReg_prior, 
+       filename = "example_betterLinear_prior.png",
+       path = here::here("textbook pics"),
+       dpi = 300, units = "px", width = 750, height = 600, device = "png")
 ```
-
-
