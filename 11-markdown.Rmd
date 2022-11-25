@@ -35,13 +35,37 @@ Cookbook above.
 A few notes first: Math notation is done with dollar signs and forward
 slashes...
 
-For Greek letters, just type the name of the letter: `$\mu$` for $\mu$
-`$\sigma$` for $\sigma$ `$\alpha$` for $\alpha$ `$\pi$` for $\pi$
-`$\rho$` for $\rho$
+For Greek letters, just type the name of the letter:
+
+-   `$\mu$` for $\mu$
+
+-   `$\sigma$` for $\sigma$
+
+-   `$\alpha$` for $\alpha$
+
+-   `$\pi$` for $\pi$
+
+-   `$\rho$` for $\rho$
+
+-   etc.
 
 ### Math notation
 
-`$\pm$` for ± `$\ge$` for ≥ `$\le$` for ≤ `$\neq$` for ≠
+-   `$\pm$` for ±
+
+-   `$\ge$` for ≥
+
+-   `$\le$` for ≤
+
+-   `$\neq$` for ≠
+
+-   `${\sim}$` for ${\sim}$
+
+-   `$\overline{X}$` for $\overline{X}$
+
+-   `$\frac{X} {Y}` for $\frac{X} {Y}$
+
+-   `$X_i$` for $X_i$
 
 ### Statistics notation
 
@@ -99,7 +123,7 @@ You can also write footnotes[^11-markdown-1] like this.
 
 ## Change the color of your text
 
-[ YOUR TEXT HERE ]{style="color:blue"}
+[YOUR TEXT HERE]{style="color:blue"}
 
 ## Re-using code chunk options
 
