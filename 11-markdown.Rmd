@@ -142,3 +142,9 @@ basket
 Could be typed as...
 
 There are `r 2*2` apples in the basket
+
+## Creating tab-sets
+
+In the *section header*, put {.tabset}
+
+### Example {.tabset}

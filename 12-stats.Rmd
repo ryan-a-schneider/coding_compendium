@@ -1,5 +1,16 @@
 # Statistics- and Psych-specific Stuff
 
+## Standardize a variable
+
+```{r eval=FALSE}
+
+test=read.csv("C:/Users/rschn/OneDrive/R Sandbox/Data Repository/Kruschke data/HtWtData110.csv")
+head(test)
+
+test |> mutate(height_z = (height - mean(height)) / sd(height),
+               height_RE=standardize(height)) |> head()
+```
+
 ## Create or sample from a distribution
 
 If you want to generate a distribution of data to sample from, use the distribution functions that start with `r`. I will create a few different binomial distributions as examples.
