@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-11-25" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -393,36 +393,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.1</span> Grammar and Syntax<a href="advanced-coding-tips.html#grammar-and-syntax" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="regex-expressions-and-symbols" class="section level3 hasAnchor" number="13.1.1">
 <h3><span class="header-section-number">13.1.1</span> Regex expressions and symbols<a href="advanced-coding-tips.html#regex-expressions-and-symbols" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="advanced-coding-tips.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;$&quot;</span>) <span class="co"># doesn&#39;t remove the $ sign</span></span>
-<span id="cb245-2"><a href="advanced-coding-tips.html#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>) <span class="co"># works</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="advanced-coding-tips.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;$&quot;</span>) <span class="co"># doesn&#39;t remove the $ sign</span></span>
+<span id="cb246-2"><a href="advanced-coding-tips.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>) <span class="co"># works</span></span></code></pre></div>
 </div>
 <div id="the-colon-equals-operator" class="section level3 hasAnchor" number="13.1.2">
 <h3><span class="header-section-number">13.1.2</span> The colon-equals (<code>:=</code>) operator<a href="advanced-coding-tips.html#the-colon-equals-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes when making a function you need to use the colon-equals operator, rather than just the normal &lt;- or = assignment operators</p>
 <p>Specifically, when you have multiple named arguments in your function…Read my question and someone’s answer on this blogpost: <a href="https://community.rstudio.com/t/help-creating-simple-function/109011/2" class="uri">https://community.rstudio.com/t/help-creating-simple-function/109011/2</a></p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="advanced-coding-tips.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(df, col, newCol_name){</span>
-<span id="cb246-2"><a href="advanced-coding-tips.html#cb246-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb246-3"><a href="advanced-coding-tips.html#cb246-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># drop all NA&#39;s so the function can work properly</span></span>
-<span id="cb246-4"><a href="advanced-coding-tips.html#cb246-4" aria-hidden="true" tabindex="-1"></a>  df_NAdropped<span class="ot">=</span>df <span class="sc">|&gt;</span> <span class="fu">drop_na</span>({{col}})</span>
-<span id="cb246-5"><a href="advanced-coding-tips.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb246-6"><a href="advanced-coding-tips.html#cb246-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># apply the function, saving it in a small tibble with only the outlier column and a key to join by </span></span>
-<span id="cb246-7"><a href="advanced-coding-tips.html#cb246-7" aria-hidden="true" tabindex="-1"></a>  outliers_key<span class="ot">=</span>df_NAdropped <span class="sc">|&gt;</span> </span>
-<span id="cb246-8"><a href="advanced-coding-tips.html#cb246-8" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">outliers=</span>dplyr<span class="sc">::</span><span class="fu">if_else</span>(<span class="fu">round</span>(<span class="fu">abs</span>({{col}}<span class="sc">-</span><span class="fu">median</span>({{col}}))<span class="sc">/</span>(<span class="fl">1.483</span><span class="sc">*</span><span class="fu">mad</span>({{col}}, <span class="at">constant =</span> <span class="dv">1</span>)),<span class="dv">2</span>)<span class="sc">&gt;</span><span class="fl">2.24</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb246-9"><a href="advanced-coding-tips.html#cb246-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(subject_id, outliers)</span>
-<span id="cb246-10"><a href="advanced-coding-tips.html#cb246-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb246-11"><a href="advanced-coding-tips.html#cb246-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># join back together</span></span>
-<span id="cb246-12"><a href="advanced-coding-tips.html#cb246-12" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span>df <span class="sc">|&gt;</span> <span class="fu">left_join</span>(outliers_key, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;subject_id&quot;</span>)) </span>
-<span id="cb246-13"><a href="advanced-coding-tips.html#cb246-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb246-14"><a href="advanced-coding-tips.html#cb246-14" aria-hidden="true" tabindex="-1"></a>  num.outliers<span class="ot">=</span>df <span class="sc">|&gt;</span> </span>
-<span id="cb246-15"><a href="advanced-coding-tips.html#cb246-15" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(outliers<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb246-16"><a href="advanced-coding-tips.html#cb246-16" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">count</span>()</span>
-<span id="cb246-17"><a href="advanced-coding-tips.html#cb246-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb246-18"><a href="advanced-coding-tips.html#cb246-18" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>outliers<span class="ot">=</span><span class="fu">replace_na</span>(df<span class="sc">$</span>outliers, <span class="dv">999</span>)</span>
-<span id="cb246-19"><a href="advanced-coding-tips.html#cb246-19" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span>df <span class="sc">|&gt;</span> <span class="fu">rename</span>({{newCol_name}}<span class="sc">:</span><span class="er">=</span><span class="st">&quot;outliers&quot;</span>)</span>
-<span id="cb246-20"><a href="advanced-coding-tips.html#cb246-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb246-21"><a href="advanced-coding-tips.html#cb246-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="fu">paste0</span>(num.outliers, <span class="st">&quot; outlier(s) detected&quot;</span>))</span>
-<span id="cb246-22"><a href="advanced-coding-tips.html#cb246-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
-<span id="cb246-23"><a href="advanced-coding-tips.html#cb246-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="advanced-coding-tips.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(df, col, newCol_name){</span>
+<span id="cb247-2"><a href="advanced-coding-tips.html#cb247-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb247-3"><a href="advanced-coding-tips.html#cb247-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># drop all NA&#39;s so the function can work properly</span></span>
+<span id="cb247-4"><a href="advanced-coding-tips.html#cb247-4" aria-hidden="true" tabindex="-1"></a>  df_NAdropped<span class="ot">=</span>df <span class="sc">|&gt;</span> <span class="fu">drop_na</span>({{col}})</span>
+<span id="cb247-5"><a href="advanced-coding-tips.html#cb247-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb247-6"><a href="advanced-coding-tips.html#cb247-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># apply the function, saving it in a small tibble with only the outlier column and a key to join by </span></span>
+<span id="cb247-7"><a href="advanced-coding-tips.html#cb247-7" aria-hidden="true" tabindex="-1"></a>  outliers_key<span class="ot">=</span>df_NAdropped <span class="sc">|&gt;</span> </span>
+<span id="cb247-8"><a href="advanced-coding-tips.html#cb247-8" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">outliers=</span>dplyr<span class="sc">::</span><span class="fu">if_else</span>(<span class="fu">round</span>(<span class="fu">abs</span>({{col}}<span class="sc">-</span><span class="fu">median</span>({{col}}))<span class="sc">/</span>(<span class="fl">1.483</span><span class="sc">*</span><span class="fu">mad</span>({{col}}, <span class="at">constant =</span> <span class="dv">1</span>)),<span class="dv">2</span>)<span class="sc">&gt;</span><span class="fl">2.24</span>,<span class="dv">1</span>,<span class="dv">0</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb247-9"><a href="advanced-coding-tips.html#cb247-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(subject_id, outliers)</span>
+<span id="cb247-10"><a href="advanced-coding-tips.html#cb247-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb247-11"><a href="advanced-coding-tips.html#cb247-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># join back together</span></span>
+<span id="cb247-12"><a href="advanced-coding-tips.html#cb247-12" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span>df <span class="sc">|&gt;</span> <span class="fu">left_join</span>(outliers_key, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;subject_id&quot;</span>)) </span>
+<span id="cb247-13"><a href="advanced-coding-tips.html#cb247-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb247-14"><a href="advanced-coding-tips.html#cb247-14" aria-hidden="true" tabindex="-1"></a>  num.outliers<span class="ot">=</span>df <span class="sc">|&gt;</span> </span>
+<span id="cb247-15"><a href="advanced-coding-tips.html#cb247-15" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(outliers<span class="sc">==</span><span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb247-16"><a href="advanced-coding-tips.html#cb247-16" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">count</span>()</span>
+<span id="cb247-17"><a href="advanced-coding-tips.html#cb247-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb247-18"><a href="advanced-coding-tips.html#cb247-18" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>outliers<span class="ot">=</span><span class="fu">replace_na</span>(df<span class="sc">$</span>outliers, <span class="dv">999</span>)</span>
+<span id="cb247-19"><a href="advanced-coding-tips.html#cb247-19" aria-hidden="true" tabindex="-1"></a>  df<span class="ot">=</span>df <span class="sc">|&gt;</span> <span class="fu">rename</span>({{newCol_name}}<span class="sc">:</span><span class="er">=</span><span class="st">&quot;outliers&quot;</span>)</span>
+<span id="cb247-20"><a href="advanced-coding-tips.html#cb247-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb247-21"><a href="advanced-coding-tips.html#cb247-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="fu">paste0</span>(num.outliers, <span class="st">&quot; outlier(s) detected&quot;</span>))</span>
+<span id="cb247-22"><a href="advanced-coding-tips.html#cb247-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb247-23"><a href="advanced-coding-tips.html#cb247-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="user-supplied-expressions-or-named-columns-in-functions" class="section level3 hasAnchor" number="13.1.3">
 <h3><span class="header-section-number">13.1.3</span> User-supplied expressions or named columns in functions<a href="advanced-coding-tips.html#user-supplied-expressions-or-named-columns-in-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>

@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-11-25" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -415,11 +415,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb235-14"><a href="statistics--and-psych-specific-stuff.html#cb235-14" aria-hidden="true" tabindex="-1"></a><span class="co"># or alternatively...</span></span>
 <span id="cb235-15"><a href="statistics--and-psych-specific-stuff.html#cb235-15" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">rbernoulli</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">p=</span>.<span class="dv">7</span>)</span></code></pre></div>
 <p>The third example of <code>rbinom</code> is equivalent to creating a Bernoulli distribution, because a single binomial event <em>is</em> a Bernoulli event. One coin flip comes from a Bernoulli distribution….a series of 5 coin flips (i.e., trials) comes from a Binomial.</p>
+<p>Here’s an example where I generate 100 fake participants, and then for <em>each participant,</em> simulate a single Bernoulli event (a win or a loss at trial).</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="statistics--and-psych-specific-stuff.html#cb236-1" aria-hidden="true" tabindex="-1"></a>test<span class="ot">=</span><span class="fu">tibble</span>(<span class="at">plea_rejectors=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>),</span>
+<span id="cb236-2"><a href="statistics--and-psych-specific-stuff.html#cb236-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">trial_outcomes=</span>purrr<span class="sc">::</span><span class="fu">rbernoulli</span>(<span class="at">n=</span><span class="fu">length</span>(plea_rejectors), <span class="at">p=</span>.<span class="dv">3</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb236-3"><a href="statistics--and-psych-specific-stuff.html#cb236-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trial_outcomes=</span><span class="fu">ifelse</span>(trial_outcomes<span class="sc">==</span><span class="st">&quot;FALSE&quot;</span>, <span class="st">&quot;Loss&quot;</span>, <span class="st">&quot;Win&quot;</span>))</span></code></pre></div>
 <div id="calculating-likelihood" class="section level3 hasAnchor" number="12.1.1">
 <h3><span class="header-section-number">12.1.1</span> Calculating Likelihood<a href="statistics--and-psych-specific-stuff.html#calculating-likelihood" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you already have data (or some idea of what the parameters are for a distribution) and you want to find the likelihood, use the density functions that start with <code>d</code>.</p>
 <p>For likelihood of getting 6 wins out of 10 trials, and a 50% of winning on each trial, use the density function for a binomial distribution:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="statistics--and-psych-specific-stuff.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="statistics--and-psych-specific-stuff.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">6</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2050781</code></pre>
 </div>
 </div>
@@ -434,9 +438,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-parameter-estimates-from-model-objects" class="section level3 hasAnchor" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Getting parameter estimates from model objects<a href="statistics--and-psych-specific-stuff.html#getting-parameter-estimates-from-model-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Scenario: You’ve run some statistical test (like the below regression), and want a summary of the model estimates.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="statistics--and-psych-specific-stuff.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(iris)</span>
-<span id="cb238-2"><a href="statistics--and-psych-specific-stuff.html#cb238-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb238-3"><a href="statistics--and-psych-specific-stuff.html#cb238-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="statistics--and-psych-specific-stuff.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(iris)</span>
+<span id="cb239-2"><a href="statistics--and-psych-specific-stuff.html#cb239-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb239-3"><a href="statistics--and-psych-specific-stuff.html#cb239-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span></code></pre></div>
 <p>You have a few options when it comes to getting a summary of a model and getting the coefficient estimates: - <code>summary()</code> - <code>broom::tidy()</code> - <code>paramters::model_paramters()</code>, or just <code>paramters::paramters()</code> for short</p>
 <p><em>There’s no reason to use <code>summary</code>, generally speaking, because it sucks. It doesn’t give you tidy output that’s easy to manipulate or extract, it’s hard to read, and it can’t be turned into a useful table. Skip it unless you need something specific from it’s output (i.e., you’re using lavaan)</em></p>
 <p>Options two and three are pretty similar and both give you most of the same information, though <code>parameters()</code> prints neater to the console window. Generally I find <code>parameters</code> preferable.</p>
@@ -456,12 +460,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-model-information-and-performance-metrics" class="section level3 hasAnchor" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> Getting model information and performance metrics<a href="statistics--and-psych-specific-stuff.html#getting-model-information-and-performance-metrics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Again, two options here. You can use either <code>glance</code> from the broom package, or <code>performance</code> from the package of the same name. These each produce slightly different output, though unlike above, I don’t think one is necessarily better than the other. Use whichever one you prefer.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="statistics--and-psych-specific-stuff.html#cb239-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="statistics--and-psych-specific-stuff.html#cb240-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(model)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 12
 ##   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC deviance df.residual  nobs
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;
 ## 1     0.619         0.614 0.515      119. 1.67e-31     2  -112.  231.  243.     39.0         147   150</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="statistics--and-psych-specific-stuff.html#cb241-1" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">performance</span>(model)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="statistics--and-psych-specific-stuff.html#cb242-1" aria-hidden="true" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">performance</span>(model)</span></code></pre></div>
 <pre><code>## # Indices of model performance
 ## 
 ## AIC     |     BIC |    R2 | R2 (adj.) |  RMSE | Sigma
@@ -470,11 +474,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="effect-size-info-with-effectsize" class="section level3 hasAnchor" number="12.3.3">
 <h3><span class="header-section-number">12.3.3</span> Effect size info with <code>effectsize</code><a href="statistics--and-psych-specific-stuff.html#effect-size-info-with-effectsize" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="statistics--and-psych-specific-stuff.html#cb243-1" aria-hidden="true" tabindex="-1"></a>logreg_model<span class="ot">=</span><span class="fu">glm</span>(smoke <span class="sc">~</span> age <span class="sc">+</span> sex, <span class="at">data=</span> legaldmlab<span class="sc">::</span>survey, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb243-2"><a href="statistics--and-psych-specific-stuff.html#cb243-2" aria-hidden="true" tabindex="-1"></a>logreg_model_coeff<span class="ot">=</span>parameters<span class="sc">::</span><span class="fu">parameters</span>(logreg_model)</span>
-<span id="cb243-3"><a href="statistics--and-psych-specific-stuff.html#cb243-3" aria-hidden="true" tabindex="-1"></a>logreg_model_coeff<span class="ot">=</span>logreg_model_coeff <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">odds_ratio=</span><span class="fu">exp</span>(Coefficient))</span>
-<span id="cb243-4"><a href="statistics--and-psych-specific-stuff.html#cb243-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb243-5"><a href="statistics--and-psych-specific-stuff.html#cb243-5" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret_oddsratio</span>(logreg_model_coeff<span class="sc">$</span>odds_ratio, <span class="at">rules =</span> <span class="st">&quot;chen2010&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="statistics--and-psych-specific-stuff.html#cb244-1" aria-hidden="true" tabindex="-1"></a>logreg_model<span class="ot">=</span><span class="fu">glm</span>(smoke <span class="sc">~</span> age <span class="sc">+</span> sex, <span class="at">data=</span> legaldmlab<span class="sc">::</span>survey, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb244-2"><a href="statistics--and-psych-specific-stuff.html#cb244-2" aria-hidden="true" tabindex="-1"></a>logreg_model_coeff<span class="ot">=</span>parameters<span class="sc">::</span><span class="fu">parameters</span>(logreg_model)</span>
+<span id="cb244-3"><a href="statistics--and-psych-specific-stuff.html#cb244-3" aria-hidden="true" tabindex="-1"></a>logreg_model_coeff<span class="ot">=</span>logreg_model_coeff <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">odds_ratio=</span><span class="fu">exp</span>(Coefficient))</span>
+<span id="cb244-4"><a href="statistics--and-psych-specific-stuff.html#cb244-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb244-5"><a href="statistics--and-psych-specific-stuff.html#cb244-5" aria-hidden="true" tabindex="-1"></a>effectsize<span class="sc">::</span><span class="fu">interpret_oddsratio</span>(logreg_model_coeff<span class="sc">$</span>odds_ratio, <span class="at">rules =</span> <span class="st">&quot;chen2010&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;small&quot;      &quot;very small&quot; &quot;very small&quot;
 ## (Rules: chen2010)</code></pre>
 </div>

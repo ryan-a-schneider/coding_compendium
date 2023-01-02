@@ -35,6 +35,14 @@ purrr::rbernoulli(n=1, p=.7)
 
 The third example of `rbinom` is equivalent to creating a Bernoulli distribution, because a single binomial event *is* a Bernoulli event. One coin flip comes from a Bernoulli distribution....a series of 5 coin flips (i.e., trials) comes from a Binomial.
 
+Here's an example where I generate 100 fake participants, and then for *each participant,* simulate a single Bernoulli event (a win or a loss at trial).
+
+```{r eval=FALSE}
+test=tibble(plea_rejectors=c(1:100),
+       trial_outcomes=purrr::rbernoulli(n=length(plea_rejectors), p=.3)) |> 
+  mutate(trial_outcomes=ifelse(trial_outcomes=="FALSE", "Loss", "Win"))
+```
+
 ### Calculating Likelihood
 
 If you already have data (or some idea of what the parameters are for a distribution) and you want to find the likelihood, use the density functions that start with `d`.

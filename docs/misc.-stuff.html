@@ -24,7 +24,7 @@
 <meta name="author" content="Ryan Schneider" />
 
 
-<meta name="date" content="2022-11-25" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -409,16 +409,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # A tibble: 101 x 6
 ##    PRODUCT   Rarity    Number  `Market Price` `Listed Median` ``   
 ##    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;
-##  1 Abra      Common    043/102 $0.36          $0.42           View 
+##  1 Abra      Common    043/102 $0.39          $0.46           View 
 ##  2 Alakazam  Holo Rare 001/102 $40.64         —               View 
-##  3 Arcanine  Uncommon  023/102 $2.84          $2.34           View 
-##  4 Beedrill  Rare      017/102 $3.07          $3.26           View 
-##  5 Bill      Common    091/102 $0.24          $0.30           View 
-##  6 Blastoise Holo Rare 002/102 $120.02        —               View 
-##  7 Bulbasaur Common    044/102 $1.74          $1.95           View 
-##  8 Caterpie  Common    045/102 $0.69          $0.63           View 
-##  9 Chansey   Holo Rare 003/102 $26.12         —               View 
-## 10 Charizard Holo Rare 004/102 $340.53        —               View 
+##  3 Arcanine  Uncommon  023/102 $2.94          $2.41           View 
+##  4 Beedrill  Rare      017/102 $3.12          $3.20           View 
+##  5 Bill      Common    091/102 $0.25          $0.30           View 
+##  6 Blastoise Holo Rare 002/102 $119.59        —               View 
+##  7 Bulbasaur Common    044/102 $1.39          $2.21           View 
+##  8 Caterpie  Common    045/102 $0.70          $0.75           View 
+##  9 Chansey   Holo Rare 003/102 $25.35         —               View 
+## 10 Charizard Holo Rare 004/102 $348.99        —               View 
 ## # ... with 91 more rows</code></pre>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="misc.-stuff.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saved as a list by default. Now extract your table from said list</span></span>
 <span id="cb184-2"><a href="misc.-stuff.html#cb184-2" aria-hidden="true" tabindex="-1"></a>html<span class="ot">=</span><span class="fu">as_tibble</span>(html[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="co"># find out which number it is in the list</span></span>
@@ -428,16 +428,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## # A tibble: 101 x 4
 ##    PRODUCT   Rarity    Number  `Market Price`
 ##    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;         
-##  1 Abra      Common    043/102 $0.36         
+##  1 Abra      Common    043/102 $0.39         
 ##  2 Alakazam  Holo Rare 001/102 $40.64        
-##  3 Arcanine  Uncommon  023/102 $2.84         
-##  4 Beedrill  Rare      017/102 $3.07         
-##  5 Bill      Common    091/102 $0.24         
-##  6 Blastoise Holo Rare 002/102 $120.02       
-##  7 Bulbasaur Common    044/102 $1.74         
-##  8 Caterpie  Common    045/102 $0.69         
-##  9 Chansey   Holo Rare 003/102 $26.12        
-## 10 Charizard Holo Rare 004/102 $340.53       
+##  3 Arcanine  Uncommon  023/102 $2.94         
+##  4 Beedrill  Rare      017/102 $3.12         
+##  5 Bill      Common    091/102 $0.25         
+##  6 Blastoise Holo Rare 002/102 $119.59       
+##  7 Bulbasaur Common    044/102 $1.39         
+##  8 Caterpie  Common    045/102 $0.70         
+##  9 Chansey   Holo Rare 003/102 $25.35        
+## 10 Charizard Holo Rare 004/102 $348.99       
 ## # ... with 91 more rows</code></pre>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="misc.-stuff.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove $ symbol in Price column to make it easier to work with</span></span>
 <span id="cb186-2"><a href="misc.-stuff.html#cb186-2" aria-hidden="true" tabindex="-1"></a>html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span><span class="ot">=</span><span class="fu">str_remove</span>(html<span class="sc">$</span><span class="st">`</span><span class="at">Market Price</span><span class="st">`</span>, <span class="at">pattern =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">$&quot;</span>)</span>
@@ -449,11 +449,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## # A tibble: 6 x 4
 ##   PRODUCT   Rarity    Number  `Market Price`
 ##   &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;
-## 1 Abra      Common    043/102           0.36
+## 1 Abra      Common    043/102           0.39
 ## 2 Alakazam  Holo Rare 001/102          40.6 
-## 3 Arcanine  Uncommon  023/102           2.84
-## 4 Beedrill  Rare      017/102           3.07
-## 5 Bill      Common    091/102           0.24
+## 3 Arcanine  Uncommon  023/102           2.94
+## 4 Beedrill  Rare      017/102           3.12
+## 5 Bill      Common    091/102           0.25
 ## 6 Blastoise Holo Rare 002/102         120.</code></pre>
 <p><strong><em>Slightly more complicated example</em></strong></p>
 <p>Reading a table into R takes a few steps.</p>
@@ -504,14 +504,15 @@ Begin by looking through the console in the center bottom for names that look li
 <p>And that’s it! Check out final result!</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="misc.-stuff.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exonerations_table)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 20
-##   last_name first_name     age race     st    county_of_crime tags    om_tags    crime   sentence  convicted exonerated dna   mwid  fc    p_fa  f_mfe om    ild   count_3299
-##   &lt;chr&gt;     &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;      &lt;fct&gt;   &lt;chr&gt;         &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;chr&gt; &lt;chr&gt; &lt;lgl&gt;     
-## 1 Abbott    Cinque          19 Black    IL    Cook            CIU, I~ &quot;OF, WH, ~ Drug P~ Probation      2008       2022 0     0     0     1     0     OM    derp  NA        
-## 2 Abdal     Warith Habib    43 Black    NY    Erie            IO, SA  &quot;OF, WH, ~ Sexual~ 20 to Li~      1983       1999 1     1     0     0     1     OM    derp  NA        
-## 3 Abernathy Christopher     17 White    IL    Cook            CIU, C~ &quot;OF, WH, ~ Murder  Life wit~      1987       2015 1     0     1     1     0     OM    derp  NA        
-## 4 Abney     Quentin         32 Black    NY    New York        CV      &quot;&quot;         Robbery 20 to Li~      2006       2012 0     1     0     0     0     derp  derp  NA        
-## 5 Abrego    Eruby           20 Hispanic IL    Cook            CDC, H~ &quot;OF, WH, ~ Murder  90 years       2004       2022 0     1     1     1     0     OM    derp  NA        
-## 6 Acero     Longino         35 Hispanic CA    Santa Clara     NC, P   &quot;&quot;         Sex Of~ 2 years ~      1994       2006 0     0     0     0     0     derp  ILD   NA</code></pre>
+##   last_name first_name     age race     st    county_of_crime tags   om_tags  crime sentence convicted exonerated dna   mwid  fc    p_fa  f_mfe om    ild  
+##   &lt;chr&gt;     &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 Abbott    Cinque          19 Black    IL    Cook            CIU, ~ &quot;OF, WH~ Drug~ Probati~      2008       2022 0     0     0     1     0     OM    derp 
+## 2 Abdal     Warith Habib    43 Black    NY    Erie            IO, SA &quot;OF, WH~ Sexu~ 20 to L~      1983       1999 1     1     0     0     1     OM    derp 
+## 3 Abernathy Christopher     17 White    IL    Cook            CIU, ~ &quot;OF, WH~ Murd~ Life wi~      1987       2015 1     0     1     1     0     OM    derp 
+## 4 Abney     Quentin         32 Black    NY    New York        CV     &quot;&quot;       Robb~ 20 to L~      2006       2012 0     1     0     0     0     derp  derp 
+## 5 Abrego    Eruby           20 Hispanic IL    Cook            CDC, ~ &quot;OF, WH~ Murd~ 90 years      2004       2022 0     1     1     1     0     OM    derp 
+## 6 Acero     Longino         35 Hispanic CA    Santa Clara     NC, P  &quot;&quot;       Sex ~ 2 years~      1994       2006 0     0     0     0     0     derp  ILD  
+## # ... with 1 more variable: count_3299 &lt;lgl&gt;</code></pre>
 <p>Check out <a href="https://www.dataquest.io/blog/web-scraping-in-r-rvest/">this page</a> for a quick overview.</p>
 </div>
 <div id="read-spss-files-into-r" class="section level2 hasAnchor" number="9.2">
