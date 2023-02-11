@@ -1,0 +1,366 @@
+---
+title: "Power Simulation"
+author: "Ryan Schneider, M.A."
+date: "2022-11-18"
+output:
+  html_document:
+    theme: cerulean
+    highlight: pygments
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: no
+  word_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+# load packages
+pacman::p_load(brms, easystats, tidyverse, janitor, flextable)
+
+```
+
+> Within the conventional frequentist paradigm, power is the probability of rejecting the null hypothesis $H_0$ in favor of the alternative hypothesis, $H_A$, given that the alternative hypothesis is true.
+
+$H_0$ in this case is that the sample means for each group are equal; that there is no difference between the two groups.
+
+The slope parameter being estimated by our model, $\beta_1$, is the difference (or change) between the means of groups A and B.
+
+> [With this simulation framework], we'll be able to describe the parameter space over which our estimate of $\mu_t-\mu_c$ is 95% [or 89%] probable. That is, for our power analysis, we're interested in the probability our 95% [or 89%] credible intervals for $\beta_1$ contain zero within their bounds when we know a priori [that there *is* a difference between the means].
+>
+> The reason we know $\mu_t-\mu_c$ is because we'll be simulating the data that way. What our power analysis will help us determine is how many cases we'll need to achieve a predetermined level of power. The conventional threshold is .8.
+
+## I. Generate practice sample
+
+Step I is to create an sample of data that you think reflects the real-world differences between the conditions.
+
+-   Using 2C:35-5 Manufacturing/Distributing a Controlled and Dangerous Substance (**1st degree**)
+-   Penalty range for a pre-indictment plea ranges from 48 to 78 months (Row A)
+
+```{r generate_data}
+
+# define the means and SD's
+mu_struc=60
+sd_struc=11
+
+mu_UNstruc=66
+sd_UNstruc=11
+  
+# determine the group size
+n <- 50
+
+
+# simulate the data
+set.seed(1)
+
+d1 <-
+  tibble(group     = rep(c("structured", "unstructured"), each = n)) %>% 
+  mutate(treatment = ifelse(group == "structured", 0, 1),
+         y         = ifelse(group == "structured", 
+                                      rnorm(n, mean = mu_struc, sd = sd_struc), 
+                                      rnorm(n, mean = mu_UNstruc, sd = sd_UNstruc)))
+
+# View the samples created
+ggplot(d1, aes(x=y, fill=group)) + 
+  theme_classic() +
+  geom_density(alpha=.4)
+```
+
+## II. Create practice model
+
+Now run linear regression to estimate the slope parameter in the sample above.
+
+```{r practice_model_fit_check}
+
+fit_lin=brm(data = d1,
+            family = gaussian,
+            formula = y ~ 1 + treatment,
+            prior = c(prior(normal(62.5, 5), class = Intercept),
+                      prior(student_t(5, 0, 9), class = b, coef="treatment"),
+                      prior(lognormal(0, 5), class = sigma)),
+            seed = 4)
+
+#################### MODEL DIAGNOSTICS ##############################
+diagnostic_posterior(fit_lin, diagnostic = c("ESS", "Rhat")) |> 
+  mutate(Rhat_check=effectsize::interpret_rhat(Rhat),
+         ESS_check=effectsize::interpret_ess(ESS))
+
+# POSTERIOR predictive check
+pp_check(fit_lin)
+
+#################### PARAMETERS AND EFFECT SIZE #################################
+# check bayesian parameter estimates
+describe_posterior(fit_lin, ci_method = "HDI", ci=0.89)
+
+# Compare to frequentist model
+lm(y ~ treatment, data = d1) |> parameters::model_parameters()
+```
+
+```{r practice_model_info}
+
+# check ROPE
+rope(fit_lin, range = c(-2,2), ci=.89, ci_method = "HDI", 
+     effects = "fixed", 
+     parameters = "treatment")
+
+# view plot
+plot(bayestestR::rope(fit_lin, ci=.89, ci_method="HDI", range=c(-2,2))) + 
+  theme_classic() +
+  see::scale_fill_material()
+
+```
+
+## III. Simulate
+
+If the above model works, the full simulation can be run. Specify the number of simulations to be run, load the function, and then run the simulations.
+
+-   **WARNING!** This section is a template; copy and paste this code into an R **SCRIPT** to run it. For some reason there's a bug in RStan that prevents the sampling information output for each model from being suppressed; if you run \>1000 simulations, this continues to stack up in the RMarkdown until RStudio crashes.
+
+-   **NOTE! If you changed the way that the data is generated in section I, then you need to change the simulation function below to be consistent with it!**
+
+```{r simulation, message=FALSE, warning=FALSE, results="hide"}
+
+# A. Set the number of simulations and sample sizes
+n_simulations=1500
+
+
+# B. Load function
+sim_d_and_fit_linear <- function(seed, n) {
+  
+  set.seed(seed)
+  
+  d <-
+    tibble(group     = rep(c("control", "treatment"), each = n)) |>  
+    mutate(treatment = ifelse(group == "control", 0, 1),
+           y         = ifelse(group == "control", 
+                              rnorm(n, mean = mu_struc, sd = sd_struc), 
+                              rnorm(n, mean = mu_UNstruc, sd = sd_UNstruc))) 
+  
+  crap=capture.output(new_fit <- update(fit_lin,
+                                        newdata = d, 
+                                        seed = seed))
+                      
+  params=describe_posterior(new_fit, ci_method = "HDI", ci=.89) |> 
+    select(c(Parameter, Median, CI_low, CI_high)) |> 
+    mutate(across(c(Median, CI_low, CI_high), round, 2))
+}
+
+# B. Run simulation
+
+sim1_linear_n50 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(tidy = map(.x= seed, .f= sim_d_and_fit_linear, n = 50)) |> 
+  unnest(tidy) |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept") 
+
+```
+
+## IV. Check Results
+
+### Method 1: Rejecting Null values
+
+Plot the interval widths
+
+```{r interval_plots}
+theme_set(theme_classic()) 
+
+# Same plot, but re-ordered by the interval's lower limit
+sim1_linear_n50 |> 
+  ggplot(aes(x = reorder(seed, CI_low), y = Median, ymin = CI_low, ymax = CI_high)) +
+  #geom_hline(yintercept = c(0, .5), color = "white") +
+  geom_pointrange(fatten = 1/2) +
+  scale_x_discrete("reordered by the lower level of the intervals", breaks = NULL) +
+  ylab(expression(beta[1])) # + coord_cartesian(ylim = c(-.5, 1.3))
+```
+
+> Notice how this arrangement highlights the differences in widths among the intervals. The wider the interval, the less precise the estimate.
+
+#### Quantifying width
+
+```{r fig.height=5, fig.width=7, dpi=300, message=FALSE, warning=FALSE, results="hide"}
+
+# view HDI widths as a histogram
+sim1_linear_n50 |> 
+  ggplot(aes(x = width)) +
+  geom_histogram(binwidth = NULL, color="skyblue")+
+  labs(title = "Frequency Histogram of Interval Widths")
+
+```
+
+And we can check the descriptives out in a neat table...
+
+```{r table}
+
+sim1_linear_n50 |> 
+  summarize('Median width'=median(width),
+            'Mean width'=mean(width),
+            'Narrowest width'=min(width),
+            'Widest width'=max(width)) |> 
+  mutate(across(everything(), round, 2)) |> 
+  pivot_longer(cols = everything(),
+               names_to = "HDI Summary Stat",
+               values_to = "Value") 
+```
+
+#### Proportion of intervals that contain a Null effect
+
+Check the proportion of the simulations that have a lower interval limit that is greater than 0; i.e., the proportion of simulations where the HDI/CI does not include 0.
+
+```{r}
+sim1_linear_n50 |>  
+  filter(Parameter == "b_treatment") |>  
+  mutate(check = ifelse(CI_low > 2, 1, 0)) |>  
+  summarise(power = mean(check))
+```
+
+Across 1,500 simulations, a sample size of n=50 produced HDI's that did not include zero in 58% of models.
+
+### Method 2: Precision of Estimation
+
+> Once we're concerned with width size, about precision, the null hypothesis is no longer of direct relevance. And since we're no longer wed to thinking in terms of the null hypothesis, there's no real need to stick with a .8 threshold for evaluating 'width power.' Now if we wanted to stick with .8, we could. Though a little nonsensical, the .8 criterion would give our AIPE analysis a sense of familiarity with traditional power analyses, which some reviewers might appreciate. But in his text, Kruschke mentioned several other alternatives. One would be to set maximum value for our CI wdiths and simulate to find the n necessary so all our simulations pass that criterion. Another would follow Joseph, Wolfson, and du Berger (1995) who suggested we shoot for an n that produces widths that pass that criterion on average.
+
+Here is a demonstration and explanation of all three versions of AIPE criteria.
+
+#### A. Targeting a specific width
+
+Even if your posterior suggests the difference between your groups is not zero, the Credible Interval or HDI might still be pretty wide on the size of the effect; so you could know *enough* to say "the effect isn't zero", but still be very uncertain about what it *actually is.* So...
+
+> ...instead of focusing on rejecting a null hypothesis like $μ_{control}=μ_{treatment}$​, we might instead use our simulation skills to determine the sample size we need to have most of our intervals come in at a certain level of precision. This has been termed the accuracy in parameter estimation [AIPE; Maxwell et al. ([2008](https://solomonkurz.netlify.app/blog/bayesian-power-analysis-part-ii/#ref-maxwellSampleSizePlanning2008)); see also Kruschke ([2015](https://solomonkurz.netlify.app/blog/bayesian-power-analysis-part-ii/#ref-kruschkeDoingBayesianData2015))] approach to sample size planning.
+>
+> Thinking in terms of AIPE, in terms of precision, lets say we wanted widths of 0.7 or smaller.
+
+This code shows the probability of achieving an interval width of (x desired size) or less, for a given sample size.
+
+```{r}
+
+target_max_width=.7
+
+sim1_linear_n50 |> 
+  mutate(check = ifelse(width < target_max_width, 1, 0)) |> 
+  summarise(`width power` = mean(check))
+```
+
+#### B. Kruschke's minimum-threshold criterion
+
+The difference between this and the above is that Kruschke recommends getting *100%* of the widths below the target. The general target approach above just aims for some arbitrarily acceptable proportion (e.g., 70 or 80%) of HDI's below the desired threshold. This approach ensures that all intervals will be precise.
+
+First, it can be helpful to view the distribution of widths, to see if some of the widths are approaching the the "too wide" boundary.
+
+```{r}
+
+# visual check of the widths' distribution
+sim1_linear_n50 |> 
+  ggplot(aes(x=width)) + 
+  geom_histogram(binwidth = NULL, color="red")
+
+# checking the proportions
+sim1_linear_n50 |> 
+  mutate(check=ifelse(width<target_max_width, 1, 0)) |> 
+  summarize('proportion below target'=mean(check))
+```
+
+#### C. Mean-precision criterion
+
+This is Joseph, Wolfson, and du Berger's (1995) suggestion to aim for an n that produces widths of a certain number, on average.
+
+```{r}
+sim1_linear_n50 |> summarize('average width'=mean(width))
+```
+
+## V. More Simulations
+
+If you did not achieve your goal(s) in the first simulation, increase the sample size and re-run it here. The higher the sample size, the more narrowly the interval width should be around the true data-generating value.
+
+Keep increasing the sample size and re-running the simulations in this section until you meet your goals.
+
+```{r message=FALSE, warning=FALSE, results="hide"}
+
+
+# Run more sims
+
+sim2_linear_n65 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(tidy = map(.x= seed, .f= sim_d_and_fit_linear, n = 65)) |>
+  unnest(tidy) |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+sim3_linear_n75 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(tidy = map(.x= seed, .f= sim_d_and_fit_linear, n = 75)) |>
+  unnest(tidy) |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+sim4_linear_n85 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(tidy = map(.x= seed, .f= sim_d_and_fit_linear, n = 85)) |>
+  unnest(tidy) |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+sim5_linear_n95 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(tidy = map(.x= seed, .f= sim_d_and_fit_linear, n = 95)) |>
+  unnest(tidy) |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+sim6_linear_n110 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(tidy = map(.x= seed, .f= sim_d_and_fit_linear, n = 110)) |>
+  unnest(tidy) |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+# Method 1: Check one model at a time
+
+sim2_linear_n65 |>  
+  mutate(check = ifelse(CI_low > 2, 1, 0)) |> summarise(power = mean(check))
+
+##################### Method 2: DO FOR ALL AT ONCE with purrr ###############
+
+# compile all objects into a single list, with names for each level
+linear_sims=list(n50=sim1_linear_n50,
+                 n65=sim2_linear_n65,
+                 n75=sim3_linear_n75, 
+                 n85=sim4_linear_n85,
+                 n95=sim5_linear_n95,
+                 n110=sim6_linear_n110) 
+
+# For i in list .x, apply function .f
+linear_sims |> 
+  map(filter, Parameter=="b_treatment") |> 
+  map(mutate, check = ifelse(CI_low > 2, 1, 0)) |> # USE THE ROPE BOUNDARY FOR THIS CHECK VALUE
+  map_df(.f= summarize, 
+         power=mean(check), 
+         mean_width=mean(width), 
+         widths_below_target = mean(width < .7)) |> 
+  mutate(sample_size=names(linear_sims))
+```
+
+## VI. Save Results
+
+Save the results of the simulations
+
+```{r}
+save(sim1_linear_n50, sim2_linear_n65, 
+     sim3_linear_n75, sim4_linear_n85,
+     sim5_linear_n95,
+     file=here::here("Data and Models", "linear_sims.RData"), compress = FALSE)
+
+save(fit_lin,file=here::here("Data and Models", "linear_power_fit.RData"), compress = FALSE)
+```
+
+## VII. Packages and Session Info
+
+```{r citations}
+sessionInfo()
+```

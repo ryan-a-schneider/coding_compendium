@@ -1,0 +1,281 @@
+---
+title: "Your Document Title"
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: cerulean
+    highlight: pygments
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    number_sections: no
+  word_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+pacman::p_load(brms, easystats, tidyverse, janitor, flextable)
+
+#### Load custom functions ####
+
+summarize_precision=function(simulation_data, target_MAX_width){
+  simulation_data |> 
+    summarize('mean interval width'         = mean(width),
+              'widths below target'    = mean(width < target_MAX_width))
+}
+```
+
+# Logistic Regression Power Simulation
+
+## I. Generate Data
+
+(Kurz's original code was a single vector of data because he was not doing a group comparison in this vignette. I am, so it needs to be switched to resemble the tibble for the linear data)
+
+Create data with the smallest effect still of practical interest. What is the smallest effect you would be interested in finding?
+
+```{r}
+
+set.seed(3)
+
+# set an initial sample size
+n=50
+
+# set parameters for the DGP; the probability of success in each condition
+probOffer_structured=.80
+probOffer_UNstructured=.60
+
+
+d_logistic <-tibble(group = rep(c("structured", "unstructured"), each = n)) |>  
+  mutate(treatment = ifelse(group == "structured", 0, 1),
+         y         = ifelse(group == "structured", 
+                                      purrr::rbernoulli(n=n, p=probOffer_structured), 
+                                      purrr::rbernoulli(n=n, p=probOffer_UNstructured))) |> 
+  mutate(y=ifelse(y==TRUE, 1, 0))
+
+
+# check
+d_logistic |> 
+  filter(group=="structured") |> 
+  janitor::tabyl(y)
+
+d_logistic |> 
+  filter(group=="unstructured") |> 
+  janitor::tabyl(y)
+```
+
+## II. Model Data
+
+Model the above data with a logistic regression to get estimates on the proportion.
+
+Per Gelman and the Stan development team, the default weakly-informative prior for a logistic model is: $\beta {\sim}student_t(\nu,0,s)$, where s is chosen to provide weak information on the expected scale, and $3<\nu<7$.
+
+> Normal distribution is not recommended as a weakly informative prior, because it is not robust (see, O'Hagan (1979) On outlier rejection phenomena in Bayes inference.). Normal distribution would be fine as an informative prior. [(Link to source)](https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations)
+
+**NOTE!!!** The model below is what is updated iteratively in the function for the simulation. If you change the name of the model from `fit_logreg` in this chunk, you also have to change it in the function.
+
+```{r message=FALSE, warning=FALSE, results="hide"}
+
+fit_logreg <-brm(data = d_logistic, 
+                 family = binomial,
+                 formula =  y | trials(1) ~ 1 + treatment,
+                 prior = c(prior(normal(0, 3), class = Intercept),
+                           prior(student_t(5, 0, 1), class = b)),
+                 seed = 3)
+
+#################### DIAGNOSTICS ##############################
+diagnostic_posterior(fit_logreg, diagnostic = c("ESS", "Rhat"))|> 
+  mutate(Rhat_check=effectsize::interpret_rhat(Rhat),
+         ESS_check=effectsize::interpret_ess(ESS))
+
+# POSTERIOR predictive check
+pp_check(fit_logreg)
+
+#################### PARAMETERS AND EFFECT SIZE #################################
+# check bayesian parameter estimates
+describe_posterior(fit_logreg, ci_method = "HDI", ci=0.95)
+
+# compare to frequentist
+glm(y ~ treatment, data = d_logistic, family = "binomial") |> 
+  parameters::parameters()
+
+```
+
+Helpful to view a plot to check where the posterior is visually vs. the ROPE...
+
+```{r}
+# view plot
+bayestestR::rope_range(fit_logreg)
+
+bayestestR::rope(fit_logreg, ci=.89, ci_method="HDI", range="default") |> 
+  plot() + 
+  theme_classic() +
+  see::scale_fill_material()
+```
+
+## III. Run Initial Simulation
+
+If the above model works, the full simulation can be run. Specify the number of simulations to be run, load the function, and then run the simulations.
+
+**WARNING!** This section is a template; copy and paste this code into an R **SCRIPT** to run it. For some reason there's a bug in RStan that prevents the sampling information output for each model from being suppressed; if you run \>1000 simulations, this continues to stack up in the RMarkdown until RStudio crashes.
+
+```{r message=FALSE, warning=FALSE, results="hide"}
+# A. Set the number of simulations and sample sizes
+n_simulations=1500
+
+
+# B. Load function  
+sim_data_fit_logistic <- function(seed, n) {
+ 
+   # GENERATE DATA 
+  set.seed(seed)
+  
+  d <- tibble(group = rep(c("structured", "unstructured"), each = sample_size)) |>  
+    mutate(treatment = ifelse(group == "structured", 0, 1),
+         y         = ifelse(group == "structured", 
+                                      purrr::rbernoulli(n=n, p=probOffer_structured), 
+                                      purrr::rbernoulli(n=n, p=probOffer_UNstructured))) |> 
+  mutate(y=ifelse(y==TRUE, 1, 0))
+  
+  
+  # RUN SIMULATIONS
+  crap=capture.output(new_fit <- update(fit_logreg,
+                                        newdata = d, 
+                                        seed = seed))
+                      
+  params=describe_posterior(new_fit, ci_method = "HDI", ci=.89) |> 
+    select(c(Parameter, Median, CI_low, CI_high)) |> 
+    mutate(across(c(Median, CI_low, CI_high), round, 2))
+
+}
+
+# C. Run simulation
+
+sim1_log_n65 <-
+  tibble(seed = 1:n_simulations) |>  
+  mutate(ci = map(seed, sim_data_fit_logistic, n = 65)) |>
+  unnest() |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+```
+
+## IV. Check Results
+
+Example blocks provided below for checking precision and power.
+
+### Precision
+
+-   Make sure to filter for the effect you're interested in!
+
+```{r}
+# view HDI widths across all the simulations as a histogram
+sim1_log_n65 |>
+  filter(Parameter == "b_treatment") |> 
+  ggplot(aes(x = width)) +
+  geom_histogram(binwidth = NULL, color="skyblue")+
+    labs(title = "Frequency Histogram of Interval Widths")
+```
+
+```{r}
+
+sim1_log_n65 |>  
+  filter(Parameter == "b_treatment") |> 
+  summarize_precision(target_MAX_width = 0.8)
+```
+
+### Rejecting a Null (or Practically Null) finding
+
+-   Proportion of HDI's across all simulations that exclude values in the ROPE
+
+-   Make sure to filter for the effect you're interested in!
+
+```{r}
+
+sim1_log_n65 |>  
+  filter(Parameter == "b_treatment") |>  
+  mutate(check = ifelse(CI_high < -.18, 1, 0)) |>  
+  summarize(power = mean(check))
+```
+
+## V. Running More Simulations and Checking Results
+
+(until the desired goal of power or precision is reached)
+
+```{r message=FALSE, warning=FALSE, results="hide"}
+
+# Run more sims
+
+sim2_log_n75 <-
+  tibble(seed = 1:n_simulations) |> 
+  mutate(ci = map(seed, sim_data_fit_logistic, n = 75)) |>
+  unnest() |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+sim3_log_n85 <-
+  tibble(seed = 1:n_simulations) |> 
+  mutate(ci = map(seed, sim_data_fit_logistic, n = 85)) |>
+  unnest() |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+sim4_log_n95 <-
+  tibble(seed = 1:n_simulations) |> 
+  mutate(ci = map(seed, sim_data_fit_logistic, n = 95)) |>
+  unnest() |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+sim5_log_n110 <-
+  tibble(seed = 1:n_simulations) |> 
+  mutate(ci = map(seed, sim_data_fit_logistic, n = 110)) |>
+  unnest() |> 
+  mutate(width = CI_high - CI_low) |> 
+  filter(Parameter!="b_Intercept")
+
+
+################# Method 1: checking one sim at a time ##################
+
+sim2_log_n75 |>  
+  filter(Parameter == "b_treatment") |>  
+  mutate(check = ifelse(CI_high < 0, 1, 0)) |>  
+  summarize(power = mean(check))
+
+
+##################### Method 2: DO FOR ALL AT ONCE with purrr ###############
+
+# compile all objects into a single list, with names for each level
+logistic_sims=list(n65=sim1_log_n65,
+                   n75=sim2_log_n75, 
+                   n85=sim3_log_n85,
+                   n95=sim4_log_n95,
+                   n110=sim5_log_n110) 
+
+# For i in list .x, apply function .f
+logistic_sims |> 
+  map(.f= filter, Parameter=="b_treatment") |> 
+  map(.f=mutate, check = ifelse(CI_high < -.18, 1, 0)) |> 
+  map_df(.f= summarize, 
+         power=mean(check), 
+         mean_width=mean(width), 
+         widths_below_target = mean(width < .8)) |> 
+  mutate(sample_size=names(logistic_sims)) 
+```
+
+## VI. Save Results
+
+```{r}
+save(sim1_log_n65, sim2_log_n75, sim3_log_n85, sim4_log_n95, sim5_log_n110,
+     file=here::here("Data and Models", "logistic_sims.RData"), compress = FALSE)
+
+save(fit_logreg, file = here::here("Data and Models", "log_power_fit.RData"), compress = FALSE)
+```
+
+## VII. Session Info
+
+```{r}
+sessionInfo()
+```
