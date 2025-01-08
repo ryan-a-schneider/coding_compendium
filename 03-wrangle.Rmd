@@ -4,74 +4,8 @@ This chapter contains useful tips on wrangling (i.e., manipulating) data. If you
 
 If you want a pretty good intro tutorial to the `dplyr` package, click [here](https://www-r--bloggers-com.cdn.ampproject.org/v/s/www.r-bloggers.com/2021/01/how-to-analyze-data-with-r-a-complete-beginner-guide-to-dplyr/amp/?amp_js_v=a6&gsa=1&usqp=mq331AQFKAGwASA%3D#csi=0&referrer=https%3A%2F%2Fwww.google.com&tf=From%20%251%24s&ampshare=https%3A%2F%2Fwww.r-bloggers.com%2F2021%2F01%2Fhow-to-analyze-data-with-r-a-complete-beginner-guide-to-dplyr%2F)
 
-## Joining or Splitting
 
-Joining and splitting data is pretty straightforward....
-
-### Whole Data Sets
-
-The code below is from [this excellent tutorial](https://www.youtube.com/watch?v=SCdmyyoudb8&t=23s)
-
-```{r chapter_3}
-set.seed(2018)
-
-df1=data.frame(customer_id=c(1:10),
-               product=sample(c('toaster','TV','Dishwasher'),10,replace = TRUE))
-
-
-df2=data.frame(customer_id=c(sample(df1$customer_id, 5)),state=sample(c('New York','California'),5,replace = TRUE))
-
-df1=tibble::as_tibble(df1)
-df2=tibble::as_tibble(df2)
-
-# df1 =left table
-# df2= right table
-```
-
-Inner join - retains only rows with values that appear in both tables, and matches by keys.
-
-*If you're joining two Qualtrics surveys together, this is most likely the one you want to use (e.g. matching by participant name, and only keeping rows in the joined data set for participants that have responses logged in both survey 1 and survey 2*
-
-```{r 3.2}
-df1 %>% inner_join(df2,by='customer_id')
-```
-
-Left join - returns everything in the left, and rows with matching keys in the right
-
-```{r 3.3}
-df1 %>% left_join(df2,by='customer_id')
-```
-
-Right join - returns everything in the right, and rows with matching keys in the left
-
-```{r 3.4}
-df1 %>% right_join(df2,by='customer_id')
-
-# note: example if the customer id column was named something different in the second df
-    #df1 %>% left_join(df2,by=c('customer_id'='name2'))
-```
-
-Full join - retain all rows from both tables, and join matching keys in both right and left
-
-```{r 3.5}
-df1 %>% full_join(df2,by='customer_id')
-```
-
-Anti join - returns all rows in the left that do not have matching keys in the right
-
-```{r 3.6}
-df1 %>% anti_join(df2,by='customer_id')
-```
-
-### Individual Columns/Variables
-
-Splitting or joining columns is much easier than doing it to whole data sets. You can use `dplyr::separate()` to accomplish the former, and `dplyr::unite()` for the latter.
-
-```{r 3.7}
-print("hello")
-```
-
-## Selecting/extracting specific variables with `select()`
+## Select helpers
 
 Sometimes when working with a data set, you want to work with a few *specific* variables. For instance, maybe you want to view a graph of only reverse-coded variables (which start with the prefix "r"); or maybe you want to create a subset of your data that has a few specific variables removed. For this you can use `dplyr::select()` and its associated helper commands
 
@@ -199,8 +133,6 @@ msleep %>%
 
 ## If-then and Case-when
 
-### If-then
-
 The premise of an if/then or if/else statement is simple: "If condition 1 is satisfied, perform x operation; if not, then do y"
 
 ```{r 3.9}
@@ -209,7 +141,7 @@ mtcars %>% mutate(power_level=ifelse(mtcars$hp<350, "Low", "High")) %>% head()
 
 This line of code effectively says: if the length in Sepal.Length is \>5, set new variable = to "short"; else, set it to "long"
 
-### Case-when
+Case-when
 
 When you have 3+ conditions, it's easier to use case-when. This is a more simple and straightforward approach than nesting multiple if-else commands
 
@@ -232,72 +164,11 @@ mtcars %>% mutate(size= case_when(cyl==4 ~ "small",
   select(c(cyl,size)) %>% head()
 ```
 
-## Conditional replacement of values
+## Dataframe Manipulation
 
-The following code is useful if you want to replace a value in one column, and the replacement is conditional upon the value in another column.
+### Pivoting (i.e., transposing) data
 
-```{r 3.12}
-mpg %>% 
-  mutate(across(.cols = c(displ, cty, hwy),
-                .fns = ~case_when(cyl == 4L ~ as.numeric(NA),
-                                  TRUE ~ as.numeric(.x))))
-```
-
-```{r 3.13, eval=FALSE}
-test %>% 
-  mutate(across(.cols = c(rank),
-                .fns = ~case_when(is.na(participant_score) ~ as.numeric(NA),
-                                  TRUE ~ as.numeric(.x))))
-```
-
-## Merging variables
-
-Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this.
-
-``` {r3.14}
-example_data=tribble(~A,~B,~C,
-                     1,NA,NA,
-                     2,NA,NA,
-                     3,NA,NA,
-                     NA,4,NA,
-                     NA,5,NA,
-                     NA,6,NA,
-                     NA,NA,7,
-                     NA,NA,8,
-                     NA,NA,9)
-
-example_data %>%
-  mutate(accept_reject = 
-           pmin(A,B,C,na.rm = TRUE))
-```
-
-## Apply a function to multiple variables at once
-
-You can either specify each column individually, like above, or tell R to identify columns for you based on their type or their name. This requires adding in one additional verb--either contains() or where() depending on what you want to do.
-
-Two simple examples:
-
-```{r 3.15}
-# turn multiple variables into factors
-ex_data=dplyr::tribble(~color, ~car,
-                       "red", "corvette",
-                       "blue", "chevelle",
-                       "green", "camaro",
-                       "red", "corvette",
-                       "green", "chevelle",
-                       "yellow", "gto")
-
-dplyr::glimpse(ex_data)
-
-ex_data %>% mutate(across(c(color, car),factor))
-
-# round multiple columns to 1 decimal place
-mtcars %>% mutate(across(c(disp:qsec),round,1)) %>% head()
-```
-
-## Pivoting (i.e., transposing) data
-
-### Condense multiple rows into a single column (pivot wide to long)
+Pivot wide to long
 
 Rearranging data like this can make it easier to work with and analyze. Example below from my gradebook for stats (exported from Canvas), with fake names.
 
@@ -336,7 +207,7 @@ gradebook=gradebook %>%
 gradebook %>% head()
 ```
 
-## Turn row names into a column/variable
+### Turn Row Names into a Variable
 
 Use the `rownames()` command to turn row names into a variable
 
@@ -346,7 +217,7 @@ cars=rownames_to_column(mtcars, var = "car")
 as_tibble(cars) %>% slice(1:6)
 ```
 
-## How to edit/change column names
+### Rename Variables
 
 TWO WAYS TO DO THIS: Use `colnames()` (for base R) or `rename()` (for tidyverse)
 
@@ -363,6 +234,7 @@ iris %>% rename("hurr"="Sepal.Length",
   head()
 ```
 
+#### Rename multiple variables at once
 If you need to do some really fancy conditional renaming (e.g., changing all variables that start with "r" to start with "rf" instead, to make it more clear that the prefix actually stands for "risk factor" rather than "reverse coded"), you'll need to use `rename_with()`.
 
 This command has two parts to it: the data set, and the function you wish to apply to it (which you put after the `~`)
@@ -395,7 +267,9 @@ colnames(iris)=str_replace(colnames(iris), pattern = ".", replacement = "_")
 
 In short: `rename()` and `rename_with()` are for *renaming* variables, as their names imply. The `str_` verbs from the stringr package are for editing string-based variabels in your data set. Either works though with a little ingenuity.
 
-## Re-order columns in a data set
+
+
+### Change column order in a data set
 
 Use `relocate()` to change column positions. If you need to move multiple columns at once, this command uses the same syntax as `select()`.
 
@@ -406,7 +280,62 @@ mtcars # notice the column order
 mtcars %>% relocate(hp:wt, .after= am) %>% head()
 ```
 
-## Date and time variables
+Alternatively, you could use this solution:
+```{r}
+# Assuming your variables are in a data frame called 'df'
+# Get names of variables starting with "r"
+r_vars <- names(df)[grepl("^r", names(df))] 
+
+# Create new names
+new_names <- paste0("item_", sub("^r", "", r_vars))
+
+# Rename the variables
+df <- df %>% rename_with(~ new_names[match(., r_vars)], .cols = all_of(r_vars))
+```
+
+
+### Splice/Join Dataframes
+
+Joining and splitting data is pretty straightforward....
+
+### Whole Data Sets
+
+The code below is from [this excellent tutorial](https://www.youtube.com/watch?v=SCdmyyoudb8&t=23s)
+
+```{r chapter_3}
+set.seed(2018)
+
+df1=data.frame(customer_id=c(1:10),
+               product=sample(c('toaster','TV','Dishwasher'),10,replace = TRUE))
+
+
+df2=data.frame(customer_id=c(sample(df1$customer_id, 5)),state=sample(c('New York','California'),5,replace = TRUE))
+
+df1=tibble::as_tibble(df1)
+df2=tibble::as_tibble(df2)
+
+# df1 =left table
+# df2= right table
+```
+
+Inner join - retains only rows with values that appear in both tables, and matches by keys.
+Left join - returns everything in the left, and rows with matching keys in the right
+Right join - returns everything in the right, and rows with matching keys in the left
+Full join - retain all rows from both tables, and join matching keys in both right and left
+Anti join - returns all rows in the left that do not have matching keys in the right
+
+*If you're joining two Qualtrics surveys together, this is most likely the one you want to use (e.g. matching by participant name, and only keeping rows in the joined data set for participants that have responses logged in both survey 1 and survey 2*
+
+```{r 3.2}
+df1 %>% inner_join(df2,by='customer_id')
+df1 %>% left_join(df2,by='customer_id')
+df1 %>% right_join(df2,by='customer_id')
+df1 %>% full_join(df2,by='customer_id')
+df1 %>% anti_join(df2,by='customer_id')
+```
+
+
+## Working with Dates/Times
 
 Formatting a column of dates can be extremely helpful if you need to work with time data, but also an extreme pain in the ass if it's not stored correctly. This tutorial will be divided into two parts to cover both scenarios that you could encounter. It requires things to be done in two stages, and very precisely.
 
@@ -468,7 +397,10 @@ Notice how the object is now stored as the correct type in the table above.
 difftime(part_1$end_date[1], part_2$end_date[1], units="days")
 ```
 
-## Reverse-code a variable
+
+## Variable Coding and Creation
+
+### Reverse-code a variable
 
 To reverse-score a variable, you should use `car::recode()` Can be done a few different ways, depending on how many variables you're looking to recode:
 
@@ -481,7 +413,7 @@ df$column=recode(df$column,"1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1")
 df=df %>% mutate(across(c(family_close : family_feelings), recode, "1 = 7 ; 2 = 6 ; 3 = 5 ; 5 = 3 ; 6 = 2 ; 7 = 1"))
 ```
 
-## Dummy coding (the very fast and easy way)
+### Dummy coding (the very fast and easy way)
 
 Use dplyr's `pivot_wider` in conjunction with `mutate` to very quickly and automatically dummy code a column with any number of unique values. The middle part of the code below is what you need...just copy and paste it, and tweak the specifics
 
@@ -500,7 +432,7 @@ mtcars |>
   select(car, starts_with("number_")) |> head() #truncate output for easier reading
 ```
 
-## Create a relative ranking among several variables
+### Create a relative ranking variable
 
 If you want to create a variable that is an ordinal ranking of other variables, first you need to make sure your data is long-wise. Then, depending on the type of ranking system you want, you'll might need a different ranking command....
 
@@ -529,7 +461,73 @@ dat=tibble::tribble(~name, ~score,
 dat %>% mutate(ranked = dense_rank(desc(score)))
 ```
 
-## Manipulating the working environment and many things at once
+### Merging variables
+
+Sometimes you'll have multiple variables and you want to collapse them into a single variable. The `pmin()` command is useful for this.
+
+``` {r3.14}
+example_data=tribble(~A,~B,~C,
+                     1,NA,NA,
+                     2,NA,NA,
+                     3,NA,NA,
+                     NA,4,NA,
+                     NA,5,NA,
+                     NA,6,NA,
+                     NA,NA,7,
+                     NA,NA,8,
+                     NA,NA,9)
+
+example_data %>%
+  mutate(accept_reject = 
+           pmin(A,B,C,na.rm = TRUE))
+```
+
+
+### Mutate multiple variables at once
+
+You can either specify each column individually, like above, or tell R to identify columns for you based on their type or their name. This requires adding in one additional verb--either contains() or where() depending on what you want to do.
+
+Two simple examples:
+
+```{r 3.15}
+# turn multiple variables into factors
+ex_data=dplyr::tribble(~color, ~car,
+                       "red", "corvette",
+                       "blue", "chevelle",
+                       "green", "camaro",
+                       "red", "corvette",
+                       "green", "chevelle",
+                       "yellow", "gto")
+
+dplyr::glimpse(ex_data)
+
+ex_data %>% mutate(across(c(color, car),factor))
+
+# round multiple columns to 1 decimal place
+mtcars %>% mutate(across(c(disp:qsec),round,1)) %>% head()
+```
+
+
+### Conditional replacement of values
+
+The following code is useful if you want to replace a value in one column, and the replacement is conditional upon the value in another column.
+
+```{r 3.12}
+mpg %>% 
+  mutate(across(.cols = c(displ, cty, hwy),
+                .fns = ~case_when(cyl == 4L ~ as.numeric(NA),
+                                  TRUE ~ as.numeric(.x))))
+```
+
+```{r 3.13, eval=FALSE}
+test %>% 
+  mutate(across(.cols = c(rank),
+                .fns = ~case_when(is.na(participant_score) ~ as.numeric(NA),
+                                  TRUE ~ as.numeric(.x))))
+```
+
+
+## The working environment
 
 ### Stuff the WHOLE working environment into a list
 
@@ -549,7 +547,7 @@ list2env(cog_data, globalenv())
 rm(list=setdiff(ls(), "cog_data")) # delete everything in the local environment except the final data set
 ```
 
-## Wrangling Lists
+## Lists
 
 ### Nesting
 
@@ -574,3 +572,277 @@ demo_vars=files |>
   map(import_spss) |> 
   reduce(left_join, by="catieid")
 ```
+
+## String Variables
+
+### Remove a pattern from a string
+
+```{r chapter_6}
+
+price_table=tribble(~car, ~price,
+        "Corvette", "$65,000",
+        "Mustang GT", "$40,000")
+
+# BASE R METHOD (sub by replacing something with nothing)
+gsub("\\$", "",price_table$price) # (pattern, replace with, object$column)
+
+# TIDYVERSE METHOD
+str_remove(price_table$price, pattern = "\\$")
+```
+
+You can remove numbers by typing `"[:digit:]"`
+```{r 6.1, eval=FALSE}
+panss_sem_data$cgi_sev=str_remove(panss_sem_data$cgi_sev, pattern = "[:digit:]")
+```
+
+
+### Replace one pattern in a string with another
+
+Tidyverse command: `str_replace()` or `str_replace_all()`
+Base R command: `gsub()`
+
+```{r 6.2, eval=FALSE}
+# base R
+gsub(mtcars, replacement = )
+
+#tidyverse
+str_replace_all(iris$Species, pattern=c("e", "a"), replacement="ZZZZ") |> 
+  head()
+
+str_replace(iris$Species, pattern=c("e", "a"), replacement="ZZZZ") |> 
+  head()
+
+```
+
+
+### Find (i.e., filter for) all instances of a string
+
+Useful for finding very specific things inside a column (e.g., one particular person's name in a roster of names; everyone with a particular last name)
+
+Tidyverse command: `str_detect()`
+Base R command: `grepl()`
+
+Note both must be nested inside of `filter()`
+```{r 6.3, eval=FALSE}
+
+cars_df=rownames_to_column(mtcars, var = "car")
+
+# base R
+cars_df |> filter(grepl("Firebird", car))
+
+# tidyverse
+cars_df %>% filter(str_detect(car,"Firebird"))
+```
+
+You can also search for **multiple strings simultaneously** by including the "or" logical operator *inside* the quotes.
+
+```{r 6_filtermultiple, eval=FALSE}
+cars_df |> filter(str_detect(car, "Firebird|Fiat"))
+```
+
+You can also include the negation logical operator to filter for all instances *except* those with the specified string.
+
+```{r eval=FALSE}
+# base R
+cars_df |> filter(!(grepl("Pontiac", car)))
+
+# tidyverse
+cars_df |> filter(!(str_detect(car, "Pontiac")))
+```
+
+### Drop all rows from a data set that contain a certain string
+
+```{r eval=FALSE}
+# Tidyverse method
+cars_df |> 
+  filter(str_detect(car, "Merc", negate = TRUE)) #including negate=TRUE will negate all rows with the matched string
+
+# base R
+cars_df[!grepl("Merc", cars_df$car),]
+```
+
+
+
+### Force all letters to lower case
+
+Use `stringr::str_to_lower()`
+
+```{r 6.5, chapter_6_end}
+blah=tribble(~A, ~B,
+             "A","X",
+             "A","X")
+
+blah
+
+blah$A=str_to_lower(blah$A)
+
+blah
+```
+
+
+### Replace strings by via keywords
+
+```{r}
+
+lookup_table=tribble(
+  ~keyword,                         ~mapping,
+  "trello.com* atlassian",          "services",
+  "microsoft*microsoft 365 p",      "services",
+  "expressvpn",                     "services",
+  "1password",                      "services",
+  "fing",                           "services",
+  "gsuite",                         "services",
+  "flightradar",                    "services",
+  "amazon prime",                   "services",
+  "trailforks",                     "services",
+  "alltrails",                      "services",
+  "grammarly",                      "services",
+  
+  "elderscrollsonline",             "entertainment",
+  "steam",                          "entertainment",
+  "microsoft*xbox",                 "entertainment",
+  "qobuz",                          "entertainment",
+  "amazon music",                   "entertainment",
+  "disney mobile",                  "entertainment",
+  "espn",                           "entertainment",
+  "audible",                        "entertainment",
+  "kindle svcs",                    "entertainment",
+  "rock ridge golf",                "entertainment",
+  "prime video",                    "entertainment",
+  "coyote creek",                   "entertainment",
+  "archery headquarters",           "entertainment",
+  "microsoft*xbox",                 "entertainment",
+  
+  "shoprite",                       "groceries",
+  "aldi",                           "groceries",
+  "target",                         "groceries",
+  "trade",                          "groceries",
+  "alma coffee",                    "groceries",
+  "krauzers",                       "groceries",
+  "apollo liquor",                  "groceries",
+  
+  "salon",                          "health",
+  "pharmacy",                       "health",
+  "mayo",                           "health",
+  "mychart",                        "health",
+  "walgreens",                      "health",
+  "cvs",                            "health",
+  "amznpharma ",                    "health",
+  "nystrom",                        "health",
+  
+  "ebay",                           "shopping",
+  "worldwide cyclery",              "shopping",
+  "ua com",                         "shopping",
+  "wal-mart",                       "shopping",
+  "walmart",                        "shopping",
+  "wm supercenter",                 "shopping",
+  "bestbuy",                        "shopping",
+  "martys reliable",                "shopping",
+  "kali",                           "shopping",
+  "shop nhl",                       "shopping",
+  "apple",                          "shopping",
+  "amazon mktp",                    "shopping",
+  "amazon com",                     "shopping",
+  "amazon mark",                    "shopping",
+  "amazon ret",                     "shopping",
+  "amazon digit",                   "shopping",
+  "amzn mktp",                      "shopping",
+  "atm",                            "shopping",
+  "gamersnexus",                    "shopping",
+  "drop com",                       "shopping",
+  "reebok",                         "shopping",
+  "gold tip",                       "shopping",
+  "hacklebarney farm",              "shopping",
+  
+  "wendy",                          "dining",
+  "taco bell",                      "dining",
+  "moe s",                          "dining",
+  "subway",                         "dining",
+  "domino",                         "dining",
+  "starbucks",                      "dining",
+  "coffee potter",                  "dining",
+  "burnt mills cider",              "dining",
+  "jersey girl brewin",             "dining",
+  
+  "parkmobile",                     "travel",
+  "uber   trip",                    "travel",
+  
+  "withdrawal from dept education student ln", "debt",
+  "withdrawal from kmf kmfusa.com",             "debt"
+)
+
+# Correctly map categories by keywords from table
+spending <- spending |> 
+  mutate(keyword = str_extract(description, paste(lookup_table$keyword, collapse = "|"))) |> 
+  left_join(lookup_table, by = "keyword") |> 
+  mutate(category = coalesce(mapping, category)) |> 
+  select(-keyword, -mapping)
+
+```
+
+## Factors
+
+### Manually recode/change a factor's levels
+
+Use `forcats::fct_recode()`
+
+```{r chapter_5}
+diamonds=diamonds %>% as_tibble()
+
+diamonds$cut=fct_recode(diamonds$cut, "meh"="Fair", "Wow"="Premium")
+
+summary(diamonds$cut)
+```
+
+### Collapse factor levels
+
+Extremely useful command for when you have infrequent cases in one factor and need to combine it with another.
+
+Works by specifying a series of new level names, each of which contains the information from the old variables. Format is as follows:
+
+```{r 5.2, eval=FALSE}
+
+fct_collapse(dataset$variable,
+			NewLevelA=c("OldLevel1","Oldlevel2"), # NewLevelA is the new variable that contains both variables 1 and 2
+			NewLevelB=c("OldLevel3"))
+```
+
+### Add levels to a factor
+
+use `fct_expand()`
+
+```{r 5.3}
+print("temp")
+```
+
+### Drop unused levels
+
+Use `fct_drop()`
+
+```{r 5.4}
+print("temp")
+```
+
+### Change the order of a factor's levels
+
+```{r 5.5}
+
+example_data=tribble(~person, ~condition,
+                     "bob", "25 years",
+                     "jane", "5 years",
+                     "jim", "5 years",
+                     "john", "25 years")
+
+example_data$condition=factor(example_data$condition)
+
+str(example_data$condition)
+```
+
+Notice that R thinks these are nominal factors, and that 25 comes before 5. To fix this and correct the level order...
+
+```{r chapter_5_end}
+example_data$condition =fct_relevel(example_data$condition, c("5 years", "25 years")) # specify level order
+
+str(example_data$condition)
+```
+

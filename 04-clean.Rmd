@@ -23,7 +23,6 @@ example_data %>% # can also pass the data to mutate and do it the tidyverse way
   mutate(bday_month=na_if(bday_month, 999)) 
 ```
 
-
 ## Replace NA's with a value
 
 `tidyr::replace_na()` is very useful if you have some NA's in your data and you want to fill them in with some value.
@@ -46,8 +45,6 @@ tidyr::replace_na(example_data$fav_food, "MISSING")
 example_data %>% mutate(across(c(fav_color, fav_food), replace_na, "MISSING"))
 ```
 
-
-
 ## Identify columns or rows with Missing values
 
 `is.na()` is the base R way to identify, in a TRUE/FALSE manner, whether or not there are missing values in a vector
@@ -57,8 +54,6 @@ y <- c(1,2,3,NA)
 
 is.na(y) # returns a vector (F F F T)
 ```
-
-
 
 ## Find the percentage of a variable that is missing
 
@@ -72,11 +67,7 @@ mtcars %>%
   legaldmlab::count_missing()
 ```
 
-
-
 ## Exclude Missing values from analysis
-
-
 
 ## Dropping Missing values from the data set
 
@@ -98,6 +89,3 @@ example_data %>% drop_na() # with nothing specified, it drops ALL variables that
 example_data %>% drop_na(car) # drops only rows with values missing in the specified column
 
 ```
-
-
-

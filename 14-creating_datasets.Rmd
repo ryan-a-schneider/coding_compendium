@@ -122,7 +122,6 @@ rnorm(n = 6, mean = c(5, 10), sd = c(2,0.1))
 
 #### Ok, back to creating the data
 
-
 If you want there to be differences between the groups, we need to change the way the vector of factors is replicated, in addition to specifying the vector of means. We want to ensure that the sequence of "A", "B" in the `group` column matches the sequence repeated in the `response` column.
 
 Here we are going to use `length.out` so that the whole sequence of A,B is repeated exactly in line with the alternating drawing from $\mu=5$, $\mu=10$.
@@ -141,20 +140,9 @@ tibble(group,
        response)
 ```
 
-
-
-
-
-
-
-
 ### 2.c. Data with **MULTIPLE QUANTITATIVE VARIABLES** with groups
 
-
-
-
 ## Part 3: Repeatedly simulate samples with replicate()
-
 
 Instead of drawing values one at a time from a distribution, we want to do it many times. This is a job for `replicate()`. What `replicate()` does is run a function repeatedly.
 
@@ -184,7 +172,6 @@ replicate(n = 3,
   rename(sample_a=V1, sample_b=V2, sample_c=V3)
 ```
 
-
 ## Part 4: repeatedly making whole data sets
 
 This is combining parts 2 and 3 to repeatedly create and sample data sets, resulting in a list of many data sets.
@@ -198,10 +185,6 @@ simlist = replicate(n = 3,
 simlist
 ```
 
-
 ## Part 5: Using purrr
 
 See [this blog post](https://aosmith.rbind.io/2018/06/05/a-closer-look-at-replicate-and-purrr/)
-
-
-
