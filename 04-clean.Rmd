@@ -89,3 +89,12 @@ example_data %>% drop_na() # with nothing specified, it drops ALL variables that
 example_data %>% drop_na(car) # drops only rows with values missing in the specified column
 
 ```
+
+### Filter out duplicates
+
+```{r}
+
+# Assuming your data frame is called 'my_data' and the column with duplicates is 'ID'
+
+filtered_data <- my_data |> distinct(ID, .keep_all = TRUE)
+```

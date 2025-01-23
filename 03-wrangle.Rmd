@@ -298,8 +298,6 @@ df <- df %>% rename_with(~ new_names[match(., r_vars)], .cols = all_of(r_vars))
 
 Joining and splitting data is pretty straightforward....
 
-### Whole Data Sets
-
 The code below is from [this excellent tutorial](https://www.youtube.com/watch?v=SCdmyyoudb8&t=23s)
 
 ```{r chapter_3}
