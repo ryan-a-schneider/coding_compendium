@@ -1,4 +1,4 @@
-# Figures and Graphs with the ggplot and see packages
+# Basics
 
 There are three parts to a ggplot2 call:
 
@@ -58,11 +58,9 @@ col_plot=ggplot(diamonds, aes(x=cut, y=price)) +
 see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
 ```
 
-## Specific Commands for Specific Types of Analysis
+## SEM Stuff
 
-### lavaan stuff
-
-#### Plotting an SEM or CFA model
+### Plotting an SEM or CFA model
 
 First lets set up a model to use.
 
@@ -89,13 +87,9 @@ Option 2 is from the easystats suite
 plot(parameters::parameters(fit1))
 ```
 
-### Bayes stuff
+## Bayes stuff
 
-Quick highlights here of my favorite functions from this package. See (ha) the full package overview at [this link](https://easystats.github.io/see/)
-
-You can adjust the colors of the figures by setting them yourself (with scale_fill_manual), or by using the appropriate scale_fill command
-
-#### Probability of Direction (*Pd*) figure
+### Probability of Direction (*Pd*) figure
 
 ```{r 7_bayesmodel, include=FALSE}
 library(rstanarm)
@@ -122,7 +116,7 @@ plot(bayestestR::pd(fit1))+
   theme(plot.title = element_text(hjust = 0.5, size = 14, face = "italic"))
 ```
 
-#### ROPE figure
+### ROPE figure
 
 ```{r 7_ROPE_graph, eval=FALSE}
 plot(fit1, rope_color = "grey70")+
@@ -134,16 +128,14 @@ ROPE tests are plots of distributions, and therefore use `scale_fill_xyz_d` comm
 
 **values=c("#FFC107", "#E91E63") is the default bayestestR theme colors from their website**
 
-#### Bayes factor models comparison figure
+### Bayes factor models comparison figure
 
 ```{r 7.15, eval=FALSE}
 plot(bayesfactor_models(Thesis_Model,discount_model))+
   scale_fill_flat(palette = "complement" , reverse = TRUE)+ # scale color adjustment
 ```
 
-### Histograms and density curves
-
-Since I use these so often I figure they deserve their own special section.
+## Histograms and density curves
 
 Basic histograms can be built with the following code:
 
@@ -207,15 +199,8 @@ ggplot(mtcars, aes(x= mpg, y=hp))+
 #geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
 ```
 
-## Plotting multiple graphs at once
 
-`see::plots()` is good for this.
-
-```{r 7.8}
-print("temp")
-```
-
-## Change the colors (bars; columns; dots; etc.)
+## Change the colors
 
 This can be done in at least two different ways, depending on your goal.
 
@@ -228,6 +213,8 @@ If you want to *add color and make all of the (bars; dots; lines; etc.) the same
 ggplot(mtcars, aes(x= mpg, y=hp))+
   geom_point(color="blue")
 ```
+
+
 
 If you want to add color that changes according to a variable (e.g., by factor level), then the color needs to be specified **as a variable name**, in the aes mapping with the other variables.
 
@@ -287,13 +274,11 @@ ggplot(mtcars, aes(factor(gear), fill=factor(carb)))+
   geom_bar(color="black")
 ```
 
-### More options with the see package
-
 See [this link](http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually) for setting color gradients for continuous variables, or using other custom color palattes like the `gameofthrones` package.
 
 Check out the [see package](https://easystats.github.io/see/articles/seecolorscales.html#overview-of-palette-colors-1) for some good color scales; the commands for which are [here](https://easystats.github.io/see/reference/index.html#section-geoms).
 
-Incidentally, see is great not only for regular ggplot graphs, but also Bayesian stats graphs [link](https://easystats.github.io/see/articles/bayestestR.html#introduction-1); effect size graphs [link](https://easystats.github.io/see/articles/effectsize.html); correlation graphs [link](https://easystats.github.io/see/articles/correlation.html); and more.
+
 
 ## Other aesthetic mappings
 
@@ -398,19 +383,7 @@ print("temp")
 
 This line produces a graph of population and life expectency, breaking it down to make a separate graph per each continent
 
-## Log transformations
 
-Sometimes when your data is really squished together on a graph it is hard to read. In this case, log transformations are really helpful, to change the scale of the data.
-
-For example, by multiplying all your points by 10x
-
-To create a log transformation of the same scatter plot above, add one extra bit: scale_x\_log10()
-
-```{r 7.22, eval=FALSE}
-print("temp")
-```
-
-You can also make both axis be logged by adding +scale again for y
 
 ## Changing the scale of the axis
 
