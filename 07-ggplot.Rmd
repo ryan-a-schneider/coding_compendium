@@ -25,7 +25,7 @@ ggplot(dataframe) +
 
 Then if you have other stuff you want to add on top of this, like axis labels, annotations, highlights, etc., you keep adding those in separate lines
 
-## Commands for ggplot graph types
+Commands for ggplot graph types
 
 | Graph Type    | Geom command       |
 |---------------|--------------------|
@@ -37,26 +37,6 @@ Then if you have other stuff you want to add on top of this, like axis labels, a
 | Histogram     | `geom_histogram()` |
 | Density curve | `geom_density()`   |
 
-Note that bar and column graphs look identical at first glance, but they serve two different purposes.
-
-*Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
-
-```{r 7.2, warning=FALSE, message=FALSE}
-
-# BAR GRAPH
-# height of bars is a frequency count of each level of the X variable cut
-bar_plot=ggplot(diamonds, aes(x=cut)) + 
-  geom_bar()+
-  theme_classic()
-
-# COLUMN GRAPH
-# height of bars represents relationship between price and cut
-col_plot=ggplot(diamonds, aes(x=cut, y=price)) + 
-  geom_col()+
-  theme_classic()
-
-see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
-```
 
 ## SEM Stuff
 
@@ -89,7 +69,7 @@ plot(parameters::parameters(fit1))
 
 ## Bayes stuff
 
-### Probability of Direction (*Pd*) figure
+### Probability of Direction
 
 ```{r 7_bayesmodel, include=FALSE}
 library(rstanarm)
@@ -153,12 +133,63 @@ geom_density(alpha=.3)+ # density plot. Alpha sets the transparency level of the
   theme_classic()
 ```
 
-You can also use the following code from `bayestestR` to build a really quick and nice density curve
+## Scatter Plots
 
-```{r 7.5}
-plot(bayestestR::point_estimate(diamonds, centrality=c("median","mean")))+
-  labs(title="Mean and Median")
+```{r}
+
 ```
+
+### Aesthetic mappings
+
+`shape()` controls the shapes on the graph `alpha()` controls transparency `size()` controls size
+
+Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
+
+```{r 7.16, eval=FALSE}
+# shape
+ggplot(mtcars, aes(x= mpg, y=hp, shape=as.factor(cyl)))+
+  geom_point()
+
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point(shape=23)
+
+# transparency
+ggplot(mtcars, aes(x= mpg, y=hp, alpha=hp))+
+  geom_point()
+
+# size
+ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
+  geom_point()
+```
+
+
+## Column Plots
+
+*Bar graphs are for frequency counts, and thus only take an X-axis variable; Column graphs are for showing the relationship between two variables X and Y, and display the values in the data*
+
+```{r 7.2, warning=FALSE, message=FALSE}
+
+# BAR GRAPH
+# height of bars is a frequency count of each level of the X variable cut
+ggplot(diamonds, aes(x=cut)) + 
+  geom_bar()+
+  theme_classic()
+
+# COLUMN GRAPH
+# height of bars represents relationship between price and cut
+ggplot(diamonds, aes(x=cut, y=price)) + 
+  geom_col()+
+  theme_classic()
+
+see::plots(bar_plot, col_plot, n_columns = 2, tags = c("Bar", "Column"))
+```
+
+
+### Grouped (side-by-side)
+```{r}
+
+```
+
 
 ## Highlight specific points
 
@@ -183,20 +214,6 @@ ggplot(diamonds_abr, aes(x= cut, y= price, colour=price))+
   ggrepel::geom_text_repel(data = diamonds_abr, aes(label = price))+ # this line labels
   gghighlight::gghighlight(cut %in% c("Very Good", "Ideal")) #this line highlights
 
-```
-
-## Add labels to data points
-
-```{r 7.7, warning=FALSE, message=FALSE}
-ggplot(mtcars, aes(x= mpg, y=hp))+
-  geom_point()+
-  theme_classic()+
-  ggrepel::geom_text_repel(data = mtcars, aes(label = hp))
-
-ggplot(mtcars, aes(x= mpg, y=hp))+
-  geom_point() + geom_text(aes(label=hp, hjust=2.5, vjust=2.5))
-
-#geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
 ```
 
 
@@ -280,28 +297,6 @@ Check out the [see package](https://easystats.github.io/see/articles/seecolorsca
 
 
 
-## Other aesthetic mappings
-
-`shape()` controls the shapes on the graph `alpha()` controls transparency `size()` controls size
-
-Note again that if you want it to change by variable, it goes **INSIDE** `aes()`; but if you want to set it manually for the whole graph, it goes in `geom_x()`
-
-```{r 7.16, eval=FALSE}
-# shape
-ggplot(mtcars, aes(x= mpg, y=hp, shape=as.factor(cyl)))+
-  geom_point()
-
-ggplot(mtcars, aes(x= mpg, y=hp))+
-  geom_point(shape=23)
-
-# transparency
-ggplot(mtcars, aes(x= mpg, y=hp, alpha=hp))+
-  geom_point()
-
-# size
-ggplot(mtcars, aes(x= mpg, y=hp, size=cyl))+
-  geom_point()
-```
 
 ## Adding and Customizing Text
 
@@ -355,6 +350,23 @@ ggplot(mtcars, aes(x=cyl))+
 
 ```
 
+
+### Add labels to data points
+
+```{r 7.7, warning=FALSE, message=FALSE}
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point()+
+  theme_classic()+
+  ggrepel::geom_text_repel(data = mtcars, aes(label = hp))
+
+ggplot(mtcars, aes(x= mpg, y=hp))+
+  geom_point() + geom_text(aes(label=hp, hjust=2.5, vjust=2.5))
+
+#geom_label(aes(label = scales::comma(n)), size = 2.5, nudge_y = 6)
+```
+
+
+
 ## Remove gridlines
 
 Add `theme(panel.grid = element_blank())`
@@ -384,14 +396,6 @@ print("temp")
 This line produces a graph of population and life expectency, breaking it down to make a separate graph per each continent
 
 
-
-## Changing the scale of the axis
-
-Add `coord_cartesian(xlim = c(lower,upper))`
-
-```{r 7.23}
-print("temp")
-```
 
 ## Add a regression line
 
